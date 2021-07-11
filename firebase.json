@@ -1,7 +1,7 @@
 {
 	"hosting": {
 		"target": "release",
-		"public": "build",
+		"public": "public",
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
 		"rewrites": [
 			{
@@ -11,6 +11,7 @@
 		]
 	},
 	"functions": {
-		"source": "."
+		"source": ".",
+		"runtime": "nodejs14"
 	}
 }
