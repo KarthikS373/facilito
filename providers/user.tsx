@@ -1,5 +1,5 @@
 // REACT
-import React, { ComponentProps, useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 // CONTEXTO
 import UserContext from 'context/user'

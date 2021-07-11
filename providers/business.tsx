@@ -1,5 +1,5 @@
 // REACT
-import React, { ComponentProps, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 // CONTEXT
 import BusinessContext from 'context/business'
@@ -8,7 +8,7 @@ import UserContext from 'context/user'
 // HOOKS
 import useBusiness from 'hooks/business'
 
-const BusinessProvider: React.FC = props => {
+const BusinessProvider: React.FC = (props) => {
 	// ESTADO
 	const [business, setBusiness] = useState<Business | null>(null)
 

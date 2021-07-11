@@ -1,8 +1,12 @@
 // TOOLS
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getAuth } from 'utils/auth'
 
-// AUTH
+/**
+ * Hook de Auth
+ * @param  {React.Dispatch<React.SetStateAction<firebase.default.User|null>>} setAuth
+ * @description Crea un listener para el objeto Auth de firebase
+ */
 export const useAuth = (
 	setAuth: React.Dispatch<React.SetStateAction<firebase.default.User | null>>
 ) => {

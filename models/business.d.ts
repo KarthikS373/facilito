@@ -1,81 +1,85 @@
 interface Business {
-  [index: string]:
-    | string
-    | "Tecnología"
-    | string[]
-    | undefined
-    | CompanyBankAccount[]
-    | CardPointeData[]
-    | BusinessPermissions
-    | Subscription;
-  name: string;
-  category: "Tecnología";
-  url: string;
-  id: string;
-  phone: string;
+	// STRING INDEX
+	[index: string]:
+		| string
+		| string
+		| string[]
+		| undefined
+		| CompanyBankAccount[]
+		| CardPointeData[]
+		| CompanyPermissions
+		| Subscription
 
-  // DATOS AGREGADOS
-  description?: string;
-  forms?: string[]; // lista de IDs de formularios
-  users?: string[]; // lista de emails de usuarios
-  products?: string[];
-  picture?: string;
-  categories?: string[]; // Listado de categorías personales
-  tokens?: string[]; // listado de tokens push
-  badge: string;
-  lang: "es" | "en";
-  background?: string;
-  backgroundImage?: string; // Imagen de fondo
-  gallery: string[];
+	// INFORMACIÓN BÁSICA
+	backgroundImage?: string
+	description?: string
+	background?: string
+	category: string
+	lang: 'es' | 'en'
+	picture?: string
+	phone: string
+	badge: string
+	name: string
+	url: string
+	id: string
 
-  // INFORMACIÓN BANCARIA
-  bankAccounts?: CompanyBankAccount[];
-  paymentAccounts?: CompanyPaymentAccount[];
-  permissions?: BusinessPermissions;
-  subscription?: Subscription;
+	// PRODUCTOS LISTA DE ID
+	categories?: string[]
+	products?: string[]
+
+	// FORMULARIOS LISTA DE ID
+	forms?: string[]
+
+	// USUARIOS LISTA DE CORREOS
+	users?: string[]
+
+	// PERSONALIZACIÓN
+	tokens?: string[]
+	gallery: string[]
+
+	// INFORMACIÓN BANCARIA Y PAGOS
+	paymentAccounts?: CompanyPaymentAccount[]
+	bankAccounts?: CompanyBankAccount[]
+	subscription?: Subscription
+
+	// PERMISOS
+	permissions?: CompanyPermissions
 }
 
-interface BusinessPermissions {
-  [index: string]: boolean;
-  forms: boolean;
-  calendar: boolean;
-  products: boolean;
-  print: boolean;
-  tracking: boolean;
-  templates: boolean;
-  payments: boolean;
+// PERMISOS
+interface CompanyPermissions {
+	[index: string]: boolean
+	templates: boolean
+	payments: boolean
+	products: boolean
+	calendar: boolean
+	tracking: boolean
+	forms: boolean
+	print: boolean
+}
+
+// PAGOS Y BANCO
+interface CompanyBankAccount {
+	[id: string]: string
+	typeAccount: string
+	nameAccount: string
+	noAccount: string
+	bank: string
 }
 
 interface CompanyPaymentAccount extends CardPointeData {
-  main: boolean;
-}
-
-interface CompanyBankAccount {
-  [id: string]: string;
-  typeAccount: string;
-  nameAccount: string;
-  noAccount: string;
-  bank: string;
-}
-
-interface Admission {
-  user: {
-    email?: string;
-    phone: string | null;
-    picture: string | null;
-    name: string;
-  };
-  business: Business;
-}
-
-interface BackgroundProfile {
-  background?: string;
-  backgroundImage?: string;
-  backgroundSize?: string;
+	main: boolean
 }
 
 interface Subscription {
-  plan: string;
-  price: string;
-  duration: number; // DATO EN DIAS
+	plan: string
+	price: string
+	duration: number // DATO EN DIAS
+}
+
+// PERSONALIZACIÓN
+interface CompanyBackgroundProfile {
+	background?: string
+	backgroundImage?: string
+	backgroundSize?: string
 }
