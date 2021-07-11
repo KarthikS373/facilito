@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "facilito-app"
+  },
+  "targets": {
+    "facilito-app": {
+      "hosting": {
+        "release": [
+          "facilito-release"
+        ]
+      }
+    }
+  }
+}

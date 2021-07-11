@@ -1,0 +1,16 @@
+{
+	"hosting": {
+		"target": "release",
+		"public": "build",
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"rewrites": [
+			{
+				"source": "**",
+				"function": "nextServer"
+			}
+		]
+	},
+	"functions": {
+		"source": "."
+	}
+}
