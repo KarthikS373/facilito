@@ -1,16 +1,73 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+	src: url('../fonts/orkney-light.otf');
+	font-family: 'Orkney';
+	font-weight: 300;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+	src: url('../fonts/orkney-regular.otf');
+	font-family: 'Orkney';
+	font-weight: 400;
+}
+@font-face {
+	src: url('../fonts/orkney-medium.otf');
+	font-family: 'Orkney';
+	font-weight: 500;
+}
+@font-face {
+	src: url('../fonts/orkney-bold.otf');
+	font-family: 'Orkney';
+	font-weight: 600;
 }
 
 * {
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Orkney';
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+input,
+textarea,
+select {
+	user-select: initial;
+	-webkit-user-drag: initial;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	--radius: 13px;
+	--transition: cubic-bezier(0.67, -0.48, 0.27, 0.92);
+	--margin: 30px;
+	font-size: 15px;
+	overflow-x: hidden;
+}
+
+.MuiAutocomplete-popper,
+.MuiPopover-root {
+	z-index: 5004 !important;
+}
+
+/* LISTAS */
+
+ul,
+ol {
+	list-style: none;
+}
+
+/* LINK */
+
+a {
+	text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+	body {
+		font-size: 14px;
+	}
 }

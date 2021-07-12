@@ -1,0 +1,1403 @@
+{
+	"es": {
+		"general": {
+			"title": "Crea formularios avanzados, e-commerce y mucho más | Facilito"
+		},
+		"footer": {
+			"title": "Facilito® 2021",
+			"privacy": "Políticas de privacidad",
+			"terms": "Términos y Condiciones"
+		},
+		"admission": {
+			"title": "Nueva solicitud de admisión",
+			"text": "El usuario {{ name }} desea unirse a tu equipo, puedes asignarle un rol al usuario como administrador o colaborador, si consideras que este usuario no pertenece a tu empresa presiona 'Denegar'. Aquí tienes mas información sobre el:",
+			"buttons": ["Denegar", "Admitir"],
+			"role": {
+				"label": "Seleccionar cargo",
+				"roles": ["Administrador", "Editor"]
+			},
+			"wait": {
+				"title": "Espera...",
+				"body": "Se esta esta agregando un nuevo usuario a tu empresa, esto no suele tardar mucho."
+			}
+		},
+		"components": {
+			"tooltips": {
+				"new": "Respuesta",
+				"link": "Enlace",
+				"title": "Titulo",
+				"image": "Imagen",
+				"video": "Video",
+				"drag": "Mover",
+				"delete": "Borrar",
+				"copy": "Duplicar",
+				"required": "Obligatorio",
+				"products": "Productos",
+				"geo": "Localización",
+				"coupon": "Cupón"
+			},
+			"labels": [
+				"Respuesta corta",
+				"Párrafo",
+				"Varias opciones",
+				"Casillas",
+				"Desplegable",
+				"Fecha y Hora"
+			],
+			"hideGeo": "Ocultar mapa",
+			"requestGeo": "Enviar ubicación del cliente",
+			"stepper": {
+				"next": "Siguiente",
+				"back": "Atrás"
+			},
+			"coupon": {
+				"showCoupons": "Mostrar cupones",
+				"percent": "en tu compra",
+				"discLabel": "Código aquí",
+				"alert": {
+					"title": "Agregar cupón",
+					"body": "Aquí puedes editar tu cupón y también compartir como imagen"
+				},
+				"typeLabel": "Tipo de cupón",
+				"typeOptions": ["Descuento", "Promoción"],
+				"preview": "de descuento",
+				"form": {
+					"multiples": ["Valor mayor", "Valor menor"],
+					"id": "Código del cupón",
+					"percent": "Descuento",
+					"count": "Cantidad"
+				}
+			},
+			"products": {
+				"addProduct": "Agregar producto",
+				"checkout": "Abrir configuración de checkout",
+				"checkoutAlert": {
+					"title": "Checkout",
+					"body": "Configura el comportamiento del carrito, el checkout y productos en este formulario."
+				},
+				"free": "Gratis",
+				"checkoutInputs": [
+					"Tarifas de envío",
+					"Porcentaje de impuesto",
+					"Porcentaje de tarjeta",
+					"Monto mínimo de compra"
+				],
+				"tagsTooltips": ["Sin inventario", "En oferta", "Oferta con cupón"],
+				"shippingBtn": "Agregar método",
+				"shippingLabel": "Nombre",
+				"shippingPriceLabel": "Precio",
+				"shippingAlert": "Configura los métodos de envío y precios correspondientes disponibles para tus clientes.",
+				"checkoutOptions": [
+					"Modo vitrina",
+					"Mostrar buscador",
+					"Acordeon de productos",
+					"Impuesto no incluido",
+					"Envío no incluido"
+				],
+				"emptyError": {
+					"title": "Ocurrió un error",
+					"body": "Selecciona al menos un producto para poder agregar al carrito, o cierra esta ventana."
+				},
+				"requiredError": {
+					"title": "Ocurrió un error",
+					"body": "Las opciones o extras \"{{ extras }}\" son obligatorios, intenta nuevamente cuando se completen."
+				},
+				"add": ["Categoría", "Buscar producto"],
+				"alert": {
+					"title": "Buscar productos",
+					"body": "Utiliza el siguiente buscador para seleccionar un producto y agregarlo a tu bloque de productos, solo puedes seleccionar un producto a la vez."
+				},
+				"wait": {
+					"title": "Cargando productos...",
+					"body": "Espera un momento se están cargando todos tus productos, esto no suele tardar mucho."
+				},
+				"info": {
+					"category": "Categoría: ",
+					"price": "Precio: ",
+					"sku": "SKU",
+					"select": "Te queda"
+				},
+				"select": "Seleccionar",
+				"cart": "Agregar a carrito",
+				"cartConfirmed": "Confirmar"
+			},
+			"formInput": {
+				"required": "Obligatorio",
+				"new": "texto"
+			},
+			"date": {
+				"interval": "Habilitar intervalos",
+				"title": "Selecciona los dias de la semana disponibles:",
+				"validation": "Ingresa una fecha valida entre {{ from }} a {{ to }}",
+				"days": ["Todos", "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+				"range": "También puedes seleccionar un rango de dias disponibles:",
+				"rangeTitles": ["Desde (hh:mm)", "Hasta (hh:mm)", "Duración (horas)", "Ocupaciones"],
+				"rangeClient": ["Desde", "Hasta"],
+				"time": "Selecciona las horas disponibles:",
+				"clientTime": {
+					"title": "Seleccionar horarios",
+					"body": "Aquí tienes una lista de horas disponibles, selecciona una y haz click en \"Aceptar\""
+				},
+				"label": "Seleccionar fecha",
+				"reservation": "Selecciona una cantidad de ocupaciones:",
+				"errorReservation": {
+					"title": "Ocurrió un error",
+					"body": "Ya no hay ocupaciones disponibles en este horario, intenta de nuevo mas tarde."
+				},
+				"buttons": ["Cancelar", "Aceptar"]
+			},
+			"option": {
+				"label": "Texto de la opción",
+				"btn": "Agregar opción"
+			},
+			"media": {
+				"label": "Selecciona un archivo, máximo 10mb por archivo."
+			},
+			"placeholder": {
+				"short": "Describe tu pregunta aquí, (Respuesta con máximo de 60 caracteres)",
+				"long": "Describe tu pregunta aquí, (Respuesta con caracteres ilimitados)",
+				"products": "Describe el titulo de estos productos",
+				"coupon": "Describe el titulo de tus cupones",
+				"options": "Describe el titulo o pregunta para las opciones",
+				"checkbox": "Describe el titulo o pregunta para las casillas",
+				"link": "Describe el titulo del enlace",
+				"title": "Describe el titulo de esta sección.",
+				"image": "Agrega una descripción a la imagen",
+				"imageHref": "Agrega un enlace a la imagen",
+				"video": "Agrega una descripción al video",
+				"videoHref": "Agrega un enlace al video"
+			},
+			"geoPlaceholders": ["País", "Ciudad", "Dirección"],
+			"linkHelper": "Escribe tu enlace aquí (ej: https://example.com)",
+			"titleHelper": "Agrega una descripción",
+			"helper": "Agrega un texto de ayuda"
+		},
+		"form": {
+			"date": "Enviado el ",
+			"public": {
+				"title": "Error al cargar",
+				"body": "Este formulario no es público y aún esta en construcción, intenta de nuevo mas tarde o notifica al creador."
+			},
+			"private": {
+				"title": "Previsualizar",
+				"body": "Este es un formulario que solo los miembros autorizados de tu empresa pueden ver. Publica el formulario para que todos lo puedan ver."
+			},
+			"summary": {
+				"title": "Resumen de orden",
+				"items": "Items en carrito",
+				"desc": "Descripción",
+				"products": "Valor",
+				"searched": "Productos buscados",
+				"coupon": "¿Tienes un cupón?",
+				"couponAlert": {
+					"title": "Agregar cupón",
+					"body": "Escribe aquí el código de tu cupón y recibe una promoción directamente al precio total, solo es posible agregar un cupón por pedido."
+				},
+				"couponError": {
+					"title": "Cupón invalido",
+					"body": "Tu cupón ya no es valido para esta compra o ya caduco"
+				},
+				"couponErrorReused": {
+					"title": "Cupón invalido",
+					"body": "Este cupón solo se puede seleccionar desde el formulario, busca la sección y seleccionalo para que se aplique tu oferta."
+				},
+				"totalOf": "Total {{ badge }}",
+				"orderTotal": "Total de tu orden",
+				"payMethod": "Pago en efectivo",
+				"taxes": "Impuestos y delivery no incluidos"
+			},
+			"notEmpty": {
+				"title": "Ocurrió un error",
+				"body": "Debes agregar un mínimo de {{ badge }} {{ price }} a tu carrito para poder enviar tu pedido, intenta de nuevo."
+			},
+			"geo": "Ubicación",
+			"hiddenForm": "Este formulario no es publico.",
+			"notification": "Hola, hay una nueva respuesta de {{ name }} para el formulario \"{{ form }}\", ¿Deseas verlo ahora?",
+			"bankTransfer":"Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma:",
+			"cart": {
+				"captcha": {
+					"title": "Ocurrió un error",
+					"body": "Faltó verificar el captcha"
+				},
+				"title": "Carrito de compras",
+				"name": "De ",
+				"shipping": "Envío",
+				"guest": "Invitado",
+				"desc": "Resumen de compra:",
+				"wait": {
+					"title": "Espera un momento",
+					"body": "Se esta procesando tu pago, no salgas de esta pagina o no se completara tu orden"
+				},
+				"error": {
+					"title": "Ocurrió un error",
+					"body": "Tu pago no se proceso correctamente, intenta nuevamente. Asegurate de tener los fondos necesarios y tu tarjeta habilitada"
+				},
+				"payTitle": "Método de pago:",
+				"alert": {
+					"title": "Agregar tarjeta",
+					"body": "Llena el siguiente formulario para procesar tu pago, tus datos son confidenciales y no serán compartidos con nadie."
+				},
+				"fields": ["Titular de tarjeta", "Numero de tarjeta", "Mes", "Año", "CVV2"],
+				"pay": ["Pago en efectivo", "Pago con tarjeta", "Transferencia"]
+			},
+			"validation": {
+				"required": "Este campo es obligatorio",
+				"date": "Fecha invalida",
+				"name": "El nombre es obligatorio"
+			},
+			"submit": "Enviar",
+			"submitSubject": "Nueva respuesta",
+			"submitRequired": {
+				"title": "Ocurrió un error",
+				"body": "Se deben llenar todos los campos obligatorios, verifica de nuevo tus respuestas."
+			},
+			"submitTitle": "Formulario: ",
+			"sendAlert": {
+				"title": "Enviando respuestas...",
+				"body": "Gracias por responder, se están enviando tus respuestas espera un momento esto no suele tardar mucho, no te salgas del formulario por favor."
+			},
+			"submitEmptyStock": {
+				"subject": "Producto agotado",
+				"content": "<h1>Hola {{ business }}</h1><br/><p>Facilito te informa que el producto <strong>{{ product }}</strong> - {{ sku }} se acaba de agotar, agrega mas al inventario o cambia su disponibilidad.</p>"
+			},
+			"success": {
+				"title": "Respuestas enviadas",
+				"body": "Gracias por responder, se guardaron tus respuestas correctamente, puedes cerrar este formulario si deseas"
+			},
+			"successTracking": "¿Deseas ver tu orden en tiempo real?"
+		},
+		"calendar": {
+			"title": "Calendario",
+			"text": "¿Cómo funciona?, Añade un campo avanzados de agenda de citas en tus formularios y todas las citas agendadas aparecerán en este calendario. Importante: Aparecerán todas la citas solicitadas a través de los formularios de "
+		},
+		"appBar": {
+			"search": "Búsqueda",
+			"routes": ["Formularios", "Catalogo de productos", "Calendario", "Order Tracking"]
+		},
+		"sendMethods": {
+			"whts": "Número de WhatsApp",
+			"wError": "Número de teléfono no valido",
+			"wEmail": "Correo electrónico no valido",
+			"wLink": "Esta url ya está en uso.",
+			"email": "Correo electrónico",
+			"btn": "Conectar",
+			"cancel": "Cancelar"
+		},
+		"customize": {
+			"title": "Personalizar formulario",
+			"back": "Cambiar fondo",
+			"bannerTitle": "Cambiar portada",
+			"imageHelp": "Esta imagen remplazara el fondo degradado.",
+			"bannerHelp": "Sube una imagen de 650px x 250px",
+			"gradient": "Selecciona dos colores para el degradado",
+			"degrees": "Grado de inclinación",
+			"image": "Sube una imagen como fondo",
+			"banner": "Sube una imagen de portada"
+		},
+		"newForm": {
+			"splash": "Cargando formulario...",
+			"iFrame": {
+				"title": "Insertar formulario",
+				"sizesLbl": "Selecciona un tamaño",
+				"sizes": ["Pequeño", "Mediano", "Largo"],
+				"preview": "Previsualizar",
+				"copy": "Copiar código"
+			},
+			"banner": {
+				"title": "Agrega una portada a tu formulario",
+				"text": "Haz click en 'Personalizar'"
+			},
+			"personalOptions": {
+				"name": "Nombre",
+				"nameHelper": "Escribe tu nombre",
+				"helper": "El nombre es obligatorio",
+				"title": "Preguntar datos personales",
+				"fields": ["Número de teléfono", "Correo electrónico", "Dirección", "Observaciones"],
+				"helpers": [
+					"Recuerda agregar la extension",
+					"Verifica que tenga un formato correcto",
+					"La dirección debe incluir el país",
+					"Indica instrucciones, y opiniones"
+				]
+			},
+			"cloudLoad": "Guardando cambios...",
+			"shareMenu": {
+				"link": "Compartir enlace",
+				"insert": "Insertar formulario",
+				"qr": "Descargar código QR"
+			},
+			"idField": "URL del formulario",
+			"options": ["Conectado a WhatsApp", "Conectado a Email", "Conectado a Cloud"],
+			"optionsAlert": {
+				"title": "Conectar formulario",
+				"body": "Antes de publicar conecta tu formulario para que recibas tus respuestas por WhatsApp ó Email:"
+			},
+			"publishAlert": {
+				"title": "Espera un momento",
+				"body": "Se esta publicando tu formulario, esto no suele tardar mucho, no te salgas de la aplicación por favor."
+			},
+			"share": {
+				"title": "Compartir formulario",
+				"body": "Espera un momento, se esta cargando el link de tu formulario..."
+			},
+			"shareFrame": {
+				"title": "Código copiado",
+				"body": "El código de tu formulario para insertar se ha copiado correctamente a tu portapapeles."
+			},
+			"shareSuccess": {
+				"title": "Compartir formulario",
+				"body": "Aquí esta la url completa de tu formulario.",
+				"bit": "También puedes compartir la url en un link corto."
+			},
+			"publishSuccess": {
+				"title": "Formulario publicado",
+				"body": "Ahora tu formulario sera visible para todos, puedes compartirles el siguiente link para que respondan",
+				"see": "¿Te gustaría ver tu formulario ahora?",
+				"seeBtn": "Ver ahora"
+			},
+			"publishMsg": "Publicando",
+			"loadImage": {
+				"title": "Espera...",
+				"body": "Se esta subiendo tu archivo, esto dependerá de tu velocidad, no te salgas de la aplicación por favor."
+			},
+			"uploadError": {
+				"title": "Ocurrió un error",
+				"body": "No se pudo subir la imagen, debe tener un máximo de 10mb."
+			},
+			"loadedImage": "Archivo subido correctamente",
+			"cloud": "Se han guardado tus cambios correctamente",
+			"title": "Titulo del formulario",
+			"topbarBtns": ["Personalizar", "Visualizar", "Compartir", "Checkout"],
+			"publishConfig": "Ajustes",
+			"publish": "Publicar",
+			"unPublish": "Ocultar",
+			"emptyAlert": {
+				"title": "Campos vacíos",
+				"body": "Algunos bloques tienen campos vacíos, es probable que algunos bloques no se muestren como deseas."
+			},
+			"defValues": {
+				"short": "Pregunta corta",
+				"multiple": "Opción multiple",
+				"long": "Pregunta larga",
+				"helper": "Texto de ayuda",
+				"link": "Texto de enlace",
+				"title": "Titulo de sección",
+				"description": "Description",
+				"select": "Selecciona una opción"
+			},
+			"unPublishAlert": {
+				"title": "Anular publicación",
+				"body": "Si anulas la publicación este formulario solo sera visible para tu empresa y no podrás recibir respuestas hasta que lo vuelvas a publicar."
+			},
+			"dnd": "Arrastra y suelta bloques a tu formulario",
+			"description": "Descripción del formulario",
+			"emptyList": "Suelta tu primer bloque aquí"
+		},
+		"signing": {
+			"nameInput": "Nombre de usuario",
+			"create": "Crea una cuenta"
+		},
+		"business": {
+			"addAccount" : "Agregar cuenta",
+			"removeAccount": "Remover cuenta",
+			"makeMain": "Hacer principal",
+			"mainAccount": "Principal",
+			"wait": {
+				"title": "Espera...",
+				"body": "Se esta esta registrando tu empresa, esto no suele tardar demasiado."
+			},
+			"waitYet": {
+				"title": "Espera...",
+				"body": "Se esta esta enviando tu solicitud, esto no suele tardar demasiado."
+			},
+			"errors": "Ocurrió un error",
+			"steps": ["Usuario", "Empresa", "My Forms"],
+			"next": "Continuar",
+			"yetBrand": {
+				"onSend": {
+					"title": "Solicitud enviada",
+					"body": "Ya se envió tu solicitud a la empresa, de momento no podrás acceder hasta que se conceda tu acceso por el administrador."
+				},
+				"emailMsg": [
+					"Ahora presiona el botón de ",
+					" y enviaremos un correo a ",
+					"con tus datos, cuando acepten tu solicitud podrás continuar."
+				],
+				"altBtn": "Pertenezco a una empresa",
+				"title": "Busca tu empresa",
+				"info": "Si ya perteneces a una empresa registrada en Facilito, puedes buscarla y solicitar tu admisión al administrador.",
+				"inputs": [
+					{
+						"label": "Nombre de la empresa",
+						"name": "business",
+						"type": "search",
+						"field": "business"
+					}
+				],
+				"category": {
+					"label": "",
+					"name": "",
+					"type": "",
+					"data": [""],
+					"field": ""
+				}
+			},
+			"newBrand": {
+				"altBtn": "Registrar nueva empresa",
+				"title": "Registra tu empresa",
+				"info": "Si eres nuevo en Facilito crea tu empresa, es totalmente gratis y tendrás formularios ilimitados. Solo necesitamos la siguiente información: ",
+				"onSend": {
+					"title": "Solicitud enviada",
+					"body": "Ya se envió tu solicitud de empresa, de momento no podrás acceder hasta que se conceda tu acceso en Facilito APP."
+				},
+				"sameUrlError": {
+					"title": "Ocurrió un error",
+					"body": "Este nombre de usuario ya esta siendo utilizado por otra empresa, intenta de nuevo."
+				},
+				"inputs": [
+					{
+						"label": "Nombre de tu empresa",
+						"name": "name",
+						"type": "text",
+						"field": "name"
+					},
+					{
+						"label": "Nombre de usuario",
+						"name": "url",
+						"type": "text",
+						"field": "url"
+					}
+				],
+				"phoneInput": "Número de teléfono",
+				"category": {
+					"label": "Categoría",
+					"name": "category",
+					"type": "text",
+					"data": [
+						"Categoría",
+						"Alimentos y Bebidas",
+						"Animales y Mascotas",
+						"Arte",
+						"Aseguradoras",
+						"Automotor",
+						"Bar",
+						"Bebés y Maternidad",
+						"Belleza y Cuidado Personal",
+						"Cafetería",
+						"Carnicería y Pescadería",
+						"Carpintería",
+						"Celulares y Telefonía",
+						"Cerrajería y Ferretería",
+						"Cine",
+						"Coaching",
+						"Computación e Informática",
+						"Concesionario",
+						"Delivery",
+						"Dentista",
+						"Deportes y Fitness",
+						"Diseño gráfico",
+						"Educación",
+						"Electrodomésticos",
+						"Electrónica, Audio y Video",
+						"Entretenimiento",
+						"Eventos",
+						"Farmacia",
+						"Finanzas",
+						"Flete y Mudanzas",
+						"Fotografía y Video",
+						"Gimnasio",
+						"Herramientas y Construcción",
+						"Hogar y Muebles",
+						"Hospedajes",
+						"Hostelería",
+						"Imprenta",
+						"Inmobiliaria",
+						"Juegos y Juguetes",
+						"Kiosco",
+						"Lavandería",
+						"Libros, Revistas y Comics",
+						"Marca personal",
+						"Marketing y publicidad",
+						"Médico",
+						"Música",
+						"Óptica",
+						"Otros",
+						"Panadería y Repostería",
+						"Películas",
+						"Redes sociales",
+						"Relojes y Joyas",
+						"Restaurante",
+						"Ropa Interior y Accesorios",
+						"Ropa de mujer, hombre y niño",
+						"Salud y Equipamiento Médico",
+						"Servicio de mensajería",
+						"Servicio Técnico",
+						"Servicios Profesionales",
+						"Supermercado",
+						"Taxi",
+						"Tecnología",
+						"Tienda Online",
+						"Transporte",
+						"Universidades",
+						"Vestuario y Calzado",
+						"Veterinaria",
+						"Viajes y Turismo"
+					],
+					"field": "category"
+				}
+			}
+		},
+		"login": {
+			"facebook": "Iniciar con Facebook",
+			"google": "Iniciar con Google",
+			"welcome": "¡Bienvenido!",
+			"forgot": "¿Olvidaste tu contraseña?",
+			"signing": "Registrarme",
+			"remember": "Recuérdame",
+			"cta": "Iniciar sesión ",
+			"formInputs": [
+				{
+					"label": "Correo electrónico",
+					"name": "email",
+					"type": "email",
+					"field": "email",
+					"autocomplete": "email"
+				},
+				{
+					"label": "Contraseña",
+					"name": "password",
+					"type": "password",
+					"field": "pass",
+					"autocomplete": "new-password"
+				}
+			]
+		},
+		"forms": {
+			"accountMenuOptions": ["Cerrar sesión", "Configuraciones"],
+			"forms": "Formularios",
+			"forms-desc": "formulario(s) en",
+			"filter": "Filtrar por fechas de creación",
+			"create-form": "Crear un formulario",
+			"form_recent": "Formularios recientes",
+			"answers": "Respuestas",
+			"hidden": "OCULTO",
+			"public": "PUBLICADO",
+			"old_recent": "De más antiguos a más recientes",
+			"recent_old": "De más recientes a más antiguos"
+		},
+		"summary": {
+			"title": "Resumen de respuestas",
+			"desc": "Periodo"
+		},
+		"answers": {
+			"label": ["Pregunta", "Respuesta"],
+			"date": "Fecha",
+			"list": "Listado de respuestas",
+			"name": "Nombre",
+			"send": "Enviando",
+			"state": "Estado",
+			"actions": "Acciones",
+			"download_data": "Descargar datos"
+		},
+		"visitor": {
+			"edit": "Editar perfil"
+		},
+		"settings": {
+			"print": "Servicio de impresión",
+			"no_account": "Número de cuenta",
+			"type_account": "Tipo de cuenta",
+			"bank": "Banco"
+		},
+		"form_edit": {
+			"change_perfil": "Cambiar foto de perfil",
+			"select_tema": "Seleccionar tema",
+			"edit_info": "Editar información",
+			"name_business": "Nombre del negocio o marca",
+			"descript_business": "Descripción de la empresa (100 caracteres max.)",
+			"cat_business": "Categoría del negocio (*)",
+			"url_business1": "URL personalizada",
+			"url_business2": "no se permiten espacios vacíos",
+			"saving_business": "Aplicar y guardar cambios",
+			"view_visitor": "Ver como visitante",
+			"edit_color": "Customize color",
+			"set_color": "Choose 2 colors and inclination for your profile"
+		},
+		"products": {
+			"cat_products": "Catálogo de productos",
+			"product_1": "producto(s) en",
+			"categoris": "Categorías",
+			"new_product": "Crear producto",
+			"title": "Título",
+			"categori": "Categoría",
+			"price": "Precio",
+			"state": "Estado",
+			"actions": "Acciones",
+			"edith": "Editar"
+		},
+		"create_product": {
+			"create": "Crear nuevo producto",
+			"back": "Regresar",
+			"save_product": "Guardar producto",
+			"title": "Título del producto",
+			"description": "Descripción del producto",
+			"categori": "Categoría",
+			"add_extras": "Extras opcionales",
+			"cant": "Cantidad",
+			"option_unique": "Selección única",
+			"option_multiple": "Selección múltiple",
+			"add": "Añadir",
+			"new_categori": "Crear una nueva categoría",
+			"save": "Guardar",
+			"picture_product": "Foto del producto",
+			"recomendate_picture": "Medidas recomendadas: 800 x 800px",
+			"size_max": "Tamaño máximo: 2Mb",
+			"replace_picture": "Subir fotografias",
+			"price_product": "Precio del producto",
+			"price_promo": "Precio promocional",
+			"united": "Unidad",
+			"united_name": "Nombre de la unidad",
+			"active": "Activar",
+			"SKU": "SKU (código unico del producto)",
+			"stock": "Stock",
+			"stock_infinite": "Stock infinito",
+			"stock_limited": "Stock limitado a disponibilidad",
+			"stock_no": "Continuar vendiendo sin stock",
+			"state": "Estado",
+			"the_products": "Los productos inactivos no se mostraran en ningun formulario",
+			"product_desta": "Producto destacado",
+			"desta": "Destacado",
+			"the_products_desta": "Los productos destacados se mostrarán automáticamente si añades un campo de destacado en tu formulario",
+			"add_title_extra": "Añade titulo a tu extra",
+			"name_optional": "Nombre opcional",
+			"add_title_product": "Añade un titulo a tu producto",
+			"add_dec_product": "Añade una descripción a tu producto",
+			"add_title_cat": "Añade un titulo a tu nueva categoria",
+			"no_category": "Sin categoría",
+			"type_variable": "Tipo de variable",
+			"value": "Valor"
+		},
+		"create_product_messajes": {
+			"max_img": "Máximo de imagenes",
+			"max_img_body": "No puedes elegir mas de 4 imagenes.",
+			"cat_succeful": "Categoria creada con exito",
+			"cat_succeful1": "La categoría",
+			"cat_succeful2": "se creo correctamente",
+			"fields": [
+				"Faltan campos por completar",
+				"El producto debe tener un titulo y SKU obligatorio",
+				"Error en el stock",
+				"Añade un stock o cambialo a inifinito",
+				"Coloca un precio al producto",
+				"Añade un precio que sea diferente de '0.00'",
+				"Producto guardado correctamente",
+				"Tu producto se guardo exitosamente",
+				"Producto actualizado correctamente",
+				"Tu producto se actualizó exitosamente"
+			]
+		}
+	},
+	"en": {
+		"general": {
+			"title": "Create advanced forms, e-commerce and much more | Facilito"
+		},
+		"footer": {
+			"title": "Facilito® 2021",
+			"privacy": "Privacy policies",
+			"terms": "Terms and Conditions"
+		},
+		"admission": {
+			"title": "New application for admission",
+			"text": "The user {{ name }} wants to join your team, you can assign a role to the user as administrator or collaborator, if you consider that this user does not belong to your company press 'Deny'. Here you have more information about him : ",
+			"buttons": ["Deny", "Admit"],
+			"role": {
+				"label": "Select position",
+				"roles": ["Administrator", "Editor"]
+			},
+			"wait": {
+				"title": "Wait ...",
+				"body": "A new user is being added to your company, this does not usually take long."
+			}
+		},
+		"components": {
+			"tooltips": {
+				"new": "Response",
+				"link": "Link",
+				"title": "Title",
+				"image": "Image",
+				"video": "Video",
+				"drag": "Move",
+				"delete": "Delete",
+				"copy": "Duplicate",
+				"required": "Required",
+				"products": "Products",
+				"geo": "Localization",
+				"coupon": "Coupon"
+			},
+			"stepper": {
+				"next": "Next",
+				"back": "Back"
+			},
+			"coupon": {
+				"percent": "in your purchase",
+				"discLabel": "Code here",
+				"showCoupons": "Show coupons",
+				"alert": {
+					"title": "Add coupon",
+					"body": "Here you can edit your coupon and also share as an image"
+				},
+				"typeLabel": "Coupon type",
+				"typeOptions": ["Discount", "Promotion"],
+				"preview": "discount",
+				"form": {
+					"multiples": ["Higher value", "Lower value"],
+					"id": "Coupon code",
+					"percent": "Discount",
+					"count": "Quantity"
+				}
+			},
+			"requestGeo": "Send customer location",
+			"hideGeo": "Hide map",
+			"labels": ["Short answer", "Paragraph", "Options", "Checkbox", "Dropdown", "Dates"],
+			"products": {
+				"addProduct": "Add product",
+				"free": "Free",
+				"checkout": "Open checkout settings",
+				"checkoutAlert": {
+					"title": "Checkout",
+					"body": "Set options for your shopping cart and checkout in yours forms."
+				},
+
+				"checkoutInputs": [
+					"Shipping prices",
+					"Tax percentage",
+					"Card percentage",
+					"Minimum purchase amount"
+				],
+				"shippingBtn": "Add method",
+				"tagsTooltips": ["No inventory", "On sale", "Offer with coupon"],
+				"shippingLabel": "Name",
+				"shippingPriceLabel": "Price",
+				"shippingAlert": "Configure the shipping methods available to your customers.",
+				"emptyError": {
+					"title": "An error occurred",
+					"body": "Select at least one product to add to the cart or close this window."
+				},
+
+				"requiredError": {
+					"title": "An error occurred",
+					"body": "Options or extras \"{{extras}}\" are required, try again when complete."
+				},
+				"checkoutOptions": [
+					"Showcase mode",
+					"Show search box",
+					"Products dropdown",
+					"Taxes not included",
+					"Shipping not included"
+				],
+				"add": ["Select category", "Search products"],
+				"alert": {
+					"title": "Search products",
+					"body": "Use the following search engine to select a product and add it to your product block, you can only select one product at a time."
+				},
+				"info": {
+					"category": "Categories: ",
+					"price": "Price: ",
+					"sku": "SKU",
+					"select": "Extras left"
+				},
+				"wait": {
+					"title": "Loading products ...",
+					"body": "Wait a minute, all your products are loading, this usually doesn't take long."
+				},
+				"select": "Select",
+				"cart": "Add to cart",
+				"cartConfirmed": "Confirm"
+			},
+			"formInput": {
+				"required": "Required",
+				"new": "text"
+			},
+			"date": {
+				"interval": "Enable intervals",
+				"title": "Select the days of the week available:",
+				"validation": "Select a valid date between {{ from }} and {{ to }}",
+				"days": [
+					"All",
+					"Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday"
+				],
+				"clientTime": {
+					"title": "Select hours",
+					"body": "Here you have a list of available hours, select one and click on \"Accept \""
+				},
+				"rangeClient": ["From", "To"],
+				"range": "You can also select a range of available days:",
+				"rangeTitles": ["From (hh: mm)", "To (hh: mm)", "Duration (hours)", "Reservations"],
+				"time": "Select the available hours:",
+				"reservation": "Select the number of reservations:",
+				"errorReservation": {
+					"title": "An error occurred",
+					"body": "There are no occupations available at this time, please try again later."
+				},
+				"label": "Select date",
+				"buttons": ["Cancel", "Ok"]
+			},
+			"option": {
+				"label": "Option text",
+				"btn": "Add option"
+			},
+			"media": {
+				"label": "Select a file, maximum 10mb per file."
+			},
+			"placeholder": {
+				"short": "Describe your question here, (Answer with maximum 60 characters)",
+				"long": "Describe your question here, (Answer with unlimited characters)",
+				"products": "Describe the title of these products",
+				"options": "Describe the title or question for the options",
+				"checkbox": "Describe the title or question for the boxes",
+				"coupon": "Describe the title of your coupons.",
+				"link": "Describe the title of the link",
+				"title": "Describe the title of this section.",
+				"image": "Add a description to the image",
+				"imageHref": "Add a link to the image",
+				"video": "Add a description to the video",
+				"videoHref": "Add a link to the video"
+			},
+			"geoPlaceholders": ["Country", "City", "Address"],
+			"linkHelper": "Write your link here (ex: https://example.com)",
+			"titleHelper": "Add a description",
+			"helper": "Add a help text"
+		},
+		"form": {
+			"date": "Sended on ",
+			"public": {
+				"title": "Error loading",
+				"body": "This form is not public and is still under construction, please try again later or notify the creator."
+			},
+			"private": {
+				"title": "Form preview",
+				"body": "This is a form that only authorized members of your company can see. Post the form for everyone to see."
+			},
+			"summary": {
+				"title": "Order summary",
+				"items": "Items on cart",
+				"coupon": "Do you have a coupon?",
+				"couponAlert": {
+					"title": "Add coupon",
+					"body": "Write your coupon code here and receive a promotion directly to the total price, it is only possible to add one coupon per order."
+				},
+
+				"couponError": {
+					"title": "Invalid coupon",
+					"body": "Your coupon is no longer valid for this purchase or has expired"
+				},
+
+				"couponErrorReused": {
+					"title": "Invalid coupon",
+					"body": "This coupon can only be selected from the form, find the section and select it for your offer to be applied."
+				},
+				"desc": "Description",
+				"products": "Value",
+				"searched": "Searched products",
+				"totalOf": "Total {{ badge }}",
+				"orderTotal": "Order total",
+				"payMethod": "Payment in cash",
+				"taxes": "Taxes and delivery are not included."
+			},
+
+			"notEmpty": {
+				"title": "An error occurred",
+				"body": "You must add a minimum of {{ badge }} {{ price }} to your cart in order to send your order, try again."
+			},
+			"geo": "Location",
+			"validation": {
+				"required": "This field is required",
+				"date": "Invalid date",
+				"name": "The name is required"
+			},
+			"cart": {
+				"title": "Shopping Cart",
+				"shipping": "Shipping",
+				"name": "From ",
+				"guest": "Guest",
+				"desc": "Your summary:",
+				"payTitle": "Pay method:",
+				"captcha": {
+					"title": "An error occurred",
+					"body": "It was necessary to verify the captcha"
+				},
+				"error": {
+					"title": "An error occurred",
+					"body": "Your payment was not processed correctly, please try again. Make sure you have the necessary funds and your card enabled"
+				},
+				"wait": {
+					"title": "Wait a minute",
+					"body": "Your payment is being processed, do not leave this page or your order will not be completed"
+				},
+				"alert": {
+					"title": "Card payment",
+					"body": "Fill out the following form to process your payment, your data is confidential and will not be shared with anyone."
+				},
+				"fields": ["Name on card", "Card number", "Month", "Year", "CVV2"],
+				"pay": ["Cash", "Card", "Transfer"]
+			},
+			"hiddenForm": "This form is not public.",
+			"submit": "Send",
+			"notification": "Hi there is a new answer from {{ name }} for the form \"{{ form }}\", do you want to see it now?",
+			"bankTransfer":"These would be the following accounts where you can make your transfer, when making please send a capture of it:",
+			"submitSubject": "New answer",
+			"submitRequired": {
+				"title": "An error occurred",
+				"body": "All required fields must be filled, check your answers again."
+			},
+			"submitTitle": "Form: ",
+			"sendAlert": {
+				"title": "Sending responses ...",
+				"body": "Thanks for answering, your answers are being sent, wait a minute this doesn't usually take long, please don't leave the form."
+			},
+			"submitEmptyStock": {
+				"subject": "Product out of stock",
+				"content": "<h1>Hello {{ business }}</h1><br/><p>Facilito informs you that the product <strong>{{ product }}</strong> - {{ sku }} is just sold out, add more to inventory or change availability.</p>"
+			},
+			"success": {
+				"title": "Answers sent",
+				"body": "Thanks for answering, your answers were saved correctly, you can close this form if you want"
+			},
+			"successTracking": "Do you want to see your order in real time?"
+		},
+		"calendar": {
+			"title": "Calendar",
+			"text": "How does it work? Add an advanced appointment schedule field in your forms and all scheduled appointments will appear in this calendar. Important: All appointments requested through the forms will appear."
+		},
+		"appBar": {
+			"search": "Search",
+			"routes": ["Forms", "Product catalog", "Calendar", "Order Tracking"]
+		},
+		"sendMethods": {
+			"whts": "WhatsApp number",
+			"wError": "Invalid phone number",
+			"wEmail": "Invalid email",
+			"wLink": "This is url is already used",
+			"email": "Email",
+			"btn": "Connect",
+			"cancel": "Cancel"
+		},
+		"customize": {
+			"title": "Customize form",
+			"back": "Change background",
+			"bannerTitle": "Change banner",
+			"imageHelp": "This image will replace the gradient background.",
+			"bannerHelp": "Upload a 650px x 250px image",
+			"gradient": "Select two colors for the gradient",
+			"degrees": "Degree of inclination",
+			"image": "Upload an image as a background",
+			"banner": "Upload a cover image"
+		},
+		"newForm": {
+			"splash": "Loading form...",
+			"iFrame": {
+				"title": "Insert form",
+				"sizesLbl": "Select a size",
+				"sizes": ["Small", "Medium", "Long"],
+				"preview": "Preview",
+				"copy": "Copy code"
+			},
+			"banner": {
+				"title": "Add a cover to your form",
+				"text": "Click on 'Customize'"
+			},
+			"personalOptions": {
+				"name": "Name",
+				"nameHelper": "Write your name",
+				"helper": "The name is required",
+				"title": "Ask for personal information",
+				"fields": ["Telephone number", "E-mail", "Address", "Observations"],
+				"helpers": [
+					"Remember to add the extension",
+					"Verify that it has a correct format",
+					"The address must include the country",
+					"Indicates instructions, and opinions"
+				]
+			},
+			"cloudLoad": "Saving changes ...",
+			"shareMenu": {
+				"link": "Share link",
+				"insert": "Insert form",
+				"qr": "Download QR code"
+			},
+			"idField": "URL of the form",
+			"options": ["Connected to WhatsApp", "Connected to Email", "Connected to Cloud"],
+			"optionsAlert": {
+				"title": "Connect form",
+				"body": "Before publishing connect your form so that you receive your answers by WhatsApp or Email:"
+			},
+			"publishAlert": {
+				"title": "Wait a minute",
+				"body": "Your form is being published, this does not usually take long, please do not exit the application."
+			},
+			"share": {
+				"title": "Share form",
+				"body": "Wait a minute, your form link is loading ..."
+			},
+			"shareFrame": {
+				"title": "Frame copied",
+				"body": "Your embed form code has been successfully copied to your clipboard."
+			},
+			"shareSuccess": {
+				"title": "Share form",
+				"body": "Here is the url of your complete form.",
+				"bit": "You can also share the url in a short link."
+			},
+			"publishSuccess": {
+				"title": "Form published",
+				"body": "Now your form will be visible to everyone, you can share the following link for them to respond",
+				"see": "Would you like to see your form now?",
+				"seeBtn": "See now"
+			},
+			"publishMsg": "Publishing",
+			"loadImage": {
+				"title": "Wait ...",
+				"body": "Your file is being uploaded, this will depend on your speed, please do not exit the application."
+			},
+			"uploadError": {
+				"title": "An error occurred",
+				"body": "The image could not be uploaded, it must be a maximum of 10mb."
+			},
+			"loadedImage": "File uploaded successfully",
+			"cloud": "Your changes have been saved correctly",
+			"title": "Title of the form",
+			"topbarBtns": ["Customize", "View", "Share", "Checkout"],
+			"publishConfig": "Settings",
+			"publish": "Publish",
+			"unPublish": "Hide",
+			"emptyAlert": {
+				"title": "Empty fields",
+				"body": "Some blocks have empty fields, some blocks may not display as you want."
+			},
+			"defValues": {
+				"short": "Short question",
+				"multiple": "Multiple option",
+				"long": "Long question",
+				"helper": "Help text",
+				"link": "Link text",
+				"title": "Section title",
+				"description": "Description",
+				"select": "Select an option"
+			},
+			"unPublishAlert": {
+				"title": "Cancel publication",
+				"body": "If you cancel the publication, this form will only be visible to your company and you will not be able to receive responses until you publish it again."
+			},
+			"dnd": "Drag and drop blocks to your form",
+			"description": "Description of the form",
+			"emptyList": "Drop your first block here"
+		},
+		"signing": {
+			"nameInput": "User name",
+			"create": "Create an account"
+		},
+		"business": {
+			"addAccount": "Add account",
+			"removeAccount": "Remove account",
+			"makeMain": "Set as main",
+			"mainAccount": "Main",
+			"wait": {
+				"title": "Wait ...",
+				"body": "Your company is being registered, this does not usually take too long."
+			},
+			"waitYet": {
+				"title": "Wait ...",
+				"body": "Your request is being sent, this usually doesn't take too long."
+			},
+			"errors": "An error occurred",
+			"steps": ["User", "Company", "My Forms"],
+			"next": "Continue",
+			"yetBrand": {
+				"onSend": {
+					"title": "Request sent",
+					"body": "Your request has already been sent to the company, at the moment you will not be able to access until your access is granted by the administrator."
+				},
+				"emailMsg": [
+					"Now press the button",
+					"and we will send an email to",
+					"With your data, when they accept your request you can continue."
+				],
+				"altBtn": "I belong to a company",
+				"title": "Search your company",
+				"info": "If you already belong to a company registered in Facilito, you can search for it and request your admission to the administrator.",
+				"inputs": [
+					{
+						"label": "Company name",
+						"name": "business",
+						"type": "search",
+						"field": "business"
+					}
+				],
+				"category": {
+					"label": "",
+					"name": "",
+					"type": "",
+					"data": [""],
+					"field": ""
+				}
+			},
+			"newBrand": {
+				"altBtn": "Request sent",
+				"title": "Register your company",
+				"info": "If you are new to Facilito create your company, it is totally free and you will have unlimited forms. We only need the following information:",
+				"onSend": {
+					"title": "Request sent",
+					"body": "Your request has already been sent, at the moment you will not be able to access until your access is granted by Facilito APP."
+				},
+				"sameUrlError": {
+					"title": "An error occurred.",
+					"body": "This username is already being used by another company, please try again."
+				},
+				"inputs": [
+					{
+						"label": "Name of your company",
+						"name": "name",
+						"type": "text",
+						"field": "name"
+					},
+					{
+						"label": "Username",
+						"name": "url",
+						"type": "text",
+						"field": "url"
+					}
+				],
+				"phoneInput": "Telephone number",
+				"category": {
+					"label": "Category",
+					"name": "category",
+					"type": "text",
+					"data": [
+						"Select category",
+						"Food and drinks",
+						"Animals and Pets",
+						"Art",
+						"Insurers",
+						"Automotive",
+						"Pub",
+						"Babies and Maternity",
+						"Beauty and Personal Care",
+						"Coffee shop",
+						"Butchery and Fishmonger",
+						"Carpentry",
+						"Cell Phones and Telephony",
+						"Locksmith and Hardware",
+						"Cinema",
+						"Coaching",
+						"Computing and Information",
+						"Concessionaire",
+						"Delivery",
+						"Dentist",
+						"Sports and Fitness",
+						"Graphic design",
+						"Education",
+						"Home appliances",
+						"Electronics, Audio and Video",
+						"Entertainment",
+						"Events",
+						"Pharmacy",
+						"Finance",
+						"Freight and Removals",
+						"Photography and video",
+						"Gym",
+						"Tools and Construction",
+						"Home and Furniture",
+						"Lodging",
+						"Hostelry",
+						"Printing",
+						"Real Estate",
+						"Games and toys",
+						"Kiosk",
+						"Laundry",
+						"Books, Magazines and Comics",
+						"Personal brand",
+						"Marketing and publicity",
+						"Doctor",
+						"Music",
+						"Optics",
+						"Others",
+						"Bakery and cake shop",
+						"Films",
+						"Social networks",
+						"Watches and Jewelry",
+						"Restaurant",
+						"Underwear and Accessories",
+						"Clothing for women, men and children",
+						"Health and Medical Equipment",
+						"Messenger Service",
+						"Technical service",
+						"Professional services",
+						"Supermarket",
+						"Cab",
+						"Technology",
+						"Online store",
+						"Transport",
+						"Universities",
+						"Clothing and Footwear",
+						"Veterinary",
+						"Travels and tourism"
+					],
+					"field": "category"
+				}
+			}
+		},
+		"login": {
+			"facebook": "Start with Facebook",
+			"google": "Start with Google",
+			"welcome": "Welcome!",
+			"forgot": "Forgot your password?",
+			"signing": "Register",
+			"remember": "Remember me",
+			"cta": "Login",
+			"formInputs": [
+				{
+					"label": "Email",
+					"name": "email",
+					"type": "email",
+					"field": "email",
+					"autocomplete": "email"
+				},
+				{
+					"label": "Password",
+					"name": "password",
+					"type": "password",
+					"field": "pass",
+					"autocomplete": "new-password"
+				}
+			]
+		},
+		"forms": {
+			"accountMenuOptions": ["Logout", "Settings"],
+			"forms": "Forms",
+			"forms-desc": "form (s) in",
+			"filter": "Filter by creation dates",
+			"create-form": "Create a form",
+			"form_recent": "Recent forms",
+			"public": "PUBLISHED",
+			"hidden": "HIDDEN",
+			"answers": "Answers",
+			"old_recent": "From oldest to most recent",
+			"recent_old": "From most recent to oldest"
+		},
+		"summary": {
+			"title": "Summary of responses",
+			"desc": "Period"
+		},
+		"answers": {
+			"label": ["Question", "Answer"],
+			"date": "Date",
+			"list": "List of responses",
+			"name": "Name",
+			"send": "Sending",
+			"state": "State",
+			"actions": "Actions",
+			"download_data": "Download data"
+		},
+		"visitor": {
+			"edit": "Edit profile"
+		},
+		"form_edit": {
+			"change_perfil": "Change profile picture",
+			"select_tema": "Select topic",
+			"edit_info": "Edit information",
+			"name_business": "Name of the business or brand",
+			"descript_business": "Description of the company (100 characters max.)",
+			"cat_business": "Business category (*)",
+			"url_business1": "Custom URL",
+			"url_business2": "empty spaces are not allowed",
+			"saving_business": "Apply and save changes",
+			"view_visitor": "View as visitor",
+			"edit_color": "Customize color",
+			"set_color": "Choose 2 colors and inclination for your profile"
+		},
+		"products": {
+			"cat_products": "Product catalog",
+			"product_1": "product (s) in",
+			"categoris": "Categories",
+			"new_product": "Create product",
+			"title": "Title",
+			"categori": "Category",
+			"price": "Price",
+			"state": "State",
+			"actions": "Actions",
+			"edith": "Edit"
+		},
+		"settings": {
+			"print": "Print service",
+			"no_account": "Account number",
+			"type_account": "Account type",
+			"bank": "Bank"
+		},
+		"create_product": {
+			"create": "Create new product",
+			"back": "Return",
+			"save_product": "Save product",
+			"title": "Product title",
+			"description": "Product description",
+			"categori": "Category",
+			"add_extras": "Extras or options",
+			"cant": "Quantity",
+			"option_unique": "Unique selection",
+			"option_multiple": "Multiple choice",
+			"add": "Add",
+			"new_categori": "Create a new category",
+			"save": "Save",
+			"picture_product": "Product photo",
+			"recomendate_picture": "Recommended measures: 800 x 800px",
+			"size_max": "Maximum size: 2Mb",
+			"replace_picture": "Replace image",
+			"price_product": "Product price",
+			"price_promo": "Promotional price",
+			"united": "Unit",
+			"united_name": "Unit name",
+			"active": "Activate",
+			"SKU": "SKU (unique product code)",
+			"stock": "Stock",
+			"stock_infinite": "Infinite stock",
+			"stock_limited": "Stock limited to availability",
+			"stock_no": "Continue selling without stock",
+			"state": "State",
+			"the_products": "Inactive products will not be displayed in any form",
+			"product_desta": "Featured product",
+			"desta": "Featured",
+			"the_products_desta": "Featured products will be displayed automatically if you add a featured field to your form",
+			"add_title_extra": "Add title to your extra",
+			"name_optional": "Optional name",
+			"add_title_product": "Add a title to your product",
+			"add_dec_product": "Add a description to your product",
+			"add_title_cat": "Add the title of your new category",
+			"no_category": "Without category",
+			"type_variable": "Type of variable",
+			"value": "Value"
+		},
+		"create_product_messajes": {
+			"max_img": "Maximum of images",
+			"max_img_body": "You cannot choose more than 4 images.",
+			"cat_succeful": "Category created successfully",
+			"cat_succeful1": "The category",
+			"cat_succeful2": "it was created correctly",
+			"fields": [
+				"Missing fields to complete",
+				"The product must have a mandatory title and SKU",
+				"Stock error",
+				"Add a stock or change it to infinite",
+				"Price the product",
+				"Add a price that is different from '0.00'",
+				"Product saved correctly",
+				"Your product was saved successfully",
+				"Product updated successfully",
+				"Your product was successfully updated"
+			]
+		}
+	}
+}

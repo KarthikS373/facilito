@@ -1,20 +1,12 @@
 // TIPOS
-import { NextPage, GetServerSideProps } from 'next'
+import { NextPage } from 'next'
 
-// PAGE PROPS
-interface IndexProps {
-	text: string
-}
+// VISTAS
+import Login from 'views/login'
 
 // PAGE
-const login: NextPage<IndexProps> = (props: IndexProps) => {
-	return <div>{props.text}</div>
-}
-
-// SSR
-export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-	const test: IndexProps = { text: 'SSR login' }
-	return { props: test }
+const login: NextPage = () => {
+	return <Login />
 }
 
 export default login
