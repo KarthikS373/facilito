@@ -32,7 +32,7 @@ app.post('/write', (req, res) => {
 		}
 
 		// ESCRIBIR ARCHIVO
-		fs.writeFileSync(currentPath, JSON.stringify(newStrings))
+		fs.writeFileSync(currentPath, JSON.stringify(newStrings, null, '\t'))
 
 		// RESPUESTA
 		res.json({ status: 'ok' })

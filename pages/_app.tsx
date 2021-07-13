@@ -15,9 +15,6 @@ import AlertTemplate from 'components/lualert'
 // CSS
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-// STRINGS
-import Strings from 'lang/strings.json'
-
 // ESTILOS GLOBALES
 import 'styles/normalize.css'
 import 'styles/globals.css'
@@ -37,7 +34,7 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 			<UserProvider>
 				<BusinessProvider>
 					<ProtectedRoutesProvider>
-						<PortrayProvider strings={Strings} settings={{ mainLang: 'es' }}>
+						<PortrayProvider settings={{ mainLang: 'es' }}>
 							<AlertTemplate
 								ref={(AlertRef) => {
 									window.Alert = AlertRef?.show || emptyAlert

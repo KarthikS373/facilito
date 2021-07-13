@@ -1,6 +1,9 @@
 // TIPOS
-
 import { IPortrayContext } from 'context/lang'
+
+// UTILS
+import { normalizeString } from './tools'
+import LZString from 'lz-string'
 
 /**
  * Obtener texto
@@ -9,14 +12,17 @@ import { IPortrayContext } from 'context/lang'
  * @param  {IPortrayContext} ctx
  */
 // OBTENER TEXTO
-const getTextFromDict = (key: TemplateStringsArray, ctx: IPortrayContext) => {
+interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
+	strings: PortrayDict
+}
+const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 	// FORMATO DE KEY
-	const trimmedKey: string = key[0].trim()
+	const trimmedKey: string = LZString.compressToUTF16(normalizeString(key[0]))
 
 	// VERIFICAR SI EXISTE
 	if (trimmedKey in ctx.strings) {
 		const text: string = ctx.strings[trimmedKey][ctx.langCode]
-		return text === '$' ? trimmedKey : text
+		return text === '$' ? key[0] : text
 	} else {
 		// CREAR
 		const tmpStrings: PortrayDict = { ...ctx.strings }
@@ -36,7 +42,7 @@ const getTextFromDict = (key: TemplateStringsArray, ctx: IPortrayContext) => {
 		})
 
 		// RETORNAR
-		return trimmedKey
+		return key[0]
 	}
 }
 

@@ -12,8 +12,8 @@ import SocialLogin from '../socialLogin'
 // NEXT
 import Image from 'next/image'
 
-// HOOKS
-import { withStrings, Portray } from 'components/portray'
+// HOC
+import withStrings from 'hoc/lang'
 
 // ICONOS
 import Email from '@material-ui/icons/Email'
@@ -59,7 +59,7 @@ const inputLists = [
 	},
 ]
 
-const LoginForm: Portray.FC<LoginFormProps> = ({ $, onSigning }) => {
+const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, onSigning }) => {
 	// RECORDAR USUARIO
 	const [remember, setRemember] = useState<boolean>(true)
 
@@ -154,6 +154,6 @@ const LoginForm: Portray.FC<LoginFormProps> = ({ $, onSigning }) => {
 			</div>
 		</div>
 	)
-}
+})
 
-export default withStrings(LoginForm)
+export default LoginForm

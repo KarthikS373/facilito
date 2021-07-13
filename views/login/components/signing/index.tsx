@@ -11,8 +11,8 @@ import { startSigning } from '../../utils/verification'
 // NEXT
 import Image from 'next/image'
 
-// HOOKS
-import { withStrings, Portray } from 'components/portray'
+// HOC
+import withStrings from 'hoc/lang'
 
 // ICONOS
 import Email from '@material-ui/icons/Email'
@@ -57,7 +57,7 @@ interface FormProps {
 	onLogin: EmptyFunction
 }
 
-const SigningForm: Portray.FC<FormProps> = ({ $, onLogin }) => {
+const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin }) => {
 	// DATOS DE REGISTRO
 	const [signingData, setSigningData] = useState<SigningData>({ ...defSigningData })
 
@@ -146,6 +146,6 @@ const SigningForm: Portray.FC<FormProps> = ({ $, onLogin }) => {
 			</div>
 		</div>
 	)
-}
+})
 
-export default withStrings(SigningForm)
+export default SigningForm

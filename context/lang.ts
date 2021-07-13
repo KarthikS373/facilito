@@ -2,7 +2,6 @@ import { createContext, Context } from 'react'
 
 export interface IPortrayContext {
 	setLang: (langCode: string) => void
-	strings: PortrayDict
 	langCode: string
 	mainLang: string
 	langs: string[]
@@ -12,7 +11,6 @@ const defContext: IPortrayContext = {
 	setLang: () => {},
 	mainLang: 'en',
 	langCode: 'en',
-	strings: {},
 }
 
 // CONTEXTO

@@ -5,7 +5,6 @@ import { useState } from 'react'
 import PortrayContext from 'context/lang'
 
 interface PortrayContextProps {
-	strings: PortrayDict
 	settings: {
 		mainLang?: string
 		langs?: string[]
@@ -21,10 +20,9 @@ const PortrayProvider: React.FC<PortrayContextProps> = (props) => {
 	return (
 		<PortrayContext.Provider
 			value={{
-				langCode,
 				setLang,
 				mainLang,
-				strings: props.strings,
+				langCode,
 				langs: props.settings?.langs || ['en', 'es'],
 			}}>
 			{props.children}
