@@ -32,7 +32,15 @@ const SocialLogin = () => {
 				{lang.login.facebook}
 			</Button>
 			<Button onClick={gSigning}>
-				<Image src='/assets/icons/google.svg' alt='Google Logo' height={20} width={20} />
+				<div className={Styles.googleIcon}>
+					<Image
+						className={Styles.googleIcon}
+						src='/assets/icons/google.svg'
+						alt='Google Logo'
+						height={18}
+						width={18}
+					/>
+				</div>
 				{lang.login.google}
 			</Button>
 		</div>

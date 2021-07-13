@@ -36,5 +36,12 @@
 		.forms {
 			width: 200%;
 		}
+
+		.respLeft {
+			transform: translateX(-50%);
+		}
+		.respRight {
+			transform: translateX(0%);
+		}
 	}
 }

@@ -1,13 +1,5 @@
 // REACT
-import React, {
-	ChangeEvent,
-	FormEvent,
-	MouseEvent,
-	MutableRefObject,
-	useState,
-	useRef,
-	RefObject,
-} from 'react'
+import React, { ChangeEvent, FormEvent, MouseEvent, useState, useRef, RefObject } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -52,11 +44,13 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 	// LENGUAJE
 	const lang = useStrings()
 
-	// ESTADO
+	// RECORDAR USUARIO
 	const [remember, setRemember] = useState<boolean>(true)
 
-	// REFERENCIAS
-	const loginDataRef: MutableRefObject<LoginData> = useRef({ ...defLoginData })
+	// DATOS DEL FORMULARIO
+	const [loginData, setLoginData] = useState<LoginData>({ ...defLoginData })
+
+	// BARRA DE PROGRESO
 	const progressRef: RefObject<HTMLDivElement> = useRef(null)
 
 	// ASIGNAR RECORDAR
@@ -67,17 +61,15 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 
 	// ENVIAR FORMULARIO
 	const handleSubmit = (event: FormEvent | MouseEvent) => {
-		// EVITAR RELOAD
-		event.preventDefault()
-
 		// INICIAR SESIÓN
-		startSigning(event, loginDataRef, progressRef)
+		event.preventDefault()
+		startSigning(event, loginData, progressRef)
 	}
 
 	// GUARDAR DATOS
 	const saveFormData = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = ev.target
-		loginDataRef.current[name] = value
+		setLoginData((prevLogin: LoginData) => ({ ...prevLogin, [name]: value }))
 	}
 
 	return (
@@ -98,11 +90,13 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 				<form className={Styles.form} onSubmit={handleSubmit}>
 					{lang.login.formInputs.map((inputFields: any, key: number) => (
 						<TextField
-							key={key}
+							key={`login_input_${key}`}
 							type={inputFields.type}
 							placeholder={inputFields.label}
 							id={inputFields.field}
+							name={inputFields.field}
 							onChange={saveFormData}
+							value={key === 0 ? loginData.email : loginData.pass}
 							InputProps={{
 								startAdornment: <InputAdornment position='start'>{inputIcons[key]}</InputAdornment>,
 							}}

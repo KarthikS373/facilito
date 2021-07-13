@@ -4,9 +4,17 @@ import { FormEvent, MouseEvent, MutableRefObject, RefObject } from 'react'
 // TOOLS
 import { signingUser } from 'utils/auth'
 
+/**
+ * Iniciar validación de login
+ * @description Inicia un usuario o muestra alertas de error
+ * @param  {FormEvent|MouseEvent} ev
+ * @param  {MutableRefObject<LoginData|SigningData>} userData
+ * @param  {RefObject<HTMLDivElement>} progressRef
+ * @param  {boolean} isNew?
+ */
 export const startSigning = async (
 	ev: FormEvent | MouseEvent,
-	userData: MutableRefObject<LoginData | SigningData>,
+	userData: LoginData | SigningData,
 	progressRef: RefObject<HTMLDivElement>,
 	isNew?: boolean
 ) => {
@@ -18,19 +26,19 @@ export const startSigning = async (
 		alert({
 			type: 'error',
 			title: 'Ocurrió un error',
+			body: typeof error === 'string' ? error : error.message,
 			onHide: () => {
 				if (progressRef.current) progressRef.current.style.display = 'none'
 			},
-			body: typeof error === 'string' ? error : error.message,
 		})
 	}
 
 	// VALIDAR USUARIO
 	if (progressRef.current) progressRef.current.style.display = 'block'
 	signingUser(
-		isNew ? userData.current.semail : userData.current.email,
-		isNew ? userData.current.spass : userData.current.pass,
-		isNew ? userData.current.name : undefined,
+		isNew ? userData.semail : userData.email,
+		isNew ? userData.spass : userData.pass,
+		isNew ? userData.name : undefined,
 		onError
 	)
 

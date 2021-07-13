@@ -1,5 +1,5 @@
 // REACT
-import React, { FormEvent, MutableRefObject, RefObject, MouseEvent, useRef } from 'react'
+import React, { FormEvent, useState, RefObject, MouseEvent, useRef } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -7,6 +7,8 @@ import Styles from './style.module.scss'
 // COMPONENTES
 import SocialLogin from '../socialLogin'
 import { startSigning } from '../../utils/verification'
+
+// NEXT
 import Image from 'next/image'
 
 // HOOKS
@@ -27,7 +29,7 @@ import Button from '@material-ui/core/Button'
 const inputIcons: JSX.Element[] = [<Email />, <Lock />]
 
 // INICIALES
-const defLoginData: SigningData = {
+const defSigningData: SigningData = {
 	semail: '',
 	spass: '',
 	name: '',
@@ -42,23 +44,22 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 	// LENGUAJE
 	const lang = useStrings()
 
-	// REFERENCIAS
-	const loginDataRef: MutableRefObject<SigningData> = useRef({ ...defLoginData })
+	// DATOS DE REGISTRO
+	const [signingData, setSigningData] = useState<SigningData>({ ...defSigningData })
+
+	// BARRA DE PROGRESO
 	const progressRef: RefObject<HTMLDivElement> = useRef(null)
 
 	// ENVIAR FORMULARIO
 	const handleSubmit = (event: MouseEvent | FormEvent, _unlock?: EmptyFunction) => {
-		// EVITAR RELOAD
 		event.preventDefault()
-
-		// CREAR USUARIO
-		startSigning(event, loginDataRef, progressRef, true)
+		startSigning(event, signingData, progressRef, true)
 	}
 
 	// GUARDAR DATOS
 	const saveFormData = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = ev.target
-		loginDataRef.current[name] = value
+		setSigningData((prevData: SigningData) => ({ ...prevData, [name]: value }))
 	}
 
 	return (
@@ -95,11 +96,14 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 
 					{lang.login.formInputs.map((inputFields: any, key: number) => (
 						<TextField
-							key={key}
+							key={`signing_input_${key}`}
 							type={inputFields.type}
 							placeholder={inputFields.label}
 							id={'s' + inputFields.field}
 							name={'s' + inputFields.field}
+							value={
+								key === 0 ? signingData.name : key === 1 ? signingData.semail : signingData.spass
+							}
 							onChange={saveFormData}
 							InputProps={{
 								startAdornment: <InputAdornment position='start'>{inputIcons[key]}</InputAdornment>,

@@ -9,7 +9,6 @@ import LoginForm from './components/login'
 import Styles from './style.module.scss'
 
 // COMPONENTE
-const w: number = process.browser ? window.innerWidth : 0
 const Login = () => {
 	// ESTADO
 	const [isOnLogin, setForm] = useState<boolean>(true)
@@ -23,9 +22,7 @@ const Login = () => {
 				className={Styles.cover}
 				style={{ transform: `translateX(${!isOnLogin ? '100%' : '0%'})` }}
 			/>
-			<div
-				className={Styles.forms}
-				style={{ transform: w <= 850 ? `translateX(${isOnLogin ? '-50%' : '0%'})` : 'none' }}>
+			<div className={`${Styles.forms} ${isOnLogin ? Styles.respLeft : Styles.respRight}`}>
 				<SigningForm onLogin={changeForm(true)} />
 				<LoginForm onSigning={changeForm(false)} />
 			</div>
