@@ -12,7 +12,7 @@ import { startSigning } from '../../utils/verification'
 import Image from 'next/image'
 
 // HOOKS
-import { useStrings } from 'hooks/context'
+import { withStrings, Portray } from 'components/portray'
 
 // ICONOS
 import Email from '@material-ui/icons/Email'
@@ -35,15 +35,29 @@ const defSigningData: SigningData = {
 	name: '',
 }
 
+const inputLists = [
+	{
+		label: 'Correo electrónico',
+		name: 'email',
+		type: 'email',
+		field: 'email',
+		autocomplete: 'email',
+	},
+	{
+		label: 'Contraseña',
+		name: 'password',
+		type: 'password',
+		field: 'pass',
+		autocomplete: 'new-password',
+	},
+]
+
 // PROPIEDADES
 interface FormProps {
 	onLogin: EmptyFunction
 }
 
-const SigningForm: React.FC<FormProps> = (props: FormProps) => {
-	// LENGUAJE
-	const lang = useStrings()
-
+const SigningForm: Portray.FC<FormProps> = ({ $, onLogin }) => {
 	// DATOS DE REGISTRO
 	const [signingData, setSigningData] = useState<SigningData>({ ...defSigningData })
 
@@ -53,7 +67,7 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 	// ENVIAR FORMULARIO
 	const handleSubmit = (event: MouseEvent | FormEvent, _unlock?: EmptyFunction) => {
 		event.preventDefault()
-		startSigning(event, signingData, progressRef, true)
+		startSigning(event, signingData, progressRef, true, true)
 	}
 
 	// GUARDAR DATOS
@@ -61,6 +75,10 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 		const { name, value } = ev.target
 		setSigningData((prevData: SigningData) => ({ ...prevData, [name]: value }))
 	}
+
+	// CONFIGURAR STRINGS
+	inputLists[0].label = $`Correo electrónico`
+	inputLists[1].label = $`Contraseña`
 
 	return (
 		<div className={Styles.container}>
@@ -73,14 +91,14 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 				{/* TITULO */}
 				<div className={Styles.title}>
 					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
-					<h1>{lang.signing.create}</h1>
+					<h1>{$`Crea una cuenta`}</h1>
 				</div>
 
 				{/* FORMULARIO */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
 					<TextField
 						type='text'
-						placeholder={lang.signing.nameInput}
+						placeholder={$`Nombre de usuario`}
 						id='name'
 						name='name'
 						onChange={saveFormData}
@@ -94,7 +112,7 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 						autoComplete='username'
 					/>
 
-					{lang.login.formInputs.map((inputFields: any, key: number) => (
+					{inputLists.map((inputFields: any, key: number) => (
 						<TextField
 							key={`signing_input_${key}`}
 							type={inputFields.type}
@@ -112,7 +130,7 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 						/>
 					))}
 					<Button type='submit' onClick={handleSubmit}>
-						{lang.login.signing}
+						{$`Registrarme`}
 					</Button>
 				</form>
 
@@ -121,8 +139,8 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Button type='button' onClick={props.onLogin}>
-						{lang.login.cta}
+					<Button type='button' onClick={onLogin}>
+						{$`Iniciar sesión`}
 					</Button>
 				</div>
 			</div>
@@ -130,4 +148,4 @@ const SigningForm: React.FC<FormProps> = (props: FormProps) => {
 	)
 }
 
-export default SigningForm
+export default withStrings(SigningForm)

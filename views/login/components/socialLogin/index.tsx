@@ -8,8 +8,8 @@ import Styles from './style.module.scss'
 import Button from '@material-ui/core/Button'
 import Image from 'next/image'
 
-// STRINGS
-import { useStrings } from 'hooks/context'
+// HOOKS
+import { withStrings, Portray } from 'components/portray'
 
 // ICONOS
 import Facebook from '@material-ui/icons/Facebook'
@@ -17,10 +17,7 @@ import Facebook from '@material-ui/icons/Facebook'
 // AUTH
 import { facebookSigning, googleSigning } from 'utils/auth'
 
-const SocialLogin = () => {
-	// STRINGS
-	const lang = useStrings()
-
+const SocialLogin: Portray.FC = ({ $ }) => {
 	// LOGINS
 	const fbSigning = () => facebookSigning()
 	const gSigning = () => googleSigning()
@@ -29,7 +26,7 @@ const SocialLogin = () => {
 		<div className={Styles.container}>
 			<Button onClick={fbSigning}>
 				<Facebook />
-				{lang.login.facebook}
+				{$`Iniciar con Facebook`}
 			</Button>
 			<Button onClick={gSigning}>
 				<div className={Styles.googleIcon}>
@@ -41,10 +38,10 @@ const SocialLogin = () => {
 						width={18}
 					/>
 				</div>
-				{lang.login.google}
+				{$`Iniciar con Google`}
 			</Button>
 		</div>
 	)
 }
 
-export default SocialLogin
+export default withStrings(SocialLogin)

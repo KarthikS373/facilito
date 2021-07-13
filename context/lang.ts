@@ -1,26 +1,21 @@
 import { createContext, Context } from 'react'
 
-// STRINGS
-import Strings from 'lang/strings.json'
-
-// INTERFACE
-import { En } from 'env/strings'
-
-// KEYS
-interface ContextProps {
-	lang: En
+export interface IPortrayContext {
+	setLang: (langCode: string) => void
+	strings: PortrayDict
 	langCode: string
-	setLangCode: (langCode: 'es' | 'en') => unknown
+	mainLang: string
+	langs: string[]
 }
-
-// VALOR POR DEFECTO
-const DefContext: ContextProps = {
-	lang: Strings.es,
-	langCode: 'es',
-	setLangCode: () => {},
+const defContext: IPortrayContext = {
+	langs: ['en', 'es'],
+	setLang: () => {},
+	mainLang: 'en',
+	langCode: 'en',
+	strings: {},
 }
 
 // CONTEXTO
-const LangContext: Context<ContextProps> = createContext(DefContext)
+const LangContext: Context<IPortrayContext> = createContext(defContext)
 
 export default LangContext

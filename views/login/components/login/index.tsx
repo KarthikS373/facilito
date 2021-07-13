@@ -5,14 +5,15 @@ import React, { ChangeEvent, FormEvent, MouseEvent, useState, useRef, RefObject 
 import Styles from './style.module.scss'
 
 // COMPONENTES
-import SocialLogin from '../socialLogin'
 import { startSigning } from '../../utils/verification'
+import resetPass from './components/forgotPass'
+import SocialLogin from '../socialLogin'
 
 // NEXT
 import Image from 'next/image'
 
 // HOOKS
-import { useStrings } from 'hooks/context'
+import { withStrings, Portray } from 'components/portray'
 
 // ICONOS
 import Email from '@material-ui/icons/Email'
@@ -40,10 +41,25 @@ interface LoginFormProps {
 	onSigning: EmptyFunction
 }
 
-const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
-	// LENGUAJE
-	const lang = useStrings()
+// LISTA DE INPUTS
+const inputLists = [
+	{
+		label: 'Correo electrónico',
+		name: 'email',
+		type: 'email',
+		field: 'email',
+		autocomplete: 'email',
+	},
+	{
+		label: 'Contraseña',
+		name: 'password',
+		type: 'password',
+		field: 'pass',
+		autocomplete: 'new-password',
+	},
+]
 
+const LoginForm: Portray.FC<LoginFormProps> = ({ $, onSigning }) => {
 	// RECORDAR USUARIO
 	const [remember, setRemember] = useState<boolean>(true)
 
@@ -63,7 +79,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 	const handleSubmit = (event: FormEvent | MouseEvent) => {
 		// INICIAR SESIÓN
 		event.preventDefault()
-		startSigning(event, loginData, progressRef)
+		startSigning(event, loginData, progressRef, false, remember)
 	}
 
 	// GUARDAR DATOS
@@ -71,6 +87,10 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 		const { name, value } = ev.target
 		setLoginData((prevLogin: LoginData) => ({ ...prevLogin, [name]: value }))
 	}
+
+	// CONFIGURAR STRINGS
+	inputLists[0].label = $`Correo electrónico`
+	inputLists[1].label = $`Contraseña`
 
 	return (
 		<div className={Styles.container}>
@@ -83,12 +103,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 				{/* TITULO */}
 				<div className={Styles.title}>
 					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
-					<h1>{lang.login.welcome}</h1>
+					<h1>{$`¡Bienvenido!`}</h1>
 				</div>
 
 				{/* FORMULARIO */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
-					{lang.login.formInputs.map((inputFields: any, key: number) => (
+					{inputLists.map((inputFields, key: number) => (
 						<TextField
 							key={`login_input_${key}`}
 							type={inputFields.type}
@@ -112,10 +132,10 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 								name='remember'
 							/>
 						}
-						label={lang.login.remember}
+						label={$`Recuérdame`}
 					/>
 					<Button type='submit' onClick={handleSubmit}>
-						{lang.login.cta}
+						{$`Iniciar sesión`}
 					</Button>
 				</form>
 
@@ -124,9 +144,11 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Button type='button'>{lang.login.forgot}</Button>
-					<Button type='button' onClick={props.onSigning}>
-						{lang.login.signing}
+					<Button type='button' onClick={resetPass}>
+						{$`¿Olvidaste tu contraseña?`}
+					</Button>
+					<Button type='button' onClick={onSigning}>
+						{$`Registrarme`}
 					</Button>
 				</div>
 			</div>
@@ -134,4 +156,4 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 	)
 }
 
-export default LoginForm
+export default withStrings(LoginForm)

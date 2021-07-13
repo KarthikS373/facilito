@@ -111,12 +111,14 @@ const updateUserName = (displayName: string, credential: firebase.default.auth.U
  * @param  {string} pass
  * @param  {string} name?
  * @param  {(error:string)=>unknown} onError?
+ * @param  {boolean} rememberUser?
  */
 export const signingUser = async (
 	email: string,
 	pass: string,
 	name?: string,
-	onError?: (error: string) => unknown
+	onError?: (error: string) => unknown,
+	rememberUser?: boolean
 ) => {
 	// VERIFICAR
 	const handler = verifyLoginFields(email, pass)
@@ -124,6 +126,9 @@ export const signingUser = async (
 	if (handler.verify) {
 		// AUTH
 		const auth = await getAuth()
+
+		// RECORDAR USUARIO
+		await auth().setPersistence(rememberUser ? 'LOCAL' : 'SESSION')
 
 		// CREACIÓN/LOGIN
 		if (name)
@@ -260,4 +265,20 @@ export const googleSigning = async (onError?: (error: string) => unknown) => {
 				)
 			})
 			.catch(authErrorHandler(onError))
+}
+
+/**
+ * Recuperar contraseña
+ * @description Enviá un mensaje de recuperación al correo de la cuenta
+ * @param  {string} email
+ * @param  {EmptyFunction} onSuccess
+ * @param  {(error:string)=>unknown} onError?
+ */
+export const forgotPass = async (
+	email: string,
+	onSuccess: EmptyFunction,
+	onError?: (error: string) => unknown
+) => {
+	const auth = await getAuth()
+	return auth().sendPasswordResetEmail(email).then(onSuccess).catch(authErrorHandler(onError))
 }

@@ -11,19 +11,21 @@ import { signingUser } from 'utils/auth'
  * @param  {MutableRefObject<LoginData|SigningData>} userData
  * @param  {RefObject<HTMLDivElement>} progressRef
  * @param  {boolean} isNew?
+ * @param  {boolean} rememberUser
  */
 export const startSigning = async (
 	ev: FormEvent | MouseEvent,
 	userData: LoginData | SigningData,
 	progressRef: RefObject<HTMLDivElement>,
-	isNew?: boolean
+	isNew?: boolean,
+	rememberUser?: boolean
 ) => {
 	// EVITAR RELOAD
 	ev.preventDefault()
 
 	// ALERTA DE ERROR
 	const onError = (error: firebase.default.auth.AuthError | string) => {
-		alert({
+		window.Alert({
 			type: 'error',
 			title: 'Ocurrió un error',
 			body: typeof error === 'string' ? error : error.message,
@@ -39,7 +41,8 @@ export const startSigning = async (
 		isNew ? userData.semail : userData.email,
 		isNew ? userData.spass : userData.pass,
 		isNew ? userData.name : undefined,
-		onError
+		onError,
+		rememberUser
 	)
 
 	return null
