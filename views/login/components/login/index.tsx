@@ -6,8 +6,12 @@ import Styles from './style.module.scss'
 
 // COMPONENTES
 import { startSigning } from '../../utils/verification'
+import PasswordTextField from '../passwordInput'
 import resetPass from './components/forgotPass'
 import SocialLogin from '../socialLogin'
+
+// INITIALS
+import { defLoginData } from './utils/initials'
 
 // NEXT
 import Image from 'next/image'
@@ -16,6 +20,7 @@ import Image from 'next/image'
 import withStrings from 'hoc/lang'
 
 // ICONOS
+import ExitToApp from '@material-ui/icons/ExitToApp'
 import Email from '@material-ui/icons/Email'
 import Lock from '@material-ui/icons/Lock'
 
@@ -27,37 +32,10 @@ import TextField from '@material-ui/core/TextField'
 import Checkbox from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
 
-// ICONOS
-const inputIcons: JSX.Element[] = [<Email />, <Lock />]
-
-// INICIALES
-const defLoginData: LoginData = {
-	email: '',
-	pass: '',
-}
-
 // PROPIEDADES
 interface LoginFormProps {
 	onSigning: EmptyFunction
 }
-
-// LISTA DE INPUTS
-const inputLists = [
-	{
-		label: 'Correo electrónico',
-		name: 'email',
-		type: 'email',
-		field: 'email',
-		autocomplete: 'email',
-	},
-	{
-		label: 'Contraseña',
-		name: 'password',
-		type: 'password',
-		field: 'pass',
-		autocomplete: 'new-password',
-	},
-]
 
 const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, onSigning }) => {
 	// RECORDAR USUARIO
@@ -88,10 +66,6 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 		setLoginData((prevLogin: LoginData) => ({ ...prevLogin, [name]: value }))
 	}
 
-	// CONFIGURAR STRINGS
-	inputLists[0].label = $`Correo electrónico`
-	inputLists[1].label = $`Contraseña`
-
 	return (
 		<div className={Styles.container}>
 			{/* BLOQUEAR PANTALLA CON PROGRESS BAR */}
@@ -103,26 +77,51 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 				{/* TITULO */}
 				<div className={Styles.title}>
 					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
-					<h1>{$`¡Bienvenido!`}</h1>
 				</div>
 
 				{/* FORMULARIO */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
-					{inputLists.map((inputFields, key: number) => (
-						<TextField
-							key={`login_input_${key}`}
-							type={inputFields.type}
-							placeholder={inputFields.label}
-							id={inputFields.field}
-							name={inputFields.field}
-							onChange={saveFormData}
-							value={key === 0 ? loginData.email : loginData.pass}
-							InputProps={{
-								startAdornment: <InputAdornment position='start'>{inputIcons[key]}</InputAdornment>,
-							}}
-							autoComplete={inputFields.autocomplete}
-						/>
-					))}
+					{/* EMAIL */}
+					<TextField
+						id='email'
+						name='email'
+						type='email'
+						variant='outlined'
+						autoComplete='email'
+						value={loginData.email}
+						onChange={saveFormData}
+						label={$`Correo electrónico`}
+						placeholder={$`example@domain.com`}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<Email color='primary' />
+								</InputAdornment>
+							),
+						}}
+					/>
+
+					{/* PASSWORD */}
+					<PasswordTextField
+						name='pass'
+						id='pass'
+						type='password'
+						variant='outlined'
+						label={$`Contraseña`}
+						value={loginData.pass}
+						onChange={saveFormData}
+						autoComplete='new-password'
+						placeholder={$`securepass124`}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<Lock color='primary' />
+								</InputAdornment>
+							),
+						}}
+					/>
+
+					{/* REMEMBER */}
 					<FormControlLabel
 						control={
 							<Checkbox
@@ -132,9 +131,15 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 								name='remember'
 							/>
 						}
-						label={$`Recuérdame`}
+						label={$`Recuérdame en este dispositivo`}
 					/>
-					<Button type='submit' onClick={handleSubmit}>
+
+					<Button
+						type='submit'
+						variant='contained'
+						startIcon={<ExitToApp />}
+						classes={{ root: Styles.loginBtn }}
+						onClick={handleSubmit}>
 						{$`Iniciar sesión`}
 					</Button>
 				</form>
@@ -144,10 +149,10 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Button type='button' onClick={resetPass}>
+					<Button fullWidth type='button' onClick={resetPass}>
 						{$`¿Olvidaste tu contraseña?`}
 					</Button>
-					<Button type='button' onClick={onSigning}>
+					<Button fullWidth color='primary' type='button' onClick={onSigning}>
 						{$`Registrarme`}
 					</Button>
 				</div>

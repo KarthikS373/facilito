@@ -5,44 +5,33 @@
 	grid-template-columns: auto;
 	grid-template-rows: auto auto;
 	row-gap: 15px;
+}
 
-	button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 50px;
-		border-radius: var(--radius);
-		padding-top: 10px;
+.fbBtn:first-child {
+	background-color: #1778f2;
 
-		img,
-		.googleIcon,
-		svg {
-			width: 20px;
-			height: 20px;
-			margin-right: 10px;
-			position: relative;
-			top: -2px;
-		}
-
-		span {
-			color: #ffffff;
-			font-size: 1.3em;
-			color: #fff;
-			font-weight: 400;
-			text-transform: none;
-		}
+	&:hover,
+	&:active {
+		background-color: #1778f2;
 	}
 
-	button:first-child {
-		background: #1778f2 !important;
+	span {
+		color: #ffffff;
+	}
+}
+
+.googleBtn:last-child {
+	background-color: #e0e0e0;
+
+	span {
+		color: #333;
 	}
 
-	button:last-child {
-		background: #e0e0e0 !important;
-
-		span {
-			color: #333;
-		}
+	.googleIcon {
+		width: 20px;
+		height: 20px;
+		margin-right: 10px;
+		position: relative;
+		top: -2px;
 	}
 }

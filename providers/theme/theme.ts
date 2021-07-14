@@ -8,34 +8,29 @@ export const theme = createTheme({
 		fontFamily: 'Orkney',
 	},
 	overrides: {
-		MuiPaper: {
-			rounded: {
-				borderRadius: '10px',
-			},
+		MuiButton: {
 			root: {
 				borderRadius: '10px',
-				fontFamily: 'Orkney',
+				fontSize: '1.2em',
+				padding: '10px 0',
 			},
 		},
-		// @ts-ignore
-		MuiPickersModal: {
-			dialogRootWider: {
-				minWidth: '340px',
-			},
-		},
-		// @ts-ignore
-		MuiPickersBasePicker: {
-			pickerView: {
-				minWidth: '340px',
+		MuiTextField: {
+			root: {
+				'& .MuiOutlinedInput-root': {
+					'& fieldset': {
+						borderRadius: 10,
+					},
+				},
 			},
 		},
 	},
 	palette: {
-		primary: {
+		secondary: {
 			main: '#511F73',
 		},
-		info: {
-			main: '#346898',
+		primary: {
+			main: '#1AA5BB',
 		},
 	},
 })

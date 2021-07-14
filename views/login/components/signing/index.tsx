@@ -5,8 +5,9 @@ import React, { FormEvent, useState, RefObject, MouseEvent, useRef } from 'react
 import Styles from './style.module.scss'
 
 // COMPONENTES
-import SocialLogin from '../socialLogin'
 import { startSigning } from '../../utils/verification'
+import PasswordTextField from '../passwordInput'
+import SocialLogin from '../socialLogin'
 
 // NEXT
 import Image from 'next/image'
@@ -15,8 +16,9 @@ import Image from 'next/image'
 import withStrings from 'hoc/lang'
 
 // ICONOS
-import Email from '@material-ui/icons/Email'
+import ExitToApp from '@material-ui/icons/ExitToApp'
 import Person from '@material-ui/icons/Person'
+import Email from '@material-ui/icons/Email'
 import Lock from '@material-ui/icons/Lock'
 
 // MATERIAL
@@ -25,32 +27,12 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-// ICONOS
-const inputIcons: JSX.Element[] = [<Email />, <Lock />]
-
 // INICIALES
 const defSigningData: SigningData = {
 	semail: '',
 	spass: '',
 	name: '',
 }
-
-const inputLists = [
-	{
-		label: 'Correo electrónico',
-		name: 'email',
-		type: 'email',
-		field: 'email',
-		autocomplete: 'email',
-	},
-	{
-		label: 'Contraseña',
-		name: 'password',
-		type: 'password',
-		field: 'pass',
-		autocomplete: 'new-password',
-	},
-]
 
 // PROPIEDADES
 interface FormProps {
@@ -76,10 +58,6 @@ const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin })
 		setSigningData((prevData: SigningData) => ({ ...prevData, [name]: value }))
 	}
 
-	// CONFIGURAR STRINGS
-	inputLists[0].label = $`Correo electrónico`
-	inputLists[1].label = $`Contraseña`
-
 	return (
 		<div className={Styles.container}>
 			{/* BLOQUEAR PANTALLA CON PROGRESSBAR */}
@@ -91,45 +69,76 @@ const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin })
 				{/* TITULO */}
 				<div className={Styles.title}>
 					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
-					<h1>{$`Crea una cuenta`}</h1>
 				</div>
 
 				{/* FORMULARIO */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
+					{/* NOMBRE */}
 					<TextField
-						type='text'
-						placeholder={$`Nombre de usuario`}
 						id='name'
 						name='name'
+						type='text'
+						variant='outlined'
+						autoComplete='username'
 						onChange={saveFormData}
+						value={signingData.name}
+						placeholder={$`John Doe`}
+						label={$`Nombre de usuario`}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position='start'>
-									<Person />
+									<Person color='primary' />
 								</InputAdornment>
 							),
 						}}
-						autoComplete='username'
 					/>
 
-					{inputLists.map((inputFields: any, key: number) => (
-						<TextField
-							key={`signing_input_${key}`}
-							type={inputFields.type}
-							placeholder={inputFields.label}
-							id={'s' + inputFields.field}
-							name={'s' + inputFields.field}
-							value={
-								key === 0 ? signingData.name : key === 1 ? signingData.semail : signingData.spass
-							}
-							onChange={saveFormData}
-							InputProps={{
-								startAdornment: <InputAdornment position='start'>{inputIcons[key]}</InputAdornment>,
-							}}
-							autoComplete={inputFields.autocomplete}
-						/>
-					))}
-					<Button type='submit' onClick={handleSubmit}>
+					{/* CORREO */}
+					<TextField
+						id='semail'
+						name='semail'
+						type='email'
+						variant='outlined'
+						autoComplete='email'
+						onChange={saveFormData}
+						value={signingData.semail}
+						label={$`Correo electrónico`}
+						placeholder={$`example@domain.com`}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<Email color='primary' />
+								</InputAdornment>
+							),
+						}}
+					/>
+
+					{/* PASSWORD */}
+					<PasswordTextField
+						name='spass'
+						id='spass'
+						type='password'
+						variant='outlined'
+						label={$`Contraseña`}
+						onChange={saveFormData}
+						value={signingData.spass}
+						autoComplete='new-password'
+						placeholder={$`securepass124`}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<Lock color='primary' />
+								</InputAdornment>
+							),
+						}}
+					/>
+
+					<Button
+						type='submit'
+						variant='contained'
+						startIcon={<ExitToApp />}
+						classes={{ root: Styles.loginBtn }}
+						onClick={handleSubmit}>
 						{$`Registrarme`}
 					</Button>
 				</form>
@@ -139,7 +148,7 @@ const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin })
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Button type='button' onClick={onLogin}>
+					<Button fullWidth color='primary' type='button' onClick={onLogin}>
 						{$`Iniciar sesión`}
 					</Button>
 				</div>

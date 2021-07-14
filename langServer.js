@@ -4,7 +4,7 @@ const Cors = require('cors')
 const path = require('path')
 const fs = require('fs')
 
-// MIDDLEWIRE
+// MIDDLEWARE
 const app = Express()
 app.use(Express.json())
 app.use(
@@ -13,6 +13,8 @@ app.use(
 	})
 )
 
+const currentPath = path.resolve('./lang/strings.json')
+
 // ESCRIBIR DICCIONARIO
 app.post('/write', (req, res) => {
 	// PROPS
@@ -20,7 +22,6 @@ app.post('/write', (req, res) => {
 	const { stringsDict } = body
 
 	// REESCRIBIR STRINGS
-	const currentPath = path.resolve('./lang/strings.json')
 	if (fs.existsSync(currentPath)) {
 		const data = fs.readFileSync(currentPath)
 

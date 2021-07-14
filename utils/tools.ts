@@ -25,8 +25,8 @@ const slugify = (str: string) => {
  */
 export const normalizeString = (str: string) => {
 	return slugify(str)
+		.trim()
 		.replace(/[^\w\s]/gi, '')
 		.replace(/ /g, '_')
-		.trim()
 		.toLowerCase()
 }

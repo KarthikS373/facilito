@@ -1,3 +1,37 @@
+@-webkit-keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}
+@-moz-keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}
+@keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}
+
 .container {
 	position: absolute;
 	top: 0;
@@ -7,8 +41,6 @@
 	background-color: #fff;
 
 	.cover {
-		background: transparent linear-gradient(42deg, var(--blue) 0%, var(--purple) 100%) 0% 0%
-			no-repeat padding-box;
 		position: absolute;
 		left: 0;
 		width: 50%;
@@ -17,6 +49,11 @@
 		z-index: 2;
 		transition: transform 0.5s ease-in-out;
 		transition-timing-function: var(--transition);
+		background: linear-gradient(125deg, #1bcbe6, #096de8, #511f73);
+		background-size: 400% 400%;
+		-webkit-animation: GradAnim 7s ease infinite;
+		-moz-animation: GradAnim 7s ease infinite;
+		animation: GradAnim 7s ease infinite;
 	}
 
 	.forms {

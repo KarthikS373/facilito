@@ -24,11 +24,15 @@ const SocialLogin: React.FC = withStrings(({ $ }) => {
 
 	return (
 		<div className={Styles.container}>
-			<Button onClick={fbSigning}>
-				<Facebook />
+			<Button
+				fullWidth
+				variant='contained'
+				classes={{ root: Styles.fbBtn }}
+				onClick={fbSigning}
+				startIcon={<Facebook />}>
 				{$`Iniciar con Facebook`}
 			</Button>
-			<Button onClick={gSigning}>
+			<Button fullWidth variant='contained' onClick={gSigning} classes={{ root: Styles.googleBtn }}>
 				<div className={Styles.googleIcon}>
 					<Image
 						className={Styles.googleIcon}
