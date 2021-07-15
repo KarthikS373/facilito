@@ -17,7 +17,7 @@ import BusinessContext from 'context/business'
 // UTILS
 import validateProtectedRoute from 'utils/routes'
 
-const ProtectedRoutesProvider: React.FC = props => {
+const ProtectedRoutesProvider: React.FC = (props) => {
 	// USER
 	const userCtx = useContext(UserContext)
 
@@ -37,12 +37,10 @@ const ProtectedRoutesProvider: React.FC = props => {
 
 		// PAGINA DE LOGIN
 		if (isProtectedRoute) {
-			if (!user) router.push(ROUTES.login)
-			else if (!business) router.push(ROUTES.login)
+			if (user === null) router.push(ROUTES.login)
+			else if (business === undefined) router.push(ROUTES.company)
 		} else {
-			// ACTUALIZAR ESTADO O INICIAR ANÓNIMO
-			if (isAnonymous) userCtx.setUser({ user: null, isAnonymous: true })
-			else signingAnonymously()
+			if (!user) signingAnonymously()
 		}
 	}, [user, business, isAnonymous])
 

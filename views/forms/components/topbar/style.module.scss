@@ -1,0 +1,182 @@
+@mixin mobile {
+	@media only screen and (max-width: 600px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (max-width: 992px) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media only screen and (max-width: 1200px) {
+		@content;
+	}
+}
+
+.container {
+	position: relative;
+	z-index: 5010 !important;
+	background-color: #fff !important;
+	padding: 15px;
+	@include mobile {
+		padding: 10px;
+	}
+
+	& > div:first-child {
+		background-color: #fff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.brand {
+			height: 100%;
+			display: flex;
+			align-items: center;
+
+			img {
+				height: 50px;
+				@include mobile {
+					display: none;
+				}
+			}
+
+			button {
+				color: #333;
+				margin-right: 20px;
+
+				svg {
+					width: 35px;
+					height: 35px;
+				}
+			}
+		}
+
+		.search {
+			color: #333;
+			display: flex;
+			position: relative;
+			align-items: center;
+			@include mobile {
+				width: 50%;
+			}
+
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 15px;
+				transform: translateY(-50%);
+				z-index: 2;
+			}
+
+			input {
+				width: 400px;
+				padding: 15px 20px 15px 50px;
+				font-size: 1.1em;
+				background: #f0f0f0;
+				font-family: 'Orkney';
+				border-radius: 10px;
+				@include mobile {
+					width: 100%;
+					padding: 10px 10px 10px 50px;
+				}
+			}
+		}
+
+		.actions {
+			color: #333;
+
+			button {
+				svg {
+					width: 35px;
+					height: 35px;
+					color: #333;
+					object-fit: cover;
+				}
+
+				img {
+					border-radius: 100%;
+					width: 34px;
+					height: 34px;
+				}
+			}
+
+			.langCode {
+				img {
+					border-radius: 0;
+				}
+			}
+
+			.badge {
+				width: 58px;
+				height: 58px;
+				position: relative;
+				margin-right: 20px;
+
+				span {
+					position: relative;
+					top: 3px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+.snack {
+	z-index: 5003 !important;
+}
+
+.drawer {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0px;
+	width: 350px;
+
+	img {
+		width: 140px;
+		margin-bottom: 13px;
+		margin-left: 30px;
+	}
+
+	.listItem {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 15px 30px;
+		color: #333;
+
+		& * {
+			font-family: 'Orkney';
+		}
+
+		span {
+			font-size: 1.2em;
+		}
+
+		& > div:nth-child(2) {
+			min-width: 0px;
+		}
+	}
+
+	.activeRoute {
+		span {
+			color: var(--purple);
+			font-weight: bold;
+		}
+
+		& > div:nth-child(2) {
+			svg {
+				color: var(--purple);
+			}
+		}
+	}
+}

@@ -5,10 +5,11 @@ interface PortrayDict {
 }
 
 namespace Portray {
-	type Props<P> = P &
-		PortrayContext & {
-			$: (key: TemplateStringsArray) => string
-		}
+	type Props<P> = P & {
+		langCode: string
+		setLangCode(langCode: string): void
+		$: (key: TemplateStringsArray) => string
+	}
 
 	export type FC<P = {}> = FunctionComponent<P>
 

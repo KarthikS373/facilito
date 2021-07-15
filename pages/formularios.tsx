@@ -1,20 +1,12 @@
 // TIPOS
-import { NextPage, GetServerSideProps } from 'next'
+import { NextPage } from 'next'
 
-// PAGE PROPS
-interface IndexProps {
-	text: string
-}
+// VISTAS
+import Forms from 'views/forms'
 
 // PAGE
-const forms: NextPage<IndexProps> = (props: IndexProps) => {
-	return <div>{props.text}</div>
-}
-
-// SSR
-export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-	const test: IndexProps = { text: 'SSR Forms Text' }
-	return { props: test }
+const forms: NextPage = () => {
+	return <Forms />
 }
 
 export default forms

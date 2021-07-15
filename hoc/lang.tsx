@@ -10,7 +10,7 @@ import getTextFromDict from 'utils/portray'
 
 // HOC DE PORTRAY
 const withStrings = <T,>(Component: Portray.FC<T>) => {
-	const WithStringsComponent = (props: T) => {
+	const WithStringsComponent: React.FC<T> = (props) => {
 		// CONTEXTO
 		const langCtx = useContext(LangContext)
 
@@ -25,7 +25,7 @@ const withStrings = <T,>(Component: Portray.FC<T>) => {
 		}
 
 		// RENDER
-		return <Component {...props} $={$} />
+		return <Component {...props} $={$} langCode={langCtx.langCode} setLangCode={langCtx.setLang} />
 	}
 
 	return WithStringsComponent

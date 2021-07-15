@@ -282,3 +282,17 @@ export const forgotPass = async (
 	const auth = await getAuth()
 	return auth().sendPasswordResetEmail(email).then(onSuccess).catch(authErrorHandler(onError))
 }
+/**
+ * Cerrar sesión
+ * @description Enviá un evento y cierra sesión
+ */
+export const logout = async () => {
+	const auth = await getAuth()
+	window.postMessage(
+		{
+			action: 'logout',
+		},
+		'desktop'
+	)
+	return auth().signOut()
+}

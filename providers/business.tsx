@@ -12,14 +12,17 @@ const BusinessProvider: React.FC = (props) => {
 	// ESTADO
 	const [business, setBusiness] = useState<Business | null>(null)
 
+	// MONEDA
+	const [badge, setBadge] = useState<string>('GTQ')
+
 	// USER
 	const userCtx = useContext(UserContext)
 
 	// OBTENER NEGOCIO
-	useBusiness(userCtx.user?.email || null, userCtx.isAnonymous, setBusiness)
+	useBusiness(userCtx.user?.business || null, userCtx.isAnonymous, setBusiness)
 
 	return (
-		<BusinessContext.Provider value={{ business, setBusiness }}>
+		<BusinessContext.Provider value={{ business, setBusiness, badge, setBadge }}>
 			{props.children}
 		</BusinessContext.Provider>
 	)
