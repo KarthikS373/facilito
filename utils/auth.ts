@@ -146,7 +146,7 @@ export const signingUser = async (
 								pass,
 							},
 						},
-						'desktop'
+						'*'
 					)
 				})
 				.catch(authErrorHandler(onError))
@@ -162,7 +162,7 @@ export const signingUser = async (
 								pass,
 							},
 						},
-						'desktop'
+						'*'
 					)
 				})
 				.catch(authErrorHandler(onError))
@@ -233,7 +233,7 @@ export const facebookSigning = async (onError?: (error: string) => unknown) => {
 						action: 'auth',
 						data: res.credential,
 					},
-					'desktop'
+					'*'
 				)
 			})
 			.catch(authErrorHandler(onError))
@@ -261,7 +261,7 @@ export const googleSigning = async (onError?: (error: string) => unknown) => {
 						action: 'auth',
 						data: res.credential,
 					},
-					'desktop'
+					'*'
 				)
 			})
 			.catch(authErrorHandler(onError))
@@ -292,7 +292,7 @@ export const logout = async () => {
 		{
 			action: 'logout',
 		},
-		'desktop'
+		'*'
 	)
 	return auth().signOut()
 }

@@ -1,0 +1,108 @@
+@mixin mobile {
+	@media only screen and (max-width: 600px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (max-width: 992px) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media only screen and (max-width: 1200px) {
+		@content;
+	}
+}
+
+.container {
+	position: relative;
+	padding: 15px;
+	background-color: #fff !important;
+
+	& > div:first-child {
+		justify-content: flex-end;
+		min-height: 40px;
+		height: 100%;
+		padding: 0;
+		.search {
+			color: #333;
+			display: flex;
+			position: relative;
+			align-items: center;
+
+			@include mobile {
+				width: 50%;
+			}
+
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 15px;
+				transform: translateY(-50%);
+				z-index: 2;
+			}
+
+			input {
+				width: 400px;
+				padding: 15px 20px 15px 50px;
+				font-size: 1.1em;
+				background: #f0f0f0;
+				font-family: 'Orkney';
+				border-radius: 10px;
+
+				@include mobile {
+					width: 100%;
+					padding: 10px 10px 10px 50px;
+				}
+			}
+		}
+
+		.actions {
+			color: #333;
+
+			button {
+				margin-left: 13px;
+			}
+		}
+	}
+}
+
+.badgeBtn {
+	span:first-child {
+		span:last-child {
+			position: relative;
+			top: 2px;
+		}
+	}
+}
+
+.accountPic {
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.accountBtnContent > span {
+	display: block;
+	line-height: 1;
+	text-align: left;
+	margin: 0;
+}
+
+.accountBtnContent > span:last-child {
+	font-size: 0.8em;
+}
+
+.snack {
+	z-index: 5003 !important;
+}

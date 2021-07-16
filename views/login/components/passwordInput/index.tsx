@@ -25,7 +25,10 @@ const PasswordTextField: React.FC<TextFieldProps> = (props) => {
 				...props.InputProps,
 				endAdornment: (
 					<InputAdornment position='end'>
-						<IconButton aria-label='toggle password visibility' onClick={handleClickShowPassword}>
+						<IconButton
+							size='small'
+							aria-label='toggle password visibility'
+							onClick={handleClickShowPassword}>
 							{showPass ? <Visibility /> : <VisibilityOff />}
 						</IconButton>
 					</InputAdornment>

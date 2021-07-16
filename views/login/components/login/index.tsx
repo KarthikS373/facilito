@@ -127,6 +127,7 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 							<Checkbox
 								color='primary'
 								checked={remember}
+								size='small'
 								onChange={handleRememberChange}
 								name='remember'
 							/>

@@ -15,26 +15,28 @@ import Styles from './style.module.scss'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import IconButton from '@material-ui/core/IconButton'
-import { Menu as MuiMenu } from '@material-ui/core'
 import Snackbar from '@material-ui/core/Snackbar'
-import MenuItem from '@material-ui/core/MenuItem'
 import ListItem from '@material-ui/core/ListItem'
 import Toolbar from '@material-ui/core/Toolbar'
 import AppBar from '@material-ui/core/AppBar'
 import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge'
 import List from '@material-ui/core/List'
 
 // ICONOS
-import NotificationsOutlined from '@material-ui/icons/NotificationsOutlined'
+import NotificationsTwoTone from '@material-ui/icons/NotificationsTwoTone'
+import TranslateTwoTone from '@material-ui/icons/TranslateTwoTone'
+import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
 import InputBase from '@material-ui/core/InputBase'
+import MoreVert from '@material-ui/icons/MoreVert'
 import Search from '@material-ui/icons/Search'
 import Person from '@material-ui/icons/Person'
-import Menu from '@material-ui/icons/Menu'
 
 // COMPONENTES
 import NotificationsMenu from './components/notificationsMenu'
 import AccountMenu from './components/accountMenu'
+import SideBar from './components/sideBar'
 
 // RUTAS
 import ROUTES from 'router/routes'
@@ -43,13 +45,7 @@ import ROUTES from 'router/routes'
 import { useNotifications } from 'hooks/business'
 
 // HELPERS
-import {
-	badgeList,
-	badgePrefix,
-	closeSnack,
-	resetNotificationsMenu,
-	saveNotify,
-} from './utils/tools'
+import { closeSnack, resetNotificationsMenu, saveNotify } from './utils/tools'
 import { drawerIcons } from './utils/icons'
 
 // CONTEXTOS
@@ -58,6 +54,7 @@ import UserContext from 'context/user'
 
 // HOC
 import withStrings from 'hoc/lang'
+import BadgeMenu from './components/badgeMenu'
 
 // PROPIEDADES
 interface CustomAppBarProps {
@@ -81,6 +78,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 
 		// BADGE
 		const [badgeAnchor, setBadgeAnchor] = useState<HTMLElement | null>(null)
+		const openBadge = Boolean(badgeAnchor)
 
 		// DRAWER
 		const [openDrawer, setOpenDrawer] = useState<boolean>(false)
@@ -124,12 +122,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 		// CAMBIAR LENGUAJE
 		const changeLangCode = (newLangCode: 'es' | 'en') => () => setLangCode(newLangCode)
 
-		// CAMBIAR MONEDA
-		const changeBadge = (badge: string) => () => {
-			businessCtx && businessCtx.setBadge(badge.replace('QGTQ', 'GTQ'))
-			setBadgeAnchor(null)
-		}
-
 		// CERRAR SNACK
 		const handleClose = closeSnack(setOpenSnack)
 
@@ -140,34 +132,18 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 		useNotifications(saveNotifications, businessCtx.business?.id)
 
 		// CERRAR
-		const toggleDrawer = () => setOpenDrawer(false)
+		const toggleDrawer = () => setOpenDrawer(!openDrawer)
 
 		// RUTAS
 		const routes: string[] = [$`Formularios`, $`Productos`, $`Calendario`, $`Order Tracking`]
 
 		return (
 			<>
+				{/* DRAWER PRINCIPAL */}
+				<SideBar/>
+
 				<AppBar position='static' className={Styles.container}>
 					<Toolbar>
-						{/* LOGO */}
-						<div className={Styles.brand}>
-							<IconButton
-								edge='start'
-								className={Styles.menuButton}
-								onClick={openDrawerEv}
-								color='inherit'
-								aria-label='drawer'>
-								<Menu />
-							</IconButton>
-							<Image
-								height={50}
-								width={100}
-								src='/assets/brand/logo.png'
-								alt='Logo'
-								onClick={goToHome}
-							/>
-						</div>
-
 						{/* BUSCADOR */}
 						{showSearchBar && (
 							<div className={Styles.search}>
@@ -185,45 +161,54 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 
 						<div className={Styles.actions}>
 							{/* MONEDA */}
-							<IconButton aria-label='badge' className={Styles.badge} onClick={openBadgeMenu}>
-								{businessCtx?.badge}
-							</IconButton>
+							<Button
+								aria-label='badge'
+								variant='outlined'
+								className={Styles.badgeBtn}
+								startIcon={<MoneyTwoTone />}
+								onClick={openBadgeMenu}>
+								<span>{businessCtx?.badge}</span>
+							</Button>
 
 							{/* LENGUAJE */}
-							<IconButton
+							<Button
+								variant='outlined'
 								aria-label='langCode'
-								className={Styles.langCode}
+								startIcon={<TranslateTwoTone />}
 								onClick={changeLangCode(langCode === 'es' ? 'en' : 'es')}>
-								<Image
-									width={30}
-									height={30}
-									src={langCode === 'es' ? '/assets/icons/es.png' : '/assets/icons/us.png'}
-									alt='Flag'
-								/>
-							</IconButton>
+								{langCode === 'es' ? $`Español` : $`English`}
+							</Button>
 
 							{/* NOTIFICACIONES */}
 							<IconButton
-								aria-label='notifications'
 								color='inherit'
+								aria-label='notifications'
 								onClick={openNotificationsMenuEv}>
 								<Badge badgeContent={notificationList.length || 0} color='secondary'>
-									<NotificationsOutlined />
+									<NotificationsTwoTone />
 								</Badge>
 							</IconButton>
 
 							{/* CUENTA */}
-							<IconButton
-								edge='end'
+							<Button
+								variant='outlined'
 								aria-label='account'
-								aria-haspopup='true'
-								onClick={openAccountMenuEv}>
-								{userCtx.user?.picture ? (
-									<img src={userCtx.user?.picture} alt='UserPic' />
-								) : (
-									<Person />
-								)}
-							</IconButton>
+								onClick={openAccountMenuEv}
+								endIcon={<MoreVert />}
+								startIcon={
+									<div className={Styles.accountPic}>
+										{userCtx.user?.picture ? (
+											<Image src={userCtx.user?.picture} alt='UserPic' height={30} width={30} />
+										) : (
+											<Person />
+										)}
+									</div>
+								}>
+								<div className={Styles.accountBtnContent}>
+									<span>@{businessCtx.business?.url}</span>
+									<span>{businessCtx.business?.category}</span>
+								</div>
+							</Button>
 						</div>
 					</Toolbar>
 
@@ -237,6 +222,9 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 						open={openNotificationsMenu}
 						anchorEl={notificationsMenu}
 					/>
+
+					{/* MENU DE MONEDA */}
+					<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
 				</AppBar>
 
 				{/* ALERTAS */}
@@ -251,44 +239,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 					onClose={handleClose}
 					message={notificationList[0]?.body}
 				/>
-
-				{/* MENU DE MONEDA */}
-				<MuiMenu
-					id='badge-menu'
-					anchorEl={badgeAnchor}
-					keepMounted
-					open={Boolean(badgeAnchor)}
-					onClose={closeBadgeMenu}>
-					{badgeList.map((cBadge: string, key: number) => (
-						<MenuItem key={`badge_${key}`} onClick={changeBadge(`${cBadge}${badgePrefix[key]} `)}>
-							<strong style={{ marginRight: '5px' }}>{cBadge}</strong>
-							{badgePrefix[key]}
-						</MenuItem>
-					))}
-				</MuiMenu>
-
-				{/* DRAWER PRINCIPAL */}
-				<Drawer anchor='left' open={openDrawer} onClose={toggleDrawer}>
-					<div className={Styles.drawer}>
-						<Image src='/assets/brand/logo.png' height={50} width={100} alt='Brand' />
-						<List onClick={toggleDrawer}>
-							{routes.map((route: string, index: number) => (
-								<Link href={route.toLowerCase()} key={route}>
-									<ListItem
-										className={
-											path.includes(route.toLowerCase())
-												? `${Styles.listItem} ${Styles.activeRoute}`
-												: Styles.listItem
-										}
-										button>
-										<ListItemText primary={route} />
-										<ListItemIcon>{drawerIcons[index]}</ListItemIcon>
-									</ListItem>
-								</Link>
-							))}
-						</List>
-					</div>
-				</Drawer>
 			</>
 		)
 	}

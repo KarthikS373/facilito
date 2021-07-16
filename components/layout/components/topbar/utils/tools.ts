@@ -73,5 +73,5 @@ export const saveNotify =
 	}
 
 // BADGE
-export const badgeList: string[] = ['GTQ', '$', '€', '£', '$']
-export const badgePrefix: string[] = ['', 'USD', 'EUR', 'GBP', 'ARS']
+export const badgeList: string[] = ['Q', '$', '€', '£', '$']
+export const badgePrefix: string[] = ['GT', 'USD', 'EUR', 'GBP', 'ARS']

@@ -11,6 +11,7 @@ import UserProvider from 'providers/user'
 
 // COMPONENTS
 import AlertTemplate from 'components/lualert'
+import Layout from 'components/layout'
 
 // CSS
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -41,8 +42,10 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 									window.hideAlert = AlertRef?.forceHide || emptyAlert
 								}}
 							/>
-							<CssBaseline />
-							<Component {...pageProps} />
+							<Layout>
+								<CssBaseline />
+								<Component {...pageProps} />
+							</Layout>
 						</PortrayProvider>
 					</ProtectedRoutesProvider>
 				</BusinessProvider>

@@ -3,11 +3,11 @@ import React from 'react'
 
 // MATERIAL
 import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
+import Button from '@material-ui/core/Button'
 
 // ICONOS
-import ExitToApp from '@material-ui/icons/ExitToApp'
-import Settings from '@material-ui/icons/Settings'
+import ExitToAppTwoTone from '@material-ui/icons/ExitToAppTwoTone'
+import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
 
 // UTILS
 import { logout } from 'utils/auth'
@@ -16,6 +16,9 @@ import { logout } from 'utils/auth'
 import { useRouter } from 'next/router'
 import ROUTES from 'router/routes'
 import withStrings from 'hoc/lang'
+
+// COMPONENTES
+import PopperMenuList from 'components/PopperMenu'
 
 // PROPS
 interface AccountMenuProps {
@@ -42,16 +45,19 @@ const AccountMenu: React.FC<AccountMenuProps> = withStrings<AccountMenuProps>(
 		}
 
 		return (
-			<Menu keepMounted open={open} id='account-menu' onClose={onClose} anchorEl={anchorEl}>
-				<MenuItem onClick={goToSettings}>
-					<Settings style={{ marginRight: '10px' }} />
-					{$`Cerrar sesión`}
-				</MenuItem>
+			<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
 				<MenuItem onClick={logoutEv}>
-					<ExitToApp style={{ marginRight: '10px' }} />
-					{$`Configuraciones`}
+					<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
+						{$`Cerrar sesión`}
+					</Button>
 				</MenuItem>
-			</Menu>
+
+				<MenuItem onClick={goToSettings}>
+					<Button variant='outlined' fullWidth startIcon={<SettingsTwoTone />}>
+						{$`Configuraciones`}
+					</Button>
+				</MenuItem>
+			</PopperMenuList>
 		)
 	}
 )

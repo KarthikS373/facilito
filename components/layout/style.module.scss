@@ -1,4 +1,7 @@
-.main {
+.container{
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 1fr;
 	position: absolute;
 	width: calc(100% - 30px);
 	height: calc(100vh - 30px);
@@ -6,4 +9,5 @@
 	top: 15px;
 	border-radius: var(--radius);
 	background: #fff;
+	overflow: hidden;
 }
