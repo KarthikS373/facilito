@@ -76,3 +76,16 @@ export const getFormsDifference = (first: Form[], second: Form[]) => {
 		.map((id: string) => formsUnion.find((form: Form) => form.url === id))
 		.filter((form: Form | undefined) => form !== undefined) as Form[]
 }
+
+/**
+ * Formularios para templates
+ * @description Obtiene los formularios en plantillasfacilito
+ */
+export const readTemplates = async () => {
+	// LEER
+	const businessCol = await getCollection('business')
+	const formDoc = businessCol.doc('plantillasfacilito').collection('forms')
+	const form = (await formDoc.get()).docs.map((doc) => doc.data()) as Form[]
+
+	return form
+}

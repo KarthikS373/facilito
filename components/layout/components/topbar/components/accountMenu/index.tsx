@@ -18,7 +18,7 @@ import ROUTES from 'router/routes'
 import withStrings from 'hoc/lang'
 
 // COMPONENTES
-import PopperMenuList from 'components/PopperMenu'
+import PopperMenuList from 'components/popperMenu'
 
 // PROPS
 interface AccountMenuProps {

@@ -1,4 +1,4 @@
-.container{
+.container {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-template-rows: auto 1fr;
@@ -10,4 +10,8 @@
 	border-radius: var(--radius);
 	background: #fff;
 	overflow: hidden;
+
+	main {
+		overflow-y: auto;
+	}
 }

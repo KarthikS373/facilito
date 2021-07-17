@@ -12,7 +12,7 @@ import BusinessContext from 'context/business'
 import { badgeList, badgePrefix } from '../../utils/tools'
 
 // COMPONENTES
-import PopperMenuList from 'components/PopperMenu'
+import PopperMenuList from 'components/popperMenu'
 
 // PROPS
 interface BadgeMenuProps {

@@ -26,6 +26,13 @@ export const theme = createTheme({
 				fontSize: '1rem',
 				backgroundColor: '#FBFBFB',
 				padding: '10px 15px',
+
+				'&:active': {
+					backgroundColor: '#FBFBFB',
+				},
+				'&:hover': {
+					backgroundColor: '#FBFBFB',
+				},
 			},
 		},
 		MuiCheckbox: {
@@ -56,11 +63,11 @@ export const theme = createTheme({
 				border: '1px solid #BDBDBD',
 				borderRadius: 10,
 
-				'&:active':{
+				'&:active': {
 					backgroundColor: 'rgb(246,246,246)',
 				},
 
-				'&:hover':{
+				'&:hover': {
 					backgroundColor: 'rgb(246,246,246)',
 				},
 

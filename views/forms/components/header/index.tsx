@@ -68,12 +68,12 @@ const Header: React.FC = withStrings(({ $ }) => {
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
 					<Button
-						fillWidth
+						fullWidth
 						variant='outlined'
 						startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
 
 					<Button
-						fillWidth
+						fullWidth
 						variant='outlined'
 						startIcon={<QueryBuilderTwoTone />}>{$`Filtrar ascendente`}</Button>
 				</div>
