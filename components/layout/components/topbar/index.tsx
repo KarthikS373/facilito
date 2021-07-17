@@ -140,7 +140,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 		return (
 			<>
 				{/* DRAWER PRINCIPAL */}
-				<SideBar/>
+				<SideBar />
 
 				<AppBar position='static' className={Styles.container}>
 					<Toolbar>
@@ -205,8 +205,8 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 									</div>
 								}>
 								<div className={Styles.accountBtnContent}>
-									<span>@{businessCtx.business?.url}</span>
-									<span>{businessCtx.business?.category}</span>
+									<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
+									<span>{userCtx.user?.role}</span>
 								</div>
 							</Button>
 						</div>

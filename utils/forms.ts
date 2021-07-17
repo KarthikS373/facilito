@@ -53,3 +53,26 @@ export const formsListener = async (
 		setForms(formInterface)
 	})
 }
+
+/**
+ * Comparar formularios
+ * @description Compara los cambios en los ultimos formularios
+ * @param  {Form[]} first
+ * @param  {Form[]} second
+ */
+export const getFormsDifference = (first: Form[], second: Form[]) => {
+	// OBTENER IDS
+	const firstIds: string[] = first.map((form: Form) => form.url)
+	const secondIds: string[] = second.map((form: Form) => form.url)
+
+	// FILTRAR IDS
+	const formsUnion: Form[] = first.concat(second)
+	const filteredIds: string[] = firstIds
+		.concat(secondIds)
+		.filter((item) => !firstIds.includes(item) || !secondIds.includes(item))
+
+	// DEVOLVER FORMULARIOS
+	return filteredIds
+		.map((id: string) => formsUnion.find((form: Form) => form.url === id))
+		.filter((form: Form | undefined) => form !== undefined) as Form[]
+}

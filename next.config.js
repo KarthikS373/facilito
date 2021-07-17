@@ -1,5 +1,10 @@
 module.exports = {
-	images:{
-		domains: ['lh3.googleusercontent.com']
-	}
+	images: {
+		domains: [
+			'googleusercontent.com',
+			'lh3.googleusercontent.com',
+			'lh5.googleusercontent.com',
+			'firebasestorage.googleapis.com',
+		],
+	},
 }

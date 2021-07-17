@@ -4,6 +4,9 @@ import React from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// NEXT
+import { useRouter } from 'next/router'
+
 // ICONS
 import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
 import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
@@ -15,6 +18,9 @@ import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 
+// UTILS
+import getActiveRoute from './utils/routes'
+
 // HOC
 import withStrings from 'hoc/lang'
 
@@ -22,6 +28,10 @@ import withStrings from 'hoc/lang'
 import Image from 'next/image'
 
 const SideBar: React.FC = withStrings(({ $ }) => {
+	// ROUTER
+	const router = useRouter()
+	const path = router.asPath
+
 	return (
 		<div className={Styles.container}>
 			<div className={Styles.brand}>
@@ -43,22 +53,31 @@ const SideBar: React.FC = withStrings(({ $ }) => {
 					<Button
 						fullWidth
 						variant='outlined'
+						color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
 						startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
 				</li>
 				<li>
 					<Button
 						fullWidth
 						variant='outlined'
+						color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
 						startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
 				</li>
 				<li>
 					<Button
 						fullWidth
 						variant='outlined'
+						color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
 						startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
 				</li>
 				<li>
-					<Button fullWidth variant='outlined' startIcon={<TodayTwoTone />}>{$`Calendario`}</Button>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<TodayTwoTone />}
+						color={
+							getActiveRoute(path, 'calendario') ? 'primary' : undefined
+						}>{$`Calendario`}</Button>
 				</li>
 			</ul>
 		</div>

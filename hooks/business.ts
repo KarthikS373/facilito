@@ -2,8 +2,8 @@
 import React, { useEffect, MutableRefObject, useRef } from 'react'
 
 // UTILS
+import { formsListener, getFormsDifference } from 'utils/forms'
 import { getAnswersDifference } from 'utils/answers'
-import { formsListener } from 'utils/forms'
 import { getCompany } from 'utils/business'
 
 /**
