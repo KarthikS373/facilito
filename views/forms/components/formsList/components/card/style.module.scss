@@ -17,7 +17,7 @@
 		h3,
 		a {
 			margin: 0;
-			width: 100px;
+			width: 90px;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			display: block;
@@ -26,10 +26,12 @@
 
 		h3 {
 			opacity: 0.7;
+			height: 25px;
 		}
 
 		a {
 			color: #1aa5bb;
+			height: 20px;
 		}
 
 		.actions {

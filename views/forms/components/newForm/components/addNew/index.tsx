@@ -1,8 +1,14 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // ICONS
 import NoteAddTwoTone from '@material-ui/icons/NoteAddTwoTone'
+
+// ROUTER
+import { useRouter } from 'next/router'
+
+// COMPONENTES
+import showNewFormPrompt from '../prompt'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -10,9 +16,21 @@ import Styles from './style.module.scss'
 // STRINGS
 import withStrings from 'hoc/lang'
 
+// CONTEXTO
+import BusinessContext from 'context/business'
+
 const AddNewForm: React.FC = withStrings(({ $ }) => {
+	// ROUTER
+	const router = useRouter()
+
+	// BUSINESS
+	const businessCtx = useContext(BusinessContext)
+
+	// MOSTRAR ALERTA
+	const showPrompt = () => showNewFormPrompt($, businessCtx.business, router)
+
 	return (
-		<button className={Styles.btn}>
+		<button className={Styles.btn} onClick={showPrompt}>
 			<NoteAddTwoTone color='secondary' />
 			<svg
 				width='200'

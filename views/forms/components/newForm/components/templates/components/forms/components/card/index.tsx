@@ -16,7 +16,19 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 
-const showTemplateCard = (form: Form, $: (key: TemplateStringsArray) => string) => {
+const showTemplateCard = (
+	form: Form,
+	$: (key: TemplateStringsArray) => string,
+	showPrompt: (customForm?: Form) => unknown
+) => {
+	// INICIAR TEMPLATE
+	const startTemplate = () => {
+		window.hideAlert()
+		setTimeout(() => {
+			showPrompt(form)
+		}, 300)
+	}
+
 	window.Alert({
 		title: '',
 		body: '',
@@ -39,7 +51,7 @@ const showTemplateCard = (form: Form, $: (key: TemplateStringsArray) => string) 
 				</CardActionArea>
 				<CardActions className={Styles.actions}>
 					<Button onClick={window.hideAlert}>{$`Cancelar`}</Button>
-					<Button color='primary' startIcon={<NoteAddTwoTone />}>
+					<Button color='primary' startIcon={<NoteAddTwoTone />} onClick={startTemplate}>
 						{$`Iniciar`}
 					</Button>
 				</CardActions>

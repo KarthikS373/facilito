@@ -1,15 +1,19 @@
 // REACT
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
+
+// ROUTER
+import { useRouter } from 'next/router'
 
 // HOC
 import withStrings from 'hoc/lang'
 
 // COMPONENTES
-import templateIcons from './utils/icons'
 import showTemplateCard from './components/card'
+import showNewFormPrompt from '../../../prompt'
+import templateIcons from './utils/icons'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -17,7 +21,24 @@ import Styles from './style.module.scss'
 // UTILS
 import useTemplateForms from './utils/hooks'
 
+// CONTEXTO
+import BusinessContext from 'context/business'
+import UserContext from 'context/user'
+
 const NewForm: React.FC = withStrings(({ $ }) => {
+	// ROUTER
+	const router = useRouter()
+
+	// BUSINESS
+	const businessCtx = useContext(BusinessContext)
+
+	// USER
+	const userCtx = useContext(UserContext)
+
+	// MOSTRAR ALERTA
+	const showPrompt = (customForm?: Form) =>
+		showNewFormPrompt($, businessCtx.business, router, customForm, userCtx.user)
+
 	// LISTA DE TEMPLATES
 	const [templates, setTemplates] = useState<Form[]>([])
 
@@ -25,7 +46,7 @@ const NewForm: React.FC = withStrings(({ $ }) => {
 	useTemplateForms(setTemplates)
 
 	// MOSTRAR INFORMACION
-	const showCard = (form: Form) => () => showTemplateCard(form, $)
+	const showCard = (form: Form) => () => showTemplateCard(form, $, showPrompt)
 
 	return (
 		<>

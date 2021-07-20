@@ -2,6 +2,19 @@
 import { getCollection } from './db'
 
 /**
+ * Leer documento
+ * @description Retorna un documento en la db Forms
+ * @param  {string} companyID
+ * @param  {string} formID
+ */
+const getFormDoc = async (companyID: string, formID: string) => {
+	// LEER
+	const businessCol = await getCollection('business')
+	const formDoc = businessCol.doc(companyID).collection('forms').doc(formID)
+	return formDoc
+}
+
+/**
  * Listener de formularios
  * @description Crea un evento listener en la colecction "forms"
  * @param  {string} companyID
@@ -89,3 +102,21 @@ export const readTemplates = async () => {
 
 	return form
 }
+
+/**
+ * Guardar formulario
+ * @description Guarda un objeto Form en la DB
+ * @param  {string} companyID
+ * @param  {Partial<Form>} form
+ */
+const saveFormSchema = async (companyID: string, form: Partial<Form>) => {
+	if (form.id) {
+		// LEER
+		const formDoc = await getFormDoc(companyID, form.id)
+
+		// GUARDAR
+		if (formDoc) await formDoc.set(form, { merge: true })
+	}
+}
+
+export default saveFormSchema

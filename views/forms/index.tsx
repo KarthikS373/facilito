@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button'
 // HOC
 import withStrings from 'hoc/lang'
 
+// UTILS
+import useDefaultFilter from './utils/hooks'
+import changeFilter from './utils/filters'
+
 // ICON
 import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
 
@@ -20,16 +24,10 @@ const Forms: React.FC = withStrings(({ $ }) => {
 	const [filter, setFilter] = useState<'asc' | 'des'>('asc')
 
 	// CAMBIAR FILTRO
-	const changeFilter = () => {
-		const newFilter: 'asc' | 'des' = filter === 'asc' ? 'des' : 'asc'
-		window.localStorage.setItem('forms-filter', newFilter)
-		setFilter(newFilter)
-	}
+	const changeFilterEv = () => changeFilter(filter, setFilter)
 
 	// ASIGNAR FILTRO DE INICIO
-	useEffect(() => {
-		setFilter((window.localStorage.getItem('forms-filter') as 'asc' | 'des' | null) ?? 'asc')
-	}, [])
+	useDefaultFilter(setFilter)
 
 	return (
 		<>
@@ -37,7 +35,7 @@ const Forms: React.FC = withStrings(({ $ }) => {
 				<Button
 					fullWidth
 					variant='outlined'
-					onClick={changeFilter}
+					onClick={changeFilterEv}
 					startIcon={<SortByAlphaTwoTone />}>
 					{filter === 'asc' ? $`Filtrar ascendente` : $`Filtrar desendente`}
 				</Button>

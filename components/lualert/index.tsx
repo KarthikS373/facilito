@@ -147,6 +147,7 @@ const defState: InternalState = {
   cancelBtn: undefined,
   maxWidth: undefined,
   onCancel: undefined,
+  hideActions: false,
   resetOnHide: false,
   margins: undefined,
   zIndex: undefined,

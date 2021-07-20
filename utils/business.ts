@@ -26,3 +26,25 @@ export const getCompany = async (url: string) => {
 		return businessData
 	} else return null
 }
+
+/**
+ * Agregar formulario
+ * @param  {string} id
+ * @param  {string} companyID
+ * @description Agrega una url al arreglo de formularios
+ */
+export const addBusinessFormURL = async (id: string, companyID: string) => {
+	// COLECCIÓN DE EMPRESA
+	const businessDoc = await getBusinessDoc(companyID)
+	const businessData = (await businessDoc.get()).data() as Business | undefined
+	const forms = businessData?.forms || []
+
+	// AGREGAR
+	forms.push(id)
+
+	// ACTUALIZAR
+	if (businessData) {
+		businessData.forms = forms
+		return businessDoc.set(businessData)
+	}
+}

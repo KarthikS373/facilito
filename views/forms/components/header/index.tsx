@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 
 // NEXT
 import Image from 'next/image'
+import Link from 'next/link'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -16,6 +17,9 @@ import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
 
 // HOC
 import withStrings from 'hoc/lang'
+
+// RUTAS
+import Routes from 'router/routes'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -67,10 +71,12 @@ const Header: React.FC = withStrings(({ $, children }) => {
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
+					<Link href={Routes.visitor} as={`/e/${businessCtx.business?.url}`}>
+						<Button
+							fullWidth
+							variant='outlined'
+							startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
+					</Link>
 					{children}
 				</div>
 			</div>
