@@ -1,12 +1,12 @@
 .btn {
 	position: relative;
 	height: 150px;
-	width: 150px;
+	min-width: 150px;
 	overflow: hidden;
 	outline: none;
 	background-color: #f5f5f5;
 	cursor: pointer;
-	border: 3px solid #1aa5bb;
+	border: 3px solid #511f73;
 	border-radius: var(--radius);
 
 	svg:first-child {

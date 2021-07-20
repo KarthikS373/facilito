@@ -1,23 +1,10 @@
-.container {
-	position: relative;
-	z-index: 2;
-	border-radius: 10px !important;
-	overflow: hidden;
-	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
-	.item {
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-		flex-direction: column;
-		border-bottom: 2px solid #bbb;
+.item {
+	display: block !important;
 
-		strong,
-		p {
-			display: block;
-		}
-	}
-
-	.item:last-child {
-		border-bottom: none;
+	strong,
+	p {
+		display: block;
+		opacity: 0.8;
+		line-height: 1.3;
 	}
 }

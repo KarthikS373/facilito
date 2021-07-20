@@ -6,29 +6,26 @@ import { AppProps } from 'next/app'
 import ProtectedRoutesProvider from 'router/provider'
 import BusinessProvider from 'providers/business'
 import PortrayProvider from 'providers/lang'
+import AlertProvider from 'providers/alerts'
 import ThemeProvider from 'providers/theme'
 import UserProvider from 'providers/user'
 
 // COMPONENTS
-import AlertTemplate from 'components/lualert'
 import Layout from 'components/layout'
 
 // CSS
 import CssBaseline from '@material-ui/core/CssBaseline'
+
+// UTILS
+import useRemoveSSRStyles from 'hooks/theme'
 
 // ESTILOS GLOBALES
 import 'styles/normalize.css'
 import 'styles/globals.css'
 
 const FacilitoApp = ({ Component, pageProps }: AppProps) => {
-	// ALERTA VACIÁ
-	const emptyAlert = () => {}
-
 	// QUITAR ESTILOS SSR DE MATERIAL
-	useEffect(() => {
-		const jssStyles = document.querySelector('#jss-server-side')
-		if (jssStyles) jssStyles.parentElement.removeChild(jssStyles)
-	}, [])
+	useRemoveSSRStyles()
 
 	return (
 		<ThemeProvider>
@@ -36,12 +33,7 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 				<BusinessProvider>
 					<ProtectedRoutesProvider>
 						<PortrayProvider settings={{ mainLang: 'es' }}>
-							<AlertTemplate
-								ref={(AlertRef) => {
-									window.Alert = AlertRef?.show || emptyAlert
-									window.hideAlert = AlertRef?.forceHide || emptyAlert
-								}}
-							/>
+							<AlertProvider />
 							<Layout>
 								<CssBaseline />
 								<Component {...pageProps} />

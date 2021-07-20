@@ -12,9 +12,11 @@ import Image from 'next/image'
 import Styles from './style.module.scss'
 
 // MATERIAL
+import InputAdornment from '@material-ui/core/InputAdornment'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import IconButton from '@material-ui/core/IconButton'
+import TextField from '@material-ui/core/TextField'
 import Snackbar from '@material-ui/core/Snackbar'
 import ListItem from '@material-ui/core/ListItem'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -27,11 +29,10 @@ import List from '@material-ui/core/List'
 // ICONOS
 import NotificationsTwoTone from '@material-ui/icons/NotificationsTwoTone'
 import TranslateTwoTone from '@material-ui/icons/TranslateTwoTone'
+import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
+import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
 import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
-import InputBase from '@material-ui/core/InputBase'
 import MoreVert from '@material-ui/icons/MoreVert'
-import Search from '@material-ui/icons/Search'
-import Person from '@material-ui/icons/Person'
 
 // COMPONENTES
 import NotificationsMenu from './components/notificationsMenu'
@@ -45,7 +46,7 @@ import ROUTES from 'router/routes'
 import { useNotifications } from 'hooks/business'
 
 // HELPERS
-import { closeSnack, resetNotificationsMenu, saveNotify } from './utils/tools'
+import { closeSnack, resetNotificationsMenu, saveNotify, evaluatePath } from './utils/tools'
 import { drawerIcons } from './utils/icons'
 
 // CONTEXTOS
@@ -136,30 +137,33 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 
 		// RUTAS
 		const routes: string[] = [$`Formularios`, $`Productos`, $`Calendario`, $`Order Tracking`]
+		const showAppbarSearch: boolean = evaluatePath(path)
 
-		return (
-			<>
-				{/* DRAWER PRINCIPAL */}
-				<SideBar />
+		if (showAppbarSearch)
+			return (
+				<>
+					{/* DRAWER PRINCIPAL */}
+					<SideBar />
 
-				<AppBar position='static' className={Styles.container}>
-					<Toolbar>
-						{/* BUSCADOR */}
-						{showSearchBar && (
-							<div className={Styles.search}>
-								<div className={Styles.searchIcon}>
-									<Search />
-								</div>
-								<InputBase
-									placeholder={$`Buscar en facilito`}
-									type='search'
-									className={Styles.searchInp}
-									inputProps={{ 'aria-label': 'search' }}
+					<AppBar position='static' className={Styles.container}>
+						<Toolbar>
+							{/* BUSCADOR */}
+							{showSearchBar && (
+								<TextField
+									fullWidth
+									variant='outlined'
+									className={Styles.search}
+									placeholder={$`Buscar formularios, productos, eventos y ordenes en facilito`}
+									InputProps={{
+										startAdornment: (
+											<InputAdornment position='start'>
+												<SearchTwoTone />
+											</InputAdornment>
+										),
+									}}
 								/>
-							</div>
-						)}
+							)}
 
-						<div className={Styles.actions}>
 							{/* MONEDA */}
 							<Button
 								aria-label='badge'
@@ -200,7 +204,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 										{userCtx.user?.picture ? (
 											<Image src={userCtx.user?.picture} alt='UserPic' height={30} width={30} />
 										) : (
-											<Person />
+											<PersonTwoTone />
 										)}
 									</div>
 								}>
@@ -209,38 +213,38 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 									<span>{userCtx.user?.role}</span>
 								</div>
 							</Button>
-						</div>
-					</Toolbar>
+						</Toolbar>
 
-					{/* MENU DE CUENTA */}
-					<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
+						{/* MENU DE CUENTA */}
+						<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
 
-					{/* MENU DE NOTIFICACIONES */}
-					<NotificationsMenu
-						notifications={notificationList}
-						onClose={closeNotificationsMenu}
-						open={openNotificationsMenu}
-						anchorEl={notificationsMenu}
+						{/* MENU DE NOTIFICACIONES */}
+						<NotificationsMenu
+							notifications={notificationList}
+							onClose={closeNotificationsMenu}
+							open={openNotificationsMenu}
+							anchorEl={notificationsMenu}
+						/>
+
+						{/* MENU DE MONEDA */}
+						<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
+					</AppBar>
+
+					{/* ALERTAS */}
+					<Snackbar
+						anchorOrigin={{
+							vertical: 'bottom',
+							horizontal: 'right',
+						}}
+						className={Styles.snack}
+						open={openSnack}
+						autoHideDuration={6000}
+						onClose={handleClose}
+						message={notificationList[0]?.body}
 					/>
-
-					{/* MENU DE MONEDA */}
-					<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
-				</AppBar>
-
-				{/* ALERTAS */}
-				<Snackbar
-					anchorOrigin={{
-						vertical: 'bottom',
-						horizontal: 'right',
-					}}
-					className={Styles.snack}
-					open={openSnack}
-					autoHideDuration={6000}
-					onClose={handleClose}
-					message={notificationList[0]?.body}
-				/>
-			</>
-		)
+				</>
+			)
+		else return <></>
 	}
 )
 

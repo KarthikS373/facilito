@@ -38,10 +38,7 @@ const PopperMenuList: React.FC<PopperMenuProps> = (props) => {
 					style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
 					<Paper>
 						<ClickAwayListener onClickAway={handleClose}>
-							<MenuList
-								autoFocusItem={props.open}
-								id='menu-list-grow'
-								onKeyDown={handleListKeyDown}>
+							<MenuList id='menu-list-grow' autoFocusItem={false} onKeyDown={handleListKeyDown}>
 								{props.children}
 							</MenuList>
 						</ClickAwayListener>

@@ -1,6 +1,9 @@
 // REACT
 import React, { CSSProperties, PureComponent } from 'react'
 
+// MATERIAL
+import Button from '@material-ui/core/Button'
+
 // STYLES
 const Styles: {
   alertContainer: CSSProperties
@@ -31,11 +34,11 @@ const Styles: {
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
-    fontSize: '16px'
+    fontSize: '16px',
   },
   alertContent: {
     left: '50%',
-    padding: '30px',
+    padding: '15px',
     width: 'calc(100% - 60px)',
     maxWidth: '455px',
     transition: 'transform 0.2s linear 0.2s, opacity 0.2s linear 0.2s',
@@ -47,7 +50,7 @@ const Styles: {
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
     borderRadius: '10px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
   },
   alertContentH1: {
     color: '#333',
@@ -55,65 +58,45 @@ const Styles: {
     margin: 0,
     marginBottom: '10px',
     boxSizing: 'border-box',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   alertContentP: {
     color: '#333',
     lineHeight: '20px',
     margin: 0,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   alertActions: {
     margin: 0,
-    marginTop: '20px',
+    marginTop: '15px',
     display: 'flex',
     justifyContent: 'flex-end',
     listStyle: 'none',
     position: 'relative',
     boxSizing: 'border-box',
-    zIndex: 3
+    zIndex: 3,
   },
   alertActionsLiButton: {
-    textTransform: 'uppercase',
     color: '#fff',
-    border: 'none',
-    overflow: 'hidden',
-    height: '45px',
-    padding: '0 20px',
-    outline: 'none',
-    boxShadow: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    margin: 0,
-    boxSizing: 'border-box'
+    paddingLeft: '15px',
+    paddingRight: '15px',
   },
   cancelBtn: {
-    textTransform: 'uppercase',
-    border: 'none',
-    overflow: 'hidden',
-    height: '45px',
-    padding: '0 20px',
-    outline: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    boxSizing: 'border-box',
-    color: '#333',
+    paddingLeft: '15px',
+    paddingRight: '15px',
     background: 'transparent',
     boxShadow: 'none',
-    fontWeight: 400,
-    margin: 0
   },
   closeAlert: { opacity: '0', pointerEvents: 'none' },
   openAlert: { opacity: '1', pointerEvents: 'all' },
   openContent: {
     opacity: '1',
-    transform: 'scale(1)'
+    transform: 'scale(1)',
   },
   closeContent: {
     opacity: '0',
-    transform: 'scale(0.6)'
-  }
+    transform: 'scale(0.6)',
+  },
 }
 
 // ALERT PROPS
@@ -121,9 +104,11 @@ interface AlertProps {
   type: 'confirm' | 'window' | 'alert' | 'error'
   customElements?: JSX.Element
   nested?: AlertProps | string
+  confirmIcon?: JSX.Element
   confirmBtn?: JSX.Element
   cancelBtn?: JSX.Element
   onConfirm?: () => any
+  hideActions?: boolean
   resetOnHide?: boolean
   confirmText?: string
   onCancel?: () => any
@@ -170,7 +155,7 @@ const defState: InternalState = {
   type: 'alert',
   open: false,
   title: '',
-  body: ''
+  body: '',
 }
 
 // TEMPLATE
@@ -196,7 +181,7 @@ export default class AlertTemplate extends PureComponent<HOCProps, InternalState
         type: 'alert',
         title: '',
         body: props,
-        open: true
+        open: true,
       })
     else this.setState({ ...defState, ...props, open: true })
   }
@@ -247,64 +232,55 @@ export default class AlertTemplate extends PureComponent<HOCProps, InternalState
                 ...Styles.alertContainer,
                 ...Styles.openAlert,
                 backdropFilter: this.props.blurred ? 'blur(3px)' : 'none',
-                zIndex: this.props.zIndex || this.state.zIndex || 100
+                zIndex: this.props.zIndex || this.state.zIndex || 100,
               }
             : {
                 ...Styles.alertContainer,
                 ...Styles.closeAlert,
                 backdropFilter: this.props.blurred ? 'blur(3px)' : 'none',
-                zIndex: this.props.zIndex || this.state.zIndex || 100
+                zIndex: this.props.zIndex || this.state.zIndex || 100,
               }
-        }
-      >
+        }>
         <div
           style={
             this.state.open
               ? {
                   ...Styles.alertContent,
                   ...Styles.openContent,
-                  maxWidth: this.state.maxWidth
-                    ? this.state.maxWidth + 'px'
-                    : '455px',
+                  maxWidth: this.state.maxWidth ? this.state.maxWidth + 'px' : '455px',
                   width: this.state.margins
                     ? 'calc(100% - ' + this.state.margins * 2 + 'px)'
-                    : 'calc(100% - 60px)'
+                    : 'calc(100% - 60px)',
                 }
               : {
                   ...Styles.alertContent,
                   ...Styles.closeContent,
-                  maxWidth: this.state.maxWidth
-                    ? this.state.maxWidth + 'px'
-                    : '455px',
+                  maxWidth: this.state.maxWidth ? this.state.maxWidth + 'px' : '455px',
                   width: this.state.margins
                     ? 'calc(100% - ' + this.state.margins * 2 + 'px)'
-                    : 'calc(100% - 60px)'
+                    : 'calc(100% - 60px)',
                 }
-          }
-        >
-          {this.state.type !== 'alert' && (
+          }>
+          {this.state.type !== 'alert' && this.state.title.length > 0 && (
             <h1 style={Styles.alertContentH1}>{this.state.title}</h1>
           )}
           <p
             style={{
               ...Styles.alertContentP,
-              fontSize: this.state.type === 'alert' ? '1.2em' : '1em'
-            }}
-          >
+              fontSize: this.state.type === 'alert' ? '1.2em' : '1em',
+            }}>
             {this.state.body}
           </p>
           {this.state.customElements}
 
-          {this.state.type !== 'window' && (
+          {this.state.type !== 'window' && !this.state.hideActions && (
             <ul style={Styles.alertActions}>
               {!this.state.fixed && this.state.type === 'confirm' && (
                 <li>
                   {!this.state.cancelBtn ? (
-                    <button onClick={this.hide} style={Styles.cancelBtn}>
-                      {this.state.cancelText ||
-                        this.props.cancelText ||
-                        'Cancel'}
-                    </button>
+                    <Button onClick={this.hide} style={Styles.cancelBtn} variant='contained'>
+                      {this.state.cancelText || this.props.cancelText || 'Cancel'}
+                    </Button>
                   ) : (
                     <div onClick={this.hide}>{this.state.cancelBtn}</div>
                   )}
@@ -312,21 +288,19 @@ export default class AlertTemplate extends PureComponent<HOCProps, InternalState
               )}
               <li>
                 {!this.state.confirmBtn ? (
-                  <button
+                  <Button
+                    variant='contained'
+                    onClick={this.confirm}
+                    startIcon={this.state.confirmIcon}
                     style={{
                       ...Styles.alertActionsLiButton,
                       background:
                         this.state.type === 'error'
                           ? this.props.errColor || '#ff5252'
-                          : this.props.confirmColor || '#2196f3'
-                    }}
-                    onClick={this.confirm}
-                  >
-                    {' '}
-                    {this.state.confirmText ||
-                      this.props.confirmText ||
-                      'Accept'}
-                  </button>
+                          : this.props.confirmColor || '#2196f3',
+                    }}>
+                    {this.state.confirmText || this.props.confirmText || 'Accept'}
+                  </Button>
                 ) : (
                   <div onClick={this.confirm}>{this.state.confirmBtn}</div>
                 )}

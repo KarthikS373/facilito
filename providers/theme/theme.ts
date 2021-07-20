@@ -46,6 +46,15 @@ export const theme = createTheme({
 				},
 			},
 		},
+		MuiSwitch: {
+			root: {
+				'& .MuiIconButton-root': {
+					backgroundColor: 'transparent',
+					border: 'none',
+					opacity: 1,
+				},
+			},
+		},
 		MuiIconButton: {
 			sizeSmall: {
 				backgroundColor: 'transparent',
@@ -98,7 +107,7 @@ export const theme = createTheme({
 		MuiAppBar: {
 			root: {
 				boxShadow: 'none',
-				zIndex: 5010,
+				zIndex: 10,
 			},
 		},
 		MuiToolbar: {

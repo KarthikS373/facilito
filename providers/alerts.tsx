@@ -1,10 +1,28 @@
-// ALERTAS
-import withAlerts from '@weareluastudio/lualert'
+// REACT
+import React from 'react'
 
-const AlertsProvider: React.FC = (props) => {
-	return <>{props.children}</>
-}
+// COMPONENTS
+import AlertTemplate from 'components/lualert'
 
-// EXPORT
-const withAlertsC = withAlerts()(AlertsProvider)
-export default withAlertsC
+// HOC
+import withStrings from 'hoc/lang'
+
+const AlertsProvider: React.FC = withStrings(({ $ }) => {
+	// ALERTA VACIÁ
+	const emptyAlert = () => {}
+
+	return (
+		<AlertTemplate
+			blurred
+			zIndex={100}
+			confirmColor='#1AA5BB'
+			cancelText={$`Cancelar`}
+			ref={(AlertRef) => {
+				window.Alert = AlertRef?.show || emptyAlert
+				window.hideAlert = AlertRef?.forceHide || emptyAlert
+			}}
+		/>
+	)
+})
+
+export default AlertsProvider

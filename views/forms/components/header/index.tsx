@@ -20,7 +20,7 @@ import withStrings from 'hoc/lang'
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-const Header: React.FC = withStrings(({ $ }) => {
+const Header: React.FC = withStrings(({ $, children }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
@@ -71,11 +71,7 @@ const Header: React.FC = withStrings(({ $ }) => {
 						fullWidth
 						variant='outlined'
 						startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
-
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<QueryBuilderTwoTone />}>{$`Filtrar ascendente`}</Button>
+					{children}
 				</div>
 			</div>
 		</div>
