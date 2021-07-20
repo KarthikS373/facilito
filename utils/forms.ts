@@ -120,3 +120,17 @@ const saveFormSchema = async (companyID: string, form: Partial<Form>) => {
 }
 
 export default saveFormSchema
+
+/**
+ * Borrar formulario
+ * @description Borra un formulario en 'forms'
+ * @param  {string} companyID
+ * @param  {string} id
+ */
+export const removeFormSchema = async (companyID: string, id: string) => {
+	// LEER
+	const formDoc = await getFormDoc(companyID, id)
+
+	// BORRAR
+	if (formDoc) return formDoc.delete()
+}

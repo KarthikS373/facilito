@@ -48,3 +48,27 @@ export const addBusinessFormURL = async (id: string, companyID: string) => {
 		return businessDoc.set(businessData)
 	}
 }
+
+/**
+ * Remover formulario
+ * @param  {string} companyID
+ * @param  {string} id
+ * @description Remueve una url al arreglo de formularios
+ */
+export const removeBusinessForm = async (companyID: string, id: string) => {
+	// COLECCIÓN DE EMPRESA
+	const businessDoc = await getBusinessDoc(companyID)
+
+	// LISTA
+	const businessData = (await businessDoc.get()).data() as Business | undefined
+	const forms = businessData?.forms || []
+
+	// REMOVER
+	const formsFiltered = forms.filter((formId: string) => formId !== id)
+	if (businessData) {
+		businessData.forms = formsFiltered
+
+		// ACTUALIZAR
+		return businessDoc.set(businessData)
+	}
+}

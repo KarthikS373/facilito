@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -10,8 +10,12 @@ import Link from 'next/link'
 // HOC
 import withStrings from 'hoc/lang'
 
+// CONTEXTO
+import BusinessContext from 'context/business'
+
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import showDeletePrompt from './components/delete'
 
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
@@ -29,10 +33,14 @@ import MailTwoTone from '@material-ui/icons/MailTwoTone'
 // PROPS
 interface FormCardProps {
 	form: Form
+	onDelete?: EmptyFunction
 	answers: FormAnswer | undefined
 }
 
-const FormCard: React.FC<FormCardProps> = withStrings(({ form, answers, $ }) => {
+const FormCard: React.FC<FormCardProps> = withStrings(({ form, answers, $, onDelete }) => {
+	// BUSINESS
+	const businessCtx = useContext(BusinessContext)
+
 	// ESTADOS MENU
 	const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
 	const openCardMenu = Boolean(menuAnchor)
@@ -45,6 +53,9 @@ const FormCard: React.FC<FormCardProps> = withStrings(({ form, answers, $ }) => 
 
 	// CERRAR MENU
 	const closeCardMenu = () => setMenuAnchor(null)
+
+	// BORRAR FORMULARIO
+	const deleteForm = () => showDeletePrompt($, businessCtx.business?.id, form.id, onDelete)
 
 	return (
 		<>
@@ -143,6 +154,7 @@ const FormCard: React.FC<FormCardProps> = withStrings(({ form, answers, $ }) => 
 					<Button
 						fullWidth
 						variant='outlined'
+						onClick={deleteForm}
 						className={Styles.menuBtn}
 						startIcon={<DeleteTwoTone />}>
 						{$`Borrar`}

@@ -1,3 +1,5 @@
+import { getCollection } from './db'
+
 /**
  * Comparar respuestas
  * @description Crea una comparación profunda entre respuestas en la db.
@@ -31,4 +33,17 @@ export const getAnswersDifference = (
 
 	// RETORNAR
 	return formsI
+}
+
+/**
+ * Borrar respuestas
+ * @description Borra todas las respuestas de un formulario
+ * @param  {string} companyID
+ * @param  {string} formID
+ */
+export const removeAnswersForm = async (companyID: string, formID: string) => {
+	// LEER
+	const businessCol = await getCollection('business')
+	const formDoc = businessCol.doc(companyID).collection('answers').doc(formID)
+	return await formDoc.delete()
 }

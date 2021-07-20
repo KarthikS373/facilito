@@ -1,8 +1,9 @@
 // REACT
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 // HOOKS
 import { useForms } from 'hooks/forms'
+import deleteForm from './utils/tools'
 import useFilter from './utils/hooks'
 
 // ESTILOS
@@ -36,10 +37,19 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	const hasForms: boolean = forms.forms.length > 0
 	useFilter(filter, hasForms, setForms)
 
+	// BORRAR FORMULARIO
+	const deleteFormEv = (formID: string) => () =>
+		deleteForm(formID, setForms, businessCtx.setBusiness)
+
 	return (
 		<div className={Styles.container}>
 			{forms.forms.map((form: Form, index: number) => (
-				<FormCard key={`${form.id}_${index}`} form={form} answers={forms.answers[index]} />
+				<FormCard
+					form={form}
+					key={`${form.id}_${index}`}
+					onDelete={deleteFormEv(form.id)}
+					answers={forms.answers[index]}
+				/>
 			))}
 		</div>
 	)

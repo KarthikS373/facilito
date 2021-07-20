@@ -17,6 +17,7 @@ const AlertsProvider: React.FC = withStrings(({ $ }) => {
 			zIndex={100}
 			confirmColor='#1AA5BB'
 			cancelText={$`Cancelar`}
+			confirmText={$`Aceptar`}
 			ref={(AlertRef) => {
 				window.Alert = AlertRef?.show || emptyAlert
 				window.hideAlert = AlertRef?.forceHide || emptyAlert
