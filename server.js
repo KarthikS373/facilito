@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 // NEXT CONFIG
 const server = next({
 	dev: isDev,
-	conf: { distDir: '.next' },
+	conf: { distDir: `${path.relative(process.cwd(), __dirname)}/.next` },
 })
 
 // FUNCTION
