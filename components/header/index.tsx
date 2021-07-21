@@ -12,7 +12,6 @@ import Styles from './style.module.scss'
 import Button from '@material-ui/core/Button'
 
 // ICON
-import QueryBuilderTwoTone from '@material-ui/icons/QueryBuilderTwoTone'
 import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
 
 // HOC

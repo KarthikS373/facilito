@@ -1,5 +1,5 @@
 // REACT
-import { FormEvent, MouseEvent, MutableRefObject, RefObject } from 'react'
+import { FormEvent, MouseEvent, RefObject } from 'react'
 
 // TOOLS
 import { signingUser } from 'utils/auth'
@@ -8,7 +8,7 @@ import { signingUser } from 'utils/auth'
  * Iniciar validación de login
  * @description Inicia un usuario o muestra alertas de error
  * @param  {FormEvent|MouseEvent} ev
- * @param  {MutableRefObject<LoginData|SigningData>} userData
+ * @param  {LoginData|SigningData} userData
  * @param  {RefObject<HTMLDivElement>} progressRef
  * @param  {boolean} isNew?
  * @param  {boolean} rememberUser

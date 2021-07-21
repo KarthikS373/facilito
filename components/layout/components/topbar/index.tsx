@@ -171,8 +171,8 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 							variant='outlined'
 							aria-label='langCode'
 							startIcon={<TranslateTwoTone />}
-							onClick={changeLangCode(businessCtx.business.lang === 'es' ? 'en' : 'es')}>
-							{businessCtx.business.lang === 'es' ? $`Español` : $`English`}
+							onClick={changeLangCode(businessCtx.business?.lang === 'es' ? 'en' : 'es')}>
+							{businessCtx.business?.lang === 'es' ? $`Español` : $`English`}
 						</Button>
 
 						{/* NOTIFICACIONES */}

@@ -1,0 +1,127 @@
+[debug] [2021-07-21T23:31:02.126Z] ----------------------------------------------------------------------
+[debug] [2021-07-21T23:31:02.133Z] Command:       /home/alex/.config/nvm/versions/node/v16.1.0/bin/node /home/alex/.config/nvm/versions/node/v16.1.0/bin/firebase deploy --only hosting,functions:nextServer
+[debug] [2021-07-21T23:31:02.134Z] CLI Version:   9.10.2
+[debug] [2021-07-21T23:31:02.135Z] Platform:      linux
+[debug] [2021-07-21T23:31:02.135Z] Node Version:  v16.1.0
+[debug] [2021-07-21T23:31:02.179Z] Time:          Wed Jul 21 2021 17:31:02 GMT-0600 (hora estándar central)
+[debug] [2021-07-21T23:31:02.179Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-21T23:31:02.214Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-07-21T23:31:02.347Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-21T23:31:02.349Z] > authorizing via signed-in user (luadevelopmentstudio@gmail.com)
+[debug] [2021-07-21T23:31:02.349Z] [iam] checking project facilito-app for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-07-21T23:31:02.353Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-21T23:31:02.353Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-21T23:31:02.650Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Wed, 21 Jul 2021 23:31:02 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:02.760Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/facilito-app:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-07-21T23:31:02.773Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-07-21T23:31:02.773Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2021-07-21T23:31:03.298Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=161","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:03.301Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/facilito-app/serviceAccounts/facilito-app@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-07-21T23:31:04.680Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:04.682Z] > refreshing access token with scopes: []
+[debug] [2021-07-21T23:31:04.683Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-21T23:31:07.208Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Wed, 21 Jul 2021 23:31:07 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:07.376Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/facilito-app [none]
+[debug] [2021-07-21T23:31:07.789Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/facilito-app 200
+[debug] [2021-07-21T23:31:07.789Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/facilito-app {"projectId":"facilito-app","projectNumber":"37962835039","displayName":"Facilito","name":"projects/facilito-app","resources":{"hostingSite":"facilito-app","realtimeDatabaseInstance":"facilito-app","storageBucket":"facilito-app.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'facilito-app'...
+[info] 
+[info] i  deploying functions, hosting 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2021-07-21T23:31:18.701Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-21T23:31:18.702Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-21T23:31:18.703Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-21T23:31:18.703Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-07-21T23:31:18.705Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-21T23:31:18.706Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-21T23:31:19.127Z] <<< HTTP RESPONSE 200 {"date":"Wed, 21 Jul 2021 23:31:19 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:19.301Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/facilito-app/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-07-21T23:31:19.307Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Wed, 21 Jul 2021 23:31:19 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:19.423Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/facilito-app/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-07-21T23:31:19.953Z] <<< HTTP RESPONSE 200 {"date":"Wed, 21 Jul 2021 23:31:19 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:20.195Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/facilito-app/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-07-21T23:31:20.207Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-07-21T23:31:20.214Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-07-21T23:31:20.766Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:20 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:31:20.768Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/facilito-app/adminSdkConfig  
+ 
+[debug] [2021-07-21T23:31:21.126Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:21 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing . directory for uploading... 
+[debug] [2021-07-21T23:31:21.129Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/facilito-app/configs  
+ 
+[debug] [2021-07-21T23:31:23.341Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:31:23 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: packaged . (81.36 MB) for uploading 
+[debug] [2021-07-21T23:32:00.108Z] > [functions] package.json contents: {
+  "name": "facilito-ssr",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "12"
+  },
+  "main": "server.js",
+  "scripts": {
+    "next-dev": "next dev",
+    "strings": "node langServer.js",
+    "dev": "npm-run-all --parallel next-dev strings",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy --only hosting,functions:nextServer"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "*",
+    "@material-ui/pickers": "^3.3.10",
+    "firebase": "^8.7.1",
+    "firebase-functions": "^3.14.1",
+    "lz-string": "^1.4.4",
+    "next": "10.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.35.2"
+  },
+  "devDependencies": {
+    "@types/lz-string": "^1.3.34",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2"
+  }
+}
+[debug] [2021-07-21T23:32:00.114Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/facilito-app/locations/-/functions  
+ 
+[debug] [2021-07-21T23:32:06.574Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:32:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:32:06.581Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/facilito-release/versions  
+ {"config":{"rewrites":[{"glob":"**/**","function":"nextjs-server"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-07-21T23:32:07.576Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:32:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:32:07.580Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/facilito-app/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2021-07-21T23:32:08.499Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 21 Jul 2021 23:32:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-21T23:32:08.500Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-1ffa0556-eb11-488c-9a18-c4961029fb61/ee946daf-f6d7-446a-80b3-2184a2da0d6b.zip?GoogleAccessId=service-37962835039@gcf-admin-robot.iam.gserviceaccount.com&Expires=1626912128&Signature=AKjUwmz%2BtCLiQenLDyhb5Ur1AvXKoUvZOwa7tCNZGP9BU%2FeTluS7Ck6sDPhZfvL73%2Fds%2Fj7%2Bt5B0hBax%2FWKRXm8ccyVHuGRCW%2BSkR%2FIXdrnpDd9uRORIQJnytLN6J3rVsiKB4lSDC3HtvXuVqs7pk0ufs1Kl2Ry62VPnHw4n18PHJ8nI7qfpcxMaQ7OiBGBNWjnVdtUTUog31GmkXyqFCHVDDFcQhM4vvSTgZ4irXi%2BXfL3r2e4kh%2BJeNlW0jRQ0MJHFTF9XwvoYIpdZb8pUHhzwvhSW8d5qkUCgfR0DLCZm8gwbxkxMYxcDpRfE0nw7oe6lkR4d%2F3601sfreixFdQ%3D%3D  
+ <request body omitted>

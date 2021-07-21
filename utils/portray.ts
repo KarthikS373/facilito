@@ -17,7 +17,7 @@ interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
 }
 const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 	// FORMATO DE KEY
-	const trimmedKey: string = LZString.compressToUTF16(normalizeString(key[0]))
+	const trimmedKey: string = LZString.compressToBase64(normalizeString(key[0]))
 
 	// VERIFICAR SI EXISTE
 	if (trimmedKey in ctx.strings) {

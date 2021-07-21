@@ -17,6 +17,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 // UTILS
 import useRemoveSSRStyles from 'hooks/theme'
+import useAnalytics from 'hooks/analytics'
 
 // ESTILOS GLOBALES
 import 'styles/normalize.css'
@@ -26,6 +27,9 @@ import 'styles/mixins.scss'
 const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 	// QUITAR ESTILOS SSR DE MATERIAL
 	useRemoveSSRStyles()
+
+	// ANALYTICS
+	useAnalytics()
 
 	return (
 		<ThemeProvider>

@@ -14,9 +14,7 @@ if (firebase.apps.length === 0) {
 		appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 		measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID,
 	})
-
-	// GOOGLE ANALYTICS
-	firebase.analytics()
 }
 
+export const analytics = firebase.analytics
 export default firebase

@@ -19,6 +19,7 @@ const withStrings = <T,>(Component: Portray.FC<T>) => {
 			return getTextFromDict(key, {
 				langCode: langCtx.langCode,
 				mainLang: langCtx.mainLang,
+				// @ts-ignore
 				strings: Strings,
 				langs: langCtx.langs,
 			})

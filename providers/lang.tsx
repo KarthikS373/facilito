@@ -21,7 +21,7 @@ const PortrayProvider: React.FC<PortrayContextProps> = (props) => {
 	const [langCode, setLang] = useState<string>(mainLang)
 
 	// INCIAL
-	const businessLang: string = businessCtx.business.lang || 'es'
+	const businessLang: string = businessCtx.business?.lang || 'es'
 	useEffect(() => {
 		setLang(businessLang)
 	}, [businessLang])
