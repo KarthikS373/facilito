@@ -6,7 +6,7 @@ import { evaluatePath } from './tools'
 
 // OCULTAR O MOSTRAR
 export const useToggleBar = (
-	setShowTopbar: React.Dispatch<React.SetStateAction<[boolean, boolean]>>,
+	setShowTopbar: React.Dispatch<React.SetStateAction<boolean>>,
 	history: any
 ) => {
 	useEffect(() => {

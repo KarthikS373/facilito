@@ -1,5 +1,4 @@
 // TIPOS
-import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 
 // PROVIDERS

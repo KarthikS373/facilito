@@ -2,18 +2,16 @@ import { createContext, Context } from 'react'
 
 // KEYS
 interface ContextProps {
-	badge: string
 	business: Business | null
-	setBadge(badge: string): void
 	setBusiness(business: Business | null): void
+	setBusinessDB(business: Partial<Business>): void
 }
 
 // VALOR POR DEFECTO
 const DefContext: ContextProps = {
-	badge: '',
 	business: null,
-	setBadge: () => {},
 	setBusiness: () => {},
+	setBusinessDB: () => {},
 }
 
 // CONTEXTO

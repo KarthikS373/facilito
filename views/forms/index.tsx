@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -17,7 +17,7 @@ import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
 // COMPONENTES
 import FormsList from './components/formsList'
 import NewForm from './components/newForm'
-import Header from './components/header'
+import Header from 'components/header'
 
 const Forms: React.FC = withStrings(({ $ }) => {
 	// FILTRO

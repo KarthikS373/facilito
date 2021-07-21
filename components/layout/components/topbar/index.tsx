@@ -53,192 +53,190 @@ interface CustomAppBarProps {
 	showSearchBar: boolean
 }
 
-const Topbar: React.FC<CustomAppBarProps> = withStrings(
-	({ showSearchBar, $, langCode, setLangCode }) => {
-		// EMPRESA
-		const businessCtx = useContext(BusinessContext)
+const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) => {
+	// EMPRESA
+	const businessCtx = useContext(BusinessContext)
 
-		// USUARIO
-		const userCtx = useContext(UserContext)
+	// USUARIO
+	const userCtx = useContext(UserContext)
 
-		// HISTORIAL
-		const router = useRouter()
-		const path = router.asPath
+	// HISTORIAL
+	const router = useRouter()
+	const path = router.asPath
 
-		// ESTADO
-		const [notificationList, setNotificationList] = useState<FormNotification[]>([])
+	// ESTADO
+	const [notificationList, setNotificationList] = useState<FormNotification[]>([])
 
-		// BADGE
-		const [badgeAnchor, setBadgeAnchor] = useState<HTMLElement | null>(null)
-		const openBadge = Boolean(badgeAnchor)
+	// BADGE
+	const [badgeAnchor, setBadgeAnchor] = useState<HTMLElement | null>(null)
+	const openBadge = Boolean(badgeAnchor)
 
-		// DRAWER
-		const [openDrawer, setOpenDrawer] = useState<boolean>(false)
+	// DRAWER
+	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 
-		// SNACKS
-		const [openSnack, setOpenSnack] = useState<boolean>(false)
+	// SNACKS
+	const [openSnack, setOpenSnack] = useState<boolean>(false)
 
-		// MENU DE CUENTA
-		const [accountMenu, setAccountMenu] = useState<HTMLElement | null>(null)
-		const openAccountMenu = Boolean(accountMenu)
+	// MENU DE CUENTA
+	const [accountMenu, setAccountMenu] = useState<HTMLElement | null>(null)
+	const openAccountMenu = Boolean(accountMenu)
 
-		// MENU DE NOTIFICACIÓN
-		const [notificationsMenu, setNotificationsMenu] = useState<HTMLElement | null>(null)
-		const openNotificationsMenu = Boolean(notificationsMenu)
+	// MENU DE NOTIFICACIÓN
+	const [notificationsMenu, setNotificationsMenu] = useState<HTMLElement | null>(null)
+	const openNotificationsMenu = Boolean(notificationsMenu)
 
-		// CERRAR MENU DE CUENTA
-		const closeAccountMenu = () => setAccountMenu(null)
+	// CERRAR MENU DE CUENTA
+	const closeAccountMenu = () => setAccountMenu(null)
 
-		// CERRAR MENU DE NOTIFICACIONES
-		const closeNotificationsMenu = () =>
-			resetNotificationsMenu(setNotificationList, setNotificationsMenu)
+	// CERRAR MENU DE NOTIFICACIONES
+	const closeNotificationsMenu = () =>
+		resetNotificationsMenu(setNotificationList, setNotificationsMenu)
 
-		// ABRIR SIDE
-		const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
+	// ABRIR SIDE
+	const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
 
-		// ABRIR/CERRAR BADGE MENU
-		const openBadgeMenu = (ev: MouseEvent<HTMLElement>) => setBadgeAnchor(ev.currentTarget)
-		const closeBadgeMenu = () => setBadgeAnchor(null)
+	// ABRIR/CERRAR BADGE MENU
+	const openBadgeMenu = (ev: MouseEvent<HTMLElement>) => setBadgeAnchor(ev.currentTarget)
+	const closeBadgeMenu = () => setBadgeAnchor(null)
 
-		// ABRIR MENU
-		const openAccountMenuEv = (ev: MouseEvent<HTMLButtonElement>) =>
-			setAccountMenu(ev.currentTarget)
+	// ABRIR MENU
+	const openAccountMenuEv = (ev: MouseEvent<HTMLButtonElement>) => setAccountMenu(ev.currentTarget)
 
-		// ABRIR MENU DE NOTIFICACIONES
-		const openNotificationsMenuEv = (ev: MouseEvent<HTMLButtonElement>) =>
-			setNotificationsMenu(ev.currentTarget)
+	// ABRIR MENU DE NOTIFICACIONES
+	const openNotificationsMenuEv = (ev: MouseEvent<HTMLButtonElement>) =>
+		setNotificationsMenu(ev.currentTarget)
 
-		// CAMBIAR LENGUAJE
-		const changeLangCode = (newLangCode: 'es' | 'en') => () => setLangCode(newLangCode)
+	// CAMBIAR LENGUAJE
+	const changeLangCode = (newLangCode: 'es' | 'en') => () =>
+		businessCtx.setBusinessDB({ lang: newLangCode })
 
-		// CERRAR SNACK
-		const handleClose = closeSnack(setOpenSnack)
+	// CERRAR SNACK
+	const handleClose = closeSnack(setOpenSnack)
 
-		// GUARDAR NOTIFICACIONES
-		const saveNotifications = useCallback(saveNotify(setNotificationList, setOpenSnack), [])
+	// GUARDAR NOTIFICACIONES
+	const saveNotifications = useCallback(saveNotify(setNotificationList, setOpenSnack), [])
 
-		// HOOK DE NOTIFICACIONES
-		useNotifications(saveNotifications, businessCtx.business?.id)
+	// HOOK DE NOTIFICACIONES
+	useNotifications(saveNotifications, businessCtx.business?.id)
 
-		// RUTAS
-		const showAppbarSearch: boolean = evaluatePath(path)
+	// RUTAS
+	const showAppbarSearch: boolean = evaluatePath(path)
 
-		if (showAppbarSearch)
-			return (
-				<>
-					{/* DRAWER PRINCIPAL */}
-					<SideBar onClose={handleDrawer(false)} open={openDrawer} />
+	if (showAppbarSearch)
+		return (
+			<>
+				{/* DRAWER PRINCIPAL */}
+				<SideBar onClose={handleDrawer(false)} open={openDrawer} />
 
-					<AppBar position='static' className={Styles.container}>
-						<Toolbar>
-							{/* MENU */}
-							<IconButton
-								color='inherit'
-								aria-label='menu'
-								className={Styles.menuBtn}
-								onClick={handleDrawer(true)}>
-								<MenuTwoTone />
-							</IconButton>
+				<AppBar position='static' className={Styles.container}>
+					<Toolbar>
+						{/* MENU */}
+						<IconButton
+							color='inherit'
+							aria-label='menu'
+							className={Styles.menuBtn}
+							onClick={handleDrawer(true)}>
+							<MenuTwoTone />
+						</IconButton>
 
-							{/* BUSCADOR */}
-							{showSearchBar && (
-								<TextField
-									fullWidth
-									variant='outlined'
-									className={Styles.search}
-									placeholder={$`Buscar formularios, productos, eventos y ordenes en facilito`}
-									InputProps={{
-										startAdornment: (
-											<InputAdornment position='start'>
-												<SearchTwoTone />
-											</InputAdornment>
-										),
-									}}
-								/>
-							)}
-
-							{/* MONEDA */}
-							<Button
-								aria-label='badge'
+						{/* BUSCADOR */}
+						{showSearchBar && (
+							<TextField
+								fullWidth
 								variant='outlined'
-								className={Styles.badgeBtn}
-								startIcon={<MoneyTwoTone />}
-								onClick={openBadgeMenu}>
-								<span>{businessCtx?.badge}</span>
-							</Button>
+								className={Styles.search}
+								placeholder={$`Buscar formularios, productos, eventos y ordenes en facilito`}
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position='start'>
+											<SearchTwoTone />
+										</InputAdornment>
+									),
+								}}
+							/>
+						)}
 
-							{/* LENGUAJE */}
-							<Button
-								variant='outlined'
-								aria-label='langCode'
-								startIcon={<TranslateTwoTone />}
-								onClick={changeLangCode(langCode === 'es' ? 'en' : 'es')}>
-								{langCode === 'es' ? $`Español` : $`English`}
-							</Button>
+						{/* MONEDA */}
+						<Button
+							aria-label='badge'
+							variant='outlined'
+							className={Styles.badgeBtn}
+							startIcon={<MoneyTwoTone />}
+							onClick={openBadgeMenu}>
+							<span>{businessCtx.business?.badge}</span>
+						</Button>
 
-							{/* NOTIFICACIONES */}
-							<IconButton
-								color='inherit'
-								aria-label='notifications'
-								onClick={openNotificationsMenuEv}>
-								<Badge badgeContent={notificationList.length || 0} color='secondary'>
-									<NotificationsTwoTone />
-								</Badge>
-							</IconButton>
+						{/* LENGUAJE */}
+						<Button
+							variant='outlined'
+							aria-label='langCode'
+							startIcon={<TranslateTwoTone />}
+							onClick={changeLangCode(businessCtx.business.lang === 'es' ? 'en' : 'es')}>
+							{businessCtx.business.lang === 'es' ? $`Español` : $`English`}
+						</Button>
 
-							{/* CUENTA */}
-							<Button
-								variant='outlined'
-								aria-label='account'
-								onClick={openAccountMenuEv}
-								endIcon={<MoreVert />}
-								startIcon={
-									<div className={Styles.accountPic}>
-										{userCtx.user?.picture ? (
-											<Image src={userCtx.user?.picture} alt='UserPic' height={30} width={30} />
-										) : (
-											<PersonTwoTone />
-										)}
-									</div>
-								}>
-								<div className={Styles.accountBtnContent}>
-									<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
-									<span>{userCtx.user?.role}</span>
+						{/* NOTIFICACIONES */}
+						<IconButton
+							color='inherit'
+							aria-label='notifications'
+							onClick={openNotificationsMenuEv}>
+							<Badge badgeContent={notificationList.length || 0} color='secondary'>
+								<NotificationsTwoTone />
+							</Badge>
+						</IconButton>
+
+						{/* CUENTA */}
+						<Button
+							variant='outlined'
+							aria-label='account'
+							onClick={openAccountMenuEv}
+							endIcon={<MoreVert />}
+							startIcon={
+								<div className={Styles.accountPic}>
+									{userCtx.user?.picture ? (
+										<Image src={userCtx.user?.picture} alt='UserPic' height={30} width={30} />
+									) : (
+										<PersonTwoTone />
+									)}
 								</div>
-							</Button>
-						</Toolbar>
+							}>
+							<div className={Styles.accountBtnContent}>
+								<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
+								<span>{userCtx.user?.role}</span>
+							</div>
+						</Button>
+					</Toolbar>
 
-						{/* MENU DE CUENTA */}
-						<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
+					{/* MENU DE CUENTA */}
+					<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
 
-						{/* MENU DE NOTIFICACIONES */}
-						<NotificationsMenu
-							notifications={notificationList}
-							onClose={closeNotificationsMenu}
-							open={openNotificationsMenu}
-							anchorEl={notificationsMenu}
-						/>
-
-						{/* MENU DE MONEDA */}
-						<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
-					</AppBar>
-
-					{/* ALERTAS */}
-					<Snackbar
-						anchorOrigin={{
-							vertical: 'bottom',
-							horizontal: 'right',
-						}}
-						className={Styles.snack}
-						open={openSnack}
-						autoHideDuration={6000}
-						onClose={handleClose}
-						message={notificationList[0]?.body}
+					{/* MENU DE NOTIFICACIONES */}
+					<NotificationsMenu
+						notifications={notificationList}
+						onClose={closeNotificationsMenu}
+						open={openNotificationsMenu}
+						anchorEl={notificationsMenu}
 					/>
-				</>
-			)
-		else return <></>
-	}
-)
+
+					{/* MENU DE MONEDA */}
+					<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
+				</AppBar>
+
+				{/* ALERTAS */}
+				<Snackbar
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'right',
+					}}
+					className={Styles.snack}
+					open={openSnack}
+					autoHideDuration={6000}
+					onClose={handleClose}
+					message={notificationList[0]?.body}
+				/>
+			</>
+		)
+	else return <></>
+})
 
 export default Topbar

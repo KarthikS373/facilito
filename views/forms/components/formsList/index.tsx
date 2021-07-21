@@ -39,7 +39,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 
 	// BORRAR FORMULARIO
 	const deleteFormEv = (formID: string) => () =>
-		deleteForm(formID, setForms, businessCtx.setBusiness)
+		deleteForm(formID, setForms, businessCtx.setBusinessDB)
 
 	return (
 		<div className={Styles.container}>

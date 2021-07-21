@@ -1,5 +1,4 @@
 // UTILS
-import { removeBusinessForm } from 'utils/business'
 import { removeFormStorage } from 'utils/storage'
 import { removeAnswersForm } from 'utils/answers'
 import { removeFormSchema } from 'utils/forms'
@@ -20,7 +19,6 @@ const showDeletePrompt = (
 			onDelete && onDelete()
 
 			// BORRAR
-			await removeBusinessForm(companyID, formID)
 			await removeFormStorage(companyID, formID)
 			await removeAnswersForm(companyID, formID)
 			await removeFormSchema(companyID, formID)

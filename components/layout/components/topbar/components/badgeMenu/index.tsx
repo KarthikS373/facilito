@@ -27,14 +27,14 @@ const BadgeMenu: React.FC<BadgeMenuProps> = ({ anchorEl, onClose, open }) => {
 
 	// CAMBIAR MONEDA
 	const changeBadge = (badge: string) => () => {
-		businessCtx && businessCtx.setBadge(badge.replace('QGTQ', 'GTQ'))
+		businessCtx && businessCtx.setBusinessDB({ badge })
 		onClose()
 	}
 
 	return (
 		<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
 			{badgeList.map((cBadge: string, key: number) => (
-				<MenuItem key={`badge_${key}`} onClick={changeBadge(`${cBadge}${badgePrefix[key]} `)}>
+				<MenuItem key={`badge_${key}`} onClick={changeBadge(`${cBadge}${badgePrefix[key]}`)}>
 					<Button
 						style={{ height: '40px' }}
 						startIcon={<strong>{cBadge}</strong>}

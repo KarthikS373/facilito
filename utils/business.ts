@@ -50,25 +50,15 @@ export const addBusinessFormURL = async (id: string, companyID: string) => {
 }
 
 /**
- * Remover formulario
+ * Remplazar negocio
  * @param  {string} companyID
- * @param  {string} id
- * @description Remueve una url al arreglo de formularios
+ * @param  {Partial<Business> | null} business
+ * @description Mezcla los valores del negocio en la DB
  */
-export const removeBusinessForm = async (companyID: string, id: string) => {
+export const replaceBusiness = async (companyID: string, business: Partial<Business> | null) => {
 	// COLECCIÓN DE EMPRESA
 	const businessDoc = await getBusinessDoc(companyID)
 
 	// LISTA
-	const businessData = (await businessDoc.get()).data() as Business | undefined
-	const forms = businessData?.forms || []
-
-	// REMOVER
-	const formsFiltered = forms.filter((formId: string) => formId !== id)
-	if (businessData) {
-		businessData.forms = formsFiltered
-
-		// ACTUALIZAR
-		return businessDoc.set(businessData)
-	}
+	if (business) businessDoc.set(business, { merge: true })
 }

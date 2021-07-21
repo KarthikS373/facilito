@@ -53,7 +53,7 @@ const showNewFormPrompt = (
 						await saveFormSchema(business.id, {
 							...customForm,
 							title,
-							url: parsedTitle,
+							url: `${business.url}_${parsedTitle}`,
 							company: {
 								user: user.email,
 								url: business.url,
