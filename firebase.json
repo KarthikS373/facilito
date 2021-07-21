@@ -5,13 +5,13 @@
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
 		"rewrites": [
 			{
-				"source": "**",
-				"function": "nextServer"
+				"source": "**/**",
+				"function": "nextjs-server"
 			}
 		]
 	},
 	"functions": {
 		"source": ".",
-		"runtime": "nodejs14"
+		"ignore": [".firebase/**", ".firebaserc", "firebase.json", "**/node_modules/**", "**/public/**"]
 	}
 }
