@@ -1,7 +1,9 @@
+@import 'styles/mixins';
+
 .footer {
 	background: #547bae;
 	height: 50px;
-	padding: 15px;
+	padding: 15px var(--margin);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -14,8 +16,17 @@
 	div > a {
 		color: #fff;
 
+		@include for-size(phone-portrait) {
+			font-size: 0.7rem;
+		}
+
 		&:last-child {
 			margin-left: 10px;
 		}
+	}
+
+	@include for-size(phone-portrait) {
+		flex-direction: column;
+		height: auto;
 	}
 }

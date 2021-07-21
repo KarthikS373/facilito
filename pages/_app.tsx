@@ -21,7 +21,8 @@ import useRemoveSSRStyles from 'hooks/theme'
 
 // ESTILOS GLOBALES
 import 'styles/normalize.css'
-import 'styles/globals.css'
+import 'styles/globals.scss'
+import 'styles/mixins.scss'
 
 const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 	// QUITAR ESTILOS SSR DE MATERIAL

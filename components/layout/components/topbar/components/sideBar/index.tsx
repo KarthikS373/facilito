@@ -27,60 +27,78 @@ import withStrings from 'hoc/lang'
 // NEXT
 import Image from 'next/image'
 
-const SideBar: React.FC = withStrings(({ $ }) => {
+// PROPS
+interface SideBarProps {
+	onClose: () => void
+	open: boolean
+}
+
+const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 	// ROUTER
 	const router = useRouter()
 	const path = router.asPath
 
 	return (
-		<div className={Styles.container}>
-			<div className={Styles.brand}>
-				<div className={Styles.logo}>
-					<div className={Styles.icon}>
-						<Image src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
+		<>
+			<div
+				className={`${Styles.container} ${
+					open ? Styles.openTabContainer : Styles.closedTabContainer
+				}`}>
+				<div className={Styles.brand}>
+					<div className={Styles.logo}>
+						<div className={Styles.icon}>
+							<Image src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
+						</div>
+						<div>
+							<h1>{$`Facilito©`}</h1>
+							<p>{$`Todos los derechos reservados 2021`}</p>
+						</div>
 					</div>
-					<div>
-						<h1>{$`Facilito©`}</h1>
-						<p>{$`Todos los derechos reservados 2021`}</p>
+					<div className={Styles.logoTablet}>
+						<Image src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
 					</div>
+					<IconButton color='inherit' aria-label='info'>
+						<InfoTwoTone />
+					</IconButton>
 				</div>
-				<IconButton color='inherit' aria-label='info'>
-					<InfoTwoTone />
-				</IconButton>
+				<ul>
+					<li>
+						<Button
+							fullWidth
+							variant='outlined'
+							color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
+							startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
+					</li>
+					<li>
+						<Button
+							fullWidth
+							variant='outlined'
+							color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
+							startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
+					</li>
+					<li>
+						<Button
+							fullWidth
+							variant='outlined'
+							color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
+							startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
+					</li>
+					<li>
+						<Button
+							fullWidth
+							variant='outlined'
+							startIcon={<TodayTwoTone />}
+							color={
+								getActiveRoute(path, 'calendario') ? 'primary' : undefined
+							}>{$`Calendario`}</Button>
+					</li>
+				</ul>
 			</div>
-			<ul>
-				<li>
-					<Button
-						fullWidth
-						variant='outlined'
-						color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
-						startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
-				</li>
-				<li>
-					<Button
-						fullWidth
-						variant='outlined'
-						color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
-						startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
-				</li>
-				<li>
-					<Button
-						fullWidth
-						variant='outlined'
-						color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
-						startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
-				</li>
-				<li>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<TodayTwoTone />}
-						color={
-							getActiveRoute(path, 'calendario') ? 'primary' : undefined
-						}>{$`Calendario`}</Button>
-				</li>
-			</ul>
-		</div>
+			<div
+				className={`${Styles.shadow} ${open ? Styles.openShadow : Styles.closedShadow}`}
+				onClick={onClose}
+			/>
+		</>
 	)
 })
 

@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 @font-face {
 	src: url('../fonts/orkney-light.otf');
 	font-family: 'Orkney';
@@ -43,10 +45,14 @@ select {
 body {
 	--radius: 10px;
 	--transition: cubic-bezier(0.67, -0.48, 0.27, 0.92);
-	--margin: 30px;
+	--margin: 15px;
 	font-size: 15px;
 	overflow-x: hidden;
 	background-color: #dee1e6 !important;
+
+	@include for-size(phone-landscape) {
+		--margin: 20px;
+	}
 }
 
 .MuiAutocomplete-popper,

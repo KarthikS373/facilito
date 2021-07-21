@@ -32,12 +32,7 @@ const AddNewForm: React.FC = withStrings(({ $ }) => {
 	return (
 		<button className={Styles.btn} onClick={showPrompt}>
 			<NoteAddTwoTone color='secondary' />
-			<svg
-				width='200'
-				height='76'
-				viewBox='0 0 200 76'
-				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
+			<svg height='76' viewBox='0 0 200 76' fill='none' xmlns='http://www.w3.org/2000/svg'>
 				<g filter='url(#filter0_d)'>
 					<path
 						fillRule='evenodd'
@@ -57,7 +52,6 @@ const AddNewForm: React.FC = withStrings(({ $ }) => {
 						id='filter0_d'
 						x='-10'
 						y='0'
-						width='507'
 						height='84'
 						filterUnits='userSpaceOnUse'
 						colorInterpolationFilters='sRGB'>

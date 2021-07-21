@@ -11,8 +11,10 @@ import Forms from './components/forms'
 const Templates: React.FC = () => {
 	return (
 		<div className={Style.container}>
-			<TemplateInfo />
-			<Forms />
+			<div className={Style.slider}>
+				<TemplateInfo />
+				<Forms />
+			</div>
 		</div>
 	)
 }

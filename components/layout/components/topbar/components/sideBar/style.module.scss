@@ -1,3 +1,22 @@
+@import 'styles/mixins';
+
+.shadow {
+	display: none;
+	transition: opacity 0.2s ease-in-out;
+
+	@include for-size(phablet-landscape) {
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(10px);
+		z-index: 11;
+	}
+}
+
 .container {
 	position: relative;
 	width: 285px;
@@ -5,8 +24,20 @@
 	border-radius: 0 10px 0 0;
 	height: 100%;
 	grid-row: 1/3;
-	padding: 15px;
-	z-index: 2;
+	padding: var(--margin);
+	z-index: 12;
+	transition: transform 0.2s ease-in-out;
+
+	@include for-size(tablet-landscape) {
+		width: 205px;
+	}
+
+	@include for-size(phablet-landscape) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 225px;
+	}
 
 	.brand {
 		display: flex;
@@ -16,9 +47,25 @@
 		border-bottom: 1px solid #c4c4c4;
 		padding-bottom: 15px;
 
+		.logoTablet {
+			display: none;
+
+			img {
+				object-fit: contain;
+			}
+
+			@include for-size(tablet-landscape) {
+				display: block;
+			}
+		}
+
 		.logo {
 			display: flex;
 			align-items: center;
+
+			@include for-size(tablet-landscape) {
+				display: none;
+			}
 
 			.icon {
 				margin-left: -8px;
@@ -34,12 +81,20 @@
 				font-size: 1.5rem;
 				line-height: 1;
 				font-weight: 500;
+
+				@include for-size(tablet-landscape) {
+					display: none;
+				}
 			}
 
 			p {
 				font-size: 0.8rem;
 				width: 150px;
 				line-height: 1;
+
+				@include for-size(tablet-landscape) {
+					display: none;
+				}
 			}
 		}
 	}
@@ -55,5 +110,25 @@
 				padding-left: 20px;
 			}
 		}
+	}
+}
+
+@include for-size(phablet-landscape) {
+	.closedTabContainer {
+		transform: translateX(-225px);
+	}
+
+	.closedShadow {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.openShadow {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.openTabContainer {
+		transform: translateX(0);
 	}
 }

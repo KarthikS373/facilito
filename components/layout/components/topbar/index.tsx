@@ -3,7 +3,6 @@ import React, { useState, MouseEvent, useCallback, useContext } from 'react'
 
 // ROUTER
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 // NEXT
 import Image from 'next/image'
@@ -13,18 +12,13 @@ import Styles from './style.module.scss'
 
 // MATERIAL
 import InputAdornment from '@material-ui/core/InputAdornment'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import IconButton from '@material-ui/core/IconButton'
 import TextField from '@material-ui/core/TextField'
 import Snackbar from '@material-ui/core/Snackbar'
-import ListItem from '@material-ui/core/ListItem'
 import Toolbar from '@material-ui/core/Toolbar'
 import AppBar from '@material-ui/core/AppBar'
-import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge'
-import List from '@material-ui/core/List'
 
 // ICONOS
 import NotificationsTwoTone from '@material-ui/icons/NotificationsTwoTone'
@@ -32,6 +26,7 @@ import TranslateTwoTone from '@material-ui/icons/TranslateTwoTone'
 import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
 import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
+import MenuTwoTone from '@material-ui/icons/MenuTwoTone'
 import MoreVert from '@material-ui/icons/MoreVert'
 
 // COMPONENTES
@@ -39,15 +34,11 @@ import NotificationsMenu from './components/notificationsMenu'
 import AccountMenu from './components/accountMenu'
 import SideBar from './components/sideBar'
 
-// RUTAS
-import ROUTES from 'router/routes'
-
 // HOOKS
 import { useNotifications } from 'hooks/business'
 
 // HELPERS
 import { closeSnack, resetNotificationsMenu, saveNotify, evaluatePath } from './utils/tools'
-import { drawerIcons } from './utils/icons'
 
 // CONTEXTOS
 import BusinessContext from 'context/business'
@@ -103,7 +94,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 			resetNotificationsMenu(setNotificationList, setNotificationsMenu)
 
 		// ABRIR SIDE
-		const openDrawerEv = () => setOpenDrawer(true)
+		const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
 
 		// ABRIR/CERRAR BADGE MENU
 		const openBadgeMenu = (ev: MouseEvent<HTMLElement>) => setBadgeAnchor(ev.currentTarget)
@@ -117,9 +108,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 		const openNotificationsMenuEv = (ev: MouseEvent<HTMLButtonElement>) =>
 			setNotificationsMenu(ev.currentTarget)
 
-		// ENVIAR A HOME
-		const goToHome = () => router.push(ROUTES.forms)
-
 		// CAMBIAR LENGUAJE
 		const changeLangCode = (newLangCode: 'es' | 'en') => () => setLangCode(newLangCode)
 
@@ -132,21 +120,26 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(
 		// HOOK DE NOTIFICACIONES
 		useNotifications(saveNotifications, businessCtx.business?.id)
 
-		// CERRAR
-		const toggleDrawer = () => setOpenDrawer(!openDrawer)
-
 		// RUTAS
-		const routes: string[] = [$`Formularios`, $`Productos`, $`Calendario`, $`Order Tracking`]
 		const showAppbarSearch: boolean = evaluatePath(path)
 
 		if (showAppbarSearch)
 			return (
 				<>
 					{/* DRAWER PRINCIPAL */}
-					<SideBar />
+					<SideBar onClose={handleDrawer(false)} open={openDrawer} />
 
 					<AppBar position='static' className={Styles.container}>
 						<Toolbar>
+							{/* MENU */}
+							<IconButton
+								color='inherit'
+								aria-label='menu'
+								className={Styles.menuBtn}
+								onClick={handleDrawer(true)}>
+								<MenuTwoTone />
+							</IconButton>
+
 							{/* BUSCADOR */}
 							{showSearchBar && (
 								<TextField
