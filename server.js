@@ -4,7 +4,7 @@ const { default: next } = require('next')
 const admin = require('firebase-admin')
 
 // APP
-dmin.initializeApp()
+admin.initializeApp()
 
 // NEXT
 const nextjsServer = next({
