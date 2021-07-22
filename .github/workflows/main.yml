@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Nextjs Deployment
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches:
+      - ssr
+  pull_request:
+    branches:
+      - ssr
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          ref: ssr
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - run: npm i
+      - run: npm run build --if-present
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting,functions:nextServer
+        env:
+          FIREBASE_TOKEN: 1//05WUSGkn7gXrrCgYIARAAGAUSNwF-L9IrStaOv0hHhEw3pQRW0WZVqTPHDqIAwqMOADQt3qADHes11EBdGAIkQ8NMlAllEMXz7Uo
