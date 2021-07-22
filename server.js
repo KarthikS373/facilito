@@ -14,10 +14,6 @@ const nextjsHandle = nextjsServer.getRequestHandler()
 exports.nextServer = https.onRequest((req, res) => {
 	return nextjsServer
 		.prepare()
-		.then(() => {
-			return nextjsHandle(req, res)
-		})
-		.catch((err) => {
-			logger.log(err)
-		})
+		.then(() => nextjsHandle(req, res))
+		.catch(logger.log)
 })
