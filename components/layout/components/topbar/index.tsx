@@ -35,7 +35,7 @@ import AccountMenu from './components/accountMenu'
 import SideBar from './components/sideBar'
 
 // HOOKS
-import { useNotifications } from 'hooks/business'
+import { useNotifications } from './utils/hooks'
 
 // HELPERS
 import { closeSnack, resetNotificationsMenu, saveNotify, evaluatePath } from './utils/tools'

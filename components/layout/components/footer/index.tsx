@@ -15,7 +15,7 @@ const Footer: React.FC = withStrings(({ $ }) => {
 				<a
 					target='_blank'
 					rel='noopener noreferer'
-					href='https://appfacilito.com/privacy.pdf'
+					href='https://appfacilito.com/terms.pdf'
 					title={$`Terminos y condiciones`}>{$`Terminos y condiciones`}</a>
 				<a
 					target='_blank'

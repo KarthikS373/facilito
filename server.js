@@ -1,6 +1,10 @@
 // IMPORTS
 const { https, logger } = require('firebase-functions')
 const { default: next } = require('next')
+const admin = require('firebase-admin')
+
+// APP
+dmin.initializeApp()
 
 // NEXT
 const nextjsServer = next({

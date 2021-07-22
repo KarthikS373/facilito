@@ -59,7 +59,7 @@ const FormCard: React.FC<FormCardProps> = withStrings(({ form, answers, $, onDel
 
 	return (
 		<>
-			<div className={Styles.container}>
+			<div className={Styles.container} style={{ opacity: form.public ? 1 : 0.6 }}>
 				{/* TARJETA */}
 				<Link href={`/f/${form.id}`}>
 					<div className={Styles.content}>

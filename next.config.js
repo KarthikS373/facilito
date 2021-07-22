@@ -1,4 +1,9 @@
-module.exports = {
+const withPWA = require('next-pwa')
+
+module.exports = withPWA({
+	pwa: {
+		dest: 'public',
+	},
 	images: {
 		domains: [
 			'googleusercontent.com',
@@ -7,4 +12,4 @@ module.exports = {
 			'firebasestorage.googleapis.com',
 		],
 	},
-}
+})

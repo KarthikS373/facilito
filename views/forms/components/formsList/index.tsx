@@ -2,9 +2,8 @@
 import React, { useState, useContext } from 'react'
 
 // HOOKS
-import { useForms } from 'hooks/forms'
+import useFilter, { useForms } from './utils/hooks'
 import deleteForm from './utils/tools'
-import useFilter from './utils/hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'
