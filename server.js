@@ -12,8 +12,14 @@ const nextjsHandle = nextjsServer.getRequestHandler()
 
 // CLOUD FUNC
 exports.nextServer = https.onRequest((req, res) => {
-	return nextjsServer.prepare().then(() => {
-		logger.info(req.path, req.query)
-		return nextjsHandle(req, res)
-	})
+	return nextjsServer
+		.prepare()
+		.then(() => {
+			logger.info(req.path, req.query)
+			return nextjsHandle(req, res)
+		})
+		.catch((err) => {
+			console.log(err)
+			logger.log(err)
+		})
 })
