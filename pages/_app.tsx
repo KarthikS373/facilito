@@ -5,6 +5,7 @@ import Head from 'next/head'
 // PROVIDERS
 import ProtectedRoutesProvider from 'router/provider'
 import BusinessProvider from 'providers/business'
+import ProductsProvider from 'providers/products'
 import PortrayProvider from 'providers/lang'
 import AlertProvider from 'providers/alerts'
 import ThemeProvider from 'providers/theme'
@@ -46,13 +47,15 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 				<UserProvider>
 					<BusinessProvider>
 						<ProtectedRoutesProvider>
-							<PortrayProvider settings={{ mainLang: 'es' }}>
-								<AlertProvider />
-								<Layout>
-									<CssBaseline />
-									<Component {...pageProps} />
-								</Layout>
-							</PortrayProvider>
+							<ProductsProvider>
+								<PortrayProvider settings={{ mainLang: 'es' }}>
+									<AlertProvider />
+									<Layout>
+										<CssBaseline />
+										<Component {...pageProps} />
+									</Layout>
+								</PortrayProvider>
+							</ProductsProvider>
 						</ProtectedRoutesProvider>
 					</BusinessProvider>
 				</UserProvider>

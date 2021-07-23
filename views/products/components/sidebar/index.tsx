@@ -15,11 +15,9 @@ import BusinessContext from 'context/business'
 
 interface SideBarProps {
 	open: boolean
-	filter: string
 	onClose: () => unknown
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
-const SideBar: React.FC<SideBarProps> = ({ open, onClose, filter, setProducts }) => {
+const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 	const categories: string[] = businessCtx.business?.categories || []
@@ -38,10 +36,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, filter, setProducts })
 				<ul>
 					{categories.map((category: string, index: number) => (
 						<Row
-							filter={filter}
 							category={category}
 							onCloseSideBar={onClose}
-							setProducts={setProducts}
 							key={`${category}_${index}`}
 							onChange={saveCategory(index)}
 							onDelete={removeCategory(index)}

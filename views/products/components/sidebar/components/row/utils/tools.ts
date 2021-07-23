@@ -1,6 +1,5 @@
 // UTILS
-import { changeProductsCategory, updateProductsCategory } from 'utils/products'
-import { filterProducts } from '../../../../../utils/tools'
+import { changeProductsCategory } from 'utils/products'
 
 /**
  * Cambiar categoria
@@ -22,12 +21,11 @@ const onChangeCategory = (
 }
 
 interface SaveCategoryProps {
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+	setProducts: (products: { [id: string]: Product }) => unknown
 	onChange: (newCategory?: string) => unknown
+	products: { [id: string]: Product }
 	onClose: () => unknown
-	companyID?: string
 	category: string
-	filter: string
 	value: string
 }
 /**
@@ -37,18 +35,26 @@ interface SaveCategoryProps {
  */
 export const saveCategory = ({
 	value,
-	filter,
 	onClose,
 	category,
 	onChange,
-	companyID,
+	products,
 	setProducts,
 }: SaveCategoryProps) => {
+	// CLAVES
+	const keys: string[] = Object.keys(products)
+
+	// ACTUALIZAR
 	onChange(value)
-	updateProductsCategory(category, value, companyID)
-	setProducts((prevProducts: Product[]) =>
-		filterProducts(changeProductsCategory(prevProducts, category, value), filter)
+	setProducts(
+		Object.fromEntries(
+			changeProductsCategory(Object.values(products), category, value).map(
+				(product: Product, index: number) => [keys[index], product]
+			)
+		)
 	)
+
+	// CERRAR
 	onClose()
 }
 

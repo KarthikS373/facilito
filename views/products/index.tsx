@@ -8,7 +8,7 @@ import Header from 'components/header'
 import Info from './components/info'
 
 // UTILS
-import useProducts, { useFilters, useInitialFilter } from './utils/hooks'
+import useGlobalProducts, { useFilters, useInitialFilter } from './utils/hooks'
 import saveFilter from './utils/tools'
 
 // MATERIAL
@@ -22,13 +22,17 @@ import withStrings from 'hoc/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import ProductsContext from 'context/products'
 
 const Products: React.FC = withStrings(({ $ }) => {
-	// LISTA DE PRODUCTOS
-	const [products, setProducts] = useState<Product[]>([])
-
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
+
+	// PRODUCTOS
+	const productsCtx = useContext(ProductsContext)
+
+	// LISTA DE PRODUCTOS
+	const [products, setProducts] = useState<Product[]>({})
 
 	// FILTRO
 	const [filter, setFilter] = useState<string>('naz')
@@ -42,15 +46,16 @@ const Products: React.FC = withStrings(({ $ }) => {
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
 
+	const productsLength: number = Object.keys(productsCtx.products).length
+
+	// ACTUALIZAR PRODUCTOS GLOBALES
+	useGlobalProducts(setProducts, productsLength, productsCtx.products)
+
 	// FILTROS
-	const productsLength: number = products.length
 	useFilters(setProducts, filter, productsLength)
 
 	// FILTRO INICIAL
 	useInitialFilter(setFilter)
-
-	// OBTENER PRODUCTOS
-	useProducts(setProducts, businessCtx.business?.id)
 
 	return (
 		<>
@@ -66,12 +71,7 @@ const Products: React.FC = withStrings(({ $ }) => {
 			</Header>
 			<Info filter={filter} setFilter={changeFilter} onOpenSideBar={handleSideBar(true)} />
 			<ProductsList products={products} />
-			<SideBar
-				filter={filter}
-				open={openSideBar}
-				setProducts={setProducts}
-				onClose={handleSideBar(false)}
-			/>
+			<SideBar open={openSideBar} onClose={handleSideBar(false)} />
 		</>
 	)
 })

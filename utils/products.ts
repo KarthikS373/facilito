@@ -15,16 +15,29 @@ const getBusinessProducts = async (companyID?: string) => {
 
 		// PRODUCTOS
 		const productsDocs = (await productsDoc.get()).data() as { [id: string]: Product }
-		if (productsDocs) {
-			const products = Object.values(productsDocs)
-
-			// CREAR ARRAY
-			return products
-		}
+		if (productsDocs) return productsDocs
 	}
 }
 
 export default getBusinessProducts
+
+/**
+ * Actualizar productos
+ * @description Actualiza todos los productos
+ * @param  {{[id:string]:Product}} products
+ * @param  {string} companyID
+ */
+export const replaceProducts = async (products: { [id: string]: Product }, companyID?: string) => {
+	// COLLECTION
+	const col = await getCollection('products')
+
+	if (companyID) {
+		const productsDoc = col.doc(companyID)
+
+		// PRODUCTOS
+		return productsDoc.set(products)
+	}
+}
 
 /**
  * Actualizar categorias
@@ -46,34 +59,4 @@ export const changeProductsCategory = (
 
 	// ASIGNAR
 	return tmpProducts
-}
-
-/**
- * Actualizar categorias
- * @description Actualiza todos los productos con una nueva categoria
- * @param  {string} oldCategory
- * @param  {string} newCategory
- * @param  {string} companyID
- */
-export const updateProductsCategory = async (
-	oldCategory: string,
-	newCategory: string,
-	companyID?: string
-) => {
-	if (companyID) {
-		const col = await getCollection('products')
-		const doc = col.doc(companyID)
-		const products = (await doc.get()).data() as { [index: string]: Product }
-		const keys = Object.keys(products)
-		const values = Object.values(products)
-
-		// ASIGNAR
-		return doc.set(
-			Object.fromEntries(
-				changeProductsCategory(values, oldCategory, newCategory).map(
-					(product: Product, index: number) => [keys[index], product]
-				)
-			)
-		)
-	}
 }

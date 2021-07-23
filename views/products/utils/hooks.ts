@@ -2,7 +2,6 @@
 import { useEffect } from 'react'
 
 // UTILS
-import getBusinessProducts from 'utils/products'
 import { filterProducts } from './tools'
 
 /**
@@ -20,18 +19,20 @@ export const useInitialFilter = (setFilter: React.Dispatch<React.SetStateAction<
  * Hook de productos
  * @description Retorna la lista de productos por empresa.
  * @param  {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
- * @param  {string} companyID
+ * @param  {number} productsLength
+ * @param  {products: {[id:string]: Product}} products
  */
-const useProducts = (
+const useGlobalProducts = (
 	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
-	companyID?: string
+	productsLength: number,
+	products: { [id: string]: Product }
 ) => {
 	useEffect(() => {
-		if (companyID) getBusinessProducts(companyID).then(setProducts)
-	}, [companyID])
+		if (productsLength > 0) setProducts(Object.values(products))
+	}, [productsLength])
 }
 
-export default useProducts
+export default useGlobalProducts
 
 /**
  * Hook de filtros

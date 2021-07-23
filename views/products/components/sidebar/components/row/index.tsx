@@ -21,24 +21,22 @@ import withStrings from 'hoc/lang'
 import onChangeCategory, { saveCategory } from './utils/tools'
 
 // CONTEXTO
-import BusinessContext from 'context/business'
+import ProductsContext from 'context/products'
 
 interface RowProps {
-	filter: string
 	category: string
 	onDelete: () => unknown
 	onCloseSideBar: () => unknown
 	onChange: (newCategory: string) => unknown
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
 const Row: React.FC<RowProps> = withStrings(
-	({ $, category, onDelete, onChange, onCloseSideBar, setProducts, filter }) => {
+	({ $, category, onDelete, onChange, onCloseSideBar }) => {
 		// ESTADOS
 		const [value, setValue] = useState<string>(category)
 		const [save, setSave] = useState<boolean>(false)
 
-		// BUSINESS
-		const businessCtx = useContext(BusinessContext)
+		// PRODUCTOS
+		const productsCtx = useContext(ProductsContext)
 
 		// EDITAR CATEGORIA
 		const onChangeCategoryEv = (ev: React.ChangeEvent<HTMLInputElement>) =>
@@ -47,13 +45,12 @@ const Row: React.FC<RowProps> = withStrings(
 		// GUARDAR
 		const updateCategory = (deleteCategory?: boolean) => () =>
 			saveCategory({
-				value: deleteCategory ? $` Sin categoria` : value,
-				filter,
 				category,
-				onChange: deleteCategory ? onDelete : onChange,
-				setProducts,
 				onClose: onCloseSideBar,
-				companyID: businessCtx.business?.id,
+				products: productsCtx.products,
+				setProducts: productsCtx.setProducts,
+				onChange: deleteCategory ? onDelete : onChange,
+				value: deleteCategory ? $` Sin categoria` : value,
 			})
 
 		return (
