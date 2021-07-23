@@ -9,4 +9,22 @@ const saveFilter = (filter: string, setFilter: React.Dispatch<React.SetStateActi
 	setFilter(filter)
 }
 
+/**
+ * Filtrar productos
+ * @description Reordena los productos segun un filtro
+ * @param  {Product[]} products
+ * @param  {string} filter
+ */
+
+export const filterProducts = (products: Product[], filter: string) => {
+	const tmpProducts = [...products]
+	const field: keyof Product = filter.startsWith('n') ? 'title' : 'category'
+	const ascOrder: boolean = filter.includes('az') ? true : false
+
+	if (ascOrder) tmpProducts.sort((a: Product, b: Product) => a[field].localeCompare(b[field]))
+	else tmpProducts.sort((a: Product, b: Product) => b[field].localeCompare(a[field]))
+
+	return tmpProducts
+}
+
 export default saveFilter

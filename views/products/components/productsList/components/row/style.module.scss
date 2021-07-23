@@ -26,6 +26,18 @@
 			justify-content: center;
 		}
 
+		&:nth-child(4) {
+			& > svg {
+				position: absolute;
+				opacity: 0.5;
+				height: 20px;
+				width: 20px;
+				right: 10px;
+				top: 0px;
+				fill: red;
+			}
+		}
+
 		strong,
 		i {
 			display: block;

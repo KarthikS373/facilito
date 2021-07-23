@@ -4,7 +4,16 @@ const { default: next } = require('next')
 const admin = require('firebase-admin')
 
 // APP
-admin.initializeApp()
+admin.initializeApp({
+	apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
+	authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+	databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASEURL,
+	projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+	storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+	messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+	appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
+	measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID,
+})
 
 // NEXT
 const nextjsServer = next({

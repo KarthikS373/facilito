@@ -4,6 +4,9 @@ import React, { useContext } from 'react'
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
 
+// ICONOS
+import ErrorTwoTone from '@material-ui/icons/ErrorTwoTone'
+
 // ESTILOS
 import Styles from './style.module.scss'
 
@@ -41,7 +44,10 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 				{product.description && <i>{product.description}</i>}
 			</span>
 			<span>{product.sku}</span>
-			<span>{product.category}</span>
+			<span>
+				{product.category.startsWith(' ') && <ErrorTwoTone />}
+				{product.category}
+			</span>
 			<span>
 				<i className={product.promoPrice ? Styles.disabledPrice : ''}>
 					{businessCtx.business?.badge} {product.price}

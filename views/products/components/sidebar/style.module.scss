@@ -1,0 +1,45 @@
+.container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
+	background-color: rgb(243, 243, 243);
+	border-radius: 0 10px 0 0;
+	height: 100%;
+	grid-row: 1/3;
+	padding: var(--margin);
+	z-index: 14;
+	overflow-y: auto;
+	transition: transform 0.2s var(--transition);
+}
+
+.shadow {
+	transition: opacity 0.2s ease-in-out;
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(10px);
+	z-index: 13;
+}
+
+.closedContent {
+	transform: translateX(300px);
+}
+
+.closedShadow {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.openShadow {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.openTabContent {
+	transform: translateX(0);
+}

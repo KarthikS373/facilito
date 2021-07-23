@@ -24,25 +24,27 @@ const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 		const text: string = ctx.strings[trimmedKey][ctx.langCode]
 		return text === '$' ? key[0] : text
 	} else {
-		// CREAR
-		const tmpStrings: PortrayDict = { ...ctx.strings }
-		tmpStrings[trimmedKey] = Object.fromEntries(
-			ctx.langs.map((langCode: string) => [langCode, langCode === ctx.mainLang ? '$' : ''])
-		)
+		if (process.env.NODE_ENV === 'development') {
+			// CREAR
+			const tmpStrings: PortrayDict = { ...ctx.strings }
+			tmpStrings[trimmedKey] = Object.fromEntries(
+				ctx.langs.map((langCode: string) => [langCode, langCode === ctx.mainLang ? '$' : ''])
+			)
 
-		// GUARDAR
-		fetch('http://127.0.0.1:4000/write', {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-			body: JSON.stringify({
-				stringsDict: tmpStrings,
-			}),
-		})
+			// GUARDAR
+			fetch('http://127.0.0.1:4000/write', {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					stringsDict: tmpStrings,
+				}),
+			})
 
-		// RETORNAR
-		return key[0]
+			// RETORNAR
+			return key[0]
+		} else return key[0]
 	}
 }
 

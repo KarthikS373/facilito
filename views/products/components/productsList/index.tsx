@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -30,25 +30,13 @@ import withStrings from 'hoc/lang'
 // REACT WINDOW
 import { FixedSizeList as List } from 'react-window'
 
-// CONTEXTO
-import BusinessContext from 'context/business'
-
-// UTILS
-import useProducts, { useFilters } from './utils/hooks'
-
 interface ProductsListProps {
-  filter: string
+  products: Product[]
 }
-const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, filter }) => {
-  // LISTA DE PRODUCTOS
-  const [products, setProducts] = useState<Product[]>([])
-
+const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) => {
   // FILA
   const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
   const openRowMenu = Boolean(currentRow)
-
-  // BUSINESS
-  const businessCtx = useContext(BusinessContext)
 
   // ASIGNAR FILA
   const handleRow = (ev: React.MouseEvent<HTMLButtonElement>) => setCurrentRow(ev.currentTarget)
@@ -60,17 +48,10 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, filter }) =>
   const row = useCallback(
     ({ index, style }) => {
       const product: Product = products[index]
-      return <ProductRow product={product} style={style} handleRow={handleRow} Styles={Styles} />
+      return <ProductRow product={product} style={style} handleRow={handleRow} />
     },
     [products]
   )
-
-  // OBTENER PRODUCTOS
-  useProducts(setProducts, businessCtx.business?.id)
-
-  // FILTRAR LISTA
-  const productsLength: number = products.length
-  useFilters(setProducts, filter, productsLength)
 
   return (
     <>

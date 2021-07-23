@@ -21,9 +21,10 @@ import withStrings from 'hoc/lang'
 
 interface InfoProps {
 	filter: string
+	onOpenSideBar: () => unknown
 	setFilter: (filter: string) => unknown
 }
-const Info: React.FC<InfoProps> = withStrings(({ $, filter, setFilter }) => {
+const Info: React.FC<InfoProps> = withStrings(({ $, filter, setFilter, onOpenSideBar }) => {
 	// FILTROS
 	const [filterAnchor, setFilterAnchor] = useState<HTMLButtonElement | null>(null)
 	const openFilterMenu = Boolean(filterAnchor)
@@ -54,6 +55,7 @@ const Info: React.FC<InfoProps> = withStrings(({ $, filter, setFilter }) => {
 				<div>
 					<Button
 						variant='outlined'
+						onClick={onOpenSideBar}
 						style={{ marginRight: '15px' }}
 						startIcon={<CategoryTwoTone />}>
 						{$`Abrir categorias`}
