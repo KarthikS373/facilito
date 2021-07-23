@@ -1,9 +1,14 @@
 // REACT
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 // COMPONENTES
 import ProductsList from './components/productsList'
 import Header from 'components/header'
+import Info from './components/info'
+
+// UTILS
+import useInitialFilter from './utils/hooks'
+import saveFilter from './utils/tools'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -21,6 +26,15 @@ const Products: React.FC = withStrings(({ $ }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
+	// FILTRO
+	const [filter, setFilter] = useState<string>('naz')
+
+	// ASIGNAR FILTRO
+	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
+
+	// FILTRO INICIAL
+	useInitialFilter(setFilter)
+
 	return (
 		<>
 			<Header
@@ -33,7 +47,8 @@ const Products: React.FC = withStrings(({ $ }) => {
 					startIcon={<ShoppingCartTwoTone />}
 					color='primary'>{$`Crear producto`}</Button>
 			</Header>
-			<ProductsList />
+			<Info filter={filter} setFilter={changeFilter} />
+			<ProductsList filter={filter} />
 		</>
 	)
 })

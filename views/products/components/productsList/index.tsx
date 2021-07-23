@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useEffect, useContext, useCallback } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -34,9 +34,12 @@ import { FixedSizeList as List } from 'react-window'
 import BusinessContext from 'context/business'
 
 // UTILS
-import useProducts from './utils/hooks'
+import useProducts, { useFilters } from './utils/hooks'
 
-const ProductsList: React.FC = withStrings(({ $ }) => {
+interface ProductsListProps {
+  filter: string
+}
+const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, filter }) => {
   // LISTA DE PRODUCTOS
   const [products, setProducts] = useState<Product[]>([])
 
@@ -65,6 +68,10 @@ const ProductsList: React.FC = withStrings(({ $ }) => {
   // OBTENER PRODUCTOS
   useProducts(setProducts, businessCtx.business?.id)
 
+  // FILTRAR LISTA
+  const productsLength: number = products.length
+  useFilters(setProducts, filter, productsLength)
+
   return (
     <>
       <div className={Styles.container}>
@@ -90,11 +97,15 @@ const ProductsList: React.FC = withStrings(({ $ }) => {
               {$`Precio`}
             </strong>
             <strong>
-              <SettingsTwoTone />
-              {$`Mas`}
+              <SettingsTwoTone style={{ marginLeft: '11px' }} />
             </strong>
           </div>
-          <List height={272} itemSize={68} width='100%' itemCount={products.length}>
+          <List
+            className={Styles.listContainer}
+            height={272}
+            itemSize={68}
+            width='100%'
+            itemCount={products.length}>
             {row}
           </List>
         </TableContainer>
