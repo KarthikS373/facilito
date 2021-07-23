@@ -41,7 +41,7 @@ const UserProvider: React.FC = (props) => {
 						setUser({ user, isAnonymous: authUser.isAnonymous })
 
 						// REDIRECTION
-						router.push(ROUTES.forms)
+						if (process.env.NODE_ENV === 'production') router.push(ROUTES.forms)
 					})
 				} else setUser({ user: null, isAnonymous: false })
 			}

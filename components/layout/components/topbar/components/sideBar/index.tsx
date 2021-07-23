@@ -6,6 +6,11 @@ import Styles from './style.module.scss'
 
 // NEXT
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Link from 'next/link'
+
+// RUTAS
+import ROUTES from 'router/routes'
 
 // ICONS
 import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
@@ -23,9 +28,6 @@ import getActiveRoute from './utils/routes'
 
 // HOC
 import withStrings from 'hoc/lang'
-
-// NEXT
-import Image from 'next/image'
 
 // PROPS
 interface SideBarProps {
@@ -63,34 +65,42 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				</div>
 				<ul>
 					<li>
-						<Button
-							fullWidth
-							variant='outlined'
-							color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
-							startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
+						<Link href={ROUTES.forms}>
+							<Button
+								fullWidth
+								variant='outlined'
+								color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
+								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
+						</Link>
 					</li>
 					<li>
-						<Button
-							fullWidth
-							variant='outlined'
-							color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
-							startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
+						<Link href={ROUTES.orderTracking}>
+							<Button
+								fullWidth
+								variant='outlined'
+								color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
+								startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
+						</Link>
 					</li>
 					<li>
-						<Button
-							fullWidth
-							variant='outlined'
-							color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
-							startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
+						<Link href={ROUTES.products}>
+							<Button
+								fullWidth
+								variant='outlined'
+								color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
+								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
+						</Link>
 					</li>
 					<li>
-						<Button
-							fullWidth
-							variant='outlined'
-							startIcon={<TodayTwoTone />}
-							color={
-								getActiveRoute(path, 'calendario') ? 'primary' : undefined
-							}>{$`Calendario`}</Button>
+						<Link href={ROUTES.calendar}>
+							<Button
+								fullWidth
+								variant='outlined'
+								startIcon={<TodayTwoTone />}
+								color={
+									getActiveRoute(path, 'calendario') ? 'primary' : undefined
+								}>{$`Calendario`}</Button>
+						</Link>
 					</li>
 				</ul>
 			</div>

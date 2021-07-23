@@ -23,7 +23,12 @@ import Routes from 'router/routes'
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-const Header: React.FC = withStrings(({ $, children }) => {
+// PROPS
+interface HeaderProps {
+	customDescription?: string
+}
+
+const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescription }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
@@ -62,7 +67,8 @@ const Header: React.FC = withStrings(({ $, children }) => {
 								<span>{$`Plan basico`}</span>
 							</div>
 							<span>
-								{businessCtx.business?.forms.length} {$`formulario(s) creados`}
+								{customDescription ||
+									`${businessCtx.business?.forms.length || 0} ${$`formulario(s) creados`}`}
 							</span>
 						</div>
 					</div>

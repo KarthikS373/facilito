@@ -13,11 +13,6 @@ export default class FacilitoDoc extends Document {
 		return (
 			<Html lang='es'>
 				<Head>
-					<title>Crea formularios avanzados, e-commerce y mucho más | Facilito</title>
-					<meta
-						name='viewport'
-						content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
-					/>
 					<meta
 						name='application-name'
 						content='Crea formularios avanzados, e-commerce y mucho más | Facilito'

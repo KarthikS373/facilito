@@ -37,7 +37,7 @@ const ProtectedRoutesProvider: React.FC = (props) => {
 
 		// PAGINA DE LOGIN
 		if (isProtectedRoute) {
-			if (user === null) router.push(ROUTES.login)
+			if (user === null && process.env.NODE_ENV === 'production') router.push(ROUTES.login)
 			else if (business === undefined) router.push(ROUTES.company)
 		} else {
 			if (!user) signingAnonymously()

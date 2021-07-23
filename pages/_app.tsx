@@ -1,5 +1,6 @@
 // TIPOS
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 
 // PROVIDERS
 import ProtectedRoutesProvider from 'router/provider'
@@ -32,21 +33,31 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 	useAnalytics()
 
 	return (
-		<ThemeProvider>
-			<UserProvider>
-				<BusinessProvider>
-					<ProtectedRoutesProvider>
-						<PortrayProvider settings={{ mainLang: 'es' }}>
-							<AlertProvider />
-							<Layout>
-								<CssBaseline />
-								<Component {...pageProps} />
-							</Layout>
-						</PortrayProvider>
-					</ProtectedRoutesProvider>
-				</BusinessProvider>
-			</UserProvider>
-		</ThemeProvider>
+		<>
+			<Head>
+				<title>Crea formularios avanzados, e-commerce y mucho más | Facilito</title>
+				<meta
+					key='viewport'
+					name='viewport'
+					content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+				/>
+			</Head>
+			<ThemeProvider>
+				<UserProvider>
+					<BusinessProvider>
+						<ProtectedRoutesProvider>
+							<PortrayProvider settings={{ mainLang: 'es' }}>
+								<AlertProvider />
+								<Layout>
+									<CssBaseline />
+									<Component {...pageProps} />
+								</Layout>
+							</PortrayProvider>
+						</ProtectedRoutesProvider>
+					</BusinessProvider>
+				</UserProvider>
+			</ThemeProvider>
+		</>
 	)
 }
 

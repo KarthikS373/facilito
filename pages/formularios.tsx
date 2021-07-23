@@ -5,8 +5,8 @@ import { NextPage } from 'next'
 import Forms from 'views/forms'
 
 // PAGE
-const forms: NextPage = () => {
+const FormsPage: NextPage = () => {
 	return <Forms />
 }
 
-export default forms
+export default FormsPage

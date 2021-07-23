@@ -1,0 +1,50 @@
+.row {
+	height: 68px;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+	display: grid;
+	align-items: center;
+	grid-template-columns: 63px 1fr 80px 120px 120px auto;
+	column-gap: 15px;
+	padding: 10px var(--margin);
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	& > span {
+		position: relative;
+		border-right: 2px solid rgba(0, 0, 0, 0.1);
+		opacity: 0.8;
+		height: 100%;
+		display: flex;
+		align-items: center;
+
+		&:nth-child(2),
+		&:nth-child(5) {
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+		}
+
+		strong,
+		i {
+			display: block;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 20px;
+			font-style: normal;
+		}
+
+		i.disabledPrice {
+			color: red;
+			opacity: 0.6;
+			font-size: 0.8rem;
+			text-decoration: line-through;
+		}
+		img {
+			border-radius: 100%;
+			background: #f5f5f5;
+		}
+	}
+}
