@@ -4,16 +4,7 @@ const { default: next } = require('next')
 const admin = require('firebase-admin')
 
 // APP
-admin.initializeApp({
-	apiKey: 'AIzaSyAwWXWg7FaK8INgl47k9nkQE_mOvJLWdEc',
-	authDomain: 'facilito-app.firebaseapp.com',
-	databaseURL: 'https://facilito-app.firebaseio.com',
-	projectId: 'facilito-app',
-	storageBucket: 'facilito-app.appspot.com',
-	messagingSenderId: '37962835039',
-	appId: '1:37962835039:web:d297864eaf27e71fcf67ea',
-	measurementId: 'G-KQKJ0S6GJB',
-})
+if (!admin.apps.length) admin.initializeApp()
 
 // NEXT
 const nextjsServer = next({
