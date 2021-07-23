@@ -64,14 +64,6 @@ export const theme = createTheme({
 				backgroundColor: 'rgb(246,246,246)',
 				borderRadius: 10,
 
-				'&:active': {
-					backgroundColor: 'rgb(246,246,246)',
-				},
-
-				'&:hover': {
-					backgroundColor: 'rgb(246,246,246)',
-				},
-
 				'& .MuiSvgIcon-root': {
 					opacity: 0.6,
 				},

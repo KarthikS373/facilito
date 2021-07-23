@@ -5,14 +5,14 @@ const admin = require('firebase-admin')
 
 // APP
 admin.initializeApp({
-	apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
-	authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-	databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASEURL,
-	projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
-	storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-	messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
-	appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-	measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID,
+	apiKey: 'AIzaSyAwWXWg7FaK8INgl47k9nkQE_mOvJLWdEc',
+	authDomain: 'facilito-app.firebaseapp.com',
+	databaseURL: 'https://facilito-app.firebaseio.com',
+	projectId: 'facilito-app',
+	storageBucket: 'facilito-app.appspot.com',
+	messagingSenderId: '37962835039',
+	appId: '1:37962835039:web:d297864eaf27e71fcf67ea',
+	measurementId: 'G-KQKJ0S6GJB',
 })
 
 // NEXT
