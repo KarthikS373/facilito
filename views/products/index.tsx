@@ -32,7 +32,7 @@ const Products: React.FC = withStrings(({ $ }) => {
 	const productsCtx = useContext(ProductsContext)
 
 	// LISTA DE PRODUCTOS
-	const [products, setProducts] = useState<Product[]>({})
+	const [products, setProducts] = useState<Product[]>([])
 
 	// FILTRO
 	const [filter, setFilter] = useState<string>('naz')
