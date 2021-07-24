@@ -76,7 +76,7 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 			<div className={Styles.content}>
 				{/* TITULO */}
 				<div className={Styles.title}>
-					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
+					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
 				</div>
 
 				{/* FORMULARIO */}

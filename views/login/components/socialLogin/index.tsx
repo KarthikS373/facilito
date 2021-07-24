@@ -35,6 +35,7 @@ const SocialLogin: React.FC = withStrings(({ $ }) => {
 			<Button fullWidth variant='contained' onClick={gSigning} classes={{ root: Styles.googleBtn }}>
 				<div className={Styles.googleIcon}>
 					<Image
+						unoptimized
 						className={Styles.googleIcon}
 						src='/assets/icons/google.svg'
 						alt='Google Logo'
