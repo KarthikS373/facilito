@@ -38,7 +38,7 @@ const Styles: {
   },
   alertContent: {
     left: '50%',
-    padding: '15px',
+    padding: '25px',
     width: 'calc(100% - 60px)',
     maxWidth: '455px',
     transition: 'transform 0.2s linear 0.2s, opacity 0.2s linear 0.2s',
@@ -47,7 +47,8 @@ const Styles: {
     margin: 0,
     boxSizing: 'border-box',
     zIndex: 2,
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+    boxShadow:
+      '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)',
     borderRadius: '10px',
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
@@ -232,13 +233,13 @@ export default class AlertTemplate extends PureComponent<HOCProps, InternalState
             ? {
                 ...Styles.alertContainer,
                 ...Styles.openAlert,
-                backdropFilter: this.props.blurred ? 'blur(3px)' : 'none',
+                backdropFilter: this.props.blurred ? 'blur(10px)' : 'none',
                 zIndex: this.props.zIndex || this.state.zIndex || 100,
               }
             : {
                 ...Styles.alertContainer,
                 ...Styles.closeAlert,
-                backdropFilter: this.props.blurred ? 'blur(3px)' : 'none',
+                backdropFilter: this.props.blurred ? 'blur(10px)' : 'none',
                 zIndex: this.props.zIndex || this.state.zIndex || 100,
               }
         }>

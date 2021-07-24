@@ -8,6 +8,7 @@ import Styles from './style.module.scss'
 import Link from 'next/link'
 
 // MATERIAL
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import TextField from '@material-ui/core/TextField'
@@ -46,48 +47,53 @@ const Search: React.FC = withStrings(({ $ }) => {
 	const onChangeSearch = (ev: React.ChangeEvent<HTMLInputElement>) =>
 		searchItems(ev, formsCtx.forms, products, setLinks)
 
+	// OCULTAR BUSQUEDA
+	const hideSearchBox = () => setLinks([])
+
 	return (
-		<div className={Styles.container}>
-			<TextField
-				type='search'
-				variant='outlined'
-				className={Styles.search}
-				onChange={onChangeSearch}
-				placeholder={$`Buscar formularios, productos`}
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position='start'>
-							<SearchTwoTone />
-						</InputAdornment>
-					),
-				}}
-			/>
-			{links.length > 0 && (
-				<Paper className={Styles.searchBox}>
-					<ul>
-						{links.map((link: LinkInfo) => (
-							<li className={Styles.row} key={link.id}>
-								{/* ICONO */}
-								{link.type === 'form' ? <DescriptionTwoTone /> : <ShoppingCartTwoTone />}
+		<ClickAwayListener onClickAway={hideSearchBox}>
+			<div className={Styles.container}>
+				<TextField
+					type='search'
+					variant='outlined'
+					className={Styles.search}
+					onChange={onChangeSearch}
+					placeholder={$`Buscar formularios, productos`}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position='start'>
+								<SearchTwoTone />
+							</InputAdornment>
+						),
+					}}
+				/>
+				{links.length > 0 && (
+					<Paper className={Styles.searchBox}>
+						<ul>
+							{links.map((link: LinkInfo) => (
+								<li className={Styles.row} key={link.id}>
+									{/* ICONO */}
+									{link.type === 'form' ? <DescriptionTwoTone /> : <ShoppingCartTwoTone />}
 
-								{/* INFORMACIÓN */}
-								<div>
-									<strong>{link.title}</strong>
-									{link.description && <p>{link.description}</p>}
-								</div>
+									{/* INFORMACIÓN */}
+									<div>
+										<strong>{link.title}</strong>
+										{link.description && <p>{link.description}</p>}
+									</div>
 
-								{/* LINK */}
-								<Link href={link.type === 'form' ? `/f/${link.id}` : `/p/${link.id}/editar`}>
-									<IconButton>
-										<ForwardTwoTone />
-									</IconButton>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Paper>
-			)}
-		</div>
+									{/* LINK */}
+									<Link href={link.type === 'form' ? `/f/${link.id}` : `/p/${link.id}/editar`}>
+										<IconButton>
+											<ForwardTwoTone />
+										</IconButton>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Paper>
+				)}
+			</div>
+		</ClickAwayListener>
 	)
 })
 
