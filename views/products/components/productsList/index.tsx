@@ -61,7 +61,34 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
   const row = useCallback(
     ({ index, style }) => {
       const product: Product = products[index]
-      return <ProductRow product={product} style={style} handleRow={handleRow(index)} />
+      return index === 0 ? (
+        <div className={Styles.tableHeader}>
+          <strong>
+            <ImageTwoTone />
+          </strong>
+          <strong>
+            <FormatColorTextTwoTone />
+            {$`Titulo`}
+          </strong>
+          <strong>
+            <FingerprintTwoTone />
+            {$`SKU`}
+          </strong>
+          <strong>
+            <WidgetsTwoTone />
+            {$`Categoria`}
+          </strong>
+          <strong>
+            <LocalOfferTwoTone />
+            {$`Precio`}
+          </strong>
+          <strong>
+            <SettingsTwoTone style={{ marginLeft: '11px' }} />
+          </strong>
+        </div>
+      ) : (
+        <ProductRow product={product} style={style} handleRow={handleRow(index)} />
+      )
     },
     [products]
   )
@@ -88,30 +115,6 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
     <>
       <div className={Styles.container}>
         <TableContainer component={Paper} style={{ backgroundColor: 'rgb(252, 252, 252)' }}>
-          <div className={Styles.tableHeader}>
-            <strong>
-              <ImageTwoTone />
-            </strong>
-            <strong>
-              <FormatColorTextTwoTone />
-              {$`Titulo`}
-            </strong>
-            <strong>
-              <FingerprintTwoTone />
-              {$`SKU`}
-            </strong>
-            <strong>
-              <WidgetsTwoTone />
-              {$`Categoria`}
-            </strong>
-            <strong>
-              <LocalOfferTwoTone />
-              {$`Precio`}
-            </strong>
-            <strong>
-              <SettingsTwoTone style={{ marginLeft: '11px' }} />
-            </strong>
-          </div>
           <List
             className={Styles.listContainer}
             height={272}

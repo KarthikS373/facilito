@@ -5,13 +5,11 @@
 	padding: 15px var(--margin);
 
 	@include for-size(phone-landscape) {
-		margin-bottom: var(--margin);
 		overflow: hidden;
 	}
 
 	@include for-size(phone-portrait) {
 		padding: 20px var(--margin);
-		margin-bottom: calc(var(--margin) * 2);
 		display: flex;
 		justify-content: center;
 	}

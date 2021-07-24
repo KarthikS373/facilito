@@ -3,12 +3,16 @@
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	display: grid;
 	align-items: center;
-	grid-template-columns: 63px 1fr 80px 120px 120px 48px;
+	grid-template-columns: 63px minmax(200px, 1fr) 80px 120px 120px 63px;
 	column-gap: 15px;
-	padding: 10px var(--margin);
+	padding: 10px 0 10px var(--margin);
 
 	&:last-child {
 		border-bottom: none;
+	}
+
+	& > button {
+		width: 48px;
 	}
 
 	& > span {

@@ -6,7 +6,7 @@
 	width: 100%;
 
 	@include for-size(phone-landscape) {
-		margin-top: -15px;
+		padding: 20px var(--margin);
 	}
 
 	@include for-size(phone-portrait) {

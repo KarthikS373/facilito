@@ -49,18 +49,22 @@ const Info: React.FC<InfoProps> = withStrings(({ $, filter, setFilter, onOpenSid
 					<StoreTwoTone />
 					<div className={Styles.text}>
 						<h2>{$`Catalogo de productos`}</h2>
-						<p>{$`Agrega productos a tu inventario y muestralos en el carrito de compras.`}</p>
+						<p>{$`Agrega productos al inventario y muestralos en el carrito.`}</p>
 					</div>
 				</div>
-				<div>
+				<div className={Styles.actions}>
 					<Button
+						fullWidth
 						variant='outlined'
 						onClick={onOpenSideBar}
-						style={{ marginRight: '15px' }}
 						startIcon={<CategoryTwoTone />}>
 						{$`Abrir categorias`}
 					</Button>
-					<Button onClick={handleFilterAnchor} variant='outlined' startIcon={<FilterListTwoTone />}>
+					<Button
+						fullWidth
+						onClick={handleFilterAnchor}
+						variant='outlined'
+						startIcon={<FilterListTwoTone />}>
 						{(filter === 'naz' && $`Nombre A-Z`) ||
 							(filter === 'nza' && $`Nombre Z-A`) ||
 							(filter === 'caz' && $`Categoria A-Z`) ||

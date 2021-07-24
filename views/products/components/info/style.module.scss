@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	position: relative;
 	width: 100%;
@@ -6,28 +8,66 @@
 	justify-content: space-between;
 	align-items: center;
 
+	@include for-size(phone-landscape) {
+		flex-direction: column;
+	}
+
+	.actions {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto;
+		grid-gap: 10px;
+
+		@include for-size(phone-portrait) {
+			grid-template-columns: auto;
+			grid-template-rows: auto auto;
+			align-items: center;
+			width: 100%;
+			max-width: 265px;
+		}
+
+		& > button:first-child {
+			@include for-size(phone-portrait) {
+				margin-right: 0;
+			}
+		}
+	}
+
 	.info {
 		display: flex;
 		align-items: center;
 		opacity: 0.7;
 
+		@include for-size(phone-landscape) {
+			margin-bottom: 10px;
+		}
+
 		svg {
-			height: 60px;
-			width: 60px;
+			height: 65px;
+			width: 65px;
 		}
 
 		.text {
-			margin-left: 10px;
+			margin-left: 5px;
 
 			h2 {
 				font-size: 1.3rem;
+
+				@include for-size(tablet-landscape) {
+					font-size: 1.2rem;
+				}
 			}
 
 			p {
 				font-size: 1rem;
 				opacity: 0.8;
 				line-height: 1;
-				width: 300px;
+				width: 230px;
+
+				@include for-size(tablet-landscape) {
+					font-size: 0.9rem;
+					width: 210px;
+				}
 			}
 		}
 	}
