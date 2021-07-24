@@ -41,6 +41,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 
 	return (
 		<div className={Styles.container}>
+			<div className={Styles.respSpace} />
 			{forms.forms.map((form: Form, index: number) => (
 				<FormCard
 					form={form}

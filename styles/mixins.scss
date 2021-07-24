@@ -19,5 +19,9 @@
 		@media (max-width: 500px) {
 			@content;
 		}
+	} @else if $size == phone-portrait-min {
+		@media (max-width: 354px) {
+			@content;
+		}
 	}
 }

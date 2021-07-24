@@ -1,6 +1,27 @@
+@import 'styles/mixins';
 .container {
 	padding: 15px var(--margin);
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-gap: 15px;
+
+	@include for-size(phone-portrait) {
+		margin-top: -165px;
+	}
+
+	@include for-size(phone-portrait-min) {
+		margin-top: 0px;
+	}
+
+	.respSpace {
+		display: none;
+
+		@include for-size(phone-portrait) {
+			display: block;
+		}
+
+		@include for-size(phone-portrait-min) {
+			display: none;
+		}
+	}
 }

@@ -6,6 +6,7 @@
 
 	@include for-size(phone-landscape) {
 		margin-bottom: var(--margin);
+		overflow: hidden;
 	}
 
 	@include for-size(phone-portrait) {

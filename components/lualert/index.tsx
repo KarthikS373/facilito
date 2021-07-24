@@ -27,7 +27,7 @@ const Styles: {
     left: '0',
     zIndex: 100,
     transition: 'opacity 0.2s ease-in-out',
-    background: 'rgba(0, 0, 0, 0.6)',
+    background: 'rgba(0, 0, 0, 0.2)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
