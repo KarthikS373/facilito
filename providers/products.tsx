@@ -23,17 +23,18 @@ const ProductsProvider: React.FC = (props) => {
 	useProducts(setLocalProducts, businessCtx.business?.id)
 
 	// GUARDAR PRODUCTOS GLOBAL
-	const setProducts = (products: { [id: string]: Product }) =>
+	const setProducts = (products: { [id: string]: Product }, merge: boolean = true) =>
 		setLocalProducts((prevProducts: { [id: string]: Product }) => {
 			// ACTUALIZAR
-			const newProducts: { [id: string]: Product } = { ...prevProducts, ...products }
+			const newProducts: { [id: string]: Product } = merge
+				? { ...prevProducts, ...products }
+				: products
 
 			// GUARDAR EN NEGOCIO
 			replaceBusiness(businessCtx.business?.id, { products: Object.keys(newProducts) })
 
 			// GUARDAR EN DB PRODUCTOS
 			replaceProducts(newProducts, businessCtx.business?.id)
-
 			return newProducts
 		})
 

@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -13,6 +13,9 @@ import Paper from '@material-ui/core/Paper'
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
 import ProductRow from './components/row'
+
+// CONTEXTO
+import ProductsContext from 'context/products'
 
 // ICONS
 import FormatColorTextTwoTone from '@material-ui/icons/FormatColorTextTwoTone'
@@ -34,12 +37,22 @@ interface ProductsListProps {
   products: Product[]
 }
 const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) => {
+  // PRODUCTOS
+  const productsCtx = useContext(ProductsContext)
+
   // FILA
   const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
+
+  // NUMERO DE PRODUCTO
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
+
   const openRowMenu = Boolean(currentRow)
 
   // ASIGNAR FILA
-  const handleRow = (ev: React.MouseEvent<HTMLButtonElement>) => setCurrentRow(ev.currentTarget)
+  const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentRow(ev.currentTarget)
+    setCurrentIndex(index)
+  }
 
   // CERRAR MENU DE FILA
   const closeRowMenu = () => setCurrentRow(null)
@@ -48,10 +61,28 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
   const row = useCallback(
     ({ index, style }) => {
       const product: Product = products[index]
-      return <ProductRow product={product} style={style} handleRow={handleRow} />
+      return <ProductRow product={product} style={style} handleRow={handleRow(index)} />
     },
     [products]
   )
+
+  // BORRAR PRODUCTO
+  const deleteProduct = () =>
+    window.Alert({
+      title: $`Borrar productos`,
+      body: $`¿Estas seguro de querer borrar este producto de tu inventario, esta acción sera permanente?`,
+      type: 'confirm',
+      onConfirm: () => {
+        // ELIMINAR
+        const tmpProducts = { ...productsCtx.products }
+        Object.keys(tmpProducts).forEach((key: string) => {
+          if (key === products[currentIndex].sku) delete tmpProducts[key]
+        })
+
+        // ACTUALIZAR
+        productsCtx.setProducts(tmpProducts, false)
+      },
+    })
 
   return (
     <>
@@ -102,7 +133,11 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
           </Button>
         </MenuItem>
         <MenuItem>
-          <Button fullWidth variant='outlined' startIcon={<DeleteTwoTone />}>
+          <Button
+            fullWidth
+            variant='outlined'
+            onClick={deleteProduct}
+            startIcon={<DeleteTwoTone />}>
             {$`Borrar`}
           </Button>
         </MenuItem>
