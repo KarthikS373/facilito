@@ -49,7 +49,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
 						<div className={Styles.icon}>
-							<Image src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
+							<Image unoptimized src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
 						</div>
 						<div>
 							<h1>{$`Facilito©`}</h1>
@@ -57,7 +57,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</div>
 					</div>
 					<div className={Styles.logoTablet}>
-						<Image src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+						<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
 					</div>
 					<IconButton color='inherit' aria-label='info'>
 						<InfoTwoTone />
