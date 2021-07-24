@@ -1,6 +1,5 @@
 // REACT
 import { useEffect } from 'react'
-import { formsListener } from 'utils/forms'
 
 /**
  * Hook de filtros
@@ -55,22 +54,18 @@ const useFilter = (
 export default useFilter
 
 /**
- * Hook de Formularios
- * @description Retornar todos los formularios de un negocio
- * @param  {(forms: FormInterface) => unknown} setForms
- * @param  {string} companyID
+ * Hook de formularios globales
+ * @description Retorna la lista de productos por empresa.
+ * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
+ * @param  {boolean} hasForms
+ * @param  {FormInterface} forms
  */
-export const useForms = (setForms: (forms: FormInterface) => unknown, companyID?: string) => {
+export const useGlobalForms = (
+	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	hasForms: boolean,
+	forms: FormInterface
+) => {
 	useEffect(() => {
-		// LISTENER
-		let listener: EmptyFunction | null = null
-
-		// VERIFICAR EMPRESA
-		if (companyID) formsListener(companyID, setForms).then((listen) => (listener = listen))
-
-		// LIMPIAR LISTENER
-		return () => {
-			if (listener) listener()
-		}
-	}, [companyID, setForms])
+		if (hasForms) setForms(forms)
+	}, [hasForms])
 }

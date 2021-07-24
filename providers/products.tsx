@@ -9,7 +9,6 @@ import ProductsContext from 'context/products'
 import useProducts from 'hooks/products'
 
 // UTILS
-import { replaceBusiness } from 'utils/business'
 import { replaceProducts } from 'utils/products'
 
 const ProductsProvider: React.FC = (props) => {
@@ -31,7 +30,7 @@ const ProductsProvider: React.FC = (props) => {
 				: products
 
 			// GUARDAR EN NEGOCIO
-			replaceBusiness(businessCtx.business?.id, { products: Object.keys(newProducts) })
+			businessCtx.setBusinessDB({ products: Object.keys(newProducts) })
 
 			// GUARDAR EN DB PRODUCTOS
 			replaceProducts(newProducts, businessCtx.business?.id)

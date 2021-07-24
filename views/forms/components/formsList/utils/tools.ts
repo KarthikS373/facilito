@@ -8,7 +8,7 @@
 const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	setBusiness: (business: Partial<Business>) => unknown
+	setGlobalForms: (forms: FormInterface) => unknown
 ) => {
 	setForms((prevForms: FormInterface) => {
 		let answers = [...prevForms.answers]
@@ -25,10 +25,11 @@ const deleteForm = (
 		answers = answers.filter((_answer: FormAnswer, index: number) => index !== formIndex)
 
 		// CONTEXTO
-		setBusiness({ forms: forms.map((form: Form) => form.id) })
+		const updatedForms = { forms, answers }
+		setGlobalForms(updatedForms)
 
 		// ACTUALIZAR
-		return { forms, answers }
+		return updatedForms
 	})
 }
 

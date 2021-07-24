@@ -46,7 +46,7 @@ const Products: React.FC = withStrings(({ $ }) => {
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
 
-	const productsLength: number = Object.keys(productsCtx.products).length
+	const productsLength: boolean = Object.keys(productsCtx.products).length > 0
 
 	// ACTUALIZAR PRODUCTOS GLOBALES
 	useGlobalProducts(setProducts, productsLength, productsCtx.products)

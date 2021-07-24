@@ -24,12 +24,12 @@ export const useInitialFilter = (setFilter: React.Dispatch<React.SetStateAction<
  */
 const useGlobalProducts = (
 	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
-	productsLength: number,
+	hasProducts: boolean,
 	products: { [id: string]: Product }
 ) => {
 	useEffect(() => {
-		if (productsLength > 0) setProducts(Object.values(products))
-	}, [productsLength])
+		if (hasProducts) setProducts(Object.values(products))
+	}, [hasProducts])
 }
 
 export default useGlobalProducts
@@ -39,15 +39,14 @@ export default useGlobalProducts
  * @description Reordena los productos segun un filtro
  * @param  {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
  * @param  {string} filter
- * @param  {number} productsLength
+ * @param  {boolean} hasProducts
  */
 export const useFilters = (
 	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 	filter: string,
-	productsLength: number
+	hasProducts: boolean
 ) => {
 	useEffect(() => {
-		if (productsLength > 0)
-			setProducts((prevProducts: Product[]) => filterProducts(prevProducts, filter))
-	}, [filter, productsLength])
+		if (hasProducts) setProducts((prevProducts: Product[]) => filterProducts(prevProducts, filter))
+	}, [filter, hasProducts])
 }

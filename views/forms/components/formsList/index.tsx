@@ -2,14 +2,14 @@
 import React, { useState, useContext } from 'react'
 
 // HOOKS
-import useFilter, { useForms } from './utils/hooks'
+import useFilter, { useGlobalForms } from './utils/hooks'
 import deleteForm from './utils/tools'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // CONTEXTO
-import BusinessContext from 'context/business'
+import FormsContext from 'context/forms'
 
 // COMPONENTES
 import FormCard from './components/card'
@@ -26,19 +26,18 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 		answers: [],
 	})
 
-	// NEGOCIO
-	const businessCtx = useContext(BusinessContext)
-
-	// OBTENER EL LISTADO DE FORMULARIOS
-	useForms(setForms, businessCtx.business?.id)
+	// FORMULARIOS
+	const formsCtx = useContext(FormsContext)
 
 	// FILTROS
-	const hasForms: boolean = forms.forms.length > 0
+	const hasForms: boolean = formsCtx.forms.forms.length > 0
 	useFilter(filter, hasForms, setForms)
 
 	// BORRAR FORMULARIO
-	const deleteFormEv = (formID: string) => () =>
-		deleteForm(formID, setForms, businessCtx.setBusinessDB)
+	const deleteFormEv = (formID: string) => () => deleteForm(formID, setForms, formsCtx.setForms)
+
+	// ACTUALIZAR CON CONTEXT
+	useGlobalForms(setForms, hasForms, formsCtx.forms)
 
 	return (
 		<div className={Styles.container}>

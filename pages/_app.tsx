@@ -9,6 +9,7 @@ import ProductsProvider from 'providers/products'
 import PortrayProvider from 'providers/lang'
 import AlertProvider from 'providers/alerts'
 import ThemeProvider from 'providers/theme'
+import FormsProvider from 'providers/forms'
 import UserProvider from 'providers/user'
 
 // COMPONENTS
@@ -47,15 +48,17 @@ const FacilitoApp = ({ Component, pageProps }: AppProps) => {
 				<UserProvider>
 					<BusinessProvider>
 						<ProtectedRoutesProvider>
-							<ProductsProvider>
-								<PortrayProvider settings={{ mainLang: 'es' }}>
-									<AlertProvider />
-									<Layout>
-										<CssBaseline />
-										<Component {...pageProps} />
-									</Layout>
-								</PortrayProvider>
-							</ProductsProvider>
+							<FormsProvider>
+								<ProductsProvider>
+									<PortrayProvider settings={{ mainLang: 'es' }}>
+										<AlertProvider />
+										<Layout>
+											<CssBaseline />
+											<Component {...pageProps} />
+										</Layout>
+									</PortrayProvider>
+								</ProductsProvider>
+							</FormsProvider>
 						</ProtectedRoutesProvider>
 					</BusinessProvider>
 				</UserProvider>

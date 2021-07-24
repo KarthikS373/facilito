@@ -11,9 +11,7 @@ import Image from 'next/image'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
 import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import AppBar from '@material-ui/core/AppBar'
@@ -23,7 +21,6 @@ import Badge from '@material-ui/core/Badge'
 // ICONOS
 import NotificationsTwoTone from '@material-ui/icons/NotificationsTwoTone'
 import TranslateTwoTone from '@material-ui/icons/TranslateTwoTone'
-import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
 import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
 import MenuTwoTone from '@material-ui/icons/MenuTwoTone'
@@ -33,6 +30,7 @@ import MoreVert from '@material-ui/icons/MoreVert'
 import NotificationsMenu from './components/notificationsMenu'
 import AccountMenu from './components/accountMenu'
 import SideBar from './components/sideBar'
+import Search from './components/search'
 
 // HOOKS
 import { useNotifications } from './utils/hooks'
@@ -140,21 +138,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 						</IconButton>
 
 						{/* BUSCADOR */}
-						{showSearchBar && (
-							<TextField
-								fullWidth
-								variant='outlined'
-								className={Styles.search}
-								placeholder={$`Buscar formularios, productos, eventos y ordenes en facilito`}
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position='start'>
-											<SearchTwoTone />
-										</InputAdornment>
-									),
-								}}
-							/>
-						)}
+						{showSearchBar && <Search />}
 
 						{/* MONEDA */}
 						<Button

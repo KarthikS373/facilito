@@ -46,22 +46,6 @@
 			}
 		}
 
-		.search {
-			height: 50px;
-
-			@include for-size(phone-landscape) {
-				display: none;
-			}
-
-			& > div {
-				height: 100%;
-
-				svg {
-					opacity: 0.6;
-				}
-			}
-		}
-
 		.actions {
 			color: #333;
 		}
