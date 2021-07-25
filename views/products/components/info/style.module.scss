@@ -12,6 +12,10 @@
 		flex-direction: column;
 	}
 
+	@include for-size(phone-portrait) {
+		padding: 15px var(--margin) 10px var(--margin);
+	}
+
 	.actions {
 		display: grid;
 		grid-template-columns: auto auto;
@@ -23,7 +27,6 @@
 			grid-template-rows: auto auto;
 			align-items: center;
 			width: 100%;
-			max-width: 265px;
 		}
 
 		& > button:first-child {

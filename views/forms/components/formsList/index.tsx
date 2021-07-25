@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // HOOKS
-import useFilter, { useGlobalForms } from './utils/hooks'
+import useFilter from './utils/hooks'
 import deleteForm from './utils/tools'
 
 // ESTILOS
@@ -30,14 +30,17 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	const formsCtx = useContext(FormsContext)
 
 	// FILTROS
-	const hasForms: boolean = formsCtx.forms.forms.length > 0
-	useFilter(filter, hasForms, setForms)
+	const changesTrigger: number =
+		formsCtx.forms.forms.length +
+		formsCtx.forms.answers.length +
+		formsCtx.forms.answers
+			.map((answer) => answer?.data.length || 0)
+			.reduce((prev, next) => prev + next, 0)
+
+	useFilter(filter, changesTrigger, setForms, formsCtx.forms)
 
 	// BORRAR FORMULARIO
 	const deleteFormEv = (formID: string) => () => deleteForm(formID, setForms, formsCtx.setForms)
-
-	// ACTUALIZAR CON CONTEXT
-	useGlobalForms(setForms, hasForms, formsCtx.forms)
 
 	return (
 		<div className={Styles.container}>

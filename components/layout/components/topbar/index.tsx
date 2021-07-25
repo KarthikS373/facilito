@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, MouseEvent, useCallback, useContext } from 'react'
+import React, { useState, MouseEvent, useContext } from 'react'
 
 // ROUTER
 import { useRouter } from 'next/router'
@@ -12,7 +12,6 @@ import Styles from './style.module.scss'
 
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
@@ -27,16 +26,12 @@ import MenuTwoTone from '@material-ui/icons/MenuTwoTone'
 import MoreVert from '@material-ui/icons/MoreVert'
 
 // COMPONENTES
-import NotificationsMenu from './components/notificationsMenu'
 import AccountMenu from './components/accountMenu'
 import SideBar from './components/sideBar'
 import Search from './components/search'
 
-// HOOKS
-import { useNotifications } from './utils/hooks'
-
 // HELPERS
-import { closeSnack, resetNotificationsMenu, saveNotify, evaluatePath } from './utils/tools'
+import { evaluatePath } from './utils/tools'
 
 // CONTEXTOS
 import BusinessContext from 'context/business'
@@ -62,9 +57,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 	const router = useRouter()
 	const path = router.asPath
 
-	// ESTADO
-	const [notificationList, setNotificationList] = useState<FormNotification[]>([])
-
 	// BADGE
 	const [badgeAnchor, setBadgeAnchor] = useState<HTMLElement | null>(null)
 	const openBadge = Boolean(badgeAnchor)
@@ -72,23 +64,12 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 	// DRAWER
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 
-	// SNACKS
-	const [openSnack, setOpenSnack] = useState<boolean>(false)
-
 	// MENU DE CUENTA
 	const [accountMenu, setAccountMenu] = useState<HTMLElement | null>(null)
 	const openAccountMenu = Boolean(accountMenu)
 
-	// MENU DE NOTIFICACIÓN
-	const [notificationsMenu, setNotificationsMenu] = useState<HTMLElement | null>(null)
-	const openNotificationsMenu = Boolean(notificationsMenu)
-
 	// CERRAR MENU DE CUENTA
 	const closeAccountMenu = () => setAccountMenu(null)
-
-	// CERRAR MENU DE NOTIFICACIONES
-	const closeNotificationsMenu = () =>
-		resetNotificationsMenu(setNotificationList, setNotificationsMenu)
 
 	// ABRIR SIDE
 	const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
@@ -100,22 +81,9 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 	// ABRIR MENU
 	const openAccountMenuEv = (ev: MouseEvent<HTMLButtonElement>) => setAccountMenu(ev.currentTarget)
 
-	// ABRIR MENU DE NOTIFICACIONES
-	const openNotificationsMenuEv = (ev: MouseEvent<HTMLButtonElement>) =>
-		setNotificationsMenu(ev.currentTarget)
-
 	// CAMBIAR LENGUAJE
 	const changeLangCode = (newLangCode: 'es' | 'en') => () =>
 		businessCtx.setBusinessDB({ lang: newLangCode })
-
-	// CERRAR SNACK
-	const handleClose = closeSnack(setOpenSnack)
-
-	// GUARDAR NOTIFICACIONES
-	const saveNotifications = useCallback(saveNotify(setNotificationList, setOpenSnack), [])
-
-	// HOOK DE NOTIFICACIONES
-	useNotifications(saveNotifications, businessCtx.business?.id)
 
 	// RUTAS
 	const showAppbarSearch: boolean = evaluatePath(path)
@@ -160,11 +128,8 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 						</Button>
 
 						{/* NOTIFICACIONES */}
-						<IconButton
-							color='inherit'
-							aria-label='notifications'
-							onClick={openNotificationsMenuEv}>
-							<Badge badgeContent={notificationList.length || 0} color='secondary'>
+						<IconButton color='inherit' aria-label='notifications'>
+							<Badge badgeContent={0} color='secondary'>
 								<NotificationsTwoTone />
 							</Badge>
 						</IconButton>
@@ -200,30 +165,9 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 					{/* MENU DE CUENTA */}
 					<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
 
-					{/* MENU DE NOTIFICACIONES */}
-					<NotificationsMenu
-						notifications={notificationList}
-						onClose={closeNotificationsMenu}
-						open={openNotificationsMenu}
-						anchorEl={notificationsMenu}
-					/>
-
 					{/* MENU DE MONEDA */}
 					<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
 				</AppBar>
-
-				{/* ALERTAS */}
-				<Snackbar
-					anchorOrigin={{
-						vertical: 'bottom',
-						horizontal: 'right',
-					}}
-					className={Styles.snack}
-					open={openSnack}
-					autoHideDuration={6000}
-					onClose={handleClose}
-					message={notificationList[0]?.body}
-				/>
 			</>
 		)
 	else return <></>

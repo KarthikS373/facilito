@@ -1,6 +1,27 @@
 import { getCollection } from './db'
 
 /**
+ * Listener de formularios
+ * @description Crea un evento listener en la colecction "forms"
+ * @param  {string} companyID
+ * @param  {(forms:FormInterface)=>unknown} setForms
+ */
+export const answersListener = async (
+	companyID: string,
+	setAnswers: (forms: { [id: string]: FormAnswer }) => unknown
+) => {
+	// LEER
+	const businessCol = await getCollection('business')
+	const answersCol = businessCol.doc(companyID).collection('answers')
+
+	// LISTENER
+	return answersCol.onSnapshot((snap) => {
+		const answers = Object.fromEntries(snap.docs.map((doc) => [doc.id, doc.data() as FormAnswer]))
+		setAnswers(answers)
+	})
+}
+
+/**
  * Comparar respuestas
  * @description Crea una comparación profunda entre respuestas en la db.
  * @param  {(FormAnswer|undefined)[]} first
