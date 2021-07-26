@@ -8,10 +8,11 @@ import Styles from './style.module.scss'
 import withStrings from 'hoc/lang'
 
 // ICONS
-import SettingsInputComponentTwoTone from '@material-ui/icons/SettingsInputComponentTwoTone'
 import PersonOutlineTwoTone from '@material-ui/icons/PersonOutlineTwoTone'
 import BubbleChartTwoTone from '@material-ui/icons/BubbleChartTwoTone'
+import LocalOfferTwoTone from '@material-ui/icons/LocalOfferTwoTone'
 import EventNoteTwoTone from '@material-ui/icons/EventNoteTwoTone'
+import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
 import ListAltTwoTone from '@material-ui/icons/ListAltTwoTone'
 
 // PROPS
@@ -29,16 +30,19 @@ const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, style }) => {
 				{$`Nombre en formulario`}
 			</strong>
 			<strong>
-				<EventNoteTwoTone />
-				{$`Fecha de envío`}
-			</strong>
-			<strong>
 				<BubbleChartTwoTone />
 				{$`Estado`}
 			</strong>
 			<strong>
-				<SettingsInputComponentTwoTone />
-				{$`Acciones`}
+				<LocalOfferTwoTone />
+				{$`Total`}
+			</strong>
+			<strong>
+				<EventNoteTwoTone />
+				{$`Fecha de envío`}
+			</strong>
+			<strong>
+				<SettingsTwoTone />
 			</strong>
 		</div>
 	)

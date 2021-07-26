@@ -8,7 +8,7 @@ import Header from 'components/header'
 import Info from './components/info'
 
 // UTILS
-import useGlobalProducts, { useFilters, useInitialFilter } from './utils/hooks'
+import { useFilters, useInitialFilter } from './utils/hooks'
 import saveFilter from './utils/tools'
 
 // MATERIAL
@@ -46,13 +46,10 @@ const Products: React.FC = withStrings(({ $ }) => {
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
 
-	const productsLength: boolean = Object.keys(productsCtx.products).length > 0
-
-	// ACTUALIZAR PRODUCTOS GLOBALES
-	useGlobalProducts(setProducts, productsLength, productsCtx.products)
+	const changesTrigger: number = Object.keys(productsCtx.products).length
 
 	// FILTROS
-	useFilters(setProducts, filter, productsLength)
+	useFilters(setProducts, filter, changesTrigger, productsCtx.products)
 
 	// FILTRO INICIAL
 	useInitialFilter(setFilter)
@@ -69,8 +66,8 @@ const Products: React.FC = withStrings(({ $ }) => {
 					startIcon={<ShoppingCartTwoTone />}
 					color='primary'>{$`Crear producto`}</Button>
 			</Header>
-			<Info filter={filter} setFilter={changeFilter} onOpenSideBar={handleSideBar(true)} />
-			<ProductsList products={products} />
+			<Info onOpenSideBar={handleSideBar(true)} />
+			<ProductsList filter={filter} setFilter={changeFilter} products={products} />
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />
 		</>
 	)

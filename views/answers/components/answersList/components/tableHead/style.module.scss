@@ -3,7 +3,7 @@
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	display: grid;
 	align-items: center;
-	grid-template-columns: 40px minmax(200px, 1fr) 180px 125px 150px;
+	grid-template-columns: 40px minmax(200px, 1fr) 120px 120px 180px 63px;
 	column-gap: 15px;
 	padding: 10px 0 10px var(--margin);
 
@@ -27,6 +27,10 @@
 
 		&:last-child {
 			border: none;
+
+			svg {
+				margin-left: 12px;
+			}
 		}
 
 		& > svg {

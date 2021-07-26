@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -8,13 +8,13 @@ import Styles from './style.module.scss'
 import IconButton from '@material-ui/core/IconButton'
 
 // ICONS
-import RemoveRedEyeTwoTone from '@material-ui/icons/RemoveRedEyeTwoTone'
-import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import PrintTwoTone from '@material-ui/icons/PrintTwoTone'
+import MoreVert from '@material-ui/icons/MoreVert'
 
 // UTILS
 import { dateToString } from 'utils/tools'
+
+// CONTEXTO
+import BusinessContext from 'context/business'
 
 // PROPS
 interface RowProps {
@@ -23,26 +23,22 @@ interface RowProps {
 	index: number
 	style: React.CSSProperties
 	data: FormAnswerItemContainer
+	handleRow: (ev: React.MouseEvent<HTMLButtonElement>) => unknown
 }
-const AnswerRow: React.FC<RowProps> = ({ index, style, data, date, state }) => {
+const AnswerRow: React.FC<RowProps> = ({ handleRow, index, style, data, date, state }) => {
+	// BUSINES
+	const businessCtx = useContext(BusinessContext)
+
 	return (
 		<div className={Styles.row} style={style}>
 			<span>• {index}</span>
 			<span>{data?.personal_name_0.answer}</span>
-			<span>{date && dateToString(date)}</span>
 			<span>{state}</span>
+			<span>{data?.total || `${businessCtx.business.badge} 0.00`}</span>
+			<span>{date && dateToString(date)}</span>
 			<span>
-				<IconButton size='small'>
-					<RemoveRedEyeTwoTone />
-				</IconButton>
-				<IconButton size='small'>
-					<PrintTwoTone />
-				</IconButton>
-				<IconButton size='small'>
-					<SettingsTwoTone />
-				</IconButton>
-				<IconButton size='small'>
-					<DeleteTwoTone />
+				<IconButton onClick={handleRow}>
+					<MoreVert />
 				</IconButton>
 			</span>
 		</div>

@@ -16,37 +16,22 @@ export const useInitialFilter = (setFilter: React.Dispatch<React.SetStateAction<
 }
 
 /**
- * Hook de productos
- * @description Retorna la lista de productos por empresa.
- * @param  {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
- * @param  {number} productsLength
- * @param  {products: {[id:string]: Product}} products
- */
-const useGlobalProducts = (
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
-	hasProducts: boolean,
-	products: { [id: string]: Product }
-) => {
-	useEffect(() => {
-		if (hasProducts) setProducts(Object.values(products))
-	}, [hasProducts])
-}
-
-export default useGlobalProducts
-
-/**
  * Hook de filtros
  * @description Reordena los productos segun un filtro
  * @param  {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
  * @param  {string} filter
- * @param  {boolean} hasProducts
+ * @param  {number} changesTrigger
+ * @param  {products: {[id:string]: Product}} products
  */
 export const useFilters = (
 	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
 	filter: string,
-	hasProducts: boolean
+	changesTrigger: number,
+	products: { [id: string]: Product }
 ) => {
 	useEffect(() => {
-		if (hasProducts) setProducts((prevProducts: Product[]) => filterProducts(prevProducts, filter))
-	}, [filter, hasProducts])
+		setProducts((prevProducts: Product[]) =>
+			filterProducts(prevProducts.length === 0 ? Object.values(products) : prevProducts, filter)
+		)
+	}, [filter, changesTrigger])
 }

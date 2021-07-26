@@ -17,27 +17,37 @@ import ImageTwoTone from '@material-ui/icons/ImageTwoTone'
 
 // PROPS
 interface TableHeaderProps {
+	filter: string
 	style: React.CSSProperties
+	setFilter: (newFilter: string) => void
 }
-const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, style }) => {
+const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, filter, setFilter, style }) => {
+	// CAMBIAR FILTRO
+	const changeFilter = (key: string) => () => {
+		const order: string = filter.substr(1)
+
+		// FILTRAR
+		setFilter(`${key}${order.charAt(1)}${order.charAt(0)}`)
+	}
+
 	return (
 		<div className={Styles.tableHeader} style={style}>
 			<strong>
 				<ImageTwoTone />
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('n')}>
 				<FormatColorTextTwoTone />
 				{$`Titulo`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('s')}>
 				<FingerprintTwoTone />
 				{$`SKU`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('c')}>
 				<WidgetsTwoTone />
 				{$`Categoria`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('p')}>
 				<LocalOfferTwoTone />
 				{$`Precio`}
 			</strong>
