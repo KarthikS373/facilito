@@ -12,7 +12,8 @@ import QuestionAnswerTwoTone from '@material-ui/icons/QuestionAnswerTwoTone'
 import Button from '@material-ui/core/Button'
 
 // HOOKS
-import useAnswers from './utils/hooks'
+import useAnswers, { useFilters, useInitialFilter } from './utils/hooks'
+import { saveFilter } from './utils/tools'
 
 // STRINGS
 import withStrings from 'hoc/lang'
@@ -29,17 +30,13 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	const formsCtx = useContext(FormsContext)
 
 	// RESPUESTAS
-	const [answers, setAnswers] = useState<{
-		answers: FormAnswer
-		tracking: FormTrackingStep[]
-	}>({
-		answers: {
-			data: [],
-			dates: [],
-			states: [],
-		},
-		tracking: [],
-	})
+	const [answers, setAnswers] = useState<FormAnswerSelf[]>([])
+
+	// FILTROS
+	const [filter, setFilter] = useState<string>('naz')
+
+	// ASIGNAR FILTRO
+	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
 
 	// BUSCAR RESPUESTAS
 	const changesTrigger: number =
@@ -51,16 +48,22 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 
 	useAnswers(formID, formsCtx.forms, changesTrigger, setAnswers)
 
+	// CAMBIAR FILTROS
+	useFilters(setAnswers, filter)
+
+	// FILTRO INICIAL
+	useInitialFilter(setFilter)
+
 	return (
 		<>
-			<Header customDescription={`${answers.answers?.data.length || 0} ${$`respuesta(s) creadas`}`}>
+			<Header customDescription={`${answers.length || 0} ${$`respuesta(s) creadas`}`}>
 				<Button
 					variant='contained'
 					style={{ color: '#fff' }}
 					startIcon={<QuestionAnswerTwoTone />}
 					color='primary'>{$`Descargar todo`}</Button>
 			</Header>
-			<AnswersList {...answers} />
+			<AnswersList answers={answers} setFilter={changeFilter} filter={filter} />
 		</>
 	)
 })

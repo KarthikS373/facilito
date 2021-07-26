@@ -78,6 +78,7 @@ interface FormAnswerSelf {
 	data: FormAnswerItemContainer
 	date: Date
 	state: string
+	index: number
 }
 
 interface FormAnswerItem {

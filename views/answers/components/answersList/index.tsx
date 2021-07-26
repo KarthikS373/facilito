@@ -28,10 +28,11 @@ import withStrings from 'hoc/lang'
 import { FixedSizeList as List } from 'react-window'
 
 interface AnswersListProps {
-	answers: FormAnswer
-	tracking: FormTrackingStep[]
+	filter: string
+	answers: FormAnswerSelf[]
+	setFilter: (newFilter: string) => void
 }
-const AnswersList: React.FC<AnswersListProps> = withStrings(({ $, tracking, answers }) => {
+const AnswersList: React.FC<AnswersListProps> = withStrings(({ $, filter, setFilter, answers }) => {
 	// FILA
 	const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
 	const openRowMenu = Boolean(currentRow)
@@ -49,24 +50,23 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(({ $, tracking, answ
 	const closeRowMenu = () => setCurrentRow(null)
 
 	// FILAS
-	const answersTrigger: number = answers?.data.length || 0
+	const answersTrigger: string = answers
+		?.map((answer: FormAnswerSelf) => answer.data['personal_name_0'].answer)
+		.join('')
 	const row = useCallback(
 		({ index, style }) => {
 			let newIndex: number = index - 1
-			const answer: FormAnswerSelf = {
-				data: answers.data[newIndex],
-				date: answers.dates[newIndex],
-				state: tracking[answers.states[newIndex]]?.name || '',
-			}
-
+			const answer: FormAnswerSelf = answers[newIndex]
 			return newIndex === -1 ? (
-				<TableHead style={style} />
+				<TableHead style={style} filter={filter} setFilter={setFilter} />
 			) : (
-				<AnswerRow {...answer} index={index} style={style} handleRow={handleRow(newIndex)} />
+				<AnswerRow {...answer} style={style} handleRow={handleRow(newIndex)} />
 			)
 		},
-		[answersTrigger]
+		[answersTrigger, filter]
 	)
+
+	console.log(currentIndex)
 
 	return (
 		<>
@@ -77,7 +77,7 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(({ $, tracking, answ
 						itemSize={68}
 						width='100%'
 						className={Styles.listContainer}
-						itemCount={(answers?.data.length || 0) + 1}>
+						itemCount={(answers?.length || 0) + 1}>
 						{row}
 					</List>
 				</TableContainer>

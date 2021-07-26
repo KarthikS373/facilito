@@ -18,26 +18,36 @@ import ListAltTwoTone from '@material-ui/icons/ListAltTwoTone'
 // PROPS
 interface TableHeaderProps {
 	style: React.CSSProperties
+	filter: string
+	setFilter: (newFilter: string) => void
 }
-const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, style }) => {
+const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, filter, setFilter, style }) => {
+	// CAMBIAR FILTRO
+	const changeFilter = (key: string) => () => {
+		const order: string = filter.substr(1)
+
+		// FILTRAR
+		setFilter(`${key}${order.charAt(1)}${order.charAt(0)}`)
+	}
+
 	return (
 		<div className={Styles.tableHeader} style={style}>
-			<strong>
+			<strong onClick={changeFilter('i')}>
 				<ListAltTwoTone />
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('n')}>
 				<PersonOutlineTwoTone />
 				{$`Nombre en formulario`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('s')}>
 				<BubbleChartTwoTone />
 				{$`Estado`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('t')}>
 				<LocalOfferTwoTone />
 				{$`Total`}
 			</strong>
-			<strong>
+			<strong onClick={changeFilter('d')}>
 				<EventNoteTwoTone />
 				{$`Fecha de envío`}
 			</strong>
