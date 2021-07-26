@@ -37,7 +37,7 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 
 	// COMPONENTES
 	const components: FormComponent[] =
-		formsCtx.forms.forms.find((form) => form.id === formID).components || []
+		formsCtx.forms.forms.find((form) => form.id === formID)?.components || []
 
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
