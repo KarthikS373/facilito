@@ -12,20 +12,18 @@ import Paper from '@material-ui/core/Paper'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import TableHead from './components/tableHead'
 import ProductRow from './components/row'
+
+// UTILS
+import deleteProduct from './utils/tools'
 
 // CONTEXTO
 import ProductsContext from 'context/products'
 
 // ICONS
-import FormatColorTextTwoTone from '@material-ui/icons/FormatColorTextTwoTone'
-import FingerprintTwoTone from '@material-ui/icons/FingerprintTwoTone'
-import LocalOfferTwoTone from '@material-ui/icons/LocalOfferTwoTone'
-import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
-import WidgetsTwoTone from '@material-ui/icons/WidgetsTwoTone'
 import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
 import CreateTwoTone from '@material-ui/icons/CreateTwoTone'
-import ImageTwoTone from '@material-ui/icons/ImageTwoTone'
 
 // HOOC
 import withStrings from 'hoc/lang'
@@ -42,11 +40,10 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
 
   // FILA
   const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
+  const openRowMenu = Boolean(currentRow)
 
   // NUMERO DE PRODUCTO
   const [currentIndex, setCurrentIndex] = useState<number>(0)
-
-  const openRowMenu = Boolean(currentRow)
 
   // ASIGNAR FILA
   const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,70 +54,34 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
   // CERRAR MENU DE FILA
   const closeRowMenu = () => setCurrentRow(null)
 
+  // BORRAR PRODUCTO
+  const deleteProductEv = () => deleteProduct(productsCtx, $, products, currentIndex)
+
   // FILA
+  const productsTrigger: number = products.length
   const row = useCallback(
     ({ index, style }) => {
-      const product: Product = products[index]
-      return index === 0 ? (
-        <div className={Styles.tableHeader}>
-          <strong>
-            <ImageTwoTone />
-          </strong>
-          <strong>
-            <FormatColorTextTwoTone />
-            {$`Titulo`}
-          </strong>
-          <strong>
-            <FingerprintTwoTone />
-            {$`SKU`}
-          </strong>
-          <strong>
-            <WidgetsTwoTone />
-            {$`Categoria`}
-          </strong>
-          <strong>
-            <LocalOfferTwoTone />
-            {$`Precio`}
-          </strong>
-          <strong>
-            <SettingsTwoTone style={{ marginLeft: '11px' }} />
-          </strong>
-        </div>
+      let newIndex: number = index - 1
+      const product: Product = products[Math.max(0, newIndex)]
+      return newIndex === -1 ? (
+        <TableHead style={style} key={newIndex} />
       ) : (
-        <ProductRow product={product} style={style} handleRow={handleRow(index)} />
+        <ProductRow product={product} key={newIndex} style={style} handleRow={handleRow(index)} />
       )
     },
-    [products]
+    [productsTrigger]
   )
-
-  // BORRAR PRODUCTO
-  const deleteProduct = () =>
-    window.Alert({
-      title: $`Borrar productos`,
-      body: $`¿Estas seguro de querer borrar este producto de tu inventario, esta acción sera permanente?`,
-      type: 'confirm',
-      onConfirm: () => {
-        // ELIMINAR
-        const tmpProducts = { ...productsCtx.products }
-        Object.keys(tmpProducts).forEach((key: string) => {
-          if (key === products[currentIndex].sku) delete tmpProducts[key]
-        })
-
-        // ACTUALIZAR
-        productsCtx.setProducts(tmpProducts, false)
-      },
-    })
 
   return (
     <>
       <div className={Styles.container}>
         <TableContainer component={Paper} style={{ backgroundColor: 'rgb(252, 252, 252)' }}>
           <List
-            className={Styles.listContainer}
             height={272}
             itemSize={68}
             width='100%'
-            itemCount={products.length}>
+            itemCount={products.length + 1}
+            className={Styles.listContainer}>
             {row}
           </List>
         </TableContainer>
@@ -139,7 +100,7 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(({ $, products }) 
           <Button
             fullWidth
             variant='outlined'
-            onClick={deleteProduct}
+            onClick={deleteProductEv}
             startIcon={<DeleteTwoTone />}>
             {$`Borrar`}
           </Button>

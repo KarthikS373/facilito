@@ -2,14 +2,16 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
+// VIEWS
+import Answers from 'views/answers'
+
 // PAGE
-const Answers: NextPage = () => {
+const AnswersPage: NextPage = () => {
 	// ROUTER
 	const router = useRouter()
 	const { formID } = router.query
-	console.log(formID)
 
-	return <p>Prueba</p>
+	return <Answers formID={formID as string} />
 }
 
-export default Answers
+export default AnswersPage

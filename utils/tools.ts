@@ -1,6 +1,6 @@
 /**
  * Remover tildes
- * @ Retornar un string sin tildes
+ * @description Retornar un string sin tildes
  * @param  {string} str
  */
 const slugify = (str: string) => {
@@ -29,4 +29,28 @@ export const normalizeString = (str: string) => {
 		.replace(/[^\w\s]/gi, '')
 		.replace(/ /g, '_')
 		.toLowerCase()
+}
+
+/**
+ * Parser de date
+ * @description Convierte un objeto TimeStamp o Date en Date
+ * @param  {unknown} date
+ */
+export const parseDate = (date: unknown): Date => {
+	if (date && typeof date === 'object') {
+		// @ts-ignore
+		if ('toDate' in date) return date.toDate()
+		else return date as Date
+	}
+}
+
+/**
+ * Fecha a string
+ * @description Convierte una fecha a un string Fecha, Hora
+ * @param  {Date} date
+ */
+export const dateToString = (date: Date) => {
+	return `${parseDate(date).toLocaleDateString('en-GB')}, ${parseDate(date).toLocaleTimeString(
+		'en-US'
+	)}`
 }

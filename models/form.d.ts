@@ -1,7 +1,7 @@
 interface Form {
-	tracking?: { name: string; color?: string }[]
 	includePersonalData: FormPersonalData
 	answersConnection?: ConnectionMethods
+	tracking?: FormTrackingStep[]
 	components: BlockComponent[]
 	payMethod?: 'cash' | 'card'
 	checkout?: FormCheckout
@@ -17,6 +17,11 @@ interface Form {
 	url: string
 	qr: string
 	id: string
+}
+
+interface FormTrackingStep {
+	name: string
+	color?: string
 }
 
 interface FormCheckout {
@@ -67,4 +72,20 @@ interface FormAnswer {
 	data: FormAnswerItemContainer[]
 	dates: Date[]
 	states: number[]
+}
+
+interface FormAnswerSelf {
+	data: FormAnswerItemContainer
+	date: Date
+	state: string
+}
+
+interface FormAnswerItem {
+	[index: string]: FormInputValue
+	answer: FormInputValue
+	quest: string
+}
+
+interface FormAnswerItemContainer {
+	[index: string]: FormAnswerItem
 }

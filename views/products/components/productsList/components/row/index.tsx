@@ -31,7 +31,6 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 	return (
 		<div
 			className={Styles.row}
-			key={product.sku}
 			style={{
 				...style,
 				backgroundColor: !product.active ? 'rgba(255, 0, 0, .03)' : '',
