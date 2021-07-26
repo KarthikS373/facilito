@@ -19,16 +19,16 @@ const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[])
 /**
  * Borrar respuestas
  * @description Crea una alerta para confirmar y borrar
+ * @param  {(TemplateStringsArray) => string} $
  * @param  {number} index
  * @param  {sting} formID
  * @param  {sting} companyID
- * @param  {(TemplateStringsArray) => string} $
  */
 export const deleteAnswerPrompt = (
+	$: (TemplateStringsArray) => string,
 	index: number,
 	formID?: string,
-	companyID?: string,
-	$: (TemplateStringsArray) => string
+	companyID?: string
 ) => {
 	window.Alert({
 		title: $`Borrar respuesta`,
