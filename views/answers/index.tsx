@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button'
 
 // HOOKS
 import useAnswers, { useFilters, useInitialFilter } from './utils/hooks'
-import { saveFilter } from './utils/tools'
+import { saveFilter, getChangesTrigger } from './utils/tools'
 
 // STRINGS
 import withStrings from 'hoc/lang'
@@ -35,16 +35,15 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	// FILTROS
 	const [filter, setFilter] = useState<string>('naz')
 
+	// COMPONENTES
+	const components: FormComponent[] =
+		formsCtx.forms.forms.find((form) => form.id === formID).components || []
+
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
 
 	// BUSCAR RESPUESTAS
-	const changesTrigger: number =
-		formsCtx.forms.forms.length +
-		formsCtx.forms.answers.length +
-		formsCtx.forms.answers
-			.map((answer) => answer?.data.length || 0)
-			.reduce((prev, next) => prev + next, 0)
+	const changesTrigger: number = getChangesTrigger(formsCtx.forms)
 
 	useAnswers(formID, formsCtx.forms, changesTrigger, setAnswers)
 
@@ -63,7 +62,13 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 					startIcon={<QuestionAnswerTwoTone />}
 					color='primary'>{$`Descargar todo`}</Button>
 			</Header>
-			<AnswersList answers={answers} setFilter={changeFilter} filter={filter} />
+			<AnswersList
+				filter={filter}
+				formID={formID}
+				answers={answers}
+				components={components}
+				setFilter={changeFilter}
+			/>
 		</>
 	)
 })

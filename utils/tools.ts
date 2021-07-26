@@ -54,3 +54,24 @@ export const dateToString = (date: Date) => {
 		'en-US'
 	)}`
 }
+
+/**
+ * Imprimir html
+ * @description Imprime una ventana con text/html
+ * @param  {string} html
+ */
+export const printHTML = (html: string) => {
+	// VENTANA
+	let customWindow = window.open('', 'PRINT')
+
+	// ESCRIBIR
+	customWindow?.document.write(html)
+
+	// CERRAR
+	customWindow?.document.close()
+	customWindow?.focus()
+
+	// IMPRIMIR
+	customWindow?.print()
+	customWindow?.close()
+}

@@ -128,7 +128,7 @@ export const signingUser = async (
 		const auth = await getAuth()
 
 		// RECORDAR USUARIO
-		await auth().setPersistence(rememberUser ? 'LOCAL' : 'SESSION')
+		await auth().setPersistence(rememberUser ? 'local' : 'session')
 
 		// CREACIÓN/LOGIN
 		if (name)

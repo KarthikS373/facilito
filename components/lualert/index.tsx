@@ -17,6 +17,7 @@ const Styles: {
   openAlert: CSSProperties
   openContent: CSSProperties
   closeContent: CSSProperties
+  alertBody: CSSProperties
 } = {
   alertContainer: {
     width: '100%',
@@ -52,6 +53,10 @@ const Styles: {
     borderRadius: '10px',
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  },
+  alertBody: {
+    maxHeight: '70vh',
+    overflowY: 'auto',
   },
   alertContentH1: {
     color: '#333',
@@ -263,17 +268,19 @@ export default class AlertTemplate extends PureComponent<HOCProps, InternalState
                     : 'calc(100% - 60px)',
                 }
           }>
-          {this.state.type !== 'alert' && this.state.title.length > 0 && (
-            <h1 style={Styles.alertContentH1}>{this.state.title}</h1>
-          )}
-          <p
-            style={{
-              ...Styles.alertContentP,
-              fontSize: this.state.type === 'alert' ? '1.2em' : '1em',
-            }}>
-            {this.state.body}
-          </p>
-          {this.state.customElements}
+          <div style={Styles.alertBody}>
+            {this.state.type !== 'alert' && this.state.title.length > 0 && (
+              <h1 style={Styles.alertContentH1}>{this.state.title}</h1>
+            )}
+            <p
+              style={{
+                ...Styles.alertContentP,
+                fontSize: this.state.type === 'alert' ? '1.2em' : '1em',
+              }}>
+              {this.state.body}
+            </p>
+            {this.state.customElements}
+          </div>
 
           {this.state.type !== 'window' && !this.state.hideActions && (
             <ul style={Styles.alertActions}>

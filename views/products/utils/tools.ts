@@ -19,7 +19,7 @@ const saveFilter = (filter: string, setFilter: React.Dispatch<React.SetStateActi
 export const filterProducts = (products: Product[], filter: string) => {
 	const tmpProducts = [...products]
 	let field: string = filter.charAt(0)
-	let order: string = filter.substr(1)
+	let sort: string = filter.substr(1)
 
 	// BUSCAR COLUMNA
 	if (field === 'n') field = 'title'
@@ -28,12 +28,12 @@ export const filterProducts = (products: Product[], filter: string) => {
 	else if (field === 'p') field = 'price'
 
 	// ORDEN
-	const ascOrder: boolean = order === 'az'
+	const ascSort: boolean = sort === 'az'
 
 	// FILTRO
 	tmpProducts.sort((aF: Product, bF: Product) => {
-		const a = ascOrder ? aF : bF
-		const b = ascOrder ? bF : aF
+		const a = ascSort ? aF : bF
+		const b = ascSort ? bF : aF
 		if (field !== 'price') return a[field].toString().localeCompare(b[field].toString())
 		else return a[field] - b[field]
 	})

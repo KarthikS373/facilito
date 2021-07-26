@@ -90,3 +90,8 @@ interface FormAnswerItem {
 interface FormAnswerItemContainer {
 	[index: string]: FormAnswerItem
 }
+
+interface FormSortedAnswer {
+	answer: FormAnswerItem
+	key: string
+}

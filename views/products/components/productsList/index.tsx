@@ -48,17 +48,17 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(
     // NUMERO DE PRODUCTO
     const [currentIndex, setCurrentIndex] = useState<number>(0)
 
-    // ASIGNAR FILA
-    const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
-      setCurrentRow(ev.currentTarget)
-      setCurrentIndex(index)
-    }
-
     // CERRAR MENU DE FILA
     const closeRowMenu = () => setCurrentRow(null)
 
     // BORRAR PRODUCTO
     const deleteProductEv = () => deleteProduct(productsCtx, $, products, currentIndex)
+
+    // ASIGNAR FILA
+    const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
+      setCurrentRow(ev.currentTarget)
+      setCurrentIndex(index)
+    }
 
     // FILA
     const productsTrigger: string = products.map((product: Product) => product.sku).join('')
@@ -67,11 +67,11 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(
         let newIndex: number = index - 1
         const product: Product = products[Math.max(0, newIndex)]
         return newIndex === -1 ? (
-          <TableHead style={style} key={newIndex} filter={filter} setFilter={setFilter} />
+          <TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
         ) : (
           <ProductRow
             style={style}
-            key={newIndex}
+            key={product.sku}
             product={product}
             handleRow={handleRow(newIndex)}
           />

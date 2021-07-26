@@ -34,7 +34,7 @@ const AnswerRow: React.FC<RowProps> = ({ handleRow, index, style, data, date, st
 			<span>• {index}</span>
 			<span>{data?.personal_name_0.answer}</span>
 			<span>{state}</span>
-			<span>{data?.total || `${businessCtx.business.badge} 0.00`}</span>
+			<span>{data?.total?.answer || `${businessCtx.business.badge} 0.00`}</span>
 			<span>{date && dateToString(date)}</span>
 			<span>
 				<IconButton onClick={handleRow}>
