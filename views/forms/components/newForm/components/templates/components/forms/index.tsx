@@ -43,7 +43,7 @@ const NewForm: React.FC = withStrings(({ $ }) => {
 	const [templates, setTemplates] = useState<Form[]>([])
 
 	// LEER TEMPLATES
-	useTemplateForms(setTemplates)
+	useTemplateForms(setTemplates, businessCtx.business?.id)
 
 	// MOSTRAR INFORMACION
 	const showCard = (form: Form) => () => showTemplateCard(form, $, showPrompt)

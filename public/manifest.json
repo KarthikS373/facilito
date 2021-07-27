@@ -1,6 +1,7 @@
 {
 	"short_name": "Facilito",
 	"name": "Facilito",
+	"version": "3.2.0",
 	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#1AA5BB",
