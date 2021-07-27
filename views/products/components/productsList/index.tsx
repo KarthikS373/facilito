@@ -4,6 +4,9 @@ import React, { useState, useCallback, useContext } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// NEXT
+import Link from 'next/link'
+
 // MATERIAL
 import TableContainer from '@material-ui/core/TableContainer'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -32,8 +35,8 @@ import withStrings from 'hoc/lang'
 import { FixedSizeList as List } from 'react-window'
 
 interface ProductsListProps {
-  products: Product[]
   filter: string
+  products: Product[]
   setFilter: (newFilter: string) => void
 }
 const ProductsList: React.FC<ProductsListProps> = withStrings(
@@ -100,9 +103,11 @@ const ProductsList: React.FC<ProductsListProps> = withStrings(
           anchorEl={currentRow}
           open={openRowMenu}>
           <MenuItem>
-            <Button fullWidth variant='outlined' startIcon={<CreateTwoTone />}>
-              {$`Editar`}
-            </Button>
+            <Link href={`/p/${products[currentIndex]?.sku}/editar`}>
+              <Button fullWidth variant='outlined' startIcon={<CreateTwoTone />}>
+                {$`Editar`}
+              </Button>
+            </Link>
           </MenuItem>
           <MenuItem>
             <Button

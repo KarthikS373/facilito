@@ -7,6 +7,10 @@ import SideBar from './components/sidebar'
 import Header from 'components/header'
 import Info from './components/info'
 
+// NEXT
+import Link from 'next/link'
+import ROUTES from 'router/routes'
+
 // UTILS
 import { useFilters, useInitialFilter } from './utils/hooks'
 import saveFilter from './utils/tools'
@@ -60,11 +64,13 @@ const Products: React.FC = withStrings(({ $ }) => {
 				customDescription={`${
 					businessCtx.business?.products.length || 0
 				} ${$`producto(s) creados`}`}>
-				<Button
-					variant='contained'
-					style={{ color: '#fff' }}
-					startIcon={<ShoppingCartTwoTone />}
-					color='primary'>{$`Crear producto`}</Button>
+				<Link href={ROUTES.newProduct}>
+					<Button
+						variant='contained'
+						style={{ color: '#fff' }}
+						startIcon={<ShoppingCartTwoTone />}
+						color='primary'>{$`Crear producto`}</Button>
+				</Link>
 			</Header>
 			<Info onOpenSideBar={handleSideBar(true)} />
 			<ProductsList filter={filter} setFilter={changeFilter} products={products} />

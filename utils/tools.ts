@@ -1,3 +1,6 @@
+// FUNCTIONS
+import getCallable from './functions'
+
 /**
  * Remover tildes
  * @description Retornar un string sin tildes
@@ -53,6 +56,39 @@ export const dateToString = (date: Date) => {
 	return `${parseDate(date).toLocaleDateString('en-GB')}, ${parseDate(date).toLocaleTimeString(
 		'en-US'
 	)}`
+}
+
+/**
+ * Fecha a string de hora
+ * @description Convierte una fecha a un string hora
+ * @param  {Date} date
+ */
+export const hourToString = (date: Date | null | string | number) => {
+	if (date && typeof date !== 'string' && typeof date !== 'number') {
+		return parseDate(date).toLocaleTimeString('en-US', {
+			hour: '2-digit',
+			minute: '2-digit',
+		})
+	} else return ''
+}
+
+/**
+ * Enviar correo
+ * @description Llama a la api sendEmail
+ * @param  {string} html
+ * @param  {string} subject
+ * @param  {string | string[]} email
+ */
+export const sendMail = async (html: string, subject: string, email?: string | string[]) => {
+	// QUERY STRING
+	const sendEmail = await getCallable('sendEmail')
+
+	// ENVIAR CORREO
+	return await sendEmail({
+		email,
+		subject,
+		content: html,
+	})
 }
 
 /**

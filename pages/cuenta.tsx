@@ -5,8 +5,8 @@ import { NextPage } from 'next'
 import Login from 'views/login'
 
 // PAGE
-const login: NextPage = () => {
+const AccountPage: NextPage = () => {
 	return <Login />
 }
 
-export default login
+export default AccountPage
