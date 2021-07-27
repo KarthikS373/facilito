@@ -6,6 +6,7 @@ import Styles from './style.module.scss'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import SideBar from './components/sideBar'
 import TableHead from './components/tableHead'
 import AnswerRow from './components/row'
 
@@ -39,10 +40,12 @@ interface AnswersListProps {
 	formID: string
 	answers: FormAnswerSelf[]
 	components: FormComponent[]
+	tracking: FormTrackingStep[]
 	setFilter: (newFilter: string) => void
+	updateAnswerState: (index: number, newState: number) => void
 }
 const AnswersList: React.FC<AnswersListProps> = withStrings(
-	({ $, components, formID, filter, setFilter, answers }) => {
+	({ $, components, formID, tracking, filter, setFilter, answers, updateAnswerState }) => {
 		// FILA
 		const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
 		const openRowMenu = Boolean(currentRow)
@@ -52,6 +55,12 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(
 
 		// NUMERO DE RESPUESTA
 		const [currentIndex, setCurrentIndex] = useState<number>(0)
+
+		// ABRIR SIDEBAR
+		const [openSideBar, setOpenSideBar] = useState<boolean>(false)
+
+		// ABRIR/CERRAR SIDEBAR
+		const hanldeSideBar = (open: boolean) => () => setOpenSideBar(open)
 
 		// CERRAR MENU DE FILA
 		const closeRowMenu = () => setCurrentRow(null)
@@ -74,8 +83,9 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(
 
 		// FILAS
 		const answersTrigger: string = answers
-			?.map((answer: FormAnswerSelf) => answer.data['personal_name_0'].answer)
+			.map((answer: FormAnswerSelf) => `${answer.index}_${answer.stateIndex}`)
 			.join('')
+
 		const row = useCallback(
 			({ index, style }) => {
 				let newIndex: number = index - 1
@@ -85,9 +95,10 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(
 				) : (
 					<AnswerRow
 						{...answer}
-						key={`${answer.data['personal_name_0'].answer}_${answer.index}`}
 						style={style}
+						key={answer.index}
 						handleRow={handleRow(newIndex)}
+						state={tracking[answer.stateIndex]?.name}
 					/>
 				)
 			},
@@ -108,6 +119,16 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(
 						</List>
 					</TableContainer>
 				</div>
+				<SideBar
+					formID={formID}
+					open={openSideBar}
+					tracking={tracking}
+					currentIndex={currentIndex}
+					onClose={hanldeSideBar(false)}
+					updateAnswerState={updateAnswerState}
+					answerIndex={answers[currentIndex]?.index - 1}
+					stateIndex={answers[currentIndex]?.stateIndex || 0}
+				/>
 				<PopperMenuList
 					placement='bottom-end'
 					onClose={closeRowMenu}
@@ -132,7 +153,11 @@ const AnswersList: React.FC<AnswersListProps> = withStrings(
 						</Button>
 					</MenuItem>
 					<MenuItem onClick={closeRowMenu}>
-						<Button fullWidth variant='outlined' startIcon={<SettingsInputCompositeTwoTone />}>
+						<Button
+							fullWidth
+							variant='outlined'
+							onClick={hanldeSideBar(true)}
+							startIcon={<SettingsInputCompositeTwoTone />}>
 							{$`Tracking`}
 						</Button>
 					</MenuItem>

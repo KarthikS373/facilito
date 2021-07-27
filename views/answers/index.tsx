@@ -13,8 +13,8 @@ import GetAppTwoTone from '@material-ui/icons/GetAppTwoTone'
 import Button from '@material-ui/core/Button'
 
 // HOOKS
-import useAnswers, { useFilters, useInitialFilter } from './utils/hooks'
-import { saveFilter, getChangesTrigger } from './utils/tools'
+import { useFilters, useInitialFilter } from './utils/hooks'
+import { saveFilter, getChangesTrigger, updateLocalAnswerState } from './utils/tools'
 
 // STRINGS
 import withStrings from 'hoc/lang'
@@ -36,9 +36,8 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	// FILTROS
 	const [filter, setFilter] = useState<string>('naz')
 
-	// COMPONENTES
-	const components: FormComponent[] =
-		formsCtx.forms.forms.find((form) => form.id === formID)?.components || []
+	// FORMULARIO
+	const currentForm: Form | undefined = formsCtx.forms.forms.find((form) => form.id === formID)
 
 	// ASIGNAR FILTRO
 	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
@@ -46,10 +45,12 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	// BUSCAR RESPUESTAS
 	const changesTrigger: number = getChangesTrigger(formsCtx.forms)
 
-	useAnswers(formID, formsCtx.forms, changesTrigger, setAnswers)
+	// CAMBIAR ESTADO DE RESPUESTAS
+	const updateAnswerState = (index: number, newState: number) =>
+		updateLocalAnswerState(index, newState, setAnswers)
 
 	// CAMBIAR FILTROS
-	useFilters(setAnswers, filter)
+	useFilters(filter, formID, formsCtx.forms, changesTrigger, setAnswers)
 
 	// FILTRO INICIAL
 	useInitialFilter(setFilter)
@@ -68,8 +69,10 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 				filter={filter}
 				formID={formID}
 				answers={answers}
-				components={components}
 				setFilter={changeFilter}
+				updateAnswerState={updateAnswerState}
+				tracking={currentForm?.tracking || []}
+				components={currentForm?.components || []}
 			/>
 		</>
 	)

@@ -9,7 +9,12 @@ import { parseDate } from 'utils/tools'
 export const getChangesTrigger = (forms: FormInterface) =>
 	forms.forms.length +
 	forms.answers.length +
-	forms.answers.map((answer) => answer?.data.length || 0).reduce((prev, next) => prev + next, 0)
+	forms.answers.map((answer) => answer?.data.length || 0).reduce((prev, next) => prev + next, 0) +
+	forms.answers
+		.map((answer) =>
+			answer?.states.reduce((state: number, nextState: number) => state + nextState, 0)
+		)
+		.reduce((prev, next) => prev + next, 0)
 
 /**
  * Guardar filtro de respuestas
@@ -56,7 +61,7 @@ export const filterAnswers = (answers: FormAnswerSelf[], filter: string) => {
 				parseFloat(a.data[field]?.answer.split(' ').slice(-1).pop() || '0') -
 				parseFloat(b.data[field]?.answer.split(' ').slice(-1).pop() || '0')
 			)
-		else if (header === 's') return a.state.localeCompare(b.state)
+		else if (header === 's') return a.stateIndex - b.stateIndex
 		// @ts-ignore
 		else return parseDate(a.date) - parseDate(b.date)
 	})
@@ -66,3 +71,28 @@ export const filterAnswers = (answers: FormAnswerSelf[], filter: string) => {
 }
 
 export default filterAnswers
+
+/**
+ * Cambiar estado de repuesta
+ * @description Mueve el arreglo state en una fila de respuestas
+ * @param  {number} index
+ * @param  {number} newState
+ * @param  {tracking}
+ * @param  {React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>} setAnswers
+ */
+export const updateLocalAnswerState = (
+	index: number,
+	newState: number,
+	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
+) => {
+	setAnswers((prevAnswers: FormAnswerSelf[]) => {
+		// EDITAR
+		const tmpAnswers: FormAnswerSelf[] = [...prevAnswers]
+		const answer: FormAnswerSelf = prevAnswers[index]
+		answer.stateIndex = newState
+
+		// ACTUALIZAR
+		tmpAnswers[index] = answer
+		return tmpAnswers
+	})
+}

@@ -163,3 +163,31 @@ export const sortAnswers = (components: FormComponent[], formData: FormAnswerIte
 		.flat() as FormSortedAnswer[]
 	return dataAnswers
 }
+
+/**
+ * Actualizar estado de respuesta
+ * @description Mueve una posicon el estado (tracking) de una respuesta
+ * @param  {number} index
+ * @param  {number} newState
+ * @param  {string} formID
+ * @param  {string} companyID
+ */
+export const updateAnswerState = async (
+	index: number,
+	newState: number,
+	formID?: string,
+	companyID?: string
+) => {
+	if (companyID && formID) {
+		// LEER
+		const answerDoc = await getAnswerDoc(companyID, formID)
+		const answerData = (await answerDoc.get()).data() as FormAnswer
+
+		// ACTUALIZAR ESTADO
+		const states = answerData.states || []
+		states[index] = newState
+
+		// GUARDAR
+		return answerDoc.set(answerData, { merge: true })
+	}
+}

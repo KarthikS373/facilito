@@ -22,6 +22,7 @@ interface Form {
 interface FormTrackingStep {
 	name: string
 	color?: string
+	description: string
 }
 
 interface FormCheckout {
@@ -77,7 +78,7 @@ interface FormAnswer {
 interface FormAnswerSelf {
 	data: FormAnswerItemContainer
 	date: Date
-	state: string
+	stateIndex: number
 	index: number
 }
 
