@@ -3,7 +3,8 @@
 	"name": "Facilito",
 	"version": "3.2.0",
 	"start_url": "/cuenta",
-	"display": "standalone",
+	"display": "fullscreen",
+	"categories": ["business", "personalization", "productivity", "social", "shopping"],
 	"theme_color": "#1AA5BB",
 	"background_color": "#ffffff",
 	"icons": [
@@ -16,6 +17,28 @@
 			"sizes": "1024x1024",
 			"type": "image/png",
 			"purpose": "any maskable"
+		}
+	],
+	"shortcuts": [
+		{
+			"name": "Formularios",
+			"url": "/formularios",
+			"description": "Visualiza la lista completa de todos tus formularios creados."
+		},
+		{
+			"name": "Productos",
+			"url": "/productos",
+			"description": "Recorre una lista con todos tus productos y su estado actual."
+		},
+		{
+			"name": "Eventos",
+			"url": "/calendario",
+			"description": "Recibe cambios en tiempo real en un calendario con tus eventos."
+		},
+		{
+			"name": "Tracking",
+			"url": "/tracking",
+			"description": "Configura las ordenes en tus formularios con notificaciones."
 		}
 	]
 }
