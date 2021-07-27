@@ -2,7 +2,7 @@
 	"short_name": "Facilito",
 	"name": "Facilito",
 	"version": "3.2.0",
-	"start_url": ".",
+	"start_url": "/cuenta",
 	"display": "standalone",
 	"theme_color": "#1AA5BB",
 	"background_color": "#ffffff",
