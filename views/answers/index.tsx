@@ -4,9 +4,10 @@ import React, { useState, useContext } from 'react'
 // COMPONENTES
 import AnswersList from './components/answersList'
 import Header from 'components/header'
+import Info from './components/info'
 
 // ICON
-import QuestionAnswerTwoTone from '@material-ui/icons/QuestionAnswerTwoTone'
+import GetAppTwoTone from '@material-ui/icons/GetAppTwoTone'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -59,9 +60,10 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 				<Button
 					variant='contained'
 					style={{ color: '#fff' }}
-					startIcon={<QuestionAnswerTwoTone />}
+					startIcon={<GetAppTwoTone />}
 					color='primary'>{$`Descargar todo`}</Button>
 			</Header>
+			<Info formID={formID} />
 			<AnswersList
 				filter={filter}
 				formID={formID}
