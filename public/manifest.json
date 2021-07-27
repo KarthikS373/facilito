@@ -3,7 +3,7 @@
 	"name": "Facilito",
 	"version": "3.2.0",
 	"start_url": "/cuenta",
-	"display": "fullscreen",
+	"display": "standalone",
 	"categories": ["business", "personalization", "productivity", "social", "shopping"],
 	"theme_color": "#1AA5BB",
 	"background_color": "#ffffff",

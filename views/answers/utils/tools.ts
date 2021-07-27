@@ -1,5 +1,6 @@
 // TOOLS
-import { parseDate } from 'utils/tools'
+import { parseDate, dateToString } from 'utils/tools'
+import { sortAnswers } from 'utils/answers'
 
 /**
  * Obtener valores de cambio
@@ -95,4 +96,36 @@ export const updateLocalAnswerState = (
 		tmpAnswers[index] = answer
 		return tmpAnswers
 	})
+}
+
+/**
+ * Obtener excel
+ * @description Genera el dataset para exportar como xlsx
+ * @param  {FormAnswerSelf[]} answers
+ * @param  {FormComponent[]} components
+ * @param  {TemplateStrBuilder} $
+ */
+export const getExcelExportData = (
+	answers: FormAnswerSelf[],
+	components: FormComponent[],
+	$: TemplateStrBuilder
+) => {
+	const answerDataSet: FormAnswerItem[] =
+		(answers
+			.map((answer: FormAnswerSelf, index: number) => {
+				const ansDate: Date = parseDate(answer.date)
+				const composedAns = [
+					{
+						quest: $`Fecha de envío`,
+						answer: dateToString(ansDate),
+					},
+					...sortAnswers(components, answer.data).map((answer: FormSortedAnswer) => answer.answer),
+				]
+				if (index === 0) return composedAns
+				else return [{ quest: '', answer: '' }, ...composedAns]
+			})
+			.flat()
+			.filter(Boolean) as FormAnswerItem[]) || []
+
+	return answerDataSet
 }
