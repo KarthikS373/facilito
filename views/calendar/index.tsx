@@ -8,19 +8,22 @@ import useAppointments from './utils/hooks'
 import withStrings from 'hoc/lang'
 
 // COMPONENTES
-import CustomScheduler from './components/scheduler'
 import Header from 'components/header'
 import Info from './components/info'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
 
+// NEXT
+import dynamic from 'next/dynamic'
+const Scheduler = dynamic(() => import('./components/scheduler'))
+
 const Calendar: React.FC = withStrings(({ $ }) => {
 	// EMPRESA
 	const businessCtx = useContext(BusinessContext)
 
 	// ESTADO
-	const [viewState, setViewState] = useState<string>('Week')
+	const [viewState, setViewState] = useState<string>('week')
 	const [appointments, setAppointments] = useState<CustomAppointment[]>([])
 
 	// CAMBIAR VISTA
@@ -33,7 +36,7 @@ const Calendar: React.FC = withStrings(({ $ }) => {
 		<>
 			<Header customDescription={`${appointments.length} ${$`evento(s) creados.`}`} />
 			<Info viewState={viewState} changeView={handleView} />
-			<CustomScheduler viewState={viewState} appointments={appointments} />
+			<Scheduler viewState={viewState} appointments={appointments} />
 		</>
 	)
 })

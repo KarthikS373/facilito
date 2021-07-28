@@ -2,9 +2,6 @@
 import { getCollection } from './db'
 import { parseDate, sendMail } from './tools'
 
-// SCHEDULER
-import { AppointmentModel } from '@devexpress/dx-react-scheduler'
-
 /**
  * Obtener documentos
  * @param  {string} companyID
@@ -44,7 +41,7 @@ export const deleteAppointment = async (
 	companyEmail: string,
 	companyID: string,
 	formId: string,
-	formData: AppointmentModel
+	formData: CustomAppointment
 ) => {
 	// LEER
 	const eventDoc = await getEventDoc(companyID, formId)
@@ -52,7 +49,7 @@ export const deleteAppointment = async (
 
 	if (eventFormData) {
 		// BORRAR
-		const events = eventFormData.events.filter((appoint: CustomAppointment) => {
+		const events = eventFormData.events.filter((appoint: EventAppointment) => {
 			const tmpAppoint = { ...appoint }
 			tmpAppoint.startDate = parseDate(appoint.startDate)
 
@@ -66,13 +63,13 @@ export const deleteAppointment = async (
 
 		// ENVIAR CORREO
 		await sendMail(
-			`<h1> Hola, ${formData.name} </h1><p> Lamentamos informarte que tu cita de ${
+			`<h1> Hola, ${formData.resource.name} </h1><p> Lamentamos informarte que tu cita de ${
 				formData.title
-			} para el ${formData.startDate.toLocaleString(
+			} para el ${formData.start.toLocaleString(
 				'en-GB'
 			)} ha sido cancelada, si no has sido notificado de este cambio, comunicate con ${companyName} <a href="${companyEmail}" alt="${companyEmail}" >${companyEmail}.</a></p><br/><strong>Att: Equipo de Facilito APP.</strong>`,
 			'Cita cancelada',
-			formData.email
+			formData.resource.email
 		)
 	}
 }
@@ -98,13 +95,25 @@ export const appointmentsListener = async (
 		if (forms.length > 0) {
 			// ENVIAR
 			const eventsData: CustomAppointment[] = forms
-				.map((form: EventFormContainer) => form.events)
+				.map((form: EventFormContainer) =>
+					form.events.map((event: EventAppointment) => ({
+						title: event?.title || '',
+						start: event?.startDate || null,
+						end: event?.endDate || null,
+						resource: {
+							background: event?.background || '',
+							name: event?.name || '',
+							id: event?.id || '',
+							email: event?.email || '',
+						},
+					}))
+				)
 				.flat()
 			const events: CustomAppointment[] = eventsData.map((cEvent: CustomAppointment) => ({
 				...cEvent,
-				title: '📝 Formulario: ' + cEvent.title,
-				startDate: parseDate(cEvent.startDate),
-				endDate: parseDate(cEvent.endDate),
+				title: '📝 Formulario: ' + cEvent?.title,
+				start: parseDate(cEvent.start),
+				end: parseDate(cEvent.end),
 			}))
 
 			setAppointments(events)

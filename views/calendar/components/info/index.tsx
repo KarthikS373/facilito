@@ -7,6 +7,9 @@ import Styles from './style.module.scss'
 // ICONOS
 import EventAvailableTwoTone from '@material-ui/icons/EventAvailableTwoTone'
 import DynamicFeedTwoTone from '@material-ui/icons/DynamicFeedTwoTone'
+import DateRangeTwoTone from '@material-ui/icons/DateRangeTwoTone'
+import EventNoteTwoTone from '@material-ui/icons/EventNoteTwoTone'
+import TodayTwoTone from '@material-ui/icons/TodayTwoTone'
 
 // MATERIAL
 import MenuItem from '@material-ui/core/MenuItem'
@@ -50,31 +53,54 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 						variant='outlined'
 						onClick={handleOptionsMenu}
 						startIcon={<DynamicFeedTwoTone />}>
-						{$`Vista como `}
-						{(viewState === 'Month' && $`Mes`) ||
-							(viewState === 'Week' && $`Semana`) ||
-							(viewState === 'Day' && $`Día`)}
+						{$`Ver como `}
+						{(viewState === 'month' && $`mes`) ||
+							(viewState === 'week' && $`semana`) ||
+							(viewState === 'day' && $`día`) ||
+							(viewState === 'agenda' && $`agenda`)}
 					</Button>
 				</div>
 			</div>
 			<PopperMenuList
-				style={{ zIndex: 3 }}
-				anchorEl={optionsAnchor}
+				style={{ zIndex: 5 }}
+				placement='bottom-end'
 				open={openOptionsMenu}
+				anchorEl={optionsAnchor}
 				onClose={closeOptionsMenu}>
-				<MenuItem>
-					<Button fullWidth variant='outlined' onClick={changeView('Month')}>
+				<MenuItem onClick={closeOptionsMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<DateRangeTwoTone />}
+						onClick={changeView('month')}>
 						{$`Mes`}
 					</Button>
 				</MenuItem>
-				<MenuItem>
-					<Button fullWidth variant='outlined' onClick={changeView('Week')}>
+				<MenuItem onClick={closeOptionsMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<EventNoteTwoTone />}
+						onClick={changeView('week')}>
 						{$`Semana`}
 					</Button>
 				</MenuItem>
-				<MenuItem>
-					<Button fullWidth variant='outlined' onClick={changeView('Day')}>
+				<MenuItem onClick={closeOptionsMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<TodayTwoTone />}
+						onClick={changeView('day')}>
 						{$`Día`}
+					</Button>
+				</MenuItem>
+				<MenuItem onClick={closeOptionsMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<EventAvailableTwoTone />}
+						onClick={changeView('agenda')}>
+						{$`Agenda`}
 					</Button>
 				</MenuItem>
 			</PopperMenuList>
