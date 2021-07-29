@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 						<div>
 							<div className={Styles.businessSubs}>
 								<span>{businessCtx.business?.category}</span>
-								<span>{businessCtx.business?.subscription.plan || $`Plan basico`}</span>
+								<span>{businessCtx.business?.subscription?.plan || $`Plan basico`}</span>
 							</div>
 							<span>
 								{customDescription ||
