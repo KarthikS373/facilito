@@ -32,6 +32,8 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 	// MENU
 	const [optionsAnchor, setOptionsAnchor] = useState<HTMLElement | null>(null)
 	const [newViewState, setViewState] = useState<string>()
+	const [fixedView, setFixedView] = useState<boolean>(false)
+
 	const openOptionsMenu = Boolean(optionsAnchor)
 
 	// ABRIR
@@ -42,7 +44,7 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 	const closeOptionsMenu = () => setOptionsAnchor(null)
 
 	// CAMBIAR
-	useCalendarView(viewState, setViewState)
+	useCalendarView(viewState, setViewState, setFixedView)
 
 	return (
 		<>
@@ -58,7 +60,7 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 					<Button
 						fullWidth
 						variant='outlined'
-						onClick={handleOptionsMenu}
+						onClick={fixedView ? undefined : handleOptionsMenu}
 						startIcon={<DynamicFeedTwoTone />}>
 						{$`Ver como `}
 						{(newViewState === 'month' && $`mes`) ||

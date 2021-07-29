@@ -29,26 +29,39 @@ const useAppointments = (
  * Hook de vistas
  * @description Actualiza todos las vistas con responsive
  * @param  {string} viewState
- * @param  {React.Dispatch<React.SetStateAction<string>>}
+ * @param  {React.Dispatch<React.SetStateAction<string>>} setViewState
+ * @param  {React.Dispatch<React.SetStateAction<boolean>>} setFixedView
  */
 
 export const useCalendarView = (
 	viewState: string,
-	setViewState: React.Dispatch<React.SetStateAction<string>>
+	setViewState: React.Dispatch<React.SetStateAction<string>>,
+	setFixedView?: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
 	// CAMBIAR
 	useEffect(() => {
 		// SELECCIONAR
 		const width: number = window.innerWidth
 		let selectView: string = viewState
+		let fixedView: boolean = false
 
 		// CAMBIAR
-		if (width > 500) selectView = 'week'
-		else selectView = 'day'
-		if (width > 730) selectView = viewState
+		if (width > 500) {
+			selectView = 'week'
+			fixedView = true
+		} else {
+			selectView = 'day'
+			fixedView = true
+		}
+
+		if (width > 730) {
+			selectView = viewState
+			fixedView = false
+		}
 
 		// ACTUALIZAR
 		setViewState(selectView)
+		if (setFixedView) setFixedView(fixedView)
 	}, [viewState])
 }
 

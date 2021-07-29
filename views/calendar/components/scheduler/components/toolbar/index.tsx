@@ -1,4 +1,5 @@
 // ESTILOS
+import { useState, useEffect } from 'react'
 import Styles from './style.module.scss'
 
 // STRINGS
@@ -14,6 +15,8 @@ import ChevronLeftTwoTone from '@material-ui/icons/ChevronLeftTwoTone'
 import EventTwoTone from '@material-ui/icons/EventTwoTone'
 
 const CustomToolbar: React.FC<any> = withStrings((props) => {
+  const [width, setWidth] = useState<number>(0)
+
   // REGRESAR
   const goToBack = () => {
     if (props.view === 'month') props.date.setMonth(props.date.getMonth() - 1)
@@ -42,25 +45,28 @@ const CustomToolbar: React.FC<any> = withStrings((props) => {
   }
 
   const splitedLabel: string[] = props.label.split(' ')
-  const w: number = process.browser ? window.innerWidth : 0
+
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  }, [])
 
   return (
     <div className={Styles.container}>
       <div>
-        {w > 500 && (
+        {width > 500 && (
           <Button variant='outlined' onClick={goToCurrent} startIcon={<EventTwoTone />}>
             {props.$`Hoy`}
           </Button>
         )}
-        {w < 500 && (
+        {width < 500 && (
           <IconButton onClick={goToCurrent}>
             <EventTwoTone />
           </IconButton>
         )}
-        <IconButton size={w < 500 ? 'small' : 'medium'} onClick={goToBack}>
+        <IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToBack}>
           <ChevronLeftTwoTone />
         </IconButton>
-        <IconButton size={w < 500 ? 'small' : 'medium'} onClick={goToNext}>
+        <IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToNext}>
           <ChevronRightTwoTone />
         </IconButton>
       </div>
