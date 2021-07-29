@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	display: flex;
 	align-items: center;
@@ -6,6 +8,10 @@
 	border-radius: var(--radius) var(--radius) 0 0;
 	padding: 10px var(--margin);
 
+	@include for-size(phone-landscape) {
+		padding: 10px;
+	}
+
 	label {
 		strong {
 			font-size: 1.2rem;
@@ -13,11 +19,19 @@
 			text-transform: capitalize;
 			margin-right: 5px;
 			opacity: 1;
+
+			@include for-size(phone-landscape) {
+				font-size: 1rem;
+			}
 		}
 
 		span {
 			opacity: 0.6;
 			font-size: 1rem;
+
+			@include for-size(phone-landscape) {
+				font-size: 0.9rem;
+			}
 		}
 	}
 
@@ -25,6 +39,10 @@
 		button:first-child,
 		button:nth-child(2) {
 			margin-right: 10px;
+
+			@include for-size(phone-landscape) {
+				margin-right: 0px;
+			}
 		}
 	}
 }

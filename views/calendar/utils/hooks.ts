@@ -25,4 +25,31 @@ const useAppointments = (
 	}, [companyID, setEvents])
 }
 
+/**
+ * Hook de vistas
+ * @description Actualiza todos las vistas con responsive
+ * @param  {string} viewState
+ * @param  {React.Dispatch<React.SetStateAction<string>>}
+ */
+
+export const useCalendarView = (
+	viewState: string,
+	setViewState: React.Dispatch<React.SetStateAction<string>>
+) => {
+	// CAMBIAR
+	useEffect(() => {
+		// SELECCIONAR
+		const width: number = window.innerWidth
+		let selectView: string = viewState
+
+		// CAMBIAR
+		if (width > 500) selectView = 'week'
+		else selectView = 'day'
+		if (width > 730) selectView = viewState
+
+		// ACTUALIZAR
+		setViewState(selectView)
+	}, [viewState])
+}
+
 export default useAppointments

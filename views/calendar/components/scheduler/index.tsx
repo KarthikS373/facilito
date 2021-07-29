@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useState } from 'react'
 
 // CALENDAR
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
@@ -12,6 +12,9 @@ import withStrings from 'hoc/lang'
 
 // COMPONENTES
 import CustomToolbar from './components/toolbar'
+
+// HOOKS
+import { useCalendarView } from '../../utils/hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -42,13 +45,25 @@ interface SchedulerProps {
 }
 const Scheduler: React.FC<SchedulerProps> = withStrings(
   ({ appointments, $, viewState, langCode }) => {
+    // ESTADO
+    const [newViewState, setViewState] = useState<string>()
+
+    // CAMBIAR
+    useCalendarView(viewState, setViewState)
+
     return (
-      <Paper className={Styles.container}>
+      <Paper
+        className={
+          (newViewState === 'week' && Styles.weekContainer) ||
+          (newViewState === 'month' && Styles.monthContainer) ||
+          (newViewState === 'day' && Styles.dayContainer) ||
+          (newViewState === 'agenda' && Styles.agendaContainer)
+        }>
         <Calendar
-          view={viewState}
           defaultView='week'
           endAccessor='end'
           culture={langCode}
+          view={newViewState}
           startAccessor='start'
           events={appointments}
           localizer={localizer}

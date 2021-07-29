@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// HOOKS
+import { useCalendarView } from '../../utils/hooks'
+
 // ICONOS
 import EventAvailableTwoTone from '@material-ui/icons/EventAvailableTwoTone'
 import DynamicFeedTwoTone from '@material-ui/icons/DynamicFeedTwoTone'
@@ -28,6 +31,7 @@ interface InfoProps {
 const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => {
 	// MENU
 	const [optionsAnchor, setOptionsAnchor] = useState<HTMLElement | null>(null)
+	const [newViewState, setViewState] = useState<string>()
 	const openOptionsMenu = Boolean(optionsAnchor)
 
 	// ABRIR
@@ -36,6 +40,9 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 
 	// CERRAR
 	const closeOptionsMenu = () => setOptionsAnchor(null)
+
+	// CAMBIAR
+	useCalendarView(viewState, setViewState)
 
 	return (
 		<>
@@ -54,10 +61,10 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 						onClick={handleOptionsMenu}
 						startIcon={<DynamicFeedTwoTone />}>
 						{$`Ver como `}
-						{(viewState === 'month' && $`mes`) ||
-							(viewState === 'week' && $`semana`) ||
-							(viewState === 'day' && $`día`) ||
-							(viewState === 'agenda' && $`agenda`)}
+						{(newViewState === 'month' && $`mes`) ||
+							(newViewState === 'week' && $`semana`) ||
+							(newViewState === 'day' && $`día`) ||
+							(newViewState === 'agenda' && $`agenda`)}
 					</Button>
 				</div>
 			</div>

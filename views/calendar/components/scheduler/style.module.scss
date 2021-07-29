@@ -1,3 +1,152 @@
-.container {
+.weekContainer {
 	margin: 15px var(--margin);
+
+	& > div:first-child {
+		& > div:nth-child(2) {
+			& > div:first-child {
+				& > div:nth-child(2) {
+					& > div:first-child {
+						& > div {
+							height: 45px;
+							display: flex;
+							justify-content: center;
+							opacity: 0.6;
+							text-transform: capitalize;
+							align-items: center;
+						}
+
+						[class*='rbc-today'] {
+							font-size: 1.2rem;
+							color: #1aa5bb;
+						}
+					}
+				}
+			}
+
+			& > div:nth-child(2) {
+				& > div:first-child {
+					& > div {
+						& > div {
+							position: relative;
+							top: 5px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							opacity: 0.7;
+
+							span {
+								font-weight: 500;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.monthContainer {
+	margin: 15px var(--margin);
+
+	& > div:first-child {
+		& > div:nth-child(2) {
+			& > div:first-child {
+				& > div {
+					height: 45px;
+					display: flex;
+					justify-content: center;
+					opacity: 0.6;
+					text-transform: capitalize;
+					align-items: center;
+				}
+			}
+
+			& > div:not(:first-child) {
+				& > div:nth-child(2) {
+					& > div:first-child {
+						& > div {
+							padding: var(--margin) var(--margin) 0 0;
+
+							a {
+								opacity: 0.6;
+							}
+						}
+
+						[class*='rbc-now'] {
+							a {
+								display: block;
+								background-color: #1aa5bb;
+								color: #fff;
+								width: 25px;
+								border-radius: 100%;
+								height: 25px;
+								text-align: center;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								float: right;
+								margin-right: -5px;
+								margin-top: -5px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.dayContainer {
+	margin: 15px var(--margin);
+
+	& > div:first-child {
+		& > div:nth-child(2) {
+			& > div:nth-child(2) {
+				& > div:first-child {
+					& > div {
+						opacity: 0.7;
+
+						& > div:first-child {
+							position: relative;
+							top: 6px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						}
+
+						span {
+							font-weight: 500;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.agendaContainer {
+	margin: 15px var(--margin);
+
+	& > div:first-child {
+		& > div:nth-child(2) {
+			table {
+				thead,
+				tbody {
+					tr {
+						th,
+						td {
+							height: 45px;
+							text-align: center;
+							opacity: 0.6;
+							text-transform: capitalize;
+						}
+
+						td {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+	}
 }

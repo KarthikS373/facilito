@@ -35,23 +35,32 @@ const CustomToolbar: React.FC<any> = withStrings((props) => {
   // IR A HOY
   const goToCurrent = () => {
     const now = new Date()
+    props.date.setDate(now.getDate())
     props.date.setMonth(now.getMonth())
     props.date.setYear(now.getFullYear())
     props.onNavigate('current')
   }
 
   const splitedLabel: string[] = props.label.split(' ')
+  const w: number = process.browser ? window.innerWidth : 0
 
   return (
     <div className={Styles.container}>
       <div>
-        <Button variant='outlined' onClick={goToCurrent} startIcon={<EventTwoTone />}>
-          {props.$`Hoy`}
-        </Button>
-        <IconButton onClick={goToBack}>
+        {w > 500 && (
+          <Button variant='outlined' onClick={goToCurrent} startIcon={<EventTwoTone />}>
+            {props.$`Hoy`}
+          </Button>
+        )}
+        {w < 500 && (
+          <IconButton onClick={goToCurrent}>
+            <EventTwoTone />
+          </IconButton>
+        )}
+        <IconButton size={w < 500 ? 'small' : 'medium'} onClick={goToBack}>
           <ChevronLeftTwoTone />
         </IconButton>
-        <IconButton onClick={goToNext}>
+        <IconButton size={w < 500 ? 'small' : 'medium'} onClick={goToNext}>
           <ChevronRightTwoTone />
         </IconButton>
       </div>
