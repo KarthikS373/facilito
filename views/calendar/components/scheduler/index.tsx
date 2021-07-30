@@ -12,6 +12,7 @@ import withStrings from 'hoc/lang'
 
 // COMPONENTES
 import CustomToolbar from './components/toolbar'
+import CustomEvent, { showEventInfo } from './components/event'
 
 // HOOKS
 import { useCalendarView } from '../../utils/hooks'
@@ -68,7 +69,8 @@ const Scheduler: React.FC<SchedulerProps> = withStrings(
           events={appointments}
           localizer={localizer}
           style={{ height: 500 }}
-          components={{ toolbar: CustomToolbar }}
+          onSelectEvent={showEventInfo($)}
+          components={{ toolbar: CustomToolbar, event: CustomEvent }}
           messages={{
             noEventsInRange: $`Sin eventos en este periodo`,
             work_week: $`Semana de trabajo`,

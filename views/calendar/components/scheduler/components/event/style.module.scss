@@ -1,0 +1,51 @@
+.container {
+	hr {
+		margin: 10px 0;
+		opacity: 0.2;
+	}
+
+	& > h3,
+	& > p {
+		opacity: 0.8;
+	}
+
+	.actions {
+		position: absolute;
+		bottom: 23px;
+		left: 20px;
+		z-index: 5;
+
+		button:first-child {
+			margin-right: 10px;
+		}
+	}
+
+	.userInfo {
+		display: flex;
+		align-items: center;
+		margin-top: 20px;
+
+		svg {
+			width: 35px;
+			opacity: 0.6;
+			height: 35px;
+			margin-left: -6px;
+			margin-right: 5px;
+		}
+
+		& > div {
+			opacity: 0.8;
+			border-left: 2px solid rgba(0, 0, 0, 0.2);
+			padding-left: 10px;
+
+			p {
+				line-height: 1;
+				font-weight: 500;
+			}
+
+			a {
+				color: #1aa5bb;
+			}
+		}
+	}
+}
