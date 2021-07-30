@@ -59,7 +59,7 @@ export const showEventInfo =
 						</span>
 						<span>
 							{' '}
-							{$`hasta`} {hourToString(event.start)}
+							{$`hasta`} {hourToString(event.end)}
 						</span>
 					</p>
 					<hr />

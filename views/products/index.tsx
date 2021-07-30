@@ -2,7 +2,6 @@
 import React, { useContext, useState } from 'react'
 
 // COMPONENTES
-import ProductsList from './components/productsList'
 import SideBar from './components/sidebar'
 import Header from 'components/header'
 import Info from './components/info'
@@ -27,6 +26,9 @@ import withStrings from 'hoc/lang'
 // CONTEXTO
 import BusinessContext from 'context/business'
 import ProductsContext from 'context/products'
+
+import dynamic from 'next/dynamic'
+const ProductsList = dynamic(() => import('./components/productsList'))
 
 const Products: React.FC = withStrings(({ $ }) => {
 	// BUSINESS

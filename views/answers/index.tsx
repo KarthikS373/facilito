@@ -2,34 +2,23 @@
 import React, { useState, useContext } from 'react'
 
 // COMPONENTES
-import AnswersList from './components/answersList'
 import Header from 'components/header'
 import Info from './components/info'
 
-// XLSX
-import { ExportSheet } from 'react-xlsx-sheet'
-import XLSX from 'xlsx'
-
-// ICON
-import GetAppTwoTone from '@material-ui/icons/GetAppTwoTone'
-
-// MATERIAL
-import Button from '@material-ui/core/Button'
-
 // HOOKS
 import { useFilters, useInitialFilter } from './utils/hooks'
-import {
-	saveFilter,
-	getChangesTrigger,
-	updateLocalAnswerState,
-	getExcelExportData,
-} from './utils/tools'
+import { saveFilter, getChangesTrigger, updateLocalAnswerState } from './utils/tools'
 
 // STRINGS
 import withStrings from 'hoc/lang'
 
 // CONTEXTOS
 import FormsContext from 'context/forms'
+
+// NEXT
+import dynamic from 'next/dynamic'
+const DownloadAnswers = dynamic(() => import('./components/download'))
+const AnswersList = dynamic(() => import('./components/answersList'))
 
 // PROPS
 interface AnswersProps {
@@ -58,9 +47,6 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	const updateAnswerState = (index: number, newState: number) =>
 		updateLocalAnswerState(index, newState, setAnswers)
 
-	// DATASET DE EXCEL
-	const getExcelDataset = () => getExcelExportData(answers, currentForm?.components || [], $)
-
 	// CAMBIAR FILTROS
 	useFilters(filter, formID, formsCtx.forms, changesTrigger, setAnswers)
 
@@ -70,21 +56,7 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	return (
 		<>
 			<Header customDescription={`${answers.length || 0} ${$`respuesta(s) creadas`}`}>
-				<ExportSheet
-					// @ts-ignore
-					xlsx={XLSX}
-					dataSource={getExcelDataset()}
-					fileName={currentForm?.title || 'data'}
-					header={[
-						{ title: $`Pregunta`, dataIndex: 'quest' },
-						{ title: $`Respuesta`, dataIndex: 'answer' },
-					]}>
-					<Button
-						variant='contained'
-						style={{ color: '#fff' }}
-						startIcon={<GetAppTwoTone />}
-						color='primary'>{$`Descargar todo`}</Button>
-				</ExportSheet>
+				<DownloadAnswers answers={answers} currentForm={currentForm} />
 			</Header>
 			<Info formID={formID} />
 			<AnswersList
