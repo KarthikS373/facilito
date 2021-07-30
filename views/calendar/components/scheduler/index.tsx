@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // CALENDAR
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
@@ -19,6 +19,9 @@ import { useCalendarView } from '../../utils/hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'
+
+// CONTEXTO
+import BusinessContext from 'context/business'
 
 // FNS
 import startOfWeek from 'date-fns/startOfWeek'
@@ -46,6 +49,9 @@ interface SchedulerProps {
 }
 const Scheduler: React.FC<SchedulerProps> = withStrings(
   ({ appointments, $, viewState, langCode }) => {
+    // NEGOCIO
+    const businessCtx = useContext(BusinessContext)
+
     // ESTADO
     const [newViewState, setViewState] = useState<string>()
 
@@ -69,7 +75,7 @@ const Scheduler: React.FC<SchedulerProps> = withStrings(
           events={appointments}
           localizer={localizer}
           style={{ height: 500 }}
-          onSelectEvent={showEventInfo($)}
+          onSelectEvent={showEventInfo($, businessCtx.business)}
           components={{ toolbar: CustomToolbar, event: CustomEvent }}
           messages={{
             noEventsInRange: $`Sin eventos en este periodo`,
