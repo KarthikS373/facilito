@@ -68,6 +68,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						<Link href={ROUTES.forms}>
 							<Button
 								fullWidth
+								onClick={onClose}
 								variant='outlined'
 								color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
 								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
@@ -77,6 +78,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						<Link href={ROUTES.orderTracking}>
 							<Button
 								fullWidth
+								onClick={onClose}
 								variant='outlined'
 								color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
 								startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
@@ -86,6 +88,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						<Link href={ROUTES.products}>
 							<Button
 								fullWidth
+								onClick={onClose}
 								variant='outlined'
 								color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
 								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
@@ -95,6 +98,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						<Link href={ROUTES.calendar}>
 							<Button
 								fullWidth
+								onClick={onClose}
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
 								color={
