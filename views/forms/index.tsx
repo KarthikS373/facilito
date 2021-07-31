@@ -36,6 +36,7 @@ const Forms: React.FC = withStrings(({ $ }) => {
 					fullWidth
 					variant='outlined'
 					onClick={changeFilterEv}
+					style={{ backgroundColor: '#fbfbfb' }}
 					startIcon={<SortByAlphaTwoTone />}>
 					{filter === 'asc' ? $`Filtrar ascendente` : $`Filtrar desendente`}
 				</Button>

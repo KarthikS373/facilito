@@ -21,7 +21,7 @@ export const theme = createTheme({
 				padding: '10px 0',
 			},
 			outlined: {
-				borderColor: 'rgba(0,0,0,.1)',
+				borderColor: 'rgba(0,0,0,.05)',
 				color: '#828282',
 				fontSize: '1rem',
 				backgroundColor: '#FBFBFB',
