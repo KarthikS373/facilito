@@ -3,7 +3,7 @@
  * @description Borra un formulario del estado
  * @param  {string} formID
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
- * @param  {React.Dispatch<React.SetStateAction<Business>>} setBusiness
+ * @param  {(forms: FormInterface) => unknown} setBusiness
  */
 const deleteForm = (
 	formID: string,

@@ -18,6 +18,7 @@ import Paper from '@material-ui/core/Paper'
 import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
 import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
 import ForwardTwoTone from '@material-ui/icons/ForwardTwoTone'
+import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 
 // CONTEXTO
 import ProductsContext from 'context/products'
@@ -28,9 +29,6 @@ import withStrings from 'hoc/lang'
 
 // UTILS
 import searchItems, { LinkInfo } from './utils/tools'
-
-// ICONOS
-import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 
 const Search: React.FC = withStrings(({ $ }) => {
 	// ESTADO

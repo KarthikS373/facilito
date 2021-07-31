@@ -11,8 +11,8 @@ import Paper from '@material-ui/core/Paper'
 import withStrings from 'hoc/lang'
 
 // COMPONENTES
-import CustomToolbar from './components/toolbar'
 import CustomEvent, { showEventInfo } from './components/event'
+import CustomToolbar from './components/toolbar'
 
 // HOOKS
 import { useCalendarView } from '../../utils/hooks'

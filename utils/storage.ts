@@ -2,7 +2,7 @@ import firebase from 'keys/firebase'
 import 'firebase/storage'
 
 /**
- * Borrar formulario en stroage
+ * Borrar formulario en storage
  * @description Borra todos los archivos de un formulario
  * @param  {string} companyID
  * @param  {string} id

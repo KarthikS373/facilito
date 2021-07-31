@@ -77,6 +77,7 @@ export const deleteAppointment = async (
 /**
  * Leer eventos
  * @param  {string} companyID
+ * @param  {(events: CustomAppointment[]) => unknown} setAppointments
  * @description Crea un listener de eventos en la collection events
  */
 export const appointmentsListener = async (

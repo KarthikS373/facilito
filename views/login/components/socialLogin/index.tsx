@@ -6,6 +6,8 @@ import Styles from './style.module.scss'
 
 // COMPONENTES
 import Button from '@material-ui/core/Button'
+
+// NEXT
 import Image from 'next/image'
 
 // HOC

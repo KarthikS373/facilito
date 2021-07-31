@@ -83,8 +83,8 @@ interface FormAnswerSelf {
 }
 
 interface FormAnswerItem {
-	[index: string]: FormInputValue
-	answer: FormInputValue
+	[index: string]: string
+	answer: string
 	quest: string
 }
 

@@ -33,7 +33,7 @@ export const saveFilter = (
 
 /**
  * Filtrar respuetas
- * @description Reordena lass respuetas segun un filtro
+ * @description Reordena las respuetas segun un filtro
  * @param  {FormAnswerSelf[]} answers
  * @param  {string} filter
  */
@@ -78,7 +78,6 @@ export default filterAnswers
  * @description Mueve el arreglo state en una fila de respuestas
  * @param  {number} index
  * @param  {number} newState
- * @param  {tracking}
  * @param  {React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>} setAnswers
  */
 export const updateLocalAnswerState = (

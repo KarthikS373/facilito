@@ -2,13 +2,13 @@
  * Borrar producto
  * @description Borra un producto en la DB y context
  * @param  {ContextProps} productsCtx
- * @param  {(TemplateStringsArray) => string} $
+ * @param  {TemplateStrBuilder} $
  * @param  {Product[]} products
  * @param  {number} currentIndex
  */
 const deleteProduct = (
   productsCtx: any,
-  $: (TemplateStringsArray) => string,
+  $: TemplateStrBuilder,
   products: Product[],
   currentIndex: number
 ) =>

@@ -16,7 +16,7 @@ const getFormDoc = async (companyID: string, formID: string) => {
 
 /**
  * Listener de formularios
- * @description Crea un evento listener en la colecction "forms"
+ * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
  * @param  {(forms:FormInterface)=>unknown} setForms
  */

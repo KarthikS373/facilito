@@ -6,8 +6,8 @@ import Header from 'components/header'
 import Info from './components/info'
 
 // HOOKS
-import { useFilters, useInitialFilter } from './utils/hooks'
 import { saveFilter, getChangesTrigger, updateLocalAnswerState } from './utils/tools'
+import { useFilters, useInitialFilter } from './utils/hooks'
 
 // STRINGS
 import withStrings from 'hoc/lang'

@@ -7,6 +7,7 @@ import { useEffect } from 'react'
  * @param  {string} filter
  * @param  {number} changesTrigger
  * @param  {setForms:(forms:FormInterface)=>unknown} setForms
+ * @param  {FormInterface} prevForms
  */
 const useFilter = (
 	filter: 'asc' | 'des',

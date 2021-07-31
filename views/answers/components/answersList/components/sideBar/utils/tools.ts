@@ -3,7 +3,8 @@ import { updateAnswerState } from 'utils/answers'
 
 /**
  * Actualizar estado de respuesta
- * @description Mueve una posicon el estado (tracking) de una respuesta
+ * @description Mueve una posicion el estado (tracking) de una respuesta
+ * @param  {number} currentIndex
  * @param  {number} index
  * @param  {number} step
  * @param  {React.Dispatch<React.SetStateAction<number>>} setActiveStep

@@ -1,0 +1,21 @@
+{
+	"entryPoints": [
+		"./views",
+		"./utils",
+		"./router",
+		"./providers",
+		"./pages",
+		"./models",
+		"./hooks",
+		"./hoc",
+		"./env",
+		"./context",
+		"./components"
+	],
+	"includeVersion": true,
+	"name": "Facilito",
+	"theme": "./node_modules/eledoc/bin/default/",
+	"highlightTheme": "material-darker",
+	"hideGenerator": true,
+	"out": "docs"
+}

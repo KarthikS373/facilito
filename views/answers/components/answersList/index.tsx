@@ -6,13 +6,13 @@ import Styles from './style.module.scss'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
-import SideBar from './components/sideBar'
+import showAnswer from './components/showAnswer'
 import TableHead from './components/tableHead'
+import SideBar from './components/sideBar'
 import AnswerRow from './components/row'
 
 // UTILS
 import printAnswer, { deleteAnswerPrompt } from './utils/tools'
-import showAnswer from './components/showAnswer'
 
 // ICONOS
 import SettingsInputCompositeTwoTone from '@material-ui/icons/SettingsInputCompositeTwoTone'

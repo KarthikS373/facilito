@@ -6,15 +6,13 @@ import IconButton from '@material-ui/core/IconButton'
 
 // ICONOS
 import ErrorTwoTone from '@material-ui/icons/ErrorTwoTone'
+import MoreVert from '@material-ui/icons/MoreVert'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // NEXT
 import Image from 'next/image'
-
-// ICONS
-import MoreVert from '@material-ui/icons/MoreVert'
 
 // CONTEXTO
 import BusinessContext from 'context/business'

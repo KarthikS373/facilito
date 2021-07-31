@@ -5,6 +5,7 @@ import React, { useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 // UTILS
+import validateProtectedRoute from 'utils/routes'
 import { signingAnonymously } from 'utils/auth'
 
 // RUTAS
@@ -13,9 +14,6 @@ import ROUTES from 'router/routes'
 // CONTEXTO
 import UserContext from 'context/user'
 import BusinessContext from 'context/business'
-
-// UTILS
-import validateProtectedRoute from 'utils/routes'
 
 const ProtectedRoutesProvider: React.FC = (props) => {
 	// USER

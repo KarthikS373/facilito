@@ -2,7 +2,7 @@ import { getCollection } from './db'
 
 /**
  * Obtener documento
- * @description Obtiene un documento en la colletion answers
+ * @description Obtiene un documento en la collection answers
  * @param  {string} companyID
  * @param  {string} formID
  */
@@ -15,9 +15,9 @@ const getAnswerDoc = async (companyID: string, formID: string) => {
 
 /**
  * Listener de formularios
- * @description Crea un evento listener en la colecction "forms"
+ * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
- * @param  {(forms:FormInterface)=>unknown} setForms
+ * @param  {(forms: { [id: string]: FormAnswer }) => unknown} setAnswers
  */
 export const answersListener = async (
 	companyID: string,
@@ -84,9 +84,10 @@ export const removeAnswersForm = async (companyID: string, formID: string) => {
 
 /**
  * Borrar respuesta
- * @description Ordena un objeto de respuestas segun el orden del formulario
- * @param  {FormComponent[]} components
- * @param  {FormAnswerItemContainer} formData
+ * @description Elimina una respuesta y re ordena el arreglo en la db
+ * @param  {number} index
+ * @param  {string} formID
+ * @param  {string} companyID
  */
 export const deleteAnswer = async (index: number, formID?: string, companyID?: string) => {
 	if (companyID && formID) {

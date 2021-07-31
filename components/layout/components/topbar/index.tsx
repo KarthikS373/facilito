@@ -27,6 +27,7 @@ import MoreVert from '@material-ui/icons/MoreVert'
 
 // COMPONENTES
 import AccountMenu from './components/accountMenu'
+import BadgeMenu from './components/badgeMenu'
 import SideBar from './components/sideBar'
 import Search from './components/search'
 
@@ -39,7 +40,6 @@ import UserContext from 'context/user'
 
 // HOC
 import withStrings from 'hoc/lang'
-import BadgeMenu from './components/badgeMenu'
 
 // PROPIEDADES
 interface CustomAppBarProps {

@@ -9,7 +9,8 @@ import { AnswerPreview } from '../components/showAnswer'
 /**
  * Imprimir respuestas
  * @description Renderiza la lista de respuestas y luego la imprime
- * @param  {JSX.Element} answersList
+ * @param  {FormAnswerItemContainer} data
+ * @param  {FormComponent[]} components
  */
 const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[]) => {
 	const html: string = renderToString(<AnswerPreview answers={sortAnswers(components, data)} />)
@@ -19,13 +20,13 @@ const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[])
 /**
  * Borrar respuestas
  * @description Crea una alerta para confirmar y borrar
- * @param  {(TemplateStringsArray) => string} $
+ * @param  {TemplateStrBuilder} $
  * @param  {number} index
- * @param  {sting} formID
- * @param  {sting} companyID
+ * @param  {string} formID
+ * @param  {string} companyID
  */
 export const deleteAnswerPrompt = (
-	$: (TemplateStringsArray) => string,
+	$: TemplateStrBuilder,
 	index: number,
 	formID?: string,
 	companyID?: string

@@ -9,7 +9,7 @@ import LZString from 'lz-string'
  * Obtener texto
  * @description Lee o crea un nuevo valor en el json de strings
  * @param  {TemplateStringsArray} key
- * @param  {IPortrayContext} ctx
+ * @param  {ProviderProps} ctx
  */
 // OBTENER TEXTO
 interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {

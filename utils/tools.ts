@@ -24,7 +24,7 @@ const slugify = (str: string) => {
 /**
  * Normalizar string
  * @description Convierte un string en su cadena mas optima
- * @param  {string} url
+ * @param  {string} str
  */
 export const normalizeString = (str: string) => {
 	return slugify(str)

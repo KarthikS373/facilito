@@ -16,7 +16,7 @@ const getBusinessDoc = async (url: string) => {
 /**
  * Obtener empresa
  * @param  {string} url
- * @description Retorna un documento Business asociado a un URL
+ * @description Retorna un objeto Business asociado a un URL
  */
 export const getCompany = async (url: string) => {
 	if (url) {
