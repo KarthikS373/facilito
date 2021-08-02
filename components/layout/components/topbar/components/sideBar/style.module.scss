@@ -19,7 +19,7 @@
 
 .container {
 	position: relative;
-	width: 205px;
+	width: 225px;
 	background-color: rgb(243, 243, 243);
 	border-radius: 0 10px 0 0;
 	height: 100%;
@@ -27,6 +27,10 @@
 	padding: var(--margin);
 	z-index: 12;
 	transition: transform 0.2s var(--transition);
+
+	@include for-size(tablet-landscape) {
+		width: 205px;
+	}
 
 	@include for-size(phablet-landscape) {
 		position: absolute;

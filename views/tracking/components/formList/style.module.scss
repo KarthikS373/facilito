@@ -1,6 +1,16 @@
+@import 'styles/mixins';
+
 .container {
 	padding: 15px var(--margin);
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-gap: 15px;
+
+	@include for-size(phone-portrait) {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+
+	@include for-size(phone-landscape) {
+		grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
+	}
 }

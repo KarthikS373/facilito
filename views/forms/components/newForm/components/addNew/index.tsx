@@ -71,7 +71,11 @@ const AddNewForm: React.FC = withStrings(({ $ }) => {
 					</defs>
 				</svg>
 
-				<span>{$`Crear Formulario`}</span>
+				<span>
+					{$`Crear`}
+					<br />
+					{$`Formulario`}
+				</span>
 			</div>
 		</button>
 	)

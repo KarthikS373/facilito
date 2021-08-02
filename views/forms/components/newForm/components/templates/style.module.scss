@@ -1,20 +1,20 @@
 @import 'styles/mixins';
 
 .container {
-	margin-left: 15px;
+	grid-column: 2/-1;
 	width: 100%;
 	overflow-x: auto;
 
 	@include for-size(phone-portrait) {
-		margin-left: 0;
-		margin-bottom: 15px;
+		grid-column: 1/-1;
+		grid-row: 1/2;
 	}
 
 	.slider {
 		width: 100%;
-		min-width: 850px;
+		min-width: 830px;
 		display: grid;
-		grid-template-columns: 260px 170px auto auto;
+		grid-template-columns: 260px 170px 190px 170px;
 		grid-template-rows: repeat(6, 12px);
 		grid-gap: 15px;
 		height: 100%;

@@ -3,10 +3,10 @@
 .btn {
 	position: relative;
 	height: 150px;
-	min-width: 150px;
+	min-height: 150px;
 	overflow: hidden;
 	outline: none;
-
+	width: 100%;
 	cursor: pointer;
 	border: 3px solid #511f73;
 	border-radius: var(--radius);
