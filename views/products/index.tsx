@@ -11,8 +11,9 @@ import Link from 'next/link'
 import ROUTES from 'router/routes'
 
 // UTILS
-import { useFilters, useInitialFilter } from './utils/hooks'
-import saveFilter from './utils/tools'
+import useDefaultFilter from 'hooks/filters'
+import { useFilters } from './utils/hooks'
+import { changeFilter } from 'utils/tools'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -50,15 +51,16 @@ const Products: React.FC = withStrings(({ $ }) => {
 	const handleSideBar = (open: boolean) => () => setOpenSideBar(open)
 
 	// ASIGNAR FILTRO
-	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
+	const changeFilterEv = (newFilter: string) =>
+		changeFilter('products-filter', newFilter, setFilter)
 
-	const changesTrigger: number = Object.keys(productsCtx.products).length
+	const changesTrigger: string = Object.keys(productsCtx.products).join('')
 
 	// FILTROS
 	useFilters(setProducts, filter, changesTrigger, productsCtx.products)
 
 	// FILTRO INICIAL
-	useInitialFilter(setFilter)
+	useDefaultFilter('products-filter', 'naz', setFilter)
 
 	return (
 		<>
@@ -75,7 +77,7 @@ const Products: React.FC = withStrings(({ $ }) => {
 				</Link>
 			</Header>
 			<Info onOpenSideBar={handleSideBar(true)} />
-			<ProductsList filter={filter} setFilter={changeFilter} products={products} />
+			<ProductsList filter={filter} setFilter={changeFilterEv} products={products} />
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />
 		</>
 	)

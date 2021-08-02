@@ -10,26 +10,8 @@ import { sortAnswers } from 'utils/answers'
 export const getChangesTrigger = (forms: FormInterface) =>
 	forms.forms.length +
 	forms.answers.length +
-	forms.answers.map((answer) => answer?.data.length || 0).reduce((prev, next) => prev + next, 0) +
-	forms.answers
-		.map((answer) =>
-			answer?.states.reduce((state: number, nextState: number) => state + nextState, 0)
-		)
-		.reduce((prev, next) => prev + next, 0)
-
-/**
- * Guardar filtro de respuestas
- * @description Guarda en el localStorage el filtro
- * @param  {string} filter
- * @param  {React.Dispatch<React.SetStateAction<string>>} setFilter
- */
-export const saveFilter = (
-	filter: string,
-	setFilter: React.Dispatch<React.SetStateAction<string>>
-) => {
-	window.localStorage.setItem('answers-filter', filter)
-	setFilter(filter)
-}
+	forms.answers.map((answer) => answer?.data.length || 0).join('') +
+	forms.answers.map((answer) => answer?.states.join('')).join('')
 
 /**
  * Filtrar respuetas

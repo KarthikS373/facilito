@@ -8,14 +8,14 @@ import { filterAnswers } from './tools'
  * @param  {string} filter
  * @param  {string} formID
  * @param  {FormInterface} forms
- * @param  {number} changesTrigger
+ * @param  {string} changesTrigger
  * @param  {React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>} setAnswers
  */
 export const useFilters = (
 	filter: string,
 	formID: string,
 	forms: FormInterface,
-	changesTrigger: number,
+	changesTrigger: string,
 	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
 ) => {
 	useEffect(() => {
@@ -36,15 +36,4 @@ export const useFilters = (
 			)
 		)
 	}, [filter, formID, changesTrigger])
-}
-
-/**
- * Hook de filtro inicial
- * @description Actualiza el filtro de respuestas con el localStorage
- * @param  {React.Dispatch<React.SetStateAction<string>>} setFilter
- */
-export const useInitialFilter = (setFilter: React.Dispatch<React.SetStateAction<string>>) => {
-	useEffect(() => {
-		setFilter(window.localStorage.getItem('answers-filter') || 'naz')
-	}, [])
 }

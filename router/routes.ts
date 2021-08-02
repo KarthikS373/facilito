@@ -51,7 +51,7 @@ const ROUTES: RoutesProps = {
 
 	// ORDER TRACKING
 	orderTracking: '/tracking',
-	publicOrderTracking: '/t/:formID/setting',
+	publicOrderTracking: '/t/:formID/editar',
 	orderTrackingSettings: '/t/:companyURL/:formURL',
 }
 

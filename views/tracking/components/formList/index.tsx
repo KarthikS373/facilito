@@ -2,8 +2,8 @@
 import React, { useState, useContext } from 'react'
 
 // HOOKS
-import deleteForm from './utils/tools'
 import { useFormFilter } from 'hooks/forms'
+import deleteForm from './utils/tools'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -20,7 +20,7 @@ import FormCard from 'components/formCard'
 
 // PROPS
 interface FormsListProps {
-	filter?: 'asc' | 'des'
+	filter?: string
 }
 
 const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
@@ -39,8 +39,7 @@ const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
 	// FILTROS
 	const changesTrigger: string =
 		formsCtx.forms.forms.length +
-		formsCtx.forms.answers.length +
-		formsCtx.forms.answers.map((answer) => answer?.data.length || 0).join('')
+		formsCtx.forms.forms.map((form: Form) => form.tracking?.length || 0).join('')
 
 	useFormFilter(filter, changesTrigger, setForms, formsCtx.forms)
 
@@ -50,15 +49,14 @@ const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
 
 	return (
 		<div className={Styles.container}>
-			<div className={Styles.respSpace} />
 			{forms.forms.map((form: Form, index: number) => (
 				<FormCard
 					form={form}
 					key={`${form.id}_${index}`}
-					contentLink={`f/${form.id}`}
 					onDelete={deleteFormEv(form.id)}
-					bottomLink={`f/${form.id}/respuestas`}
-					bottomSection={`${forms.answers[index]?.data.length || 0} respuesta(s)`}
+					bottomLink={`/t/${form.id}/editar`}
+					contentLink={`/t/${form.id}/editar`}
+					bottomSection={`${forms.forms[index]?.tracking?.length || 0} estado(s)`}
 				/>
 			))}
 		</div>

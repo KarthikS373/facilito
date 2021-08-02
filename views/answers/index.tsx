@@ -6,8 +6,10 @@ import Header from 'components/header'
 import Info from './components/info'
 
 // HOOKS
-import { saveFilter, getChangesTrigger, updateLocalAnswerState } from './utils/tools'
-import { useFilters, useInitialFilter } from './utils/hooks'
+import { getChangesTrigger, updateLocalAnswerState } from './utils/tools'
+import useDefaultFilter from 'hooks/filters'
+import { useFilters } from './utils/hooks'
+import { changeFilter } from 'utils/tools'
 
 // STRINGS
 import withStrings from 'hoc/lang'
@@ -38,10 +40,10 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	const currentForm: Form | undefined = formsCtx.forms.forms.find((form) => form.id === formID)
 
 	// ASIGNAR FILTRO
-	const changeFilter = (newFilter: string) => saveFilter(newFilter, setFilter)
+	const changeFilterEv = (newFilter: string) => changeFilter('answers-filter', newFilter, setFilter)
 
 	// BUSCAR RESPUESTAS
-	const changesTrigger: number = getChangesTrigger(formsCtx.forms)
+	const changesTrigger: string = getChangesTrigger(formsCtx.forms)
 
 	// CAMBIAR ESTADO DE RESPUESTAS
 	const updateAnswerState = (index: number, newState: number) =>
@@ -51,7 +53,7 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 	useFilters(filter, formID, formsCtx.forms, changesTrigger, setAnswers)
 
 	// FILTRO INICIAL
-	useInitialFilter(setFilter)
+	useDefaultFilter('answers-filter', 'naz', setFilter)
 
 	return (
 		<>
@@ -63,7 +65,7 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 				filter={filter}
 				formID={formID}
 				answers={answers}
-				setFilter={changeFilter}
+				setFilter={changeFilterEv}
 				updateAnswerState={updateAnswerState}
 				tracking={currentForm?.tracking || []}
 				components={currentForm?.components || []}

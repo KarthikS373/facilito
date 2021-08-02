@@ -111,3 +111,19 @@ export const printHTML = (html: string) => {
 	customWindow?.print()
 	customWindow?.close()
 }
+
+/**
+ * Cambiar filtros
+ * @description Cambia en localStorage el filtro
+ * @param  {string} key
+ * @param  {string} filter
+ * @param  {React.Dispatch<React.SetStateAction<string>>} setFilter
+ */
+export const changeFilter = (
+	key: string,
+	filter: string,
+	setFilter: React.Dispatch<React.SetStateAction<string>>
+) => {
+	window.localStorage.setItem(key, filter)
+	setFilter(filter)
+}

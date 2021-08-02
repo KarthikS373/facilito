@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button'
 import withStrings from 'hoc/lang'
 
 // UTILS
-import useDefaultFilter from './utils/hooks'
-import changeFilter from './utils/filters'
+import useDefaultFilter from 'hooks/filters'
+import { changeFilter } from 'utils/tools'
 
 // ICON
 import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
@@ -21,13 +21,14 @@ import Header from 'components/header'
 
 const Forms: React.FC = withStrings(({ $ }) => {
 	// FILTRO
-	const [filter, setFilter] = useState<'asc' | 'des'>('asc')
+	const [filter, setFilter] = useState<string>('asc')
 
 	// CAMBIAR FILTRO
-	const changeFilterEv = () => changeFilter(filter, setFilter)
+	const changeFilterEv = () =>
+		changeFilter('forms-filter', filter === 'asc' ? 'des' : 'asc', setFilter)
 
 	// ASIGNAR FILTRO DE INICIO
-	useDefaultFilter(setFilter)
+	useDefaultFilter('forms-filter', 'asc', setFilter)
 
 	return (
 		<>
