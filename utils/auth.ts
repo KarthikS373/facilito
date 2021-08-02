@@ -4,6 +4,9 @@ import AuthErrorsJSON from 'lang/auth-errors.json'
 // DB
 import { getCollection } from './db'
 
+// UTILS
+import firebase from 'keys/firebase'
+
 // GLOBALES
 let globalAuth: (() => firebase.default.auth.Auth) | null = null
 let fbProvider: firebase.default.auth.FacebookAuthProvider | null = null
@@ -37,17 +40,16 @@ const authErrorHandler =
  * @description Retorna la instancia global de firebase/auth
  */
 export const getAuth = async () => {
-	const firebase = await import('keys/firebase')
-	await import('firebase/auth')
+	const frb = await firebase()
 
 	// INSTANCIA
 	if (globalAuth === null) {
-		globalAuth = firebase.default.auth
+		globalAuth = frb.auth
 		globalAuth().languageCode = 'es-GT'
 
 		// PROVIDERS
-		fbProvider = new firebase.default.auth.FacebookAuthProvider()
-		gProvider = new firebase.default.auth.GoogleAuthProvider()
+		fbProvider = new frb.auth.FacebookAuthProvider()
+		gProvider = new frb.auth.GoogleAuthProvider()
 	}
 
 	// LISTENER

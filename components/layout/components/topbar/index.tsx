@@ -1,9 +1,6 @@
 // REACT
 import React, { useState, MouseEvent, useContext } from 'react'
 
-// ROUTER
-import { useRouter } from 'next/router'
-
 // NEXT
 import Image from 'next/image'
 
@@ -31,9 +28,6 @@ import BadgeMenu from './components/badgeMenu'
 import SideBar from './components/sideBar'
 import Search from './components/search'
 
-// HELPERS
-import { evaluatePath } from './utils/tools'
-
 // CONTEXTOS
 import BusinessContext from 'context/business'
 import UserContext from 'context/user'
@@ -52,10 +46,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 
 	// USUARIO
 	const userCtx = useContext(UserContext)
-
-	// HISTORIAL
-	const router = useRouter()
-	const path = router.asPath
 
 	// BADGE
 	const [badgeAnchor, setBadgeAnchor] = useState<HTMLElement | null>(null)
@@ -85,92 +75,87 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 	const changeLangCode = (newLangCode: 'es' | 'en') => () =>
 		businessCtx.setBusinessDB({ lang: newLangCode })
 
-	// RUTAS
-	const showAppbarSearch: boolean = evaluatePath(path)
+	return (
+		<>
+			{/* DRAWER PRINCIPAL */}
+			<SideBar onClose={handleDrawer(false)} open={openDrawer} />
 
-	if (showAppbarSearch)
-		return (
-			<>
-				{/* DRAWER PRINCIPAL */}
-				<SideBar onClose={handleDrawer(false)} open={openDrawer} />
+			<AppBar position='static' className={Styles.container}>
+				<Toolbar>
+					{/* MENU */}
+					<IconButton
+						color='inherit'
+						aria-label='menu'
+						className={Styles.menuBtn}
+						onClick={handleDrawer(true)}>
+						<MenuTwoTone />
+					</IconButton>
 
-				<AppBar position='static' className={Styles.container}>
-					<Toolbar>
-						{/* MENU */}
-						<IconButton
-							color='inherit'
-							aria-label='menu'
-							className={Styles.menuBtn}
-							onClick={handleDrawer(true)}>
-							<MenuTwoTone />
-						</IconButton>
+					{/* BUSCADOR */}
+					{showSearchBar && <Search />}
 
-						{/* BUSCADOR */}
-						{showSearchBar && <Search />}
+					{/* MONEDA */}
+					<Button
+						aria-label='badge'
+						variant='outlined'
+						className={Styles.badgeBtn}
+						startIcon={<MoneyTwoTone />}
+						onClick={openBadgeMenu}>
+						<span>{businessCtx.business?.badge}</span>
+					</Button>
 
-						{/* MONEDA */}
-						<Button
-							aria-label='badge'
-							variant='outlined'
-							className={Styles.badgeBtn}
-							startIcon={<MoneyTwoTone />}
-							onClick={openBadgeMenu}>
-							<span>{businessCtx.business?.badge}</span>
-						</Button>
+					{/* LENGUAJE */}
+					<Button
+						variant='outlined'
+						aria-label='langCode'
+						startIcon={<TranslateTwoTone />}
+						onClick={changeLangCode(businessCtx.business?.lang === 'es' ? 'en' : 'es')}>
+						{businessCtx.business?.lang === 'es' ? $`Español` : $`English`}
+					</Button>
 
-						{/* LENGUAJE */}
-						<Button
-							variant='outlined'
-							aria-label='langCode'
-							startIcon={<TranslateTwoTone />}
-							onClick={changeLangCode(businessCtx.business?.lang === 'es' ? 'en' : 'es')}>
-							{businessCtx.business?.lang === 'es' ? $`Español` : $`English`}
-						</Button>
+					{/* NOTIFICACIONES */}
+					<IconButton color='inherit' aria-label='notifications'>
+						<Badge badgeContent={0} color='secondary'>
+							<NotificationsTwoTone />
+						</Badge>
+					</IconButton>
 
-						{/* NOTIFICACIONES */}
-						<IconButton color='inherit' aria-label='notifications'>
-							<Badge badgeContent={0} color='secondary'>
-								<NotificationsTwoTone />
-							</Badge>
-						</IconButton>
-
-						{/* CUENTA */}
-						<Button
-							variant='outlined'
-							aria-label='account'
-							onClick={openAccountMenuEv}
-							endIcon={<MoreVert />}
-							startIcon={
-								<div className={Styles.accountPic}>
-									{userCtx.user?.picture ? (
-										<Image
-											unoptimized
-											src={userCtx.user?.picture}
-											alt='UserPic'
-											height={30}
-											width={30}
-										/>
-									) : (
-										<PersonTwoTone />
-									)}
-								</div>
-							}>
-							<div className={Styles.accountBtnContent}>
-								<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
-								<span>{userCtx.user?.role}</span>
+					{/* CUENTA */}
+					<Button
+						variant='outlined'
+						aria-label='account'
+						onClick={openAccountMenuEv}
+						endIcon={<MoreVert />}
+						startIcon={
+							<div className={Styles.accountPic}>
+								{userCtx.user?.picture ? (
+									<Image
+										unoptimized
+										src={userCtx.user?.picture}
+										alt='UserPic'
+										height={30}
+										width={30}
+									/>
+								) : (
+									<PersonTwoTone />
+								)}
 							</div>
-						</Button>
-					</Toolbar>
+						}>
+						<div className={Styles.accountBtnContent}>
+							<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
+							<span>{userCtx.user?.role}</span>
+						</div>
+					</Button>
+				</Toolbar>
 
-					{/* MENU DE CUENTA */}
-					<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
+				{/* MENU DE CUENTA */}
+				<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
 
-					{/* MENU DE MONEDA */}
-					<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
-				</AppBar>
-			</>
-		)
-	else return <></>
+				{/* MENU DE MONEDA */}
+				<BadgeMenu onClose={closeBadgeMenu} open={openBadge} anchorEl={badgeAnchor} />
+			</AppBar>
+		</>
+	)
 })
 
 export default Topbar

@@ -7,21 +7,30 @@ import Styles from './style.module.scss'
 // NEXT
 import { useRouter } from 'next/router'
 
+// UTILS
+import evaluatePath from './utils/tools'
+
 // RUTAS
 import ROUTES from 'router/routes'
 
 // COMPONENTES
-import Topbar from './components/topbar'
 import Footer from './components/footer'
+
+// NEXT
+import dynamic from 'next/dynamic'
+const Topbar = dynamic(() => import('./components/topbar'))
 
 const Layout: React.FC = (props) => {
 	// ROUTER
 	const router = useRouter()
 	const path: string = router.asPath
 
+	// MOSTRAR TOPBAR
+	const showTopbar = evaluatePath(path)
+
 	return (
 		<div className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
-			<Topbar showSearchBar />
+			{showTopbar && <Topbar showSearchBar />}
 			<main>
 				{props.children}
 				<Footer />

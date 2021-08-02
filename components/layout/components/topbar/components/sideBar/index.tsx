@@ -19,10 +19,6 @@ import ComputerTwoTone from '@material-ui/icons/ComputerTwoTone'
 import TodayTwoTone from '@material-ui/icons/TodayTwoTone'
 import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
 
-// ASSETS
-import BrandIcon from '../../../../../../public/assets/brand/icon.png'
-import BrandLogo from '../../../../../../public/assets/brand/logo.png'
-
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
@@ -53,7 +49,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
 						<div className={Styles.icon}>
-							<Image unoptimized src={BrandIcon} alt='Icon' />
+							<Image unoptimized src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
 						</div>
 						<div>
 							<h1>{$`Facilito©`}</h1>
@@ -61,7 +57,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</div>
 					</div>
 					<div className={Styles.logoTablet}>
-						<Image unoptimized src={BrandLogo} alt='Logo' />
+						<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
 					</div>
 					<IconButton color='inherit' aria-label='info'>
 						<InfoTwoTone />
@@ -69,7 +65,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				</div>
 				<ul>
 					<li>
-						<Link href={ROUTES.forms} passHref>
+						<Link href={ROUTES.forms}>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -79,7 +75,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.orderTracking} passHref>
+						<Link href={ROUTES.orderTracking}>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -89,7 +85,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.products} passHref>
+						<Link href={ROUTES.products}>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -99,7 +95,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.calendar} passHref>
+						<Link href={ROUTES.calendar}>
 							<Button
 								fullWidth
 								onClick={onClose}

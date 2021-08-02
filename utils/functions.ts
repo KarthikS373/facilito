@@ -1,5 +1,4 @@
 import firebase from 'keys/firebase'
-import 'firebase/functions'
 
 /**
  * Obtener callable
@@ -8,7 +7,7 @@ import 'firebase/functions'
  */
 const getCallable = async (name: string) => {
 	// IMPORTAR
-	const functions = firebase.functions()
+	const functions = (await firebase()).functions()
 
 	// RETORNAR
 	return functions.httpsCallable(name)

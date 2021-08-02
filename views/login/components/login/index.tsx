@@ -16,9 +16,6 @@ import { defLoginData } from './utils/initials'
 // NEXT
 import Image from 'next/image'
 
-// ASSETS
-import Logo from '../../../../public/assets/brand/logo.png'
-
 // HOC
 import withStrings from 'hoc/lang'
 
@@ -79,7 +76,7 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 			<div className={Styles.content}>
 				{/* TITULO */}
 				<div className={Styles.title}>
-					<Image unoptimized src={Logo} alt='Logo' />
+					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
 				</div>
 
 				{/* FORMULARIO */}

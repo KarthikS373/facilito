@@ -1,9 +1,8 @@
-// FIREBASE
+// UTILS
 import firebase from 'keys/firebase'
-import 'firebase/firestore'
 
 // GLOBALES
-let globalDB: firebase.firestore.Firestore | null = null
+let globalDB: firebase.default.firestore.Firestore | null = null
 
 /**
  * Obtener colección
@@ -12,9 +11,11 @@ let globalDB: firebase.firestore.Firestore | null = null
  */
 export const getCollection = async (
 	colName: string
-): Promise<firebase.firestore.CollectionReference<firebase.firestore.DocumentData>> => {
+): Promise<
+	firebase.default.firestore.CollectionReference<firebase.default.firestore.DocumentData>
+> => {
 	// DATABASE
-	const db = globalDB === null ? firebase.firestore() : globalDB
+	const db = globalDB ?? (await firebase()).firestore()
 
 	// COLECCIÓN
 	return db.collection(colName)

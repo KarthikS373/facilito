@@ -4,9 +4,6 @@ import React from 'react'
 // NEXT
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-// MATERIAL
-import { ServerStyleSheets } from '@material-ui/core/styles'
-
 // DOCUMENTO
 export default class FacilitoDoc extends Document {
 	render(): JSX.Element {
@@ -54,6 +51,7 @@ export default class FacilitoDoc extends Document {
 
 FacilitoDoc.getInitialProps = async (ctx) => {
 	// MOSTRAR PAGINA NORMAL
+	const { ServerStyleSheets } = await import('@material-ui/core/styles')
 	const sheets = new ServerStyleSheets()
 	const originalRenderPage = ctx.renderPage
 

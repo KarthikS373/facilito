@@ -1,5 +1,4 @@
 import firebase from 'keys/firebase'
-import 'firebase/storage'
 
 /**
  * Borrar formulario en storage
@@ -9,13 +8,15 @@ import 'firebase/storage'
  */
 export const removeFormStorage = async (companyID: string, id: string) => {
 	// STORAGE
-	const str = firebase.storage()
+	const str = (await firebase()).storage()
 	const refName: string = `/${companyID}/forms/${id}`
 	const ref = str.ref(refName)
 
 	// LISTA
 	const list = await ref.listAll()
-	const deleteReq = list.items.map(async (list: firebase.storage.Reference) => list.delete())
+	const deleteReq = list.items.map(async (list: firebase.default.storage.Reference) =>
+		list.delete()
+	)
 
 	// BORRAR
 	await Promise.all(deleteReq)
