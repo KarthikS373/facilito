@@ -12,6 +12,9 @@ import SocialLogin from '../socialLogin'
 // NEXT
 import Image from 'next/image'
 
+// ASSETS
+import Logo from '../../../../public/assets/brand/logo.png'
+
 // HOC
 import withStrings from 'hoc/lang'
 
@@ -68,7 +71,7 @@ const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin })
 			<div className={Styles.content}>
 				{/* TITULO */}
 				<div className={Styles.title}>
-					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
+					<Image placeholder='blur' src={Logo} alt='Logo' />
 				</div>
 
 				{/* FORMULARIO */}

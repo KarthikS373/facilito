@@ -143,13 +143,7 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 							startIcon={
 								<div className={Styles.accountPic}>
 									{userCtx.user?.picture ? (
-										<Image
-											unoptimized
-											src={userCtx.user?.picture}
-											alt='UserPic'
-											height={30}
-											width={30}
-										/>
+										<Image src={userCtx.user?.picture} alt='UserPic' height={30} width={30} />
 									) : (
 										<PersonTwoTone />
 									)}

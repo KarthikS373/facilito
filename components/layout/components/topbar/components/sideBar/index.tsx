@@ -19,6 +19,10 @@ import ComputerTwoTone from '@material-ui/icons/ComputerTwoTone'
 import TodayTwoTone from '@material-ui/icons/TodayTwoTone'
 import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
 
+// ASSETS
+import BrandIcon from '../../../../../../public/assets/brand/icon.png'
+import BrandLogo from '../../../../../../public/assets/brand/icon.png'
+
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
@@ -49,7 +53,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
 						<div className={Styles.icon}>
-							<Image unoptimized src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
+							<Image placeholder='blur' src={BrandIcon} alt='Icon' />
 						</div>
 						<div>
 							<h1>{$`Facilito©`}</h1>
@@ -57,7 +61,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</div>
 					</div>
 					<div className={Styles.logoTablet}>
-						<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+						<Image placeholder='blur' src={BrandLogo} alt='Logo' />
 					</div>
 					<IconButton color='inherit' aria-label='info'>
 						<InfoTwoTone />

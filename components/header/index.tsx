@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 							: '',
 				}}>
 				{businessCtx.business && businessCtx.business.backgroundImage !== 'none' && (
-					<Image unoptimized src={businessCtx.business.backgroundImage} layout='fill' />
+					<Image src={businessCtx.business.backgroundImage} layout='fill' />
 				)}
 			</div>
 
@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 				<div className={Styles.businessContainer}>
 					<div className={Styles.businessPic}>
 						{businessCtx.business?.picture && (
-							<Image unoptimized src={businessCtx.business?.picture} height={150} width={150} />
+							<Image src={businessCtx.business?.picture} height={150} width={150} />
 						)}
 					</div>
 					<div className={Styles.businessInfo}>

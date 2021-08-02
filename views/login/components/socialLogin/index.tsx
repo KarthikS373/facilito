@@ -13,6 +13,9 @@ import Image from 'next/image'
 // HOC
 import withStrings from 'hoc/lang'
 
+// ASSETS
+import GoogleIcon from '../../../../public/assets/icons/google.svg'
+
 // ICONOS
 import Facebook from '@material-ui/icons/Facebook'
 
@@ -36,14 +39,7 @@ const SocialLogin: React.FC = withStrings(({ $ }) => {
 			</Button>
 			<Button fullWidth variant='contained' onClick={gSigning} classes={{ root: Styles.googleBtn }}>
 				<div className={Styles.googleIcon}>
-					<Image
-						unoptimized
-						className={Styles.googleIcon}
-						src='/assets/icons/google.svg'
-						alt='Google Logo'
-						height={18}
-						width={18}
-					/>
+					<Image src={GoogleIcon} alt='Google Logo' className={Styles.googleIcon} />
 				</div>
 				{$`Iniciar con Google`}
 			</Button>
