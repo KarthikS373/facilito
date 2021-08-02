@@ -48,15 +48,6 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				}`}>
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
-						<div className={Styles.icon}>
-							<Image unoptimized src='/assets/brand/icon.png' alt='Icon' height={45} width={45} />
-						</div>
-						<div>
-							<h1>{$`Facilito©`}</h1>
-							<p>{$`Todos los derechos reservados 2021`}</p>
-						</div>
-					</div>
-					<div className={Styles.logoTablet}>
 						<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
 					</div>
 					<IconButton color='inherit' aria-label='info'>
@@ -81,7 +72,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
-								startIcon={<ComputerTwoTone />}>{$`Order Tracking`}</Button>
+								startIcon={<ComputerTwoTone />}>{$`Tracking`}</Button>
 						</Link>
 					</li>
 					<li>

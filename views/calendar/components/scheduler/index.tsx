@@ -58,15 +58,20 @@ const Scheduler: React.FC<SchedulerProps> = withStrings(
     // CAMBIAR
     useCalendarView(viewState, setViewState)
 
+    // CAMBIAR VISTA
+    const onView = (view: string) => console.warn('Opt-in calendar change', view)
+
     return (
       <Paper
         className={
           (newViewState === 'week' && Styles.weekContainer) ||
           (newViewState === 'month' && Styles.monthContainer) ||
           (newViewState === 'day' && Styles.dayContainer) ||
-          (newViewState === 'agenda' && Styles.agendaContainer)
+          (newViewState === 'agenda' && Styles.agendaContainer) ||
+          Styles.weekContainer
         }>
         <Calendar
+          onView={onView}
           defaultView='week'
           endAccessor='end'
           culture={langCode}

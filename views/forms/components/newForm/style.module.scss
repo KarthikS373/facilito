@@ -6,10 +6,11 @@
 	width: 100%;
 
 	@include for-size(phone-landscape) {
-		padding: 20px var(--margin);
+		padding: 7px var(--margin) 0 var(--margin);
 	}
 
 	@include for-size(phone-portrait) {
 		flex-direction: column-reverse;
+		padding: 20px var(--margin);
 	}
 }

@@ -90,8 +90,8 @@
 					border-radius: 100%;
 
 					@include for-size(small-desktop) {
-						height: 120px;
-						width: 120px;
+						height: 125px;
+						width: 125px;
 					}
 
 					@include for-size(phone-landscape) {
@@ -196,7 +196,7 @@
 			row-gap: 15px;
 			width: 210px;
 
-			button:first-child {
+			a:first-child {
 				background-color: #fbfbfb !important;
 			}
 
