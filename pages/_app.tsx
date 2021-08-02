@@ -10,16 +10,12 @@ import ProtectedRoutesProvider from 'router/provider'
 import BusinessProvider from 'providers/business'
 import ProductsProvider from 'providers/products'
 import PortrayProvider from 'providers/lang'
-import AlertProvider from 'providers/alerts'
 import ThemeProvider from 'providers/theme'
 import FormsProvider from 'providers/forms'
 import UserProvider from 'providers/user'
 
 // COMPONENTS
 import Layout from 'components/layout'
-
-// CSS
-import CssBaseline from '@material-ui/core/CssBaseline'
 
 // UTILS
 import useRemoveSSRStyles from 'hooks/theme'
@@ -29,6 +25,11 @@ import useAnalytics from 'hooks/analytics'
 import 'styles/normalize.css'
 import 'styles/globals.scss'
 import 'styles/mixins.scss'
+
+// NEXT
+import dynamic from 'next/dynamic'
+const CssBaseline = dynamic(() => import('@material-ui/core/CssBaseline'))
+const AlertProvider = dynamic(() => import('providers/alerts'))
 
 const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	// QUITAR ESTILOS SSR DE MATERIAL

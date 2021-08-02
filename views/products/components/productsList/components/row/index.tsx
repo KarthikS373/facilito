@@ -34,7 +34,7 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 				backgroundColor: !product.active ? 'rgba(255, 0, 0, .03)' : '',
 			}}>
 			<span>
-				<Image src={product.picture[0]} alt={product.title} height={48} width={48} />
+				<Image unoptimized src={product.picture[0]} alt={product.title} height={48} width={48} />
 			</span>
 			<span>
 				<strong>{product.title}</strong>

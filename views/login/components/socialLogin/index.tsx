@@ -39,7 +39,7 @@ const SocialLogin: React.FC = withStrings(({ $ }) => {
 			</Button>
 			<Button fullWidth variant='contained' onClick={gSigning} classes={{ root: Styles.googleBtn }}>
 				<div className={Styles.googleIcon}>
-					<Image src={GoogleIcon} alt='Google Logo' className={Styles.googleIcon} />
+					<Image unoptimized src={GoogleIcon} alt='Google Logo' className={Styles.googleIcon} />
 				</div>
 				{$`Iniciar con Google`}
 			</Button>
