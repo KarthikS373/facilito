@@ -13,8 +13,8 @@ interface PopperMenuProps extends PopperProps {
 const PopperMenuList: React.FC<PopperMenuProps> = (props) => {
 	// CERRAR
 	const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
-		// @ts-ignore
-		if (props.anchorEl && props.anchorEl.contains(event.target as HTMLElement)) return
+		const anchorEl = props.anchorEl as HTMLElement
+		if (anchorEl && anchorEl.contains(event.target as HTMLElement)) return
 		props.onClose()
 	}
 

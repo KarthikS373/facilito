@@ -9,7 +9,7 @@ import { ServerStyleSheets } from '@material-ui/core/styles'
 
 // DOCUMENTO
 export default class FacilitoDoc extends Document {
-	render() {
+	render(): JSX.Element {
 		return (
 			<Html lang='es'>
 				<Head>

@@ -80,7 +80,9 @@ const Search: React.FC = withStrings(({ $ }) => {
 									</div>
 
 									{/* LINK */}
-									<Link href={link.type === 'form' ? `/f/${link.id}` : `/p/${link.id}/editar`}>
+									<Link
+										passHref
+										href={link.type === 'form' ? `/f/${link.id}` : `/p/${link.id}/editar`}>
 										<IconButton>
 											<ForwardTwoTone />
 										</IconButton>

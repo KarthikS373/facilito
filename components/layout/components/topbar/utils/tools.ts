@@ -11,7 +11,7 @@ export const evaluatePath = (path: string): boolean => {
 	else if (path === '/template') return true
 	else if (/\/f\/(.+)$/.test(path)) return true
 	else if (path === '/tracking') return true
-	else if (/\/l\/(.+)\/setting/.test(path)) true
+	else if (/\/l\/(.+)\/setting/.test(path)) return true
 	else if (/\/l\/(.+)$/.test(path)) return false
 	else if (path === '/productos') return true
 	else if (/\/p\/(.+)$/.test(path)) return true

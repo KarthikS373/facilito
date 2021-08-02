@@ -1,5 +1,5 @@
 // REACT
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -54,13 +54,12 @@ const FormCard: React.FC<FormCardProps> = withStrings(
 			<>
 				<div className={Styles.container} style={{ opacity: form.public ? 1 : 0.6 }}>
 					{/* TARJETA */}
-					<Link href={contentLink}>
+					<Link href={contentLink} passHref>
 						<div className={Styles.content}>
 							<h3>{form.title}</h3>
 							<a
 								target='_blank'
-								rel='noopener noreferer'
-								href={`https://fclt.cc/${form.url}`}
+								rel='noopener noreferrer'
 								title={form.url}>{`fclt.cc/${form.url}`}</a>
 
 							<div className={Styles.actions}>
@@ -117,7 +116,7 @@ const FormCard: React.FC<FormCardProps> = withStrings(
 					</IconButton>
 
 					{/* SECCION INFERIOR  */}
-					<Link href={bottomLink}>
+					<Link href={bottomLink} passHref>
 						<div className={Styles.bottomSection}>
 							<AssignmentTwoTone />
 							<p>{bottomSection}</p>
@@ -133,7 +132,7 @@ const FormCard: React.FC<FormCardProps> = withStrings(
 					placement='right-start'
 					onClose={closeCardMenu}>
 					<MenuItem>
-						<Link href={contentLink}>
+						<Link href={contentLink} passHref>
 							<Button
 								fullWidth
 								variant='outlined'

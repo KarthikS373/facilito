@@ -21,17 +21,13 @@ const searchItems = (
 	forms: FormInterface,
 	products: Product[],
 	setLinks: React.Dispatch<React.SetStateAction<LinkInfo[]>>
-) => {
+): void => {
 	const value: string = normalizeString(ev.target.value)
 	const tmpLinks: LinkInfo[] = []
 
 	// BUSCAR EN FORMULARIOS
 	if (value.length > 0) {
-		for (
-			let formsIndex: number = 0, length: number = forms.forms.length;
-			formsIndex < length;
-			formsIndex++
-		) {
+		for (let formsIndex = 0, length = forms.forms.length; formsIndex < length; formsIndex++) {
 			if (
 				normalizeString(forms.forms[formsIndex].title).indexOf(value) !== -1 ||
 				normalizeString(forms.forms[formsIndex].url).indexOf(value) !== -1 ||
@@ -46,11 +42,7 @@ const searchItems = (
 		}
 
 		// BUSCAR EN PRODUCTOS
-		for (
-			let productsIndex: number = 0, length: number = products.length;
-			productsIndex < length;
-			productsIndex++
-		) {
+		for (let productsIndex = 0, length = products.length; productsIndex < length; productsIndex++) {
 			if (
 				normalizeString(products[productsIndex].title).indexOf(value) !== -1 ||
 				normalizeString(products[productsIndex].description).indexOf(value) !== -1 ||

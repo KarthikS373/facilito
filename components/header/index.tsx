@@ -17,9 +17,6 @@ import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
 // HOC
 import withStrings from 'hoc/lang'
 
-// RUTAS
-import Routes from 'router/routes'
-
 // CONTEXTO
 import BusinessContext from 'context/business'
 
@@ -44,7 +41,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 							: '',
 				}}>
 				{businessCtx.business && businessCtx.business.backgroundImage !== 'none' && (
-					<Image src={businessCtx.business.backgroundImage} layout='fill' />
+					<Image src={businessCtx.business.backgroundImage} layout='fill' alt='Background' />
 				)}
 			</div>
 
@@ -53,7 +50,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 				<div className={Styles.businessContainer}>
 					<div className={Styles.businessPic}>
 						{businessCtx.business?.picture && (
-							<Image src={businessCtx.business?.picture} height={150} width={150} />
+							<Image alt='Business' src={businessCtx.business?.picture} height={150} width={150} />
 						)}
 					</div>
 					<div className={Styles.businessInfo}>
@@ -76,7 +73,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Link href={Routes.visitor} as={`/e/${businessCtx.business?.url}`}>
+					<Link passHref href={`/e/${businessCtx.business?.url}`}>
 						<Button
 							fullWidth
 							variant='outlined'

@@ -21,7 +21,7 @@ import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
 
 // ASSETS
 import BrandIcon from '../../../../../../public/assets/brand/icon.png'
-import BrandLogo from '../../../../../../public/assets/brand/icon.png'
+import BrandLogo from '../../../../../../public/assets/brand/logo.png'
 
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
@@ -69,7 +69,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 				</div>
 				<ul>
 					<li>
-						<Link href={ROUTES.forms}>
+						<Link href={ROUTES.forms} passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -79,7 +79,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.orderTracking}>
+						<Link href={ROUTES.orderTracking} passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -89,7 +89,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.products}>
+						<Link href={ROUTES.products} passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -99,7 +99,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.calendar}>
+						<Link href={ROUTES.calendar} passHref>
 							<Button
 								fullWidth
 								onClick={onClose}

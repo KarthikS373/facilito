@@ -14,12 +14,12 @@ const Footer: React.FC = withStrings(({ $ }) => {
 			<div>
 				<a
 					target='_blank'
-					rel='noopener noreferer'
+					rel='noopener noreferrer'
 					href='https://appfacilito.com/terms.pdf'
 					title={$`Terminos y condiciones`}>{$`Terminos y condiciones`}</a>
 				<a
 					target='_blank'
-					rel='noopener noreferer'
+					rel='noopener noreferrer'
 					href='https://appfacilito.com/privacy.pdf'
 					title={$`Politicas de privacidad`}>{$`Politicas de privacidad`}</a>
 			</div>

@@ -1,3 +1,6 @@
+// REACT
+import React from 'react'
+
 // TIPOS
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'

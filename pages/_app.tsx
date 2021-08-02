@@ -1,3 +1,6 @@
+// REACT
+import React from 'react'
+
 // TIPOS
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -27,7 +30,7 @@ import 'styles/normalize.css'
 import 'styles/globals.scss'
 import 'styles/mixins.scss'
 
-const FacilitoApp = ({ Component, pageProps }: AppProps) => {
+const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	// QUITAR ESTILOS SSR DE MATERIAL
 	useRemoveSSRStyles()
 
