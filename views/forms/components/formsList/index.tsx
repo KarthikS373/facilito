@@ -20,7 +20,7 @@ import FormCard from 'components/formCard'
 
 // PROPS
 interface FormsListProps {
-	filter?: 'asc' | 'des'
+	filter?: string
 }
 
 const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
