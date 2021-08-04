@@ -1,4 +1,20 @@
 {
+	"maximo_250_caracteres": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"una_palabra": {
+		"en": "",
+		"es": "$"
+	},
+	"1_palabra": {
+		"en": "",
+		"es": "$"
+	},
 	"agregar_estado": {
 		"en": "Add new state",
 		"es": "$"
@@ -44,7 +60,7 @@
 		"es": "$"
 	},
 	"estados": {
-		"en": "State(s)",
+		"en": "state(s)",
 		"es": "$"
 	},
 	"estas_seguro_de_que_quieres_borrar_todos_los_estados_de_tracking_presentes_en_este_formulario": {
@@ -60,7 +76,7 @@
 		"es": "$"
 	},
 	"respuestas": {
-		"en": "Answer(s)",
+		"en": "answer(s)",
 		"es": "$"
 	},
 	"estas_seguro_de_querer_borrar_esta_repuesta_este_proceso_sera_permamente": {
@@ -132,7 +148,7 @@
 		"es": "$"
 	},
 	"respuestas_creadas": {
-		"en": "Answer(s) created",
+		"en": "answer(s) created",
 		"es": "$"
 	},
 	"configura_los_mensajes_y_pasos_para_todas_las_ordenes": {
@@ -180,7 +196,7 @@
 		"es": "$"
 	},
 	"productos_creados": {
-		"en": "Product(s) created",
+		"en": "product(s) created",
 		"es": "$"
 	},
 	"borrar": {
@@ -212,7 +228,7 @@
 		"es": "$"
 	},
 	"formularios_creados": {
-		"en": "Form(s) created",
+		"en": "form(s) created",
 		"es": "$"
 	},
 	"filtrar_ascendente": {
@@ -280,7 +296,7 @@
 		"es": "$"
 	},
 	"facilito": {
-		"en": "Facilito",
+		"en": "Facilito©",
 		"es": "$"
 	},
 	"dia": {

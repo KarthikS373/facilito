@@ -1,0 +1,45 @@
+.container {
+	display: grid;
+	width: 100%;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	background: #fcfcfc;
+	grid-template-rows: auto;
+	column-gap: 15px;
+	border: 2px solid transparent;
+	border-radius: var(--radius);
+	padding: 15px;
+
+	.actions {
+		display: grid;
+		grid-template-columns: 45px;
+		grid-template-rows: 45px 45px 45px;
+		row-gap: 5px;
+
+		button {
+			width: 45px;
+			height: 45px;
+		}
+
+		.colorButton {
+			width: 45px;
+			height: 45px;
+
+			span {
+				font-weight: bold;
+				color: #fff;
+			}
+		}
+	}
+
+	.inputs {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		row-gap: 20px;
+
+		& > div:first-child {
+			margin-top: 6px;
+		}
+	}
+}

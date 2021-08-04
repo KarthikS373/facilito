@@ -2,6 +2,7 @@
 import React from 'react'
 
 // COMPONENTES
+import StatesList from './components/statesList'
 import Header from 'components/header'
 import Info from './components/info'
 
@@ -28,7 +29,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 
 	return (
 		<>
-			<Header customDescription={`${form.tracking?.length || 0} ${$`evento(s) creados`}`}>
+			<Header customDescription={`${form?.tracking?.length || 0} ${$`evento(s) creados`}`}>
 				<Button
 					color='primary'
 					variant='contained'
@@ -36,6 +37,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 					startIcon={<SaveTwoTone />}>{$`Guardar estados`}</Button>
 			</Header>
 			<Info />
+			<StatesList tracking={form?.tracking || []} />
 		</>
 	)
 }
