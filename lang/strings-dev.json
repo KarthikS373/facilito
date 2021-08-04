@@ -1,10 +1,58 @@
 {
+	"para_crear_un_nuevo_formulario_escribe_el_titulo_este_tambien_se_mostrara_como_la_url_publica": {
+		"en": "To create a new form write the title, this also shown as the public url.",
+		"es": "$"
+	},
+	"mi_formulario": {
+		"en": "My form",
+		"es": "$"
+	},
+	"crear_formulario": {
+		"en": "Create form",
+		"es": "$"
+	},
+	"estas_seguro_de_querer_borrar_este_producto_de_tu_inventario_esta_accion_sera_permanente": {
+		"en": "Are you sure you want to delete this product from your inventory? This action will be permanent.",
+		"es": "$"
+	},
+	"borrar_productos": {
+		"en": "Delete products",
+		"es": "$"
+	},
+	"estas_seguro_de_que_quieres_borrar_este_formulario_todos_los_datos_relacionados_se_perderan": {
+		"en": "Are you sure you want to delete this form, all related data will be lost?",
+		"es": "$"
+	},
+	"borrar_formulario": {
+		"en": "Delete form",
+		"es": "$"
+	},
+	"estados": {
+		"en": "State(s)",
+		"es": "$"
+	},
+	"estas_seguro_de_que_quieres_borrar_todos_los_estados_de_tracking_presentes_en_este_formulario": {
+		"en": "Are you sure you want to delete all the tracking statuses present in this form?",
+		"es": "$"
+	},
+	"borrar_tracking": {
+		"en": "Delete tracking",
+		"es": "$"
+	},
+	"iniciar": {
+		"en": "Start",
+		"es": "$"
+	},
+	"respuestas": {
+		"en": "Answer(s)",
+		"es": "$"
+	},
 	"estas_seguro_de_querer_borrar_esta_repuesta_este_proceso_sera_permamente": {
-		"en": "",
+		"en": "Are you sure you want to delete this response? This process will be permanently",
 		"es": "$"
 	},
 	"borrar_respuesta": {
-		"en": "",
+		"en": "Delete answer",
 		"es": "$"
 	},
 	"descripcion_no_disponible_en_este_momento": {
@@ -48,7 +96,7 @@
 		"es": "$"
 	},
 	"imprime_y_visualiza_todas_las_respuestas_de_este_formulario": {
-		"en": "Print and view all the responses of this form",
+		"en": "Print and view all the answers of this form by customers.",
 		"es": "$"
 	},
 	"lista_de_respuestas": {
@@ -68,11 +116,11 @@
 		"es": "$"
 	},
 	"respuestas_creadas": {
-		"en": "Answers created",
+		"en": "Answer(s) created",
 		"es": "$"
 	},
 	"configura_los_mensajes_y_pasos_para_todas_las_ordenes": {
-		"en": "Set messages and steps for all orders",
+		"en": "Set custom messages and steps for all orders in forms.",
 		"es": "$"
 	},
 	"tracking_de_ordenes": {
@@ -104,7 +152,7 @@
 		"es": "$"
 	},
 	"agrega_productos_al_inventario_y_muestralos_en_el_carrito": {
-		"en": "Add products to inventory and sample them in the cart",
+		"en": "Add products to inventory and show them in the cart.",
 		"es": "$"
 	},
 	"catalogo_de_productos": {
@@ -116,7 +164,7 @@
 		"es": "$"
 	},
 	"productos_creados": {
-		"en": "Products created",
+		"en": "Product(s) created",
 		"es": "$"
 	},
 	"borrar": {
@@ -132,7 +180,7 @@
 		"es": "$"
 	},
 	"crea_tus_formularios_desde_disenos_personalizados": {
-		"en": "Create your forms from custom designs",
+		"en": "Create your forms from custom templates.",
 		"es": "$"
 	},
 	"iniciar_con_plantilla": {
@@ -148,7 +196,7 @@
 		"es": "$"
 	},
 	"formularios_creados": {
-		"en": "Forms created",
+		"en": "Form(s) created",
 		"es": "$"
 	},
 	"filtrar_ascendente": {
@@ -204,7 +252,7 @@
 		"es": "$"
 	},
 	"espanol": {
-		"en": "español",
+		"en": "Español",
 		"es": "$"
 	},
 	"politicas_de_privacidad": {
@@ -276,11 +324,11 @@
 		"es": "$"
 	},
 	"ver_como": {
-		"en": "See as",
+		"en": "See as ",
 		"es": "$"
 	},
 	"administra_los_eventos_creados_desde_todos_tus_formularios": {
-		"en": "Manage the events created from all your forms",
+		"en": "Manage the events created from all your forms.",
 		"es": "$"
 	},
 	"calendario_y_eventos": {
@@ -300,7 +348,7 @@
 		"es": "$"
 	},
 	"eventos_creados": {
-		"en": "Events created",
+		"en": "Event(s) created",
 		"es": "$"
 	},
 	"configuraciones": {
@@ -332,7 +380,7 @@
 		"es": "$"
 	},
 	"english": {
-		"en": "english",
+		"en": "English",
 		"es": "$"
 	},
 	"aceptar": {

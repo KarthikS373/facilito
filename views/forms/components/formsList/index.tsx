@@ -61,7 +61,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 					contentLink={`f/${form.id}`}
 					onDelete={deleteFormEv(form.id)}
 					bottomLink={`f/${form.id}/respuestas`}
-					bottomSection={`${forms.answers[index]?.data.length || 0} respuesta(s)`}
+					bottomSection={`${forms.answers[index]?.data.length || 0} ${$`respuesta(s)`}`}
 				/>
 			))}
 		</div>

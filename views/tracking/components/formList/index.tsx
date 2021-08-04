@@ -59,7 +59,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 					onDelete={deleteFormEv(form.id)}
 					bottomLink={`/t/${form.id}/editar`}
 					contentLink={`/t/${form.id}/editar`}
-					bottomSection={`${forms.forms[index]?.tracking?.length || 0} estado(s)`}
+					bottomSection={`${forms.forms[index]?.tracking?.length || 0} ${$`estado(s)`}`}
 				/>
 			))}
 		</div>
