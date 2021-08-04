@@ -56,9 +56,9 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 				<FormCard
 					form={form}
 					key={`${form.id}_${index}`}
+					bottomLink='trackingSettings'
+					contentLink='trackingSettings'
 					onDelete={deleteFormEv(form.id)}
-					bottomLink={`/t/${form.id}/editar`}
-					contentLink={`/t/${form.id}/editar`}
 					bottomSection={`${forms.forms[index]?.tracking?.length || 0} ${$`estado(s)`}`}
 				/>
 			))}

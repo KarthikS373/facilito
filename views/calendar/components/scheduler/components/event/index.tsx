@@ -9,8 +9,8 @@ import Styles from './style.module.scss'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 
-// LINK
-import Link from 'next/link'
+// COMPONENTES
+import Link from 'components/link'
 
 // ICONS
 import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
@@ -73,7 +73,7 @@ export const showEventInfo =
 						</div>
 					</div>
 					<div className={Styles.actions}>
-						<Link href={`/f/${event.resource.id}`}>
+						<Link rKey='newForm' id={event.resource.id}>
 							{(window.innerWidth > 500 && (
 								<Button variant='outlined' startIcon={<DescriptionTwoTone />}>
 									{$`Formulario`}

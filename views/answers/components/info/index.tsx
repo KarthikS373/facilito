@@ -1,11 +1,9 @@
 // REACT
 import React from 'react'
 
-// NEXT
-import Link from 'next/link'
-
 // COMPONENTES
 import PageInfo from 'components/pageInfo'
+import Link from 'components/link'
 
 // ICONOS
 import QuestionAnswerTwoTone from '@material-ui/icons/QuestionAnswerTwoTone'
@@ -29,7 +27,7 @@ const Info: React.FC<InfoProps> = ({ formID }) => {
 			title={$`Lista de respuestas`}
 			icon={<QuestionAnswerTwoTone />}
 			description={$`Imprime y visualiza todas las respuestas de este formulario.`}>
-			<Link href={`/formularios/${formID}`}>
+			<Link rKey='forms' id={formID}>
 				<Button fullWidth variant='outlined' startIcon={<DescriptionTwoTone />}>
 					{$`Abrir formulario`}
 				</Button>

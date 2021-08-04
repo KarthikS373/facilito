@@ -5,10 +5,7 @@ import React, { useContext, useState } from 'react'
 import SideBar from './components/sidebar'
 import Header from 'components/header'
 import Info from './components/info'
-
-// NEXT
-import Link from 'next/link'
-import ROUTES from 'router/routes'
+import Link from 'components/link'
 
 // UTILS
 import useDefaultFilter from 'hooks/filters'
@@ -72,7 +69,7 @@ const Products: React.FC = () => {
 				customDescription={`${
 					businessCtx.business?.products.length || 0
 				} ${$`producto(s) creados`}`}>
-				<Link href={ROUTES.newProduct}>
+				<Link rKey='newProduct'>
 					<Button
 						variant='contained'
 						style={{ color: '#fff' }}

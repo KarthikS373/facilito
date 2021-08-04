@@ -4,14 +4,15 @@ import React, { useState } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
-// NEXT
-import Link from 'next/link'
+// RUTAS
+import { RoutesProps } from 'router/routes'
 
 // HOC
 import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import Link from 'components/link'
 
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
@@ -29,8 +30,8 @@ import MailTwoTone from '@material-ui/icons/MailTwoTone'
 // PROPS
 interface FormCardProps {
 	form: Form
-	bottomLink: string
-	contentLink: string
+	bottomLink: keyof RoutesProps
+	contentLink: keyof RoutesProps
 	bottomSection: string
 	onDelete?: EmptyFunction
 }
@@ -62,7 +63,7 @@ const FormCard: React.FC<FormCardProps> = ({
 		<>
 			<div className={Styles.container} style={{ opacity: form.public ? 1 : 0.6 }}>
 				{/* TARJETA */}
-				<Link href={contentLink} passHref>
+				<Link rKey={contentLink} id={form.id} passHref>
 					<div className={Styles.content}>
 						<h3>{form.title}</h3>
 						<a
@@ -122,7 +123,7 @@ const FormCard: React.FC<FormCardProps> = ({
 				</IconButton>
 
 				{/* SECCION INFERIOR  */}
-				<Link href={bottomLink} passHref>
+				<Link rKey={contentLink} id={form.id} passHref>
 					<div className={Styles.bottomSection}>
 						<AssignmentTwoTone />
 						<p>{bottomSection}</p>
@@ -138,7 +139,7 @@ const FormCard: React.FC<FormCardProps> = ({
 				placement='right-start'
 				onClose={closeCardMenu}>
 				<MenuItem>
-					<Link href={contentLink} passHref>
+					<Link rKey={contentLink} id={form.id} passHref>
 						<Button
 							fullWidth
 							variant='outlined'

@@ -7,10 +7,9 @@ import Styles from './style.module.scss'
 // NEXT
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Link from 'next/link'
 
-// RUTAS
-import ROUTES from 'router/routes'
+// COMPONENTES
+import Link from 'components/link'
 
 // ICONS
 import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
@@ -59,7 +58,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				</div>
 				<ul>
 					<li>
-						<Link href={ROUTES.forms} passHref>
+						<Link rKey='forms' passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -69,7 +68,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.orderTracking} passHref>
+						<Link rKey='tracking' passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -79,7 +78,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.products} passHref>
+						<Link rKey='products' passHref>
 							<Button
 								fullWidth
 								onClick={onClose}
@@ -89,7 +88,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 						</Link>
 					</li>
 					<li>
-						<Link href={ROUTES.calendar} passHref>
+						<Link rKey='calendar' passHref>
 							<Button
 								fullWidth
 								onClick={onClose}

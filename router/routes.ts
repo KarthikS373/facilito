@@ -1,4 +1,4 @@
-interface RoutesProps {
+export interface RoutesProps {
 	login: string
 
 	forms: string
@@ -7,7 +7,7 @@ interface RoutesProps {
 	form: string
 
 	company: string
-	visitor: string
+	guest: string
 	edit: string
 
 	products: string
@@ -18,9 +18,9 @@ interface RoutesProps {
 
 	calendar: string
 
-	orderTracking: string
-	orderTrackingSettings: string
-	publicOrderTracking: string
+	tracking: string
+	trackingSettings: string
+	publicTracking: string
 }
 
 const ROUTES: RoutesProps = {
@@ -35,12 +35,12 @@ const ROUTES: RoutesProps = {
 
 	// EMPRESA
 	company: '/company',
-	visitor: '/e/:companyURL',
+	guest: '/e/:companyURL',
 	edit: '/e/editar',
 
 	// PRODUCTOS
 	products: '/productos',
-	editProduct: '/p/:product/editar',
+	editProduct: '/p/:productID/editar',
 	newProduct: '/p/crear',
 
 	// CALENDARIO
@@ -50,9 +50,9 @@ const ROUTES: RoutesProps = {
 	admission: '/a/:id',
 
 	// ORDER TRACKING
-	orderTracking: '/tracking',
-	publicOrderTracking: '/t/:formID/editar',
-	orderTrackingSettings: '/t/:companyURL/:formURL',
+	tracking: '/tracking',
+	publicTracking: '/t/:formID/editar',
+	trackingSettings: '/t/:companyURL/:formURL',
 }
 
 export default ROUTES

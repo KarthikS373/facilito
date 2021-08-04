@@ -3,13 +3,12 @@ import React, { useContext } from 'react'
 
 // NEXT
 import Image from 'next/image'
-import Link from 'next/link'
+
+// COMPONENTES
+import Link from 'components/link'
 
 // ESTILOS
 import Styles from './style.module.scss'
-
-// RUTAS
-import ROUTES from 'router/routes'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -91,14 +90,14 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Link passHref href={`/e/${businessCtx.business?.url}`}>
+					<Link rKey='guest' passHref>
 						<Button
 							fullWidth
 							variant='outlined'
 							startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
 					</Link>
 					{children || (
-						<Link href={ROUTES.forms} passHref>
+						<Link rKey='forms' passHref>
 							<Button
 								color='primary'
 								variant='contained'

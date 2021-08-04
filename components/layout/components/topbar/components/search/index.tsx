@@ -4,8 +4,8 @@ import React, { useState, useContext } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
-// NEXT
-import Link from 'next/link'
+// COMPONENTES
+import Link from 'components/link'
 
 // MATERIAL
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
@@ -85,7 +85,8 @@ const Search: React.FC = () => {
 									{/* LINK */}
 									<Link
 										passHref
-										href={link.type === 'form' ? `/f/${link.id}` : `/p/${link.id}/editar`}>
+										id={link.id}
+										rKey={link.type === 'form' ? 'newForm' : 'editProduct'}>
 										<IconButton>
 											<ForwardTwoTone />
 										</IconButton>

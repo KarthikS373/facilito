@@ -38,7 +38,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) =>
 
 	// CERRAR SESIÓN
 	const logoutEv = () => {
-		logout().then(() => router.push('/cuenta'))
+		logout().then(() => router.push(ROUTES.login))
 		onClose()
 	}
 

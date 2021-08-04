@@ -15,4 +15,4 @@ export const drawerIcons = [
 	<Event key='event_icon' />,
 	<Timeline key='time_icon' />,
 ]
-export const routes = [ROUTES.forms, ROUTES.products, ROUTES.calendar, ROUTES.orderTracking]
+export const routes = [ROUTES.forms, ROUTES.products, ROUTES.calendar, ROUTES.tracking]

@@ -57,10 +57,10 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 			{forms.forms.map((form: Form, index: number) => (
 				<FormCard
 					form={form}
+					bottomLink='answers'
+					contentLink='newForm'
 					key={`${form.id}_${index}`}
-					contentLink={`f/${form.id}`}
 					onDelete={deleteFormEv(form.id)}
-					bottomLink={`f/${form.id}/respuestas`}
 					bottomSection={`${forms.answers[index]?.data.length || 0} ${$`respuesta(s)`}`}
 				/>
 			))}
