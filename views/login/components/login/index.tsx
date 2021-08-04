@@ -17,7 +17,7 @@ import { defLoginData } from './utils/initials'
 import Image from 'next/image'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // ICONOS
 import ExitToApp from '@material-ui/icons/ExitToApp'
@@ -37,7 +37,10 @@ interface LoginFormProps {
 	onSigning: EmptyFunction
 }
 
-const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, onSigning }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// RECORDAR USUARIO
 	const [remember, setRemember] = useState<boolean>(true)
 
@@ -160,6 +163,6 @@ const LoginForm: React.FC<LoginFormProps> = withStrings<LoginFormProps>(({ $, on
 			</div>
 		</div>
 	)
-})
+}
 
 export default LoginForm

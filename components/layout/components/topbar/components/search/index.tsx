@@ -25,12 +25,15 @@ import ProductsContext from 'context/products'
 import FormsContext from 'context/forms'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // UTILS
 import searchItems, { LinkInfo } from './utils/tools'
 
-const Search: React.FC = withStrings(({ $ }) => {
+const Search: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// ESTADO
 	const [links, setLinks] = useState<LinkInfo[]>([])
 
@@ -95,6 +98,6 @@ const Search: React.FC = withStrings(({ $ }) => {
 			</div>
 		</ClickAwayListener>
 	)
-})
+}
 
 export default Search

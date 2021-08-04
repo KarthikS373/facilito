@@ -15,12 +15,15 @@ import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
 import Button from '@material-ui/core/Button'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 interface InfoProps {
 	formID: string
 }
-const Info: React.FC<InfoProps> = withStrings(({ $, formID }) => {
+const Info: React.FC<InfoProps> = ({ formID }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	return (
 		<PageInfo
 			title={$`Lista de respuestas`}
@@ -33,6 +36,6 @@ const Info: React.FC<InfoProps> = withStrings(({ $, formID }) => {
 			</Link>
 		</PageInfo>
 	)
-})
+}
 
 export default Info

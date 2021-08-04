@@ -14,12 +14,15 @@ import showNewFormPrompt from '../prompt'
 import Styles from './style.module.scss'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-const AddNewForm: React.FC = withStrings(({ $ }) => {
+const AddNewForm: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// ROUTER
 	const router = useRouter()
 
@@ -79,6 +82,6 @@ const AddNewForm: React.FC = withStrings(({ $ }) => {
 			</div>
 		</button>
 	)
-})
+}
 
 export default AddNewForm

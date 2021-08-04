@@ -20,13 +20,16 @@ import PopperMenuList from 'components/popperMenu'
 import PageInfo from 'components/pageInfo'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 interface InfoProps {
 	viewState: string
 	changeView: (view: string) => () => unknown
 }
-const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => {
+const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// MENU
 	const [optionsAnchor, setOptionsAnchor] = useState<HTMLElement | null>(null)
 	const [newViewState, setViewState] = useState<string>()
@@ -107,6 +110,6 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 			</PopperMenuList>
 		</>
 	)
-})
+}
 
 export default Info

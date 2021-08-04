@@ -8,7 +8,7 @@ import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import Paper from '@material-ui/core/Paper'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import CustomEvent, { showEventInfo } from './components/event'
@@ -35,73 +35,74 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 // LOCALIZER
 const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales: { es },
+	format,
+	parse,
+	startOfWeek,
+	getDay,
+	locales: { es },
 })
 
 // PROPS
 interface SchedulerProps {
-  viewState: string
-  appointments: CustomAppointment[]
+	viewState: string
+	appointments: CustomAppointment[]
 }
-const Scheduler: React.FC<SchedulerProps> = withStrings(
-  ({ appointments, $, viewState, langCode }) => {
-    // NEGOCIO
-    const businessCtx = useContext(BusinessContext)
+const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
+	// STRINGS
+	const { $, langCode } = useStrings()
 
-    // ESTADO
-    const [newViewState, setViewState] = useState<string>()
+	// NEGOCIO
+	const businessCtx = useContext(BusinessContext)
 
-    // CAMBIAR
-    useCalendarView(viewState, setViewState)
+	// ESTADO
+	const [newViewState, setViewState] = useState<string>()
 
-    // CAMBIAR VISTA
-    const onView = (view: string) => console.warn('Opt-in calendar change', view)
+	// CAMBIAR
+	useCalendarView(viewState, setViewState)
 
-    return (
-      <Paper
-        className={
-          (newViewState === 'week' && Styles.weekContainer) ||
-          (newViewState === 'month' && Styles.monthContainer) ||
-          (newViewState === 'day' && Styles.dayContainer) ||
-          (newViewState === 'agenda' && Styles.agendaContainer) ||
-          Styles.weekContainer
-        }>
-        <Calendar
-          onView={onView}
-          defaultView='week'
-          endAccessor='end'
-          culture={langCode}
-          view={newViewState}
-          startAccessor='start'
-          events={appointments}
-          localizer={localizer}
-          style={{ height: 500 }}
-          onSelectEvent={showEventInfo($, businessCtx.business)}
-          components={{ toolbar: CustomToolbar, event: CustomEvent }}
-          messages={{
-            noEventsInRange: $`Sin eventos en este periodo`,
-            work_week: $`Semana de trabajo`,
-            allDay: $`Todo el día`,
-            tomorrow: $`Mañana`,
-            yesterday: $`Ayer`,
-            previous: $`Atras`,
-            next: $`Siguiente`,
-            agenda: $`Agenda`,
-            time: $`Tiempo`,
-            week: $`Semana`,
-            date: $`Fecha`,
-            today: $`Hoy`,
-            month: $`Mes`,
-            day: $`Día`,
-          }}
-        />
-      </Paper>
-    )
-  }
-)
+	// CAMBIAR VISTA
+	const onView = (view: string) => console.warn('Opt-in calendar change', view)
+
+	return (
+		<Paper
+			className={
+				(newViewState === 'week' && Styles.weekContainer) ||
+				(newViewState === 'month' && Styles.monthContainer) ||
+				(newViewState === 'day' && Styles.dayContainer) ||
+				(newViewState === 'agenda' && Styles.agendaContainer) ||
+				Styles.weekContainer
+			}>
+			<Calendar
+				onView={onView}
+				defaultView='week'
+				endAccessor='end'
+				culture={langCode}
+				view={newViewState}
+				startAccessor='start'
+				events={appointments}
+				localizer={localizer}
+				style={{ height: 500 }}
+				onSelectEvent={showEventInfo($, businessCtx.business)}
+				components={{ toolbar: CustomToolbar, event: CustomEvent }}
+				messages={{
+					noEventsInRange: $`Sin eventos en este periodo`,
+					work_week: $`Semana de trabajo`,
+					allDay: $`Todo el día`,
+					tomorrow: $`Mañana`,
+					yesterday: $`Ayer`,
+					previous: $`Atras`,
+					next: $`Siguiente`,
+					agenda: $`Agenda`,
+					time: $`Tiempo`,
+					week: $`Semana`,
+					date: $`Fecha`,
+					today: $`Hoy`,
+					month: $`Mes`,
+					day: $`Día`,
+				}}
+			/>
+		</Paper>
+	)
+}
 
 export default Scheduler

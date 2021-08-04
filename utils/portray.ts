@@ -5,19 +5,19 @@ import { IPortrayContext } from 'context/lang'
 import { normalizeString } from './tools'
 import LZString from 'lz-string'
 
+interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
+	strings: PortrayDict
+}
 /**
  * Obtener texto
  * @description Lee o crea un nuevo valor en el json de strings
  * @param  {TemplateStringsArray} key
  * @param  {ProviderProps} ctx
  */
-// OBTENER TEXTO
-interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
-	strings: PortrayDict
-}
 const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 	// FORMATO DE KEY
-	const trimmedKey: string = LZString.compressToBase64(normalizeString(key[0]))
+	const normalizedKey: string = normalizeString(key[0])
+	const trimmedKey: string = LZString.compressToBase64(normalizedKey)
 
 	// VERIFICAR SI EXISTE
 	if (trimmedKey in ctx.strings) {
@@ -26,10 +26,11 @@ const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 	} else {
 		if (process.env.NODE_ENV === 'development') {
 			// CREAR
-			const tmpStrings: PortrayDict = { ...ctx.strings }
-			tmpStrings[trimmedKey] = Object.fromEntries(
-				ctx.langs.map((langCode: string) => [langCode, langCode === ctx.mainLang ? '$' : ''])
-			)
+			const stringsDict = {
+				[normalizedKey]: Object.fromEntries(
+					ctx.langs.map((langCode: string) => [langCode, langCode === ctx.mainLang ? '$' : ''])
+				),
+			}
 
 			// GUARDAR
 			fetch('http://127.0.0.1:4000/write', {
@@ -38,7 +39,7 @@ const getTextFromDict = (key: TemplateStringsArray, ctx: ProviderProps) => {
 				},
 				method: 'POST',
 				body: JSON.stringify({
-					stringsDict: tmpStrings,
+					stringsDict,
 				}),
 			})
 

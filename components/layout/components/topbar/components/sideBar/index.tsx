@@ -27,7 +27,7 @@ import Button from '@material-ui/core/Button'
 import getActiveRoute from './utils/routes'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // PROPS
 interface SideBarProps {
@@ -35,7 +35,10 @@ interface SideBarProps {
 	open: boolean
 }
 
-const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
+const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// ROUTER
 	const router = useRouter()
 	const path = router.asPath
@@ -105,6 +108,6 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 			/>
 		</>
 	)
-})
+}
 
 export default SideBar

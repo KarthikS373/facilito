@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 import Image from 'next/image'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // ICONOS
 import Facebook from '@material-ui/icons/Facebook'
@@ -19,7 +19,10 @@ import Facebook from '@material-ui/icons/Facebook'
 // AUTH
 import { facebookSigning, googleSigning } from 'utils/auth'
 
-const SocialLogin: React.FC = withStrings(({ $ }) => {
+const SocialLogin: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// LOGINS
 	const fbSigning = () => facebookSigning()
 	const gSigning = () => googleSigning()
@@ -49,6 +52,6 @@ const SocialLogin: React.FC = withStrings(({ $ }) => {
 			</Button>
 		</div>
 	)
-})
+}
 
 export default SocialLogin

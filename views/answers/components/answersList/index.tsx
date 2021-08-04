@@ -29,8 +29,8 @@ import Paper from '@material-ui/core/Paper'
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-// HOOC
-import withStrings from 'hoc/lang'
+// STRINGS
+import useStrings from 'hooks/lang'
 
 // REACT WINDOW
 import { FixedSizeList as List } from 'react-window'
@@ -44,136 +44,145 @@ interface AnswersListProps {
 	setFilter: (newFilter: string) => void
 	updateAnswerState: (index: number, newState: number) => void
 }
-const AnswersList: React.FC<AnswersListProps> = withStrings(
-	({ $, components, formID, tracking, filter, setFilter, answers, updateAnswerState }) => {
-		// FILA
-		const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
-		const openRowMenu = Boolean(currentRow)
+const AnswersList: React.FC<AnswersListProps> = ({
+	components,
+	formID,
+	tracking,
+	filter,
+	setFilter,
+	answers,
+	updateAnswerState,
+}) => {
+	// STRINGS
+	const { $ } = useStrings()
 
-		// BUSINESS
-		const businessCtx = useContext(BusinessContext)
+	// FILA
+	const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
+	const openRowMenu = Boolean(currentRow)
 
-		// NUMERO DE RESPUESTA
-		const [currentIndex, setCurrentIndex] = useState<number>(0)
+	// BUSINESS
+	const businessCtx = useContext(BusinessContext)
 
-		// ABRIR SIDEBAR
-		const [openSideBar, setOpenSideBar] = useState<boolean>(false)
+	// NUMERO DE RESPUESTA
+	const [currentIndex, setCurrentIndex] = useState<number>(0)
 
-		// ABRIR/CERRAR SIDEBAR
-		const hanldeSideBar = (open: boolean) => () => setOpenSideBar(open)
+	// ABRIR SIDEBAR
+	const [openSideBar, setOpenSideBar] = useState<boolean>(false)
 
-		// CERRAR MENU DE FILA
-		const closeRowMenu = () => setCurrentRow(null)
+	// ABRIR/CERRAR SIDEBAR
+	const hanldeSideBar = (open: boolean) => () => setOpenSideBar(open)
 
-		// MOSTRAR FILA
-		const showCurrentAnswer = () => showAnswer(answers[currentIndex].data, components)
+	// CERRAR MENU DE FILA
+	const closeRowMenu = () => setCurrentRow(null)
 
-		// IMPRIMIR FILA
-		const printCurrentAnswer = () => printAnswer(answers[currentIndex].data, components)
+	// MOSTRAR FILA
+	const showCurrentAnswer = () => showAnswer(answers[currentIndex].data, components)
 
-		// BORRAR FILA
-		const deleteCurrentAnswer = () =>
-			deleteAnswerPrompt($, currentIndex, formID, businessCtx.business?.id)
+	// IMPRIMIR FILA
+	const printCurrentAnswer = () => printAnswer(answers[currentIndex].data, components)
 
-		// ASIGNAR FILA
-		const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
-			setCurrentRow(ev.currentTarget)
-			setCurrentIndex(index)
-		}
+	// BORRAR FILA
+	const deleteCurrentAnswer = () =>
+		deleteAnswerPrompt($, currentIndex, formID, businessCtx.business?.id)
 
-		// FILAS
-		const answersTrigger: string = answers
-			.map((answer: FormAnswerSelf) => `${answer.index}_${answer.stateIndex}`)
-			.join('')
-
-		const row = useCallback(
-			({ index, style }) => {
-				let newIndex: number = index - 1
-				const answer: FormAnswerSelf = answers[newIndex]
-				return newIndex === -1 ? (
-					<TableHead key='header_00' style={style} filter={filter} setFilter={setFilter} />
-				) : (
-					<AnswerRow
-						{...answer}
-						style={style}
-						key={answer.index}
-						handleRow={handleRow(newIndex)}
-						state={tracking[answer.stateIndex]?.name}
-					/>
-				)
-			},
-			[answersTrigger, filter]
-		)
-
-		return (
-			<>
-				<div className={Styles.container}>
-					<TableContainer component={Paper} style={{ backgroundColor: 'rgb(252, 252, 252)' }}>
-						<List
-							height={272}
-							itemSize={68}
-							width='100%'
-							className={Styles.listContainer}
-							itemCount={(answers?.length || 0) + 1}>
-							{row}
-						</List>
-					</TableContainer>
-				</div>
-				<SideBar
-					formID={formID}
-					open={openSideBar}
-					tracking={tracking}
-					currentIndex={currentIndex}
-					onClose={hanldeSideBar(false)}
-					updateAnswerState={updateAnswerState}
-					answerIndex={answers[currentIndex]?.index - 1}
-					stateIndex={answers[currentIndex]?.stateIndex || 0}
-				/>
-				<PopperMenuList
-					placement='bottom-end'
-					onClose={closeRowMenu}
-					anchorEl={currentRow}
-					open={openRowMenu}>
-					<MenuItem onClick={closeRowMenu}>
-						<Button
-							fullWidth
-							variant='outlined'
-							onClick={showCurrentAnswer}
-							startIcon={<VisibilityTwoTone />}>
-							{$`Ver todo`}
-						</Button>
-					</MenuItem>
-					<MenuItem onClick={closeRowMenu}>
-						<Button
-							fullWidth
-							variant='outlined'
-							onClick={printCurrentAnswer}
-							startIcon={<PrintTwoTone />}>
-							{$`Imprimir`}
-						</Button>
-					</MenuItem>
-					<MenuItem onClick={closeRowMenu}>
-						<Button
-							fullWidth
-							variant='outlined'
-							onClick={hanldeSideBar(true)}
-							startIcon={<SettingsInputCompositeTwoTone />}>
-							{$`Tracking`}
-						</Button>
-					</MenuItem>
-					<MenuItem onClick={closeRowMenu}>
-						<Button
-							fullWidth
-							variant='outlined'
-							onClick={deleteCurrentAnswer}
-							startIcon={<DeleteTwoTone />}>
-							{$`Eliminar`}
-						</Button>
-					</MenuItem>
-				</PopperMenuList>
-			</>
-		)
+	// ASIGNAR FILA
+	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
+		setCurrentRow(ev.currentTarget)
+		setCurrentIndex(index)
 	}
-)
+
+	// FILAS
+	const answersTrigger: string = answers
+		.map((answer: FormAnswerSelf) => `${answer.index}_${answer.stateIndex}`)
+		.join('')
+
+	const row = useCallback(
+		({ index, style }) => {
+			let newIndex: number = index - 1
+			const answer: FormAnswerSelf = answers[newIndex]
+			return newIndex === -1 ? (
+				<TableHead key='header_00' style={style} filter={filter} setFilter={setFilter} />
+			) : (
+				<AnswerRow
+					{...answer}
+					style={style}
+					key={answer.index}
+					handleRow={handleRow(newIndex)}
+					state={tracking[answer.stateIndex]?.name}
+				/>
+			)
+		},
+		[answersTrigger, filter]
+	)
+
+	return (
+		<>
+			<div className={Styles.container}>
+				<TableContainer component={Paper} style={{ backgroundColor: 'rgb(252, 252, 252)' }}>
+					<List
+						height={272}
+						itemSize={68}
+						width='100%'
+						className={Styles.listContainer}
+						itemCount={(answers?.length || 0) + 1}>
+						{row}
+					</List>
+				</TableContainer>
+			</div>
+			<SideBar
+				formID={formID}
+				open={openSideBar}
+				tracking={tracking}
+				currentIndex={currentIndex}
+				onClose={hanldeSideBar(false)}
+				updateAnswerState={updateAnswerState}
+				answerIndex={answers[currentIndex]?.index - 1}
+				stateIndex={answers[currentIndex]?.stateIndex || 0}
+			/>
+			<PopperMenuList
+				placement='bottom-end'
+				onClose={closeRowMenu}
+				anchorEl={currentRow}
+				open={openRowMenu}>
+				<MenuItem onClick={closeRowMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						onClick={showCurrentAnswer}
+						startIcon={<VisibilityTwoTone />}>
+						{$`Ver todo`}
+					</Button>
+				</MenuItem>
+				<MenuItem onClick={closeRowMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						onClick={printCurrentAnswer}
+						startIcon={<PrintTwoTone />}>
+						{$`Imprimir`}
+					</Button>
+				</MenuItem>
+				<MenuItem onClick={closeRowMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						onClick={hanldeSideBar(true)}
+						startIcon={<SettingsInputCompositeTwoTone />}>
+						{$`Tracking`}
+					</Button>
+				</MenuItem>
+				<MenuItem onClick={closeRowMenu}>
+					<Button
+						fullWidth
+						variant='outlined'
+						onClick={deleteCurrentAnswer}
+						startIcon={<DeleteTwoTone />}>
+						{$`Eliminar`}
+					</Button>
+				</MenuItem>
+			</PopperMenuList>
+		</>
+	)
+}
 
 export default AnswersList

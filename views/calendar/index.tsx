@@ -5,7 +5,7 @@ import React, { useState, useContext } from 'react'
 import useAppointments from './utils/hooks'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import Header from 'components/header'
@@ -18,7 +18,10 @@ import BusinessContext from 'context/business'
 import dynamic from 'next/dynamic'
 const Scheduler = dynamic(() => import('./components/scheduler'))
 
-const Calendar: React.FC = withStrings(({ $ }) => {
+const Calendar: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// EMPRESA
 	const businessCtx = useContext(BusinessContext)
 
@@ -39,6 +42,6 @@ const Calendar: React.FC = withStrings(({ $ }) => {
 			<Scheduler viewState={viewState} appointments={appointments} />
 		</>
 	)
-})
+}
 
 export default Calendar

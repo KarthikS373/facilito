@@ -19,7 +19,7 @@ import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
 import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -29,7 +29,10 @@ interface HeaderProps {
 	customDescription?: string
 }
 
-const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescription }) => {
+const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
@@ -95,7 +98,7 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 							startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
 					</Link>
 					{children || (
-						<Link href={ROUTES.forms}>
+						<Link href={ROUTES.forms} passHref>
 							<Button
 								color='primary'
 								variant='contained'
@@ -107,6 +110,6 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 			</div>
 		</div>
 	)
-})
+}
 
 export default Header

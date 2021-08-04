@@ -13,7 +13,7 @@ import BusinessContext from 'context/business'
 import FormsContext from 'context/forms'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import FormCard from 'components/formCard'
@@ -23,7 +23,10 @@ interface FormsListProps {
 	filter?: string
 }
 
-const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
+const FormsList: React.FC<FormsListProps> = ({ filter }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// FORMULARIOS
 	const [forms, setForms] = useState<FormInterface>({
 		forms: [],
@@ -61,7 +64,7 @@ const FormsList: React.FC<FormsListProps> = withStrings(({ $, filter }) => {
 			))}
 		</div>
 	)
-})
+}
 
 FormsList.defaultProps = {
 	filter: 'asc',

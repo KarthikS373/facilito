@@ -1,0 +1,346 @@
+{
+	"estas_seguro_de_querer_borrar_esta_repuesta_este_proceso_sera_permamente": {
+		"en": "",
+		"es": "$"
+	},
+	"borrar_respuesta": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_no_disponible_en_este_momento": {
+		"en": "Description not available at this time",
+		"es": "$"
+	},
+	"regresar": {
+		"en": "Back",
+		"es": "$"
+	},
+	"fecha_de_envio": {
+		"en": "Send date",
+		"es": "$"
+	},
+	"total": {
+		"en": "Total",
+		"es": "$"
+	},
+	"estado": {
+		"en": "State",
+		"es": "$"
+	},
+	"nombre_en_formulario": {
+		"en": "Name in form",
+		"es": "$"
+	},
+	"eliminar": {
+		"en": "Delete",
+		"es": "$"
+	},
+	"imprimir": {
+		"en": "Print",
+		"es": "$"
+	},
+	"ver_todo": {
+		"en": "See all",
+		"es": "$"
+	},
+	"abrir_formulario": {
+		"en": "Open form",
+		"es": "$"
+	},
+	"imprime_y_visualiza_todas_las_respuestas_de_este_formulario": {
+		"en": "Print and view all the responses of this form",
+		"es": "$"
+	},
+	"lista_de_respuestas": {
+		"en": "Answers list",
+		"es": "$"
+	},
+	"descargar_todo": {
+		"en": "Download all",
+		"es": "$"
+	},
+	"respuesta": {
+		"en": "Answer",
+		"es": "$"
+	},
+	"pregunta": {
+		"en": "Question",
+		"es": "$"
+	},
+	"respuestas_creadas": {
+		"en": "Answers created",
+		"es": "$"
+	},
+	"configura_los_mensajes_y_pasos_para_todas_las_ordenes": {
+		"en": "Set messages and steps for all orders",
+		"es": "$"
+	},
+	"tracking_de_ordenes": {
+		"en": "Order tracking",
+		"es": "$"
+	},
+	"nueva_categoria": {
+		"en": "New category",
+		"es": "$"
+	},
+	"precio": {
+		"en": "Price",
+		"es": "$"
+	},
+	"categoria": {
+		"en": "Category",
+		"es": "$"
+	},
+	"sku": {
+		"en": "SKU",
+		"es": "$"
+	},
+	"titulo": {
+		"en": "Title",
+		"es": "$"
+	},
+	"abrir_categorias": {
+		"en": "Open Categories",
+		"es": "$"
+	},
+	"agrega_productos_al_inventario_y_muestralos_en_el_carrito": {
+		"en": "Add products to inventory and sample them in the cart",
+		"es": "$"
+	},
+	"catalogo_de_productos": {
+		"en": "Products stock",
+		"es": "$"
+	},
+	"crear_producto": {
+		"en": "Create product",
+		"es": "$"
+	},
+	"productos_creados": {
+		"en": "Products created",
+		"es": "$"
+	},
+	"borrar": {
+		"en": "Delete",
+		"es": "$"
+	},
+	"editar": {
+		"en": "Edit",
+		"es": "$"
+	},
+	"filtrar_desendente": {
+		"en": "Descending filter",
+		"es": "$"
+	},
+	"crea_tus_formularios_desde_disenos_personalizados": {
+		"en": "Create your forms from custom designs",
+		"es": "$"
+	},
+	"iniciar_con_plantilla": {
+		"en": "Start with template",
+		"es": "$"
+	},
+	"formulario": {
+		"en": "Form",
+		"es": "$"
+	},
+	"crear": {
+		"en": "Create",
+		"es": "$"
+	},
+	"formularios_creados": {
+		"en": "Forms created",
+		"es": "$"
+	},
+	"filtrar_ascendente": {
+		"en": "Ascending filter",
+		"es": "$"
+	},
+	"iniciar_con_google": {
+		"en": "Signing with Google",
+		"es": "$"
+	},
+	"iniciar_con_facebook": {
+		"en": "Signing with Facebook",
+		"es": "$"
+	},
+	"registrarme": {
+		"en": "Signing",
+		"es": "$"
+	},
+	"olvidaste_tu_contrasena": {
+		"en": "Forgot your password",
+		"es": "$"
+	},
+	"iniciar_sesion": {
+		"en": "Login",
+		"es": "$"
+	},
+	"recuerdame_en_este_dispositivo": {
+		"en": "Remember in this device",
+		"es": "$"
+	},
+	"securepass124": {
+		"en": "securepass124",
+		"es": "$"
+	},
+	"contrasena": {
+		"en": "Password",
+		"es": "$"
+	},
+	"exampledomaincom": {
+		"en": "example@domain.com",
+		"es": "$"
+	},
+	"correo_electronico": {
+		"en": "Email",
+		"es": "$"
+	},
+	"nombre_de_usuario": {
+		"en": "User name",
+		"es": "$"
+	},
+	"john_doe": {
+		"en": "John Doe",
+		"es": "$"
+	},
+	"espanol": {
+		"en": "español",
+		"es": "$"
+	},
+	"politicas_de_privacidad": {
+		"en": "Privacy policies",
+		"es": "$"
+	},
+	"terminos_y_condiciones": {
+		"en": "Terms and Conditions",
+		"es": "$"
+	},
+	"facilito": {
+		"en": "Facilito",
+		"es": "$"
+	},
+	"dia": {
+		"en": "Day",
+		"es": "$"
+	},
+	"mes": {
+		"en": "Month",
+		"es": "$"
+	},
+	"hoy": {
+		"en": "Today",
+		"es": "$"
+	},
+	"fecha": {
+		"en": "Date",
+		"es": "$"
+	},
+	"semana": {
+		"en": "Week",
+		"es": "$"
+	},
+	"tiempo": {
+		"en": "Time",
+		"es": "$"
+	},
+	"agenda": {
+		"en": "Agenda",
+		"es": "$"
+	},
+	"siguiente": {
+		"en": "Next",
+		"es": "$"
+	},
+	"atras": {
+		"en": "Back",
+		"es": "$"
+	},
+	"ayer": {
+		"en": "Yesterday",
+		"es": "$"
+	},
+	"manana": {
+		"en": "Tomorrow",
+		"es": "$"
+	},
+	"todo_el_dia": {
+		"en": "All day",
+		"es": "$"
+	},
+	"semana_de_trabajo": {
+		"en": "Work week",
+		"es": "$"
+	},
+	"sin_eventos_en_este_periodo": {
+		"en": "No events in this period",
+		"es": "$"
+	},
+	"ver_como": {
+		"en": "See as",
+		"es": "$"
+	},
+	"administra_los_eventos_creados_desde_todos_tus_formularios": {
+		"en": "Manage the events created from all your forms",
+		"es": "$"
+	},
+	"calendario_y_eventos": {
+		"en": "Calendar and Events",
+		"es": "$"
+	},
+	"ir_a_formularios": {
+		"en": "Go to forms",
+		"es": "$"
+	},
+	"ver_como_visitiante": {
+		"en": "See as guest",
+		"es": "$"
+	},
+	"plan_basico": {
+		"en": "Basic plan",
+		"es": "$"
+	},
+	"eventos_creados": {
+		"en": "Events created",
+		"es": "$"
+	},
+	"configuraciones": {
+		"en": "Settings",
+		"es": "$"
+	},
+	"cerrar_sesion": {
+		"en": "Logout",
+		"es": "$"
+	},
+	"buscar_formularios_productos": {
+		"en": "Search forms, products...",
+		"es": "$"
+	},
+	"calendario": {
+		"en": "Calendar",
+		"es": "$"
+	},
+	"productos": {
+		"en": "Products",
+		"es": "$"
+	},
+	"tracking": {
+		"en": "Tracking",
+		"es": "$"
+	},
+	"formularios": {
+		"en": "Forms",
+		"es": "$"
+	},
+	"english": {
+		"en": "english",
+		"es": "$"
+	},
+	"aceptar": {
+		"en": "Confirm",
+		"es": "$"
+	},
+	"cancelar": {
+		"en": "Cancel",
+		"es": "$"
+	}
+}

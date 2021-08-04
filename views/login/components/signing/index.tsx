@@ -13,7 +13,7 @@ import SocialLogin from '../socialLogin'
 import Image from 'next/image'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // ICONOS
 import ExitToApp from '@material-ui/icons/ExitToApp'
@@ -39,7 +39,10 @@ interface FormProps {
 	onLogin: EmptyFunction
 }
 
-const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin }) => {
+const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// DATOS DE REGISTRO
 	const [signingData, setSigningData] = useState<SigningData>({ ...defSigningData })
 
@@ -155,6 +158,6 @@ const SigningForm: React.FC<FormProps> = withStrings<FormProps>(({ $, onLogin })
 			</div>
 		</div>
 	)
-})
+}
 
 export default SigningForm

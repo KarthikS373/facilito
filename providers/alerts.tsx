@@ -5,9 +5,12 @@ import React from 'react'
 import AlertTemplate from 'components/lualert'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
-const AlertsProvider: React.FC = withStrings(({ $ }) => {
+const AlertsProvider: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// ALERTA VACIÁ
 	const emptyAlert = () => {}
 
@@ -24,6 +27,6 @@ const AlertsProvider: React.FC = withStrings(({ $ }) => {
 			}}
 		/>
 	)
-})
+}
 
 export default AlertsProvider

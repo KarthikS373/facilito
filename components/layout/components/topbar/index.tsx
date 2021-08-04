@@ -33,14 +33,17 @@ import BusinessContext from 'context/business'
 import UserContext from 'context/user'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface CustomAppBarProps {
 	showSearchBar: boolean
 }
 
-const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) => {
+const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// EMPRESA
 	const businessCtx = useContext(BusinessContext)
 
@@ -156,6 +159,6 @@ const Topbar: React.FC<CustomAppBarProps> = withStrings(({ showSearchBar, $ }) =
 			</AppBar>
 		</>
 	)
-})
+}
 
 export default Topbar

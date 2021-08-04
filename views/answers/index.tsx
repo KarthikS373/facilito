@@ -12,7 +12,7 @@ import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // CONTEXTOS
 import FormsContext from 'context/forms'
@@ -26,7 +26,10 @@ const AnswersList = dynamic(() => import('./components/answersList'))
 interface AnswersProps {
 	formID: string
 }
-const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
+const Answers: React.FC<AnswersProps> = ({ formID }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// FORMULARIOS
 	const formsCtx = useContext(FormsContext)
 
@@ -74,6 +77,6 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 			/>
 		</>
 	)
-})
+}
 
 export default Answers

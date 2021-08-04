@@ -5,7 +5,7 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // ICONS
 import PersonOutlineTwoTone from '@material-ui/icons/PersonOutlineTwoTone'
@@ -21,7 +21,10 @@ interface TableHeaderProps {
 	filter: string
 	setFilter: (newFilter: string) => void
 }
-const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, filter, setFilter, style }) => {
+const TableHeader: React.FC<TableHeaderProps> = ({ filter, setFilter, style }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// CAMBIAR FILTRO
 	const changeFilter = (key: string) => () =>
 		setFilter(`${key}${filter.substr(1).split('').reverse().join('')}`)
@@ -52,6 +55,6 @@ const TableHeader: React.FC<TableHeaderProps> = withStrings(({ $, filter, setFil
 			</strong>
 		</div>
 	)
-})
+}
 
 export default TableHeader

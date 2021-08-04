@@ -8,9 +8,12 @@ import Styles from './style.module.scss'
 import FileCopyTwoTone from '@material-ui/icons/FileCopyTwoTone'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
-const TemplatesInfo: React.FC = withStrings(({ $ }) => {
+const TemplatesInfo: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	return (
 		<div className={Styles.container}>
 			<FileCopyTwoTone />
@@ -20,6 +23,6 @@ const TemplatesInfo: React.FC = withStrings(({ $ }) => {
 			</div>
 		</div>
 	)
-})
+}
 
 export default TemplatesInfo

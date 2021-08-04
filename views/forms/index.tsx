@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // UTILS
 import useDefaultFilter from 'hooks/filters'
@@ -19,7 +19,10 @@ import FormsList from './components/formsList'
 import NewForm from './components/newForm'
 import Header from 'components/header'
 
-const Forms: React.FC = withStrings(({ $ }) => {
+const Forms: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// FILTRO
 	const [filter, setFilter] = useState<string>('asc')
 
@@ -46,6 +49,6 @@ const Forms: React.FC = withStrings(({ $ }) => {
 			<FormsList filter={filter} />
 		</>
 	)
-})
+}
 
 export default Forms

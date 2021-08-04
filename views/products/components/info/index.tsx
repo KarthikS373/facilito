@@ -12,12 +12,15 @@ import StoreTwoTone from '@material-ui/icons/StoreTwoTone'
 import Button from '@material-ui/core/Button'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 interface InfoProps {
 	onOpenSideBar: () => unknown
 }
-const Info: React.FC<InfoProps> = withStrings(({ $, onOpenSideBar }) => {
+const Info: React.FC<InfoProps> = ({ onOpenSideBar }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	return (
 		<PageInfo
 			icon={<StoreTwoTone />}
@@ -28,6 +31,6 @@ const Info: React.FC<InfoProps> = withStrings(({ $, onOpenSideBar }) => {
 			</Button>
 		</PageInfo>
 	)
-})
+}
 
 export default Info

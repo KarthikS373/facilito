@@ -9,7 +9,7 @@ import PhonelinkRingTwoTone from '@material-ui/icons/PhonelinkRingTwoTone'
 import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // MATERIAL
 import Button from '@material-ui/core/Button'
@@ -19,7 +19,10 @@ interface InfoProps {
 	changeFilter(): void
 	filter: string
 }
-const Info: React.FC<InfoProps> = withStrings(({ $, changeFilter, filter }) => {
+const Info: React.FC<InfoProps> = ({ changeFilter, filter }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	return (
 		<PageInfo
 			title={$`Tracking de ordenes`}
@@ -35,6 +38,6 @@ const Info: React.FC<InfoProps> = withStrings(({ $, changeFilter, filter }) => {
 			</Button>
 		</PageInfo>
 	)
-})
+}
 
 export default Info

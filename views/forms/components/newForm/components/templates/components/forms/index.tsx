@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import { useRouter } from 'next/router'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import showTemplateCard from './components/card'
@@ -25,7 +25,10 @@ import useTemplateForms from './utils/hooks'
 import BusinessContext from 'context/business'
 import UserContext from 'context/user'
 
-const NewForm: React.FC = withStrings(({ $ }) => {
+const NewForm: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// ROUTER
 	const router = useRouter()
 
@@ -63,6 +66,6 @@ const NewForm: React.FC = withStrings(({ $ }) => {
 			))}
 		</>
 	)
-})
+}
 
 export default NewForm

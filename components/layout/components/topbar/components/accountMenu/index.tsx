@@ -15,7 +15,9 @@ import { logout } from 'utils/auth'
 // ROUTER
 import { useRouter } from 'next/router'
 import ROUTES from 'router/routes'
-import withStrings from 'hoc/lang'
+
+// STRINGS
+import useStrings from 'hooks/lang'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
@@ -27,39 +29,40 @@ interface AccountMenuProps {
 	open: boolean
 }
 
-const AccountMenu: React.FC<AccountMenuProps> = withStrings<AccountMenuProps>(
-	({ $, anchorEl, onClose, open }) => {
-		// HISTORY
-		const router = useRouter()
+const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) => {
+	// STRINGS
+	const { $ } = useStrings()
 
-		// CERRAR SESIÓN
-		const logoutEv = () => {
-			logout().then(() => router.push('/cuenta'))
-			onClose()
-		}
+	// HISTORY
+	const router = useRouter()
 
-		// IR SETTINGS
-		const goToSettings = () => {
-			router.push(ROUTES.edit)
-			onClose()
-		}
-
-		return (
-			<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
-				<MenuItem onClick={logoutEv}>
-					<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
-						{$`Cerrar sesión`}
-					</Button>
-				</MenuItem>
-
-				<MenuItem onClick={goToSettings}>
-					<Button variant='outlined' fullWidth startIcon={<SettingsTwoTone />}>
-						{$`Configuraciones`}
-					</Button>
-				</MenuItem>
-			</PopperMenuList>
-		)
+	// CERRAR SESIÓN
+	const logoutEv = () => {
+		logout().then(() => router.push('/cuenta'))
+		onClose()
 	}
-)
+
+	// IR SETTINGS
+	const goToSettings = () => {
+		router.push(ROUTES.edit)
+		onClose()
+	}
+
+	return (
+		<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
+			<MenuItem onClick={logoutEv}>
+				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
+					{$`Cerrar sesión`}
+				</Button>
+			</MenuItem>
+
+			<MenuItem onClick={goToSettings}>
+				<Button variant='outlined' fullWidth startIcon={<SettingsTwoTone />}>
+					{$`Configuraciones`}
+				</Button>
+			</MenuItem>
+		</PopperMenuList>
+	)
+}
 
 export default AccountMenu

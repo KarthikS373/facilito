@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Styles from './style.module.scss'
 
 // STRINGS
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // MATERIAL
 import IconButton from '@material-ui/core/IconButton'
@@ -14,94 +14,97 @@ import ChevronRightTwoTone from '@material-ui/icons/ChevronRightTwoTone'
 import ChevronLeftTwoTone from '@material-ui/icons/ChevronLeftTwoTone'
 import EventTwoTone from '@material-ui/icons/EventTwoTone'
 
-const CustomToolbar: React.FC<any> = withStrings((props) => {
-  const [width, setWidth] = useState<number>(0)
+const CustomToolbar: React.FC<any> = (props) => {
+	// STRINGS
+	const { $ } = useStrings()
 
-  // REGRESAR
-  const goToBack = () => {
-    if (props.view === 'month') props.date.setMonth(props.date.getMonth() - 1)
-    else if (props.view === 'week') props.date.setDate(props.date.getDate() - 7)
-    else if (props.view === 'day' || props.view === 'agenda')
-      props.date.setDate(props.date.getDate() - 1)
-    props.onNavigate('prev')
-  }
+	const [width, setWidth] = useState<number>(0)
 
-  // AVANZAR
-  const goToNext = () => {
-    if (props.view === 'month') props.date.setMonth(props.date.getMonth() + 1)
-    else if (props.view === 'week') props.date.setDate(props.date.getDate() + 7)
-    else if (props.view === 'day' || props.view === 'agenda')
-      props.date.setDate(props.date.getDate() + 1)
-    props.onNavigate('next')
-  }
+	// REGRESAR
+	const goToBack = () => {
+		if (props.view === 'month') props.date.setMonth(props.date.getMonth() - 1)
+		else if (props.view === 'week') props.date.setDate(props.date.getDate() - 7)
+		else if (props.view === 'day' || props.view === 'agenda')
+			props.date.setDate(props.date.getDate() - 1)
+		props.onNavigate('prev')
+	}
 
-  // IR A HOY
-  const goToCurrent = () => {
-    const now = new Date()
-    props.date.setDate(now.getDate())
-    props.date.setMonth(now.getMonth())
-    props.date.setYear(now.getFullYear())
-    props.onNavigate('current')
-  }
+	// AVANZAR
+	const goToNext = () => {
+		if (props.view === 'month') props.date.setMonth(props.date.getMonth() + 1)
+		else if (props.view === 'week') props.date.setDate(props.date.getDate() + 7)
+		else if (props.view === 'day' || props.view === 'agenda')
+			props.date.setDate(props.date.getDate() + 1)
+		props.onNavigate('next')
+	}
 
-  const splitedLabel: string[] = props.label.split(' ')
+	// IR A HOY
+	const goToCurrent = () => {
+		const now = new Date()
+		props.date.setDate(now.getDate())
+		props.date.setMonth(now.getMonth())
+		props.date.setYear(now.getFullYear())
+		props.onNavigate('current')
+	}
 
-  useEffect(() => {
-    setWidth(window.innerWidth)
-  }, [])
+	const newLabel: string[] = props.label.split(' ')
 
-  return (
-    <div className={Styles.container}>
-      <div>
-        {width > 500 && (
-          <Button variant='outlined' onClick={goToCurrent} startIcon={<EventTwoTone />}>
-            {props.$`Hoy`}
-          </Button>
-        )}
-        {width < 500 && (
-          <IconButton onClick={goToCurrent}>
-            <EventTwoTone />
-          </IconButton>
-        )}
-        <IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToBack}>
-          <ChevronLeftTwoTone />
-        </IconButton>
-        <IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToNext}>
-          <ChevronRightTwoTone />
-        </IconButton>
-      </div>
-      <label>
-        {(props.view === 'month' && (
-          <>
-            <strong>{splitedLabel[0]}</strong>
-            <span>{splitedLabel[1]}</span>
-          </>
-        )) ||
-          (props.view === 'week' && (
-            <>
-              <strong>{splitedLabel[0]}</strong>
-              <span>{splitedLabel[1]} - </span>
-              <strong>{splitedLabel[3]}</strong>
-              <span>{splitedLabel[4]}</span>
-            </>
-          )) ||
-          (props.view === 'day' && (
-            <>
-              <strong>{splitedLabel[0]}</strong>
-              <span>{splitedLabel[2]} - </span>
-              <span>{splitedLabel[1]}</span>
-            </>
-          )) ||
-          (props.view === 'agenda' && (
-            <>
-              <strong>{splitedLabel[0]}</strong>
-              <span>{splitedLabel[1]}</span>
-              <span>{splitedLabel[2]}</span>
-            </>
-          ))}
-      </label>
-    </div>
-  )
-})
+	useEffect(() => {
+		setWidth(window.innerWidth)
+	}, [])
+
+	return (
+		<div className={Styles.container}>
+			<div>
+				{width > 500 && (
+					<Button variant='outlined' onClick={goToCurrent} startIcon={<EventTwoTone />}>
+						{$`Hoy`}
+					</Button>
+				)}
+				{width < 500 && (
+					<IconButton onClick={goToCurrent}>
+						<EventTwoTone />
+					</IconButton>
+				)}
+				<IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToBack}>
+					<ChevronLeftTwoTone />
+				</IconButton>
+				<IconButton size={width < 500 ? 'small' : 'medium'} onClick={goToNext}>
+					<ChevronRightTwoTone />
+				</IconButton>
+			</div>
+			<label>
+				{(props.view === 'month' && (
+					<>
+						<strong>{newLabel[0]}</strong>
+						<span>{newLabel[1]}</span>
+					</>
+				)) ||
+					(props.view === 'week' && (
+						<>
+							<strong>{newLabel[0]}</strong>
+							<span>{newLabel[1]} - </span>
+							<strong>{newLabel[3]}</strong>
+							<span>{newLabel[4]}</span>
+						</>
+					)) ||
+					(props.view === 'day' && (
+						<>
+							<strong>{newLabel[0]}</strong>
+							<span>{newLabel[2]} - </span>
+							<span>{newLabel[1]}</span>
+						</>
+					)) ||
+					(props.view === 'agenda' && (
+						<>
+							<strong>{newLabel[0]}</strong>
+							<span>{newLabel[1]}</span>
+							<span>{newLabel[2]}</span>
+						</>
+					))}
+			</label>
+		</div>
+	)
+}
 
 export default CustomToolbar

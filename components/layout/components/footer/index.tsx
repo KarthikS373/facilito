@@ -2,12 +2,15 @@
 import React from 'react'
 
 // HOC
-import withStrings from 'hoc/lang'
+import useStrings from 'hooks/lang'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
-const Footer: React.FC = withStrings(({ $ }) => {
+const Footer: React.FC = () => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	return (
 		<footer className={Styles.footer}>
 			<strong>{$`Facilito©`}</strong>
@@ -25,6 +28,6 @@ const Footer: React.FC = withStrings(({ $ }) => {
 			</div>
 		</footer>
 	)
-})
+}
 
 export default Footer

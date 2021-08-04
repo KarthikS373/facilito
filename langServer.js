@@ -1,4 +1,5 @@
 // IMPORTS
+const LZString = require('lz-string')
 const Express = require('express')
 const Cors = require('cors')
 const path = require('path')
@@ -13,10 +14,10 @@ app.use(
 	})
 )
 
-const currentPath = path.resolve('./lang/strings.json')
+const currentPath = path.resolve('./lang/strings-dev.json')
 
 // GUARDAR DICCIONARIO
-const writeOnDict = (stringsDict, res, replace) => {
+const writeOnDict = (stringsDict, res, replace, dev = true, sendRes = false) => {
 	if (fs.existsSync(currentPath)) {
 		const data = fs.readFileSync(currentPath)
 
@@ -30,13 +31,16 @@ const writeOnDict = (stringsDict, res, replace) => {
 			  }
 
 		// ESCRIBIR ARCHIVO
-		fs.writeFileSync(currentPath, JSON.stringify(newStrings, null, '\t'))
+		fs.writeFileSync(
+			dev ? currentPath : currentPath.replace('-dev', ''),
+			JSON.stringify(newStrings, null, dev ? '\t' : undefined)
+		)
 
 		// RESPUESTA
-		res.json({ status: 'ok' })
+		if (sendRes) res.json({ status: 'ok' })
 
 		// EL ARCHIVO NO EXISTE
-	} else res.json({ status: 'error', msg: "This file doesn't exists" })
+	} else if (sendRes) res.json({ status: 'error', msg: "This file doesn't exists" })
 }
 
 // ESCRIBIR DICCIONARIO
@@ -47,10 +51,30 @@ app.post('/write', (req, res) => {
 
 	// REESCRIBIR STRINGS
 	writeOnDict(stringsDict, res, false)
+	buildProduction(res)
 })
 
 // OPTIMIZAR
-app.get('/optimize', (_req, res) => writeOnDict({}, res, true))
+app.get('/delete', (_req, res) => {
+	writeOnDict({}, res, true, true, false)
+	writeOnDict({}, res, true, false, true)
+})
+
+// OPTIMIZAR
+const buildProduction = (res) => {
+	// PARSER
+	const data = fs.readFileSync(currentPath)
+	const parsedData = JSON.parse(data)
+
+	// CREAR NUEVO OBJETO
+	const newDict = Object.fromEntries(
+		Object.keys(parsedData).map((key) => [LZString.compressToBase64(key), parsedData[key]])
+	)
+
+	// GUARDAR
+	writeOnDict(newDict, res, true, false, true)
+}
+app.get('/build', (_req, res) => buildProduction(res))
 
 // INICIAR APP
 app.listen(4000, () => {
