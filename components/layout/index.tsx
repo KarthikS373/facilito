@@ -8,7 +8,7 @@ import Styles from './style.module.scss'
 import { useRouter } from 'next/router'
 
 // UTILS
-import evaluatePath from './utils/tools'
+import evaluateTopbarPath from './utils/tools'
 
 // RUTAS
 import ROUTES from 'router/routes'
@@ -26,7 +26,7 @@ const Layout: React.FC = (props) => {
 	const path: string = router.asPath
 
 	// MOSTRAR TOPBAR
-	const showTopbar = evaluatePath(path)
+	const showTopbar = evaluateTopbarPath(path)
 
 	return (
 		<div className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>

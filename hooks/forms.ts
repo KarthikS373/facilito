@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 
 import { formsListener } from 'utils/forms'
 import { answersListener } from 'utils/answers'
+
+import FormsContext from 'context/forms'
 
 /**
  * Hook de Formularios
@@ -117,4 +119,17 @@ export const useFormFilter = (
 			answers: tmpAnswers,
 		})
 	}, [filter, changesTrigger])
+}
+
+/**
+ * Hook de formulario
+ * @description Busca un formulario en el contexto conun id
+ * @param  {string} formID
+ * @param  {Form[]} customForms
+ */
+export const useForm = (formID: string, customForms?: Form[]): Form | undefined => {
+	// CONTEXTO
+	const forms: Form[] = customForms || useContext(FormsContext).forms.forms
+	const currentForm: Form | undefined = forms.find((form) => form.id === formID)
+	return currentForm
 }

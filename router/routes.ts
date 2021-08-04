@@ -51,8 +51,8 @@ const ROUTES: RoutesProps = {
 
 	// ORDER TRACKING
 	tracking: '/tracking',
-	publicTracking: '/t/:formID/editar',
-	trackingSettings: '/t/:companyURL/:formURL',
+	trackingSettings: '/t/:formID/editar',
+	publicTracking: '/t/:companyURL/:formURL',
 }
 
 export default ROUTES

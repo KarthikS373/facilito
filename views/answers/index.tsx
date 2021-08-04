@@ -10,6 +10,7 @@ import { getChangesTrigger, updateLocalAnswerState } from './utils/tools'
 import useDefaultFilter from 'hooks/filters'
 import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
+import { useForm } from 'hooks/forms'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -40,7 +41,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	const [filter, setFilter] = useState<string>('naz')
 
 	// FORMULARIO
-	const currentForm: Form | undefined = formsCtx.forms.forms.find((form) => form.id === formID)
+	const currentForm: Form | undefined = useForm(formID, formsCtx.forms.forms)
 
 	// ASIGNAR FILTRO
 	const changeFilterEv = (newFilter: string) => changeFilter('answers-filter', newFilter, setFilter)

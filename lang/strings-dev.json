@@ -1,4 +1,20 @@
 {
+	"agregar_estado": {
+		"en": "Add new state",
+		"es": "$"
+	},
+	"asigna_titulos_descripciones_y_colores_para_cada_estado": {
+		"en": "Assigns titles, descriptions and colors for each state.",
+		"es": "$"
+	},
+	"configura_tus_estados": {
+		"en": "Set your states",
+		"es": "$"
+	},
+	"guardar_estados": {
+		"en": "Save states",
+		"es": "$"
+	},
 	"para_crear_un_nuevo_formulario_escribe_el_titulo_este_tambien_se_mostrara_como_la_url_publica": {
 		"en": "To create a new form write the title, this also shown as the public url.",
 		"es": "$"
@@ -348,7 +364,7 @@
 		"es": "$"
 	},
 	"eventos_creados": {
-		"en": "Event(s) created",
+		"en": "event(s) created",
 		"es": "$"
 	},
 	"configuraciones": {
