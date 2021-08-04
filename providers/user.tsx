@@ -30,6 +30,7 @@ const UserProvider: React.FC = (props) => {
 
 	// HISTORY
 	const router = useRouter()
+	const path: string = router.asPath
 
 	// AUTH
 	useAuth(
@@ -41,7 +42,8 @@ const UserProvider: React.FC = (props) => {
 						setUser({ user, isAnonymous: authUser.isAnonymous })
 
 						// REDIRECTION
-						if (process.env.NODE_ENV === 'production') router.push(ROUTES.forms)
+						if (path === ROUTES.login && process.env.NODE_ENV === 'production')
+							router.push(ROUTES.forms)
 					})
 				} else setUser({ user: null, isAnonymous: false })
 			}

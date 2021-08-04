@@ -61,7 +61,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
+								color={getActiveRoute(path, $`formularios`) ? 'primary' : undefined}
 								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
 						</Link>
 					</li>
@@ -71,7 +71,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
+								color={getActiveRoute(path, $`tracking`) ? 'primary' : undefined}
 								startIcon={<ComputerTwoTone />}>{$`Tracking`}</Button>
 						</Link>
 					</li>
@@ -81,7 +81,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
+								color={getActiveRoute(path, $`productos`) ? 'primary' : undefined}
 								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
 						</Link>
 					</li>
@@ -93,7 +93,7 @@ const SideBar: React.FC<SideBarProps> = withStrings(({ $, open, onClose }) => {
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
 								color={
-									getActiveRoute(path, 'calendario') ? 'primary' : undefined
+									getActiveRoute(path, $`calendario`) ? 'primary' : undefined
 								}>{$`Calendario`}</Button>
 						</Link>
 					</li>

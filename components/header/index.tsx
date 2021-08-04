@@ -8,10 +8,14 @@ import Link from 'next/link'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// RUTAS
+import ROUTES from 'router/routes'
+
 // MATERIAL
 import Button from '@material-ui/core/Button'
 
 // ICON
+import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
 import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
 
 // HOC
@@ -90,7 +94,15 @@ const Header: React.FC<HeaderProps> = withStrings(({ $, children, customDescript
 							variant='outlined'
 							startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
 					</Link>
-					{children}
+					{children || (
+						<Link href={ROUTES.forms}>
+							<Button
+								color='primary'
+								variant='contained'
+								style={{ color: '#fff' }}
+								startIcon={<DescriptionTwoTone />}>{$`Ir a formularios`}</Button>
+						</Link>
+					)}
 				</div>
 			</div>
 		</div>

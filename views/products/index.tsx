@@ -64,6 +64,7 @@ const Products: React.FC = withStrings(({ $ }) => {
 
 	return (
 		<>
+			{/* HEADER */}
 			<Header
 				customDescription={`${
 					businessCtx.business?.products.length || 0
@@ -76,8 +77,14 @@ const Products: React.FC = withStrings(({ $ }) => {
 						color='primary'>{$`Crear producto`}</Button>
 				</Link>
 			</Header>
+
+			{/* INFO */}
 			<Info onOpenSideBar={handleSideBar(true)} />
+
+			{/* LISTA DE PRODUCTOS */}
 			<ProductsList filter={filter} setFilter={changeFilterEv} products={products} />
+
+			{/* SIDEBAR DE CATEGORIAS */}
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />
 		</>
 	)

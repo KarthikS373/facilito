@@ -11,6 +11,9 @@ import Stepper from '@material-ui/core/Stepper'
 import Button from '@material-ui/core/Button'
 import Step from '@material-ui/core/Step'
 
+// COMPONENTES
+import SideBar from 'components/sideBar'
+
 // CONTEXTO
 import BusinessContext from 'context/business'
 
@@ -30,7 +33,7 @@ interface SideBarProps {
 	tracking: FormTrackingStep[]
 	updateAnswerState: (index: number, newState: number) => void
 }
-const SideBar: React.FC<SideBarProps> = withStrings(
+const CustomSideBar: React.FC<SideBarProps> = withStrings(
 	({
 		open,
 		$,
@@ -66,36 +69,30 @@ const SideBar: React.FC<SideBarProps> = withStrings(
 		}, [stateIndex])
 
 		return (
-			<>
-				<div className={`${Styles.container} ${open ? Styles.openContent : Styles.closedContent}`}>
-					<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
-						{tracking.map((option: FormTrackingStep) => (
-							<Step key={option.name}>
-								<StepLabel className={Styles.stepTitle}>{option.name}</StepLabel>
-								<StepContent>
-									<p>{option.description || $`Descripción no disponible en este momento...`}</p>
-									<div className={Styles.actions}>
-										<div>
-											<Button disabled={activeStep === 0} onClick={changeStep(-1)}>
-												{$`Regresar`}
-											</Button>
-											<Button variant='contained' color='primary' onClick={changeStep(1)}>
-												{activeStep === tracking.length - 1 ? $`Terminar` : $`Siguiente`}
-											</Button>
-										</div>
+			<SideBar open={open} onClose={onClose}>
+				<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
+					{tracking.map((option: FormTrackingStep) => (
+						<Step key={option.name}>
+							<StepLabel className={Styles.stepTitle}>{option.name}</StepLabel>
+							<StepContent>
+								<p>{option.description || $`Descripción no disponible en este momento...`}</p>
+								<div className={Styles.actions}>
+									<div>
+										<Button disabled={activeStep === 0} onClick={changeStep(-1)}>
+											{$`Regresar`}
+										</Button>
+										<Button variant='contained' color='primary' onClick={changeStep(1)}>
+											{activeStep === tracking.length - 1 ? $`Terminar` : $`Siguiente`}
+										</Button>
 									</div>
-								</StepContent>
-							</Step>
-						))}
-					</Stepper>
-				</div>
-				<div
-					onClick={onClose}
-					className={`${Styles.shadow} ${open ? Styles.openShadow : Styles.closedShadow}`}
-				/>
-			</>
+								</div>
+							</StepContent>
+						</Step>
+					))}
+				</Stepper>
+			</SideBar>
 		)
 	}
 )
 
-export default SideBar
+export default CustomSideBar

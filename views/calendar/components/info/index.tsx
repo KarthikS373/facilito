@@ -1,9 +1,6 @@
 // REACT
 import React, { useState } from 'react'
 
-// ESTILOS
-import Styles from './style.module.scss'
-
 // HOOKS
 import { useCalendarView } from '../../utils/hooks'
 
@@ -20,6 +17,7 @@ import Button from '@material-ui/core/Button'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import PageInfo from 'components/pageInfo'
 
 // STRINGS
 import withStrings from 'hoc/lang'
@@ -48,28 +46,22 @@ const Info: React.FC<InfoProps> = withStrings(({ $, viewState, changeView }) => 
 
 	return (
 		<>
-			<div className={Styles.container}>
-				<div className={Styles.info}>
-					<EventAvailableTwoTone />
-					<div className={Styles.text}>
-						<h2>{$`Calendario y eventos`}</h2>
-						<p>{$`Administra los eventos creados desde todos tus formularios.`}</p>
-					</div>
-				</div>
-				<div className={Styles.actions}>
-					<Button
-						fullWidth
-						variant='outlined'
-						onClick={fixedView ? undefined : handleOptionsMenu}
-						startIcon={<DynamicFeedTwoTone />}>
-						{$`Ver como `}
-						{(newViewState === 'month' && $`mes`) ||
-							(newViewState === 'week' && $`semana`) ||
-							(newViewState === 'day' && $`día`) ||
-							(newViewState === 'agenda' && $`agenda`)}
-					</Button>
-				</div>
-			</div>
+			<PageInfo
+				title={$`Calendario y eventos`}
+				icon={<EventAvailableTwoTone />}
+				description={$`Administra los eventos creados desde todos tus formularios.`}>
+				<Button
+					fullWidth
+					variant='outlined'
+					onClick={fixedView ? undefined : handleOptionsMenu}
+					startIcon={<DynamicFeedTwoTone />}>
+					{$`Ver como `}
+					{(newViewState === 'month' && $`mes`) ||
+						(newViewState === 'week' && $`semana`) ||
+						(newViewState === 'day' && $`día`) ||
+						(newViewState === 'agenda' && $`agenda`)}
+				</Button>
+			</PageInfo>
 			<PopperMenuList
 				style={{ zIndex: 5 }}
 				placement='bottom-end'

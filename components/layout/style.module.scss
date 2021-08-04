@@ -10,6 +10,7 @@
 	overflow: hidden;
 	margin: 0 auto;
 	max-width: 1260px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
 
 	@include for-size(phablet-landscape) {
 		grid-template-columns: 100%;
@@ -46,4 +47,5 @@
 	left: 0;
 	top: 0;
 	border-radius: 0;
+	box-shadow: none;
 }

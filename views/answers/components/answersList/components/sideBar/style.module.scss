@@ -1,94 +1,48 @@
-.container {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 300px;
-	background-color: rgb(243, 243, 243);
-	border-radius: 0 10px 0 0;
-	height: 100%;
-	grid-row: 1/3;
-	padding: var(--margin);
-	z-index: 14;
-	overflow-y: auto;
-	transition: transform 0.2s var(--transition);
+.content {
+	padding: 10px !important;
+	background-color: transparent !important;
 
-	.content {
-		padding: 10px;
-		background-color: transparent;
+	p,
+	.stepTitle > span:last-child > span {
+		line-height: 1.1;
+		font-size: 1rem;
+		opacity: 0.7;
+	}
 
-		p,
-		.stepTitle > span:last-child > span {
-			line-height: 1.1;
-			font-size: 1rem;
-			opacity: 0.7;
-		}
+	p {
+		margin-bottom: 15px;
+	}
 
-		p {
-			margin-bottom: 15px;
-		}
+	.stepTitle > span:first-child > svg > text {
+		fill: #fff;
+		font-weight: bold;
+	}
 
-		.stepTitle > span:first-child > svg > text {
-			fill: #fff;
-			font-weight: bold;
-		}
+	.actions,
+	.actions > div {
+		width: 100%;
+	}
 
-		.actions,
-		.actions > div {
-			width: 100%;
-		}
+	.actions > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-		.actions > div {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
+		button {
+			width: 50%;
+			height: 45px;
 
-			button {
-				width: 50%;
-				height: 45px;
-
-				&:first-child {
-					span {
-						opacity: 0.7;
-					}
+			&:first-child {
+				span {
+					opacity: 0.7;
 				}
+			}
 
-				&:last-child {
-					span {
-						color: #fff;
-					}
+			&:last-child {
+				span {
+					color: #fff;
 				}
 			}
 		}
 	}
-}
-
-.shadow {
-	transition: opacity 0.2s ease-in-out;
-	display: block;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(10px);
-	z-index: 13;
-}
-
-.closedContent {
-	transform: translateX(300px);
-}
-
-.closedShadow {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.openShadow {
-	opacity: 1;
-	pointer-events: all;
-}
-
-.openTabContent {
-	transform: translateX(0);
 }

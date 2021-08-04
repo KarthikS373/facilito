@@ -60,7 +60,9 @@ const Answers: React.FC<AnswersProps> = withStrings(({ $, formID }) => {
 			<Header customDescription={`${answers.length || 0} ${$`respuesta(s) creadas`}`}>
 				<DownloadAnswers answers={answers} currentForm={currentForm} />
 			</Header>
+
 			<Info formID={formID} />
+
 			<AnswersList
 				filter={filter}
 				formID={formID}
