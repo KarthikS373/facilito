@@ -3,7 +3,8 @@ import { createContext, Context } from 'react'
 // KEYS
 interface ContextProps {
 	forms: FormInterface
-	setForms: (forms: FormInterface) => unknown
+	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
+	setFormsDB: (forms: Partial<FormInterface>) => unknown
 }
 
 // VALOR POR DEFECTO
@@ -13,6 +14,7 @@ const DefContext: ContextProps = {
 		forms: [],
 	},
 	setForms: () => {},
+	setFormsDB: () => {},
 }
 
 // CONTEXTO

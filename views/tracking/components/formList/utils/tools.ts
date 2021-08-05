@@ -13,7 +13,7 @@ import saveFormSchema from 'utils/forms'
 const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	setGlobalForms: (forms: FormInterface) => unknown,
+	setGlobalForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	$: TemplateStrBuilder,
 	companyID: string
 ) => {

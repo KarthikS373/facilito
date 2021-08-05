@@ -16,7 +16,7 @@ import { removeEventForm } from 'utils/events'
 const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	setGlobalForms: (forms: FormInterface) => unknown,
+	setGlobalForms: (forms: Partial<FormInterface>) => unknown,
 	$: TemplateStrBuilder,
 	companyID?: string
 ) => {

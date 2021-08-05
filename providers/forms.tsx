@@ -10,7 +10,7 @@ import useForms from 'hooks/forms'
 
 const ProductsProvider: React.FC = (props) => {
 	// ESTADO
-	const [forms, setLocalForms] = useState<FormInterface>({
+	const [forms, setForms] = useState<FormInterface>({
 		answers: [],
 		forms: [],
 	})
@@ -19,17 +19,21 @@ const ProductsProvider: React.FC = (props) => {
 	const businessCtx = useContext(BusinessContext)
 
 	// OBTENER PRODUCTOS
-	useForms(setLocalForms, businessCtx.business?.id)
+	useForms(setForms, businessCtx.business?.id)
 
 	// GUARDAR PRODUCTOS GLOBAL
-	const setForms = (forms: FormInterface) =>
-		setLocalForms(() => {
+	const setFormsDB = (forms: FormInterface) =>
+		setForms(() => {
 			// GUARDAR EN NEGOCIO
 			businessCtx.setBusinessDB({ forms: forms.forms.map((form: Form) => form.id) })
 			return forms
 		})
 
-	return <FormsContext.Provider value={{ forms, setForms }}>{props.children}</FormsContext.Provider>
+	return (
+		<FormsContext.Provider value={{ forms, setFormsDB, setForms }}>
+			{props.children}
+		</FormsContext.Provider>
+	)
 }
 
 export default ProductsProvider

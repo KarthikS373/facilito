@@ -9,13 +9,20 @@ import TrackingState from './components/trackingState'
 
 // PROPS
 interface StatesListProps {
-	tracking: FormTrackingStep[]
+	formID: string
+	localTracking: React.MutableRefObject<FormTrackingStep[]>
 }
-const StatesList: React.FC<StatesListProps> = ({ tracking }) => {
+const StatesList: React.FC<StatesListProps> = ({ formID, localTracking }) => {
 	return (
 		<div className={Styles.container}>
-			{tracking.map((step: FormTrackingStep, index: number) => (
-				<TrackingState key={step.name} step={step} index={index} />
+			{localTracking.current.map((step: FormTrackingStep, index: number) => (
+				<TrackingState
+					step={step}
+					index={index}
+					formID={formID}
+					key={`${step.name}_${index}`}
+					localTracking={localTracking}
+				/>
 			))}
 		</div>
 	)

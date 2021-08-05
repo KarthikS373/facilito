@@ -14,7 +14,11 @@ import AddCircleTwoTone from '@material-ui/icons/AddCircleTwoTone'
 // HOOKS
 import useStrings from 'hooks/lang'
 
-const Info = () => {
+// PROPS
+interface InfoProps {
+	onAdd: () => void
+}
+const Info: React.FC<InfoProps> = ({ onAdd }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -23,7 +27,7 @@ const Info = () => {
 			icon={<BubbleChartTwoTone />}
 			title={$`Configura tus estados`}
 			description={$`Asigna titulos, descripciones y colores para cada estado.`}>
-			<Button fullWidth startIcon={<AddCircleTwoTone />} variant='outlined'>
+			<Button onClick={onAdd} fullWidth startIcon={<AddCircleTwoTone />} variant='outlined'>
 				{$`Agregar estado`}
 			</Button>
 		</PageInfo>

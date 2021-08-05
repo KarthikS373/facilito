@@ -123,7 +123,7 @@ const FormCard: React.FC<FormCardProps> = ({
 				</IconButton>
 
 				{/* SECCION INFERIOR  */}
-				<Link rKey={contentLink} id={form.id} passHref>
+				<Link rKey={bottomLink} id={form.id} passHref>
 					<div className={Styles.bottomSection}>
 						<AssignmentTwoTone />
 						<p>{bottomSection}</p>

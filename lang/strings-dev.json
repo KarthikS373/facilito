@@ -1,4 +1,20 @@
 {
+	"terminar": {
+		"en": "",
+		"es": "$"
+	},
+	"estas_seguro_se_querer_borrar_este_estado_presiona_guardar_estados_para_hacer_efectivos_los_cambios": {
+		"en": "",
+		"es": "$"
+	},
+	"estas_seguro_se_querer_borrar_este_estado_estos_cambios_se_haran_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"borrar_estado": {
+		"en": "",
+		"es": "$"
+	},
 	"maximo_250_caracteres": {
 		"en": "",
 		"es": "$"

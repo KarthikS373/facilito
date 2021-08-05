@@ -73,7 +73,7 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 		<SideBar open={open} onClose={onClose}>
 			<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
 				{tracking.map((option: FormTrackingStep) => (
-					<Step key={option.name}>
+					<Step key={option.name} style={{ '--currentColor': option.color } as React.CSSProperties}>
 						<StepLabel className={Styles.stepTitle}>{option.name}</StepLabel>
 						<StepContent>
 							<p>{option.description || $`Descripción no disponible en este momento...`}</p>
