@@ -1,34 +1,26 @@
 {
 	"terminar": {
-		"en": "",
+		"en": "End",
 		"es": "$"
 	},
 	"estas_seguro_se_querer_borrar_este_estado_presiona_guardar_estados_para_hacer_efectivos_los_cambios": {
-		"en": "",
-		"es": "$"
-	},
-	"estas_seguro_se_querer_borrar_este_estado_estos_cambios_se_haran_en_tiempo_real": {
-		"en": "",
+		"en": "Are you sure you want to delete this state?, press save states to make changes effective",
 		"es": "$"
 	},
 	"borrar_estado": {
-		"en": "",
+		"en": "Delete state",
 		"es": "$"
 	},
 	"maximo_250_caracteres": {
-		"en": "",
+		"en": "Maximum 250 characters",
 		"es": "$"
 	},
 	"descripcion": {
-		"en": "",
+		"en": "Description",
 		"es": "$"
 	},
 	"una_palabra": {
-		"en": "",
-		"es": "$"
-	},
-	"1_palabra": {
-		"en": "",
+		"en": "One word",
 		"es": "$"
 	},
 	"agregar_estado": {

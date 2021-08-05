@@ -30,7 +30,7 @@ const RouterLink: React.FC<RouterLinkProps> = (props) => {
 				.replace(':formID', props.id || '')
 				.replace(':formURL', props.id || '')
 				.replace(':productID', props.id || '')
-				.replace(':companyID', businessCtx.business?.id || '')}>
+				.replace(':companyURL', businessCtx.business?.url || '')}>
 			{props.children}
 		</Link>
 	)
