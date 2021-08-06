@@ -18,6 +18,17 @@
 		height: 100%;
 		display: flex;
 		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		i {
+			font-style: normal;
+			text-overflow: ellipsis;
+			width: 100%;
+			overflow: hidden;
+			font-style: normal;
+		}
 
 		&:first-child {
 			width: 55px;

@@ -1,36 +1,17 @@
 // REACT
-import React, { useCallback, useState, useContext } from 'react'
+import React, { useCallback, useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // COMPONENTES
-import PopperMenuList from 'components/popperMenu'
-import showAnswer from './components/showAnswer'
 import TableHead from './components/tableHead'
 import SideBar from './components/sideBar'
 import AnswerRow from './components/row'
 
-// UTILS
-import printAnswer, { deleteAnswerPrompt } from './utils/tools'
-
-// ICONOS
-import SettingsInputCompositeTwoTone from '@material-ui/icons/SettingsInputCompositeTwoTone'
-import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import PrintTwoTone from '@material-ui/icons/PrintTwoTone'
-
 // MATERIAL
 import TableContainer from '@material-ui/core/TableContainer'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
-
-// CONTEXTO
-import BusinessContext from 'context/business'
-
-// STRINGS
-import useStrings from 'hooks/lang'
 
 // REACT WINDOW
 import { FixedSizeList as List } from 'react-window'
@@ -53,43 +34,20 @@ const AnswersList: React.FC<AnswersListProps> = ({
 	answers,
 	updateAnswerState,
 }) => {
-	// STRINGS
-	const { $ } = useStrings()
-
-	// FILA
-	const [currentRow, setCurrentRow] = useState<HTMLElement | null>(null)
-	const openRowMenu = Boolean(currentRow)
-
-	// BUSINESS
-	const businessCtx = useContext(BusinessContext)
-
 	// NUMERO DE RESPUESTA
 	const [currentIndex, setCurrentIndex] = useState<number>(0)
 
 	// ABRIR SIDEBAR
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false)
 
-	// ABRIR/CERRAR SIDEBAR
-	const hanldeSideBar = (open: boolean) => () => setOpenSideBar(open)
-
-	// CERRAR MENU DE FILA
-	const closeRowMenu = () => setCurrentRow(null)
-
-	// MOSTRAR FILA
-	const showCurrentAnswer = () => showAnswer(answers[currentIndex].data, components)
-
-	// IMPRIMIR FILA
-	const printCurrentAnswer = () => printAnswer(answers[currentIndex].data, components)
-
-	// BORRAR FILA
-	const deleteCurrentAnswer = () =>
-		deleteAnswerPrompt(currentIndex, formID, businessCtx.business?.id)
-
 	// ASIGNAR FILA
-	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
-		setCurrentRow(ev.currentTarget)
+	const handleRow = (index: number) => () => {
+		setOpenSideBar(true)
 		setCurrentIndex(index)
 	}
+
+	// ABRIR/CERRAR SIDEBAR
+	const hanldeSideBar = (open: boolean) => () => setOpenSideBar(open)
 
 	// FILAS
 	const answersTrigger: string = answers
@@ -106,9 +64,11 @@ const AnswersList: React.FC<AnswersListProps> = ({
 				<AnswerRow
 					{...answer}
 					style={style}
+					formID={formID}
 					key={answer.index}
+					tracking={tracking}
+					components={components}
 					handleRow={handleRow(newIndex)}
-					state={tracking[answer.stateIndex]?.name}
 				/>
 			)
 		},
@@ -139,48 +99,6 @@ const AnswersList: React.FC<AnswersListProps> = ({
 				answerIndex={answers[currentIndex]?.index - 1}
 				stateIndex={answers[currentIndex]?.stateIndex || 0}
 			/>
-			<PopperMenuList
-				placement='bottom-end'
-				onClose={closeRowMenu}
-				anchorEl={currentRow}
-				open={openRowMenu}>
-				<MenuItem onClick={closeRowMenu}>
-					<Button
-						fullWidth
-						variant='outlined'
-						onClick={showCurrentAnswer}
-						startIcon={<VisibilityTwoTone />}>
-						{$`Ver todo`}
-					</Button>
-				</MenuItem>
-				<MenuItem onClick={closeRowMenu}>
-					<Button
-						fullWidth
-						variant='outlined'
-						onClick={printCurrentAnswer}
-						startIcon={<PrintTwoTone />}>
-						{$`Imprimir`}
-					</Button>
-				</MenuItem>
-				<MenuItem onClick={closeRowMenu}>
-					<Button
-						fullWidth
-						variant='outlined'
-						onClick={hanldeSideBar(true)}
-						startIcon={<SettingsInputCompositeTwoTone />}>
-						{$`Tracking`}
-					</Button>
-				</MenuItem>
-				<MenuItem onClick={closeRowMenu}>
-					<Button
-						fullWidth
-						variant='outlined'
-						onClick={deleteCurrentAnswer}
-						startIcon={<DeleteTwoTone />}>
-						{$`Eliminar`}
-					</Button>
-				</MenuItem>
-			</PopperMenuList>
 		</>
 	)
 }

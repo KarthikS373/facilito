@@ -30,12 +30,9 @@ const GlobalSnack: React.FC = () => {
 		setSnackState({ open: false, body: '' })
 	}
 
-	// MOSTRAR SNACK
-	const show = (msg: string) => setSnackState({ body: $`${msg}`, open: true })
-
 	// GLOBAL
 	useEffect(() => {
-		window.Snack = show
+		window.Snack = (msg: string) => setSnackState({ body: $`${msg}`, open: true })
 	})
 
 	return (

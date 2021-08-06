@@ -15,7 +15,15 @@ const useProducts = (
 	companyID?: string
 ) => {
 	useEffect(() => {
-		if (companyID) getBusinessProducts(companyID).then(setProducts)
+		let listener: () => unknown | null = null
+
+		// OBTENER LISTENER
+		if (companyID) getBusinessProducts(setProducts, companyID).then((listen) => (listener = listen))
+
+		// LIMPIAR
+		return () => {
+			if (listener) listener()
+		}
 	}, [companyID])
 }
 

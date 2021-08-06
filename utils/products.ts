@@ -4,18 +4,23 @@ import { getCollection } from './db'
 /**
  * Obtener productos
  * @description Retorna una lista de productos por empresa
+ * @param  {setProducts: (products:{[id:string]: Product}) => unknown}
  * @param  {string} companyID
  */
-const getBusinessProducts = async (companyID?: string) => {
+const getBusinessProducts = async (
+	setProducts: (products: { [id: string]: Product }) => unknown,
+	companyID?: string
+) => {
 	// COLLECTION
 	const col = await getCollection('products')
 
 	if (companyID) {
 		const productsDoc = col.doc(companyID)
 
-		// PRODUCTOS
-		const productsDocs = (await productsDoc.get()).data() as { [id: string]: Product }
-		if (productsDocs) return productsDocs
+		return productsDoc.onSnapshot((snap) => {
+			const data = snap.data() as { [id: string]: Product }
+			setProducts(data)
+		})
 	}
 }
 

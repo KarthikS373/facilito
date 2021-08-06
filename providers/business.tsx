@@ -24,11 +24,16 @@ const BusinessProvider: React.FC = (props) => {
 	// GUARDAR NEGOCIO GLOBAL
 	const setBusinessDB = (business: Partial<Business>) =>
 		setBusiness((prevBusiness: Business) => {
+			// COPIAR
 			const newBusiness: Business = { ...prevBusiness, ...business }
+
+			// GUARDAR
 			window.Snack('Guardando...')
 			replaceBusiness(prevBusiness.id, newBusiness).then(() =>
 				window.Snack('Guardado correctamente')
 			)
+
+			// ACTUALIZAR
 			return newBusiness
 		})
 

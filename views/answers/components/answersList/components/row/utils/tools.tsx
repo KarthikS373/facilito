@@ -1,4 +1,5 @@
 // UTILS
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { sortAnswers, deleteAnswer } from 'utils/answers'
 import { printHTML } from 'utils/tools'

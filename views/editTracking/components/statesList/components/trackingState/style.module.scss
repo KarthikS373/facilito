@@ -48,7 +48,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, auto);
 	grid-template-rows: repeat(3, auto);
-	column-gap: 5px;
+	grid-gap: 5px;
 	padding: 0 10px;
 
 	li {

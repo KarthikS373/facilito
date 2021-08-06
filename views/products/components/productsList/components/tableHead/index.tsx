@@ -30,7 +30,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ filter, setFilter, style }) =
 		const sort: string = filter.substr(1)
 
 		// FILTRAR
-		setFilter(`s${key}${sort.charAt(1)}${sort.charAt(0)}`)
+		setFilter(`${key}${sort.charAt(1)}${sort.charAt(0)}`)
 	}
 
 	return (
