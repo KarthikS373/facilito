@@ -19,13 +19,13 @@ import ROUTES from 'router/routes'
 /**
  * Mostrar prompt de nuevo formulario
  * @description Crea una alerta con un input para crear un nuevo formulario
- * @param  {(TemplateStringsArray)=>string} $
+ * @param  {TemplateStrBuilder} $
  * @param  {Business | null} business
  * @param  {NextRouter} router
  * @param  {(title:string) => Promise<void>} callback
  */
 const showNewFormPrompt = (
-	$: (TemplateStringsArray) => string,
+	$: TemplateStrBuilder,
 	business: Business | null,
 	router: NextRouter,
 	customForm?: Form,
@@ -40,13 +40,14 @@ const showNewFormPrompt = (
 
 	// ALERTA
 	window.Alert({
-		title: $`Crear formulario`,
-		body: $`Para crear un nuevo formulario escribe el titulo (este tambien se mostrara como la URL pública).`,
+		title: 'Crear formulario',
+		body: 'Para crear un nuevo formulario escribe el titulo (este tambien se mostrara como la URL pública).',
 		type: 'confirm',
 		onConfirm: () => {
 			if (business && business.id) {
 				// GUARDAR NOMBRE
 				const parsedTitle: string = normalizeString(title)
+				window.Snack('Creando...')
 				addBusinessFormURL(parsedTitle, business.id).then(async () => {
 					window.hideAlert()
 					if (customForm && user)
@@ -61,6 +62,7 @@ const showNewFormPrompt = (
 						})
 
 					// ROUTER
+					window.Snack('Formulario creado')
 					router.push(`${ROUTES.newForm}?title=${title}`.replace(':formID', parsedTitle))
 				})
 			}

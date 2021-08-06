@@ -11,9 +11,6 @@ const AlertsProvider: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// ALERTA VACIÁ
-	const emptyAlert = () => {}
-
 	return (
 		<AlertTemplate
 			blurred
@@ -21,10 +18,6 @@ const AlertsProvider: React.FC = () => {
 			confirmColor='#1AA5BB'
 			cancelText={$`Cancelar`}
 			confirmText={$`Aceptar`}
-			ref={(AlertRef) => {
-				window.Alert = AlertRef?.show || emptyAlert
-				window.hideAlert = AlertRef?.forceHide || emptyAlert
-			}}
 		/>
 	)
 }

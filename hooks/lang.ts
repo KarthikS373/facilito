@@ -23,8 +23,8 @@ const useStrings = () => {
 	const langCtx = useContext(LangContext)
 
 	// LEER STRINGS
-	function $(key: TemplateStringsArray) {
-		return getTextFromDict(key, {
+	function $(key: TemplateStringsArray, ...values: any[]) {
+		return getTextFromDict(key, values, {
 			langCode: langCtx.langCode,
 			mainLang: langCtx.mainLang,
 			// @ts-ignore

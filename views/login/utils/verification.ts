@@ -37,13 +37,14 @@ export const startSigning = async (
 
 	// VALIDAR USUARIO
 	if (progressRef.current) progressRef.current.style.display = 'block'
+	window.Alert('Iniciando sesión...')
 	signingUser(
 		isNew ? userData.semail : userData.email,
 		isNew ? userData.spass : userData.pass,
 		isNew ? userData.name : undefined,
 		onError,
 		rememberUser
-	)
+	).then(() => window.Alert('Bienvenido'))
 
 	return null
 }

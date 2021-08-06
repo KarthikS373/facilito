@@ -4,7 +4,6 @@
  * @param  {number} index
  * @param  {string} formID
  * @param  {string} companyID
- * @param  {TemplateStrBuilder} $
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  */
@@ -12,14 +11,13 @@ const deleteState = (
 	index: number,
 	formID: string,
 	companyID: string,
-	$: TemplateStrBuilder,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
 ) => {
 	if (companyID) {
 		window.Alert({
-			title: $`Borrar estado`,
-			body: $`¿Estas seguro se querer borrar este estado?, presiona Guardar estados para hacer efectivos los cambios.`,
+			title: 'Borrar estado',
+			body: '¿Estas seguro se querer borrar este estado?, presiona Guardar estados para hacer efectivos los cambios.',
 			type: 'confirm',
 			onConfirm: () => {
 				// ASIGNAR

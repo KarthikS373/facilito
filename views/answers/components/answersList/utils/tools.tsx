@@ -20,22 +20,19 @@ const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[])
 /**
  * Borrar respuestas
  * @description Crea una alerta para confirmar y borrar
- * @param  {TemplateStrBuilder} $
  * @param  {number} index
  * @param  {string} formID
  * @param  {string} companyID
  */
-export const deleteAnswerPrompt = (
-	$: TemplateStrBuilder,
-	index: number,
-	formID?: string,
-	companyID?: string
-) => {
+export const deleteAnswerPrompt = (index: number, formID?: string, companyID?: string) => {
 	window.Alert({
-		title: $`Borrar respuesta`,
-		body: $`¿Estas seguro de querer borrar esta repuesta?, este proceso sera permamente.`,
+		title: 'Borrar respuesta',
+		body: '¿Estas seguro de querer borrar esta repuesta?, este proceso sera permamente.',
 		type: 'confirm',
-		onConfirm: () => deleteAnswer(index, formID, companyID),
+		onConfirm: () => {
+			window.Snack('Borrando...')
+			deleteAnswer(index, formID, companyID).then(() => window.Snack('Respuesta borrada'))
+		},
 	})
 }
 

@@ -29,11 +29,14 @@ const ProductsProvider: React.FC = (props) => {
 				? { ...prevProducts, ...products }
 				: products
 
+			window.Snack('Guardando...')
+			// GUARDAR EN DB PRODUCTOS
+			replaceProducts(newProducts, businessCtx.business?.id).then(() =>
+				window.Snack('Productos guardados')
+			)
+
 			// GUARDAR EN NEGOCIO
 			businessCtx.setBusinessDB({ products: Object.keys(newProducts) })
-
-			// GUARDAR EN DB PRODUCTOS
-			replaceProducts(newProducts, businessCtx.business?.id)
 			return newProducts
 		})
 

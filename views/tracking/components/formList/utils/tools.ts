@@ -7,19 +7,17 @@ import saveFormSchema from 'utils/forms'
  * @param  {string} formID
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  * @param  {(forms: FormInterface) => unknown} setGlobalForms
- * @param  {TemplateStrBuilder} $
  * @param  {string} companyID
  */
 const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	$: TemplateStrBuilder,
 	companyID: string
 ) => {
 	window.Alert({
-		title: $`Borrar tracking`,
-		body: $`¿Estas seguro de que quieres borrar todos los estados de tracking presentes en este formulario?`,
+		title: 'Borrar tracking',
+		body: '¿Estas seguro de que quieres borrar todos los estados de tracking presentes en este formulario?',
 		type: 'confirm',
 		onConfirm: async () => {
 			// ACTUALIZAR
@@ -34,8 +32,12 @@ const deleteForm = (
 
 				// CONTEXTO
 				const updatedForms = { forms, answers }
+
+				window.Snack('Guardando...')
+				saveFormSchema(companyID, { tracking: [], id: formID }).then(() =>
+					window.Snack('Formulario guardado')
+				)
 				setGlobalForms(updatedForms)
-				saveFormSchema(companyID, { tracking: [], id: formID })
 
 				// ACTUALIZAR
 				return updatedForms

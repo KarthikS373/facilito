@@ -1,4 +1,44 @@
 {
+	"formulario_guardado": {
+		"en": "Form saved",
+		"es": "$"
+	},
+	"creando": {
+		"en": "Creating...",
+		"es": "$"
+	},
+	"formulario_borrado": {
+		"en": "Form deleted",
+		"es": "$"
+	},
+	"respuesta_borrada": {
+		"en": "Answer deleted",
+		"es": "$"
+	},
+	"borrando": {
+		"en": "Deleting...",
+		"es": "$"
+	},
+	"tracking_actualizado": {
+		"en": "Tracking updated",
+		"es": "$"
+	},
+	"actualizando": {
+		"en": "Updating...",
+		"es": "$"
+	},
+	"productos_guardados": {
+		"en": "Products saved",
+		"es": "$"
+	},
+	"guardando": {
+		"en": "Saving...",
+		"es": "$"
+	},
+	"guardado_correctamente": {
+		"en": "Saved correctly",
+		"es": "$"
+	},
 	"terminar": {
 		"en": "End",
 		"es": "$"

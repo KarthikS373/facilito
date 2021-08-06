@@ -13,11 +13,13 @@ const saveStates = (
 	companyID?: string
 ) => {
 	// GUARDAR
-	if (companyID)
+	if (companyID) {
+		window.Snack('Guardando...')
 		saveFormSchema(companyID, {
 			id: formID,
 			tracking: localTracking.current,
-		})
+		}).then(() => window.Snack('Guardado correctamente'))
+	}
 }
 
 /**

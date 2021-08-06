@@ -23,8 +23,10 @@ const handleStep = (
 ) =>
 	setActiveStep((prevActiveStep) => {
 		const newStep: number = prevActiveStep + step
+		window.Snack('Actualizando...')
 		updateAnswerState(index, newStep, formID, companyID)
 		updateLocalAnswerState(currentIndex, newStep)
+		window.Snack('Tracking actualizado')
 		return newStep
 	})
 

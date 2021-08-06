@@ -25,7 +25,10 @@ const BusinessProvider: React.FC = (props) => {
 	const setBusinessDB = (business: Partial<Business>) =>
 		setBusiness((prevBusiness: Business) => {
 			const newBusiness: Business = { ...prevBusiness, ...business }
-			replaceBusiness(prevBusiness.id, newBusiness)
+			window.Snack('Guardando...')
+			replaceBusiness(prevBusiness.id, newBusiness).then(() =>
+				window.Snack('Guardado correctamente')
+			)
 			return newBusiness
 		})
 

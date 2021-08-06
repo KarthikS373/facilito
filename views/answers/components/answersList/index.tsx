@@ -83,7 +83,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 
 	// BORRAR FILA
 	const deleteCurrentAnswer = () =>
-		deleteAnswerPrompt($, currentIndex, formID, businessCtx.business?.id)
+		deleteAnswerPrompt(currentIndex, formID, businessCtx.business?.id)
 
 	// ASIGNAR FILA
 	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {

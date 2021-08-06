@@ -72,7 +72,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 
 	// BORRAR ESTADO ACTUAL
 	const deleteCurrentState = () =>
-		deleteState(index, formID, businessCtx.business?.id, $, localTracking, formsCtx.setForms)
+		deleteState(index, formID, businessCtx.business?.id, localTracking, formsCtx.setForms)
 
 	// ASIGNAR COLOR
 	const setStepColor = (color: string) => () =>

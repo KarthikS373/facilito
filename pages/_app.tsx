@@ -28,8 +28,10 @@ import 'styles/mixins.scss'
 
 // NEXT
 import dynamic from 'next/dynamic'
+
 const CssBaseline = dynamic(() => import('@material-ui/core/CssBaseline'))
 const AlertProvider = dynamic(() => import('providers/alerts'))
+const GlobalSnack = dynamic(() => import('components/snackbar'))
 
 const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	// QUITAR ESTILOS SSR DE MATERIAL
@@ -56,6 +58,7 @@ const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 								<ProductsProvider>
 									<PortrayProvider settings={{ mainLang: 'es' }}>
 										<AlertProvider />
+										<GlobalSnack />
 										<Layout>
 											<CssBaseline />
 											<Component {...pageProps} />

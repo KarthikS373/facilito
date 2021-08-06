@@ -21,8 +21,9 @@ import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
 const deleteEvent =
 	($: TemplateStrBuilder, business: Business | null, event: CustomAppointment) => () => {
 		window.Alert({
-			title: $`Borrar evento`,
+			title: 'Borrar evento',
 			type: 'confirm',
+			body: '¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permamente.',
 			onCancel: () => {
 				setTimeout(() => showEventInfo($, business)(event), 300)
 			},
@@ -35,7 +36,6 @@ const deleteEvent =
 					event
 				)
 			},
-			body: $`¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permamente.`,
 		})
 	}
 
@@ -46,7 +46,7 @@ export const showEventInfo =
 			title: '',
 			body: '',
 			type: 'alert',
-			confirmText: $`Cerrar`,
+			confirmText: 'Cerrar',
 			customElements: (
 				<div className={Styles.container}>
 					<h3>{event.title}</h3>

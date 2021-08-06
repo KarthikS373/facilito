@@ -55,7 +55,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 	const closeRowMenu = () => setCurrentRow(null)
 
 	// BORRAR PRODUCTO
-	const deleteProductEv = () => deleteProduct(productsCtx, $, products, currentIndex)
+	const deleteProductEv = () => deleteProduct(productsCtx, products, currentIndex)
 
 	// ASIGNAR FILA
 	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {

@@ -10,19 +10,17 @@ import { removeEventForm } from 'utils/events'
  * @param  {string} formID
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  * @param  {(forms: FormInterface) => unknown} setGlobalForms
- * @param  {TemplateStrBuilder} $
  * @param  {string} companyID
  */
 const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: (forms: Partial<FormInterface>) => unknown,
-	$: TemplateStrBuilder,
 	companyID?: string
 ) => {
 	window.Alert({
-		title: $`Borrar formulario`,
-		body: $`¿Estas seguro de que quieres borrar este formulario?, todos los datos relacionados se perderan.`,
+		title: 'Borrar formulario',
+		body: '¿Estas seguro de que quieres borrar este formulario?, todos los datos relacionados se perderan.',
 		type: 'confirm',
 		onConfirm: async () => {
 			// ACTUALIZAR
@@ -49,10 +47,12 @@ const deleteForm = (
 			})
 
 			// BORRAR
+			window.Snack('Borrando...')
 			await removeFormStorage(companyID, formID)
 			await removeAnswersForm(companyID, formID)
 			await removeFormSchema(companyID, formID)
 			await removeEventForm(companyID, formID)
+			window.Snack('Formulario borrado')
 		},
 	})
 }
