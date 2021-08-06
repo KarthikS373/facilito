@@ -103,7 +103,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 				anchorEl={currentRow}
 				open={openRowMenu}>
 				<MenuItem>
-					<Link rKey='newProduct' id={products[currentIndex]?.sku}>
+					<Link rKey='editProduct' id={products[currentIndex]?.sku}>
 						<Button fullWidth variant='outlined' startIcon={<CreateTwoTone />}>
 							{$`Editar`}
 						</Button>

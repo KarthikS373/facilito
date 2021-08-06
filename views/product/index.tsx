@@ -3,6 +3,13 @@ import React, { useContext } from 'react'
 
 // COMPONENTES
 import Header from 'components/header'
+import Link from 'components/link'
+
+// ICONOS
+import SaveTwoTone from '@material-ui/icons/SaveTwoTone'
+
+// MATERIAL
+import Button from '@material-ui/core/Button'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -26,8 +33,17 @@ const Product: React.FC<ProductProps> = () => {
 			<Header
 				customDescription={`${
 					businessCtx.business?.products.length || 0
-				} ${$`producto(s) creados`}`}
-			/>
+				} ${$`producto(s) creados`}`}>
+				<Link rKey='products' passHref>
+					<Button
+						color='primary'
+						variant='contained'
+						style={{ color: '#fff' }}
+						startIcon={<SaveTwoTone />}>
+						{$`Guardar producto`}
+					</Button>
+				</Link>
+			</Header>
 		</>
 	)
 }

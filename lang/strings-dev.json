@@ -1,4 +1,12 @@
 {
+	"guardar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"ir_a_productos": {
+		"en": "",
+		"es": "$"
+	},
 	"formulario_guardado": {
 		"en": "Form saved",
 		"es": "$"
