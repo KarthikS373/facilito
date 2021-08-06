@@ -71,9 +71,11 @@ export const onStateChange = (
 export const changeStateColor = (
 	index: number,
 	color: string,
+	onClose: EmptyFunction,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
 ) => {
+	onClose()
 	setStep((prevStep: FormTrackingStep) => {
 		const newStep = { ...prevStep, color }
 		localTracking.current[index] = newStep

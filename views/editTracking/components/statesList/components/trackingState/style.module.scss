@@ -46,7 +46,8 @@
 
 .colors {
 	display: grid;
-	grid-template-columns: repeat(5, auto);
+	grid-template-columns: repeat(3, auto);
+	grid-template-rows: repeat(3, auto);
 	column-gap: 5px;
 	padding: 0 10px;
 
@@ -57,16 +58,19 @@
 		}
 
 		&:nth-child(2) > button {
-			background-color: #ef5350 !important;
-		}
-		&:nth-child(3) > button {
 			background-color: #689f38 !important;
 		}
+		&:nth-child(3) > button {
+			background-color: #ab47bc !important;
+		}
 		&:nth-child(4) > button {
-			background-color: #ef6c00 !important;
+			background-color: #ec407a !important;
 		}
 		&:nth-child(5) > button {
-			background-color: #ab47bc !important;
+			background-color: #ef5350 !important;
+		}
+		&:nth-child(6) > button {
+			background-color: #ef6c00 !important;
 		}
 	}
 }

@@ -76,7 +76,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 
 	// ASIGNAR COLOR
 	const setStepColor = (color: string) => () =>
-		changeStateColor(index, color, localTracking, setStep)
+		changeStateColor(index, color, closeColorMenu, localTracking, setStep)
 
 	return (
 		<>
@@ -166,20 +166,34 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 				onClose={closeColorMenu}
 				anchorEl={colorMenuAnchor}>
 				<ul className={Styles.colors}>
+					{/* AZUL */}
 					<li>
 						<IconButton onClick={setStepColor('#1AA5BB')} />
 					</li>
-					<li>
-						<IconButton onClick={setStepColor('#ef5350')} />
-					</li>
+
+					{/* VERDE */}
 					<li>
 						<IconButton onClick={setStepColor('#689f38')} />
 					</li>
-					<li>
-						<IconButton onClick={setStepColor('#ef6c00')} />
-					</li>
+
+					{/* MORADO */}
 					<li>
 						<IconButton onClick={setStepColor('#ab47bc')} />
+					</li>
+
+					{/* ROSA */}
+					<li>
+						<IconButton onClick={setStepColor('#ec407a')} />
+					</li>
+
+					{/* ROJO */}
+					<li>
+						<IconButton onClick={setStepColor('#ef5350')} />
+					</li>
+
+					{/* NARANJA */}
+					<li>
+						<IconButton onClick={setStepColor('#ef6c00')} />
 					</li>
 				</ul>
 			</PopperMenuList>
