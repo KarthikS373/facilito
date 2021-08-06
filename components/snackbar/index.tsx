@@ -1,3 +1,4 @@
+// eslint-disable react-hooks/exhaustive-deps
 // REACT
 import React, { useState, useEffect } from 'react'
 
@@ -13,9 +14,9 @@ interface SnackProps {
 	body: string
 	open: boolean
 }
-const GlobalSnack = () => {
+const GlobalSnack: React.FC = () => {
 	// STRINGS
-	const { $, langCode } = useStrings()
+	const { $ } = useStrings()
 
 	// ESTADO
 	const [snackState, setSnackState] = useState<SnackProps>({
@@ -29,10 +30,13 @@ const GlobalSnack = () => {
 		setSnackState({ open: false, body: '' })
 	}
 
+	// MOSTRAR SNACK
+	const show = (msg: string) => setSnackState({ body: $`${msg}`, open: true })
+
 	// GLOBAL
 	useEffect(() => {
-		window.Snack = (msg: string) => setSnackState({ body: $`${msg}`, open: true })
-	}, [langCode])
+		window.Snack = show
+	})
 
 	return (
 		<Snackbar

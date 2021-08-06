@@ -1,3 +1,4 @@
+// eslint-disable react-hooks/exhaustive-deps
 // REACT
 import React, { useState, useEffect } from 'react'
 
@@ -19,7 +20,7 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 	const [state, setState] = useState<InternalState>(defState)
 
 	// STRINGS
-	const { $, langCode } = useStrings()
+	const { $ } = useStrings()
 
 	// SHOW ALERT
 	const show = (props: AlertProps | string): void => {
@@ -84,7 +85,7 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 	useEffect(() => {
 		window.Alert = show
 		window.hideAlert = forceHide
-	}, [langCode])
+	})
 
 	return (
 		<div
