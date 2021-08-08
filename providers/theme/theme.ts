@@ -14,6 +14,16 @@ export const theme = createTheme({
 				backgroundColor: 'rgb(246,246,246)',
 			},
 		},
+		MuiSelect: {
+			outlined: {
+				borderRadius: '10px',
+			},
+		},
+		MuiOutlinedInput: {
+			root: {
+				borderRadius: '10px',
+			},
+		},
 		MuiButton: {
 			root: {
 				borderRadius: '10px',

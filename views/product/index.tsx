@@ -1,8 +1,9 @@
 // REACT
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 
 // COMPONENTES
 import Header from 'components/header'
+import Tabs from './components/tabs'
 import Link from 'components/link'
 
 // ICONOS
@@ -15,15 +16,32 @@ import Button from '@material-ui/core/Button'
 import BusinessContext from 'context/business'
 
 // HOOKS
+import { useProduct } from 'hooks/products'
 import useStrings from 'hooks/lang'
+
+// UTILS
+import defProduct from './utils/tools'
+
+// CONTEXT
+import ProductsContext from 'context/products'
 
 // PROPS
 interface ProductProps {
 	productID?: string
 }
-const Product: React.FC<ProductProps> = () => {
+const Product: React.FC<ProductProps> = ({ productID }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
+
+	// PRODUCTOS
+	const productsCtx = useContext(ProductsContext)
+
+	// PRODUCTO
+	const product = useProduct(productID, productsCtx.products)
+
+	// REFERENCIAS
+	const productRef: React.MutableRefObject<Product> = useRef(product || defProduct)
+	productRef.current = product || defProduct
 
 	// STRINGS
 	const { $ } = useStrings()
@@ -44,6 +62,7 @@ const Product: React.FC<ProductProps> = () => {
 					</Button>
 				</Link>
 			</Header>
+			<Tabs key={product ? 'current_product' : 'empty_product'} productRef={productRef} />
 		</>
 	)
 }

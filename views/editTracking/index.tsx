@@ -37,6 +37,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 
 	// TRACKING
 	const localTracking: React.MutableRefObject<FormTrackingStep[]> = useRef(form?.tracking || [])
+	localTracking.current = form?.tracking || []
 
 	// STRINGS
 	const { $ } = useStrings()

@@ -1,0 +1,27 @@
+.container {
+	padding: 15px var(--margin);
+}
+
+.tabs {
+	height: 50px;
+
+	& > div:first-child > div:first-child {
+		height: 100%;
+	}
+
+	.tab {
+		height: 100%;
+		min-height: 0;
+
+		span {
+			svg {
+				margin-right: 5px;
+				margin-left: -5px;
+			}
+
+			display: flex;
+			justify-content: center;
+			flex-direction: row;
+		}
+	}
+}

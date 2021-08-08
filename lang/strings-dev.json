@@ -1,10 +1,114 @@
 {
+	"stock_sin_limites_de_venta": {
+		"en": "Stock without selling limits",
+		"es": "$"
+	},
+	"abrir_informacion": {
+		"en": "Open information",
+		"es": "$"
+	},
+	"continuar_vendiendo_sin_stock": {
+		"en": "Continue selling with no stock",
+		"es": "$"
+	},
+	"stock_limitado_a_disponibilidad": {
+		"en": "Stock limited by availability",
+		"es": "$"
+	},
+	"opcion_de_stock": {
+		"en": "Stock option",
+		"es": "$"
+	},
+	"unidad": {
+		"en": "Unit",
+		"es": "$"
+	},
+	"porcion_caja_bolsa": {
+		"en": "Part, Box, Bag",
+		"es": "$"
+	},
+	"nombre_de_unidad": {
+		"en": "Unit name",
+		"es": "$"
+	},
+	"cantidad_en_inventario": {
+		"en": "Count in stock",
+		"es": "$"
+	},
+	"cantidad_en_stock": {
+		"en": "Count in stock",
+		"es": "$"
+	},
+	"sku_codigo_unico_del_producto": {
+		"en": "SKU (Stock Keeping Unit)",
+		"es": "$"
+	},
+	"correlativo": {
+		"en": "Correlative",
+		"es": "$"
+	},
+	"precio_de_oferta": {
+		"en": "Offer price",
+		"es": "$"
+	},
+	"precio_promocional": {
+		"en": "Promotional price",
+		"es": "$"
+	},
+	"precio_del_producto": {
+		"en": "Product price",
+		"es": "$"
+	},
+	"precio_real": {
+		"en": "Real price",
+		"es": "$"
+	},
+	"catalogo": {
+		"en": "Stock",
+		"es": "$"
+	},
+	"anade_una_categoria": {
+		"en": "Add a category",
+		"es": "$"
+	},
+	"categoria_del_producto": {
+		"en": "Product category",
+		"es": "$"
+	},
+	"sin_categoria": {
+		"en": " Without category",
+		"es": "$"
+	},
+	"categorias": {
+		"en": "Categories",
+		"es": "$"
+	},
+	"anade_una_descripcion": {
+		"en": "Add a description",
+		"es": "$"
+	},
+	"descripcion_del_producto": {
+		"en": "Product description",
+		"es": "$"
+	},
+	"anade_un_titulo_corto": {
+		"en": "Add short title",
+		"es": "$"
+	},
+	"titulo_del_producto": {
+		"en": "Product title",
+		"es": "$"
+	},
+	"informacion": {
+		"en": "Information",
+		"es": "$"
+	},
 	"guardar_producto": {
-		"en": "",
+		"en": "Save product",
 		"es": "$"
 	},
 	"ir_a_productos": {
-		"en": "",
+		"en": "Go to products",
 		"es": "$"
 	},
 	"formulario_guardado": {
