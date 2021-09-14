@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -38,21 +38,25 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
-	// ESTADO
-	const [generalState, setGeneralState] = useState<Product>(productRef.current)
-
 	// ACTUALIZAR
 	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeProductProps(ev, productRef, setGeneralState)
+		changeProductProps(ev, productRef)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
+			<div className={Styles.info}>
+				<div className={Styles.text}>
+					<h3>{$`Informacion general`}</h3>
+					<p>{$`Estos datos se mostraran en las tarjetas de producto en tus formularios seleccionados.`}</p>
+				</div>
+			</div>
+
 			<TextField
 				id='title'
 				name='title'
 				variant='outlined'
 				onChange={handleInputs}
-				value={generalState.title}
+				value={productRef.current.title}
 				label={$`Título del producto`}
 				placeholder={$`Añade un título corto`}
 				InputProps={{
@@ -70,7 +74,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 				variant='outlined'
 				name='description'
 				onChange={handleInputs}
-				value={generalState.description}
+				defaultValue={productRef.current.description}
 				label={$`Descripción del producto`}
 				placeholder={$`Añade una descripción`}
 				InputProps={{
@@ -94,8 +98,9 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						label={$`Categoria`}
 						onChange={handleInputs}
 						labelId='category-label'
-						value={generalState.category === $` Sin categoria` ? '' : generalState.category}
-						defaultValue={$` Sin Categoria`}
+						value={
+							productRef.current.category === $` Sin categoria` ? '' : productRef.current.category
+						}
 						inputProps={{
 							name: 'category',
 							id: 'category',
@@ -108,7 +113,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<MenuItem value={$`Nueva categoria`}>{$`Nueva categoria`}</MenuItem>
 					</Select>
 				</FormControl>
-				{generalState.category === $`Nueva categoria` && (
+				{productRef.current.category === $`Nueva categoria` && (
 					<TextField
 						defaultValue=''
 						id='new_category'

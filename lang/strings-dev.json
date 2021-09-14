@@ -1,4 +1,136 @@
 {
+	"agregar_opcion": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre": {
+		"en": "",
+		"es": "$"
+	},
+	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios_seleccionados": {
+		"en": "",
+		"es": "$"
+	},
+	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_aspectos_importantes_del_producto_estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra_en_tus_formularios": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"caracteristicas_en_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"caracteristicas_en_stocl": {
+		"en": "",
+		"es": "$"
+	},
+	"visualizacion_en_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"visualizacion_en_stocl": {
+		"en": "",
+		"es": "$"
+	},
+	"informacion_general": {
+		"en": "",
+		"es": "$"
+	},
+	"cantidad": {
+		"en": "",
+		"es": "$"
+	},
+	"obligatorio": {
+		"en": "",
+		"es": "$"
+	},
+	"por_cantidad": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccion_multiple": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccion_unica": {
+		"en": "",
+		"es": "$"
+	},
+	"tipo_de_variable": {
+		"en": "",
+		"es": "$"
+	},
+	"opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"extrasopcionales": {
+		"en": "",
+		"es": "$"
+	},
+	"general": {
+		"en": "",
+		"es": "$"
+	},
+	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion_y_precios": {
+		"en": "",
+		"es": "$"
+	},
+	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion_y_precio": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar": {
+		"en": "",
+		"es": "$"
+	},
+	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion": {
+		"en": "",
+		"es": "$"
+	},
+	"variables_dinamicas": {
+		"en": "",
+		"es": "$"
+	},
+	"extras": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_creara_valores_negativos_en_tu_stock_cuando_el_producto_se_encuentre_agotado": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_creara_valores_negativos_para_este_producto_en_tu_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_creara_valores_negativos_para_este_producto_en_tu_stock_pero_continuara_aceptando_compras": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_permite_que_el_valor_del_stock_nunca_termine_y_el_producto_siempre_este_disponible": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe_en_tu_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"": {
+		"en": "",
+		"es": "$"
+	},
 	"stock_sin_limites_de_venta": {
 		"en": "Stock without selling limits",
 		"es": "$"

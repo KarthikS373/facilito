@@ -87,7 +87,7 @@ const Search: React.FC = () => {
 										passHref
 										id={link.id}
 										rKey={link.type === 'form' ? 'newForm' : 'editProduct'}>
-										<IconButton>
+										<IconButton onClick={hideSearchBox}>
 											<ForwardTwoTone />
 										</IconButton>
 									</Link>

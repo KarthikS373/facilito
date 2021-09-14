@@ -10,11 +10,14 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 
 // ICONS
+import ExtensionTwoToneIcon from '@material-ui/icons/ExtensionTwoTone'
+import SettingsTwoToneIcon from '@material-ui/icons/SettingsTwoTone'
 import MenuBookTwoToneIcon from '@material-ui/icons/MenuBookTwoTone'
 import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone'
 
 // COMPONENTES
 import General from './components/general'
+import Extras from './components/extras'
 import Stock from './components/stock'
 
 // HOOKS
@@ -36,7 +39,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 
 	return (
 		<div className={Styles.container}>
-			<Paper style={{ background: '#fcfcfc', width: '600px' }}>
+			<Paper style={{ background: '#fcfcfc', width: '540px' }}>
 				<Tabs
 					value={tabIndex}
 					textColor='primary'
@@ -44,12 +47,14 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 					indicatorColor='primary'
 					onChange={handleChange}
 					aria-label='product_sections'>
-					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`Información`} />
+					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
 					<Tab className={Styles.tab} icon={<MenuBookTwoToneIcon />} label={$`Catalogo`} />
-					<Tab label='Active' />
+					<Tab className={Styles.tab} icon={<ExtensionTwoToneIcon />} label={$`Extras`} />
+					<Tab className={Styles.tab} icon={<SettingsTwoToneIcon />} label={$`Opciones`} />
 				</Tabs>
 				<General show={tabIndex === 0} productRef={productRef} />
 				<Stock show={tabIndex === 1} productRef={productRef} />
+				<Extras show={tabIndex === 2} productRef={productRef} />
 			</Paper>
 		</div>
 	)

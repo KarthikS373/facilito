@@ -1,8 +1,11 @@
 // REACT
-import React, { useState } from 'react'
+import React from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
+
+// COMPONENTES
+import showInfo from './components/info'
 
 // MATERIAL
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -36,15 +39,22 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// ESTADO
-	const [generalState, setGeneralState] = useState<Product>(productRef.current)
-
 	// ACTUALIZAR
 	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeProductProps(ev, productRef, setGeneralState)
+		changeProductProps(ev, productRef)
+
+	// MOSTRAR INFORMACION
+	const showStockInfo = () => showInfo($)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
+			<div className={Styles.info}>
+				<div className={Styles.text}>
+					<h3>{$`Caracteristicas en stock`}</h3>
+					<p>{$`Esta informacion sera utilizada en el carrito, y en el resumen de compra en tus formularios.`}</p>
+				</div>
+			</div>
+
 			<div className={Styles.row}>
 				<TextField
 					id='price'
@@ -52,7 +62,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					type='number'
 					variant='outlined'
 					onChange={handleInputs}
-					value={generalState.price}
+					defaultValue={productRef.current.price}
 					placeholder={$`Precio real`}
 					label={$`Precio del producto`}
 					InputProps={{
@@ -69,7 +79,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					name='promoPrice'
 					variant='outlined'
 					onChange={handleInputs}
-					value={generalState.promoPrice}
+					defaultValue={productRef.current.promoPrice}
 					label={$`Precio promocional`}
 					placeholder={$`Precio de oferta`}
 					InputProps={{
@@ -89,7 +99,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					type='number'
 					variant='outlined'
 					onChange={handleInputs}
-					value={generalState.count}
+					defaultValue={productRef.current.count}
 					label={$`Cantidad en Stock`}
 					placeholder={$`Cantidad en inventario`}
 					InputProps={{
@@ -105,7 +115,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					name='sku'
 					variant='outlined'
 					onChange={handleInputs}
-					value={generalState.sku}
+					defaultValue={productRef.current.sku}
 					placeholder={$`Correlativo`}
 					label={$`SKU (código unico del producto)`}
 					InputProps={{
@@ -125,7 +135,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					variant='outlined'
 					onChange={handleInputs}
 					label={$`Nombre de unidad`}
-					value={generalState.unitName}
+					defaultValue={productRef.current.unitName}
 					placeholder={$`Porcion, Caja, Bolsa`}
 					InputProps={{
 						startAdornment: (
@@ -143,10 +153,9 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 						color='primary'
 						variant='outlined'
 						label={$`Unidad`}
-						defaultValue={'1'}
 						labelId='unit-label'
 						onChange={handleInputs}
-						value={generalState.unit}
+						defaultValue={productRef.current.unit || '1'}
 						inputProps={{
 							name: 'unit',
 							id: 'unit',
@@ -171,11 +180,10 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 						color='primary'
 						id='stockOption'
 						name='stockOption'
-						defaultValue='lim'
 						variant='outlined'
 						onChange={handleInputs}
 						label={$`Opción de stock`}
-						value={generalState.stockOption}
+						defaultValue={productRef.current.stockOption || 'lim'}
 						labelId='stockOption-label'
 						inputProps={{
 							name: 'stockOption',
@@ -186,7 +194,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<MenuItem value='inf'>{$`Stock sin limites de venta`}</MenuItem>
 					</Select>
 				</FormControl>
-				<Button startIcon={<InfoTwoToneIcon />} variant='outlined'>
+				<Button onClick={showStockInfo} startIcon={<InfoTwoToneIcon />} variant='outlined'>
 					{$`Abrir información`}
 				</Button>
 			</div>

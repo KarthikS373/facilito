@@ -3,32 +3,25 @@
  * @description Actualiza en la DB y en el contexto las propiedades de un producto
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {React.MutableRefObject<Product>} localProduct
- * @param  {React.Dispatch<React.SetStateAction<Product>>} setGeneralState
  */
 const changeProductProps = (
 	ev: React.ChangeEvent<HTMLInputElement>,
-	localProduct: React.MutableRefObject<Product>,
-	setGeneralState: React.Dispatch<React.SetStateAction<Product>>
+	localProduct: React.MutableRefObject<Product>
 ) => {
 	// EVENTOS
 	const { name, value } = ev.target
 
-	// UPDATE
-	setGeneralState((prevProduct: Product) => {
-		// COPIA
-		const newProduct = { ...prevProduct, [name]: value }
-		const refProduct = { ...newProduct }
+	// COPIA
+	const newProduct = { ...localProduct.current, [name]: value }
 
-		// ELIMINAR NUEVA CATEGORIA
-		if (refProduct['new_category']?.length) {
-			refProduct.category = refProduct['new_category'].toString()
-			delete refProduct['new_category']
-		}
+	// ELIMINAR NUEVA CATEGORIA
+	if (newProduct['new_category']?.length) {
+		newProduct.category = newProduct['new_category'].toString()
+		delete newProduct['new_category']
+	}
 
-		// RENDER
-		localProduct.current = refProduct
-		return newProduct
-	})
+	// RENDER
+	localProduct.current = newProduct
 }
 
 export default changeProductProps

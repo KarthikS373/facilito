@@ -4,17 +4,6 @@
 	grid-template-columns: 100%;
 	row-gap: 20px;
 
-	hr {
-		opacity: 0.2;
-		margin: 5px 0;
-	}
-
-	.row {
-		display: grid;
-		grid-template-columns: auto auto;
-		column-gap: 15px;
-	}
-
 	.info {
 		display: flex;
 		justify-content: space-between;

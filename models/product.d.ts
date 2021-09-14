@@ -18,15 +18,29 @@ interface Product {
 
 interface Extra {
 	title: string
-	type: number
+	type: ExtraType
 	options: ExtraOptional[]
 	required: boolean
 	cant?: number
 }
 
+enum ExtraType {
+	ONLY,
+	MULTIPLE,
+	AMOUNT,
+}
+
 interface ExtraOptional {
 	name: string
 	price: number
+}
+
+interface ExtendedOpt extends ExtraOptional {
+	id: number
+}
+
+interface ExtendedExtra extends Extra {
+	id: number
 }
 
 interface CurrentProduct {

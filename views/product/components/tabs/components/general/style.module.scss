@@ -1,5 +1,5 @@
 .container {
-	padding: 30px 20px;
+	padding: 20px;
 	display: grid;
 	grid-template-columns: 100%;
 	row-gap: 20px;
@@ -11,5 +11,17 @@
 
 	.row {
 		display: flex;
+	}
+
+	.info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
+
+		.text {
+			width: 320px;
+			opacity: 0.8;
+		}
 	}
 }
