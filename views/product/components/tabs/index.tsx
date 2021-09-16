@@ -16,6 +16,7 @@ import MenuBookTwoToneIcon from '@material-ui/icons/MenuBookTwoTone'
 import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone'
 
 // COMPONENTES
+import Settings from './components/settings'
 import General from './components/general'
 import Extras from './components/extras'
 import Stock from './components/stock'
@@ -55,6 +56,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 				<General show={tabIndex === 0} productRef={productRef} />
 				<Stock show={tabIndex === 1} productRef={productRef} />
 				<Extras show={tabIndex === 2} productRef={productRef} />
+				<Settings show={tabIndex === 3} productRef={productRef} />
 			</Paper>
 		</div>
 	)

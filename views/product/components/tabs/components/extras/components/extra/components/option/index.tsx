@@ -10,7 +10,8 @@ import IconButton from '@material-ui/core/IconButton'
 import TextField from '@material-ui/core/TextField'
 
 // ICONOS
-import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
+import FontDownloadTwoToneIcon from '@material-ui/icons/FontDownloadTwoTone'
+import LocalOfferTwoToneIcon from '@material-ui/icons/LocalOfferTwoTone'
 import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
 import AddTwoTone from '@material-ui/icons/AddTwoTone'
 
@@ -57,7 +58,7 @@ const Option: React.FC<ExtraProps> = ({
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
-							<ListAltTwoToneIcon color='primary' />
+							<FontDownloadTwoToneIcon color='primary' />
 						</InputAdornment>
 					),
 				}}
@@ -74,7 +75,7 @@ const Option: React.FC<ExtraProps> = ({
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
-							<ListAltTwoToneIcon color='primary' />
+							<LocalOfferTwoToneIcon color='primary' />
 						</InputAdornment>
 					),
 				}}

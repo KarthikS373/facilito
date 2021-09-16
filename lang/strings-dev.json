@@ -1,4 +1,60 @@
 {
+	"habilitar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"mostrar_como_producto_destacado": {
+		"en": "",
+		"es": "$"
+	},
+	"activar_precio_promocional": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ningun_formulario_en_donde_se_haya_agregado": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_inactivos_no_se_mostraran_en_ningun_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"estado_actual": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado_en_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"producto_destacado": {
+		"en": "",
+		"es": "$"
+	},
+	"el_precio_original_se_motrara_tachado_con_rojo_y_el_precio_promocional_se_mostrara_primero": {
+		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilita_el_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_o_deshabilitar_el_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_o_deshabilitarlo": {
+		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_tambien_puedes_deshabilitarlo": {
+		"en": "",
+		"es": "$"
+	},
+	"configuracion_y_comportamiento": {
+		"en": "",
+		"es": "$"
+	},
 	"agregar_opcion": {
 		"en": "",
 		"es": "$"

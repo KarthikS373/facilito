@@ -1,5 +1,5 @@
 // REACT
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -38,9 +38,19 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
+	// ESTADO DE CATEGORIA
+	const [category, setCategory] = useState<string>(productRef.current.category)
+
 	// ACTUALIZAR
 	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>
 		changeProductProps(ev, productRef)
+
+	// CAMBIAR CATEGORIAS
+	const changeCategory = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+		const { value } = ev.target
+		setCategory(value)
+		productRef.current.category = value
+	}
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
@@ -96,11 +106,9 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						color='primary'
 						variant='outlined'
 						label={$`Categoria`}
-						onChange={handleInputs}
+						onChange={changeCategory}
 						labelId='category-label'
-						value={
-							productRef.current.category === $` Sin categoria` ? '' : productRef.current.category
-						}
+						value={category === $` Sin categoria` ? '' : category}
 						inputProps={{
 							name: 'category',
 							id: 'category',
@@ -113,7 +121,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<MenuItem value={$`Nueva categoria`}>{$`Nueva categoria`}</MenuItem>
 					</Select>
 				</FormControl>
-				{productRef.current.category === $`Nueva categoria` && (
+				{category === $`Nueva categoria` && (
 					<TextField
 						defaultValue=''
 						id='new_category'

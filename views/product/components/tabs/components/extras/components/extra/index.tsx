@@ -29,12 +29,7 @@ import AddTwoTone from '@material-ui/icons/AddTwoTone'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import changeExtraProps, {
-	addOptional,
-	removeOptional,
-	toggleRequired,
-	changeType,
-} from './utils/tools'
+import changeExtraProps, { addOptional, removeOptional, changeType } from './utils/tools'
 
 interface ExtraProps {
 	extra: Extra
@@ -64,14 +59,12 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 	// OPCIONES
 	const [options, setOptions] = useState<ExtendedOpt[]>([])
 
-	// OBLIGATORIO
-	const [requiredSwitch, setRequiredSwitch] = useState<boolean>(extra.required)
-
 	// TIPO DE EXTRA
 	const [extraType, setExtraType] = useState<number>(extra.type || 0)
 
 	// CAMBIAR OBLIGATORIO
-	const toggleRequiredEv = () => toggleRequired(index, productRef, setRequiredSwitch)
+	const toggleRequiredEv = (ev: React.ChangeEvent<HTMLInputElement>) =>
+		(productRef.current.extras[index].required = !ev.target.checked)
 
 	// CAMBIAR TIPO
 	const changeTypeEv = (ev: React.ChangeEvent<HTMLSelectElement>) =>
@@ -170,8 +163,8 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						<Switch
 							name='required'
 							color='primary'
-							checked={requiredSwitch}
 							onChange={toggleRequiredEv}
+							defaultChecked={extra.required}
 						/>
 					}
 					label={$`Obligatorio`}

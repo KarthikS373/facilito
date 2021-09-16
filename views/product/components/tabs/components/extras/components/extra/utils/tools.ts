@@ -61,24 +61,6 @@ export const removeOptional = (
 }
 
 /**
- * Cambiar obligatorio
- * @description Revierte la propiedad required del extra
- * @param  {number} index
- * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<boolean>>} setRequiredSwitch
- */
-export const toggleRequired = (
-	index: number,
-	productRef: React.MutableRefObject<Product>,
-	setRequiredSwitch: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-	setRequiredSwitch((prevReq: boolean) => {
-		if (productRef.current.extras[index]) productRef.current.extras[index].required = !prevReq
-		return !prevReq
-	})
-}
-
-/**
  * Cambiar tipo de extra
  * @description Edita la propiedad type del extra
  * @param  {number} index
