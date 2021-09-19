@@ -1,4 +1,3 @@
-import { collection, deleteDoc, doc, onSnapshot, getDoc, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -8,6 +7,8 @@ import { getCollection } from './db'
  * @param  {string} formID
  */
 const getAnswerDoc = async (companyID: string, formID: string) => {
+	const { collection, doc } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
@@ -26,6 +27,8 @@ export const answersListener = async (
 	companyID: string,
 	setAnswers: (forms: { [id: string]: FormAnswer }) => unknown
 ) => {
+	const { collection, doc, onSnapshot } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
@@ -80,6 +83,8 @@ export const getAnswersDifference = (
  * @param  {string} formID
  */
 export const removeAnswersForm = async (companyID: string, formID: string) => {
+	const { deleteDoc } = await import('firebase/firestore')
+
 	// LEER
 	const formDoc = await getAnswerDoc(companyID, formID)
 	return await deleteDoc(formDoc)
@@ -94,6 +99,8 @@ export const removeAnswersForm = async (companyID: string, formID: string) => {
  */
 export const deleteAnswer = async (index: number, formID?: string, companyID?: string) => {
 	if (companyID && formID) {
+		const { getDoc, setDoc } = await import('firebase/firestore')
+
 		// LEER
 		const answerDoc = await getAnswerDoc(companyID, formID)
 		const companyAnswers = (await getDoc(answerDoc)).data() as FormAnswer
@@ -183,6 +190,8 @@ export const updateAnswerState = async (
 	companyID?: string
 ) => {
 	if (companyID && formID) {
+		const { getDoc, setDoc } = await import('firebase/firestore')
+
 		// LEER
 		const answerDoc = await getAnswerDoc(companyID, formID)
 		const answerData = (await getDoc(answerDoc)).data() as FormAnswer

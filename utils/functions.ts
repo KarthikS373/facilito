@@ -1,4 +1,3 @@
-import { getFunctions, httpsCallable } from 'firebase/functions'
 import getFirebase from 'keys/firebase'
 
 /**
@@ -7,6 +6,8 @@ import getFirebase from 'keys/firebase'
  * @param  {string} name
  */
 const getCallable = async (name: string) => {
+	const { getFunctions, httpsCallable } = await import('firebase/functions')
+
 	// IMPORTAR
 	const firebaseApp = await getFirebase()
 	const functions = getFunctions(firebaseApp)

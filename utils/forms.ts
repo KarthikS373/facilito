@@ -1,12 +1,4 @@
 // DB
-import {
-	doc,
-	setDoc,
-	getDocs,
-	deleteDoc,
-	onSnapshot,
-	collection as getCollectionFrb,
-} from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -16,6 +8,8 @@ import { getCollection } from './db'
  * @param  {string} formID
  */
 const getFormDoc = async (companyID: string, formID: string) => {
+	const { doc, collection: getCollectionFrb } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
@@ -34,6 +28,8 @@ export const formsListener = async (
 	companyID: string,
 	setForms: (forms: { [id: string]: Form }) => unknown
 ) => {
+	const { doc, onSnapshot, collection: getCollectionFrb } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
@@ -74,6 +70,8 @@ export const getFormsDifference = (first: Form[], second: Form[]) => {
  * @description Obtiene los formularios en plantillasfacilito
  */
 export const readTemplates = async () => {
+	const { doc, getDocs, collection: getCollectionFrb } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, 'plantillasfacilito')
@@ -90,6 +88,8 @@ export const readTemplates = async () => {
  * @param  {Partial<Form>} form
  */
 const saveFormSchema = async (companyID: string, form: Partial<Form>) => {
+	const { setDoc } = await import('firebase/firestore')
+
 	if (form.id) {
 		// LEER
 		const formDoc = await getFormDoc(companyID, form.id)
@@ -108,6 +108,8 @@ export default saveFormSchema
  * @param  {string} id
  */
 export const removeFormSchema = async (companyID: string, id: string) => {
+	const { deleteDoc } = await import('firebase/firestore')
+
 	// LEER
 	const formDoc = await getFormDoc(companyID, id)
 

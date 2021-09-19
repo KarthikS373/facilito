@@ -1,5 +1,4 @@
 // DEPS
-import { doc, getDoc } from 'firebase/firestore'
 import { getCollection } from 'utils/db'
 
 /**
@@ -9,6 +8,8 @@ import { getCollection } from 'utils/db'
  */
 export const getUser = async (email: string): Promise<User | null> => {
 	if (email) {
+		const { doc, getDoc } = await import('firebase/firestore')
+
 		// DOC
 		const userCol = await getCollection('users')
 		const userDoc = doc(userCol, email)

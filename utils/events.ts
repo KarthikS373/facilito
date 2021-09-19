@@ -1,5 +1,4 @@
 // UTILS
-import { collection, deleteDoc, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 import { parseDate, sendMail } from './tools'
 
@@ -10,6 +9,8 @@ import { parseDate, sendMail } from './tools'
  * @description Retorna un documento desde la collection events
  */
 const getEventDoc = async (companyID: string, id: string) => {
+	const { collection, doc } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
@@ -25,6 +26,8 @@ const getEventDoc = async (companyID: string, id: string) => {
  * @description Remueve todos los eventos de un formulario
  */
 export const removeEventForm = async (companyID: string, id: string) => {
+	const { deleteDoc } = await import('firebase/firestore')
+
 	// LEER
 	const formDoc = await getEventDoc(companyID, id)
 	return await deleteDoc(formDoc)
@@ -46,6 +49,8 @@ export const deleteAppointment = async (
 	formId: string,
 	formData: CustomAppointment
 ) => {
+	const { setDoc, getDoc } = await import('firebase/firestore')
+
 	// LEER
 	const eventDoc = await getEventDoc(companyID, formId)
 	const eventFormData = (await getDoc(eventDoc)).data() as EventFormContainer
@@ -87,6 +92,8 @@ export const appointmentsListener = async (
 	companyID: string,
 	setAppointments: (events: CustomAppointment[]) => unknown
 ) => {
+	const { collection, doc, onSnapshot } = await import('firebase/firestore')
+
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)

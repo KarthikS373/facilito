@@ -1,28 +1,20 @@
 // STRINGS
 import AuthErrorsJSON from 'lang/auth-errors.json'
 
+// TIPOS
+import {
+	Auth,
+	AuthError,
+	UserCredential,
+	FacebookAuthProvider,
+	GoogleAuthProvider,
+} from '@firebase/auth'
+import { CollectionReference } from '@firebase/firestore'
+
 // DB
 import { getCollection } from './db'
 
 // UTILS
-import {
-	Auth,
-	signOut,
-	AuthError,
-	UserCredential,
-	updateProfile,
-	setPersistence,
-	signInWithPopup,
-	GoogleAuthProvider,
-	FacebookAuthProvider,
-	getAuth as getAuthFrb,
-	getAdditionalUserInfo,
-	sendPasswordResetEmail,
-	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword,
-	signInAnonymously as signInAnonymouslyFrb,
-} from 'firebase/auth'
-import { CollectionReference, doc, setDoc } from 'firebase/firestore'
 import getFirebase from 'keys/firebase'
 
 // GLOBALES
@@ -57,6 +49,12 @@ const authErrorHandler = (cb?: (message: string) => unknown) => (err: AuthError)
  * @description Retorna la instancia global de firebase/auth
  */
 export const getAuth = async () => {
+	const {
+		GoogleAuthProvider,
+		FacebookAuthProvider,
+		getAuth: getAuthFrb,
+	} = await import('firebase/auth')
+
 	// INSTANCIA
 	if (globalAuth === null) {
 		const firebaseApp = await getFirebase()
@@ -77,6 +75,7 @@ export const getAuth = async () => {
  * @description Inicia sesión como usuario anónimo
  */
 export const signingAnonymously = async () => {
+	const { signInAnonymously: signInAnonymouslyFrb } = await import('firebase/auth')
 	const auth = await getAuth()
 	return signInAnonymouslyFrb(auth)
 }
@@ -118,8 +117,10 @@ const verifyLoginFields = (email: string, pass: string) => {
  * @description Actualiza el perfil en el objeto auth
  * @param  {string} displayName
  */
-const updateUserName = (displayName: string) =>
-	updateProfile(globalAuth.currentUser, { displayName })
+const updateUserName = async (displayName: string) => {
+	const { updateProfile } = await import('firebase/auth')
+	return updateProfile(globalAuth.currentUser, { displayName })
+}
 
 /**
  * Registrar usuario
@@ -141,6 +142,9 @@ export const signingUser = async (
 	const handler = verifyLoginFields(email, pass)
 
 	if (handler.verify) {
+		const { setPersistence, signInWithEmailAndPassword, createUserWithEmailAndPassword } =
+			await import('firebase/auth')
+
 		// AUTH
 		const auth = await getAuth()
 
@@ -197,6 +201,8 @@ export const signingUser = async (
  * @param  {boolean} merge? combinar propiedades en el usuario existente
  */
 const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
+	const { doc, setDoc } = await import('firebase/firestore')
+
 	// REFERENCIA
 	const col: CollectionReference = await getCollection('users')
 
@@ -233,6 +239,8 @@ const saveUser = (name?: string) => (credential: UserCredential) => {
  * @param  {(error:string)=>unknown} onError?
  */
 export const facebookSigning = async (onError?: (error: string) => unknown) => {
+	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
+
 	// AUTH
 	const auth = await getAuth()
 
@@ -252,6 +260,8 @@ export const facebookSigning = async (onError?: (error: string) => unknown) => {
  * @param  {(error:string)=>unknown} onError?
  */
 export const googleSigning = async (onError?: (error: string) => unknown) => {
+	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
+
 	// AUTH
 	const auth = await getAuth()
 
@@ -277,6 +287,7 @@ export const forgotPass = async (
 	onSuccess: EmptyFunction,
 	onError?: (error: string) => unknown
 ) => {
+	const { sendPasswordResetEmail } = await import('firebase/auth')
 	const auth = await getAuth()
 	return sendPasswordResetEmail(auth, email).then(onSuccess).catch(authErrorHandler(onError))
 }
@@ -285,6 +296,7 @@ export const forgotPass = async (
  * @description Enviá un evento y cierra sesión
  */
 export const logout = async () => {
+	const { signOut } = await import('firebase/auth')
 	const auth = await getAuth()
 	window.postMessage({ action: 'logout' }, '*')
 	return signOut(auth)

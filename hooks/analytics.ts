@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 
 // UTILS
 import getFirebase from 'keys/firebase'
-import { initializeAnalytics } from 'firebase/analytics'
 
 /**
  * Hook de Analytics
@@ -12,7 +11,10 @@ import { initializeAnalytics } from 'firebase/analytics'
 const useAnalytics = () => {
 	useEffect(() => {
 		if (process.env.NODE_ENV === 'production') {
-			getFirebase().then((firebaseApp) => initializeAnalytics(firebaseApp))
+			getFirebase().then(async (firebaseApp) => {
+				const { initializeAnalytics } = await import('firebase/analytics')
+				initializeAnalytics(firebaseApp)
+			})
 		}
 	}, [])
 }

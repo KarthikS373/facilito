@@ -1,5 +1,4 @@
 // UTILS
-import { setDoc, doc, onSnapshot } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -12,6 +11,8 @@ const getBusinessProducts = async (
 	setProducts: (products: { [id: string]: Product }) => unknown,
 	companyID?: string
 ) => {
+	const { doc, onSnapshot } = await import('firebase/firestore')
+
 	// COLLECTION
 	const col = await getCollection('products')
 
@@ -34,6 +35,8 @@ export default getBusinessProducts
  * @param  {string} companyID
  */
 export const replaceProducts = async (products: { [id: string]: Product }, companyID?: string) => {
+	const { setDoc, doc } = await import('firebase/firestore')
+
 	// COLLECTION
 	const col = await getCollection('products')
 

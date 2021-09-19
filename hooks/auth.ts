@@ -1,5 +1,5 @@
 // TOOLS
-import { Unsubscribe, User, onAuthStateChanged } from 'firebase/auth'
+import { Unsubscribe, User } from '@firebase/auth'
 import { useEffect } from 'react'
 import { getAuth } from 'utils/auth'
 
@@ -13,6 +13,7 @@ export const useAuth = (setAuth: React.Dispatch<React.SetStateAction<User | null
 		// LEER USUARIO
 		let listener: Unsubscribe | null = null
 		const reqUser = async () => {
+			const { onAuthStateChanged } = await import('firebase/auth')
 			const auth = await getAuth()
 			listener = onAuthStateChanged(auth, setAuth)
 		}

@@ -1,5 +1,5 @@
-import { getStorage, listAll, ref, StorageReference, deleteObject } from 'firebase/storage'
 import getFirebase from 'keys/firebase'
+import { StorageReference } from '@firebase/storage'
 
 /**
  * Borrar formulario en storage
@@ -8,6 +8,8 @@ import getFirebase from 'keys/firebase'
  * @param  {string} id
  */
 export const removeFormStorage = async (companyID: string, id: string) => {
+	const { getStorage, listAll, ref, deleteObject } = await import('firebase/storage')
+
 	// STORAGE
 	const firebaseApp = await getFirebase()
 	const str = getStorage(firebaseApp)

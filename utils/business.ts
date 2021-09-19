@@ -1,5 +1,4 @@
 // DB
-import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -8,6 +7,8 @@ import { getCollection } from './db'
  * @description Retorna un documento de firestore asociado a una URL
  */
 const getBusinessDoc = async (url: string) => {
+	const { doc } = await import('firebase/firestore')
+
 	// COLECCIÓN DE EMPRESA
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, url)
@@ -21,6 +22,8 @@ const getBusinessDoc = async (url: string) => {
  */
 export const getCompany = async (url: string) => {
 	if (url) {
+		const { getDoc } = await import('firebase/firestore')
+
 		// DOCUMENTO DE EMPRESA
 		const businessDoc = await getBusinessDoc(url)
 		const businessData = (await getDoc(businessDoc)).data() as Business
@@ -36,6 +39,7 @@ export const getCompany = async (url: string) => {
  */
 export const addBusinessFormURL = async (id: string, companyID: string) => {
 	// COLECCIÓN DE EMPRESA
+	const { getDoc, setDoc } = await import('firebase/firestore')
 	const businessDoc = await getBusinessDoc(companyID)
 	const businessData = (await getDoc(businessDoc)).data() as Business | undefined
 	const forms = businessData?.forms || []
@@ -57,6 +61,8 @@ export const addBusinessFormURL = async (id: string, companyID: string) => {
  * @description Mezcla los valores del negocio en la DB
  */
 export const replaceBusiness = async (companyID: string, business: Partial<Business> | null) => {
+	const { setDoc } = await import('firebase/firestore')
+
 	// COLECCIÓN DE EMPRESA
 	const businessDoc = await getBusinessDoc(companyID)
 

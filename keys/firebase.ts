@@ -1,8 +1,10 @@
 // TIPOS
 import { FirebaseApp } from '@firebase/app'
-import firebase, { initializeApp } from 'firebase/app'
 
 async function getFirebase() {
+	// IMPORTS
+	const { initializeApp, getApps, getApp } = await import('firebase/app')
+
 	// CONFIGURACIONES
 	const config = {
 		apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -18,8 +20,8 @@ async function getFirebase() {
 	// INICIAR
 	let firebaseApp: FirebaseApp | null = null
 
-	if (!firebase || firebase.getApps().length === 0) firebaseApp = initializeApp(config)
-	else firebaseApp = firebase.getApp()
+	if (getApps()?.length === 0) firebaseApp = initializeApp(config)
+	else firebaseApp = getApp()
 
 	return firebaseApp
 }

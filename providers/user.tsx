@@ -1,6 +1,9 @@
 // REACT
 import React, { useCallback, useState } from 'react'
 
+// TIPOS
+import { User as UserFrb } from '@firebase/auth'
+
 // CONTEXTO
 import UserContext from 'context/user'
 
@@ -34,7 +37,7 @@ const UserProvider: React.FC = (props) => {
 
 	// AUTH
 	useAuth(
-		useCallback((authUser: firebase.default.User | null) => {
+		useCallback((authUser: UserFrb | null) => {
 			const getUserData = async () => {
 				if (authUser && authUser.email) {
 					// LEER DE FIRESTORE

@@ -1,6 +1,9 @@
 // REACT
 import { FormEvent, MouseEvent, RefObject } from 'react'
 
+// TIPOS
+import { AuthError } from 'firebase/auth'
+
 // TOOLS
 import { signingUser } from 'utils/auth'
 
@@ -24,7 +27,7 @@ export const startSigning = async (
 	ev.preventDefault()
 
 	// ALERTA DE ERROR
-	const onError = (error: firebase.default.auth.AuthError | string) => {
+	const onError = (error: AuthError | string) => {
 		window.Alert({
 			type: 'error',
 			title: 'Ocurrió un error',
