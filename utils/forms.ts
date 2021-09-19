@@ -1,4 +1,12 @@
 // DB
+import {
+	doc,
+	setDoc,
+	getDocs,
+	deleteDoc,
+	onSnapshot,
+	collection as getCollectionFrb,
+} from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -10,7 +18,9 @@ import { getCollection } from './db'
 const getFormDoc = async (companyID: string, formID: string) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const formDoc = businessCol.doc(companyID).collection('forms').doc(formID)
+	const businessDoc = doc(businessCol, companyID)
+	const formsCol = getCollectionFrb(businessDoc, 'forms')
+	const formDoc = doc(formsCol, formID)
 	return formDoc
 }
 
@@ -26,10 +36,11 @@ export const formsListener = async (
 ) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const formsCol = businessCol.doc(companyID).collection('forms')
+	const businessDoc = doc(businessCol, companyID)
+	const formsCol = getCollectionFrb(businessDoc, 'forms')
 
 	// LISTENER
-	return formsCol.onSnapshot((snap) => {
+	return onSnapshot(formsCol, (snap) => {
 		const forms = Object.fromEntries(snap.docs.map((doc) => [doc.id, doc.data() as Form]))
 		setForms(forms)
 	})
@@ -37,7 +48,7 @@ export const formsListener = async (
 
 /**
  * Comparar formularios
- * @description Compara los cambios en los ultimos formularios
+ * @description Compara los cambios en los últimos formularios
  * @param  {Form[]} first
  * @param  {Form[]} second
  */
@@ -65,8 +76,9 @@ export const getFormsDifference = (first: Form[], second: Form[]) => {
 export const readTemplates = async () => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const formDoc = businessCol.doc('plantillasfacilito').collection('forms')
-	const form = (await formDoc.get()).docs.map((doc) => doc.data()) as Form[]
+	const businessDoc = doc(businessCol, 'plantillasfacilito')
+	const formsCol = getCollectionFrb(businessDoc, 'forms')
+	const form = (await getDocs(formsCol)).docs.map((doc) => doc.data()) as Form[]
 
 	return form
 }
@@ -83,7 +95,7 @@ const saveFormSchema = async (companyID: string, form: Partial<Form>) => {
 		const formDoc = await getFormDoc(companyID, form.id)
 
 		// GUARDAR
-		if (formDoc) await formDoc.set(form, { merge: true })
+		if (formDoc) await setDoc(formDoc, form, { merge: true })
 	}
 }
 
@@ -100,5 +112,5 @@ export const removeFormSchema = async (companyID: string, id: string) => {
 	const formDoc = await getFormDoc(companyID, id)
 
 	// BORRAR
-	if (formDoc) return formDoc.delete()
+	if (formDoc) return deleteDoc(formDoc)
 }

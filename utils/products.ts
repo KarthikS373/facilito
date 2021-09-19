@@ -1,4 +1,5 @@
 // UTILS
+import { setDoc, doc, onSnapshot } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -15,9 +16,9 @@ const getBusinessProducts = async (
 	const col = await getCollection('products')
 
 	if (companyID) {
-		const productsDoc = col.doc(companyID)
+		const productsDoc = doc(col, companyID)
 
-		return productsDoc.onSnapshot((snap) => {
+		return onSnapshot(productsDoc, (snap) => {
 			const data = snap.data() as { [id: string]: Product }
 			setProducts(data)
 		})
@@ -37,16 +38,16 @@ export const replaceProducts = async (products: { [id: string]: Product }, compa
 	const col = await getCollection('products')
 
 	if (companyID) {
-		const productsDoc = col.doc(companyID)
+		const productsDoc = doc(col, companyID)
 
 		// PRODUCTOS
-		return productsDoc.set(products)
+		return setDoc(productsDoc, products)
 	}
 }
 
 /**
- * Actualizar categorias
- * @description Actualiza todos los productos con una nueva categoria
+ * Actualizar categorías
+ * @description Actualiza todos los productos con una nueva categoría
  * @param  {Product[]} products
  * @param  {string} oldCategory
  * @param  {string} newCategory

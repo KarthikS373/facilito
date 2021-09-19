@@ -1,18 +1,8 @@
-type firebase = typeof globalThis.firebase.default
-let cached: Promise<firebase> | null = null
-async function getFirebaseClient() {
-	// DEFAULTS
-	const { default: firebase } = await import('firebase/app')
+// TIPOS
+import { FirebaseApp } from '@firebase/app'
+import firebase, { initializeApp } from 'firebase/app'
 
-	// PACKAGES
-	await Promise.all([
-		import('firebase/auth'),
-		import('firebase/firestore'),
-		import('firebase/database'),
-		import('firebase/functions'),
-		import('firebase/storage'),
-	])
-
+async function getFirebase() {
 	// CONFIGURACIONES
 	const config = {
 		apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -26,15 +16,12 @@ async function getFirebaseClient() {
 	}
 
 	// INICIAR
-	if (firebase.apps.length === 0) firebase.initializeApp(config)
-	return firebase
-}
+	let firebaseApp: FirebaseApp | null = null
 
-// OBTENER
-const getFirebase = () => {
-	if (cached || !process.browser) return cached
-	cached = getFirebaseClient()
-	return cached
+	if (!firebase || firebase.getApps().length === 0) firebaseApp = initializeApp(config)
+	else firebaseApp = firebase.getApp()
+
+	return firebaseApp
 }
 
 export default getFirebase

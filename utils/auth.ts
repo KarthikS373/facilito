@@ -5,12 +5,30 @@ import AuthErrorsJSON from 'lang/auth-errors.json'
 import { getCollection } from './db'
 
 // UTILS
-import firebase from 'keys/firebase'
+import {
+	Auth,
+	signOut,
+	AuthError,
+	UserCredential,
+	updateProfile,
+	setPersistence,
+	signInWithPopup,
+	GoogleAuthProvider,
+	FacebookAuthProvider,
+	getAuth as getAuthFrb,
+	getAdditionalUserInfo,
+	sendPasswordResetEmail,
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
+	signInAnonymously as signInAnonymouslyFrb,
+} from 'firebase/auth'
+import { CollectionReference, doc, setDoc } from 'firebase/firestore'
+import getFirebase from 'keys/firebase'
 
 // GLOBALES
-let globalAuth: (() => firebase.default.auth.Auth) | null = null
-let fbProvider: firebase.default.auth.FacebookAuthProvider | null = null
-let gProvider: firebase.default.auth.GoogleAuthProvider | null = null
+let globalAuth: Auth | null = null
+let fbProvider: FacebookAuthProvider | null = null
+let gProvider: GoogleAuthProvider | null = null
 
 // MENSAJES DE ERROR
 interface AuthErrorES {
@@ -25,31 +43,29 @@ const authErrors: AuthErrorES = AuthErrorsJSON
  * @description Retornar strings de error en español
  * @param  {(message:string)=>unknown} cb?
  */
-const authErrorHandler =
-	(cb?: (message: string) => unknown) => (err: firebase.default.auth.AuthError) => {
-		// MENSAJE EN CONSOLA
-		console.error('Ocurrió un error de auth', err)
+const authErrorHandler = (cb?: (message: string) => unknown) => (err: AuthError) => {
+	// MENSAJE EN CONSOLA
+	console.error('Ocurrió un error de auth', err)
 
-		// SELECCIONAR ERROR
-		if (err.code in authErrors && cb) cb(authErrors[err.code])
-		else if (cb) cb(err.message)
-	}
+	// SELECCIONAR ERROR
+	if (err.code in authErrors && cb) cb(authErrors[err.code])
+	else if (cb) cb(err.message)
+}
 
 /**
  * Obtener Auth
  * @description Retorna la instancia global de firebase/auth
  */
 export const getAuth = async () => {
-	const frb = await firebase()
-
 	// INSTANCIA
 	if (globalAuth === null) {
-		globalAuth = frb.auth
-		globalAuth().languageCode = 'es-GT'
+		const firebaseApp = await getFirebase()
+		globalAuth = getAuthFrb(firebaseApp)
+		globalAuth.languageCode = 'es-GT'
 
 		// PROVIDERS
-		fbProvider = new frb.auth.FacebookAuthProvider()
-		gProvider = new frb.auth.GoogleAuthProvider()
+		fbProvider = new FacebookAuthProvider()
+		gProvider = new GoogleAuthProvider()
 	}
 
 	// LISTENER
@@ -62,7 +78,7 @@ export const getAuth = async () => {
  */
 export const signingAnonymously = async () => {
 	const auth = await getAuth()
-	return auth().signInAnonymously()
+	return signInAnonymouslyFrb(auth)
 }
 
 /**
@@ -101,10 +117,9 @@ const verifyLoginFields = (email: string, pass: string) => {
  * Actualizar nombre de usuario
  * @description Actualiza el perfil en el objeto auth
  * @param  {string} displayName
- * @param  {firebase.default.auth.UserCredential} credential
  */
-const updateUserName = (displayName: string, credential: firebase.default.auth.UserCredential) =>
-	credential.user?.updateProfile({ displayName })
+const updateUserName = (displayName: string) =>
+	updateProfile(globalAuth.currentUser, { displayName })
 
 /**
  * Registrar usuario
@@ -130,16 +145,17 @@ export const signingUser = async (
 		const auth = await getAuth()
 
 		// RECORDAR USUARIO
-		await auth().setPersistence(rememberUser ? 'local' : 'session')
+		await setPersistence(auth, {
+			type: rememberUser ? 'LOCAL' : 'SESSION',
+		})
 
 		// CREACIÓN/LOGIN
 		if (name)
-			await auth()
-				.createUserWithEmailAndPassword(email, pass)
-				.then((cred: firebase.default.auth.UserCredential) => {
+			await createUserWithEmailAndPassword(auth, email, pass)
+				.then((cred: UserCredential) => {
 					// ACTUALIZAR OBJETO EN AUTH Y FIRESTORE
 					saveUser(name)(cred)
-					updateUserName(name, cred)
+					updateUserName(name)
 					window.postMessage(
 						{
 							action: 'auth',
@@ -153,8 +169,7 @@ export const signingUser = async (
 				})
 				.catch(authErrorHandler(onError))
 		else
-			await auth()
-				.signInWithEmailAndPassword(email, pass)
+			await signInWithEmailAndPassword(auth, email, pass)
 				.then(() => {
 					window.postMessage(
 						{
@@ -183,12 +198,12 @@ export const signingUser = async (
  */
 const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
 	// REFERENCIA
-	const col: firebase.default.firestore.CollectionReference = await getCollection('users')
+	const col: CollectionReference = await getCollection('users')
 
 	// GUARDAR
-	const doc = col.doc(userData.email)
-	if (merge) return doc.set(userData, { merge })
-	else return doc.set(userData)
+	const docRef = doc(col, userData.email)
+	if (merge) return setDoc(docRef, userData, { merge })
+	else return setDoc(docRef, userData)
 }
 
 /**
@@ -196,7 +211,7 @@ const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
  * @description Almacena y valida el usuario
  * @param  {string} name?
  */
-const saveUser = (name?: string) => (credential: firebase.default.auth.UserCredential) => {
+const saveUser = (name?: string) => (credential: UserCredential) => {
 	// VERIFICAR CREDENCIAL
 	if (credential.user?.uid && credential.user.email)
 		return setUserFirestore(
@@ -204,7 +219,7 @@ const saveUser = (name?: string) => (credential: firebase.default.auth.UserCrede
 				uid: credential.user?.uid,
 				name: name || credential.user.displayName || '',
 				email: credential.user.email,
-				provider: credential.additionalUserInfo?.providerId || 'password',
+				provider: credential.providerId || 'password',
 				phone: credential.user?.phoneNumber || null,
 				picture: credential.user?.photoURL || null,
 			},
@@ -223,20 +238,10 @@ export const facebookSigning = async (onError?: (error: string) => unknown) => {
 
 	// INICIAR
 	if (fbProvider)
-		auth()
-			.signInWithPopup(fbProvider)
-			// @ts-ignore
+		await signInWithPopup(auth, fbProvider)
 			.then((res) => {
-				// @ts-ignore
-				window.localStorage.setItem('fbToken', res.credential.accessToken)
-				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser()(res)
-				window.postMessage(
-					{
-						action: 'auth',
-						data: res.credential,
-					},
-					'*'
-				)
+				if (getAdditionalUserInfo(res).isNewUser) saveUser()(res)
+				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
 }
@@ -252,19 +257,10 @@ export const googleSigning = async (onError?: (error: string) => unknown) => {
 
 	// INICIAR
 	if (gProvider)
-		auth()
-			.signInWithPopup(gProvider)
+		signInWithPopup(auth, gProvider)
 			.then((res) => {
-				// @ts-ignore
-				window.localStorage.setItem('gToken', res.credential.accessToken)
-				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser()(res)
-				window.postMessage(
-					{
-						action: 'auth',
-						data: res.credential,
-					},
-					'*'
-				)
+				if (getAdditionalUserInfo(res).isNewUser) saveUser()(res)
+				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
 }
@@ -282,7 +278,7 @@ export const forgotPass = async (
 	onError?: (error: string) => unknown
 ) => {
 	const auth = await getAuth()
-	return auth().sendPasswordResetEmail(email).then(onSuccess).catch(authErrorHandler(onError))
+	return sendPasswordResetEmail(auth, email).then(onSuccess).catch(authErrorHandler(onError))
 }
 /**
  * Cerrar sesión
@@ -290,11 +286,6 @@ export const forgotPass = async (
  */
 export const logout = async () => {
 	const auth = await getAuth()
-	window.postMessage(
-		{
-			action: 'logout',
-		},
-		'*'
-	)
-	return auth().signOut()
+	window.postMessage({ action: 'logout' }, '*')
+	return signOut(auth)
 }

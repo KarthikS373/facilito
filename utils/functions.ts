@@ -1,16 +1,18 @@
-import firebase from 'keys/firebase'
+import { getFunctions, httpsCallable } from 'firebase/functions'
+import getFirebase from 'keys/firebase'
 
 /**
  * Obtener callable
- * @description Invoca una funcion callable desde cloud functions
+ * @description Invoca una función callable desde cloud functions
  * @param  {string} name
  */
 const getCallable = async (name: string) => {
 	// IMPORTAR
-	const functions = (await firebase()).functions()
+	const firebaseApp = await getFirebase()
+	const functions = getFunctions(firebaseApp)
 
 	// RETORNAR
-	return functions.httpsCallable(name)
+	return httpsCallable(functions, name)
 }
 
 export default getCallable

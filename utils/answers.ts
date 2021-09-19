@@ -1,3 +1,4 @@
+import { collection, deleteDoc, doc, onSnapshot, getDoc, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -9,7 +10,9 @@ import { getCollection } from './db'
 const getAnswerDoc = async (companyID: string, formID: string) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const formDoc = businessCol.doc(companyID).collection('answers').doc(formID)
+	const businessDoc = doc(businessCol, companyID)
+	const answersCol = collection(businessDoc, 'answers')
+	const formDoc = doc(answersCol, formID)
 	return formDoc
 }
 
@@ -25,10 +28,11 @@ export const answersListener = async (
 ) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const answersCol = businessCol.doc(companyID).collection('answers')
+	const businessDoc = doc(businessCol, companyID)
+	const answersCol = collection(businessDoc, 'answers')
 
 	// LISTENER
-	return answersCol.onSnapshot((snap) => {
+	return onSnapshot(answersCol, (snap) => {
 		const answers = Object.fromEntries(snap.docs.map((doc) => [doc.id, doc.data() as FormAnswer]))
 		setAnswers(answers)
 	})
@@ -77,9 +81,8 @@ export const getAnswersDifference = (
  */
 export const removeAnswersForm = async (companyID: string, formID: string) => {
 	// LEER
-	const businessCol = await getCollection('business')
-	const formDoc = businessCol.doc(companyID).collection('answers').doc(formID)
-	return await formDoc.delete()
+	const formDoc = await getAnswerDoc(companyID, formID)
+	return await deleteDoc(formDoc)
 }
 
 /**
@@ -93,7 +96,7 @@ export const deleteAnswer = async (index: number, formID?: string, companyID?: s
 	if (companyID && formID) {
 		// LEER
 		const answerDoc = await getAnswerDoc(companyID, formID)
-		const companyAnswers = (await answerDoc.get()).data() as FormAnswer
+		const companyAnswers = (await getDoc(answerDoc)).data() as FormAnswer
 
 		// BORRAR
 		companyAnswers.data = companyAnswers.data.filter((_res: any, i: number) => index !== i)
@@ -101,13 +104,13 @@ export const deleteAnswer = async (index: number, formID?: string, companyID?: s
 		companyAnswers.states = companyAnswers.states.filter((_res: any, i: number) => index !== i)
 
 		// ACTUALIZAR
-		return answerDoc.set(companyAnswers)
+		return setDoc(answerDoc, companyAnswers)
 	}
 }
 
 /**
  * Ordenar respuestas
- * @description Ordena un objeto de respuestas segun el orden del formulario
+ * @description Ordena un objeto de respuestas según el orden del formulario
  * @param  {FormComponent[]} components
  * @param  {FormAnswerItemContainer} formData
  */
@@ -167,7 +170,7 @@ export const sortAnswers = (components: FormComponent[], formData: FormAnswerIte
 
 /**
  * Actualizar estado de respuesta
- * @description Mueve una posicon el estado (tracking) de una respuesta
+ * @description Mueve una posición el estado (tracking) de una respuesta
  * @param  {number} index
  * @param  {number} newState
  * @param  {string} formID
@@ -182,13 +185,13 @@ export const updateAnswerState = async (
 	if (companyID && formID) {
 		// LEER
 		const answerDoc = await getAnswerDoc(companyID, formID)
-		const answerData = (await answerDoc.get()).data() as FormAnswer
+		const answerData = (await getDoc(answerDoc)).data() as FormAnswer
 
 		// ACTUALIZAR ESTADO
 		const states = answerData.states || []
 		states[index] = newState
 
 		// GUARDAR
-		return answerDoc.set(answerData, { merge: true })
+		return setDoc(answerDoc, answerData, { merge: true })
 	}
 }

@@ -1,4 +1,5 @@
 // DB
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -9,7 +10,7 @@ import { getCollection } from './db'
 const getBusinessDoc = async (url: string) => {
 	// COLECCIÓN DE EMPRESA
 	const businessCol = await getCollection('business')
-	const businessDoc = businessCol.doc(url)
+	const businessDoc = doc(businessCol, url)
 	return businessDoc
 }
 
@@ -22,7 +23,7 @@ export const getCompany = async (url: string) => {
 	if (url) {
 		// DOCUMENTO DE EMPRESA
 		const businessDoc = await getBusinessDoc(url)
-		const businessData = (await businessDoc.get()).data() as Business
+		const businessData = (await getDoc(businessDoc)).data() as Business
 		return businessData
 	} else return null
 }
@@ -36,7 +37,7 @@ export const getCompany = async (url: string) => {
 export const addBusinessFormURL = async (id: string, companyID: string) => {
 	// COLECCIÓN DE EMPRESA
 	const businessDoc = await getBusinessDoc(companyID)
-	const businessData = (await businessDoc.get()).data() as Business | undefined
+	const businessData = (await getDoc(businessDoc)).data() as Business | undefined
 	const forms = businessData?.forms || []
 
 	// AGREGAR
@@ -45,7 +46,7 @@ export const addBusinessFormURL = async (id: string, companyID: string) => {
 	// ACTUALIZAR
 	if (businessData) {
 		businessData.forms = forms
-		return businessDoc.set(businessData)
+		return setDoc(businessDoc, businessData)
 	}
 }
 
@@ -60,5 +61,5 @@ export const replaceBusiness = async (companyID: string, business: Partial<Busin
 	const businessDoc = await getBusinessDoc(companyID)
 
 	// LISTA
-	if (business) businessDoc.set(business, { merge: true })
+	if (business) setDoc(businessDoc, business, { merge: true })
 }

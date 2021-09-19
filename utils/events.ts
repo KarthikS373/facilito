@@ -1,4 +1,5 @@
 // UTILS
+import { collection, deleteDoc, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore'
 import { getCollection } from './db'
 import { parseDate, sendMail } from './tools'
 
@@ -11,7 +12,9 @@ import { parseDate, sendMail } from './tools'
 const getEventDoc = async (companyID: string, id: string) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const formDoc = businessCol.doc(companyID).collection('events').doc(id)
+	const businessDoc = doc(businessCol, companyID)
+	const eventsCol = collection(businessDoc, 'events')
+	const formDoc = doc(eventsCol, id)
 	return formDoc
 }
 
@@ -24,7 +27,7 @@ const getEventDoc = async (companyID: string, id: string) => {
 export const removeEventForm = async (companyID: string, id: string) => {
 	// LEER
 	const formDoc = await getEventDoc(companyID, id)
-	return await formDoc.delete()
+	return await deleteDoc(formDoc)
 }
 
 /**
@@ -45,7 +48,7 @@ export const deleteAppointment = async (
 ) => {
 	// LEER
 	const eventDoc = await getEventDoc(companyID, formId)
-	const eventFormData = (await eventDoc.get()).data() as EventFormContainer
+	const eventFormData = (await getDoc(eventDoc)).data() as EventFormContainer
 
 	if (eventFormData) {
 		// BORRAR
@@ -59,7 +62,7 @@ export const deleteAppointment = async (
 		eventFormData.events = events
 
 		// ACTUALIZAR
-		await eventDoc.set(eventFormData)
+		await setDoc(eventDoc, eventFormData)
 
 		// ENVIAR CORREO
 		await sendMail(
@@ -86,10 +89,11 @@ export const appointmentsListener = async (
 ) => {
 	// LEER
 	const businessCol = await getCollection('business')
-	const eventsCol = businessCol.doc(companyID).collection('events')
+	const businessDoc = doc(businessCol, companyID)
+	const eventsCol = collection(businessDoc, 'events')
 
 	// LISTENER
-	return eventsCol.onSnapshot((snap) => {
+	return onSnapshot(eventsCol, (snap) => {
 		// BUSCAR
 		const forms = snap.docs.map((docs) => docs.data()) as EventFormContainer[]
 

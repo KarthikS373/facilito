@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 /**
  * Hook de material
- * @description Remueve los estilos inyectados por materual-ui en el servidor
+ * @description Remueve los estilos inyectados por material-ui en el servidor
  */
 const useRemoveSSRStyles = () => {
 	// QUITAR ESTILOS SSR DE MATERIAL

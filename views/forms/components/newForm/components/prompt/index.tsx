@@ -80,7 +80,7 @@ const showNewFormPrompt = (
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
-							<FormatColorTextTwoTone />
+							<FormatColorTextTwoTone color='primary' />
 						</InputAdornment>
 					),
 				}}
