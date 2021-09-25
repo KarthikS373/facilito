@@ -45,7 +45,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 		formsCtx.forms.answers.length +
 		formsCtx.forms.answers.map((answer) => answer?.data.length || 0).join('')
 
-	useFormFilter(filter, changesTrigger, setForms, formsCtx.forms)
+	useFormFilter(filter || 'asc', changesTrigger, setForms, formsCtx.forms)
 
 	// BORRAR FORMULARIO
 	const deleteFormEv = (formID: string) => () =>

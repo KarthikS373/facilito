@@ -59,7 +59,7 @@ export const deleteAppointment = async (
 		// BORRAR
 		const events = eventFormData.events.filter((appoint: EventAppointment) => {
 			const tmpAppoint = { ...appoint }
-			tmpAppoint.startDate = parseDate(appoint.startDate)
+			tmpAppoint.startDate = parseDate(appoint.startDate) || new Date()
 
 			// @ts-ignore
 			return tmpAppoint.startDate.getTime() !== formData.startDate.getTime()
@@ -70,15 +70,16 @@ export const deleteAppointment = async (
 		await setDoc(eventDoc, eventFormData)
 
 		// ENVIAR CORREO
-		await sendMail(
-			`<h1> Hola, ${formData.resource.name} </h1><p> Lamentamos informarte que tu cita de ${
-				formData.title
-			} para el ${formData.start.toLocaleString(
-				'en-GB'
-			)} ha sido cancelada, si no has sido notificado de este cambio, comunicate con ${companyName} <a href="${companyEmail}" alt="${companyEmail}" >${companyEmail}.</a></p><br/><strong>Att: Equipo de Facilito APP.</strong>`,
-			'Cita cancelada',
-			formData.resource.email
-		)
+		if (formData.resource)
+			await sendMail(
+				`<h1> Hola, ${formData.resource.name} </h1><p> Lamentamos informarte que tu cita de ${
+					formData.title
+				} para el ${formData.start.toLocaleString(
+					'en-GB'
+				)} ha sido cancelada, si no has sido notificado de este cambio, comunicate con ${companyName} <a href="${companyEmail}" alt="${companyEmail}" >${companyEmail}.</a></p><br/><strong>Att: Equipo de Facilito APP.</strong>`,
+				'Cita cancelada',
+				formData.resource.email
+			)
 	}
 }
 
@@ -121,11 +122,12 @@ export const appointmentsListener = async (
 					}))
 				)
 				.flat()
+			const now = new Date()
 			const events: CustomAppointment[] = eventsData.map((cEvent: CustomAppointment) => ({
 				...cEvent,
 				title: '📝 Formulario: ' + cEvent?.title,
-				start: parseDate(cEvent.start),
-				end: parseDate(cEvent.end),
+				start: parseDate(cEvent.start) || now,
+				end: parseDate(cEvent.end) || now,
 			}))
 
 			setAppointments(events)

@@ -5,13 +5,13 @@ import React, { useState, useEffect } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // COMPONENTES
 import Extra from './components/extra'
 
 // ICONS
-import AddTwoTone from '@material-ui/icons/AddTwoTone'
+import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'

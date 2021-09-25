@@ -1,6 +1,6 @@
 // UTILS
 import getFirebase from 'keys/firebase'
-import { CollectionReference, DocumentData, Firestore } from '@firebase/firestore'
+import type { CollectionReference, DocumentData, Firestore } from '@firebase/firestore'
 
 // GLOBALES
 let globalDB: Firestore | null = null
@@ -17,8 +17,8 @@ export const getCollection = async (
 
 	// DATABASE
 	const firebaseApp = await getFirebase()
-	const db = globalDB ?? getFirestore(firebaseApp)
+	globalDB = globalDB ?? getFirestore(firebaseApp)
 
 	// COLECCIÓN
-	return collection(db, colName)
+	return collection(globalDB, colName)
 }

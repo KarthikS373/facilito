@@ -1,39 +1,28 @@
 // REACT
 import React from 'react'
 
-// ICONS
-import NoteAddTwoTone from '@material-ui/icons/NoteAddTwoTone'
-
 // ESTILOS
 import Styles from './style.module.scss'
 
 // MATERIAL
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import CardMedia from '@mui/material/CardMedia'
+import Card from '@mui/material/Card'
 
 const showTemplateCard = (
 	form: Form,
 	$: (key: TemplateStringsArray) => string,
 	showPrompt: (customForm?: Form) => unknown
 ) => {
-	// INICIAR TEMPLATE
-	const startTemplate = () => {
-		window.hideAlert()
-		setTimeout(() => {
-			showPrompt(form)
-		}, 300)
-	}
-
 	window.Alert({
 		title: '',
 		body: '',
 		type: 'confirm',
-		hideActions: true,
+		hasNextAlert: true,
+		confirmText: $`Iniciar`,
+		onConfirm: () => showPrompt(form),
 		customElements: (
 			<Card>
 				<CardActionArea>
@@ -49,15 +38,8 @@ const showTemplateCard = (
 						)}
 					</CardContent>
 				</CardActionArea>
-				<CardActions className={Styles.actions}>
-					<Button onClick={window.hideAlert}>{$`Cancelar`}</Button>
-					<Button color='primary' startIcon={<NoteAddTwoTone />} onClick={startTemplate}>
-						{$`Iniciar`}
-					</Button>
-				</CardActions>
 			</Card>
 		),
-		confirmText: $`Iniciar`,
 	})
 }
 

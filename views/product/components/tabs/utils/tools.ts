@@ -4,10 +4,7 @@
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {React.MutableRefObject<Product>} localProduct
  */
-const changeProductProps = (
-	ev: React.ChangeEvent<HTMLInputElement>,
-	localProduct: React.MutableRefObject<Product>
-) => {
+const changeProductProps = (ev: BaseEvent, localProduct: React.MutableRefObject<Product>) => {
 	// EVENTOS
 	const { name, value } = ev.target
 
@@ -15,6 +12,7 @@ const changeProductProps = (
 	const newProduct = { ...localProduct.current, [name]: value }
 
 	// ELIMINAR NUEVA CATEGORIA
+	// @ts-ignore
 	if (newProduct['new_category']?.length) {
 		newProduct.category = newProduct['new_category'].toString()
 		delete newProduct['new_category']

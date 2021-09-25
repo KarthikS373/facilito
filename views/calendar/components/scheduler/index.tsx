@@ -2,10 +2,10 @@
 import React, { useState, useContext } from 'react'
 
 // CALENDAR
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import { Calendar, dateFnsLocalizer, View } from 'react-big-calendar'
 
 // MATERIAL
-import Paper from '@material-ui/core/Paper'
+import Paper from '@mui/material/Paper'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -44,7 +44,7 @@ const localizer = dateFnsLocalizer({
 
 // PROPS
 interface SchedulerProps {
-	viewState: string
+	viewState: View
 	appointments: CustomAppointment[]
 }
 const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
@@ -55,7 +55,7 @@ const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
 	const businessCtx = useContext(BusinessContext)
 
 	// ESTADO
-	const [newViewState, setViewState] = useState<string>()
+	const [newViewState, setViewState] = useState<View>(viewState)
 
 	// CAMBIAR
 	useCalendarView(viewState, setViewState)

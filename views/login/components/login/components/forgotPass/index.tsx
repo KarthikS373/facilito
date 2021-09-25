@@ -2,11 +2,11 @@
 import React from 'react'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
 
 // ICONOS
-import Mail from '@material-ui/icons/Mail'
+import Mail from '@mui/icons-material/Mail'
 
 // UTILS
 import { forgotPass } from 'utils/auth'
@@ -27,17 +27,18 @@ const resetPass = () => {
 		type: 'confirm',
 		customElements: (
 			<TextField
-				style={{ margin: '10px 0' }}
+				style={{ margin: '20px 0 5px 0' }}
 				onChange={getEmail}
-				placeholder='Correo electrónico'
 				fullWidth
 				id='lEmail'
-				variant='outlined'
 				type='email'
+				variant='outlined'
+				label='Correo electrónico'
+				placeholder='email@domain.com'
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
-							<Mail />
+							<Mail color='primary' />
 						</InputAdornment>
 					),
 				}}

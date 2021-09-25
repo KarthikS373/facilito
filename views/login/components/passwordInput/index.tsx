@@ -2,13 +2,13 @@
 import React, { useState } from 'react'
 
 // MATERIAL
-import TextField, { TextFieldProps } from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
+import TextField, { TextFieldProps } from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
 
 // ICONS
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
-import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import Visibility from '@mui/icons-material/Visibility'
 
 const PasswordTextField: React.FC<TextFieldProps> = (props) => {
 	// TOGGLE

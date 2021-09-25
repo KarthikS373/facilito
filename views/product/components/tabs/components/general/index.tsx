@@ -4,18 +4,21 @@ import React, { useContext, useState } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// TIPOS
+import type { SelectChangeEvent } from '@mui/material/Select'
+
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
 
 // ICONOS
-import FormatColorTextTwoToneIcon from '@material-ui/icons/FormatColorTextTwoTone'
-import CategoryTwoToneIcon from '@material-ui/icons/CategoryTwoTone'
-import ChatTwoToneIcon from '@material-ui/icons/ChatTwoTone'
+import FormatColorTextTwoToneIcon from '@mui/icons-material/FormatColorTextTwoTone'
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone'
+import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -46,7 +49,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 		changeProductProps(ev, productRef)
 
 	// CAMBIAR CATEGORIAS
-	const changeCategory = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+	const changeCategory = (ev: SelectChangeEvent<string>) => {
 		const { value } = ev.target
 		setCategory(value)
 		productRef.current.category = value
@@ -113,7 +116,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 							name: 'category',
 							id: 'category',
 						}}>
-						{businessCtx.business?.categories.map((category: string) => (
+						{businessCtx.business?.categories?.map((category: string) => (
 							<MenuItem key={category} value={category}>
 								{category}
 							</MenuItem>

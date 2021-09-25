@@ -9,18 +9,18 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 
 // COMPONENTES
+import ColorButton from 'components/button'
 import Link from 'components/link'
 
 // ICONS
-import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
-import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
-import ComputerTwoTone from '@material-ui/icons/ComputerTwoTone'
-import TodayTwoTone from '@material-ui/icons/TodayTwoTone'
-import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
+import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import ComputerTwoTone from '@mui/icons-material/ComputerTwoTone'
+import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
+import InfoTwoTone from '@mui/icons-material/InfoTwoTone'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
+import IconButton from '@mui/material/IconButton'
 
 // UTILS
 import getActiveRoute from './utils/routes'
@@ -59,44 +59,55 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				<ul>
 					<li>
 						<Link rKey='forms' passHref>
-							<Button
+							<ColorButton
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'formularios') ? 'primary' : undefined}
-								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</Button>
+								$style={{
+									borderColor: getActiveRoute(path, 'formularios') ? '#1AA5BB' : undefined,
+									color: getActiveRoute(path, 'formularios') ? '#1AA5BB' : undefined,
+								}}
+								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</ColorButton>
 						</Link>
 					</li>
 					<li>
 						<Link rKey='tracking' passHref>
-							<Button
+							<ColorButton
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'tracking') ? 'primary' : undefined}
-								startIcon={<ComputerTwoTone />}>{$`Tracking`}</Button>
+								$style={{
+									borderColor: getActiveRoute(path, 'tracking') ? '#1AA5BB' : undefined,
+
+									color: getActiveRoute(path, 'tracking') ? '#1AA5BB' : undefined,
+								}}
+								startIcon={<ComputerTwoTone />}>{$`Tracking`}</ColorButton>
 						</Link>
 					</li>
 					<li>
 						<Link rKey='products' passHref>
-							<Button
+							<ColorButton
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
-								color={getActiveRoute(path, 'productos') ? 'primary' : undefined}
-								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</Button>
+								$style={{
+									borderColor: getActiveRoute(path, 'productos') ? '#1AA5BB' : undefined,
+									color: getActiveRoute(path, 'productos') ? '#1AA5BB' : undefined,
+								}}
+								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</ColorButton>
 						</Link>
 					</li>
 					<li>
 						<Link rKey='calendar' passHref>
-							<Button
+							<ColorButton
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
-								color={
-									getActiveRoute(path, 'calendario') ? 'primary' : undefined
-								}>{$`Calendario`}</Button>
+								$style={{
+									borderColor: getActiveRoute(path, 'celandario') ? '#1AA5BB' : undefined,
+									color: getActiveRoute(path, 'celandario') ? '#1AA5BB' : undefined,
+								}}>{$`Calendario`}</ColorButton>
 						</Link>
 					</li>
 				</ul>

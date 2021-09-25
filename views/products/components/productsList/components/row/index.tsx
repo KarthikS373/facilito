@@ -2,11 +2,11 @@
 import React, { useContext } from 'react'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@mui/material/IconButton'
 
 // ICONOS
-import ErrorTwoTone from '@material-ui/icons/ErrorTwoTone'
-import MoreVert from '@material-ui/icons/MoreVert'
+import ErrorTwoTone from '@mui/icons-material/ErrorTwoTone'
+import MoreVert from '@mui/icons-material/MoreVert'
 
 // ESTILOS
 import Styles from './style.module.scss'

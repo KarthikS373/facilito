@@ -36,7 +36,9 @@ const deleteForm = (
 						return false
 					} else return true
 				})
-				answers = answers.filter((_answer: FormAnswer, index: number) => index !== formIndex)
+				answers = answers.filter(
+					(_answer: FormAnswer | undefined, index: number) => index !== formIndex
+				)
 
 				// CONTEXTO
 				const updatedForms = { forms, answers }
@@ -48,11 +50,13 @@ const deleteForm = (
 
 			// BORRAR
 			window.Snack('Borrando...')
-			await removeFormStorage(companyID, formID)
-			await removeAnswersForm(companyID, formID)
-			await removeFormSchema(companyID, formID)
-			await removeEventForm(companyID, formID)
-			window.Snack('Formulario borrado')
+			if (companyID) {
+				await removeFormStorage(companyID, formID)
+				await removeAnswersForm(companyID, formID)
+				await removeFormSchema(companyID, formID)
+				await removeEventForm(companyID, formID)
+				window.Snack('Formulario borrado')
+			}
 		},
 	})
 }

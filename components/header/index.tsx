@@ -11,11 +11,11 @@ import Link from 'components/link'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // ICON
-import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
-import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import VisibilityTwoTone from '@mui/icons-material/VisibilityTwoTone'
 
 // HOC
 import useStrings from 'hooks/lang'
@@ -49,9 +49,9 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 				{businessCtx.business && businessCtx.business.backgroundImage !== 'none' && (
 					<Image
 						unoptimized
-						src={businessCtx.business.backgroundImage}
 						layout='fill'
 						alt='Background'
+						src={businessCtx.business.backgroundImage || ''}
 					/>
 				)}
 			</div>
@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 							</div>
 							<span>
 								{customDescription ||
-									`${businessCtx.business?.forms.length || 0} ${$`formulario(s) creados`}`}
+									`${businessCtx.business?.forms?.length || 0} ${$`formulario(s) creados`}`}
 							</span>
 						</div>
 					</div>

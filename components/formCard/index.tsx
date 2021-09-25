@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Styles from './style.module.scss'
 
 // RUTAS
-import { RoutesProps } from 'router/routes'
+import type { RoutesProps } from 'router/routes'
 
 // HOC
 import useStrings from 'hooks/lang'
@@ -15,17 +15,17 @@ import PopperMenuList from 'components/popperMenu'
 import Link from 'components/link'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
-import Switch from '@material-ui/core/Switch'
+import IconButton from '@mui/material/IconButton'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
+import Switch from '@mui/material/Switch'
 
 // ICONOS
-import AssignmentTwoTone from '@material-ui/icons/AssignmentTwoTone'
-import MoreHorizTwoTone from '@material-ui/icons/MoreHorizTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import CreateTwoTone from '@material-ui/icons/CreateTwoTone'
-import MailTwoTone from '@material-ui/icons/MailTwoTone'
+import AssignmentTwoTone from '@mui/icons-material/AssignmentTwoTone'
+import MoreHorizTwoTone from '@mui/icons-material/MoreHorizTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import CreateTwoTone from '@mui/icons-material/CreateTwoTone'
+import MailTwoTone from '@mui/icons-material/MailTwoTone'
 
 // PROPS
 interface FormCardProps {

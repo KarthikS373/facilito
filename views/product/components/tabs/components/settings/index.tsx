@@ -5,11 +5,11 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Switch from '@material-ui/core/Switch'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Switch from '@mui/material/Switch'
 
 // ICONOS
-import InfoTwoTone from '@material-ui/icons/InfoTwoTone'
+import InfoTwoTone from '@mui/icons-material/InfoTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'

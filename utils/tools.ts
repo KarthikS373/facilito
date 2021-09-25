@@ -1,13 +1,10 @@
-// FUNCTIONS
-import getCallable from './functions'
-
 /**
  * Remover tildes
  * @description Retornar un string sin tildes
  * @param  {string} str
  */
 const slugify = (str: string) => {
-	const map = {
+	const map: { [key: string]: string } = {
 		'-': '_',
 		a: 'á|à|ã|â|ä|À|Á|Ã|Â|Ä',
 		e: 'é|è|ê|ë|É|È|Ê|Ë',
@@ -39,12 +36,12 @@ export const normalizeString = (str: string) => {
  * @description Convierte un objeto TimeStamp o Date en Date
  * @param  {unknown} date
  */
-export const parseDate = (date: unknown): Date => {
+export const parseDate = (date: unknown): Date | null => {
 	if (date && typeof date === 'object') {
 		// @ts-ignore
 		if ('toDate' in date) return date.toDate()
 		else return date as Date
-	}
+	} else return null
 }
 
 /**
@@ -53,9 +50,10 @@ export const parseDate = (date: unknown): Date => {
  * @param  {Date} date
  */
 export const dateToString = (date: Date) => {
-	return `${parseDate(date).toLocaleDateString('en-GB')}, ${parseDate(date).toLocaleTimeString(
-		'en-US'
-	)}`
+	const currentDate = parseDate(date)
+	if (currentDate)
+		return `${currentDate.toLocaleDateString('en-GB')}, ${currentDate.toLocaleTimeString('en-US')}`
+	else return ''
 }
 
 /**
@@ -65,10 +63,12 @@ export const dateToString = (date: Date) => {
  */
 export const hourToString = (date: Date | null | string | number) => {
 	if (date && typeof date !== 'string' && typeof date !== 'number') {
-		return parseDate(date).toLocaleTimeString('en-US', {
-			hour: '2-digit',
-			minute: '2-digit',
-		})
+		return (
+			parseDate(date)?.toLocaleTimeString('en-US', {
+				hour: '2-digit',
+				minute: '2-digit',
+			}) || ''
+		)
 	} else return ''
 }
 
@@ -80,6 +80,8 @@ export const hourToString = (date: Date | null | string | number) => {
  * @param  {string | string[]} email
  */
 export const sendMail = async (html: string, subject: string, email?: string | string[]) => {
+	const { default: getCallable } = await import('./functions')
+
 	// QUERY STRING
 	const sendEmail = await getCallable('sendEmail')
 

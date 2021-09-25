@@ -2,8 +2,7 @@
 import React from 'react'
 
 // TIPOS
-import { NextPage } from 'next'
-
+import type { NextPage } from 'next'
 // VISTAS
 import Calendar from 'views/calendar'
 

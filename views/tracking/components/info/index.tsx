@@ -5,14 +5,14 @@ import React from 'react'
 import PageInfo from 'components/pageInfo'
 
 // ICONOS
-import PhonelinkRingTwoTone from '@material-ui/icons/PhonelinkRingTwoTone'
-import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
+import PhonelinkRingTwoTone from '@mui/icons-material/PhonelinkRingTwoTone'
+import SortByAlphaTwoTone from '@mui/icons-material/SortByAlphaTwoTone'
 
 // STRINGS
 import useStrings from 'hooks/lang'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // PROPS
 interface InfoProps {

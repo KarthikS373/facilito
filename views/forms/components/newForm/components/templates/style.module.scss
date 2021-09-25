@@ -12,11 +12,12 @@
 
 	.slider {
 		width: 100%;
-		min-width: 830px;
+		min-width: 822px;
 		display: grid;
-		grid-template-columns: 260px 170px 190px 170px;
+		grid-template-columns: 260px 170px 185px 167px;
 		grid-template-rows: repeat(6, 12px);
-		grid-gap: 15px;
+		column-gap: var(--margin);
+		row-gap: calc(var(--margin) - 5px);
 		height: 100%;
 
 		& > div:first-child {

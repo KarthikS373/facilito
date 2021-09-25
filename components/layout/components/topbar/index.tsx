@@ -8,19 +8,19 @@ import Image from 'next/image'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
-import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
-import Badge from '@material-ui/core/Badge'
+import IconButton from '@mui/material/IconButton'
+import Toolbar from '@mui/material/Toolbar'
+import AppBar from '@mui/material/AppBar'
+import Button from '@mui/material/Button'
+import Badge from '@mui/material/Badge'
 
 // ICONOS
-import NotificationsTwoTone from '@material-ui/icons/NotificationsTwoTone'
-import TranslateTwoTone from '@material-ui/icons/TranslateTwoTone'
-import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
-import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
-import MenuTwoTone from '@material-ui/icons/MenuTwoTone'
-import MoreVert from '@material-ui/icons/MoreVert'
+import NotificationsTwoTone from '@mui/icons-material/NotificationsTwoTone'
+import TranslateTwoTone from '@mui/icons-material/TranslateTwoTone'
+import PersonTwoTone from '@mui/icons-material/PersonTwoTone'
+import MoneyTwoTone from '@mui/icons-material/MoneyTwoTone'
+import MenuTwoTone from '@mui/icons-material/MenuTwoTone'
+import MoreVert from '@mui/icons-material/MoreVert'
 
 // COMPONENTES
 import AccountMenu from './components/accountMenu'

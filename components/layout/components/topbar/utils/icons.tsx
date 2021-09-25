@@ -3,10 +3,10 @@ import React from 'react'
 import ROUTES from 'router/routes'
 
 // ICONOS
-import ShoppingCart from '@material-ui/icons/ShoppingCart'
-import Description from '@material-ui/icons/Description'
-import Event from '@material-ui/icons/Event'
-import { Timeline } from '@material-ui/icons'
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
+import Description from '@mui/icons-material/Description'
+import Timeline from '@mui/icons-material/Timeline'
+import Event from '@mui/icons-material/Event'
 
 // ICONOS
 export const drawerIcons = [

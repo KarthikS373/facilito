@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // HOC
 import useStrings from 'hooks/lang'
@@ -12,7 +12,7 @@ import useDefaultFilter from 'hooks/filters'
 import { changeFilter } from 'utils/tools'
 
 // ICON
-import SortByAlphaTwoTone from '@material-ui/icons/SortByAlphaTwoTone'
+import SortByAlphaTwoTone from '@mui/icons-material/SortByAlphaTwoTone'
 
 // COMPONENTES
 import FormsList from './components/formsList'

@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-filename-extension */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable react/display-name */
 import React from 'react'
 
 // NEXT
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 // DOCUMENTO
-export default class FacilitoDoc extends Document {
+class FacilitoDoc extends Document {
 	render(): JSX.Element {
 		return (
 			<Html lang='es'>
@@ -50,21 +52,33 @@ export default class FacilitoDoc extends Document {
 }
 
 FacilitoDoc.getInitialProps = async (ctx) => {
-	// MOSTRAR PAGINA NORMAL
-	const { ServerStyleSheets } = await import('@material-ui/core/styles')
-	const sheets = new ServerStyleSheets()
-	const originalRenderPage = ctx.renderPage
+	const { default: createEmotionServer } = await import('@emotion/server/create-instance')
+	const { default: createEmotionCache } = await import('providers/theme/emotion')
 
-	// RENDER DE PAGINA INICIAL
+	const originalRenderPage = ctx.renderPage
+	const cache = createEmotionCache()
+	const { extractCriticalToChunks } = createEmotionServer(cache)
+
 	ctx.renderPage = () =>
 		originalRenderPage({
-			enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+			// @ts-ignore
+			enhanceApp: (App) => (props) => <App emotionCache={cache} {...props} />,
 		})
 
-	// PROPS
 	const initialProps = await Document.getInitialProps(ctx)
+	const emotionStyles = extractCriticalToChunks(initialProps.html)
+	const emotionStyleTags = emotionStyles.styles.map((style) => (
+		<style
+			key={style.key}
+			dangerouslySetInnerHTML={{ __html: style.css }}
+			data-emotion={`${style.key} ${style.ids.join(' ')}`}
+		/>
+	))
+
 	return {
 		...initialProps,
-		styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+		styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
 	}
 }
+
+export default FacilitoDoc

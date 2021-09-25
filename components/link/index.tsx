@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // REACT
 import React, { useContext } from 'react'
 
@@ -21,6 +22,8 @@ const RouterLink: React.FC<RouterLinkProps> = (props) => {
 	// QUITAR PROPS HEREDADAS
 	const linkProps = { ...props }
 	delete linkProps.id
+
+	// @ts-ignore
 	delete linkProps.rKey
 
 	return (

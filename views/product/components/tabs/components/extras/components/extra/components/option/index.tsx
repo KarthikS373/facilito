@@ -5,15 +5,15 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
 
 // ICONOS
-import FontDownloadTwoToneIcon from '@material-ui/icons/FontDownloadTwoTone'
-import LocalOfferTwoToneIcon from '@material-ui/icons/LocalOfferTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import AddTwoTone from '@material-ui/icons/AddTwoTone'
+import FontDownloadTwoToneIcon from '@mui/icons-material/FontDownloadTwoTone'
+import LocalOfferTwoToneIcon from '@mui/icons-material/LocalOfferTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'

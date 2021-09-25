@@ -5,14 +5,14 @@ import React, { useState, useContext } from 'react'
 import Styles from './style.module.scss'
 
 // ICONOS
-import BorderColorTwoTone from '@material-ui/icons/BorderColorTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import SaveTwoTone from '@material-ui/icons/SaveTwoTone'
+import BorderColorTwoTone from '@mui/icons-material/BorderColorTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
 
 // STRINGS
 import useStrings from 'hooks/lang'

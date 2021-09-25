@@ -2,7 +2,7 @@
 
 .container {
 	position: relative;
-	padding: 15px var(--margin);
+	padding: calc(var(--margin) - 5px) var(--margin);
 	background-color: #fff !important;
 	z-index: 10 !important;
 
@@ -10,7 +10,7 @@
 		display: grid;
 		grid-template-columns: 1fr auto auto auto auto;
 		justify-content: flex-end;
-		column-gap: 15px;
+		column-gap: var(--margin);
 		min-height: 40px;
 		height: 100%;
 		padding: 0;

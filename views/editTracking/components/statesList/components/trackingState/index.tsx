@@ -2,9 +2,9 @@
 import React, { useState, useContext } from 'react'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
@@ -13,10 +13,10 @@ import PopperMenuList from 'components/popperMenu'
 import Styles from './style.module.scss'
 
 // ICONOS
-import FormatColorTextTwoTone from '@material-ui/icons/FormatColorTextTwoTone'
-import BackspaceTwoTone from '@material-ui/icons/BackspaceTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import ChatTwoTone from '@material-ui/icons/ChatTwoTone'
+import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
+import BackspaceTwoTone from '@mui/icons-material/BackspaceTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import ChatTwoTone from '@mui/icons-material/ChatTwoTone'
 
 // HOOKS
 import useStyles from './utils/hooks'
@@ -72,7 +72,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 
 	// BORRAR ESTADO ACTUAL
 	const deleteCurrentState = () =>
-		deleteState(index, formID, businessCtx.business?.id, localTracking, formsCtx.setForms)
+		deleteState(index, formID, localTracking, formsCtx.setForms, businessCtx.business?.id)
 
 	// ASIGNAR COLOR
 	const setStepColor = (color: string) => () =>

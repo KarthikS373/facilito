@@ -9,24 +9,15 @@
 
 .fbBtn:first-child {
 	background-color: #1778f2;
+	color: #ffffff;
 
 	&:hover,
 	&:active {
 		background-color: #1778f2;
 	}
-
-	span {
-		color: #ffffff;
-	}
 }
 
 .googleBtn:last-child {
-	background-color: #e0e0e0;
-
-	span {
-		color: #333;
-	}
-
 	.googleIcon {
 		width: 20px;
 		height: 20px;

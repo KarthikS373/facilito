@@ -1,9 +1,9 @@
 @import 'styles/mixins';
 .container {
-	padding: 15px var(--margin);
+	padding: calc(var(--margin) - 5px) calc(var(--margin) + 5px);
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: 15px;
+	grid-gap: var(--margin);
 
 	@include for-size(phone-portrait) {
 		margin-top: -185px;

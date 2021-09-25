@@ -1,5 +1,5 @@
 // TOOLS
-import { Unsubscribe, User } from '@firebase/auth'
+import type { Unsubscribe, User } from '@firebase/auth'
 import { useEffect } from 'react'
 import { getAuth } from 'utils/auth'
 
@@ -8,7 +8,9 @@ import { getAuth } from 'utils/auth'
  * @param  {React.Dispatch<React.SetStateAction<firebase.default.User|null>>} setAuth
  * @description Crea un listener para el objeto Auth de firebase
  */
-export const useAuth = (setAuth: React.Dispatch<React.SetStateAction<User | null>>) => {
+export const useAuth = (
+	setAuth: React.Dispatch<React.SetStateAction<User | null>> | ((user: User | null) => void)
+) => {
 	useEffect(() => {
 		// LEER USUARIO
 		let listener: Unsubscribe | null = null

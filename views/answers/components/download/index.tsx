@@ -9,10 +9,10 @@ import { ExportSheet } from 'react-xlsx-sheet'
 import XLSX from 'xlsx'
 
 // ICON
-import GetAppTwoTone from '@material-ui/icons/GetAppTwoTone'
+import GetAppTwoTone from '@mui/icons-material/GetAppTwoTone'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // STRINGS
 import useStrings from 'hooks/lang'

@@ -5,7 +5,8 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // COMPONENTES
-import Button from '@material-ui/core/Button'
+import ColorButton from 'components/button'
+import Button from '@mui/material/Button'
 
 // NEXT
 import Image from 'next/image'
@@ -14,7 +15,7 @@ import Image from 'next/image'
 import useStrings from 'hooks/lang'
 
 // ICONOS
-import Facebook from '@material-ui/icons/Facebook'
+import Facebook from '@mui/icons-material/Facebook'
 
 // AUTH
 import { facebookSigning, googleSigning } from 'utils/auth'
@@ -37,7 +38,15 @@ const SocialLogin: React.FC = () => {
 				startIcon={<Facebook />}>
 				{$`Iniciar con Facebook`}
 			</Button>
-			<Button fullWidth variant='contained' onClick={gSigning} classes={{ root: Styles.googleBtn }}>
+			<ColorButton
+				fullWidth
+				variant='contained'
+				onClick={gSigning}
+				classes={{ root: Styles.googleBtn }}
+				$style={{
+					color: '#555',
+					background: '#e0e0e0',
+				}}>
 				<div className={Styles.googleIcon}>
 					<Image
 						unoptimized
@@ -49,7 +58,7 @@ const SocialLogin: React.FC = () => {
 					/>
 				</div>
 				{$`Iniciar con Google`}
-			</Button>
+			</ColorButton>
 		</div>
 	)
 }

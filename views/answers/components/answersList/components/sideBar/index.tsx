@@ -5,11 +5,11 @@ import React, { useState, useEffect, useContext } from 'react'
 import handleStep from './utils/tools'
 
 // MATERIAL
-import StepContent from '@material-ui/core/StepContent'
-import StepLabel from '@material-ui/core/StepLabel'
-import Stepper from '@material-ui/core/Stepper'
-import Button from '@material-ui/core/Button'
-import Step from '@material-ui/core/Step'
+import StepContent from '@mui/material/StepContent'
+import StepLabel from '@mui/material/StepLabel'
+import Stepper from '@mui/material/Stepper'
+import Button from '@mui/material/Button'
+import Step from '@mui/material/Step'
 
 // COMPONENTES
 import SideBar from 'components/sideBar'

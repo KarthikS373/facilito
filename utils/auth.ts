@@ -2,14 +2,14 @@
 import AuthErrorsJSON from 'lang/auth-errors.json'
 
 // TIPOS
-import {
+import type {
 	Auth,
 	AuthError,
 	UserCredential,
 	FacebookAuthProvider,
 	GoogleAuthProvider,
 } from '@firebase/auth'
-import { CollectionReference } from '@firebase/firestore'
+import type { CollectionReference } from '@firebase/firestore'
 
 // DB
 import { getCollection } from './db'
@@ -119,7 +119,8 @@ const verifyLoginFields = (email: string, pass: string) => {
  */
 const updateUserName = async (displayName: string) => {
 	const { updateProfile } = await import('firebase/auth')
-	return updateProfile(globalAuth.currentUser, { displayName })
+	if (globalAuth?.currentUser) return updateProfile(globalAuth.currentUser, { displayName })
+	else return null
 }
 
 /**
@@ -248,7 +249,7 @@ export const facebookSigning = async (onError?: (error: string) => unknown) => {
 	if (fbProvider)
 		await signInWithPopup(auth, fbProvider)
 			.then((res) => {
-				if (getAdditionalUserInfo(res).isNewUser) saveUser()(res)
+				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
 				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
@@ -269,7 +270,7 @@ export const googleSigning = async (onError?: (error: string) => unknown) => {
 	if (gProvider)
 		signInWithPopup(auth, gProvider)
 			.then((res) => {
-				if (getAdditionalUserInfo(res).isNewUser) saveUser()(res)
+				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
 				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))

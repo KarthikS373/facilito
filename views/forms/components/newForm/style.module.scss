@@ -4,8 +4,8 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-template-rows: auto;
-	padding: 0 var(--margin);
-	grid-gap: 15px;
+	padding: calc(var(--margin) - 5px) calc(var(--margin) + 5px);
+	grid-gap: var(--margin);
 	width: 100%;
 
 	@include for-size(phone-landscape) {
@@ -16,10 +16,10 @@
 	@include for-size(phone-portrait) {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto auto;
-		padding: 20px var(--margin);
+		padding: var(--margin) var(--margin);
 	}
 
 	@include for-size(phone-portrait-min) {
-		padding: 20px var(--margin) 0px var(--margin);
+		padding: var(--margin) var(--margin) 0px var(--margin);
 	}
 }

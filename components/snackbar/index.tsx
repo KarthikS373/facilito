@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react'
 
 // MATERIAL
-import Snackbar, { SnackbarCloseReason } from '@material-ui/core/Snackbar'
-import Slide from '@material-ui/core/Slide'
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar'
+import Slide from '@mui/material/Slide'
 
 // HOOKS
 import useStrings from 'hooks/lang'
@@ -25,7 +25,7 @@ const GlobalSnack: React.FC = () => {
 	})
 
 	// CERRAR
-	const handleClose = (_event, reason: SnackbarCloseReason) => {
+	const handleClose = (_event: unknown, reason: SnackbarCloseReason) => {
 		if (reason === 'clickaway') return
 		setSnackState({ open: false, body: '' })
 	}

@@ -1,6 +1,9 @@
 // REACT
 import React, { useState, useContext } from 'react'
 
+// TIPOS
+import type { View } from 'react-big-calendar'
+
 // HOOKS
 import useAppointments from './utils/hooks'
 
@@ -26,11 +29,11 @@ const Calendar: React.FC = () => {
 	const businessCtx = useContext(BusinessContext)
 
 	// ESTADO
-	const [viewState, setViewState] = useState<string>('week')
+	const [viewState, setViewState] = useState<View>('week')
 	const [appointments, setAppointments] = useState<CustomAppointment[]>([])
 
 	// CAMBIAR VISTA
-	const handleView = (view: string) => () => setViewState(view)
+	const handleView = (view: View) => () => setViewState(view)
 
 	// LEER ACTIVIDADES
 	useAppointments(setAppointments, businessCtx.business?.id)

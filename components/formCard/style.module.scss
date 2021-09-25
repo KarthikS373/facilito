@@ -5,6 +5,7 @@
 	border-radius: var(--radius);
 	position: relative;
 	overflow: hidden;
+	font-size: 0.9em;
 
 	.content {
 		border: none;
@@ -87,6 +88,8 @@
 		right: 15px;
 		background: #eee;
 		border: 3px solid #777;
+		height: 27px;
+		width: 27px;
 
 		svg {
 			height: 15px;

@@ -8,12 +8,12 @@ import Styles from './style.module.scss'
 import useStrings from 'hooks/lang'
 
 // ICONS
-import PersonOutlineTwoTone from '@material-ui/icons/PersonOutlineTwoTone'
-import BubbleChartTwoTone from '@material-ui/icons/BubbleChartTwoTone'
-import LocalOfferTwoTone from '@material-ui/icons/LocalOfferTwoTone'
-import EventNoteTwoTone from '@material-ui/icons/EventNoteTwoTone'
-import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
-import ListAltTwoTone from '@material-ui/icons/ListAltTwoTone'
+import PersonOutlineTwoTone from '@mui/icons-material/PersonOutlineTwoTone'
+import BubbleChartTwoTone from '@mui/icons-material/BubbleChartTwoTone'
+import LocalOfferTwoTone from '@mui/icons-material/LocalOfferTwoTone'
+import EventNoteTwoTone from '@mui/icons-material/EventNoteTwoTone'
+import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
+import ListAltTwoTone from '@mui/icons-material/ListAltTwoTone'
 
 // PROPS
 interface TableHeaderProps {

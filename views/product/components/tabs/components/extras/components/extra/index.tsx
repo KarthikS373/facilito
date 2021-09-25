@@ -5,25 +5,25 @@ import React, { useEffect, useState } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import Switch from '@material-ui/core/Switch'
-import Select from '@material-ui/core/Select'
-import Button from '@material-ui/core/Button'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
+import Switch from '@mui/material/Switch'
+import Button from '@mui/material/Button'
 
 // COMPONENTES
 import Option from './components/option'
 
 // ICONOS
-import FormatColorTextTwoToneIcon from '@material-ui/icons/FormatColorTextTwoTone'
-import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import AddTwoTone from '@material-ui/icons/AddTwoTone'
+import FormatColorTextTwoToneIcon from '@mui/icons-material/FormatColorTextTwoTone'
+import ListAltTwoToneIcon from '@mui/icons-material/ListAltTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'
@@ -63,11 +63,12 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 	const [extraType, setExtraType] = useState<number>(extra.type || 0)
 
 	// CAMBIAR OBLIGATORIO
-	const toggleRequiredEv = (ev: React.ChangeEvent<HTMLInputElement>) =>
-		(productRef.current.extras[index].required = !ev.target.checked)
+	const toggleRequiredEv = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		if (productRef.current.extras) productRef.current.extras[index].required = !ev.target.checked
+	}
 
 	// CAMBIAR TIPO
-	const changeTypeEv = (ev: React.ChangeEvent<HTMLSelectElement>) =>
+	const changeTypeEv = (ev: SelectChangeEvent<string>) =>
 		changeType(index, ev, productRef, setExtraType)
 
 	// AGREGAR OPCION
@@ -129,10 +130,10 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						id='type'
 						name='type'
 						color='primary'
-						value={extraType}
 						variant='outlined'
 						labelId='type-label'
 						onChange={changeTypeEv}
+						value={extraType.toString()}
 						label={$`Tipo de variable`}>
 						<MenuItem key='only' value={ExtraType.ONLY}>
 							{$`Seleccion unica`}

@@ -5,3 +5,5 @@ interface Window {
 	Alert: (props: AlertProps | string) => unknown
 	hideAlert: () => unknown
 }
+
+type BaseEvent = { target: { name: string; value: string } }

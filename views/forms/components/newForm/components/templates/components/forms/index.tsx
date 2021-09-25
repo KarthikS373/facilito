@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import ColorButton from 'components/button'
 
 // ROUTER
 import { useRouter } from 'next/router'
@@ -54,15 +54,19 @@ const NewForm: React.FC = () => {
 	return (
 		<>
 			{templates.map((template: Form, index: number) => (
-				<Button
+				<ColorButton
 					fullWidth
 					key={template.id}
 					variant='outlined'
 					className={Styles.btn}
 					onClick={showCard(template)}
-					endIcon={templateIcons[index]}>
+					endIcon={templateIcons[index]}
+					$style={{
+						lineHeight: 1.1,
+						textAlign: 'left',
+					}}>
 					{template.title}
-				</Button>
+				</ColorButton>
 			))}
 		</>
 	)

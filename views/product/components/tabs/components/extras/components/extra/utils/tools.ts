@@ -1,3 +1,5 @@
+import type { SelectChangeEvent } from '@mui/material/Select'
+
 /**
  * Cambiar extra
  * @description Actualiza en la DB y en el contexto las propiedades de un extra
@@ -14,7 +16,8 @@ const changeExtraProps = (
 	const { name, value } = ev.target
 
 	// COPIA
-	localProduct.current.extras[index] = { ...localProduct.current.extras[index], [name]: value }
+	if (localProduct.current.extras)
+		localProduct.current.extras[index] = { ...localProduct.current.extras[index], [name]: value }
 }
 
 /**
@@ -34,7 +37,7 @@ export const addOptional = (
 	setOptions((prevOptions: ExtendedOpt[]) => {
 		const newOptions = [...prevOptions]
 		newOptions.splice(++optionIndex, 0, { name: '', price: 0, id: prevOptions.length })
-		productRef.current.extras[extraIndex].options = newOptions
+		if (productRef.current.extras) productRef.current.extras[extraIndex].options = newOptions
 		return newOptions
 	})
 }
@@ -55,7 +58,7 @@ export const removeOptional = (
 ) => {
 	setOptions((prevOptions: ExtendedOpt[]) => {
 		const newOptions = [...prevOptions].filter((_opt, pos: number) => pos != optionIndex)
-		productRef.current.extras[extraIndex].options = newOptions
+		if (productRef.current.extras) productRef.current.extras[extraIndex].options = newOptions
 		return newOptions
 	})
 }
@@ -64,19 +67,19 @@ export const removeOptional = (
  * Cambiar tipo de extra
  * @description Edita la propiedad type del extra
  * @param  {number} index
- * @param  {React.ChangeEvent<HTMLSelectElement>} ev
+ * @param  {SelectChangeEvent<string>} ev
  * @param  {React.MutableRefObject<Product>} productRef
  * @param  {React.Dispatch<React.SetStateAction<number>>} setExtraType
  */
 export const changeType = (
 	index: number,
-	ev: React.ChangeEvent<HTMLSelectElement>,
+	ev: SelectChangeEvent<string>,
 	productRef: React.MutableRefObject<Product>,
 	setExtraType: React.Dispatch<React.SetStateAction<number>>
 ) => {
 	const value: number = parseInt(ev.target.value)
 	setExtraType(value)
-	productRef.current.extras[index].type = value
+	if (productRef.current.extras) productRef.current.extras[index].type = value
 }
 
 export default changeExtraProps

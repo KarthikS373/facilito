@@ -5,10 +5,10 @@ import React, { useState, useCallback, useContext } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import TableContainer from '@material-ui/core/TableContainer'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
+import TableContainer from '@mui/material/TableContainer'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
+import Paper from '@mui/material/Paper'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
@@ -23,8 +23,8 @@ import deleteProduct from './utils/tools'
 import ProductsContext from 'context/products'
 
 // ICONS
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import CreateTwoTone from '@material-ui/icons/CreateTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import CreateTwoTone from '@mui/icons-material/CreateTwoTone'
 
 // HOOC
 import useStrings from 'hooks/lang'

@@ -8,21 +8,21 @@ import Styles from './style.module.scss'
 import showInfo from './components/info'
 
 // MATERIAL
-import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import TextField from '@material-ui/core/TextField'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import Button from '@material-ui/core/Button'
+import InputAdornment from '@mui/material/InputAdornment'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+import Button from '@mui/material/Button'
 
 // ICONS
-import FingerprintTwoTone from '@material-ui/icons/FingerprintTwoTone'
-import LocalOfferTwoTone from '@material-ui/icons/LocalOfferTwoTone'
-import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone'
-import LayersTwoTone from '@material-ui/icons/LayersTwoTone'
-import MoneyTwoTone from '@material-ui/icons/MoneyTwoTone'
-import TollTwoTone from '@material-ui/icons/TollTwoTone'
+import FingerprintTwoTone from '@mui/icons-material/FingerprintTwoTone'
+import LocalOfferTwoTone from '@mui/icons-material/LocalOfferTwoTone'
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
+import LayersTwoTone from '@mui/icons-material/LayersTwoTone'
+import MoneyTwoTone from '@mui/icons-material/MoneyTwoTone'
+import TollTwoTone from '@mui/icons-material/TollTwoTone'
 
 // UTILS
 import changeProductProps from '../../utils/tools'
@@ -35,13 +35,13 @@ interface GeneralProps {
 	show: boolean
 	productRef: React.MutableRefObject<Product>
 }
+
 const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// ACTUALIZAR
-	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeProductProps(ev, productRef)
+	const handleInputs = (ev: BaseEvent) => changeProductProps(ev, productRef)
 
 	// MOSTRAR INFORMACION
 	const showStockInfo = () => showInfo($)
@@ -155,18 +155,18 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 						label={$`Unidad`}
 						labelId='unit-label'
 						onChange={handleInputs}
-						defaultValue={productRef.current.unit || '1'}
+						defaultValue={productRef.current.unit.toString() || '1'}
 						inputProps={{
 							name: 'unit',
 							id: 'unit',
 						}}>
-						<MenuItem value={'1'}>
+						<MenuItem value={1}>
 							{'1'} {$`unidad`}
 						</MenuItem>
-						<MenuItem value={'1/2'}>
+						<MenuItem value={1 / 2}>
 							{'1/2'} {$`unidad`}
 						</MenuItem>
-						<MenuItem value={'1/4'}>
+						<MenuItem value={1 / 4}>
 							{'1/4'} {$`unidad`}
 						</MenuItem>
 					</Select>

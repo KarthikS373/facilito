@@ -1,12 +1,12 @@
 // REACT
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
 
 // ROUTER
-import { NextRouter } from 'next/router'
+import type { NextRouter } from 'next/router'
 
 // ICONOS
-import FormatColorTextTwoTone from '@material-ui/icons/FormatColorTextTwoTone'
+import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
 
 // UTILS
 import { addBusinessFormURL } from 'utils/business'

@@ -5,11 +5,11 @@ import React from 'react'
 import PageInfo from 'components/pageInfo'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // ICONOS
-import BubbleChartTwoTone from '@material-ui/icons/BubbleChartTwoTone'
-import AddCircleTwoTone from '@material-ui/icons/AddCircleTwoTone'
+import BubbleChartTwoTone from '@mui/icons-material/BubbleChartTwoTone'
+import AddCircleTwoTone from '@mui/icons-material/AddCircleTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'

@@ -6,13 +6,13 @@ import Styles from './style.module.scss'
 import useStrings from 'hooks/lang'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
 
 // ICONS
-import ChevronRightTwoTone from '@material-ui/icons/ChevronRightTwoTone'
-import ChevronLeftTwoTone from '@material-ui/icons/ChevronLeftTwoTone'
-import EventTwoTone from '@material-ui/icons/EventTwoTone'
+import ChevronRightTwoTone from '@mui/icons-material/ChevronRightTwoTone'
+import ChevronLeftTwoTone from '@mui/icons-material/ChevronLeftTwoTone'
+import EventTwoTone from '@mui/icons-material/EventTwoTone'
 
 const CustomToolbar: React.FC<any> = (props) => {
 	// STRINGS

@@ -2,7 +2,7 @@
 import React, { useCallback, useState } from 'react'
 
 // TIPOS
-import { User as UserFrb } from '@firebase/auth'
+import type { User as UserFrb } from '@firebase/auth'
 
 // CONTEXTO
 import UserContext from 'context/user'

@@ -4,6 +4,9 @@ import { useEffect, useContext } from 'react'
 // UTILS
 import getBusinessProducts from 'utils/products'
 
+// TIPOS
+import type { Unsubscribe } from '@firebase/firestore'
+
 // CONTEXT
 import ProductsContext from 'context/products'
 
@@ -18,7 +21,7 @@ const useProducts = (
 	companyID?: string
 ) => {
 	useEffect(() => {
-		let listener: () => unknown | null = null
+		let listener: Unsubscribe | undefined
 
 		// OBTENER LISTENER
 		if (companyID) getBusinessProducts(setProducts, companyID).then((listen) => (listener = listen))

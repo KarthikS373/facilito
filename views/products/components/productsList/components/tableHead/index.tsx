@@ -8,12 +8,12 @@ import Styles from './style.module.scss'
 import useStrings from 'hooks/lang'
 
 // ICONS
-import FormatColorTextTwoTone from '@material-ui/icons/FormatColorTextTwoTone'
-import FingerprintTwoTone from '@material-ui/icons/FingerprintTwoTone'
-import LocalOfferTwoTone from '@material-ui/icons/LocalOfferTwoTone'
-import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
-import WidgetsTwoTone from '@material-ui/icons/WidgetsTwoTone'
-import ImageTwoTone from '@material-ui/icons/ImageTwoTone'
+import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
+import FingerprintTwoTone from '@mui/icons-material/FingerprintTwoTone'
+import LocalOfferTwoTone from '@mui/icons-material/LocalOfferTwoTone'
+import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
+import WidgetsTwoTone from '@mui/icons-material/WidgetsTwoTone'
+import ImageTwoTone from '@mui/icons-material/ImageTwoTone'
 
 // PROPS
 interface TableHeaderProps {

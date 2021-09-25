@@ -1,56 +1,49 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react'
 
 // MATERIAL
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import Popper, { PopperProps } from '@material-ui/core/Popper'
-import MenuList from '@material-ui/core/MenuList'
-import Paper from '@material-ui/core/Paper'
-import Zoom from '@material-ui/core/Zoom'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Popper, { PopperProps } from '@mui/material/Popper'
+import MenuList from '@mui/material/MenuList'
+import Paper from '@mui/material/Paper'
 
 interface PopperMenuProps extends PopperProps {
 	onClose: EmptyFunction
 }
 const PopperMenuList: React.FC<PopperMenuProps> = (props) => {
-	// CERRAR
-	const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+	const handleClose = (event: Event | React.SyntheticEvent) => {
 		const anchorEl = props.anchorEl as HTMLElement
-		if (anchorEl && anchorEl.contains(event.target as HTMLElement)) return
+		if (anchorEl && 'contains' in anchorEl && anchorEl.contains(event.target as HTMLElement)) {
+			return
+		}
+
 		props.onClose()
 	}
 
 	// TAB
-	const handleListKeyDown = (event) => {
+	const handleListKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === 'Tab') {
 			event.preventDefault()
+			props.onClose()
+		} else if (event.key === 'Escape') {
 			props.onClose()
 		}
 	}
 
 	// SIN CLOSE
 	const popperProps = { ...props }
+	// @ts-ignore
 	delete popperProps.onClose
 
 	return (
-		<Popper role={undefined} transition disablePortal {...popperProps}>
-			{({ TransitionProps, placement }) => {
-				const posPlacement: string[] = placement.split('-')
-				const yPlacement: string = { bottom: 'top', top: 'bottom' }[posPlacement[0]]
-				const xPlacement: string = { end: 'right', start: 'left', def: 'center' }[
-					posPlacement[1] || 'def'
-				]
-
-				return (
-					<Zoom {...TransitionProps} style={{ transformOrigin: `${xPlacement} ${yPlacement}` }}>
-						<Paper>
-							<ClickAwayListener onClickAway={handleClose}>
-								<MenuList id='menu-list-grow' autoFocusItem={false} onKeyDown={handleListKeyDown}>
-									{props.children}
-								</MenuList>
-							</ClickAwayListener>
-						</Paper>
-					</Zoom>
-				)
-			}}
+		<Popper {...popperProps} disablePortal role={undefined}>
+			<Paper>
+				<ClickAwayListener onClickAway={handleClose}>
+					<MenuList onKeyDown={handleListKeyDown} autoFocusItem={popperProps.open}>
+						{props.children}
+					</MenuList>
+				</ClickAwayListener>
+			</Paper>
 		</Popper>
 	)
 }

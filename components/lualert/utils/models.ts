@@ -7,6 +7,7 @@ export interface AlertProps {
 	confirmBtn?: JSX.Element
 	cancelBtn?: JSX.Element
 	onConfirm?: () => unknown
+	hasNextAlert?: boolean
 	hideActions?: boolean
 	resetOnHide?: boolean
 	confirmText?: string
@@ -46,6 +47,7 @@ const defState: InternalState = {
 	cancelBtn: undefined,
 	maxWidth: undefined,
 	onCancel: undefined,
+	hasNextAlert: false,
 	hideActions: false,
 	resetOnHide: false,
 	margins: undefined,

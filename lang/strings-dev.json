@@ -1,4 +1,40 @@
 {
+	"desde": {
+		"en": "",
+		"es": "$"
+	},
+	"cerrar": {
+		"en": "",
+		"es": "$"
+	},
+	"hasta": {
+		"en": "",
+		"es": "$"
+	},
+	"programado_el": {
+		"en": "",
+		"es": "$"
+	},
+	"firebase_error_authmissingemail": {
+		"en": "",
+		"es": "$"
+	},
+	"la_contrasena_debe_tener_al_menos_8_caracteres_para_considerarla_segura": {
+		"en": "",
+		"es": "$"
+	},
+	"ocurrio_un_error": {
+		"en": "",
+		"es": "$"
+	},
+	"ingresa_el_correo_electronico_al_que_deseas_que_enviemos_un_link_de_recuperacion": {
+		"en": "",
+		"es": "$"
+	},
+	"recuperar": {
+		"en": "",
+		"es": "$"
+	},
 	"habilitar_producto": {
 		"en": "",
 		"es": "$"

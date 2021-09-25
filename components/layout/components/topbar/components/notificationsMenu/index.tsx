@@ -8,7 +8,7 @@ import PopperMenuList from 'components/popperMenu'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import MenuItem from '@material-ui/core/MenuItem'
+import MenuItem from '@mui/material/MenuItem'
 
 // PROPS
 interface AccountMenuProps {

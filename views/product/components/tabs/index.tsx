@@ -5,15 +5,15 @@ import React, { useState } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import Paper from '@material-ui/core/Paper'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
+import Paper from '@mui/material/Paper'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
 
 // ICONS
-import ExtensionTwoToneIcon from '@material-ui/icons/ExtensionTwoTone'
-import SettingsTwoToneIcon from '@material-ui/icons/SettingsTwoTone'
-import MenuBookTwoToneIcon from '@material-ui/icons/MenuBookTwoTone'
-import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone'
+import ExtensionTwoToneIcon from '@mui/icons-material/ExtensionTwoTone'
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
+import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
 
 // COMPONENTES
 import Settings from './components/settings'
@@ -36,7 +36,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 	const { $ } = useStrings()
 
 	// ACTUALIZAR
-	const handleChange = (_event, newValue: number) => setTabIndex(newValue)
+	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
 
 	return (
 		<div className={Styles.container}>

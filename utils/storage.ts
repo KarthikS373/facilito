@@ -1,5 +1,5 @@
 import getFirebase from 'keys/firebase'
-import { StorageReference } from '@firebase/storage'
+import type { StorageReference } from '@firebase/storage'
 
 /**
  * Borrar formulario en storage

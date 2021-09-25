@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // ICONS
-import NoteAddTwoTone from '@material-ui/icons/NoteAddTwoTone'
+import NoteAddTwoTone from '@mui/icons-material/NoteAddTwoTone'
 
 // ROUTER
 import { useRouter } from 'next/router'

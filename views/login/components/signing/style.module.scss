@@ -73,14 +73,10 @@
 			align-items: center;
 			margin-top: 10px;
 			width: 100%;
+
+			button {
+				padding: 6px 8px;
+			}
 		}
-	}
-}
-
-.loginBtn {
-	background: linear-gradient(to right, #1aa5bb, #166cd6);
-
-	span {
-		color: #fff;
 	}
 }

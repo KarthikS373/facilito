@@ -10,9 +10,9 @@
 const deleteState = (
 	index: number,
 	formID: string,
-	companyID: string,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
+	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	companyID?: string
 ) => {
 	if (companyID) {
 		window.Alert({

@@ -7,10 +7,10 @@ import Tabs from './components/tabs'
 import Link from 'components/link'
 
 // ICONOS
-import SaveTwoTone from '@material-ui/icons/SaveTwoTone'
+import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -50,7 +50,7 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 		<>
 			<Header
 				customDescription={`${
-					businessCtx.business?.products.length || 0
+					businessCtx.business?.products?.length || 0
 				} ${$`producto(s) creados`}`}>
 				<Link rKey='products' passHref>
 					<Button

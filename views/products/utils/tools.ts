@@ -22,7 +22,7 @@ const filterProducts = (products: Product[], filter: string) => {
 	tmpProducts.sort((aF: Product, bF: Product) => {
 		const a = ascSort ? aF : bF
 		const b = ascSort ? bF : aF
-		if (field !== 'price') return a[field].toString().localeCompare(b[field].toString())
+		if (field !== 'price') return a[field]!.toString().localeCompare(b[field]?.toString() || '0')
 		else return a[field] - b[field]
 	})
 

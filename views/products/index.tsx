@@ -13,10 +13,10 @@ import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // ICONS
-import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
+import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -67,7 +67,7 @@ const Products: React.FC = () => {
 			{/* HEADER */}
 			<Header
 				customDescription={`${
-					businessCtx.business?.products.length || 0
+					businessCtx.business?.products?.length || 0
 				} ${$`producto(s) creados`}`}>
 				<Link rKey='newProduct'>
 					<Button

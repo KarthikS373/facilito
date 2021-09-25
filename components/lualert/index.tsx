@@ -2,6 +2,9 @@
 // REACT
 import React, { useState, useEffect } from 'react'
 
+// COMPONETNES
+import ColorButton from '../button'
+
 // ESTILOS
 import Styles from './style.module.scss'
 
@@ -10,9 +13,6 @@ import useStrings from 'hooks/lang'
 
 // UTILS
 import defState, { HOCProps, AlertProps, InternalState } from './utils/models'
-
-// MATERIAL
-import Button from '@material-ui/core/Button'
 
 // TEMPLATE
 const AlertTemplate: React.FC<HOCProps> = (props) => {
@@ -53,8 +53,8 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 			const tmpNested: AlertProps | string | undefined = state.nested
 			setState((prevState: InternalState) => {
 				if (tmpNested) {
-					return prevState
 					show(tmpNested)
+					return prevState
 				} else return { ...prevState, open: false, nested: undefined }
 			})
 
@@ -78,7 +78,7 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 	// CONFIRM
 	const confirm = (): void => {
 		if (state.onConfirm) state.onConfirm()
-		hide()
+		if (!state.hasNextAlert) hide()
 	}
 
 	// GLOBAl
@@ -140,9 +140,15 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 						{!state.fixed && state.type === 'confirm' && (
 							<li>
 								{!state.cancelBtn ? (
-									<Button onClick={hide} className={Styles.cancelBtn} variant='contained'>
+									<ColorButton
+										onClick={hide}
+										$style={{
+											color: '#555',
+											background: 'transparent',
+											padding: '10px 15px',
+										}}>
 										{state.cancelText || props.cancelText || 'Cancel'}
-									</Button>
+									</ColorButton>
 								) : (
 									<div onClick={hide}>{state.cancelBtn}</div>
 								)}
@@ -150,19 +156,20 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 						)}
 						<li>
 							{!state.confirmBtn ? (
-								<Button
-									variant='contained'
+								<ColorButton
 									onClick={confirm}
+									variant='contained'
 									startIcon={state.confirmIcon}
-									className={Styles.alertActionsLiButton}
-									style={{
+									$style={{
+										color: '#fff',
+										padding: '10px 15px',
 										background:
 											state.type === 'error'
 												? props.errColor || '#ff5252'
 												: props.confirmColor || '#2196f3',
 									}}>
 									{state.confirmText || props.confirmText || 'Accept'}
-								</Button>
+								</ColorButton>
 							) : (
 								<div onClick={confirm}>{state.confirmBtn}</div>
 							)}

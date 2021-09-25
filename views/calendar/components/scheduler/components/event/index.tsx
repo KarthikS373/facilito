@@ -6,16 +6,16 @@ import { deleteAppointment } from 'utils/events'
 import Styles from './style.module.scss'
 
 // MATERIAl
-import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
 
 // COMPONENTES
 import Link from 'components/link'
 
 // ICONS
-import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import PersonTwoTone from '@material-ui/icons/PersonTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import PersonTwoTone from '@mui/icons-material/PersonTwoTone'
 
 // BORRAR EVENTO
 const deleteEvent =
@@ -30,9 +30,9 @@ const deleteEvent =
 			onConfirm: () => {
 				deleteAppointment(
 					business?.name || '',
-					business?.users[0],
-					business?.id,
-					event.resource.id,
+					business?.users ? business?.users[0] : '',
+					business?.id || '',
+					event.resource?.id || '',
 					event
 				)
 			},
@@ -51,7 +51,7 @@ export const showEventInfo =
 				<div className={Styles.container}>
 					<h3>{event.title}</h3>
 					<p>
-						{$`Programado el:`} {parseDate(event.start).toLocaleDateString('en-GB')}
+						{$`Programado el:`} {parseDate(event.start)?.toLocaleDateString('en-GB') || ''}
 					</p>
 					<p>
 						<span>
@@ -66,14 +66,14 @@ export const showEventInfo =
 					<div className={Styles.userInfo}>
 						<PersonTwoTone />
 						<div>
-							<p>{event.resource.name}</p>
-							<a href={`mailto:${event.resource.email}`} title={event.resource.email}>
-								{event.resource.email}
+							<p>{event.resource?.name}</p>
+							<a href={`mailto:${event.resource?.email}`} title={event.resource?.email}>
+								{event.resource?.email}
 							</a>
 						</div>
 					</div>
 					<div className={Styles.actions}>
-						<Link rKey='newForm' id={event.resource.id}>
+						<Link rKey='newForm' id={event.resource?.id}>
 							{(window.innerWidth > 500 && (
 								<Button variant='outlined' startIcon={<DescriptionTwoTone />}>
 									{$`Formulario`}

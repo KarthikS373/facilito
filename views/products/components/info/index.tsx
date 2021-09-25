@@ -5,11 +5,11 @@ import React from 'react'
 import PageInfo from 'components/pageInfo'
 
 // ICONOS
-import CategoryTwoTone from '@material-ui/icons/CategoryTwoTone'
-import StoreTwoTone from '@material-ui/icons/StoreTwoTone'
+import CategoryTwoTone from '@mui/icons-material/CategoryTwoTone'
+import StoreTwoTone from '@mui/icons-material/StoreTwoTone'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // STRINGS
 import useStrings from 'hooks/lang'

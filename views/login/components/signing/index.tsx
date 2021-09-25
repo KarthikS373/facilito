@@ -7,6 +7,7 @@ import Styles from './style.module.scss'
 // COMPONENTES
 import { startSigning } from '../../utils/verification'
 import PasswordTextField from '../passwordInput'
+import ColorButton from 'components/button'
 import SocialLogin from '../socialLogin'
 
 // NEXT
@@ -16,16 +17,16 @@ import Image from 'next/image'
 import useStrings from 'hooks/lang'
 
 // ICONOS
-import ExitToApp from '@material-ui/icons/ExitToApp'
-import Person from '@material-ui/icons/Person'
-import Email from '@material-ui/icons/Email'
-import Lock from '@material-ui/icons/Lock'
+import ExitToApp from '@mui/icons-material/ExitToApp'
+import Person from '@mui/icons-material/Person'
+import Email from '@mui/icons-material/Email'
+import Lock from '@mui/icons-material/Lock'
 
 // MATERIAL
-import LinearProgress from '@material-ui/core/LinearProgress'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import LinearProgress from '@mui/material/LinearProgress'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 // INICIALES
 const defSigningData: SigningData = {
@@ -136,14 +137,17 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 						}}
 					/>
 
-					<Button
+					<ColorButton
 						type='submit'
 						variant='contained'
+						onClick={handleSubmit}
 						startIcon={<ExitToApp />}
-						classes={{ root: Styles.loginBtn }}
-						onClick={handleSubmit}>
+						$style={{
+							color: '#fff',
+							background: 'linear-gradient(to right, #1aa5bb, #166cd6)',
+						}}>
 						{$`Registrarme`}
-					</Button>
+					</ColorButton>
 				</form>
 
 				{/* SOCIAL */}

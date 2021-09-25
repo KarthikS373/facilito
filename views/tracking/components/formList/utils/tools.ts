@@ -13,37 +13,38 @@ const deleteForm = (
 	formID: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	companyID: string
+	companyID?: string
 ) => {
-	window.Alert({
-		title: 'Borrar tracking',
-		body: '¿Estas seguro de que quieres borrar todos los estados de tracking presentes en este formulario?',
-		type: 'confirm',
-		onConfirm: async () => {
-			// ACTUALIZAR
-			setForms((prevForms: FormInterface) => {
-				let answers = [...prevForms.answers]
-				let forms = [...prevForms.forms]
-
-				// BORRAR
-				forms.forEach((fForm: Form) => {
-					if (fForm.id === formID) fForm.tracking = []
-				})
-
-				// CONTEXTO
-				const updatedForms = { forms, answers }
-
-				window.Snack('Guardando...')
-				saveFormSchema(companyID, { tracking: [], id: formID }).then(() =>
-					window.Snack('Formulario guardado')
-				)
-				setGlobalForms(updatedForms)
-
+	if (companyID)
+		window.Alert({
+			title: 'Borrar tracking',
+			body: '¿Estas seguro de que quieres borrar todos los estados de tracking presentes en este formulario?',
+			type: 'confirm',
+			onConfirm: async () => {
 				// ACTUALIZAR
-				return updatedForms
-			})
-		},
-	})
+				setForms((prevForms: FormInterface) => {
+					let answers = [...prevForms.answers]
+					let forms = [...prevForms.forms]
+
+					// BORRAR
+					forms.forEach((fForm: Form) => {
+						if (fForm.id === formID) fForm.tracking = []
+					})
+
+					// CONTEXTO
+					const updatedForms = { forms, answers }
+
+					window.Snack('Guardando...')
+					saveFormSchema(companyID, { tracking: [], id: formID }).then(() =>
+						window.Snack('Formulario guardado')
+					)
+					setGlobalForms(updatedForms)
+
+					// ACTUALIZAR
+					return updatedForms
+				})
+			},
+		})
 }
 
 export default deleteForm

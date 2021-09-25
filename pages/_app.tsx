@@ -2,7 +2,7 @@
 import React from 'react'
 
 // TIPOS
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 // PROVIDERS
@@ -18,7 +18,8 @@ import UserProvider from 'providers/user'
 import Layout from 'components/layout'
 
 // UTILS
-import useRemoveSSRStyles from 'hooks/theme'
+import { CacheProvider, EmotionCache } from '@emotion/react'
+import createEmotionCache from 'providers/theme/emotion'
 import useAnalytics from 'hooks/analytics'
 
 // ESTILOS GLOBALES
@@ -29,19 +30,25 @@ import 'styles/mixins.scss'
 // NEXT
 import dynamic from 'next/dynamic'
 
-const CssBaseline = dynamic(() => import('@material-ui/core/CssBaseline'))
+const CssBaseline = dynamic(() => import('@mui/material/CssBaseline'))
 const AlertProvider = dynamic(() => import('providers/alerts'))
 const GlobalSnack = dynamic(() => import('components/snackbar'))
+const clientSideEmotionCache = createEmotionCache()
 
-const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-	// QUITAR ESTILOS SSR DE MATERIAL
-	useRemoveSSRStyles()
+interface FacilitoAppProps extends AppProps {
+	emotionCache?: EmotionCache
+}
 
+const FacilitoApp = ({
+	Component,
+	emotionCache = clientSideEmotionCache,
+	pageProps,
+}: FacilitoAppProps): JSX.Element => {
 	// ANALYTICS
 	useAnalytics()
 
 	return (
-		<>
+		<CacheProvider value={emotionCache}>
 			<Head>
 				<title>Crea formularios avanzados, e-commerce y mucho más | Facilito</title>
 				<meta
@@ -70,7 +77,7 @@ const FacilitoApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 					</BusinessProvider>
 				</UserProvider>
 			</ThemeProvider>
-		</>
+		</CacheProvider>
 	)
 }
 

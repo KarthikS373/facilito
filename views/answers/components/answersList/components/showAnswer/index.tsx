@@ -5,7 +5,7 @@ import { sortAnswers } from 'utils/answers'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@mui/material/IconButton'
 
 // LISTA
 export const AnswerPreview: React.FC<{

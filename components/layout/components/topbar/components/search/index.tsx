@@ -8,17 +8,17 @@ import Styles from './style.module.scss'
 import Link from 'components/link'
 
 // MATERIAL
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import TextField from '@material-ui/core/TextField'
-import Paper from '@material-ui/core/Paper'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
+import Paper from '@mui/material/Paper'
 
 // ICONOS
-import ShoppingCartTwoTone from '@material-ui/icons/ShoppingCartTwoTone'
-import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
-import ForwardTwoTone from '@material-ui/icons/ForwardTwoTone'
-import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
+import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import ForwardTwoTone from '@mui/icons-material/ForwardTwoTone'
+import SearchTwoTone from '@mui/icons-material/SearchTwoTone'
 
 // CONTEXTO
 import ProductsContext from 'context/products'

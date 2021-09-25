@@ -5,10 +5,10 @@ import React, { useContext } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@mui/material/IconButton'
 
 // ICONS
-import MoreVert from '@material-ui/icons/MoreVert'
+import MoreVert from '@mui/icons-material/MoreVert'
 
 // UTILS
 import { dateToString } from 'utils/tools'
@@ -41,7 +41,7 @@ const AnswerRow: React.FC<RowProps> = ({ handleRow, index, style, data, date, st
 				<i>{state}</i>
 			</span>
 			<span>
-				<i>{data?.total?.answer || `${businessCtx.business.badge} 0.00`}</i>
+				<i>{data?.total?.answer || `${businessCtx.business?.badge || 'QGT'} 0.00`}</i>
 			</span>
 			<span>
 				<i>{date && dateToString(date)}</i>

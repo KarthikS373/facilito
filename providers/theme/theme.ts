@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 export const theme = createTheme({
 	typography: {
@@ -7,113 +7,142 @@ export const theme = createTheme({
 		},
 		fontFamily: 'Orkney',
 	},
-	overrides: {
+	components: {
 		MuiPaper: {
-			rounded: {
-				borderRadius: '10px',
-				backgroundColor: 'rgb(246,246,246)',
+			styleOverrides: {
+				rounded: {
+					borderRadius: '10px',
+					backgroundColor: 'rgb(246,246,246)',
+				},
 			},
 		},
 		MuiSelect: {
-			outlined: {
-				borderRadius: '10px',
+			styleOverrides: {
+				outlined: {
+					borderRadius: '10px',
+				},
 			},
 		},
 		MuiOutlinedInput: {
-			root: {
-				borderRadius: '10px',
+			styleOverrides: {
+				root: {
+					borderRadius: '10px',
+				},
 			},
 		},
 		MuiButton: {
-			root: {
-				borderRadius: '10px',
-				fontSize: '1rem',
-				padding: '10px 0',
-			},
-			outlined: {
-				borderColor: 'rgba(0,0,0,.05)',
-				color: '#828282',
-				fontSize: '1rem',
-				backgroundColor: '#FBFBFB',
-				padding: '10px 15px',
+			styleOverrides: {
+				root: {
+					borderRadius: '10px',
+					fontSize: '1rem',
+					padding: '10px 0',
+				},
+				outlined: {
+					borderColor: 'rgba(0,0,0,.05)',
+					color: '#828282',
+					fontSize: '1rem',
+					backgroundColor: '#FBFBFB',
+					padding: '10px 15px',
+
+					'&:hover': {
+						borderColor: 'rgba(0,0,0,.2)',
+						backgroundColor: '#FBFBFB',
+					},
+				},
 			},
 		},
 		MuiCheckbox: {
-			root: {
-				backgroundColor: 'transparent',
-				border: 'none',
-				borderRadius: '100%',
+			styleOverrides: {
+				root: {
+					backgroundColor: 'transparent',
+					border: 'none',
+					borderRadius: '100%',
 
-				'& .MuiSvgIcon-root': {
-					opacity: 1,
+					'& .MuiSvgIcon-root': {
+						opacity: 1,
+					},
 				},
 			},
 		},
 		MuiSwitch: {
-			root: {
-				'& .MuiIconButton-root': {
-					backgroundColor: 'transparent',
-					border: 'none',
-					opacity: 1,
+			styleOverrides: {
+				root: {
+					'& .MuiIconButton-root': {
+						backgroundColor: 'transparent',
+						border: 'none',
+						opacity: 1,
+					},
 				},
 			},
 		},
 		MuiIconButton: {
-			sizeSmall: {
-				backgroundColor: 'transparent',
-				border: 'none',
-				borderRadius: '100%',
-
-				'& .MuiSvgIcon-root': {
-					opacity: 1,
-				},
-			},
-			root: {
-				fontSize: '1rem',
-				color: '#828282',
-				backgroundColor: 'rgb(246,246,246)',
-				borderRadius: 10,
-
-				'& .MuiSvgIcon-root': {
-					opacity: 0.6,
-				},
-
-				'& .MuiBadge-badge': {
-					top: '-10px',
-					right: '-10px',
-					fontSize: '10px',
-					fontWeight: 'bold',
-					height: 25,
-					minWidth: 25,
+			styleOverrides: {
+				sizeSmall: {
+					backgroundColor: 'transparent',
+					border: 'none',
 					borderRadius: '100%',
+					height: 'auto',
+					width: 'auto',
+
+					'& .MuiSvgIcon-root': {
+						opacity: 1,
+					},
+				},
+				root: {
+					fontSize: '1rem',
+					color: '#828282',
+					backgroundColor: 'rgb(246,246,246)',
+					borderRadius: 10,
+					height: '49px',
+					width: '49px',
+
+					'& .MuiSvgIcon-root': {
+						opacity: 0.6,
+					},
+
+					'& .MuiBadge-badge': {
+						top: '-10px',
+						right: '-10px',
+						fontSize: '10px',
+						fontWeight: 'bold',
+						height: 25,
+						minWidth: 25,
+						borderRadius: '100%',
+					},
 				},
 			},
 		},
 		MuiTextField: {
-			root: {
-				'& .MuiOutlinedInput-root': {
-					'& fieldset': {
-						borderRadius: 10,
+			styleOverrides: {
+				root: {
+					'& .MuiOutlinedInput-root': {
+						'& fieldset': {
+							borderRadius: 10,
+						},
 					},
 				},
 			},
 		},
 		MuiAppBar: {
-			root: {
-				boxShadow: 'none',
-				zIndex: 10,
+			styleOverrides: {
+				root: {
+					boxShadow: 'none',
+					zIndex: 10,
+				},
 			},
 		},
 		MuiToolbar: {
-			root: {
-				minHeight: 'unset',
-			},
-			regular: {
-				minHeight: 'unset',
-			},
-			gutters: {
-				paddingLeft: 0,
-				paddingRight: 0,
+			styleOverrides: {
+				root: {
+					minHeight: 'unset',
+				},
+				regular: {
+					minHeight: 'unset',
+				},
+				gutters: {
+					paddingLeft: 0,
+					paddingRight: 0,
+				},
 			},
 		},
 	},

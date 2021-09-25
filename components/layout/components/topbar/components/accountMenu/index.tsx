@@ -2,12 +2,12 @@
 import React from 'react'
 
 // MATERIAL
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
 
 // ICONOS
-import ExitToAppTwoTone from '@material-ui/icons/ExitToAppTwoTone'
-import SettingsTwoTone from '@material-ui/icons/SettingsTwoTone'
+import ExitToAppTwoTone from '@mui/icons-material/ExitToAppTwoTone'
+import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
 
 // UTILS
 import { logout } from 'utils/auth'

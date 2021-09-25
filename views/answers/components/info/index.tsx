@@ -6,11 +6,11 @@ import PageInfo from 'components/pageInfo'
 import Link from 'components/link'
 
 // ICONOS
-import QuestionAnswerTwoTone from '@material-ui/icons/QuestionAnswerTwoTone'
-import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone'
+import QuestionAnswerTwoTone from '@mui/icons-material/QuestionAnswerTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // STRINGS
 import useStrings from 'hooks/lang'

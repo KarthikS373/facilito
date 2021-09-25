@@ -2,8 +2,8 @@
 import React, { useContext } from 'react'
 
 // MATERIAL
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
 
 // CONTEXTOS
 import BusinessContext from 'context/business'

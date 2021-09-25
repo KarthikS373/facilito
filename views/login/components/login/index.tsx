@@ -8,6 +8,7 @@ import Styles from './style.module.scss'
 import { startSigning } from '../../utils/verification'
 import PasswordTextField from '../passwordInput'
 import resetPass from './components/forgotPass'
+import ColorButton from 'components/button'
 import SocialLogin from '../socialLogin'
 
 // INITIALS
@@ -20,17 +21,17 @@ import Image from 'next/image'
 import useStrings from 'hooks/lang'
 
 // ICONOS
-import ExitToApp from '@material-ui/icons/ExitToApp'
-import Email from '@material-ui/icons/Email'
-import Lock from '@material-ui/icons/Lock'
+import ExitToApp from '@mui/icons-material/ExitToApp'
+import Email from '@mui/icons-material/Email'
+import Lock from '@mui/icons-material/Lock'
 
 // MATERIAL
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import Checkbox from '@material-ui/core/Checkbox'
-import Button from '@material-ui/core/Button'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import LinearProgress from '@mui/material/LinearProgress'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
+import Checkbox from '@mui/material/Checkbox'
+import Button from '@mui/material/Button'
 
 // PROPIEDADES
 interface LoginFormProps {
@@ -138,14 +139,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 						label={$`Recuérdame en este dispositivo`}
 					/>
 
-					<Button
+					<ColorButton
 						type='submit'
 						variant='contained'
+						onClick={handleSubmit}
 						startIcon={<ExitToApp />}
-						classes={{ root: Styles.loginBtn }}
-						onClick={handleSubmit}>
+						$style={{
+							color: '#fff',
+							background: 'linear-gradient(to right, #1aa5bb, #166cd6)',
+						}}>
 						{$`Iniciar sesión`}
-					</Button>
+					</ColorButton>
 				</form>
 
 				{/* SOCIAL */}

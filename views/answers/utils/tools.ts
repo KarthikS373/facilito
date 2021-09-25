@@ -94,11 +94,11 @@ export const getExcelExportData = (
 	const answerDataSet: FormAnswerItem[] =
 		(answers
 			.map((answer: FormAnswerSelf, index: number) => {
-				const ansDate: Date = parseDate(answer.date)
+				const ansDate: Date | null = parseDate(answer.date)
 				const composedAns = [
 					{
 						quest: $`Fecha de envío`,
-						answer: dateToString(ansDate),
+						answer: ansDate ? dateToString(ansDate) : '',
 					},
 					...sortAnswers(components, answer.data).map((answer: FormSortedAnswer) => answer.answer),
 				]

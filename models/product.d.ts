@@ -1,4 +1,13 @@
 interface Product {
+	[index: string]:
+		| string
+		| string[]
+		| number
+		| boolean
+		| ProductUnit
+		| ProductStockOption
+		| Extra[]
+		| undefined
 	sku: string
 	title: string
 	description: string
@@ -7,14 +16,17 @@ interface Product {
 	price: number
 	promoPrice?: number
 	isPromo: boolean
-	unit: 1 | 0.5 | 0.25
+	unit: ProductUnit
 	unitName: string
 	count: number
-	stockOption: 'inf' | 'lim' | 'ctn'
+	stockOption: ProductStockOption
 	active: boolean
 	featured: boolean
 	extras?: Extra[]
 }
+
+type ProductUnit = 1 | 0.5 | 0.25
+type ProductStockOption = 'inf' | 'lim' | 'ctn'
 
 interface Extra {
 	title: string

@@ -2,11 +2,11 @@
 import React from 'react'
 
 // THEME
-import MaterialThemeProvider from '@material-ui/styles/ThemeProvider'
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
 import { theme } from './theme'
 
 const ThemeProvider: React.FC = (props) => {
-	return <MaterialThemeProvider theme={theme}>{props.children}</MaterialThemeProvider>
+	return <MuiThemeProvider theme={theme}>{props.children}</MuiThemeProvider>
 }
 
 // EXPORT

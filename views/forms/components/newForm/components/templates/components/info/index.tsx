@@ -5,7 +5,7 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // ICONOS
-import FileCopyTwoTone from '@material-ui/icons/FileCopyTwoTone'
+import FileCopyTwoTone from '@mui/icons-material/FileCopyTwoTone'
 
 // HOC
 import useStrings from 'hooks/lang'

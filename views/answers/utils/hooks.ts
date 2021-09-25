@@ -21,7 +21,7 @@ export const useFilters = (
 	useEffect(() => {
 		// BUSCAR
 		const formIndex: number = forms.forms.findIndex((form: Form) => form.id === formID)
-		const answers: FormAnswer = forms.answers[formIndex]
+		const answers: FormAnswer | undefined = forms.answers[formIndex]
 
 		// ACTUALIZAR
 		setAnswers(

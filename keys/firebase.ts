@@ -1,5 +1,5 @@
 // TIPOS
-import { FirebaseApp } from '@firebase/app'
+import type { FirebaseApp } from '@firebase/app'
 
 async function getFirebase() {
 	// IMPORTS

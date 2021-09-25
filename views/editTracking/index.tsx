@@ -12,10 +12,10 @@ import { useForm } from 'hooks/forms'
 import useStrings from 'hooks/lang'
 
 // MATERIAL
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button'
 
 // ICONS
-import SaveTwoTone from '@material-ui/icons/SaveTwoTone'
+import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -46,7 +46,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 	const saveTracking = () => saveStates(localTracking, formID, businessCtx.business?.id)
 
 	// AGREGAR ESTADO
-	const addNewStateOnTracking = () => addNewState(form.id, localTracking, formsCtx.setForms)
+	const addNewStateOnTracking = () => addNewState(localTracking, formsCtx.setForms, form?.id)
 
 	return (
 		<>

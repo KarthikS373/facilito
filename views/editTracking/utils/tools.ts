@@ -30,11 +30,11 @@ const saveStates = (
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  */
 export const addNewState = (
-	formID: string,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
+	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	formID?: string
 ) => {
-	if (localTracking.current.length < 5) {
+	if (localTracking.current.length < 5 && formID) {
 		const emptyStep: FormTrackingStep = { name: '', description: '', color: '#1AA5BB' }
 		localTracking.current.push(emptyStep)
 		setForms((prevForms: FormInterface) => {

@@ -5,12 +5,10 @@
 	grid-template-columns: auto 1fr;
 	grid-template-rows: auto 1fr;
 	height: 100%;
-	border-radius: var(--radius);
 	background: #fff;
 	overflow: hidden;
 	margin: 0 auto;
-	max-width: 1260px;
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+	max-width: 1290px;
 
 	@include for-size(phablet-landscape) {
 		grid-template-columns: 100%;

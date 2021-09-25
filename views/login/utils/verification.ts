@@ -1,8 +1,8 @@
 // REACT
-import { FormEvent, MouseEvent, RefObject } from 'react'
+import type { FormEvent, MouseEvent, RefObject } from 'react'
 
 // TIPOS
-import { AuthError } from 'firebase/auth'
+import type { AuthError } from '@firebase/auth'
 
 // TOOLS
 import { signingUser } from 'utils/auth'
@@ -26,28 +26,32 @@ export const startSigning = async (
 	// EVITAR RELOAD
 	ev.preventDefault()
 
-	// ALERTA DE ERROR
-	const onError = (error: AuthError | string) => {
-		window.Alert({
-			type: 'error',
-			title: 'Ocurrió un error',
-			body: typeof error === 'string' ? error : error.message,
-			onHide: () => {
-				if (progressRef.current) progressRef.current.style.display = 'none'
-			},
-		})
+	if (
+		(isNew && userData.semail?.length && userData.spass?.length) ||
+		(userData.email?.length && userData.pass?.length)
+	) {
+		// ALERTA DE ERROR
+		const onError = (error: AuthError | string) => {
+			window.Alert({
+				type: 'error',
+				title: 'Ocurrió un error',
+				body: typeof error === 'string' ? error : error.message,
+				onHide: () => {
+					if (progressRef.current) progressRef.current.style.display = 'none'
+				},
+			})
+		}
+
+		// VALIDAR USUARIO
+		if (progressRef.current) progressRef.current.style.display = 'block'
+		window.Alert('Iniciando sesión...')
+		signingUser(
+			isNew ? userData.semail : userData.email,
+			isNew ? userData.spass : userData.pass,
+			isNew ? userData.name : undefined,
+			onError,
+			rememberUser
+		).then(() => window.Alert('Bienvenido'))
 	}
-
-	// VALIDAR USUARIO
-	if (progressRef.current) progressRef.current.style.display = 'block'
-	window.Alert('Iniciando sesión...')
-	signingUser(
-		isNew ? userData.semail : userData.email,
-		isNew ? userData.spass : userData.pass,
-		isNew ? userData.name : undefined,
-		onError,
-		rememberUser
-	).then(() => window.Alert('Bienvenido'))
-
 	return null
 }

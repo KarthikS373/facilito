@@ -22,7 +22,7 @@ const onChangeCategory = (
 
 interface SaveCategoryProps {
 	setProducts: (products: { [id: string]: Product }, merge?: boolean) => unknown
-	onChange: (newCategory?: string) => unknown
+	onChange: (newCategory: string) => unknown
 	products: { [id: string]: Product }
 	onClose: () => unknown
 	category: string

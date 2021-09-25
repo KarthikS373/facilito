@@ -15,16 +15,16 @@ import AnswerRow from './components/row'
 import printAnswer, { deleteAnswerPrompt } from './utils/tools'
 
 // ICONOS
-import SettingsInputCompositeTwoTone from '@material-ui/icons/SettingsInputCompositeTwoTone'
-import VisibilityTwoTone from '@material-ui/icons/VisibilityTwoTone'
-import DeleteTwoTone from '@material-ui/icons/DeleteTwoTone'
-import PrintTwoTone from '@material-ui/icons/PrintTwoTone'
+import SettingsInputCompositeTwoTone from '@mui/icons-material/SettingsInputCompositeTwoTone'
+import VisibilityTwoTone from '@mui/icons-material/VisibilityTwoTone'
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
+import PrintTwoTone from '@mui/icons-material/PrintTwoTone'
 
 // MATERIAL
-import TableContainer from '@material-ui/core/TableContainer'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
+import TableContainer from '@mui/material/TableContainer'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
+import Paper from '@mui/material/Paper'
 
 // CONTEXTO
 import BusinessContext from 'context/business'

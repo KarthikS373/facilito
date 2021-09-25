@@ -16,7 +16,7 @@ const changeOptionProps = (
 	const { name, value } = ev.target
 
 	// COPIA
-	if (localProduct.current.extras[extraIndex]) {
+	if (localProduct.current.extras && localProduct.current.extras[extraIndex]) {
 		localProduct.current.extras[extraIndex].options[index] = {
 			...localProduct.current.extras[extraIndex].options[index],
 			[name]: value,

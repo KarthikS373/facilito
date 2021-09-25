@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { appointmentsListener } from 'utils/events'
 
+import type { View } from 'react-big-calendar'
+
 /**
  * Hook de eventos
  * @description Actualiza todos los eventos en tiempo real
@@ -28,21 +30,21 @@ const useAppointments = (
 /**
  * Hook de vistas
  * @description Actualiza todos las vistas con responsive
- * @param  {string} viewState
- * @param  {React.Dispatch<React.SetStateAction<string>>} setViewState
+ * @param  {View} viewState
+ * @param  {React.Dispatch<React.SetStateAction<View>>} setViewState
  * @param  {React.Dispatch<React.SetStateAction<boolean>>} setFixedView
  */
 
 export const useCalendarView = (
-	viewState: string,
-	setViewState: React.Dispatch<React.SetStateAction<string>>,
+	viewState: View,
+	setViewState: React.Dispatch<React.SetStateAction<View>>,
 	setFixedView?: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
 	// CAMBIAR
 	useEffect(() => {
 		// SELECCIONAR
 		const width: number = window.innerWidth
-		let selectView: string = viewState
+		let selectView: View = viewState
 		let fixedView: boolean = false
 
 		// CAMBIAR

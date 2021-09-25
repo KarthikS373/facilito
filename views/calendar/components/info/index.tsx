@@ -1,19 +1,22 @@
 // REACT
 import React, { useState } from 'react'
 
+// TIPOS
+import type { View } from 'react-big-calendar'
+
 // HOOKS
 import { useCalendarView } from '../../utils/hooks'
 
 // ICONOS
-import EventAvailableTwoTone from '@material-ui/icons/EventAvailableTwoTone'
-import DynamicFeedTwoTone from '@material-ui/icons/DynamicFeedTwoTone'
-import DateRangeTwoTone from '@material-ui/icons/DateRangeTwoTone'
-import EventNoteTwoTone from '@material-ui/icons/EventNoteTwoTone'
-import TodayTwoTone from '@material-ui/icons/TodayTwoTone'
+import EventAvailableTwoTone from '@mui/icons-material/EventAvailableTwoTone'
+import DynamicFeedTwoTone from '@mui/icons-material/DynamicFeedTwoTone'
+import DateRangeTwoTone from '@mui/icons-material/DateRangeTwoTone'
+import EventNoteTwoTone from '@mui/icons-material/EventNoteTwoTone'
+import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
 
 // MATERIAL
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
@@ -23,8 +26,8 @@ import PageInfo from 'components/pageInfo'
 import useStrings from 'hooks/lang'
 
 interface InfoProps {
-	viewState: string
-	changeView: (view: string) => () => unknown
+	viewState: View
+	changeView: (view: View) => () => unknown
 }
 const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
 	// STRINGS
@@ -32,7 +35,7 @@ const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
 
 	// MENU
 	const [optionsAnchor, setOptionsAnchor] = useState<HTMLElement | null>(null)
-	const [newViewState, setViewState] = useState<string>()
+	const [newViewState, setViewState] = useState<View>('week')
 	const [fixedView, setFixedView] = useState<boolean>(false)
 
 	const openOptionsMenu = Boolean(optionsAnchor)
