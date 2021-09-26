@@ -12,7 +12,7 @@ const Index: React.FC = () => {
 	const router = useRouter()
 
 	useEffect(() => {
-		router.push(process.env.NODE_ENV == 'development' ? ROUTES.forms : ROUTES.login)
+		router.push(process.env.NODE_ENV === 'development' ? ROUTES.forms : ROUTES.login)
 	}, [])
 
 	return <></>
