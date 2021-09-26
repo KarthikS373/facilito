@@ -10,15 +10,11 @@
 	cursor: pointer;
 	border: 3px solid #511f73;
 	border-radius: var(--radius);
+	background-color: transparent;
+	grid-column: 1/2;
 
 	@include for-size(phone-portrait) {
-		min-width: 0;
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 		border: none;
-		grid-gap: 15px;
-		background-color: transparent;
 
 		div {
 			height: 150px;

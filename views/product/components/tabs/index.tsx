@@ -39,7 +39,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
 
 	return (
-		<div className={Styles.container}>
+		<div>
 			<Paper style={{ background: '#fcfcfc', width: '540px' }}>
 				<Tabs
 					value={tabIndex}

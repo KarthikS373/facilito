@@ -28,7 +28,7 @@
 			display: none;
 
 			@include for-size(phablet-landscape) {
-				display: block;
+				display: flex;
 			}
 		}
 

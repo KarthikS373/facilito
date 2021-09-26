@@ -33,7 +33,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 			<div className={Styles.info}>
 				<div className={Styles.text}>
 					<h3>{$`Configuracion y comportamiento`}</h3>
-					<p>{$`Muestra este producto como destacado, activa su precio promocional y deshabilita el producto.`}</p>
+					<p>{$`Muestra este producto como destacado, activa su precio promocional y deshabilitar.`}</p>
 				</div>
 			</div>
 			<div className={Styles.row}>

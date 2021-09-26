@@ -5,6 +5,7 @@ import React, { useContext, useRef } from 'react'
 import Header from 'components/header'
 import Tabs from './components/tabs'
 import Link from 'components/link'
+import View from 'components/view'
 
 // ICONOS
 import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
@@ -47,7 +48,7 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 	const { $ } = useStrings()
 
 	return (
-		<>
+		<View>
 			<Header
 				customDescription={`${
 					businessCtx.business?.products?.length || 0
@@ -63,7 +64,7 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 				</Link>
 			</Header>
 			<Tabs key={product ? 'current_product' : 'empty_product'} productRef={productRef} />
-		</>
+		</View>
 	)
 }
 

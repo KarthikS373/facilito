@@ -95,9 +95,15 @@ export const theme = createTheme({
 					borderRadius: 10,
 					height: '49px',
 					width: '49px',
+					transition: 'border-color 0.16s linear',
+					border: '1px solid rgba(0,0,0,.05)',
 
 					'& .MuiSvgIcon-root': {
 						opacity: 0.6,
+					},
+
+					'&:hover': {
+						borderColor: 'rgba(0,0,0,.2)',
 					},
 
 					'& .MuiBadge-badge': {

@@ -6,6 +6,7 @@ import SideBar from './components/sidebar'
 import Header from 'components/header'
 import Info from './components/info'
 import Link from 'components/link'
+import View from 'components/view'
 
 // UTILS
 import useDefaultFilter from 'hooks/filters'
@@ -63,7 +64,7 @@ const Products: React.FC = () => {
 	useDefaultFilter('products-filter', 'naz', setFilter)
 
 	return (
-		<>
+		<View>
 			{/* HEADER */}
 			<Header
 				customDescription={`${
@@ -86,7 +87,7 @@ const Products: React.FC = () => {
 
 			{/* SIDEBAR DE CATEGORÍAS */}
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />
-		</>
+		</View>
 	)
 }
 

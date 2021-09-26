@@ -4,22 +4,15 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	grid-template-rows: auto;
-	padding: calc(var(--margin) - 5px) calc(var(--margin) + 5px);
 	grid-gap: var(--margin);
 	width: 100%;
 
 	@include for-size(phone-landscape) {
-		padding: 7px var(--margin) 0 var(--margin);
 		grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
 	}
 
 	@include for-size(phone-portrait) {
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
 		grid-template-rows: auto auto;
-		padding: var(--margin) var(--margin);
-	}
-
-	@include for-size(phone-portrait-min) {
-		padding: var(--margin) var(--margin) 0px var(--margin);
 	}
 }

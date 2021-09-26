@@ -18,6 +18,7 @@ import SortByAlphaTwoTone from '@mui/icons-material/SortByAlphaTwoTone'
 import FormsList from './components/formsList'
 import NewForm from './components/newForm'
 import Header from 'components/header'
+import View from 'components/view'
 
 const Forms: React.FC = () => {
 	// STRINGS
@@ -34,7 +35,7 @@ const Forms: React.FC = () => {
 	useDefaultFilter('forms-filter', 'asc', setFilter)
 
 	return (
-		<>
+		<View>
 			<Header>
 				<Button
 					fullWidth
@@ -47,7 +48,7 @@ const Forms: React.FC = () => {
 			</Header>
 			<NewForm />
 			<FormsList filter={filter} />
-		</>
+		</View>
 	)
 }
 

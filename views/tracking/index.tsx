@@ -9,6 +9,7 @@ import { changeFilter } from 'utils/tools'
 import FormList from './components/formList'
 import Header from 'components/header'
 import Info from './components/info'
+import View from 'components/view'
 
 const Tracking: React.FC = () => {
 	// FILTRO
@@ -22,11 +23,11 @@ const Tracking: React.FC = () => {
 	useDefaultFilter('tracking-filter', 'asc', setFilter)
 
 	return (
-		<>
+		<View>
 			<Header />
 			<Info changeFilter={changeFilterEv} filter={filter} />
 			<FormList filter={filter} />
-		</>
+		</View>
 	)
 }
 

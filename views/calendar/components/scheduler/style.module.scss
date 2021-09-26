@@ -1,6 +1,4 @@
 .weekContainer {
-	margin: 15px var(--margin);
-
 	& > div:first-child {
 		& > div:nth-child(2) {
 			background-color: #fcfcfc;
@@ -48,8 +46,6 @@
 }
 
 .monthContainer {
-	margin: 15px var(--margin);
-
 	& > div:first-child {
 		& > div:nth-child(2) {
 			background-color: #fcfcfc;
@@ -101,8 +97,6 @@
 }
 
 .dayContainer {
-	margin: 15px var(--margin);
-
 	& > div:first-child {
 		& > div:nth-child(2) {
 			background-color: #fcfcfc;
@@ -131,8 +125,6 @@
 }
 
 .agendaContainer {
-	margin: 15px var(--margin);
-
 	& > div:first-child {
 		& > div:nth-child(2) {
 			background-color: #fcfcfc;

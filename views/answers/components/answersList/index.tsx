@@ -140,7 +140,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 				stateIndex={answers[currentIndex]?.stateIndex || 0}
 			/>
 			<PopperMenuList
-				placement='bottom-end'
+				placement='left'
 				onClose={closeRowMenu}
 				anchorEl={currentRow}
 				open={openRowMenu}>

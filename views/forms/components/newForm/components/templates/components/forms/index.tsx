@@ -64,6 +64,7 @@ const NewForm: React.FC = () => {
 					$style={{
 						lineHeight: 1.1,
 						textAlign: 'left',
+						borderColor: 'rgba(0,0,0,.2)',
 					}}>
 					{template.title}
 				</ColorButton>

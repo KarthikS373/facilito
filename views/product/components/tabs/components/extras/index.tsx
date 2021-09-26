@@ -45,7 +45,7 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 			<div className={Styles.info}>
 				<div className={Styles.text}>
 					<h3>{$`Variables dinamicas`}</h3>
-					<p>{$`Son opciones o extras agregadas a tu producto, con diferentes formas de seleccion y precios.`}</p>
+					<p>{$`Son opciones o extras agregadas a tu producto, con diferentes formas de seleccion.`}</p>
 				</div>
 				<Button
 					color='primary'

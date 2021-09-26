@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react'
 // COMPONENTES
 import Header from 'components/header'
 import Info from './components/info'
+import View from 'components/view'
 
 // HOOKS
 import { getChangesTrigger, updateLocalAnswerState } from './utils/tools'
@@ -60,7 +61,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	useDefaultFilter('answers-filter', 'naz', setFilter)
 
 	return (
-		<>
+		<View>
 			<Header customDescription={`${answers.length || 0} ${$`respuesta(s) creadas`}`}>
 				<DownloadAnswers answers={answers} currentForm={currentForm} />
 			</Header>
@@ -76,7 +77,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 				tracking={currentForm?.tracking || []}
 				components={currentForm?.components || []}
 			/>
-		</>
+		</View>
 	)
 }
 

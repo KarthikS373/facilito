@@ -2,33 +2,27 @@
 
 .container {
 	position: relative;
-	padding: calc(var(--margin) - 5px) calc(var(--margin) + 5px);
-
-	@include for-size(phone-landscape) {
-		overflow: hidden;
-	}
 
 	@include for-size(phone-portrait) {
-		padding: 20px var(--margin);
 		display: flex;
 		justify-content: center;
 	}
 
 	.background {
 		position: relative;
-		left: calc(var(--margin) * -1.25);
-		margin-top: -15px;
-		width: calc(100% + calc(var(--margin) * 2.5));
-		height: 195px;
+		left: calc(var(--margin) * -1);
+		width: calc(100% + calc(var(--margin) * 2));
+		height: calc(195px + var(--margin));
 		background-size: cover;
+		margin-top: calc(var(--margin) * -1);
 
 		@include for-size(phone-landscape) {
 			position: absolute;
+			height: calc(195px - var(--margin));
 		}
 
 		@include for-size(phone-portrait) {
 			height: 100%;
-			margin-top: -20px;
 		}
 
 		&::before {
@@ -55,7 +49,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: -75px;
+		margin-top: -62px;
 		position: relative;
 		z-index: 2;
 
@@ -71,7 +65,6 @@
 
 		.businessContainer {
 			display: flex;
-			height: 150px;
 			align-items: center;
 
 			@include for-size(phone-portrait) {
@@ -80,7 +73,8 @@
 			}
 
 			.businessPic {
-				padding-top: 8px;
+				height: 125px;
+				width: 125px;
 
 				@include for-size(phone-portrait) {
 					padding-top: 0;
@@ -128,13 +122,8 @@
 
 				div:first-child {
 					h1 {
-						font-size: 1.7rem;
-						margin-bottom: -10px;
-
-						@include for-size(small-desktop) {
-							font-size: 1.4rem;
-							margin-bottom: -15px;
-						}
+						font-size: 1.4rem;
+						margin-bottom: -15px;
 					}
 
 					span {

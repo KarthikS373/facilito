@@ -5,6 +5,7 @@ import React, { useRef, useContext } from 'react'
 import StatesList from './components/statesList'
 import Header from 'components/header'
 import Info from './components/info'
+import View from 'components/view'
 
 // HOOKS
 import saveStates, { addNewState } from './utils/tools'
@@ -49,7 +50,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 	const addNewStateOnTracking = () => addNewState(localTracking, formsCtx.setForms, form?.id)
 
 	return (
-		<>
+		<View>
 			<Header customDescription={`${form?.tracking?.length || 0} ${$`evento(s) creados`}`}>
 				<Button
 					color='primary'
@@ -60,7 +61,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 			</Header>
 			<Info onAdd={addNewStateOnTracking} />
 			<StatesList formID={formID} localTracking={localTracking} />
-		</>
+		</View>
 	)
 }
 

@@ -1,21 +1,18 @@
 @import 'styles/mixins';
+
 .container {
-	padding: calc(var(--margin) - 5px) calc(var(--margin) + 5px);
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: var(--margin);
+	column-gap: var(--margin);
+	row-gap: var(--margin);
 
 	@include for-size(phone-portrait) {
-		margin-top: -185px;
+		margin-top: -170px;
 		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	}
 
 	@include for-size(phone-landscape) {
 		grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
-	}
-
-	@include for-size(phone-portrait-min) {
-		margin-top: 0px;
 	}
 
 	.respSpace {
@@ -24,8 +21,14 @@
 		@include for-size(phone-portrait) {
 			display: block;
 		}
+	}
+}
 
-		@include for-size(phone-portrait-min) {
+@media screen and (max-width: 344px) {
+	.container {
+		margin-top: 0;
+
+		.respSpace {
 			display: none;
 		}
 	}

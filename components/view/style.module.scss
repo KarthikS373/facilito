@@ -1,0 +1,6 @@
+.container {
+	padding: var(--margin);
+	display: grid;
+	grid-template-columns: 1fr;
+	row-gap: var(--margin);
+}
