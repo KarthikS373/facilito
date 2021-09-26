@@ -1,46 +1,46 @@
 {
-	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilitar": {
+	"": {
 		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilitar": {
+		"en": "Show this product as featured activate your promotional price and disable.",
 		"es": "$"
 	},
 	"desde": {
-		"en": "",
+		"en": "From",
 		"es": "$"
 	},
 	"cerrar": {
-		"en": "",
+		"en": "Close",
 		"es": "$"
 	},
 	"hasta": {
-		"en": "",
+		"en": "To",
 		"es": "$"
 	},
 	"programado_el": {
-		"en": "",
-		"es": "$"
-	},
-	"firebase_error_authmissingemail": {
-		"en": "",
+		"en": "Scheduled on",
 		"es": "$"
 	},
 	"la_contrasena_debe_tener_al_menos_8_caracteres_para_considerarla_segura": {
-		"en": "",
+		"en": "The password should have at least 8 characters to consider secure.",
 		"es": "$"
 	},
 	"ocurrio_un_error": {
-		"en": "",
+		"en": "An error occurred",
 		"es": "$"
 	},
 	"ingresa_el_correo_electronico_al_que_deseas_que_enviemos_un_link_de_recuperacion": {
-		"en": "",
+		"en": "Enter the email to what you want for send a recovery link.",
 		"es": "$"
 	},
 	"recuperar": {
-		"en": "",
+		"en": "Get it back",
 		"es": "$"
 	},
 	"habilitar_producto": {
-		"en": "",
+		"en": "Show as featured product",
 		"es": "$"
 	},
 	"mostrar_como_producto_destacado": {
@@ -48,183 +48,115 @@
 		"es": "$"
 	},
 	"activar_precio_promocional": {
-		"en": "",
+		"en": "Enable promotional price",
 		"es": "$"
 	},
 	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ningun_formulario_en_donde_se_haya_agregado": {
-		"en": "",
-		"es": "$"
-	},
-	"los_productos_inactivos_no_se_mostraran_en_ningun_formulario": {
-		"en": "",
+		"en": "Products marked as inactive not shown in any form where they have been added.",
 		"es": "$"
 	},
 	"estado_actual": {
-		"en": "",
+		"en": "Current state",
 		"es": "$"
 	},
 	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado_en_tu_formulario": {
-		"en": "",
+		"en": "Featured products will shown automatically if add a featured field in your form.",
 		"es": "$"
 	},
 	"producto_destacado": {
-		"en": "",
+		"en": "Featured product",
 		"es": "$"
 	},
 	"el_precio_original_se_motrara_tachado_con_rojo_y_el_precio_promocional_se_mostrara_primero": {
-		"en": "",
-		"es": "$"
-	},
-	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilita_el_producto": {
-		"en": "",
-		"es": "$"
-	},
-	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_o_deshabilitar_el_producto": {
-		"en": "",
-		"es": "$"
-	},
-	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_o_deshabilitarlo": {
-		"en": "",
-		"es": "$"
-	},
-	"muestra_este_producto_como_destacado_o_activa_su_precio_promocional_tambien_puedes_deshabilitarlo": {
-		"en": "",
+		"en": "The original price is tracked with red blackout and the promotional price is shown first.",
 		"es": "$"
 	},
 	"configuracion_y_comportamiento": {
-		"en": "",
+		"en": "Configuration and behavior",
 		"es": "$"
 	},
 	"agregar_opcion": {
-		"en": "",
+		"en": "Add option",
 		"es": "$"
 	},
 	"nombre": {
-		"en": "",
+		"en": "Name",
 		"es": "$"
 	},
 	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios_seleccionados": {
-		"en": "",
-		"es": "$"
-	},
-	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios": {
-		"en": "",
-		"es": "$"
-	},
-	"configura_los_aspectos_importantes_del_producto_estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_formularios": {
-		"en": "",
+		"en": "This data will shown on the product cards in your selected forms.",
 		"es": "$"
 	},
 	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra_en_tus_formularios": {
-		"en": "",
-		"es": "$"
-	},
-	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra": {
-		"en": "",
+		"en": "This information will be used in the cart and the Shopping Summary in your forms.",
 		"es": "$"
 	},
 	"caracteristicas_en_stock": {
-		"en": "",
-		"es": "$"
-	},
-	"caracteristicas_en_stocl": {
-		"en": "",
-		"es": "$"
-	},
-	"visualizacion_en_stock": {
-		"en": "",
-		"es": "$"
-	},
-	"visualizacion_en_stocl": {
-		"en": "",
+		"en": "Features in stock",
 		"es": "$"
 	},
 	"informacion_general": {
-		"en": "",
+		"en": "General information",
 		"es": "$"
 	},
 	"cantidad": {
-		"en": "",
+		"en": "Amount",
 		"es": "$"
 	},
 	"obligatorio": {
-		"en": "",
+		"en": "Required",
 		"es": "$"
 	},
 	"por_cantidad": {
-		"en": "",
+		"en": "By quantity",
 		"es": "$"
 	},
 	"seleccion_multiple": {
-		"en": "",
+		"en": "Multiple choice",
 		"es": "$"
 	},
 	"seleccion_unica": {
-		"en": "",
+		"en": "Unique selection",
 		"es": "$"
 	},
 	"tipo_de_variable": {
-		"en": "",
+		"en": "Variable type",
 		"es": "$"
 	},
 	"opciones": {
-		"en": "",
-		"es": "$"
-	},
-	"extrasopcionales": {
-		"en": "",
+		"en": "Options",
 		"es": "$"
 	},
 	"general": {
-		"en": "",
-		"es": "$"
-	},
-	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion_y_precios": {
-		"en": "",
-		"es": "$"
-	},
-	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion_y_precio": {
-		"en": "",
+		"en": "General",
 		"es": "$"
 	},
 	"agregar": {
-		"en": "",
+		"en": "Add",
 		"es": "$"
 	},
 	"son_opciones_o_extras_agregadas_a_tu_producto_con_diferentes_formas_de_seleccion": {
-		"en": "",
+		"en": "Are options or extras added to your product with different selection ways",
 		"es": "$"
 	},
 	"variables_dinamicas": {
-		"en": "",
+		"en": "Dynamic variables",
 		"es": "$"
 	},
 	"extras": {
-		"en": "",
+		"en": "Extras",
 		"es": "$"
 	},
 	"esta_opcion_creara_valores_negativos_en_tu_stock_cuando_el_producto_se_encuentre_agotado": {
-		"en": "",
-		"es": "$"
-	},
-	"esta_opcion_creara_valores_negativos_para_este_producto_en_tu_stock": {
-		"en": "",
-		"es": "$"
-	},
-	"esta_opcion_creara_valores_negativos_para_este_producto_en_tu_stock_pero_continuara_aceptando_compras": {
-		"en": "",
+		"en": "This option will create negative values ​​in your stock when the product is out of stock.",
 		"es": "$"
 	},
 	"esta_opcion_permite_que_el_valor_del_stock_nunca_termine_y_el_producto_siempre_este_disponible": {
-		"en": "",
+		"en": "This option allows that the value of the stock never ends and the product is always available.",
 		"es": "$"
 	},
 	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe_en_tu_stock": {
-		"en": "",
-		"es": "$"
-	},
-	"": {
-		"en": "",
+		"en": "This option will show a \"Not available\" message when the product out in your stock",
 		"es": "$"
 	},
 	"stock_sin_limites_de_venta": {
