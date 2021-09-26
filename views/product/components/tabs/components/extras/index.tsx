@@ -5,17 +5,18 @@ import React, { useState, useEffect } from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // COMPONENTES
 import Extra from './components/extra'
+import TabInfo from '../tabInfo'
 
 // ICONS
 import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
-import useStrings from 'hooks/lang'
 import addExtra, { removeExtra } from './utils/tools'
+import useStrings from 'hooks/lang'
 
 interface GeneralProps {
 	show: boolean
@@ -42,17 +43,19 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
-			<div className={Styles.info}>
-				<div className={Styles.text}>
-					<h3>{$`Variables dinamicas`}</h3>
-					<p>{$`Son opciones o extras agregadas a tu producto, con diferentes formas de seleccion.`}</p>
-				</div>
-				<Button
+			<TabInfo
+				title={$`Variables dinamicas`}
+				body={$`Son opciones o extras agregadas a tu producto, con diferentes formas de seleccion.`}>
+				<ColorButton
 					color='primary'
 					variant='outlined'
 					onClick={addExtraEv}
-					startIcon={<AddTwoTone />}>{$`Agregar`}</Button>
-			</div>
+					startIcon={<AddTwoTone />}
+					$style={{
+						color: 'var(--primary)',
+						borderColor: 'var(--primary)',
+					}}>{$`Agregar`}</ColorButton>
+			</TabInfo>
 
 			{/* EXTRAS */}
 			{extras.map((extra: ExtendedExtra, index: number) => (

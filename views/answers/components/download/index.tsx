@@ -12,7 +12,7 @@ import XLSX from 'xlsx'
 import GetAppTwoTone from '@mui/icons-material/GetAppTwoTone'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -39,11 +39,11 @@ const DownloadAnswers: React.FC<DownloadAnswersProps> = ({ answers, currentForm 
 				{ title: $`Pregunta`, dataIndex: 'quest' },
 				{ title: $`Respuesta`, dataIndex: 'answer' },
 			]}>
-			<Button
+			<ColorButton
+				color='primary'
 				variant='contained'
-				style={{ color: '#fff' }}
-				startIcon={<GetAppTwoTone />}
-				color='primary'>{$`Descargar todo`}</Button>
+				$style={{ color: '#fff' }}
+				startIcon={<GetAppTwoTone />}>{$`Descargar todo`}</ColorButton>
 		</ExportSheet>
 	)
 }

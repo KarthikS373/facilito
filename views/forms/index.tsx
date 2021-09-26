@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // HOC
 import useStrings from 'hooks/lang'
@@ -37,14 +37,14 @@ const Forms: React.FC = () => {
 	return (
 		<View>
 			<Header>
-				<Button
+				<ColorButton
 					fullWidth
 					variant='outlined'
 					onClick={changeFilterEv}
-					style={{ backgroundColor: '#fbfbfb' }}
-					startIcon={<SortByAlphaTwoTone />}>
+					startIcon={<SortByAlphaTwoTone />}
+					$style={{ backgroundColor: '#fbfbfb' }}>
 					{filter === 'asc' ? $`Filtrar ascendente` : $`Filtrar desendente`}
-				</Button>
+				</ColorButton>
 			</Header>
 			<NewForm />
 			<FormsList filter={filter} />

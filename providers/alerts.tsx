@@ -7,17 +7,23 @@ import AlertTemplate from 'components/lualert'
 // HOC
 import useStrings from 'hooks/lang'
 
+// TEMA
+import { useTheme } from '@mui/material/styles'
+
 const AlertsProvider: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// TEMA
+	const theme = useTheme()
 
 	return (
 		<AlertTemplate
 			blurred
 			zIndex={100}
-			confirmColor='#1AA5BB'
 			cancelText={$`Cancelar`}
 			confirmText={$`Aceptar`}
+			confirmColor={theme.palette.primary.main}
 		/>
 	)
 }

@@ -6,6 +6,7 @@ import Styles from './style.module.scss'
 
 // COMPONENTES
 import showInfo from './components/info'
+import TabInfo from '../tabInfo'
 
 // MATERIAL
 import InputAdornment from '@mui/material/InputAdornment'
@@ -48,12 +49,10 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
-			<div className={Styles.info}>
-				<div className={Styles.text}>
-					<h3>{$`Caracteristicas en stock`}</h3>
-					<p>{$`Esta informacion sera utilizada en el carrito, y en el resumen de compra en tus formularios.`}</p>
-				</div>
-			</div>
+			<TabInfo
+				title={$`Caracteristicas en stock`}
+				body={$`Esta informacion sera utilizada en el carrito, y en el resumen de compra en tus formularios.`}
+			/>
 
 			<div className={Styles.row}>
 				<TextField

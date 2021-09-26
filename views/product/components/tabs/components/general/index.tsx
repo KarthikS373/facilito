@@ -7,6 +7,9 @@ import Styles from './style.module.scss'
 // TIPOS
 import type { SelectChangeEvent } from '@mui/material/Select'
 
+// COMPONENTES
+import TabInfo from '../tabInfo'
+
 // MATERIAL
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControl from '@mui/material/FormControl'
@@ -57,12 +60,10 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
-			<div className={Styles.info}>
-				<div className={Styles.text}>
-					<h3>{$`Informacion general`}</h3>
-					<p>{$`Estos datos se mostraran en las tarjetas de producto en tus formularios seleccionados.`}</p>
-				</div>
-			</div>
+			<TabInfo
+				title={$`Informacion general`}
+				body={$`Estos datos se mostraran en las tarjetas de producto en tus formularios seleccionados.`}
+			/>
 
 			<TextField
 				id='title'

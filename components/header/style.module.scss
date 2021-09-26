@@ -60,7 +60,6 @@
 
 		@include for-size(phone-portrait) {
 			display: inline-flex;
-			width: 100%;
 		}
 
 		.businessContainer {
@@ -166,7 +165,7 @@
 						margin-bottom: 5px;
 
 						span:last-child {
-							background-color: #511f73;
+							background-color: var(--secondary);
 							color: #fff;
 							font-weight: 500;
 							padding: 6px 15px;

@@ -8,6 +8,9 @@ import Styles from './style.module.scss'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 
+// COMPONENTES
+import TabInfo from '../tabInfo'
+
 // ICONOS
 import InfoTwoTone from '@mui/icons-material/InfoTwoTone'
 
@@ -30,12 +33,11 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
-			<div className={Styles.info}>
-				<div className={Styles.text}>
-					<h3>{$`Configuracion y comportamiento`}</h3>
-					<p>{$`Muestra este producto como destacado, activa su precio promocional y deshabilitar.`}</p>
-				</div>
-			</div>
+			<TabInfo
+				title={$`Configuracion y comportamiento`}
+				body={$`Muestra este producto como destacado, activa su precio promocional y deshabilitar.`}
+			/>
+
 			<div className={Styles.row}>
 				<FormControlLabel
 					control={

@@ -158,6 +158,7 @@ export const theme = createTheme({
 		},
 		primary: {
 			main: '#1AA5BB',
+			dark: '#166CD6',
 		},
 	},
 })

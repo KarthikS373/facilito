@@ -96,7 +96,7 @@ export const clearStateInputs = (
 	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
 ) => {
 	// LIMPIAR
-	const newStep = { name: '', description: '', color: '#1AA5BB' }
+	const newStep = { name: '', description: '', color: 'var(--primary)' }
 
 	// ACTUALIZAR
 	localTracking.current[index] = newStep

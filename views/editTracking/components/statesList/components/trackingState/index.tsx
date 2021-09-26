@@ -84,8 +84,8 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 				className={Styles.container}
 				style={
 					{
-						borderColor: stepState.color || '#1AA5BB',
-						'--currentColor': stepState.color || '#1AA5BB',
+						borderColor: stepState.color || 'var(--primary)',
+						'--currentColor': stepState.color || 'var(--primary)',
 					} as React.CSSProperties
 				}>
 				<div className={Styles.inputs}>
@@ -104,7 +104,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 								<InputAdornment position='start'>
 									<FormatColorTextTwoTone
 										style={{
-											fill: stepState.color || '#1AA5BB',
+											fill: stepState.color || 'var(--primary)',
 										}}
 									/>
 								</InputAdornment>
@@ -129,7 +129,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 								<InputAdornment position='start'>
 									<ChatTwoTone
 										style={{
-											fill: stepState.color || '#1AA5BB',
+											fill: stepState.color || 'var(--primary)',
 										}}
 									/>
 								</InputAdornment>
@@ -152,7 +152,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 					<IconButton
 						onClick={openColorMenuEv}
 						style={{
-							backgroundColor: stepState.color || '#1AA5BB',
+							backgroundColor: stepState.color || 'var(--primary)',
 						}}
 						className={Styles.colorButton}>
 						{index + 1}
@@ -168,7 +168,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 				<ul className={Styles.colors}>
 					{/* AZUL */}
 					<li>
-						<IconButton onClick={setStepColor('#1AA5BB')} />
+						<IconButton onClick={setStepColor('var(--primary)')} />
 					</li>
 
 					{/* VERDE */}

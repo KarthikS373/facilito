@@ -8,7 +8,7 @@
 	outline: none;
 	width: 100%;
 	cursor: pointer;
-	border: 3px solid #511f73;
+	border: 3px solid var(--secondary);
 	border-radius: var(--radius);
 	background-color: transparent;
 	grid-column: 1/2;
@@ -23,7 +23,7 @@
 			position: relative;
 			width: 100%;
 			overflow: hidden;
-			border: 3px solid #511f73;
+			border: 3px solid var(--secondary);
 		}
 	}
 

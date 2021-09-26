@@ -99,6 +99,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 					{children || (
 						<Link rKey='forms' passHref>
 							<Button
+								fullWidth
 								color='primary'
 								variant='contained'
 								style={{ color: '#fff' }}

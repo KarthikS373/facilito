@@ -12,18 +12,4 @@
 	.row {
 		display: flex;
 	}
-
-	.info {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 10px;
-		font-size: 1em;
-		line-height: 1.4;
-
-		.text {
-			width: 320px;
-			opacity: 0.8;
-		}
-	}
 }

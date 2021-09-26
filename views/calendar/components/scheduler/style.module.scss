@@ -17,7 +17,7 @@
 
 						[class*='rbc-today'] {
 							font-size: 1.2rem;
-							color: #1aa5bb;
+							color: var(--primary);
 						}
 					}
 				}
@@ -75,7 +75,7 @@
 						[class*='rbc-now'] {
 							a {
 								display: block;
-								background-color: #1aa5bb;
+								background-color: var(--primary);
 								color: #fff;
 								width: 25px;
 								border-radius: 100%;

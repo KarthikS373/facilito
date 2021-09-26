@@ -35,7 +35,7 @@ export const addNewState = (
 	formID?: string
 ) => {
 	if (localTracking.current.length < 5 && formID) {
-		const emptyStep: FormTrackingStep = { name: '', description: '', color: '#1AA5BB' }
+		const emptyStep: FormTrackingStep = { name: '', description: '', color: 'var(--primary)' }
 		localTracking.current.push(emptyStep)
 		setForms((prevForms: FormInterface) => {
 			// BUSCAR

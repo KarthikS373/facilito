@@ -49,7 +49,7 @@
 		z-index: 2;
 		transition: transform 0.5s ease-in-out;
 		transition-timing-function: var(--transition);
-		background: linear-gradient(125deg, #1bcbe6, #096de8, #511f73);
+		background: linear-gradient(125deg, #1bcbe6, #096de8, var(--secondary));
 		background-size: 400% 400%;
 		-webkit-animation: GradAnim 7s ease infinite;
 		-moz-animation: GradAnim 7s ease infinite;

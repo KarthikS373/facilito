@@ -53,6 +53,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 		<View>
 			<Header customDescription={`${form?.tracking?.length || 0} ${$`evento(s) creados`}`}>
 				<Button
+					fullWidth
 					color='primary'
 					variant='contained'
 					onClick={saveTracking}

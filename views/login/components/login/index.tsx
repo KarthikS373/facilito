@@ -146,7 +146,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 						startIcon={<ExitToApp />}
 						$style={{
 							color: '#fff',
-							background: 'linear-gradient(to right, #1aa5bb, #166cd6)',
+							background: 'linear-gradient(to right, var(--primary), var(--primaryDark))',
 						}}>
 						{$`Iniciar sesión`}
 					</ColorButton>

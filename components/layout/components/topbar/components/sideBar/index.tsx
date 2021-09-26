@@ -64,8 +64,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								$style={{
-									borderColor: getActiveRoute(path, 'formularios') ? '#1AA5BB' : undefined,
-									color: getActiveRoute(path, 'formularios') ? '#1AA5BB' : undefined,
+									borderColor: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
 								}}
 								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</ColorButton>
 						</Link>
@@ -77,9 +77,9 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								$style={{
-									borderColor: getActiveRoute(path, 'tracking') ? '#1AA5BB' : undefined,
+									borderColor: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 
-									color: getActiveRoute(path, 'tracking') ? '#1AA5BB' : undefined,
+									color: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 								}}
 								startIcon={<ComputerTwoTone />}>{$`Tracking`}</ColorButton>
 						</Link>
@@ -91,8 +91,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								$style={{
-									borderColor: getActiveRoute(path, 'productos') ? '#1AA5BB' : undefined,
-									color: getActiveRoute(path, 'productos') ? '#1AA5BB' : undefined,
+									borderColor: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
 								}}
 								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</ColorButton>
 						</Link>
@@ -105,8 +105,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
 								$style={{
-									borderColor: getActiveRoute(path, 'celandario') ? '#1AA5BB' : undefined,
-									color: getActiveRoute(path, 'celandario') ? '#1AA5BB' : undefined,
+									borderColor: getActiveRoute(path, 'celandario') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'celandario') ? 'var(--primary)' : undefined,
 								}}>{$`Calendario`}</ColorButton>
 						</Link>
 					</li>

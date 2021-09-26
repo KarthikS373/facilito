@@ -16,11 +16,17 @@ import ROUTES from 'router/routes'
 // COMPONENTES
 import Footer from './components/footer'
 
+// HOOKS
+import { useTheme } from '@mui/material/styles'
+
 // NEXT
 import dynamic from 'next/dynamic'
 const Topbar = dynamic(() => import('./components/topbar'))
 
 const Layout: React.FC = (props) => {
+	// TEMA
+	const theme = useTheme()
+
 	// ROUTER
 	const router = useRouter()
 	const path: string = router.asPath
@@ -29,7 +35,15 @@ const Layout: React.FC = (props) => {
 	const showTopbar = evaluateTopbarPath(path)
 
 	return (
-		<div className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
+		<div
+			style={
+				{
+					'--primary': theme.palette.primary.main,
+					'--secondary': theme.palette.secondary.main,
+					'--primaryDark': theme.palette.primary.dark,
+				} as React.CSSProperties
+			}
+			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
 			{showTopbar && <Topbar showSearchBar />}
 			<main>
 				{props.children}

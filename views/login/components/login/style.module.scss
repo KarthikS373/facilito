@@ -87,7 +87,7 @@
 }
 
 .loginBtn {
-	background: linear-gradient(to right, #1aa5bb, #166cd6);
+	background: linear-gradient(to right, var(--primary), var(--primaryDark));
 	color: #fff !important;
 
 	span {
