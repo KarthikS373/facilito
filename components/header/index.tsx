@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 import Image from 'next/image'
 
 // COMPONENTES
+import ColorButton from 'components/button'
 import Link from 'components/link'
 
 // ESTILOS
@@ -98,12 +99,12 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 					</Link>
 					{children || (
 						<Link rKey='forms' passHref>
-							<Button
+							<ColorButton
 								fullWidth
 								color='primary'
 								variant='contained'
-								style={{ color: '#fff' }}
-								startIcon={<DescriptionTwoTone />}>{$`Ir a formularios`}</Button>
+								$style={{ color: '#fff', background: 'var(--primary)' }}
+								startIcon={<DescriptionTwoTone />}>{$`Ir a formularios`}</ColorButton>
 						</Link>
 					)}
 				</div>

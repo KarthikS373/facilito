@@ -37,17 +37,13 @@
 			height: 45px;
 
 			&:first-child {
-				span {
-					opacity: 0.7;
-				}
+				opacity: 0.7;
+				color: var(--btnColor);
 			}
 
 			&:last-child {
 				background-color: var(--currentColor);
-
-				span {
-					color: #fff;
-				}
+				color: #fff;
 			}
 		}
 	}

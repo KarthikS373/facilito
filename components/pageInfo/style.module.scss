@@ -28,7 +28,7 @@
 			margin-bottom: 10px;
 		}
 
-		@include for-size(phone-portrait) {
+		@include for-size(phone-portrait-min) {
 			flex-direction: column;
 		}
 
@@ -39,6 +39,11 @@
 
 		.text {
 			margin-left: 5px;
+
+			@include for-size(phone-portrait-min) {
+				margin-left: 0px;
+				margin-top: calc(var(--margin) - 5px);
+			}
 
 			h2 {
 				font-size: 1.3rem;
