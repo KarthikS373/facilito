@@ -69,7 +69,6 @@ const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
 				(newViewState === 'week' && Styles.weekContainer) ||
 				(newViewState === 'month' && Styles.monthContainer) ||
 				(newViewState === 'day' && Styles.dayContainer) ||
-				(newViewState === 'agenda' && Styles.agendaContainer) ||
 				Styles.weekContainer
 			}>
 			<Calendar

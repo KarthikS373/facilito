@@ -20,6 +20,7 @@ import Button from '@mui/material/Button'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
+import ColorButton from 'components/button'
 import PageInfo from 'components/pageInfo'
 
 // STRINGS
@@ -64,8 +65,7 @@ const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
 					{$`Ver como `}
 					{(newViewState === 'month' && $`mes`) ||
 						(newViewState === 'week' && $`semana`) ||
-						(newViewState === 'day' && $`día`) ||
-						(newViewState === 'agenda' && $`agenda`)}
+						(newViewState === 'day' && $`día`)}
 				</Button>
 			</PageInfo>
 			<PopperMenuList
@@ -75,40 +75,34 @@ const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
 				anchorEl={optionsAnchor}
 				onClose={closeOptionsMenu}>
 				<MenuItem onClick={closeOptionsMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
-						startIcon={<DateRangeTwoTone />}
-						onClick={changeView('month')}>
+						$style={{ height: '40px' }}
+						onClick={changeView('month')}
+						startIcon={<DateRangeTwoTone />}>
 						{$`Mes`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 				<MenuItem onClick={closeOptionsMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						startIcon={<EventNoteTwoTone />}
 						onClick={changeView('week')}>
 						{$`Semana`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 				<MenuItem onClick={closeOptionsMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						startIcon={<TodayTwoTone />}
 						onClick={changeView('day')}>
 						{$`Día`}
-					</Button>
-				</MenuItem>
-				<MenuItem onClick={closeOptionsMenu}>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<EventAvailableTwoTone />}
-						onClick={changeView('agenda')}>
-						{$`Agenda`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 			</PopperMenuList>
 		</>
