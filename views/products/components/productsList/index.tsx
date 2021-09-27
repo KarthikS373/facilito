@@ -7,12 +7,12 @@ import Styles from './style.module.scss'
 // MATERIAL
 import TableContainer from '@mui/material/TableContainer'
 import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
 import TableHead from './components/tableHead'
+import ColorButton from 'components/button'
 import ProductRow from './components/row'
 import Link from 'components/link'
 
@@ -98,25 +98,30 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 				</TableContainer>
 			</div>
 			<PopperMenuList
-				placement='bottom-end'
-				onClose={closeRowMenu}
+				open={openRowMenu}
 				anchorEl={currentRow}
-				open={openRowMenu}>
+				placement='bottom-end'
+				onClose={closeRowMenu}>
 				<MenuItem>
 					<Link rKey='editProduct' id={products[currentIndex]?.sku}>
-						<Button fullWidth variant='outlined' startIcon={<CreateTwoTone />}>
+						<ColorButton
+							fullWidth
+							$style={{ height: '40px' }}
+							variant='outlined'
+							startIcon={<CreateTwoTone />}>
 							{$`Editar`}
-						</Button>
+						</ColorButton>
 					</Link>
 				</MenuItem>
 				<MenuItem>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
 						onClick={deleteProductEv}
-						startIcon={<DeleteTwoTone />}>
+						startIcon={<DeleteTwoTone />}
+						$style={{ height: '40px' }}>
 						{$`Borrar`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 			</PopperMenuList>
 		</>

@@ -39,7 +39,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	const [answers, setAnswers] = useState<FormAnswerSelf[]>([])
 
 	// FILTROS
-	const [filter, setFilter] = useState<string>('naz')
+	const [filter, setFilter] = useState<string>('iza')
 
 	// FORMULARIO
 	const currentForm: Form | undefined = useForm(formID, formsCtx.forms.forms)
@@ -58,7 +58,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	useFilters(filter, formID, formsCtx.forms, changesTrigger, setAnswers)
 
 	// FILTRO INICIAL
-	useDefaultFilter('answers-filter', 'naz', setFilter)
+	useDefaultFilter('answers-filter', 'iza', setFilter)
 
 	return (
 		<View>

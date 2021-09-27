@@ -42,7 +42,7 @@ const DownloadAnswers: React.FC<DownloadAnswersProps> = ({ answers, currentForm 
 			<ColorButton
 				color='primary'
 				variant='contained'
-				$style={{ color: '#fff' }}
+				$style={{ color: '#fff', background: 'var(--primary)' }}
 				startIcon={<GetAppTwoTone />}>{$`Descargar todo`}</ColorButton>
 		</ExportSheet>
 	)

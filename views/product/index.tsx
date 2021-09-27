@@ -11,7 +11,7 @@ import View from 'components/view'
 import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -54,13 +54,13 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 					businessCtx.business?.products?.length || 0
 				} ${$`producto(s) creados`}`}>
 				<Link rKey='products' passHref>
-					<Button
+					<ColorButton
 						color='primary'
 						variant='contained'
-						style={{ color: '#fff' }}
-						startIcon={<SaveTwoTone />}>
+						startIcon={<SaveTwoTone />}
+						$style={{ background: 'var(--primary)', color: '#fff' }}>
 						{$`Guardar producto`}
-					</Button>
+					</ColorButton>
 				</Link>
 			</Header>
 			<Tabs key={product ? 'current_product' : 'empty_product'} productRef={productRef} />

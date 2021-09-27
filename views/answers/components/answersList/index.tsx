@@ -8,6 +8,7 @@ import Styles from './style.module.scss'
 import PopperMenuList from 'components/popperMenu'
 import showAnswer from './components/showAnswer'
 import TableHead from './components/tableHead'
+import ColorButton from 'components/button'
 import SideBar from './components/sideBar'
 import AnswerRow from './components/row'
 
@@ -23,7 +24,6 @@ import PrintTwoTone from '@mui/icons-material/PrintTwoTone'
 // MATERIAL
 import TableContainer from '@mui/material/TableContainer'
 import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 
 // CONTEXTO
@@ -140,45 +140,49 @@ const AnswersList: React.FC<AnswersListProps> = ({
 				stateIndex={answers[currentIndex]?.stateIndex || 0}
 			/>
 			<PopperMenuList
-				placement='left'
-				onClose={closeRowMenu}
+				open={openRowMenu}
 				anchorEl={currentRow}
-				open={openRowMenu}>
+				placement='left-start'
+				onClose={closeRowMenu}>
 				<MenuItem onClick={closeRowMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						onClick={showCurrentAnswer}
 						startIcon={<VisibilityTwoTone />}>
 						{$`Ver todo`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 				<MenuItem onClick={closeRowMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						onClick={printCurrentAnswer}
 						startIcon={<PrintTwoTone />}>
 						{$`Imprimir`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 				<MenuItem onClick={closeRowMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						onClick={hanldeSideBar(true)}
 						startIcon={<SettingsInputCompositeTwoTone />}>
 						{$`Tracking`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 				<MenuItem onClick={closeRowMenu}>
-					<Button
+					<ColorButton
 						fullWidth
 						variant='outlined'
+						$style={{ height: '40px' }}
 						onClick={deleteCurrentAnswer}
 						startIcon={<DeleteTwoTone />}>
 						{$`Eliminar`}
-					</Button>
+					</ColorButton>
 				</MenuItem>
 			</PopperMenuList>
 		</>

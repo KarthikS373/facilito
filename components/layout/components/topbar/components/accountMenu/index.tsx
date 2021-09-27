@@ -49,7 +49,12 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) =>
 	}
 
 	return (
-		<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
+		<PopperMenuList
+			disablePortal
+			anchorEl={anchorEl}
+			onClose={onClose}
+			open={open}
+			placement='bottom-end'>
 			<MenuItem onClick={logoutEv}>
 				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
 					{$`Cerrar sesión`}

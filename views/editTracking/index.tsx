@@ -13,7 +13,7 @@ import { useForm } from 'hooks/forms'
 import useStrings from 'hooks/lang'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // ICONS
 import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
@@ -52,13 +52,16 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 	return (
 		<View>
 			<Header customDescription={`${form?.tracking?.length || 0} ${$`evento(s) creados`}`}>
-				<Button
+				<ColorButton
 					fullWidth
 					color='primary'
 					variant='contained'
 					onClick={saveTracking}
-					style={{ color: '#fff' }}
-					startIcon={<SaveTwoTone />}>{$`Guardar estados`}</Button>
+					startIcon={<SaveTwoTone />}
+					$style={{
+						background: 'var(--primary)',
+						color: '#fff',
+					}}>{$`Guardar estados`}</ColorButton>
 			</Header>
 			<Info onAdd={addNewStateOnTracking} />
 			<StatesList formID={formID} localTracking={localTracking} />

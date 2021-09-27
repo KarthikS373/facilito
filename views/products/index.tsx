@@ -14,7 +14,7 @@ import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
 
 // MATERIAL
-import Button from '@mui/material/Button'
+import ColorButton from 'components/button'
 
 // ICONS
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
@@ -71,11 +71,14 @@ const Products: React.FC = () => {
 					businessCtx.business?.products?.length || 0
 				} ${$`producto(s) creados`}`}>
 				<Link rKey='newProduct'>
-					<Button
+					<ColorButton
+						color='primary'
 						variant='contained'
-						style={{ color: '#fff' }}
 						startIcon={<ShoppingCartTwoTone />}
-						color='primary'>{$`Crear producto`}</Button>
+						$style={{
+							background: 'var(--primary)',
+							color: '#fff',
+						}}>{$`Crear producto`}</ColorButton>
 				</Link>
 			</Header>
 

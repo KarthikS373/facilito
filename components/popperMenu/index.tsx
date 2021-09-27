@@ -36,7 +36,7 @@ const PopperMenuList: React.FC<PopperMenuProps> = (props) => {
 	delete popperProps.onClose
 
 	return (
-		<Popper {...popperProps} disablePortal role={undefined}>
+		<Popper role={undefined} {...popperProps}>
 			<Paper>
 				<ClickAwayListener onClickAway={handleClose}>
 					<MenuList onKeyDown={handleListKeyDown} autoFocusItem={popperProps.open}>

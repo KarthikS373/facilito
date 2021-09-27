@@ -73,6 +73,9 @@
 			}
 
 			.businessPic {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				height: 125px;
 				width: 125px;
 
@@ -121,15 +124,17 @@
 					margin-top: 5px;
 				}
 
-				div:first-child {
+				& > div:first-child {
 					h1 {
 						font-size: 1.4rem;
 						margin-bottom: -15px;
+						text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 					}
 
 					span {
 						font-size: 1.2rem;
 						opacity: 0.9;
+						text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 					}
 
 					span,
@@ -145,7 +150,7 @@
 					line-height: 1.2;
 				}
 
-				div:last-child {
+				& > div:last-child {
 					span {
 						color: #777777;
 						font-size: 1.2rem;
@@ -153,6 +158,7 @@
 						@include for-size(phone-landscape) {
 							color: #fff;
 							font-size: 1rem;
+							text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 						}
 					}
 

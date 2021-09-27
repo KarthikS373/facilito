@@ -38,7 +38,7 @@
 		}
 
 		.text {
-			margin-left: 5px;
+			margin-left: 10px;
 
 			@include for-size(phone-portrait-min) {
 				margin-left: 0px;
