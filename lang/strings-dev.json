@@ -1,6 +1,30 @@
 {
-	"": {
-		"en": "",
+	"visualizar_producto": {
+		"en": "Product preview",
+		"es": "$"
+	},
+	"configura_los_aspectos_mas_importantes_de_tu_producto": {
+		"en": "Set the most important things to be show in your product.",
+		"es": "$"
+	},
+	"editar_producto": {
+		"en": "Edit product",
+		"es": "$"
+	},
+	"tamano_maximo_2mb": {
+		"en": "Maximum size: 2MB",
+		"es": "$"
+	},
+	"medidas_recomendadas_800_x_800": {
+		"en": "Recommended size: 800 x 800",
+		"es": "$"
+	},
+	"fotos_del_producto": {
+		"en": "Product pictures",
+		"es": "$"
+	},
+	"agregar_imagen": {
+		"en": "Add new image",
 		"es": "$"
 	},
 	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilitar": {

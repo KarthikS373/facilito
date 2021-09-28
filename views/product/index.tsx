@@ -2,8 +2,9 @@
 import React, { useContext, useRef } from 'react'
 
 // COMPONENTES
+import ProductData from './components/productData'
 import Header from 'components/header'
-import Tabs from './components/tabs'
+import Info from './components/info'
 import Link from 'components/link'
 import View from 'components/view'
 
@@ -63,7 +64,8 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 					</ColorButton>
 				</Link>
 			</Header>
-			<Tabs key={product ? 'current_product' : 'empty_product'} productRef={productRef} />
+			<Info />
+			<ProductData productRef={productRef} />
 		</View>
 	)
 }

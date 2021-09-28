@@ -73,6 +73,12 @@
 	}
 }
 
+.accountBtn {
+	span:nth-child(3) {
+		margin-right: -12px;
+	}
+}
+
 .accountBtnContent > span {
 	display: block;
 	line-height: 1;

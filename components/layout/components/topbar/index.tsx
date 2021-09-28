@@ -128,6 +128,7 @@ const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar }) => {
 						variant='outlined'
 						aria-label='account'
 						onClick={openAccountMenuEv}
+						className={Styles.accountBtn}
 						endIcon={<MoreVert />}
 						startIcon={
 							<div className={Styles.accountPic}>
