@@ -1,23 +1,4 @@
-/**
- * Obtener imagen de input
- * @description Retorna una imagen como DataURL de un input
- * @param  {React.ChangeEvent<HTMLInputElement>} ev
- * @param  {(data:string | ArrayBuffer | null) => void} imageCallback
- */
-const getDataURL = (
-	ev: React.ChangeEvent<HTMLInputElement>,
-	imageCallback: (data: string | ArrayBuffer | null) => void
-) => {
-	const tgt = ev.target || window.event?.srcElement,
-		files = tgt.files
-
-	// FileReader support
-	if (FileReader && files && files.length) {
-		const fr = new FileReader()
-		fr.onload = () => imageCallback(fr.result)
-		fr.readAsDataURL(files[0])
-	}
-}
+import { getDataURL } from 'utils/tools'
 
 /**
  * Remover imagen de lista
@@ -48,25 +29,36 @@ export const removeImage =
  * @param  {number} index
  * @param  {React.Dispatch<React.SetStateAction<string[]>>} setImages
  * @param  {React.MutableRefObject<Product>} productRef
+ * @param  {React.MutableRefObject<(File | null)[]>} imagesRef
  */
 const updateImageList =
 	(
 		index: number,
 		setImages: React.Dispatch<React.SetStateAction<string[]>>,
-		productRef: React.MutableRefObject<Product>
+		productRef: React.MutableRefObject<Product>,
+		imagesRef: React.MutableRefObject<(File | null)[]>
 	) =>
 	(ev: React.ChangeEvent<HTMLInputElement>) => {
+		// ARCHIVOS
+		const files = ev.target.files
+
+		// OBTENER DATOS RAPIDO
 		getDataURL(ev, (data: string | ArrayBuffer | null) => {
 			if (typeof data === 'string') {
 				setImages((prevImages: string[]) => {
 					const tmpImages: string[] = [...prevImages]
 					tmpImages[index] = data
 					ev.target.value = ''
+
 					productRef.current.picture = tmpImages
+
 					return tmpImages
 				})
 			}
 		})
+
+		// GUARDAR ARCHIVOS EN REFERENCIA
+		if (files) imagesRef.current[index] = files[0]
 	}
 
 export default updateImageList

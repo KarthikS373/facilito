@@ -129,3 +129,24 @@ export const changeFilter = (
 	window.localStorage.setItem(key, filter)
 	setFilter(filter)
 }
+
+/**
+ * Obtener imagen de input
+ * @description Retorna una imagen como DataURL de un input
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {(data:string | ArrayBuffer | null) => void} imageCallback
+ */
+export const getDataURL = (
+	ev: React.ChangeEvent<HTMLInputElement>,
+	imageCallback: (data: string | ArrayBuffer | null) => void
+) => {
+	const tgt = ev.target || window.event?.srcElement,
+		files = tgt.files
+
+	// FileReader support
+	if (FileReader && files && files.length) {
+		const fr = new FileReader()
+		fr.onload = () => imageCallback(fr.result)
+		fr.readAsDataURL(files[0])
+	}
+}

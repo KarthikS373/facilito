@@ -1,5 +1,6 @@
 // DB
 import { getCollection } from './db'
+import { removeFile } from './storage'
 
 /**
  * Leer documento
@@ -40,6 +41,16 @@ export const formsListener = async (
 		const forms = Object.fromEntries(snap.docs.map((doc) => [doc.id, doc.data() as Form]))
 		setForms(forms)
 	})
+}
+
+/**
+ * Borrar formulario en storage
+ * @description Borra todos los archivos de un formulario
+ * @param  {string} companyID
+ * @param  {string} id
+ */
+export const removeFormFromStorage = async (companyID: string, id: string) => {
+	return removeFile(`/${companyID}/forms/${id}`)
 }
 
 /**

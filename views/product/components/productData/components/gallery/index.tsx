@@ -26,16 +26,18 @@ import updateImageList, { removeImage } from './utils/tools'
 // PROPS
 interface GalleryProps {
 	productRef: React.MutableRefObject<Product>
+	imagesRef: React.MutableRefObject<(File | null)[]>
 }
 
-const Gallery: React.FC<GalleryProps> = ({ productRef }) => {
+const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 	// STRINGS
 	const { $ } = useStrings()
+
 	// ESTADOS
 	const [images, setImages] = useState<string[]>([])
 
 	// ASIGNAR IMAGEN NUEVA
-	const onChangeImage = (index: number) => updateImageList(index, setImages, productRef)
+	const onChangeImage = (index: number) => updateImageList(index, setImages, productRef, imagesRef)
 
 	// QUITAR IMAGEN
 	const removeImageEv = (index: number) => removeImage(index, setImages, productRef)

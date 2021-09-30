@@ -5,7 +5,6 @@ import React, { useContext, useRef } from 'react'
 import ProductData from './components/productData'
 import Header from 'components/header'
 import Info from './components/info'
-import Link from 'components/link'
 import View from 'components/view'
 
 // ICONOS
@@ -22,7 +21,8 @@ import { useProduct } from 'hooks/products'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import defProduct from './utils/tools'
+import defProduct from './utils/initials'
+import saveProduct from './utils/tools'
 
 // CONTEXT
 import ProductsContext from 'context/products'
@@ -32,6 +32,9 @@ interface ProductProps {
 	productID?: string
 }
 const Product: React.FC<ProductProps> = ({ productID }) => {
+	// STRINGS
+	const { $ } = useStrings()
+
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
@@ -45,8 +48,11 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 	const productRef: React.MutableRefObject<Product> = useRef(product || defProduct)
 	productRef.current = product || defProduct
 
-	// STRINGS
-	const { $ } = useStrings()
+	const imagesRef: React.MutableRefObject<(File | null)[]> = useRef(Array(4).fill(null))
+
+	// GUARDAR PRODUCTO
+	const saveProductData = () =>
+		saveProduct(productsCtx.setProducts, productRef, imagesRef, $, businessCtx.business?.id)
 
 	return (
 		<View>
@@ -54,18 +60,17 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 				customDescription={`${
 					businessCtx.business?.products?.length || 0
 				} ${$`producto(s) creados`}`}>
-				<Link rKey='products' passHref>
-					<ColorButton
-						color='primary'
-						variant='contained'
-						startIcon={<SaveTwoTone />}
-						$style={{ background: 'var(--primary)', color: '#fff' }}>
-						{$`Guardar producto`}
-					</ColorButton>
-				</Link>
+				<ColorButton
+					color='primary'
+					variant='contained'
+					onClick={saveProductData}
+					startIcon={<SaveTwoTone />}
+					$style={{ background: 'var(--primary)', color: '#fff' }}>
+					{$`Guardar producto`}
+				</ColorButton>
 			</Header>
 			<Info />
-			<ProductData productRef={productRef} />
+			<ProductData productRef={productRef} imagesRef={imagesRef} />
 		</View>
 	)
 }
