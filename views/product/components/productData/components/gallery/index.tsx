@@ -57,14 +57,14 @@ const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 			<div className={Styles.container}>
 				{images.map((image: string, picIndex: number) =>
 					image.length ? (
-						<div>
+						<div key={`image_${picIndex}`}>
 							<IconButton onClick={removeImageEv(picIndex)} size='small'>
 								<Close />
 							</IconButton>
-							<Image layout='fill' unoptimized src={image} alt={`gallery_${picIndex}`} />
+							<Image height='200' width='200' unoptimized src={image} alt={`gallery_${picIndex}`} />
 						</div>
 					) : (
-						<label htmlFor={`image_${picIndex}`}>
+						<label key={`image_${picIndex}`} htmlFor={`image_${picIndex}`}>
 							<input
 								type='file'
 								accept='image/*'

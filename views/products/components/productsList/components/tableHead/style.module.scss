@@ -34,7 +34,7 @@
 			border: none;
 		}
 
-		&:first-child {
+		&:first-of-type {
 			& > svg {
 				margin-left: 12px;
 			}

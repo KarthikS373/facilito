@@ -50,7 +50,7 @@ body {
 	overflow-x: hidden;
 	background-color: #fff;
 
-	& > div:first-child {
+	& > div:first-of-type {
 		position: relative;
 		width: 100%;
 		height: 100vh;

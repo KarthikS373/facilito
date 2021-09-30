@@ -2,7 +2,7 @@
 	height: 50px;
 	background-color: rgba(0, 0, 0, 0.03);
 
-	& > div:first-child > div:first-child {
+	& > div:first-of-type > div:first-of-type {
 		height: 100%;
 		justify-content: center;
 	}

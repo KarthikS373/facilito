@@ -36,7 +36,7 @@
 	}
 
 	& > div {
-		button:first-child,
+		button:first-of-type,
 		button:nth-child(2) {
 			margin-right: 10px;
 

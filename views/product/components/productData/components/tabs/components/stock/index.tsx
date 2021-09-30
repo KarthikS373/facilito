@@ -61,7 +61,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					type='number'
 					variant='outlined'
 					onChange={handleInputs}
-					defaultValue={productRef.current.price}
+					defaultValue={productRef.current.price || ''}
 					placeholder={$`Precio real`}
 					label={$`Precio del producto`}
 					InputProps={{
@@ -78,7 +78,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					name='promoPrice'
 					variant='outlined'
 					onChange={handleInputs}
-					defaultValue={productRef.current.promoPrice}
+					defaultValue={productRef.current.promoPrice || ''}
 					label={$`Precio promocional`}
 					placeholder={$`Precio de oferta`}
 					InputProps={{
@@ -98,7 +98,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					type='number'
 					variant='outlined'
 					onChange={handleInputs}
-					defaultValue={productRef.current.count}
+					defaultValue={productRef.current.count || ''}
 					label={$`Cantidad en Stock`}
 					placeholder={$`Cantidad en inventario`}
 					InputProps={{
@@ -114,7 +114,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					name='sku'
 					variant='outlined'
 					onChange={handleInputs}
-					defaultValue={productRef.current.sku}
+					defaultValue={productRef.current.sku || ''}
 					placeholder={$`Correlativo`}
 					label={$`SKU (código unico del producto)`}
 					InputProps={{
@@ -134,7 +134,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 					variant='outlined'
 					onChange={handleInputs}
 					label={$`Nombre de unidad`}
-					defaultValue={productRef.current.unitName}
+					defaultValue={productRef.current.unitName || ''}
 					placeholder={$`Porcion, Caja, Bolsa`}
 					InputProps={{
 						startAdornment: (

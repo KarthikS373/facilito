@@ -37,7 +37,7 @@
 		}
 	}
 
-	svg:first-child {
+	svg:first-of-type {
 		transform: translateX(-50%);
 		position: absolute;
 		top: 15px;

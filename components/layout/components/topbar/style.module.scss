@@ -6,7 +6,7 @@
 	background-color: #fff !important;
 	z-index: 10 !important;
 
-	& > div:first-child {
+	& > div:first-of-type {
 		display: grid;
 		grid-template-columns: 1fr auto auto auto auto;
 		justify-content: flex-end;
@@ -53,7 +53,7 @@
 }
 
 .badgeBtn {
-	span:first-child {
+	span:first-of-type {
 		span:last-child {
 			position: relative;
 			top: 2px;

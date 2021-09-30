@@ -7,8 +7,9 @@ interface BtnProps extends ButtonProps {
 	$style: React.CSSProperties
 	$hoverStyle?: React.CSSProperties
 }
-
-const ColorButton = styled(Button)<BtnProps>(({ $style, $hoverStyle }) => ({
+const ColorButton = styled(Button, {
+	shouldForwardProp: (prop: keyof BtnProps) => prop !== '$style' && prop !== '$hoverStyle',
+})<BtnProps>(({ $style, $hoverStyle }) => ({
 	...$style,
 	'&:hover': {
 		...$hoverStyle,
