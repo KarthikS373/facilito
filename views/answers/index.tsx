@@ -7,7 +7,7 @@ import Info from './components/info'
 import View from 'components/view'
 
 // HOOKS
-import { getChangesTrigger, updateLocalAnswerState } from './utils/tools'
+import { updateLocalAnswerState } from './utils/tools'
 import useDefaultFilter from 'hooks/filters'
 import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
@@ -47,15 +47,12 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	// ASIGNAR FILTRO
 	const changeFilterEv = (newFilter: string) => changeFilter('answers-filter', newFilter, setFilter)
 
-	// BUSCAR RESPUESTAS
-	const changesTrigger: string = getChangesTrigger(formsCtx.forms)
-
 	// CAMBIAR ESTADO DE RESPUESTAS
 	const updateAnswerState = (index: number, newState: number) =>
 		updateLocalAnswerState(index, newState, setAnswers)
 
 	// CAMBIAR FILTROS
-	useFilters(filter, formID, formsCtx.forms, changesTrigger, setAnswers)
+	useFilters(filter, formID, formsCtx.forms, setAnswers)
 
 	// FILTRO INICIAL
 	useDefaultFilter('answers-filter', 'iza', setFilter)

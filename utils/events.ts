@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // UTILS
+import type { Unsubscribe } from '@firebase/firestore'
 import { getCollection } from './db'
 import { parseDate, sendMail } from './tools'
 
@@ -25,7 +27,7 @@ const getEventDoc = async (companyID: string, id: string) => {
  * @param  {string} id
  * @description Remueve todos los eventos de un formulario
  */
-export const removeEventForm = async (companyID: string, id: string) => {
+export const removeEventForm = async (companyID: string, id: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
 
 	// LEER
@@ -48,7 +50,7 @@ export const deleteAppointment = async (
 	companyID: string,
 	formId: string,
 	formData: CustomAppointment
-) => {
+): Promise<void> => {
 	const { setDoc, getDoc } = await import('firebase/firestore')
 
 	// LEER
@@ -92,7 +94,7 @@ export const deleteAppointment = async (
 export const appointmentsListener = async (
 	companyID: string,
 	setAppointments: (events: CustomAppointment[]) => unknown
-) => {
+): Promise<Unsubscribe> => {
 	const { collection, doc, onSnapshot } = await import('firebase/firestore')
 
 	// LEER

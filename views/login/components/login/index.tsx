@@ -136,7 +136,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 								name='remember'
 							/>
 						}
-						label={$`Recuérdame en este dispositivo`}
+						label={$`Recuérdeme en este dispositivo`}
 					/>
 
 					<ColorButton

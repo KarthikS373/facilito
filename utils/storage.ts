@@ -1,5 +1,5 @@
 import getFirebase from 'keys/firebase'
-import type { StorageReference } from '@firebase/storage'
+import type { StorageReference, UploadResult } from '@firebase/storage'
 
 /**
  * Obtener referencia
@@ -22,7 +22,7 @@ const getRef = async (path: string) => {
  * @description Borra todos los archivos en una ruta
  * @param  {string} path
  */
-const removeFile = async (path: string) => {
+const removeFile = async (path: string): Promise<void> => {
 	const { listAll, deleteObject } = await import('firebase/storage')
 
 	// STORAGE
@@ -44,7 +44,7 @@ export default removeFile
  * @param  {File} file
  * @param  {string} path
  */
-export const uploadFile = async (file: File, path: string) => {
+export const uploadFile = async (file: File, path: string): Promise<UploadResult | null> => {
 	if (path.length) {
 		// FIREBASE
 		const { uploadBytes } = await import('firebase/storage')
@@ -65,9 +65,9 @@ export const uploadFile = async (file: File, path: string) => {
  * @description Comprime una imagen jpeg o png
  * @param  {File} file
  */
-export const compressImage = async (file: File) => {
+export const compressImage = async (file: File): Promise<File> => {
 	// COMPRESS
-	const compress = await (await import('browser-image-compression')).default
+	const { default: compress } = await import('browser-image-compression')
 
 	// ARCHIVO COMPRIMIDO
 	const compressedFile: File = file.type.includes('video')
@@ -86,7 +86,7 @@ export const compressImage = async (file: File) => {
  * @description Borra todos los archivos en una ruta
  * @param  {string} path
  */
-export const getURL = async (path: string) => {
+export const getURL = async (path: string): Promise<string> => {
 	const { getDownloadURL } = await import('firebase/storage')
 
 	// STORAGE

@@ -1,4 +1,5 @@
 // UTILS
+import React from 'react'
 import { sortAnswers } from 'utils/answers'
 
 // ESTILOS
@@ -32,7 +33,7 @@ export const AnswerPreview: React.FC<{
  * @param  {FormAnswerItemContainer} data
  * @param  {FormComponent[]} components
  */
-const showAnswer = (data: FormAnswerItemContainer, components: FormComponent[]) => {
+const showAnswer = (data: FormAnswerItemContainer, components: FormComponent[]): void => {
 	window.Alert({
 		title: '',
 		body: '',

@@ -2,7 +2,7 @@
 // REACT
 import React, { useState, useEffect } from 'react'
 
-// COMPONETNES
+// COMPONENTES
 import ColorButton from '../button'
 
 // ESTILOS

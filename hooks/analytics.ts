@@ -8,7 +8,7 @@ import getFirebase from 'keys/firebase'
  * Hook de Analytics
  * @description Inicia firebase analytics de manera segura (client side)
  */
-const useAnalytics = () => {
+const useAnalytics = (): void => {
 	useEffect(() => {
 		if (process.env.NODE_ENV === 'production') {
 			getFirebase().then(async (firebaseApp) => {

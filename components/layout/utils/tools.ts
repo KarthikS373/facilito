@@ -1,6 +1,6 @@
 /**
  * Evaluá ruta
- * @description Valida las rutas donde se motrara el topbar
+ * @description Valida las rutas donde se mostrará el topbar
  * @param  {string} path
  */
 const evaluateTopbarPath = (path: string): boolean => {

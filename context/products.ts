@@ -9,7 +9,7 @@ interface ContextProps {
 // VALOR POR DEFECTO
 const DefContext: ContextProps = {
 	products: {},
-	setProducts: () => {},
+	setProducts: () => null,
 }
 
 // CONTEXTO

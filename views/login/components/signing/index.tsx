@@ -51,7 +51,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 	const progressRef: RefObject<HTMLDivElement> = useRef(null)
 
 	// ENVIAR FORMULARIO
-	const handleSubmit = (event: MouseEvent | FormEvent, _unlock?: EmptyFunction) => {
+	const handleSubmit = (event: MouseEvent | FormEvent) => {
 		event.preventDefault()
 		startSigning(event, signingData, progressRef, true, true)
 	}

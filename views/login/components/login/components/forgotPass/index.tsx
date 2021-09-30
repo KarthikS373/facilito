@@ -12,9 +12,9 @@ import Mail from '@mui/icons-material/Mail'
 import { forgotPass } from 'utils/auth'
 
 // RESTABLECER PASSWORD
-const resetPass = () => {
+const resetPass = (): void => {
 	// EMAIL
-	let tempEmail: string = ''
+	let tempEmail = ''
 	const getEmail = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = ev.target
 		tempEmail = value

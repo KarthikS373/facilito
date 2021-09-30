@@ -1,8 +1,8 @@
 // UTILS
-import { removeFormStorage } from 'utils/storage'
 import { removeAnswersForm } from 'utils/answers'
 import { removeFormSchema } from 'utils/forms'
 import { removeEventForm } from 'utils/events'
+import removeFile from 'utils/storage'
 
 /**
  * Borrar formulario
@@ -17,7 +17,7 @@ const deleteForm = (
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: (forms: Partial<FormInterface>) => unknown,
 	companyID?: string
-) => {
+): void => {
 	window.Alert({
 		title: 'Borrar formulario',
 		body: '¿Estas seguro de que quieres borrar este formulario?, todos los datos relacionados se perderan.',
@@ -27,7 +27,7 @@ const deleteForm = (
 			setForms((prevForms: FormInterface) => {
 				let answers = [...prevForms.answers]
 				let forms = [...prevForms.forms]
-				let formIndex: number = 0
+				let formIndex = 0
 
 				// BORRAR
 				forms = forms.filter((fForm: Form, index: number) => {
@@ -51,7 +51,7 @@ const deleteForm = (
 			// BORRAR
 			window.Snack('Borrando...')
 			if (companyID) {
-				await removeFormStorage(companyID, formID)
+				await removeFile(`/${companyID}/${formID}`)
 				await removeAnswersForm(companyID, formID)
 				await removeFormSchema(companyID, formID)
 				await removeEventForm(companyID, formID)

@@ -11,7 +11,7 @@ const changeOptionProps = (
 	index: number,
 	extraIndex: number,
 	localProduct: React.MutableRefObject<Product>
-) => {
+): void => {
 	// EVENTOS
 	const { name, value } = ev.target
 

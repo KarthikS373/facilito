@@ -10,7 +10,7 @@ interface ContextProps {
 // VALOR POR DEFECTO
 const DefContext: ContextProps = {
 	user: undefined,
-	setUser: () => {},
+	setUser: () => null,
 	isAnonymous: false,
 }
 

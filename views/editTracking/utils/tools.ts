@@ -11,7 +11,7 @@ const saveStates = (
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	formID: string,
 	companyID?: string
-) => {
+): void => {
 	// GUARDAR
 	if (companyID) {
 		window.Snack('Guardando...')
@@ -33,7 +33,7 @@ export const addNewState = (
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	formID?: string
-) => {
+): void => {
 	if (localTracking.current.length < 5 && formID) {
 		const emptyStep: FormTrackingStep = { name: '', description: '', color: 'var(--primary)' }
 		localTracking.current.push(emptyStep)

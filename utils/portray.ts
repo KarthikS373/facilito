@@ -14,7 +14,11 @@ interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
  * @param  {TemplateStringsArray} key
  * @param  {ProviderProps} ctx
  */
-const getTextFromDict = (key: TemplateStringsArray, values: any[], ctx: ProviderProps) => {
+const getTextFromDict = (
+	key: TemplateStringsArray,
+	values: unknown[],
+	ctx: ProviderProps
+): string => {
 	// FORMATO DE KEY
 	const joined: string = [key[0], ...values].join('')
 	const normalizedKey: string = normalizeString(joined)

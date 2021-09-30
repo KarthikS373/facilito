@@ -53,7 +53,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 	const { $ } = useStrings()
 
 	// GUARDAR
-	const onChgangeExtra = (ev: React.ChangeEvent<HTMLInputElement>) =>
+	const onChangeExtra = (ev: React.ChangeEvent<HTMLInputElement>) =>
 		changeExtraProps(ev, index, productRef)
 
 	// OPCIONES
@@ -82,13 +82,13 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 	// AGREGAR OPCIONES INICIALES
 	useEffect(() => {
 		setOptions(extra.options?.map((option: ExtraOptional, id: number) => ({ ...option, id })) || [])
-	}, [])
+	}, [extra.options])
 
 	return (
 		<div className={Styles.container}>
 			<div
 				className={Styles.row}
-				style={{ gridTemplateColumns: `auto ${extraType == 0 ? '' : 'auto'} auto` }}>
+				style={{ gridTemplateColumns: `auto ${extraType === 0 ? '' : 'auto'} auto` }}>
 				<TextField
 					type='text'
 					name='title'
@@ -96,7 +96,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 					label={$`Titulo`}
 					variant='outlined'
 					defaultValue={extra.title}
-					onChange={onChgangeExtra}
+					onChange={onChangeExtra}
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position='start'>
@@ -105,7 +105,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						),
 					}}
 				/>
-				{extraType != 0 && (
+				{extraType !== 0 && (
 					<TextField
 						name='cant'
 						type='number'
@@ -113,7 +113,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						variant='outlined'
 						label={$`Cantidad`}
 						style={{ width: 100 }}
-						onChange={onChgangeExtra}
+						onChange={onChangeExtra}
 						defaultValue={extra.cant}
 						InputProps={{
 							startAdornment: (

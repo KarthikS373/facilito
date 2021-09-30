@@ -1,3 +1,5 @@
+import React from 'react'
+
 // UTILS
 import { hourToString, parseDate } from 'utils/tools'
 import { deleteAppointment } from 'utils/events'
@@ -23,7 +25,7 @@ const deleteEvent =
 		window.Alert({
 			title: 'Borrar evento',
 			type: 'confirm',
-			body: '¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permamente.',
+			body: '¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permanente.',
 			onCancel: () => {
 				setTimeout(() => showEventInfo($, business)(event), 300)
 			},
@@ -41,7 +43,8 @@ const deleteEvent =
 
 // MOSTRAR INFORMACION
 export const showEventInfo =
-	($: TemplateStrBuilder, business: Business | null) => (event: CustomAppointment) => {
+	($: TemplateStrBuilder, business: Business | null) =>
+	(event: CustomAppointment): void => {
 		window.Alert({
 			title: '',
 			body: '',

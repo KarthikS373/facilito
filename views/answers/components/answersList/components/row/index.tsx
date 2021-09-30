@@ -26,7 +26,7 @@ interface RowProps {
 	handleRow: (ev: React.MouseEvent<HTMLButtonElement>) => unknown
 }
 const AnswerRow: React.FC<RowProps> = ({ handleRow, index, style, data, date, state }) => {
-	// BUSINES
+	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
 	return (

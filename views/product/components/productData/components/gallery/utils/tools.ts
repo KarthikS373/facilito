@@ -13,7 +13,7 @@ export const removeImage =
 		setImages: React.Dispatch<React.SetStateAction<string[]>>,
 		productRef: React.MutableRefObject<Product>
 	) =>
-	() => {
+	(): void => {
 		setImages((prevImages: string[]) => {
 			const tmpImages: string[] = [...prevImages].map((image: string, imageIndex: number) =>
 				imageIndex === index ? '' : image
@@ -38,7 +38,7 @@ const updateImageList =
 		productRef: React.MutableRefObject<Product>,
 		imagesRef: React.MutableRefObject<(File | null)[]>
 	) =>
-	(ev: React.ChangeEvent<HTMLInputElement>) => {
+	(ev: React.ChangeEvent<HTMLInputElement>): void => {
 		// ARCHIVOS
 		const files = ev.target.files
 

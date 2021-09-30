@@ -14,7 +14,7 @@ import FormsContext from 'context/forms'
 const useForms = (
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	companyID?: string
-) => {
+): void => {
 	useEffect(() => {
 		// LISTENER
 		let temporalForms: { [id: string]: Form } = {}
@@ -25,10 +25,10 @@ const useForms = (
 		const sendFormInterface =
 			(field: keyof FormInterface) => (data: { [id: string]: Form | FormAnswer }) => {
 				setForms((prevData: FormInterface) => {
-					// FORMUALRIOS
+					// FORMULARIOS
 					if (prevData.forms.length === 0 && field === 'forms')
 						temporalForms = data as { [id: string]: Form }
-					let prevForms =
+					const prevForms =
 						prevData.forms.length === 0
 							? Object.keys(temporalForms)
 							: prevData.forms.map((form: Form) => form.id)
@@ -67,28 +67,26 @@ const useForms = (
 			if (formsListen) formsListen()
 			if (answersListen) answersListen()
 		}
-	}, [companyID])
+	}, [companyID, setForms])
 }
 
 export default useForms
 
 /**
  * Hook de filtros
- * @description Reordena los formularios con un filtro
+ * @description Re ordena los formularios con un filtro
  * @param  {string} filter
- * @param  {string} changesTrigger
  * @param  {setForms:(forms:FormInterface)=>unknown} setForms
  * @param  {FormInterface} prevForms
  */
 export const useFormFilter = (
 	filter: string,
-	changesTrigger: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	prevForms: FormInterface
-) => {
+): void => {
 	useEffect(() => {
 		// COPIA
-		let tmpForms: Form[] = [...prevForms.forms]
+		const tmpForms: Form[] = [...prevForms.forms]
 		const tmpAnswers: (FormAnswer | undefined)[] = [...prevForms.answers]
 
 		// ORDENAR
@@ -99,8 +97,8 @@ export const useFormFilter = (
 
 			if (nextForm) {
 				if (
-					(filter === 'asc' && form.title.localeCompare(nextForm.title) != -1) ||
-					(filter === 'des' && form.title.localeCompare(nextForm.title) != 1)
+					(filter === 'asc' && form.title.localeCompare(nextForm.title) !== -1) ||
+					(filter === 'des' && form.title.localeCompare(nextForm.title) !== 1)
 				) {
 					// SWIPE DE FORMULARIOS
 					tmpForms[index + 1] = form
@@ -118,18 +116,19 @@ export const useFormFilter = (
 			forms: tmpForms,
 			answers: tmpAnswers,
 		})
-	}, [filter, changesTrigger])
+	}, [filter, prevForms.answers, prevForms.forms, setForms])
 }
 
 /**
  * Hook de formulario
- * @description Busca un formulario en el contexto conun id
+ * @description Busca un formulario en el contexto con un id
  * @param  {string} formID
  * @param  {Form[]} customForms
  */
 export const useForm = (formID: string, customForms?: Form[]): Form | undefined => {
 	// CONTEXTO
-	const forms: Form[] = customForms || useContext(FormsContext).forms.forms
+	let forms: Form[] = useContext(FormsContext).forms.forms
+	if (customForms) forms = customForms
 	const currentForm: Form | undefined = forms.find((form) => form.id === formID)
 	return currentForm
 }

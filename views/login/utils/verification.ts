@@ -22,7 +22,7 @@ export const startSigning = async (
 	progressRef: RefObject<HTMLDivElement>,
 	isNew?: boolean,
 	rememberUser?: boolean
-) => {
+): Promise<void> => {
 	// EVITAR RELOAD
 	ev.preventDefault()
 
@@ -53,5 +53,4 @@ export const startSigning = async (
 			rememberUser
 		).then(() => window.Alert('Bienvenido'))
 	}
-	return null
 }

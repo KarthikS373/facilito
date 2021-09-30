@@ -53,7 +53,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
 					<p>
-						{$`El precio original se motrara tachado con rojo y el precio promocional se mostrara primero.`}
+						{$`El precio original se mostrará tachado con rojo y el precio promocional se mostrara primero.`}
 					</p>
 				</div>
 			</div>

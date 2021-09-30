@@ -1,5 +1,5 @@
 // REACT
-import { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -20,7 +20,7 @@ const PortrayProvider: React.FC<PortrayContextProps> = (props) => {
 	const mainLang: string = props.settings?.mainLang || 'es'
 	const [langCode, setLang] = useState<string>(mainLang)
 
-	// INCIAL
+	// INICIAL
 	const businessLang: string = businessCtx.business?.lang || 'es'
 	useEffect(() => {
 		setLang(businessLang)

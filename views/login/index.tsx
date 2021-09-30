@@ -9,7 +9,7 @@ import LoginForm from './components/login'
 import Styles from './style.module.scss'
 
 // COMPONENTE
-const Login = () => {
+const Login: React.FC = () => {
 	// ESTADO
 	const [isOnLogin, setForm] = useState<boolean>(true)
 

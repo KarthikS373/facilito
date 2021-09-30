@@ -10,8 +10,8 @@ interface ContextProps {
 // VALOR POR DEFECTO
 const DefContext: ContextProps = {
 	business: null,
-	setBusiness: () => {},
-	setBusinessDB: () => {},
+	setBusiness: () => null,
+	setBusinessDB: () => null,
 }
 
 // CONTEXTO

@@ -15,7 +15,7 @@ const saveProduct = (
 	imagesRef: React.MutableRefObject<(File | null)[]>,
 	$: TemplateStrBuilder,
 	companyID?: string
-) => {
+): void => {
 	if (productRef.current.sku?.length && companyID?.length) {
 		// GUARDAR EN STORAGE
 		window.Snack($`Subiendo imagenes...`)

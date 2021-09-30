@@ -1,5 +1,5 @@
 // REACT
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UTILS
 import useDefaultFilter from 'hooks/filters'

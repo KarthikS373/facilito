@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React, { useState, useEffect } from 'react'
+import type { ToolbarProps } from 'react-big-calendar'
+
 // ESTILOS
-import { useState, useEffect } from 'react'
 import Styles from './style.module.scss'
 
 // STRINGS
@@ -14,7 +17,8 @@ import ChevronRightTwoTone from '@mui/icons-material/ChevronRightTwoTone'
 import ChevronLeftTwoTone from '@mui/icons-material/ChevronLeftTwoTone'
 import EventTwoTone from '@mui/icons-material/EventTwoTone'
 
-const CustomToolbar: React.FC<any> = (props) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+const CustomToolbar: React.FC<ToolbarProps<Event, object>> = (props) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -26,6 +30,7 @@ const CustomToolbar: React.FC<any> = (props) => {
 		else if (props.view === 'week') props.date.setDate(props.date.getDate() - 7)
 		else if (props.view === 'day' || props.view === 'agenda')
 			props.date.setDate(props.date.getDate() - 1)
+		// @ts-ignore
 		props.onNavigate('prev')
 	}
 
@@ -35,6 +40,7 @@ const CustomToolbar: React.FC<any> = (props) => {
 		else if (props.view === 'week') props.date.setDate(props.date.getDate() + 7)
 		else if (props.view === 'day' || props.view === 'agenda')
 			props.date.setDate(props.date.getDate() + 1)
+		// @ts-ignore
 		props.onNavigate('next')
 	}
 
@@ -43,7 +49,9 @@ const CustomToolbar: React.FC<any> = (props) => {
 		const now = new Date()
 		props.date.setDate(now.getDate())
 		props.date.setMonth(now.getMonth())
+		// @ts-ignore
 		props.date.setYear(now.getFullYear())
+		// @ts-ignore
 		props.onNavigate('current')
 	}
 

@@ -1,6 +1,7 @@
 // DB
+import type { Unsubscribe } from '@firebase/firestore'
 import { getCollection } from './db'
-import { removeFile } from './storage'
+import removeFile from './storage'
 
 /**
  * Leer documento
@@ -28,7 +29,7 @@ const getFormDoc = async (companyID: string, formID: string) => {
 export const formsListener = async (
 	companyID: string,
 	setForms: (forms: { [id: string]: Form }) => unknown
-) => {
+): Promise<Unsubscribe> => {
 	const { doc, onSnapshot, collection: getCollectionFrb } = await import('firebase/firestore')
 
 	// LEER
@@ -49,7 +50,7 @@ export const formsListener = async (
  * @param  {string} companyID
  * @param  {string} id
  */
-export const removeFormFromStorage = async (companyID: string, id: string) => {
+export const removeFormFromStorage = async (companyID: string, id: string): Promise<void> => {
 	return removeFile(`/${companyID}/forms/${id}`)
 }
 
@@ -59,7 +60,7 @@ export const removeFormFromStorage = async (companyID: string, id: string) => {
  * @param  {Form[]} first
  * @param  {Form[]} second
  */
-export const getFormsDifference = (first: Form[], second: Form[]) => {
+export const getFormsDifference = (first: Form[], second: Form[]): Form[] => {
 	// OBTENER IDS
 	const firstIds: string[] = first.map((form: Form) => form.url)
 	const secondIds: string[] = second.map((form: Form) => form.url)
@@ -80,7 +81,7 @@ export const getFormsDifference = (first: Form[], second: Form[]) => {
  * Formularios para templates
  * @description Obtiene los formularios en plantillasfacilito
  */
-export const readTemplates = async () => {
+export const readTemplates = async (): Promise<Form[]> => {
 	const { doc, getDocs, collection: getCollectionFrb } = await import('firebase/firestore')
 
 	// LEER
@@ -98,7 +99,7 @@ export const readTemplates = async () => {
  * @param  {string} companyID
  * @param  {Partial<Form>} form
  */
-const saveFormSchema = async (companyID: string, form: Partial<Form>) => {
+const saveFormSchema = async (companyID: string, form: Partial<Form>): Promise<void> => {
 	const { setDoc } = await import('firebase/firestore')
 
 	if (form.id) {
@@ -118,7 +119,7 @@ export default saveFormSchema
  * @param  {string} companyID
  * @param  {string} id
  */
-export const removeFormSchema = async (companyID: string, id: string) => {
+export const removeFormSchema = async (companyID: string, id: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
 
 	// LEER

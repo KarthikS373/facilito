@@ -39,7 +39,7 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// EXTRAS INICIALES
 	useEffect(() => {
 		setExtras(productRef.current.extras?.map((ext: Extra, id: number) => ({ ...ext, id })) || [])
-	}, [])
+	}, [setExtras, productRef])
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>

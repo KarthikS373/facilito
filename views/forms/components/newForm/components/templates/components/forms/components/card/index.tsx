@@ -15,7 +15,7 @@ const showTemplateCard = (
 	form: Form,
 	$: (key: TemplateStringsArray) => string,
 	showPrompt: (customForm?: Form) => unknown
-) => {
+): void => {
 	window.Alert({
 		title: '',
 		body: '',

@@ -15,9 +15,8 @@ export const useFilters = (
 	filter: string,
 	formID: string,
 	forms: FormInterface,
-	changesTrigger: string,
 	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
-) => {
+): void => {
 	useEffect(() => {
 		// BUSCAR
 		const formIndex: number = forms.forms.findIndex((form: Form) => form.id === formID)
@@ -35,5 +34,5 @@ export const useFilters = (
 				filter
 			)
 		)
-	}, [filter, formID, changesTrigger])
+	}, [filter, formID, forms.answers, forms.forms, setAnswers])
 }

@@ -55,10 +55,8 @@ const Products: React.FC = () => {
 	const changeFilterEv = (newFilter: string) =>
 		changeFilter('products-filter', newFilter, setFilter)
 
-	const changesTrigger: string = Object.keys(productsCtx.products).join('')
-
 	// FILTROS
-	useFilters(setProducts, filter, changesTrigger, productsCtx.products)
+	useFilters(setProducts, filter, productsCtx.products)
 
 	// FILTRO INICIAL
 	useDefaultFilter('products-filter', 'naz', setFilter)

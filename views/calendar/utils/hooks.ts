@@ -12,7 +12,7 @@ import type { View } from 'react-big-calendar'
 const useAppointments = (
 	setEvents: React.Dispatch<React.SetStateAction<CustomAppointment[]>>,
 	companyID?: string
-) => {
+): void => {
 	useEffect(() => {
 		// LISTENER
 		let listener: EmptyFunction | null = null
@@ -39,13 +39,13 @@ export const useCalendarView = (
 	viewState: View,
 	setViewState: React.Dispatch<React.SetStateAction<View>>,
 	setFixedView?: React.Dispatch<React.SetStateAction<boolean>>
-) => {
+): void => {
 	// CAMBIAR
 	useEffect(() => {
 		// SELECCIONAR
 		const width: number = window.innerWidth
 		let selectView: View = viewState
-		let fixedView: boolean = false
+		let fixedView = false
 
 		// CAMBIAR
 		if (width > 500) {
@@ -64,7 +64,7 @@ export const useCalendarView = (
 		// ACTUALIZAR
 		setViewState(selectView)
 		if (setFixedView) setFixedView(fixedView)
-	}, [viewState])
+	}, [viewState, setFixedView, setViewState])
 }
 
 export default useAppointments

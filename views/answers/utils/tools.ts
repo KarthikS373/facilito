@@ -1,29 +1,19 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // TOOLS
 import { parseDate, dateToString } from 'utils/tools'
 import { sortAnswers } from 'utils/answers'
 
 /**
- * Obtener valores de cambio
- * @description Obtiene un numero que activa los efectos
- * @param  {FormInterface} forms
- */
-export const getChangesTrigger = (forms: FormInterface) =>
-	forms.forms.length +
-	forms.answers.length +
-	forms.answers.map((answer) => answer?.data.length || 0).join('') +
-	forms.answers.map((answer) => answer?.states.join('')).join('')
-
-/**
- * Filtrar respuetas
- * @description Reordena las respuetas segun un filtro
+ * Filtrar respuestas
+ * @description Re ordena las respuestas segun un filtro
  * @param  {FormAnswerSelf[]} answers
  * @param  {string} filter
  */
-export const filterAnswers = (answers: FormAnswerSelf[], filter: string) => {
+export const filterAnswers = (answers: FormAnswerSelf[], filter: string): FormAnswerSelf[] => {
 	const tmpAnswers = [...answers]
-	let header: string = filter?.charAt(0) || 'n'
-	let field: string = 'personal_name_0'
-	let sort: string = filter?.substr(1) || 'az'
+	const header: string = filter?.charAt(0) || 'n'
+	let field = 'personal_name_0'
+	const sort: string = filter?.substr(1) || 'az'
 
 	// BUSCAR COLUMNA
 	if (header === 'n') field = 'personal_name_0'
@@ -66,7 +56,7 @@ export const updateLocalAnswerState = (
 	index: number,
 	newState: number,
 	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
-) => {
+): void => {
 	setAnswers((prevAnswers: FormAnswerSelf[]) => {
 		// EDITAR
 		const tmpAnswers: FormAnswerSelf[] = [...prevAnswers]
@@ -90,7 +80,7 @@ export const getExcelExportData = (
 	answers: FormAnswerSelf[],
 	components: FormComponent[],
 	$: TemplateStrBuilder
-) => {
+): FormAnswerItem[] => {
 	const answerDataSet: FormAnswerItem[] =
 		(answers
 			.map((answer: FormAnswerSelf, index: number) => {

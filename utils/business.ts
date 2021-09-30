@@ -20,7 +20,7 @@ const getBusinessDoc = async (url: string) => {
  * @param  {string} url
  * @description Retorna un objeto Business asociado a un URL
  */
-export const getCompany = async (url: string) => {
+export const getCompany = async (url: string): Promise<Business | null> => {
 	if (url) {
 		const { getDoc } = await import('firebase/firestore')
 
@@ -37,7 +37,7 @@ export const getCompany = async (url: string) => {
  * @param  {string} companyID
  * @description Agrega una url al arreglo de formularios
  */
-export const addBusinessFormURL = async (id: string, companyID: string) => {
+export const addBusinessFormURL = async (id: string, companyID: string): Promise<void> => {
 	// COLECCIÓN DE EMPRESA
 	const { getDoc, setDoc } = await import('firebase/firestore')
 	const businessDoc = await getBusinessDoc(companyID)
@@ -60,12 +60,15 @@ export const addBusinessFormURL = async (id: string, companyID: string) => {
  * @param  {Partial<Business> | null} business
  * @description Mezcla los valores del negocio en la DB
  */
-export const replaceBusiness = async (companyID: string, business: Partial<Business> | null) => {
+export const replaceBusiness = async (
+	companyID: string,
+	business: Partial<Business> | null
+): Promise<void> => {
 	const { setDoc } = await import('firebase/firestore')
 
 	// COLECCIÓN DE EMPRESA
 	const businessDoc = await getBusinessDoc(companyID)
 
-	// LISTA
+	// LISTAs
 	if (business) setDoc(businessDoc, business, { merge: true })
 }

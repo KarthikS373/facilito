@@ -7,7 +7,7 @@
 const addExtra = (
 	productRef: React.MutableRefObject<Product>,
 	setExtras: React.Dispatch<React.SetStateAction<ExtendedExtra[]>>
-) => {
+): void => {
 	setExtras((prevExtras: ExtendedExtra[]) => {
 		const newExtras = [...prevExtras]
 		newExtras.push({
@@ -35,7 +35,7 @@ export const removeExtra = (
 	extIndex: number,
 	productRef: React.MutableRefObject<Product>,
 	setExtras: React.Dispatch<React.SetStateAction<ExtendedExtra[]>>
-) => {
+): void => {
 	setExtras((prevExtras: ExtendedExtra[]) => {
 		const newExtras = [...prevExtras].filter((_ext, index: number) => index !== extIndex)
 		productRef.current.extras = newExtras

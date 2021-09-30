@@ -13,7 +13,7 @@ const deleteState = (
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	companyID?: string
-) => {
+): void => {
 	if (companyID) {
 		window.Alert({
 			title: 'Borrar estado',
@@ -51,7 +51,7 @@ export const onStateChange = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
-) => {
+): void => {
 	const { value, name } = ev.target
 	setStep((prevStep: FormTrackingStep) => {
 		const newStep = { ...prevStep, [name]: value }
@@ -74,7 +74,7 @@ export const changeStateColor = (
 	onClose: EmptyFunction,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
-) => {
+): void => {
 	onClose()
 	setStep((prevStep: FormTrackingStep) => {
 		const newStep = { ...prevStep, color }
@@ -94,7 +94,7 @@ export const clearStateInputs = (
 	index: number,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
 	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
-) => {
+): void => {
 	// LIMPIAR
 	const newStep = { name: '', description: '', color: 'var(--primary)' }
 

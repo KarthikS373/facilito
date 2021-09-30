@@ -1,3 +1,4 @@
+import type { Unsubscribe } from '@firebase/firestore'
 import { getCollection } from './db'
 
 /**
@@ -26,7 +27,7 @@ const getAnswerDoc = async (companyID: string, formID: string) => {
 export const answersListener = async (
 	companyID: string,
 	setAnswers: (forms: { [id: string]: FormAnswer }) => unknown
-) => {
+): Promise<Unsubscribe> => {
 	const { collection, doc, onSnapshot } = await import('firebase/firestore')
 
 	// LEER
@@ -52,7 +53,7 @@ export const getAnswersDifference = (
 	first: (FormAnswer | undefined)[],
 	second: (FormAnswer | undefined)[],
 	forms: Form[]
-) => {
+): FormInterface => {
 	// OBTENER IDS
 	const firstLengths: number[] = first.map((answers: FormAnswer | undefined) =>
 		answers ? answers?.data.length : -1
@@ -68,7 +69,7 @@ export const getAnswersDifference = (
 		.forEach((changedForm: boolean, index: number) => {
 			if (changedForm) {
 				formsI.forms.push(forms[index])
-				if (second[index]) formsI.answers.push(second[index]!)
+				if (second[index]) formsI.answers.push(second[index])
 			} else return undefined
 		})
 
@@ -82,7 +83,7 @@ export const getAnswersDifference = (
  * @param  {string} companyID
  * @param  {string} formID
  */
-export const removeAnswersForm = async (companyID: string, formID: string) => {
+export const removeAnswersForm = async (companyID: string, formID: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
 
 	// LEER
@@ -97,7 +98,11 @@ export const removeAnswersForm = async (companyID: string, formID: string) => {
  * @param  {string} formID
  * @param  {string} companyID
  */
-export const deleteAnswer = async (index: number, formID?: string, companyID?: string) => {
+export const deleteAnswer = async (
+	index: number,
+	formID?: string,
+	companyID?: string
+): Promise<void> => {
 	if (companyID && formID) {
 		const { getDoc, setDoc } = await import('firebase/firestore')
 
@@ -106,9 +111,9 @@ export const deleteAnswer = async (index: number, formID?: string, companyID?: s
 		const companyAnswers = (await getDoc(answerDoc)).data() as FormAnswer
 
 		// BORRAR
-		companyAnswers.data = companyAnswers.data.filter((_res: any, i: number) => index !== i)
-		companyAnswers.dates = companyAnswers.dates.filter((_res: any, i: number) => index !== i)
-		companyAnswers.states = companyAnswers.states.filter((_res: any, i: number) => index !== i)
+		companyAnswers.data = companyAnswers.data.filter((_res: unknown, i: number) => index !== i)
+		companyAnswers.dates = companyAnswers.dates.filter((_res: unknown, i: number) => index !== i)
+		companyAnswers.states = companyAnswers.states.filter((_res: unknown, i: number) => index !== i)
 
 		// ACTUALIZAR
 		return setDoc(answerDoc, companyAnswers)
@@ -121,17 +126,20 @@ export const deleteAnswer = async (index: number, formID?: string, companyID?: s
  * @param  {FormComponent[]} components
  * @param  {FormAnswerItemContainer} formData
  */
-export const sortAnswers = (components: FormComponent[], formData: FormAnswerItemContainer) => {
+export const sortAnswers = (
+	components: FormComponent[],
+	formData: FormAnswerItemContainer
+): FormSortedAnswer[] => {
 	// CREAR TEXTO
 	const data = { ...formData }
-	let multiIndex: number = 0
-	let orderedAnswers: FormSortedAnswer[] = []
+	let multiIndex = 0
+	const orderedAnswers: FormSortedAnswer[] = []
 	const dataKeys: string[] = Object.keys(data)
 
 	// RECORRER
 	components.forEach((component: FormComponent, index: number) => {
 		// COMPONENTE
-		const componentKey: string = `${component.name}_${component.id}`
+		const componentKey = `${component.name}_${component.id}`
 
 		// BUSCAR
 		if (component.name === 'multiple') multiIndex = index
@@ -188,7 +196,7 @@ export const updateAnswerState = async (
 	newState: number,
 	formID?: string,
 	companyID?: string
-) => {
+): Promise<void> => {
 	if (companyID && formID) {
 		const { getDoc, setDoc } = await import('firebase/firestore')
 

@@ -14,7 +14,7 @@ const deleteForm = (
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	companyID?: string
-) => {
+): void => {
 	if (companyID)
 		window.Alert({
 			title: 'Borrar tracking',
@@ -23,8 +23,8 @@ const deleteForm = (
 			onConfirm: async () => {
 				// ACTUALIZAR
 				setForms((prevForms: FormInterface) => {
-					let answers = [...prevForms.answers]
-					let forms = [...prevForms.forms]
+					const answers = [...prevForms.answers]
+					const forms = [...prevForms.forms]
 
 					// BORRAR
 					forms.forEach((fForm: Form) => {

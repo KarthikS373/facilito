@@ -15,11 +15,11 @@ const useBusiness = (
 	userBusiness: string | null,
 	isAnonymous: boolean,
 	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
-) => {
-	// FETCH
+): void => {
+	// FETCHs
 	useEffect(() => {
 		if (userBusiness && !isAnonymous) getCompany(userBusiness).then(setBusiness)
-	}, [userBusiness])
+	}, [userBusiness, isAnonymous, setBusiness])
 }
 
 // EXPORT

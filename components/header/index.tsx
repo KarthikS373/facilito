@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 						<Button
 							fullWidth
 							variant='outlined'
-							startIcon={<VisibilityTwoTone />}>{$`Ver como visitiante`}</Button>
+							startIcon={<VisibilityTwoTone />}>{$`Ver como visitante`}</Button>
 					</Link>
 					{children || (
 						<Link rKey='forms' passHref>

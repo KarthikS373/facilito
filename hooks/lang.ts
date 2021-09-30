@@ -19,15 +19,14 @@ interface UseStringsProps {
  * Hook de Strings
  * @description Retorna la informacion sobre el lenguaje
  */
-const useStrings = () => {
+const useStrings = (): UseStringsProps => {
 	const langCtx = useContext(LangContext)
 
 	// LEER STRINGS
-	function $(key: TemplateStringsArray, ...values: any[]) {
+	function $(key: TemplateStringsArray, ...values: unknown[]) {
 		return getTextFromDict(key, values, {
 			langCode: langCtx.langCode,
 			mainLang: langCtx.mainLang,
-			// @ts-ignore
 			strings: Strings,
 			langs: langCtx.langs,
 		})

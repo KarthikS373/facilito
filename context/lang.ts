@@ -8,7 +8,7 @@ export interface IPortrayContext {
 }
 const defContext: IPortrayContext = {
 	langs: ['en', 'es'],
-	setLang: () => {},
+	setLang: () => null,
 	mainLang: 'en',
 	langCode: 'en',
 }

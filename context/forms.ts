@@ -13,8 +13,8 @@ const DefContext: ContextProps = {
 		answers: [],
 		forms: [],
 	},
-	setForms: () => {},
-	setFormsDB: () => {},
+	setForms: () => null,
+	setFormsDB: () => null,
 }
 
 // CONTEXTO

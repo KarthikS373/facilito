@@ -40,7 +40,7 @@ const ProtectedRoutesProvider: React.FC = (props) => {
 		} else {
 			if (!user && path !== '/cuenta') signingAnonymously()
 		}
-	}, [user, business, isAnonymous])
+	}, [user, business, isAnonymous, path, router])
 
 	return <>{props.children}</>
 }

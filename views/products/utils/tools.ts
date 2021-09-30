@@ -1,13 +1,13 @@
 /**
  * Filtrar productos
- * @description Reordena los productos segun un filtro
+ * @description Re ordena los productos segun un filtro
  * @param  {Product[]} products
  * @param  {string} filter
  */
-const filterProducts = (products: Product[], filter: string) => {
+const filterProducts = (products: Product[], filter: string): Product[] => {
 	const tmpProducts = [...products]
 	let field: string = filter.charAt(0)
-	let sort: string = filter.substr(1)
+	const sort: string = filter.substr(1)
 
 	// BUSCAR COLUMNA
 	if (field === 'n') field = 'title'
@@ -22,6 +22,7 @@ const filterProducts = (products: Product[], filter: string) => {
 	tmpProducts.sort((aF: Product, bF: Product) => {
 		const a = ascSort ? aF : bF
 		const b = ascSort ? bF : aF
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		if (field !== 'price') return a[field]!.toString().localeCompare(b[field]?.toString() || '0')
 		else return a[field] - b[field]
 	})

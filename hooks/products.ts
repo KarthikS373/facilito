@@ -19,7 +19,7 @@ import ProductsContext from 'context/products'
 const useProducts = (
 	setProducts: React.Dispatch<React.SetStateAction<{ [id: string]: Product }>>,
 	companyID?: string
-) => {
+): void => {
 	useEffect(() => {
 		let listener: Unsubscribe | undefined
 
@@ -30,14 +30,14 @@ const useProducts = (
 		return () => {
 			if (listener) listener()
 		}
-	}, [companyID])
+	}, [setProducts, companyID])
 }
 
 export default useProducts
 
 /**
  * Hook de producto
- * @description Busca un producto en el contexto conun id
+ * @description Busca un producto en el contexto con un id
  * @param  {string} productID
  * @param  {{[id:string]: Product}} customProducts
  */
@@ -45,10 +45,11 @@ export const useProduct = (
 	productID?: string,
 	customProducts?: { [id: string]: Product }
 ): Product | undefined => {
+	const productsCtx = useContext(ProductsContext).products
+
 	if (productID) {
 		// CONTEXTO
-		const products: { [id: string]: Product } =
-			customProducts || useContext(ProductsContext).products
+		const products: { [id: string]: Product } = customProducts || productsCtx
 		const currentProduct: Product | undefined = Object.values(products).find(
 			(product: Product) => product.sku === productID
 		)

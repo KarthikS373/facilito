@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper'
 
 // COMPONENTES
 import ColorButton from 'components/button'
+import Image from 'next/image'
 
 // ICONS
 import Close from '@mui/icons-material/Close'
@@ -60,7 +61,7 @@ const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 							<IconButton onClick={removeImageEv(picIndex)} size='small'>
 								<Close />
 							</IconButton>
-							<img src={image} alt={`gallery_${picIndex}`} />
+							<Image layout='fill' unoptimized src={image} alt={`gallery_${picIndex}`} />
 						</div>
 					) : (
 						<label htmlFor={`image_${picIndex}`}>

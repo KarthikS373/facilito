@@ -84,7 +84,7 @@ export const saveProductImages = async (
 	companyID?: string
 ) => {
 	if (companyID?.length && sku?.length) {
-		// COMPRIMIR IMAGANES
+		// COMPRIMIR IMAGENES
 		const compressedImages: (File | null)[] = await Promise.all(
 			images.map((image: File | null) => {
 				if (image) {

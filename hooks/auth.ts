@@ -10,7 +10,7 @@ import { getAuth } from 'utils/auth'
  */
 export const useAuth = (
 	setAuth: React.Dispatch<React.SetStateAction<User | null>> | ((user: User | null) => void)
-) => {
+): void => {
 	useEffect(() => {
 		// LEER USUARIO
 		let listener: Unsubscribe | null = null
@@ -25,5 +25,5 @@ export const useAuth = (
 		return () => {
 			if (listener) listener()
 		}
-	}, [])
+	}, [setAuth])
 }

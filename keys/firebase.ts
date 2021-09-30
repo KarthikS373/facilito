@@ -1,7 +1,7 @@
 // TIPOS
 import type { FirebaseApp } from '@firebase/app'
 
-async function getFirebase() {
+const getFirebase = async (): Promise<FirebaseApp> => {
 	// IMPORTS
 	const { initializeApp, getApps, getApp } = await import('firebase/app')
 

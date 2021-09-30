@@ -11,7 +11,7 @@ const changeExtraProps = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	index: number,
 	localProduct: React.MutableRefObject<Product>
-) => {
+): void => {
 	// EVENTOS
 	const { name, value } = ev.target
 
@@ -33,7 +33,7 @@ export const addOptional = (
 	optionIndex: number,
 	productRef: React.MutableRefObject<Product>,
 	setOptions: React.Dispatch<React.SetStateAction<ExtendedOpt[]>>
-) => {
+): void => {
 	setOptions((prevOptions: ExtendedOpt[]) => {
 		const newOptions = [...prevOptions]
 		newOptions.splice(++optionIndex, 0, { name: '', price: 0, id: prevOptions.length })
@@ -55,9 +55,9 @@ export const removeOptional = (
 	optionIndex: number,
 	productRef: React.MutableRefObject<Product>,
 	setOptions: React.Dispatch<React.SetStateAction<ExtendedOpt[]>>
-) => {
+): void => {
 	setOptions((prevOptions: ExtendedOpt[]) => {
-		const newOptions = [...prevOptions].filter((_opt, pos: number) => pos != optionIndex)
+		const newOptions = [...prevOptions].filter((_opt, pos: number) => pos !== optionIndex)
 		if (productRef.current.extras) productRef.current.extras[extraIndex].options = newOptions
 		return newOptions
 	})
@@ -76,7 +76,7 @@ export const changeType = (
 	ev: SelectChangeEvent<string>,
 	productRef: React.MutableRefObject<Product>,
 	setExtraType: React.Dispatch<React.SetStateAction<number>>
-) => {
+): void => {
 	const value: number = parseInt(ev.target.value)
 	setExtraType(value)
 	if (productRef.current.extras) productRef.current.extras[index].type = value

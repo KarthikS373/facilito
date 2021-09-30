@@ -1,3 +1,5 @@
+import React from 'react'
+
 // REACT
 import InputAdornment from '@mui/material/InputAdornment'
 import TextField from '@mui/material/TextField'
@@ -30,9 +32,9 @@ const showNewFormPrompt = (
 	router: NextRouter,
 	customForm?: Form,
 	user?: User | null
-) => {
+): void => {
 	// GUARDAR
-	let title: string = ''
+	let title = ''
 	const changeTitleName = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = ev.target
 		title = value

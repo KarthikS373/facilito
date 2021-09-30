@@ -1,7 +1,7 @@
 // REACT
 import React from 'react'
 
-const showInfo = ($: TemplateStrBuilder) => {
+const showInfo = ($: TemplateStrBuilder): void => {
 	window.Alert({
 		title: '',
 		type: 'confirm',

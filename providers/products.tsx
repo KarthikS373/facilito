@@ -22,7 +22,7 @@ const ProductsProvider: React.FC = (props) => {
 	useProducts(setLocalProducts, businessCtx.business?.id)
 
 	// GUARDAR PRODUCTOS GLOBAL
-	const setProducts = (products: { [id: string]: Product }, merge: boolean = true) =>
+	const setProducts = (products: { [id: string]: Product }, merge = true) =>
 		setLocalProducts((prevProducts: { [id: string]: Product }) => {
 			// ACTUALIZAR
 			const newProducts: { [id: string]: Product } = merge

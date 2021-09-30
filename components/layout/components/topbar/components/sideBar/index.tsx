@@ -105,8 +105,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
 								$style={{
-									borderColor: getActiveRoute(path, 'celandario') ? 'var(--primary)' : undefined,
-									color: getActiveRoute(path, 'celandario') ? 'var(--primary)' : undefined,
+									borderColor: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
 								}}>{$`Calendario`}</ColorButton>
 						</Link>
 					</li>

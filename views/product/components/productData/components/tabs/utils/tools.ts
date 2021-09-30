@@ -1,10 +1,12 @@
+/* eslint-disable dot-notation */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /**
  * Cambiar producto
  * @description Actualiza en la DB y en el contexto las propiedades de un producto
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {React.MutableRefObject<Product>} localProduct
  */
-const changeProductProps = (ev: BaseEvent, localProduct: React.MutableRefObject<Product>) => {
+const changeProductProps = (ev: BaseEvent, localProduct: React.MutableRefObject<Product>): void => {
 	// EVENTOS
 	const { name, value } = ev.target
 

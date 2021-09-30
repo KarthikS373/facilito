@@ -20,7 +20,7 @@ const handleStep = (
 	updateLocalAnswerState: (index: number, newState: number) => void,
 	formID?: string,
 	companyID?: string
-) =>
+): void =>
 	setActiveStep((prevActiveStep) => {
 		const newStep: number = prevActiveStep + step
 		window.Snack('Actualizando...')

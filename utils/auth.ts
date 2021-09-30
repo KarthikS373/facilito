@@ -35,7 +35,7 @@ const authErrors: AuthErrorES = AuthErrorsJSON
  * @description Retornar strings de error en español
  * @param  {(message:string)=>unknown} cb?
  */
-const authErrorHandler = (cb?: (message: string) => unknown) => (err: AuthError) => {
+const authErrorHandler = (cb?: (message: string) => void) => (err: AuthError) => {
 	// MENSAJE EN CONSOLA
 	console.error('Ocurrió un error de auth', err)
 
@@ -48,7 +48,7 @@ const authErrorHandler = (cb?: (message: string) => unknown) => (err: AuthError)
  * Obtener Auth
  * @description Retorna la instancia global de firebase/auth
  */
-export const getAuth = async () => {
+export const getAuth = async (): Promise<Auth> => {
 	const {
 		GoogleAuthProvider,
 		FacebookAuthProvider,
@@ -74,7 +74,7 @@ export const getAuth = async () => {
  * Iniciar anónimo
  * @description Inicia sesión como usuario anónimo
  */
-export const signingAnonymously = async () => {
+export const signingAnonymously = async (): Promise<UserCredential> => {
 	const { signInAnonymously: signInAnonymouslyFrb } = await import('firebase/auth')
 	const auth = await getAuth()
 	return signInAnonymouslyFrb(auth)
@@ -85,7 +85,7 @@ export const signingAnonymously = async () => {
  * @description Verifica un string 'email' con una expresión regular
  * @param  {string} email
  */
-export const verifyEmail = (email: string) => {
+export const verifyEmail = (email: string): boolean => {
 	// REGEX DE EMAIL
 	const rg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return rg.test(String(email).toLowerCase())
@@ -99,8 +99,8 @@ export const verifyEmail = (email: string) => {
  */
 const verifyLoginFields = (email: string, pass: string) => {
 	// GLOBALES
-	let verify: boolean = false
-	let msg: string = ''
+	let verify = false
+	let msg = ''
 
 	// VERIFICAR
 	if (pass.length < 8)
@@ -138,7 +138,7 @@ export const signingUser = async (
 	name?: string,
 	onError?: (error: string) => unknown,
 	rememberUser?: boolean
-) => {
+): Promise<void> => {
 	// VERIFICAR
 	const handler = verifyLoginFields(email, pass)
 
@@ -191,7 +191,6 @@ export const signingUser = async (
 	} else {
 		// MOSTRAR ERROR EN VERIFICACIÓN DE CAMPOS
 		if (onError) onError(handler.msg)
-		return null
 	}
 }
 
@@ -239,7 +238,7 @@ const saveUser = (name?: string) => (credential: UserCredential) => {
  * @description Inicio o Registro con un proveedor facebook.
  * @param  {(error:string)=>unknown} onError?
  */
-export const facebookSigning = async (onError?: (error: string) => unknown) => {
+export const facebookSigning = async (onError?: (error: string) => unknown): Promise<void> => {
 	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
 
 	// AUTH
@@ -260,7 +259,7 @@ export const facebookSigning = async (onError?: (error: string) => unknown) => {
  * @description Inicio o Registro con un proveedor google.
  * @param  {(error:string)=>unknown} onError?
  */
-export const googleSigning = async (onError?: (error: string) => unknown) => {
+export const googleSigning = async (onError?: (error: string) => unknown): Promise<void> => {
 	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
 
 	// AUTH
@@ -285,9 +284,9 @@ export const googleSigning = async (onError?: (error: string) => unknown) => {
  */
 export const forgotPass = async (
 	email: string,
-	onSuccess: EmptyFunction,
+	onSuccess: () => void,
 	onError?: (error: string) => unknown
-) => {
+): Promise<void> => {
 	const { sendPasswordResetEmail } = await import('firebase/auth')
 	const auth = await getAuth()
 	return sendPasswordResetEmail(auth, email).then(onSuccess).catch(authErrorHandler(onError))
@@ -296,7 +295,7 @@ export const forgotPass = async (
  * Cerrar sesión
  * @description Enviá un evento y cierra sesión
  */
-export const logout = async () => {
+export const logout = async (): Promise<void> => {
 	const { signOut } = await import('firebase/auth')
 	const auth = await getAuth()
 	window.postMessage({ action: 'logout' }, '*')

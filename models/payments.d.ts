@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 interface CardPointeData {
 	account: string
 	expiry: string

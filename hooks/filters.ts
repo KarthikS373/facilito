@@ -12,10 +12,10 @@ const useDefaultFilter = (
 	key: string,
 	defFilter: string,
 	setFilter: React.Dispatch<React.SetStateAction<string>>
-) => {
+): void => {
 	useEffect(() => {
 		setFilter(window.localStorage.getItem(key) ?? defFilter)
-	}, [])
+	}, [key, defFilter, setFilter])
 }
 
 export default useDefaultFilter

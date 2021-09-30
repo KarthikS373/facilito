@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
+import type { HttpsCallableResult } from '@firebase/functions'
+
 /**
  * Remover tildes
  * @description Retornar un string sin tildes
@@ -15,7 +19,7 @@ const slugify = (str: string) => {
 		n: 'ñ|Ñ',
 	}
 
-	for (var pattern in map) str = str.replace(new RegExp(map[pattern], 'g'), pattern)
+	for (const pattern in map) str = str.replace(new RegExp(map[pattern], 'g'), pattern)
 	return str
 }
 /**
@@ -23,7 +27,7 @@ const slugify = (str: string) => {
  * @description Convierte un string en su cadena mas optima
  * @param  {string} str
  */
-export const normalizeString = (str: string) => {
+export const normalizeString = (str: string): string => {
 	return slugify(str)
 		.trim()
 		.replace(/[^\w\s]/gi, '')
@@ -49,7 +53,7 @@ export const parseDate = (date: unknown): Date | null => {
  * @description Convierte una fecha a un string Fecha, Hora
  * @param  {Date} date
  */
-export const dateToString = (date: Date) => {
+export const dateToString = (date: Date): string => {
 	const currentDate = parseDate(date)
 	if (currentDate)
 		return `${currentDate.toLocaleDateString('en-GB')}, ${currentDate.toLocaleTimeString('en-US')}`
@@ -61,7 +65,7 @@ export const dateToString = (date: Date) => {
  * @description Convierte una fecha a un string hora
  * @param  {Date} date
  */
-export const hourToString = (date: Date | null | string | number) => {
+export const hourToString = (date: Date | null | string | number): string => {
 	if (date && typeof date !== 'string' && typeof date !== 'number') {
 		return (
 			parseDate(date)?.toLocaleTimeString('en-US', {
@@ -79,7 +83,11 @@ export const hourToString = (date: Date | null | string | number) => {
  * @param  {string} subject
  * @param  {string | string[]} email
  */
-export const sendMail = async (html: string, subject: string, email?: string | string[]) => {
+export const sendMail = async (
+	html: string,
+	subject: string,
+	email?: string | string[]
+): Promise<HttpsCallableResult<unknown>> => {
 	const { default: getCallable } = await import('./functions')
 
 	// QUERY STRING
@@ -98,9 +106,9 @@ export const sendMail = async (html: string, subject: string, email?: string | s
  * @description Imprime una ventana con text/html
  * @param  {string} html
  */
-export const printHTML = (html: string) => {
+export const printHTML = (html: string): void => {
 	// VENTANA
-	let customWindow = window.open('', 'PRINT')
+	const customWindow = window.open('', 'PRINT')
 
 	// ESCRIBIR
 	customWindow?.document.write(html)
@@ -125,7 +133,7 @@ export const changeFilter = (
 	key: string,
 	filter: string,
 	setFilter: React.Dispatch<React.SetStateAction<string>>
-) => {
+): void => {
 	window.localStorage.setItem(key, filter)
 	setFilter(filter)
 }
@@ -139,9 +147,9 @@ export const changeFilter = (
 export const getDataURL = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	imageCallback: (data: string | ArrayBuffer | null) => void
-) => {
-	const tgt = ev.target || window.event?.srcElement,
-		files = tgt.files
+): void => {
+	const tgt = ev.target || window.event?.srcElement
+	const files = tgt.files
 
 	// FileReader support
 	if (FileReader && files && files.length) {
