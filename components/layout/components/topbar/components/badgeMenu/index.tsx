@@ -32,7 +32,12 @@ const BadgeMenu: React.FC<BadgeMenuProps> = ({ anchorEl, onClose, open }) => {
 	}
 
 	return (
-		<PopperMenuList anchorEl={anchorEl} onClose={onClose} open={open} placement='bottom-end'>
+		<PopperMenuList
+			open={open}
+			disablePortal
+			onClose={onClose}
+			anchorEl={anchorEl}
+			placement='bottom-end'>
 			{badgeList.map((cBadge: string, key: number) => (
 				<MenuItem key={`badge_${key}`} onClick={changeBadge(`${cBadge}${badgePrefix[key]}`)}>
 					<Button
