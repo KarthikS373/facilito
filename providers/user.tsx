@@ -8,12 +8,8 @@ import type { User as UserFrb } from '@firebase/auth'
 import UserContext from 'context/user'
 
 // UTILS
-import { useRouter } from 'next/router'
 import { useAuth } from 'hooks/auth'
 import { getUser } from 'utils/user'
-
-// RUTAS
-import ROUTES from 'router/routes'
 
 // ESTADO
 interface ProviderState {
@@ -30,10 +26,6 @@ const defState: ProviderState = {
 const UserProvider: React.FC = (props) => {
 	// ESTADO
 	const [userData, setUser] = useState<ProviderState>({ ...defState })
-
-	// HISTORY
-	const router = useRouter()
-	const path: string = router.asPath
 
 	// AUTH
 	useAuth(
