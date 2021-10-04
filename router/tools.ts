@@ -6,23 +6,39 @@ import { firebaseAdmin } from 'keys/firebase-admin'
 import nookies from 'nookies'
 
 const isProtectedRoute: GetServerSideProps = async (ctx) => {
+	const path: string = ctx.resolvedUrl
+
 	try {
 		// OBTENER TOKEN
 		const cookies = nookies.get(ctx)
 		await firebaseAdmin.auth().verifyIdToken(cookies.token)
 
-		return {
-			props: {} as never,
-		}
+		if (path === '/cuenta')
+			return {
+				redirect: {
+					permanent: false,
+					destination: '/formularios',
+				},
+				props: {} as never,
+			}
+		else
+			return {
+				props: {} as never,
+			}
 	} catch (err) {
 		// REDIRECT A CUENTA SI NO HAY USUARIO
-		return {
-			redirect: {
-				permanent: false,
-				destination: '/cuenta',
-			},
-			props: {} as never,
-		}
+		if (path !== '/cuenta')
+			return {
+				redirect: {
+					permanent: false,
+					destination: '/cuenta',
+				},
+				props: {} as never,
+			}
+		else
+			return {
+				props: {} as never,
+			}
 	}
 }
 
