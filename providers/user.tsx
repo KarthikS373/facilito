@@ -37,22 +37,19 @@ const UserProvider: React.FC = (props) => {
 
 	// AUTH
 	useAuth(
-		useCallback(
-			(authUser: UserFrb | null) => {
-				const getUserData = async () => {
-					if (authUser && authUser.email) {
-						// LEER DE FIRESTORE
-						getUser(authUser.email).then((user: User | null) => {
-							setUser({ user, isAnonymous: authUser.isAnonymous })
-						})
-					} else setUser({ user: null, isAnonymous: authUser?.isAnonymous || false })
-				}
+		useCallback((authUser: UserFrb | null) => {
+			const getUserData = async () => {
+				if (authUser && authUser.email) {
+					// LEER DE FIRESTORE
+					getUser(authUser.email).then((user: User | null) => {
+						setUser({ user, isAnonymous: authUser.isAnonymous })
+					})
+				} else setUser({ user: null, isAnonymous: authUser?.isAnonymous || false })
+			}
 
-				// PETICIÓN
-				getUserData()
-			},
-			[path, router]
-		)
+			// PETICIÓN
+			getUserData()
+		}, [])
 	)
 
 	return (
