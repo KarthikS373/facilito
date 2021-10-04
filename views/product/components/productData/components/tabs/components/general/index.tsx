@@ -70,9 +70,9 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 				name='title'
 				variant='outlined'
 				onChange={handleInputs}
-				value={productRef.current.title}
 				label={$`Título del producto`}
 				placeholder={$`Añade un título corto`}
+				defaultValue={productRef.current.title || ''}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>

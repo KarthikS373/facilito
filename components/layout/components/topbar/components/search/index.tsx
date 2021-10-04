@@ -49,7 +49,9 @@ const Search: React.FC = () => {
 		searchItems(ev, formsCtx.forms, products, setLinks)
 
 	// OCULTAR BUSQUEDA
-	const hideSearchBox = () => setLinks([])
+	const hideSearchBox = () => {
+		if (links.length > 0) setLinks([])
+	}
 
 	return (
 		<ClickAwayListener onClickAway={hideSearchBox}>

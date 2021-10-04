@@ -168,7 +168,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 				<ul className={Styles.colors}>
 					{/* AZUL */}
 					<li>
-						<IconButton onClick={setStepColor('var(--primary)')} />
+						<IconButton onClick={setStepColor('#1AA5BB')} />
 					</li>
 
 					{/* VERDE */}
