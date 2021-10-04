@@ -6,13 +6,13 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 // PROVIDERS
-import ProtectedRoutesProvider from 'router/provider'
 import BusinessProvider from 'providers/business'
 import ProductsProvider from 'providers/products'
 import PortrayProvider from 'providers/lang'
 import ThemeProvider from 'providers/theme'
 import FormsProvider from 'providers/forms'
 import UserProvider from 'providers/user'
+import AuthProvider from 'providers/auth'
 
 // COMPONENTS
 import Layout from 'components/layout'
@@ -58,9 +58,9 @@ const FacilitoApp = ({
 				/>
 			</Head>
 			<ThemeProvider>
-				<UserProvider>
-					<BusinessProvider>
-						<ProtectedRoutesProvider>
+				<AuthProvider>
+					<UserProvider>
+						<BusinessProvider>
 							<FormsProvider>
 								<ProductsProvider>
 									<PortrayProvider settings={{ mainLang: 'es' }}>
@@ -73,9 +73,9 @@ const FacilitoApp = ({
 									</PortrayProvider>
 								</ProductsProvider>
 							</FormsProvider>
-						</ProtectedRoutesProvider>
-					</BusinessProvider>
-				</UserProvider>
+						</BusinessProvider>
+					</UserProvider>
+				</AuthProvider>
 			</ThemeProvider>
 		</CacheProvider>
 	)

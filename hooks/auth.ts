@@ -1,7 +1,9 @@
 // TOOLS
-import type { Unsubscribe, User } from '@firebase/auth'
-import { useEffect } from 'react'
-import { getAuth } from 'utils/auth'
+import type { User } from '@firebase/auth'
+import AuthContext from 'context/auth'
+
+// REACT
+import { useContext, useEffect } from 'react'
 
 /**
  * Hook de Auth
@@ -11,19 +13,11 @@ import { getAuth } from 'utils/auth'
 export const useAuth = (
 	setAuth: React.Dispatch<React.SetStateAction<User | null>> | ((user: User | null) => void)
 ): void => {
-	useEffect(() => {
-		// LEER USUARIO
-		let listener: Unsubscribe | null = null
-		const reqUser = async () => {
-			const { onAuthStateChanged } = await import('firebase/auth')
-			const auth = await getAuth()
-			listener = onAuthStateChanged(auth, setAuth)
-		}
+	// CONTEXTO
+	const { user } = useContext(AuthContext)
 
-		// PETICIÓN
-		reqUser()
-		return () => {
-			if (listener) listener()
-		}
-	}, [setAuth])
+	// ACTUALIZAR NUEVO ESTADO
+	useEffect(() => {
+		setAuth(user)
+	}, [user, setAuth])
 }

@@ -49,7 +49,7 @@ const UserProvider: React.FC = (props) => {
 							if (path === ROUTES.login && process.env.NODE_ENV === 'production')
 								router.push(ROUTES.forms)
 						})
-					} else setUser({ user: null, isAnonymous: false })
+					} else setUser({ user: null, isAnonymous: authUser?.isAnonymous || false })
 				}
 
 				// PETICIÓN
