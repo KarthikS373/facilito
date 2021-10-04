@@ -22,7 +22,6 @@ const handler = (req: NextApiRequest, res: NextApiResponse<RespData>): void => {
 						httpOnly: true,
 						secure: process.env.MODE_ENV !== 'development',
 						maxAge: 60 * 60 * 24 * 31,
-						domain: '.web.app', // TODO: Change to appfacito.com
 						sameSite: 'none',
 						path: '/',
 					})
