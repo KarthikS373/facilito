@@ -26,6 +26,8 @@ const isProtectedRoute: GetServerSideProps = async (ctx) => {
 				props: {} as never,
 			}
 	} catch (err) {
+		console.error(err)
+
 		// REDIRECT A CUENTA SI NO HAY USUARIO
 		if (path !== '/cuenta')
 			return {
