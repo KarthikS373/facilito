@@ -1,6 +1,5 @@
 // REACT Y NOOKIES
 import React, { useState, useEffect } from 'react'
-import nookies from 'nookies'
 
 // TIPOS
 import type { User, Unsubscribe } from '@firebase/auth'
@@ -14,7 +13,6 @@ const AuthProvider: React.FC = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
 
 	useEffect(() => {
-		if (window) window.nookies = nookies
 		let listener: Unsubscribe | undefined
 
 		const requestChange = async () => {
@@ -25,18 +23,18 @@ const AuthProvider: React.FC = ({ children }) => {
 			// CAMBIOS EN TOKEN
 			listener = onIdTokenChanged(auth, async (user) => {
 				// SALIR
-				if (!user) {
-					setUser(null)
-					nookies.destroy(null, 'token')
-					nookies.set(null, 'token', '', { path: '/' })
-					return
-				}
+				if (!user) return
 
 				// ACTUALIZAR TOKEN
+				setUser(user || null)
 				const token = await user.getIdToken()
-				setUser(user)
-				nookies.destroy(null, 'token')
-				nookies.set(null, 'token', token, { path: '/' })
+				fetch('/api/signing', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ token }),
+				})
 			})
 		}
 

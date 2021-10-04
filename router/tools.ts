@@ -3,15 +3,14 @@ import type { GetServerSideProps } from 'next'
 
 // FIREBASE Y NOOKIES
 import { firebaseAdmin } from 'keys/firebase-admin'
-import nookies from 'nookies'
 
 const isProtectedRoute: GetServerSideProps = async (ctx) => {
 	const path: string = ctx.resolvedUrl
 
 	try {
 		// OBTENER TOKEN
-		const cookies = nookies.get(ctx)
-		await firebaseAdmin.auth().verifyIdToken(cookies.token)
+		const { token } = ctx.req.cookies
+		await firebaseAdmin.auth().verifyIdToken(token)
 
 		if (path === '/cuenta')
 			return {
