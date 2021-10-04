@@ -9,6 +9,8 @@ const isProtectedRoute: GetServerSideProps = async (ctx) => {
 	const path: string = ctx.resolvedUrl
 	const sessionCookie = ctx.req.cookies.token || ''
 
+	console.info('Cookies: ', ctx.req.headers.cookie)
+
 	// VERIFICAR TOKEN
 	let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
 	if (sessionCookie?.length)

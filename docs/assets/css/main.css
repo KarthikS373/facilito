@@ -446,9 +446,6 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  **/
-input {
-	/** 3 **/
-}
 input[type='checkbox'],
 input[type='radio'] {
 	box-sizing: border-box;
@@ -1894,7 +1891,6 @@ h2 {
 		position: fixed !important;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
-		overflow-scrolling: touch;
 		z-index: 1024;
 		top: 0 !important;
 		bottom: 0 !important;
@@ -2010,7 +2006,6 @@ html.minimal .tsd-navigation {
 	position: fixed !important;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
-	overflow-scrolling: touch;
 	box-sizing: border-box;
 	z-index: 1;
 	left: 0;
@@ -2240,7 +2235,6 @@ footer .tsd-legend {
 	-moz-column-break-inside: avoid;
 	-ms-column-break-inside: avoid;
 	-o-column-break-inside: avoid;
-	column-break-inside: avoid;
 	-webkit-page-break-inside: avoid;
 	-moz-page-break-inside: avoid;
 	-ms-page-break-inside: avoid;

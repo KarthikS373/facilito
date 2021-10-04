@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useCallback, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -26,7 +26,7 @@ import ProductsContext from 'context/products'
 import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
 import CreateTwoTone from '@mui/icons-material/CreateTwoTone'
 
-// HOOC
+// HOC
 import useStrings from 'hooks/lang'
 
 // REACT WINDOW
@@ -64,24 +64,20 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 	}
 
 	// FILA
-	const productsTrigger: string = products.map((product: Product) => product.sku).join('')
-	const row = useCallback(
-		({ index, style }) => {
-			let newIndex: number = index - 1
-			const product: Product = products[Math.max(0, newIndex)]
-			return newIndex === -1 ? (
-				<TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
-			) : (
-				<ProductRow
-					style={style}
-					key={product.sku}
-					product={product}
-					handleRow={handleRow(newIndex)}
-				/>
-			)
-		},
-		[productsTrigger, filter]
-	)
+	const row = ({ index, style }: { index: number; style: React.CSSProperties }) => {
+		const newIndex: number = index - 1
+		const product: Product = products[Math.max(0, newIndex)]
+		return newIndex === -1 ? (
+			<TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
+		) : (
+			<ProductRow
+				style={style}
+				key={product.sku}
+				product={product}
+				handleRow={handleRow(newIndex)}
+			/>
+		)
+	}
 
 	return (
 		<>

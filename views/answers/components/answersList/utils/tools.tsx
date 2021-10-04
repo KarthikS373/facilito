@@ -1,3 +1,6 @@
+// REACT
+import React from 'react'
+
 // UTILS
 import { renderToString } from 'react-dom/server'
 import { sortAnswers, deleteAnswer } from 'utils/answers'
@@ -8,11 +11,11 @@ import { AnswerPreview } from '../components/showAnswer'
 
 /**
  * Imprimir respuestas
- * @description Renderiza la lista de respuestas y luego la imprime
+ * @description Render de la lista de respuestas y luego la imprime
  * @param  {FormAnswerItemContainer} data
  * @param  {FormComponent[]} components
  */
-const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[]) => {
+const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[]): void => {
 	const html: string = renderToString(<AnswerPreview answers={sortAnswers(components, data)} />)
 	printHTML(html)
 }
@@ -24,10 +27,10 @@ const printAnswer = (data: FormAnswerItemContainer, components: FormComponent[])
  * @param  {string} formID
  * @param  {string} companyID
  */
-export const deleteAnswerPrompt = (index: number, formID?: string, companyID?: string) => {
+export const deleteAnswerPrompt = (index: number, formID?: string, companyID?: string): void => {
 	window.Alert({
 		title: 'Borrar respuesta',
-		body: '¿Estas seguro de querer borrar esta repuesta?, este proceso sera permamente.',
+		body: '¿Estas seguro de querer borrar esta repuesta?, este proceso sera permanente.',
 		type: 'confirm',
 		onConfirm: () => {
 			window.Snack('Borrando...')
