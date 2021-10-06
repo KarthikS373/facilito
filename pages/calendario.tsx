@@ -15,5 +15,5 @@ const CalendarPage: NextPage = () => {
 	return <Calendar />
 }
 
-export const getServerSideProps = isProtectedRoute
+CalendarPage.getInitialProps = isProtectedRoute
 export default CalendarPage

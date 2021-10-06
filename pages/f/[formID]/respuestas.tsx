@@ -20,5 +20,5 @@ const AnswersPage: NextPage = () => {
 	return <Answers formID={formID as string} />
 }
 
-export const getServerSideProps = isProtectedRoute
+AnswersPage.getInitialProps = isProtectedRoute
 export default AnswersPage

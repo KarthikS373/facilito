@@ -18,5 +18,5 @@ const EditPage: NextPage = () => {
 	return <EditTracking formID={formID as string} />
 }
 
-export const getServerSideProps = isProtectedRoute
+EditPage.getInitialProps = isProtectedRoute
 export default EditPage
