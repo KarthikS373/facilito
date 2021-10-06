@@ -143,8 +143,13 @@ export const signingUser = async (
 	const handler = verifyLoginFields(email, pass)
 
 	if (handler.verify) {
-		const { setPersistence, signInWithEmailAndPassword, createUserWithEmailAndPassword } =
-			await import('firebase/auth')
+		const {
+			setPersistence,
+			signInWithEmailAndPassword,
+			createUserWithEmailAndPassword,
+			browserLocalPersistence,
+			browserSessionPersistence,
+		} = await import('firebase/auth')
 
 		// AUTH
 		const auth = await getAuth()
@@ -187,9 +192,8 @@ export const signingUser = async (
 				})
 				.catch(authErrorHandler(onError))
 
-		await setPersistence(auth, {
-			type: rememberUser ? 'LOCAL' : 'SESSION',
-		})
+		// PERSISTENCIA
+		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	} else {
 		// MOSTRAR ERROR EN VERIFICACIÓN DE CAMPOS
 		if (onError) onError(handler.msg)
@@ -245,7 +249,13 @@ export const facebookSigning = async (
 	rememberUser: boolean,
 	onError?: (error: string) => unknown
 ): Promise<void> => {
-	const { signInWithPopup, getAdditionalUserInfo, setPersistence } = await import('firebase/auth')
+	const {
+		signInWithPopup,
+		getAdditionalUserInfo,
+		setPersistence,
+		browserLocalPersistence,
+		browserSessionPersistence,
+	} = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
@@ -261,9 +271,8 @@ export const facebookSigning = async (
 			})
 			.catch(authErrorHandler(onError))
 
-		await setPersistence(auth, {
-			type: rememberUser ? 'LOCAL' : 'SESSION',
-		})
+		// PERSISTENCIA
+		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	}
 }
 
@@ -277,7 +286,13 @@ export const googleSigning = async (
 	rememberUser: boolean,
 	onError?: (error: string) => unknown
 ): Promise<void> => {
-	const { signInWithPopup, getAdditionalUserInfo, setPersistence } = await import('firebase/auth')
+	const {
+		signInWithPopup,
+		getAdditionalUserInfo,
+		setPersistence,
+		browserLocalPersistence,
+		browserSessionPersistence,
+	} = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
@@ -286,7 +301,6 @@ export const googleSigning = async (
 	if (gProvider) {
 		// RECORDAR USUARIO
 		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
-
 		await signInWithPopup(auth, gProvider)
 			.then((res) => {
 				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
@@ -294,9 +308,8 @@ export const googleSigning = async (
 			})
 			.catch(authErrorHandler(onError))
 
-		await setPersistence(auth, {
-			type: rememberUser ? 'LOCAL' : 'SESSION',
-		})
+		// PERSISTENCIA
+		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	}
 }
 
@@ -324,11 +337,5 @@ export const logout = async (): Promise<void> => {
 	const { signOut } = await import('firebase/auth')
 	const auth = await getAuth()
 	window.postMessage({ action: 'logout' }, '*')
-
-	// EVITAR ERRORES DE PERMISOS
-	try {
-		await signOut(auth)
-	} catch (error) {
-		console.log(error)
-	}
+	return signOut(auth)
 }

@@ -9,10 +9,10 @@ const logoutEvent = async (onClose: EmptyFunction, router: NextRouter): Promise<
 	// CERRAR SESION
 	window.Snack('Cerrando sesión...')
 	await fetch('/api/logout', { method: 'POST' })
-	await logout()
 
 	// REDIRECT
-	router.push(ROUTES.login)
+	await router.push(ROUTES.login)
+	await logout()
 	onClose()
 }
 
