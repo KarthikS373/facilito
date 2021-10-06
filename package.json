@@ -14,6 +14,8 @@
 		"build": "next build",
 		"build:a": "ANALYZE=true npm run build",
 		"start": "next start",
+		"prod": "firebase emulators:start",
+		"preprod": "npm run build",
 		"lint": "next lint",
 		"predeploy": "npm run build",
 		"deploy": "firebase deploy --only hosting,functions:nextServer"

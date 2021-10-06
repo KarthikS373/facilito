@@ -1,45 +1,49 @@
 // TIPOS
-import type { NextPageContext } from 'next'
-import { parse } from 'cookie'
-
-// ROUTER
-import Router from 'next/router'
+import type { GetServerSideProps } from 'next'
 
 // FIREBASE Y NOOKIES
 import { firebaseAdmin } from 'keys/firebase-admin'
 
-const isProtectedRoute = async (ctx: NextPageContext): Promise<never> => {
-	// COOKIE
-	let path = ''
-	let sessionCookie = ''
-	if (ctx.req) {
-		sessionCookie = parse((ctx.req.headers?.cookies as string) || '')?.session || ''
-		path = ctx.req.url || ''
-	}
+const isProtectedRoute: GetServerSideProps = async (ctx) => {
+	if (process.env.NODE_ENV === 'production') {
+		// COOKIE
+		const path: string = ctx.resolvedUrl
+		const sessionCookie = ctx.req.cookies.session || ''
 
-	// VERIFICAR TOKEN
-	let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
-	if (sessionCookie?.length)
-		idToken = await firebaseAdmin.auth().verifySessionCookie(sessionCookie, true)
+		// VERIFICAR TOKEN
+		let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
+		if (sessionCookie?.length)
+			idToken = await firebaseAdmin.auth().verifySessionCookie(sessionCookie, true)
 
-	// REDIRECT
-	if (idToken) {
-		if (path === '/cuenta') {
-			if (ctx.res) {
-				ctx.res.writeHead(307, { Location: '/formularios' })
-				ctx.res.end()
-			} else Router.replace('/formularios')
+		// REDIRECT
+		if (idToken) {
+			return {
+				redirect:
+					path === '/cuenta'
+						? {
+								permanent: false,
+								destination: '/formularios',
+						  }
+						: undefined,
+				props: {} as never,
+			}
+		} else {
+			// REDIRECT A CUENTA SI NO HAY USUARIO
+			return {
+				redirect:
+					path !== '/cuenta'
+						? {
+								permanent: false,
+								destination: '/cuenta',
+						  }
+						: undefined,
+				props: {} as never,
+			}
 		}
-	} else {
-		if (path !== '/cuenta') {
-			if (ctx.res) {
-				ctx.res.writeHead(307, { Location: '/cuenta' })
-				ctx.res.end()
-			} else Router.replace('/cuenta')
+	} else
+		return {
+			props: {} as never,
 		}
-	}
-
-	return {} as never
 }
 
 export default isProtectedRoute

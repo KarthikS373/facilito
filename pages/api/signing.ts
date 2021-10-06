@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Pro
 							res.setHeader('Access-Control-Expose-Headers', 'Set-Cookie')
 							res.setHeader(
 								'Set-Cookie',
-								`session=${sessionCookie};Path=/;HttpOnly;Max-Age=${expiresIn};`
+								`session=${sessionCookie};Path=/;HttpOnly;Max-Age=${expiresIn};SameSite=strict;Secure`
 							)
 							res.status(200).json({ success: true })
 						},

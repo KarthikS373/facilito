@@ -15,5 +15,5 @@ const ProductsPage: NextPage = () => {
 	return <Products />
 }
 
-ProductsPage.getInitialProps = isProtectedRoute
+export const getServerSideProps = isProtectedRoute
 export default ProductsPage

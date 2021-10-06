@@ -15,5 +15,5 @@ const AccountPage: NextPage = () => {
 	return <Login />
 }
 
-AccountPage.getInitialProps = isProtectedRoute
+export const getServerSideProps = isProtectedRoute
 export default AccountPage

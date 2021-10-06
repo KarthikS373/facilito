@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -64,20 +64,23 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 	}
 
 	// FILA
-	const row = ({ index, style }: { index: number; style: React.CSSProperties }) => {
-		const newIndex: number = index - 1
-		const product: Product = products[Math.max(0, newIndex)]
-		return newIndex === -1 ? (
-			<TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
-		) : (
-			<ProductRow
-				style={style}
-				key={product.sku}
-				product={product}
-				handleRow={handleRow(newIndex)}
-			/>
-		)
-	}
+	const row = useCallback(
+		({ index, style }: { index: number; style: React.CSSProperties }) => {
+			const newIndex: number = index - 1
+			const product: Product = products[Math.max(0, newIndex)]
+			return newIndex === -1 ? (
+				<TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
+			) : (
+				<ProductRow
+					style={style}
+					key={product.sku}
+					product={product}
+					handleRow={handleRow(newIndex)}
+				/>
+			)
+		},
+		[filter, setFilter, products]
+	)
 
 	return (
 		<>

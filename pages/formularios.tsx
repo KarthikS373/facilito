@@ -15,5 +15,5 @@ const FormsPage: NextPage = () => {
 	return <Forms />
 }
 
-FormsPage.getInitialProps = isProtectedRoute
+export const getServerSideProps = isProtectedRoute
 export default FormsPage

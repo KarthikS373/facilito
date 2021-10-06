@@ -15,5 +15,5 @@ const TrackingPage: NextPage = () => {
 	return <Tracking />
 }
 
-TrackingPage.getInitialProps = isProtectedRoute
+export const getServerSideProps = isProtectedRoute
 export default TrackingPage
