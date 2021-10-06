@@ -4,11 +4,16 @@ import type { GetServerSideProps } from 'next'
 // FIREBASE Y NOOKIES
 import { firebaseAdmin } from 'keys/firebase-admin'
 
+/**
+ * Ruta protegida
+ * @description Declarar ruta protegida por auth
+ * @param ctx
+ */
 const isProtectedRoute: GetServerSideProps = async (ctx) => {
 	if (process.env.NODE_ENV === 'production') {
 		// COOKIE
 		const path: string = ctx.resolvedUrl
-		const sessionCookie = ctx.req.cookies.session || ''
+		const sessionCookie = ctx.req.cookies.__session || ''
 
 		// VERIFICAR TOKEN
 		let idToken: firebaseAdmin.auth.DecodedIdToken | null = null

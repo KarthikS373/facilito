@@ -5,6 +5,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 // DATOS
 type RespData = { success: boolean; error?: string }
 
+/**
+ * API Signing
+ * @description Asignar token JWT a cookie de sesion
+ * @param {NextApiRequest} req
+ * @param {NextApiResponse<RespData>} res
+ */
 const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Promise<void> => {
 	// PARAMS
 	const { method } = req
@@ -21,10 +27,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Pro
 					.createSessionCookie(token as string, { expiresIn })
 					.then(
 						(sessionCookie) => {
+							res.setHeader('Cache-Control', 'private')
 							res.setHeader('Access-Control-Expose-Headers', 'Set-Cookie')
 							res.setHeader(
 								'Set-Cookie',
-								`session=${sessionCookie};Path=/;HttpOnly;Max-Age=${expiresIn};SameSite=strict;Secure`
+								`__session=${sessionCookie};Path=/;HttpOnly;Max-Age=${expiresIn};SameSite=strict;Secure`
 							)
 							res.status(200).json({ success: true })
 						},
