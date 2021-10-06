@@ -10,8 +10,12 @@ import { firebaseAdmin } from 'keys/firebase-admin'
 
 const isProtectedRoute = async (ctx: NextPageContext): Promise<never> => {
 	// COOKIE
-	const path: string = ctx.pathname
-	const sessionCookie = parse((ctx.req?.headers?.cookies as string) || '')?.session || ''
+	let path = ''
+	let sessionCookie = ''
+	if (ctx.req) {
+		sessionCookie = parse((ctx.req.headers?.cookies as string) || '')?.session || ''
+		path = ctx.req.url || ''
+	}
 
 	// VERIFICAR TOKEN
 	let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
