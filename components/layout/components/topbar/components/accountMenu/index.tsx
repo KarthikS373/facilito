@@ -10,7 +10,7 @@ import ExitToAppTwoTone from '@mui/icons-material/ExitToAppTwoTone'
 import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
 
 // UTILS
-import { logout } from 'utils/auth'
+import logoutEvent from './utils/tools'
 
 // ROUTER
 import { useRouter } from 'next/router'
@@ -37,10 +37,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) =>
 	const router = useRouter()
 
 	// CERRAR SESIÓN
-	const logoutEv = () => {
-		logout().then(() => router.push(ROUTES.login))
-		onClose()
-	}
+	const logout = () => logoutEvent(onClose, router)
 
 	// IR SETTINGS
 	const goToSettings = () => {
@@ -55,7 +52,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) =>
 			onClose={onClose}
 			open={open}
 			placement='bottom-end'>
-			<MenuItem onClick={logoutEv}>
+			<MenuItem onClick={logout}>
 				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
 					{$`Cerrar sesión`}
 				</Button>
