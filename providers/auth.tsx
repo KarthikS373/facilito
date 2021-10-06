@@ -30,10 +30,7 @@ const AuthProvider: React.FC = ({ children }) => {
 				const token = await user.getIdToken()
 				fetch('/api/signing', {
 					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({ token }),
+					headers: { token },
 				})
 			})
 		}

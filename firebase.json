@@ -1,20 +1,34 @@
 {
-	"hosting": {
-		"target": "release",
-		"public": "public",
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-		"cleanUrls": true,
-		"rewrites": [
-			{
-				"source": "**",
-				"function": "nextServer"
-			}
-		]
-	},
-	"functions": {
-		"source": ".",
-		"predeploy": [],
-		"runtime": "nodejs12",
-		"ignore": [".firebase/**", ".firebaserc", "firebase.json", "**/node_modules/**", "**/public/**"]
-	}
+  "hosting": {
+    "target": "release",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "nextServer"
+      }
+    ]
+  },
+  "functions": {
+    "source": ".",
+    "predeploy": [],
+    "runtime": "nodejs12",
+    "ignore": [
+      ".firebase/**",
+      ".firebaserc",
+      "firebase.json",
+      "**/node_modules/**",
+      "**/public/**"
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
 }

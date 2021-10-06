@@ -7,9 +7,7 @@ import { firebaseAdmin } from 'keys/firebase-admin'
 const isProtectedRoute: GetServerSideProps = async (ctx) => {
 	// COOKIE
 	const path: string = ctx.resolvedUrl
-	const sessionCookie = ctx.req.cookies.token || ''
-
-	console.info('Cookies: ', ctx.req.headers.cookie)
+	const sessionCookie = ctx.req.cookies.session || ''
 
 	// VERIFICAR TOKEN
 	let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
@@ -18,32 +16,28 @@ const isProtectedRoute: GetServerSideProps = async (ctx) => {
 
 	// REDIRECT
 	if (idToken) {
-		if (path === '/cuenta')
-			return {
-				redirect: {
-					permanent: false,
-					destination: '/formularios',
-				},
-				props: {} as never,
-			}
-		else
-			return {
-				props: {} as never,
-			}
+		return {
+			redirect:
+				path === '/cuenta'
+					? {
+							permanent: false,
+							destination: '/formularios',
+					  }
+					: undefined,
+			props: {} as never,
+		}
 	} else {
 		// REDIRECT A CUENTA SI NO HAY USUARIO
-		if (path !== '/cuenta')
-			return {
-				redirect: {
-					permanent: false,
-					destination: '/cuenta',
-				},
-				props: {} as never,
-			}
-		else
-			return {
-				props: {} as never,
-			}
+		return {
+			redirect:
+				path !== '/cuenta'
+					? {
+							permanent: false,
+							destination: '/cuenta',
+					  }
+					: undefined,
+			props: {} as never,
+		}
 	}
 }
 
