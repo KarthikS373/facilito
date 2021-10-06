@@ -28,9 +28,12 @@ const AuthProvider: React.FC = ({ children }) => {
 				// ACTUALIZAR TOKEN
 				setUser(user || null)
 				const token = await user.getIdToken()
+
+				const remember: boolean = window.localStorage.getItem('remember') === '1'
 				fetch('/api/signing', {
 					method: 'POST',
 					headers: { token },
+					body: JSON.stringify({ remember }),
 				})
 			})
 		}

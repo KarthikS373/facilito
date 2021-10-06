@@ -14,13 +14,14 @@ type RespData = { success: boolean; error?: string }
 const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Promise<void> => {
 	// PARAMS
 	const { method } = req
-	const expiresIn = 60 * 60 * 24 * 5 * 1000
+	const expiresIn = 60 * 60 * 24 * 360
+
+	// eslint-disable-next-line no-case-declarations
+	const { token } = req.headers
+	const { remember } = JSON.parse(req.body)
 
 	switch (method) {
 		case 'POST':
-			// eslint-disable-next-line no-case-declarations
-			const { token } = req.headers
-
 			if (token) {
 				await firebaseAdmin
 					.auth()
@@ -31,7 +32,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Pro
 							res.setHeader('Access-Control-Expose-Headers', 'Set-Cookie')
 							res.setHeader(
 								'Set-Cookie',
-								`__session=${sessionCookie};Path=/;HttpOnly;Max-Age=${expiresIn};SameSite=strict;Secure`
+								`__session=${sessionCookie};Path=/;HttpOnly;${
+									remember ? `Max-Age=${expiresIn}` : ''
+								};SameSite=strict;Secure`
 							)
 							res.status(200).json({ success: true })
 						},

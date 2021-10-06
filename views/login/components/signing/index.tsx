@@ -151,7 +151,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 				</form>
 
 				{/* SOCIAL */}
-				<SocialLogin />
+				<SocialLogin remember={true} />
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>

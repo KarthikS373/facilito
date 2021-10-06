@@ -150,9 +150,7 @@ export const signingUser = async (
 		const auth = await getAuth()
 
 		// RECORDAR USUARIO
-		await setPersistence(auth, {
-			type: rememberUser ? 'LOCAL' : 'SESSION',
-		})
+		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
 
 		// CREACIÓN/LOGIN
 		if (name)
@@ -188,6 +186,10 @@ export const signingUser = async (
 					)
 				})
 				.catch(authErrorHandler(onError))
+
+		await setPersistence(auth, {
+			type: rememberUser ? 'LOCAL' : 'SESSION',
+		})
 	} else {
 		// MOSTRAR ERROR EN VERIFICACIÓN DE CAMPOS
 		if (onError) onError(handler.msg)
@@ -236,43 +238,66 @@ const saveUser = (name?: string) => (credential: UserCredential) => {
 /**
  * Iniciar con facebook
  * @description Inicio o Registro con un proveedor facebook.
+ * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
  */
-export const facebookSigning = async (onError?: (error: string) => unknown): Promise<void> => {
-	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
+export const facebookSigning = async (
+	rememberUser: boolean,
+	onError?: (error: string) => unknown
+): Promise<void> => {
+	const { signInWithPopup, getAdditionalUserInfo, setPersistence } = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
 
 	// INICIAR
-	if (fbProvider)
+	if (fbProvider) {
+		// RECORDAR USUARIO
+		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
 		await signInWithPopup(auth, fbProvider)
 			.then((res) => {
 				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
 				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
+
+		await setPersistence(auth, {
+			type: rememberUser ? 'LOCAL' : 'SESSION',
+		})
+	}
 }
 
 /**
  * Iniciar con Google
  * @description Inicio o Registro con un proveedor google.
+ * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
  */
-export const googleSigning = async (onError?: (error: string) => unknown): Promise<void> => {
-	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
+export const googleSigning = async (
+	rememberUser: boolean,
+	onError?: (error: string) => unknown
+): Promise<void> => {
+	const { signInWithPopup, getAdditionalUserInfo, setPersistence } = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
 
 	// INICIAR
-	if (gProvider)
-		signInWithPopup(auth, gProvider)
+	if (gProvider) {
+		// RECORDAR USUARIO
+		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
+
+		await signInWithPopup(auth, gProvider)
 			.then((res) => {
 				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
 				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
+
+		await setPersistence(auth, {
+			type: rememberUser ? 'LOCAL' : 'SESSION',
+		})
+	}
 }
 
 /**

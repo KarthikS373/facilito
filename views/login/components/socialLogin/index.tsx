@@ -20,13 +20,17 @@ import Facebook from '@mui/icons-material/Facebook'
 // AUTH
 import { facebookSigning, googleSigning } from 'utils/auth'
 
-const SocialLogin: React.FC = () => {
+// PROPS
+interface SocialLoginProps {
+	remember: boolean
+}
+const SocialLogin: React.FC<SocialLoginProps> = ({ remember }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// LOGINS
-	const fbSigning = () => facebookSigning()
-	const gSigning = () => googleSigning()
+	const fbSigning = () => facebookSigning(remember)
+	const gSigning = () => googleSigning(remember)
 
 	return (
 		<div className={Styles.container}>
