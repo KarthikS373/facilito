@@ -324,5 +324,11 @@ export const logout = async (): Promise<void> => {
 	const { signOut } = await import('firebase/auth')
 	const auth = await getAuth()
 	window.postMessage({ action: 'logout' }, '*')
-	return signOut(auth)
+
+	// EVITAR ERRORES DE PERMISOS
+	try {
+		await signOut(auth)
+	} catch (error) {
+		console.log(error)
+	}
 }
