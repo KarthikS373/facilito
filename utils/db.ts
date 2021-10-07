@@ -13,12 +13,19 @@ let globalDB: Firestore | null = null
 export const getCollection = async (
 	colName: string
 ): Promise<CollectionReference<DocumentData>> => {
-	const { collection, getFirestore } = await import('firebase/firestore')
+	const { collection } = await import('firebase/firestore')
+
+	// COLECCIÓN
+	return collection(await getFirestore(), colName)
+}
+
+const getFirestore = async (): Promise<Firestore> => {
+	const { getFirestore } = await import('firebase/firestore')
 
 	// DATABASE
 	const firebaseApp = await getFirebase()
 	globalDB = globalDB ?? getFirestore(firebaseApp)
-
-	// COLECCIÓN
-	return collection(globalDB, colName)
+	return globalDB
 }
+
+export default getFirestore

@@ -1,0 +1,113 @@
+.container {
+	position: relative;
+	box-shadow: 4px 4px 20px #0000001a;
+	border-radius: 15px;
+	overflow: hidden;
+	width: 100%;
+	color: #333;
+	margin-bottom: 25px;
+
+	.banner {
+		width: 100%;
+		position: relative;
+		left: 0%;
+		height: 250px;
+		object-fit: cover;
+		z-index: -1;
+		margin-bottom: -25px;
+	}
+
+	.defBanner {
+		position: relative;
+		height: 250px;
+		background-color: #f5f5f5;
+		margin-bottom: -25px;
+		z-index: -1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		p {
+			font-weight: 500;
+			font-size: 1.4em;
+		}
+	}
+
+	.content {
+		position: relative;
+		background-color: #fff;
+		padding: 40px 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		border-radius: 15px;
+
+		h1 {
+			font-size: 1.6em;
+			user-select: none;
+		}
+
+		h2 {
+			font-weight: normal;
+			margin: 15px 0 5px 0;
+			width: 550px;
+			overflow-x: auto;
+			user-select: none;
+			text-align: center;
+		}
+
+		textarea {
+			resize: none;
+			width: 350px;
+			text-align: center;
+			border: none;
+			font-size: 0.9em;
+			appearance: none;
+			background: #f5f5f5;
+			padding: 10px 20px;
+			border-radius: 10px;
+		}
+
+		p {
+			text-align: center;
+			width: 100%;
+			max-width: 350px;
+		}
+
+		.previewDescription {
+			background-color: #fff;
+		}
+
+		svg,
+		img {
+			height: 100px;
+			width: 100px;
+			background: #eee;
+			border-radius: 100%;
+			margin-top: -90px;
+			margin-bottom: 15px;
+		}
+
+		img {
+			object-fit: cover;
+		}
+
+		svg {
+			padding: 20px;
+		}
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.container {
+		.content {
+			padding: 40px 20px;
+
+			textarea {
+				width: 100%;
+			}
+		}
+	}
+}

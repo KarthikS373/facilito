@@ -9,13 +9,19 @@ import ROUTES from 'router/routes'
 
 // TIPOS
 import type { NextPage } from 'next'
+import { signingAnonymously } from 'utils/auth'
+
+// PROPS
+interface WithAuthProps {
+	tryAnonymous: boolean
+}
 
 /**
  * HOC de ruta protegida
  */
-const withAuth = (Page: NextPage): NextPage => {
+function withAuth<T>(Page: NextPage<T>, props?: WithAuthProps): NextPage<T> {
 	// GLOBAL AUTH
-	const AuthPage: NextPage = () => {
+	const AuthPage: NextPage<T> = (pageProps: T) => {
 		const { user } = useContext(AuthContext)
 
 		// ROUTER
@@ -26,7 +32,9 @@ const withAuth = (Page: NextPage): NextPage => {
 		useEffect(() => {
 			if (user !== undefined) {
 				if (user === null) {
-					if (path !== ROUTES.login) router.replace(ROUTES.login)
+					// INICIAR ANONIMO
+					if (props?.tryAnonymous) signingAnonymously()
+					else if (path !== ROUTES.login) router.replace(ROUTES.login)
 				} else if (path === ROUTES.login) {
 					router.replace(ROUTES.forms).then(() => {
 						window.Snack(`Bienvenido ${user.displayName}`)
@@ -36,7 +44,7 @@ const withAuth = (Page: NextPage): NextPage => {
 		}, [user, path, router])
 
 		// COMPONENTE
-		return <Page />
+		return <Page {...pageProps} />
 	}
 
 	return AuthPage

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import type { HttpsCallableResult } from '@firebase/functions'
+import { createTheme } from '@mui/material/styles'
+import type { Theme } from '@mui/material'
 
 /**
  * Remover tildes
@@ -158,3 +160,40 @@ export const getDataURL = (
 		fr.readAsDataURL(files[0])
 	}
 }
+
+/**
+ * Separar fondo
+ * @description Retorna una lista de colores si es un fondo degradado
+ * @param background
+ */
+export const splitBackgroundColors: (background: string) => [string, string, string] = (
+	background: string
+) => {
+	if ((background || '').startsWith('transparent linear-gradient')) {
+		const firstColor: string = background.slice(36, 43)
+		const secondColor: string = background.slice(48, 55)
+		const degrees: string = background.slice(28, 31)
+		return [firstColor, secondColor, degrees]
+	} else return ['#346898', '#511F73', '042']
+}
+
+/**
+ * Generar tema
+ * @description Generar un tema de mui
+ * @param defColors
+ * @returns
+ */
+export const generateTheme = (defColors: string[]): Theme =>
+	createTheme({
+		palette: {
+			primary: {
+				main: defColors[0],
+			},
+			secondary: {
+				main: defColors[1],
+			},
+			info: {
+				main: defColors[1],
+			},
+		},
+	})

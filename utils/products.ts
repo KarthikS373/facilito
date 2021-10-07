@@ -1,4 +1,5 @@
 // UTILS
+import type { Unsubscribe } from '@firebase/auth'
 import { getCollection } from './db'
 import { uploadFile, compressImage, getURL } from './storage'
 
@@ -11,7 +12,7 @@ import { uploadFile, compressImage, getURL } from './storage'
 const getBusinessProducts = async (
 	setProducts: (products: { [id: string]: Product }) => unknown,
 	companyID?: string
-) => {
+): Promise<Unsubscribe | undefined> => {
 	const { doc, onSnapshot } = await import('firebase/firestore')
 
 	// COLLECTION
@@ -24,10 +25,29 @@ const getBusinessProducts = async (
 			const data = snap.data() as { [id: string]: Product }
 			setProducts(data)
 		})
-	}
+	} else return undefined
 }
 
 export default getBusinessProducts
+
+/**
+ * Obtener productos
+ * @description Retorna todos los productos de una empresa
+ * @param companyID
+ */
+export const getProducts = async (companyID?: string): Promise<Product[] | null> => {
+	const { doc, getDoc } = await import('firebase/firestore')
+
+	// COLLECTION
+	const col = await getCollection('products')
+
+	if (companyID) {
+		const productsDoc = doc(col, companyID)
+		const productData = await getDoc(productsDoc)
+		const products = productData.data() as { [id: string]: Product }
+		return Object.values(products)
+	} else return null
+}
 
 /**
  * Actualizar productos
@@ -35,7 +55,10 @@ export default getBusinessProducts
  * @param  {{[id:string]:Product}} products
  * @param  {string} companyID
  */
-export const replaceProducts = async (products: { [id: string]: Product }, companyID?: string) => {
+export const replaceProducts = async (
+	products: { [id: string]: Product },
+	companyID?: string
+): Promise<void> => {
 	const { setDoc, doc } = await import('firebase/firestore')
 
 	// COLLECTION
@@ -60,7 +83,7 @@ export const changeProductsCategory = (
 	products: Product[],
 	oldCategory: string,
 	newCategory: string
-) => {
+): Product[] => {
 	const tmpProducts = [...products]
 	// REMPLAZAR
 	tmpProducts.forEach((currentProduct: Product) => {
@@ -82,7 +105,7 @@ export const saveProductImages = async (
 	images: (File | null)[],
 	sku: string,
 	companyID?: string
-) => {
+): Promise<string[]> => {
 	if (companyID?.length && sku?.length) {
 		// COMPRIMIR IMAGENES
 		const compressedImages: (File | null)[] = await Promise.all(

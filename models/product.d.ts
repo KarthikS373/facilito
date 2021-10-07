@@ -66,3 +66,17 @@ interface ProductSelected {
 	extras: ExtraOpcional[]
 	totalPrice: number
 }
+
+interface Coupon {
+	type: 'promo' | 'discount'
+	id: string
+	factors?: number[]
+	products?: Partial<Product>[]
+	percent?: number
+	count: number
+	enable: boolean
+}
+
+interface FormDataCouponsAnswer {
+	[id: string]: string
+}

@@ -132,3 +132,19 @@ export const useForm = (formID: string, customForms?: Form[]): Form | undefined 
 	const currentForm: Form | undefined = forms.find((form) => form.id === formID)
 	return currentForm
 }
+
+/**
+ * Hook de fondo de formulario
+ * @description Asigna el fondo de un formulario al body
+ * @param {string} background
+ */
+export const useFormBackground = (background?: string): void => {
+	// COLOR DE FONDO
+	useEffect(() => {
+		document.body.style.background = background?.startsWith('transparent linear-gradient')
+			? background
+			: `url(${background}) center center/contain repeat fixed`
+		document.body.style.backgroundAttachment = 'fixed'
+		document.body.style.backgroundSize = 'contain'
+	}, [background])
+}
