@@ -27,7 +27,11 @@ const withAuth = (Page: NextPage): NextPage => {
 			if (user !== undefined) {
 				if (user === null) {
 					if (path !== ROUTES.login) router.replace(ROUTES.login)
-				} else if (path === ROUTES.login) router.replace(ROUTES.forms)
+				} else if (path === ROUTES.login) {
+					router.replace(ROUTES.forms).then(() => {
+						window.Snack(`Bienvenido ${user.displayName}`)
+					})
+				}
 			}
 		}, [user, path, router])
 
