@@ -1,8 +1,8 @@
 // TIPOS
-import type { GetServerSideProps, NextApiRequest } from 'next'
+import type { NextApiRequest } from 'next'
 
-// FIREBASE Y NOOKIES
-import { firebaseAdmin } from 'keys/firebase-admin'
+// FIREBASE
+import admin from 'keys/firebase-admin'
 
 /**
  * Auth obligatorio
@@ -11,7 +11,7 @@ import { firebaseAdmin } from 'keys/firebase-admin'
  * @param {EmptyFunction} callback
  * @param {EmptyFunction} onError
  */
-export const authRequired = async <T>(
+const authRequired = async <T>(
 	req: NextApiRequest,
 	callback: () => Promise<T>,
 	onError?: () => Promise<T>
@@ -20,9 +20,8 @@ export const authRequired = async <T>(
 	const sessionCookie = req.cookies.__session || ''
 
 	// VERIFICAR TOKEN
-	let idToken: firebaseAdmin.auth.DecodedIdToken | null = null
-	if (sessionCookie?.length)
-		idToken = await firebaseAdmin.auth().verifySessionCookie(sessionCookie, true)
+	let idToken: admin.auth.DecodedIdToken | null = null
+	if (sessionCookie?.length) idToken = await admin.auth().verifySessionCookie(sessionCookie, true)
 
 	// EVENTO
 	if (idToken) return await callback()
@@ -30,36 +29,4 @@ export const authRequired = async <T>(
 	else return {} as T
 }
 
-/**
- * Ruta protegida
- * @description Declarar ruta protegida por auth
- * @param ctx
- */
-const isProtectedRoute: GetServerSideProps = async (ctx) => {
-	const path: string = ctx.resolvedUrl
-	return await authRequired(
-		ctx.req as NextApiRequest,
-		async () => ({
-			redirect:
-				path === '/cuenta'
-					? {
-							permanent: false,
-							destination: '/formularios',
-					  }
-					: undefined,
-			props: {} as never,
-		}),
-		async () => ({
-			redirect:
-				path !== '/cuenta'
-					? {
-							permanent: false,
-							destination: '/cuenta',
-					  }
-					: undefined,
-			props: {} as never,
-		})
-	)
-}
-
-export default isProtectedRoute
+export default authRequired

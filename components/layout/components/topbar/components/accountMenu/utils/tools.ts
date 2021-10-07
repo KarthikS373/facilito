@@ -11,8 +11,8 @@ const logoutEvent = async (onClose: EmptyFunction, router: NextRouter): Promise<
 	await fetch('/api/logout', { method: 'POST' })
 
 	// REDIRECT
-	await router.push(ROUTES.login)
 	await logout()
+	await router.push(ROUTES.login)
 	onClose()
 }
 

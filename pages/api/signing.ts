@@ -1,5 +1,5 @@
 // TIPOS
-import { firebaseAdmin } from 'keys/firebase-admin'
+import admin from 'keys/firebase-admin'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // DATOS
@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Pro
 	switch (method) {
 		case 'POST':
 			if (token) {
-				await firebaseAdmin
+				await admin
 					.auth()
 					.createSessionCookie(token as string, { expiresIn })
 					.then(

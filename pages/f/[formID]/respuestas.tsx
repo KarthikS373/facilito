@@ -8,9 +8,6 @@ import { useRouter } from 'next/router'
 // VIEWS
 import Answers from 'views/answers'
 
-// ROUTER
-import isProtectedRoute from 'router/tools'
-
 // PAGE
 const AnswersPage: NextPage = () => {
 	// ROUTER
@@ -20,5 +17,4 @@ const AnswersPage: NextPage = () => {
 	return <Answers formID={formID as string} />
 }
 
-export const getServerSideProps = isProtectedRoute
 export default AnswersPage

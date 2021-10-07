@@ -1,4 +1,4 @@
-// REACT Y NOOKIES
+// REACT
 import React, { useState, useEffect } from 'react'
 
 // TIPOS

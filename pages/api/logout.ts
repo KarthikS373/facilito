@@ -1,6 +1,6 @@
 // TIPOS
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { authRequired } from 'router/tools'
+import authRequired from 'router/tools'
 
 // DATOS
 type RespData = { success: boolean; error?: string }

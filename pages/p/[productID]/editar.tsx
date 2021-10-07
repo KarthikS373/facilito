@@ -8,9 +8,6 @@ import { useRouter } from 'next/router'
 // VISTAS
 import Product from 'views/product'
 
-// ROUTER
-import isProtectedRoute from 'router/tools'
-
 const ProductPage: NextPage = () => {
 	// ROUTER
 	const router = useRouter()
@@ -19,5 +16,4 @@ const ProductPage: NextPage = () => {
 	return <Product productID={productID as string} />
 }
 
-export const getServerSideProps = isProtectedRoute
 export default ProductPage

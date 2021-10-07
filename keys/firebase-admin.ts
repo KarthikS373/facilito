@@ -25,4 +25,4 @@ if (!firebaseAdmin.apps.length) {
 	})
 }
 
-export { firebaseAdmin }
+export default firebaseAdmin
