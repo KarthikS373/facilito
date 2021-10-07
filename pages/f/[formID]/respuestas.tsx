@@ -8,6 +8,9 @@ import { useRouter } from 'next/router'
 // VIEWS
 import Answers from 'views/answers'
 
+// HOOKS
+import withAuth from 'components/hoc/auth'
+
 // PAGE
 const AnswersPage: NextPage = () => {
 	// ROUTER
@@ -17,4 +20,4 @@ const AnswersPage: NextPage = () => {
 	return <Answers formID={formID as string} />
 }
 
-export default AnswersPage
+export default withAuth(AnswersPage)

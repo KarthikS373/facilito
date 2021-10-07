@@ -8,6 +8,9 @@ import { useRouter } from 'next/router'
 // VISTAS
 import Product from 'views/product'
 
+// HOOKS
+import withAuth from 'components/hoc/auth'
+
 const ProductPage: NextPage = () => {
 	// ROUTER
 	const router = useRouter()
@@ -16,4 +19,4 @@ const ProductPage: NextPage = () => {
 	return <Product productID={productID as string} />
 }
 
-export default ProductPage
+export default withAuth(ProductPage)

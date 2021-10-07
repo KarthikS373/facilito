@@ -7,9 +7,12 @@ import type { NextPage } from 'next'
 // VISTAS
 import Forms from 'views/forms'
 
+// HOOKS
+import withAuth from 'components/hoc/auth'
+
 // PAGE
 const FormsPage: NextPage = () => {
 	return <Forms />
 }
 
-export default FormsPage
+export default withAuth(FormsPage)

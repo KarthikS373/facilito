@@ -7,9 +7,12 @@ import type { NextPage } from 'next'
 // VISTAS
 import Login from 'views/login'
 
+// HOOKS
+import withAuth from 'components/hoc/auth'
+
 // PAGE
 const AccountPage: NextPage = () => {
 	return <Login />
 }
 
-export default AccountPage
+export default withAuth(AccountPage)

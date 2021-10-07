@@ -3,7 +3,7 @@ import type { User } from '@firebase/auth'
 
 // KEYS
 interface ContextProps {
-	user: User | null
+	user: User | null | undefined
 }
 
 // VALOR POR DEFECTO

@@ -10,7 +10,7 @@ import { getAuth } from 'utils/auth'
 
 const AuthProvider: React.FC = ({ children }) => {
 	// ESTADO DE CONTEXTO
-	const [user, setUser] = useState<User | null>(null)
+	const [user, setUser] = useState<User | null | undefined>()
 
 	useEffect(() => {
 		let listener: Unsubscribe | undefined
