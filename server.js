@@ -16,7 +16,7 @@ const nextjsServer = next({
 const nextjsHandle = nextjsServer.getRequestHandler()
 
 // CLOUD FUNC
-exports.nextServer = https.onRequest((req, res) => {
+exports.nextServer = https.onRequest(async (req, res) => {
 	// COOKIE
 	const sessionCookie = req.cookies.__session || ''
 
