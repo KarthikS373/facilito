@@ -96,3 +96,8 @@ interface FormSortedAnswer {
 	answer: FormAnswerItem
 	key: string
 }
+
+interface FormData extends FormAnswerItemContainer {
+	products: FormAnswerItem
+	coupons: FormAnswerItem
+}

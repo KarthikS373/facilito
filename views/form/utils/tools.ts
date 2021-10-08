@@ -67,13 +67,23 @@ export const getCouponProducts = (coupons: (Coupon[] | undefined)[] | undefined)
  * @description Verificar si un formulario tiene productos
  * @param formComponents
  */
-export const formHasProducts = (formComponents: BlockComponent[] | undefined): boolean => {
+export const formHasComponent = (
+	formComponents: BlockComponent[] | undefined,
+	name: string,
+	withSwitch1 = false,
+	withSwitch2 = false
+): boolean => {
 	// COMPONENTES DE LOCALIZACIÓN
-	const hasProducts: boolean = formComponents
-		? formComponents?.some((component: BlockComponent) => component.name === 'product')
+	const hasComponent: boolean = formComponents
+		? formComponents?.some(
+				(component: BlockComponent) =>
+					component.name === name &&
+					(withSwitch1 ? component.switch_1 : true) &&
+					(withSwitch2 ? component.switch_2 : true)
+		  )
 		: false
 
-	return hasProducts
+	return hasComponent
 }
 
 /**
@@ -88,11 +98,6 @@ export const setGeoComponents = (
 	geoReferences: React.MutableRefObject<FormAnswerItemContainer | never>
 ): void => {
 	// COMPONENTES DE LOCALIZACIÓN
-	const hasLocations: boolean = formComponents
-		? formComponents?.some(
-				(component: BlockComponent) => component.name === 'geo' && component.switch_1
-		  )
-		: false
-
+	const hasLocations: boolean = formHasComponent(formComponents, 'geo', true)
 	if (hasLocations) setGeoRefs(formComponents, geoReferences)
 }

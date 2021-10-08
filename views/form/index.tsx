@@ -9,7 +9,7 @@ import useBusiness, { useCompanyProducts } from 'hooks/business'
 import { useFormBackground } from 'hooks/forms'
 
 // TOOLS
-import { formHasProducts, getCouponProducts, setGeoComponents } from './utils/tools'
+import { formHasComponent, getCouponProducts, setGeoComponents } from './utils/tools'
 import { generateTheme, splitBackgroundColors } from 'utils/tools'
 
 // PROVIDERS
@@ -17,6 +17,7 @@ import ThemeProvider from '@mui/styles/ThemeProvider'
 
 // COMPONENTES
 import FormHeader from 'components/formHeader'
+import HookForm from './components/form'
 
 // PROPS
 interface FormProps {
@@ -31,7 +32,7 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	const [formCompany, setFormCompany] = useState<Business | null>(null)
 
 	// PRODUCTOS
-	const [, setProducts] = useState<Product[]>([])
+	const [products, setProducts] = useState<Product[]>([])
 
 	// REFERENCIAS
 	const geoRef: React.MutableRefObject<FormAnswerItemContainer | never> = useRef({})
@@ -47,7 +48,7 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	useFormBackground(formData?.background)
 
 	// LEER EMPRESA
-	useBusiness(companyID, formHasProducts(formData?.components), setFormCompany)
+	useBusiness(companyID, formHasComponent(formData?.components, 'product'), setFormCompany)
 
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)
@@ -55,7 +56,10 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	// USAR PRODUCTOS
 	useCompanyProducts(setProducts, true, companyID || undefined)
 
-	console.log('Update form', coupons, formData)
+	// ENVIAR FORMULARIO
+	const sendFormEvent = (data: unknown, reset: () => unknown) => {
+		console.log(data, reset)
+	}
 
 	return (
 		<ThemeProvider theme={customTheme}>
@@ -70,6 +74,16 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 						previewMode
 						clientMode
 					/>
+
+					{/* FORMULARIO */}
+					{formData && (
+						<HookForm
+							sendFormEvent={sendFormEvent}
+							couponProducts={coupons}
+							formData={formData}
+							products={products}
+						/>
+					)}
 				</div>
 			</div>
 		</ThemeProvider>

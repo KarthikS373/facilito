@@ -33,7 +33,7 @@ const Layout: React.FC = (props) => {
 
 	// MOSTRAR TOPBAR
 	const showTopbar = evaluateTopbarPath(path)
-
+	console.log(path)
 	return (
 		<div
 			style={
@@ -41,11 +41,15 @@ const Layout: React.FC = (props) => {
 					'--primary': theme.palette.primary.main,
 					'--secondary': theme.palette.secondary.main,
 					'--primaryDark': theme.palette.primary.dark,
+					backgroundColor: /^\/f\/\w+\/\w+$/.test(path) ? 'transparent' : '#fff',
 				} as React.CSSProperties
 			}
 			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
 			{showTopbar && <Topbar showSearchBar />}
-			<main>
+			<main
+				style={{
+					backgroundColor: /^\/f\/\w+\/\w+$/.test(path) ? 'transparent' : 'rgb(248, 248, 248)',
+				}}>
 				{props.children}
 				<Footer />
 			</main>

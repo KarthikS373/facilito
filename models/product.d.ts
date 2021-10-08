@@ -80,3 +80,18 @@ interface Coupon {
 interface FormDataCouponsAnswer {
 	[id: string]: string
 }
+
+interface FormProductSliderAnswer {
+	count: number
+	totalPrice: number
+	title: string
+	picture: string
+	sku: string
+	stockOption: 'lim' | 'ctn' | 'inf'
+	productCount: number
+	category: string
+}
+
+interface FormDataProductSliderAnswer {
+	[id: string]: FormProductSliderAnswer[] | ExtraOptional[][] | number
+}

@@ -1,0 +1,56 @@
+.container {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 60px 20px;
+
+	.viewContent {
+		width: 100%;
+		max-width: 650px;
+		margin: 0 auto;
+	}
+
+	.form {
+		& > div {
+			padding: 20px 0;
+			background: #fff;
+			box-shadow: 4px 4px 20px #0000001a;
+			border-radius: 15px;
+			overflow: hidden;
+		}
+
+		.search {
+			width: calc(100% - 80px);
+			position: relative;
+			left: 40px;
+
+			& > div:nth-child(1) {
+				& > div:nth-child(2) {
+					border-radius: 8px;
+				}
+			}
+		}
+
+		.submit {
+			display: block;
+			margin: 0 auto;
+			margin-top: 30px;
+			height: 50px;
+			border-radius: 8px;
+
+			span {
+				text-transform: none;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.container {
+		padding: 45px 20px;
+	}
+}

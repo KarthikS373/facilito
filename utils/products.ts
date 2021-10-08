@@ -96,7 +96,7 @@ export const changeProductsCategory = (
 
 /**
  * Guardar imagenes de un producto
- * @description Sube a storage la lista de imaganes de un producto
+ * @description Sube a storage la lista de imagenes de un producto
  * @param  {File[]} images
  * @param  {string} sku
  * @param  {string} companyID
