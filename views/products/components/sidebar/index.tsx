@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // UTILS
-import saveAllCategories, { removeAllCategories } from './utils/tools'
+import saveAllCategories, { removeAllCategories } from './tools'
 
 // COMPONENTS
 import SideBar from 'components/sideBar'

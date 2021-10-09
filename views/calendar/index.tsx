@@ -5,7 +5,7 @@ import React, { useState, useContext } from 'react'
 import type { View as CalendarView } from 'react-big-calendar'
 
 // HOOKS
-import useAppointments from './utils/hooks'
+import useAppointments from './hooks'
 
 // STRINGS
 import useStrings from 'hooks/lang'

@@ -14,7 +14,7 @@ const onChangeCategory = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	setSave: React.Dispatch<React.SetStateAction<boolean>>,
 	setValue: React.Dispatch<React.SetStateAction<string>>
-) => {
+): void => {
 	const newValue = ev.target.value
 	setSave(newValue !== category)
 	setValue(newValue)
@@ -40,7 +40,7 @@ export const saveCategory = ({
 	onChange,
 	products,
 	setProducts,
-}: SaveCategoryProps) => {
+}: SaveCategoryProps): void => {
 	// CLAVES
 	const keys: string[] = Object.keys(products)
 

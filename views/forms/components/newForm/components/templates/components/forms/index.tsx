@@ -18,8 +18,8 @@ import templateIcons from './utils/icons'
 // ESTILOS
 import Styles from './style.module.scss'
 
-// UTILS
-import useTemplateForms from './utils/hooks'
+// HOOKS
+import useTemplateForms from './hooks'
 
 // CONTEXTO
 import BusinessContext from 'context/business'

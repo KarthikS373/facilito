@@ -13,7 +13,7 @@ import SideBar from './components/sideBar'
 import AnswerRow from './components/row'
 
 // UTILS
-import printAnswer, { deleteAnswerPrompt } from './utils/tools'
+import printAnswer, { deleteAnswerPrompt } from './tools'
 
 // ICONOS
 import SettingsInputCompositeTwoTone from '@mui/icons-material/SettingsInputCompositeTwoTone'

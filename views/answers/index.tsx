@@ -7,9 +7,9 @@ import Info from './components/info'
 import View from 'components/view'
 
 // HOOKS
-import { updateLocalAnswerState } from './utils/tools'
+import { updateLocalAnswerState } from './tools'
 import useDefaultFilter from 'hooks/filters'
-import { useFilters } from './utils/hooks'
+import { useFilters } from './hooks'
 import { changeFilter } from 'utils/tools'
 import { useForm } from 'hooks/forms'
 

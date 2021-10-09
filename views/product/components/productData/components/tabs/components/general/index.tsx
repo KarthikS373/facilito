@@ -30,7 +30,7 @@ import BusinessContext from 'context/business'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import changeProductProps from '../../utils/tools'
+import changeProductProps from '../../tools'
 
 // PROPS
 interface GeneralProps {

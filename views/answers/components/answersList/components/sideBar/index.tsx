@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 
 // UTILS
-import handleStep from './utils/tools'
+import handleStep from './tools'
 
 // MATERIAL
 import StepContent from '@mui/material/StepContent'

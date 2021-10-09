@@ -29,7 +29,7 @@ import AddTwoTone from '@mui/icons-material/AddTwoTone'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import changeExtraProps, { addOptional, removeOptional, changeType } from './utils/tools'
+import changeExtraProps, { addOptional, removeOptional, changeType } from './tools'
 
 interface ExtraProps {
 	extra: Extra

@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // HOOKS
-import deleteForm from './utils/tools'
+import deleteForm from './tools'
 import { useFormFilter } from 'hooks/forms'
 
 // ESTILOS

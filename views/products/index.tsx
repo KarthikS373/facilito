@@ -8,10 +8,10 @@ import Info from './components/info'
 import Link from 'components/link'
 import View from 'components/view'
 
-// UTILS
+// HOOKS
 import useDefaultFilter from 'hooks/filters'
-import { useFilters } from './utils/hooks'
 import { changeFilter } from 'utils/tools'
+import { useFilters } from './hooks'
 
 // MATERIAL
 import ColorButton from 'components/button'

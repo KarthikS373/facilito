@@ -19,7 +19,7 @@ import AddTwoTone from '@mui/icons-material/AddTwoTone'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import changeOptionProps from './utils/tools'
+import changeOptionProps from './tools'
 
 interface ExtraProps {
 	option: ExtendedOpt

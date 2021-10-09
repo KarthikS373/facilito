@@ -19,10 +19,10 @@ import Add from '@mui/icons-material/Add'
 
 // HOOKS
 import useStrings from 'hooks/lang'
-import useImages from './utils/hooks'
+import useImages from './hooks'
 
 // TOOLS
-import updateImageList, { removeImage } from './utils/tools'
+import updateImageList, { removeImage } from './tools'
 
 // PROPS
 interface GalleryProps {

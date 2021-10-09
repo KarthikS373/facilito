@@ -28,7 +28,7 @@ import FormsContext from 'context/forms'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import searchItems, { LinkInfo } from './utils/tools'
+import searchItems, { LinkInfo } from './tools'
 
 const Search: React.FC = () => {
 	// STRINGS

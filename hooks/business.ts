@@ -7,20 +7,20 @@ import { getProducts } from 'utils/products'
 
 /**
  * Hook de Business
+ * @param  {boolean} isAuth
  * @param  {string|null} userBusiness
- * @param  {boolean} isAnonymous
  * @param  {React.Dispatch<React.SetStateAction<Business|null>>} setBusiness
  * @description Retorna la empresa asociada a un usuario
  */
 const useBusiness = (
+	isAuth: boolean,
 	userBusiness: string | null,
-	isAnonymous: boolean,
 	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
 ): void => {
 	// FETCHs
 	useEffect(() => {
-		if (userBusiness && !isAnonymous) getCompany(userBusiness).then(setBusiness)
-	}, [userBusiness, isAnonymous, setBusiness])
+		if (isAuth && userBusiness) getCompany(userBusiness).then(setBusiness)
+	}, [userBusiness, isAuth, setBusiness])
 }
 
 // EXPORT
@@ -29,22 +29,22 @@ export default useBusiness
 /**
  * Hook de productos de empresa
  * @description Retorna la lista de productos de una empresa
- * @param setProducts
- * @param components
- * @param companyID
- * @param allowRequest
+ * @param {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
+ * @param {boolean} isAuth
+ * @param {string|null} companyID
+ * @param {boolean} hasProducts
  */
 export const useCompanyProducts = (
-	setProducts: (products: Product[]) => unknown,
-	hasProducts?: boolean,
-	companyID?: string
+	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
+	isAuth: boolean,
+	companyID: string | null,
+	hasProducts: boolean
 ): void => {
 	useEffect(() => {
-		if (companyID) {
+		if (isAuth && companyID)
 			if (hasProducts)
 				getProducts(companyID).then((products: Product[] | null) => {
 					if (products) setProducts(products)
 				})
-		}
-	}, [setProducts, companyID, hasProducts])
+	}, [setProducts, isAuth, companyID, hasProducts])
 }

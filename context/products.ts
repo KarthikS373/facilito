@@ -1,18 +1,18 @@
 import { createContext, Context } from 'react'
 
 // KEYS
-interface ContextProps {
+export interface ProductContextProps {
 	products: { [id: string]: Product }
 	setProducts: (products: { [id: string]: Product }, merge?: boolean) => unknown
 }
 
 // VALOR POR DEFECTO
-const DefContext: ContextProps = {
+const DefContext: ProductContextProps = {
 	products: {},
 	setProducts: () => null,
 }
 
 // CONTEXTO
-const ProductsContext: Context<ContextProps> = createContext(DefContext)
+const ProductsContext: Context<ProductContextProps> = createContext(DefContext)
 
 export default ProductsContext

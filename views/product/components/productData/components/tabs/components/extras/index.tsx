@@ -15,7 +15,7 @@ import TabInfo from '../tabInfo'
 import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
-import addExtra, { removeExtra } from './utils/tools'
+import addExtra, { removeExtra } from './tools'
 import useStrings from 'hooks/lang'
 
 interface GeneralProps {

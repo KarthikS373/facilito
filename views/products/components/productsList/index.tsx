@@ -17,7 +17,7 @@ import ProductRow from './components/row'
 import Link from 'components/link'
 
 // UTILS
-import deleteProduct from './utils/tools'
+import deleteProduct from './tools'
 
 // CONTEXTO
 import ProductsContext from 'context/products'

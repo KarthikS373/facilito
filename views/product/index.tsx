@@ -22,7 +22,7 @@ import useStrings from 'hooks/lang'
 
 // UTILS
 import defProduct from './utils/initials'
-import saveProduct from './utils/tools'
+import saveProduct from './tools'
 
 // CONTEXT
 import ProductsContext from 'context/products'

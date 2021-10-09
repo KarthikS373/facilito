@@ -1,6 +1,6 @@
 // React
 import { useEffect } from 'react'
-import { filterAnswers } from './tools'
+import { filterAnswers } from '../tools'
 
 /**
  * Hook de respuestas de formulario

@@ -1,11 +1,17 @@
+import type { ProductContextProps } from 'context/products'
+
 /**
  * Borrar producto
  * @description Borra un producto en la DB y context
- * @param  {ContextProps} productsCtx
+ * @param  {ProductContextProps} productsCtx
  * @param  {Product[]} products
  * @param  {number} currentIndex
  */
-const deleteProduct = (productsCtx: any, products: Product[], currentIndex: number) =>
+const deleteProduct = (
+	productsCtx: ProductContextProps,
+	products: Product[],
+	currentIndex: number
+): void => {
 	window.Alert({
 		title: 'Borrar productos',
 		body: '¿Estas seguro de querer borrar este producto de tu inventario, esta acción sera permanente?',
@@ -21,5 +27,6 @@ const deleteProduct = (productsCtx: any, products: Product[], currentIndex: numb
 			productsCtx.setProducts(tmpProducts, false)
 		},
 	})
+}
 
 export default deleteProduct

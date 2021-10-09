@@ -26,7 +26,7 @@ import MoneyTwoTone from '@mui/icons-material/MoneyTwoTone'
 import TollTwoTone from '@mui/icons-material/TollTwoTone'
 
 // UTILS
-import changeProductProps from '../../utils/tools'
+import changeProductProps from '../../tools'
 
 // HOOKS
 import useStrings from 'hooks/lang'

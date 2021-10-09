@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react'
 
 // HOOKS
 import { useFormFilter } from 'hooks/forms'
-import deleteForm from './utils/tools'
+import deleteForm from './tools'
 
 // ESTILOS
 import Styles from './style.module.scss'

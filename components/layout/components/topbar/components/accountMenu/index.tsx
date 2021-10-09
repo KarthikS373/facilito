@@ -10,7 +10,7 @@ import ExitToAppTwoTone from '@mui/icons-material/ExitToAppTwoTone'
 import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
 
 // UTILS
-import logoutEvent from './utils/tools'
+import logoutEvent from './tools'
 
 // ROUTER
 import { useRouter } from 'next/router'

@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 
 // UTILS
-import filterProducts from './tools'
+import filterProducts from '../tools'
 
 /**
  * Hook de filtros

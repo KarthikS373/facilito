@@ -11,7 +11,7 @@ const saveAllCategories = (
 	newCategory: string,
 	categories: string[],
 	setBusinessDB: (business: Partial<Business>) => unknown
-) => {
+): void => {
 	// CREAR NUEVA LISTA
 	const newCategories: string[] = categories.map((category: string, catIndex: number) =>
 		catIndex !== index ? category : newCategory
@@ -34,7 +34,7 @@ export const removeAllCategories = (
 	index: number,
 	categories: string[],
 	setBusinessDB: (business: Partial<Business>) => unknown
-) => {
+): void => {
 	// CREAR NUEVA LISTA
 	const newCategories: string[] = categories.filter(
 		(_category: string, catIndex: number) => catIndex !== index

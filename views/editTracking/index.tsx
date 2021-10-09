@@ -8,7 +8,7 @@ import Info from './components/info'
 import View from 'components/view'
 
 // HOOKS
-import saveStates, { addNewState } from './utils/tools'
+import saveStates, { addNewState } from './tools'
 import { useForm } from 'hooks/forms'
 import useStrings from 'hooks/lang'
 

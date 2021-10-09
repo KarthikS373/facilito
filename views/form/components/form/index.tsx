@@ -11,8 +11,8 @@ import FormSearch from './components/formSearch'
 import { useForm } from 'react-hook-form'
 
 // TOOLS
-import cleanFormData from './utils/tools'
-import { formHasComponent } from 'views/form/utils/tools'
+import cleanFormData from './tools'
+import { formHasComponent } from 'views/form/tools'
 
 // HOOKS
 import useStrings from 'hooks/lang'

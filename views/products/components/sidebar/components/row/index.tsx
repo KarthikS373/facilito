@@ -18,7 +18,7 @@ import TextField from '@mui/material/TextField'
 import useStrings from 'hooks/lang'
 
 // UTILS
-import onChangeCategory, { saveCategory } from './utils/tools'
+import onChangeCategory, { saveCategory } from './tools'
 
 // CONTEXTO
 import ProductsContext from 'context/products'

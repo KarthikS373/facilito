@@ -11,7 +11,7 @@ import { readTemplates } from 'utils/forms'
 const useTemplateForms = (
 	setTemplates: React.Dispatch<React.SetStateAction<Form[]>>,
 	companyID?: string
-) => {
+): void => {
 	// LEER TEMPLATES
 	useEffect(() => {
 		if (companyID)
@@ -20,7 +20,7 @@ const useTemplateForms = (
 				spliced.length = Math.min(7, spliced.length)
 				setTemplates(spliced)
 			})
-	}, [companyID])
+	}, [setTemplates, companyID])
 }
 
 export default useTemplateForms

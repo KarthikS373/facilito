@@ -15,7 +15,7 @@ import CustomEvent, { showEventInfo } from './components/event'
 import CustomToolbar from './components/toolbar'
 
 // HOOKS
-import { useCalendarView } from '../../utils/hooks'
+import { useCalendarView } from '../../hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'

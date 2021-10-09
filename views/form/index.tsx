@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -9,7 +9,7 @@ import useBusiness, { useCompanyProducts } from 'hooks/business'
 import { useFormBackground } from 'hooks/forms'
 
 // TOOLS
-import { formHasComponent, getCouponProducts, setGeoComponents } from './utils/tools'
+import { formHasComponent, getCouponProducts, setGeoComponents } from './tools'
 import { generateTheme, splitBackgroundColors } from 'utils/tools'
 
 // PROVIDERS
@@ -18,6 +18,9 @@ import ThemeProvider from '@mui/styles/ThemeProvider'
 // COMPONENTES
 import FormHeader from 'components/formHeader'
 import HookForm from './components/form'
+
+// CONTEXT
+import AuthContext from 'context/auth'
 
 // PROPS
 interface FormProps {
@@ -28,6 +31,9 @@ interface FormProps {
 }
 
 const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
+	// USUARIO
+	const { user } = useContext(AuthContext)
+
 	// EMPRESA
 	const [formCompany, setFormCompany] = useState<Business | null>(null)
 
@@ -44,17 +50,20 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	const defColors = splitBackgroundColors(formData ? formData.background : '')
 	const customTheme = generateTheme(defColors)
 
+	// TIENE PRODUCTOS
+	const hasProducts = formHasComponent(formData?.components, 'product')
+
 	// COLOR DE FONDO
 	useFormBackground(formData?.background)
 
 	// LEER EMPRESA
-	useBusiness(companyID, formHasComponent(formData?.components, 'product'), setFormCompany)
+	useBusiness(!user, companyID, setFormCompany)
 
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)
 
 	// USAR PRODUCTOS
-	useCompanyProducts(setProducts, true, companyID || undefined)
+	useCompanyProducts(setProducts, !user, companyID, hasProducts)
 
 	// ENVIAR FORMULARIO
 	const sendFormEvent = (data: unknown, reset: () => unknown) => {

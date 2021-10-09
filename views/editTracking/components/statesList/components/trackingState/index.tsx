@@ -19,11 +19,11 @@ import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
 import ChatTwoTone from '@mui/icons-material/ChatTwoTone'
 
 // HOOKS
-import useStyles from './utils/hooks'
+import useStyles from './hooks'
 import useStrings from 'hooks/lang'
 
 // TOOLS
-import deleteState, { onStateChange, clearStateInputs, changeStateColor } from './utils/tools'
+import deleteState, { onStateChange, clearStateInputs, changeStateColor } from './tools'
 
 // CONTEXTOS
 import BusinessContext from 'context/business'

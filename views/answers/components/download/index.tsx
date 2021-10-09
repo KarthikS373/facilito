@@ -3,7 +3,7 @@
 import React from 'react'
 
 // UTILS
-import { getExcelExportData } from '../../utils/tools'
+import { getExcelExportData } from '../../tools'
 
 // XLSX
 import { ExportSheet } from 'react-xlsx-sheet'

@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import type { View } from 'react-big-calendar'
 
 // HOOKS
-import { useCalendarView } from '../../utils/hooks'
+import { useCalendarView } from '../../hooks'
 
 // ICONOS
 import EventAvailableTwoTone from '@mui/icons-material/EventAvailableTwoTone'
