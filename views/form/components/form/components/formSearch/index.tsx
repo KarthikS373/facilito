@@ -1,5 +1,5 @@
 // REACT
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 // MATERIAL
 import InputAdornment from '@mui/material/InputAdornment'
@@ -13,10 +13,11 @@ import Search from '@mui/icons-material/Search'
 import { UseFormSetValue, UseFormRegister, FieldValues } from 'react-hook-form'
 
 // HOOKS
+import { useCustomRegister, useProductList } from './hooks'
 import useStrings from 'hooks/lang'
 
 // PROPIEDADES
-interface FormSearchProps {
+export interface FormSearchProps {
 	formProducts: FormDataProductSliderAnswer | undefined
 	register: UseFormRegister<FieldValues> | null
 	setValue: UseFormSetValue<FieldValues> | null
@@ -34,33 +35,10 @@ const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {
 	const { $ } = useStrings()
 
 	// AGREGAR PRODUCTOS
-	useEffect(() => {
-		// PRODUCTOS
-		const newProductsList: Product[] = []
-
-		// BUSCAR
-		props.components.forEach((component: BlockComponent) => {
-			if (component.name === 'products' && component.products) {
-				component.products.forEach((sku: string) => {
-					const currentProduct = props.products.find((product: Product) => product.sku === sku)
-					if (currentProduct) newProductsList.push(currentProduct)
-				})
-			}
-		})
-
-		// ACTUALIZAR
-		setProductsList(newProductsList)
-	}, [props.products, props.components])
+	useProductList(props, setProductsList)
 
 	// REGISTRAR
-	useEffect(() => {
-		if (props.register) {
-			props.register(`products.summary_products_0`)
-			props.register(`products.extras_products_0`)
-			props.register(`products.products_0`)
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	useCustomRegister(props)
 
 	return (
 		<>
@@ -78,7 +56,7 @@ const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {
 					<TextField
 						{...params}
 						margin='normal'
-						label={$`Buscar`}
+						label={$`Buscar productos`}
 						variant='outlined'
 						fullWidth
 						InputProps={{

@@ -1,0 +1,33 @@
+.form {
+	& > div {
+		padding: 20px 0;
+		background: #fff;
+		box-shadow: 4px 4px 20px #0000001a;
+		border-radius: calc(var(--radius) + 5px);
+		overflow: hidden;
+	}
+
+	.search {
+		width: calc(100% - 80px);
+		position: relative;
+		left: 40px;
+
+		& > div:nth-child(1) {
+			& > div:nth-child(2) {
+				border-radius: 8px;
+			}
+		}
+	}
+
+	.submit {
+		display: block;
+		margin: 0 auto;
+		margin-top: 30px;
+		height: 50px;
+		border-radius: 8px;
+
+		span {
+			text-transform: none;
+		}
+	}
+}

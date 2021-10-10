@@ -32,7 +32,7 @@ interface FormProps {
 
 const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	// USUARIO
-	const { user } = useContext(AuthContext)
+	const { userExists } = useContext(AuthContext)
 
 	// EMPRESA
 	const [formCompany, setFormCompany] = useState<Business | null>(null)
@@ -57,13 +57,13 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	useFormBackground(formData?.background)
 
 	// LEER EMPRESA
-	useBusiness(!user, companyID, setFormCompany)
+	useBusiness(userExists, companyID, setFormCompany)
 
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)
 
 	// USAR PRODUCTOS
-	useCompanyProducts(setProducts, !user, companyID, hasProducts)
+	useCompanyProducts(setProducts, userExists, companyID, hasProducts)
 
 	// ENVIAR FORMULARIO
 	const sendFormEvent = (data: unknown, reset: () => unknown) => {

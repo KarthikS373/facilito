@@ -1,10 +1,14 @@
 // REACT
 import React, { useRef } from 'react'
 
+// ESTILOS
+import Styles from './style.module.scss'
+
 // MATERIAL
 import Button from '@mui/material/Button'
 
 // COMPONENTES
+import FormComponentsList from './components/componentList'
 import FormSearch from './components/formSearch'
 
 // REACT-HOOK-FORM
@@ -58,7 +62,7 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 			: undefined
 
 		return (
-			<form onSubmit={handleSubmit(onSubmit, onError)}>
+			<form onSubmit={handleSubmit(onSubmit, onError)} className={Styles.form}>
 				<div>
 					{/* BUSCADOR */}
 					{haveProducts && props.formData?.checkout?.showSearch && (
@@ -67,10 +71,22 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 							components={props.formData?.components || []}
 							formProducts={formProducts}
 							products={props.products}
+							className={Styles.search}
 							setValue={setValue}
 							register={register}
 						/>
 					)}
+
+					{/* COMPONENTES */}
+					<FormComponentsList
+						couponProducts={props.couponProducts}
+						productsList={props.products}
+						formProducts={formProducts}
+						formData={props.formData}
+						setValue={setValue}
+						register={register}
+						errors={{}}
+					/>
 				</div>
 
 				{/* BOTÓN DE ENVIAR */}
@@ -79,7 +95,8 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 					color='primary'
 					ref={submitButton}
 					variant='contained'
-					disabled={isSubmitting}>
+					disabled={isSubmitting}
+					className={Styles.submit}>
 					{$`Enviar`}
 				</Button>
 			</form>

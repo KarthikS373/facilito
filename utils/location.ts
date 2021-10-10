@@ -38,3 +38,14 @@ export const reverseGeocoding = async (
 		address = `${gJson.results[1].address_components[0].long_name}, ${gJson.results[1].address_components[2].long_name}, ${gJson.results[1].address_components[3].long_name}`
 	return { address }
 }
+
+/**
+ * Obtener codigo de pais
+ */
+export const getCountryCode = async (): Promise<string> => {
+	const ip = await fetch('https://ipapi.co/json/')
+	const json = await ip.json()
+
+	// CÓDIGO
+	return json?.country_code || 'US'
+}

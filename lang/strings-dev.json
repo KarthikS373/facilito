@@ -1,4 +1,52 @@
 {
+	"indica_instrucciones_y_opiniones": {
+		"en": "",
+		"es": "$"
+	},
+	"la_direccion_debe_incluir_el_pais": {
+		"en": "",
+		"es": "$"
+	},
+	"observaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"verifica_que_tenga_un_formato_correcto": {
+		"en": "",
+		"es": "$"
+	},
+	"direccion": {
+		"en": "",
+		"es": "$"
+	},
+	"recuerda_agregar_la_extension": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_telefono": {
+		"en": "",
+		"es": "$"
+	},
+	"escribe_tu_nombre": {
+		"en": "",
+		"es": "$"
+	},
+	"campo": {
+		"en": "",
+		"es": "$"
+	},
+	"campo_obligatorio": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_completo": {
+		"en": "",
+		"es": "$"
+	},
+	"el_nombre_es_obligatorio": {
+		"en": "",
+		"es": "$"
+	},
 	"bienvenido_alex_santos": {
 		"en": "",
 		"es": "$"

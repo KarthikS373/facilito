@@ -12,6 +12,9 @@ const AuthProvider: React.FC = ({ children }) => {
 	// ESTADO DE CONTEXTO
 	const [user, setUser] = useState<User | null | undefined>()
 
+	// EXISTE USUARIO
+	const userExists: boolean = user !== null && user !== undefined
+
 	useEffect(() => {
 		let listener: Unsubscribe | undefined
 
@@ -43,7 +46,7 @@ const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [])
 
-	return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+	return <AuthContext.Provider value={{ user, userExists }}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider

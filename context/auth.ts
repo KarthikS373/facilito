@@ -3,12 +3,14 @@ import type { User } from '@firebase/auth'
 
 // KEYS
 interface ContextProps {
+	userExists: boolean
 	user: User | null | undefined
 }
 
 // VALOR POR DEFECTO
 const DefContext: ContextProps = {
-	user: null,
+	userExists: false,
+	user: undefined,
 }
 
 // CONTEXTO
