@@ -3,6 +3,7 @@ import React from 'react'
 
 // COMPONENTES
 import PersonalInputs from './components/personalInputs'
+import FormComponent from './components/formComponent'
 
 // CONTEXTO
 import FormContext from './context'
@@ -56,7 +57,9 @@ const FormComponentsList: React.FC<FormComponentsLisProps> = (props: FormCompone
 									setValue: props.setValue,
 									register: props.register,
 									error: error,
-								}}></FormContext.Provider>
+								}}>
+								<FormComponent />
+							</FormContext.Provider>
 						)
 					} else if (props.formData)
 						// INPUTS DE DATOS PERSONALES

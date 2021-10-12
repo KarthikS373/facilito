@@ -1,0 +1,31 @@
+.optionsLabel {
+	width: 100%;
+	text-align: left;
+	font-size: 1rem;
+	color: #555;
+	margin-bottom: -10px;
+}
+
+.formGroup {
+	margin-top: 10px;
+
+	label {
+		span {
+			font-family: 'Orkney';
+		}
+	}
+}
+
+.helperOrError {
+	display: flex;
+	align-items: center;
+
+	svg {
+		margin-right: 10px;
+		margin-left: -2px;
+	}
+}
+
+.selectBox {
+	margin-top: 20px;
+}
