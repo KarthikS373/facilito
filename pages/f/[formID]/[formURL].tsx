@@ -48,6 +48,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	// FORMULARIO
 	const companyID: string | null = response[0] || null
 	const formData: Form | null = response[1] || null
+	formData.components = formData.components.map((component) => {
+		const tmpComponent = { ...component }
+		if (component.name === 'date') {
+			const time = JSON.parse(JSON.stringify(component.time))
+			tmpComponent.time = time
+			return tmpComponent
+		} else return tmpComponent
+	})
 
 	return {
 		props: { formData, companyID, companyURL: formID, formURL },

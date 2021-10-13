@@ -4,7 +4,7 @@ import { createContext, Context } from 'react'
 import type { UseFormSetValue, UseFormRegister, FieldValues } from 'react-hook-form'
 
 // KEYS
-interface FormContextProps extends BlockComponent {
+export interface FormContextProps extends BlockComponent {
 	[index: string]: unknown
 	formProducts: FormDataProductSliderAnswer | undefined
 	setValue: UseFormSetValue<FieldValues> | null

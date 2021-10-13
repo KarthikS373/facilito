@@ -1,0 +1,23 @@
+.textField {
+	width: 100%;
+
+	& > div:hover::before {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+	}
+
+	& > label {
+		font-weight: bold;
+		color: #333;
+	}
+
+	label,
+	input,
+	p {
+		font-family: 'Orkney';
+	}
+}
+
+.divisor {
+	margin: 0 10px;
+	font-weight: bold;
+}

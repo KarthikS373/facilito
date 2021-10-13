@@ -25,6 +25,7 @@
 		"@emotion/server": "^11.4.0",
 		"@emotion/styled": "^11.3.0",
 		"@mui/icons-material": "^5.0.1",
+		"@mui/lab": "^5.0.0-alpha.50",
 		"@mui/material": "^5.0.1",
 		"@mui/styles": "^5.0.1",
 		"browser-image-compression": "^1.0.16",

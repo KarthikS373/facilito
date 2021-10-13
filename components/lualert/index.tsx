@@ -95,11 +95,11 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 				state.open
 					? {
 							backdropFilter: props.blurred ? 'blur(10px)' : 'none',
-							zIndex: props.zIndex || state.zIndex || 100,
+							zIndex: state.zIndex || props.zIndex || 100,
 					  }
 					: {
 							backdropFilter: props.blurred ? 'blur(10px)' : 'none',
-							zIndex: props.zIndex || state.zIndex || 100,
+							zIndex: state.zIndex || props.zIndex || 100,
 					  }
 			}>
 			<div
