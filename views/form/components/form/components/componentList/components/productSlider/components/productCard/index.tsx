@@ -86,8 +86,9 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 					})}>
 					{unActive && <div className={Styles.unActive}>{$`No disponible`}</div>}
 					<Image
-						height={196}
+						unoptimized
 						width={196}
+						height={196}
 						src={props.productSpace.picture[0]}
 						alt={props.productSpace.title}
 					/>
