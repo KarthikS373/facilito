@@ -27,7 +27,7 @@ const FormMedia: React.FC<FormMediaProps> = ({ isVideo }: FormMediaProps) => {
 			{isVideo ? (
 				<video src={props.src} controls />
 			) : (
-				<Image src={props.src || ''} alt={props.alt} height={200} width={200} />
+				<Image unoptimized src={props.src || ''} alt={props.alt} height={200} width={200} />
 			)}
 			<i>{props.alt}</i>
 		</a>

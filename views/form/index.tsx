@@ -9,7 +9,6 @@ import Styles from './style.module.scss'
 
 // HOOKS
 import { useCompanyProducts } from 'hooks/business'
-import { useFormBackground } from 'hooks/forms'
 
 // TOOLS
 import { formHasComponent, getCouponProducts, setGeoComponents } from './tools'
@@ -54,9 +53,6 @@ const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 
 	// TIENE PRODUCTOS
 	const hasProducts = formHasComponent(formData?.components, 'product')
-
-	// COLOR DE FONDO
-	useFormBackground(formData?.background)
 
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)

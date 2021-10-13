@@ -11,6 +11,7 @@ import type { NextPage, GetServerSideProps } from 'next'
 import Form from 'views/form'
 
 // HOC
+import { useFormBackground } from 'hooks/forms'
 import withAuth from 'components/hoc/auth'
 
 // PROPIEDADES DEL SERVIDOR
@@ -23,6 +24,9 @@ interface FormPageProps {
 
 // PAGE
 const FormPage: NextPage<FormPageProps> = (props) => {
+	// COLOR DE FONDO
+	useFormBackground(props.formData?.background)
+
 	return <Form {...props} />
 }
 
