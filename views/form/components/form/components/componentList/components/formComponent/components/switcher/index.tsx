@@ -3,6 +3,7 @@ import React from 'react'
 
 // COMPONENTS
 import FormMultipleOptions from '../../../multipleOptions'
+import SectionText from '../../../sectionText'
 import DatePicker from '../../../datepicker'
 import TextInput from '../../../textInput'
 
@@ -26,8 +27,12 @@ const ComponentSwitcher: React.FC<ComponentSwitcherProps> = ({ name }) => {
 			return <FormMultipleOptions InputElement={Checkbox} />
 		case 'select':
 			return <FormMultipleOptions />
+		case 'link':
+			return <SectionText isAnchor />
 		case 'date':
 			return <DatePicker />
+		case 'title':
+			return <SectionText />
 		default:
 			return <TextInput />
 	}

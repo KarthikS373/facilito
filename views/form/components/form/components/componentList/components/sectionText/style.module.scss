@@ -1,0 +1,21 @@
+.title {
+	width: 100%;
+	text-align: left;
+	color: #333;
+}
+
+.link {
+	width: 100%;
+	text-align: left;
+	font-weight: 500;
+	font-size: 1.1em;
+	color: var(--primary);
+}
+
+.title + p {
+	width: 100%;
+	text-align: left;
+	color: #555;
+	margin-top: 5px;
+	word-break: break-word;
+}

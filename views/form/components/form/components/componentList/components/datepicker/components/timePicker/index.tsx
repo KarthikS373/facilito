@@ -4,7 +4,6 @@ import React from 'react'
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 
 // CONTEXTO
@@ -44,8 +43,8 @@ const timePicker = (
 
 	// ALERTA DE HORARIOS
 	window.Alert({
-		title: 'Seleccionar horarios',
-		body: 'Aquí tienes una lista de horas disponibles, selecciona una y haz click en "Aceptar"',
+		title: window.innerWidth < 450 ? 'Horarios' : 'Seleccionar horarios',
+		body: 'Aquí tienes una lista de horas disponibles, selecciona una y luego haz click en "Aceptar"',
 		type: 'confirm',
 		zIndex: 1301,
 		cancelBtn: <></>,
@@ -63,13 +62,17 @@ const timePicker = (
 		},
 		onHide: () => window.hideAlert(),
 		customElements: (
-			<FormControl fullWidth style={{ marginTop: '10px' }}>
-				<InputLabel>{inputLabel}</InputLabel>
+			<FormControl fullWidth style={{ margin: '18px 0 10px 0' }}>
 				<Select
+					autoFocus
 					defaultValue=''
 					id='picker-hours'
+					variant='outlined'
 					onChange={handleHours}
 					labelId='picker-hours-bale'>
+					<MenuItem value='' disabled selected>
+						{inputLabel}
+					</MenuItem>
 					{timeIntervals.map((interval: (number | string)[], index: number) => (
 						<MenuItem value={interval[0]} key={`hour_${index}`}>
 							{interval[1]}
