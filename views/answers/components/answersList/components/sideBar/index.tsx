@@ -55,6 +55,7 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 	// MOVER PASO
 	const changeStep = (step: number) => () =>
 		handleStep(
+			onClose,
 			currentIndex,
 			answerIndex,
 			step,

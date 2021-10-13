@@ -13,6 +13,7 @@ import { updateAnswerState } from 'utils/answers'
  * @param  {string} companyID
  */
 const handleStep = (
+	onClose: EmptyFunction,
 	currentIndex: number,
 	index: number,
 	step: number,
@@ -26,6 +27,7 @@ const handleStep = (
 		window.Snack('Actualizando...')
 		updateAnswerState(index, newStep, formID, companyID)
 		updateLocalAnswerState(currentIndex, newStep)
+		setTimeout(onClose, 400)
 		window.Snack('Tracking actualizado')
 		return newStep
 	})

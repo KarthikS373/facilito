@@ -22,13 +22,14 @@ const ProductsProvider: React.FC = (props) => {
 	useForms(setForms, businessCtx.business?.id)
 
 	// GUARDAR PRODUCTOS GLOBAL
-	const setFormsDB = (forms: Partial<FormInterface>) =>
+	const setFormsDB = (forms: Partial<FormInterface>) => {
 		setForms((prevForms: FormInterface) => {
 			// GUARDAR EN NEGOCIO
 			const newForms = { ...prevForms, ...forms }
 			businessCtx.setBusinessDB({ forms: newForms.forms.map((form: Form) => form.id) })
 			return newForms
 		})
+	}
 
 	return (
 		<FormsContext.Provider value={{ forms, setFormsDB, setForms }}>
