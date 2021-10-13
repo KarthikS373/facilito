@@ -126,6 +126,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 			</div>
 			<SideBar
 				formID={formID}
+				filter={filter}
 				open={openSideBar}
 				tracking={tracking}
 				currentIndex={currentIndex}

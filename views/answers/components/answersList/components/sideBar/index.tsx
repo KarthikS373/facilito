@@ -26,6 +26,7 @@ import Styles from './style.module.scss'
 interface SideBarProps {
 	open: boolean
 	formID: string
+	filter: string
 	stateIndex: number
 	answerIndex: number
 	currentIndex: number
@@ -34,6 +35,7 @@ interface SideBarProps {
 	updateAnswerState: (index: number, newState: number) => void
 }
 const CustomSideBar: React.FC<SideBarProps> = ({
+	filter,
 	open,
 	currentIndex,
 	answerIndex,
@@ -59,6 +61,7 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 			currentIndex,
 			answerIndex,
 			step,
+			filter,
 			setActiveStep,
 			updateAnswerState,
 			formID,
@@ -90,8 +93,13 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 									<Button disabled={activeStep === 0} onClick={changeStep(-1)}>
 										{$`Regresar`}
 									</Button>
-									<Button variant='contained' color='primary' onClick={changeStep(1)}>
-										{activeStep === tracking.length - 1 ? $`Terminar` : $`Siguiente`}
+									<Button
+										color='primary'
+										variant='contained'
+										onClick={changeStep(1)}
+										disabled={activeStep === tracking.length - 1}
+										className={activeStep === tracking.length - 1 ? Styles.disabled : ''}>
+										{$`Siguiente`}
 									</Button>
 								</div>
 							</div>

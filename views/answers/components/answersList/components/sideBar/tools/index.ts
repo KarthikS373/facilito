@@ -17,17 +17,25 @@ const handleStep = (
 	currentIndex: number,
 	index: number,
 	step: number,
+	filter: string,
 	setActiveStep: React.Dispatch<React.SetStateAction<number>>,
 	updateLocalAnswerState: (index: number, newState: number) => void,
 	formID?: string,
 	companyID?: string
 ): void =>
 	setActiveStep((prevActiveStep) => {
+		// CALCULAR SIGUIENTE PASO
 		const newStep: number = prevActiveStep + step
 		window.Snack('Actualizando...')
+
+		// ACTUALIZAR EN LOCAL Y DB
 		updateAnswerState(index, newStep, formID, companyID)
 		updateLocalAnswerState(currentIndex, newStep)
-		setTimeout(onClose, 400)
+
+		// OCULTAR SI EXISTE EL FILTRO POR ESTADO
+		if (filter === 'saz' || filter === 'sza') setTimeout(onClose, 400)
+
+		// ALERTA
 		window.Snack('Tracking actualizado')
 		return newStep
 	})
