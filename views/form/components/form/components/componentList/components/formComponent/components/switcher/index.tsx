@@ -1,17 +1,20 @@
 // REACT
 import React from 'react'
 
-// COMPONENTS
-import FormMultipleOptions from '../../../multipleOptions'
-import SectionText from '../../../sectionText'
-import DatePicker from '../../../datepicker'
-import TextInput from '../../../textInput'
-import Geolocation from '../../../geo'
-import FormMedia from '../../../media'
+// NEXT
+import dynamic from 'next/dynamic'
 
 // MATERIAL
 import Checkbox from '@mui/material/Checkbox'
 import Radio from '@mui/material/Radio'
+
+// COMPONENTS
+const FormMultipleOptions = dynamic(() => import('../../../multipleOptions'))
+const SectionText = dynamic(() => import('../../../sectionText'))
+const DatePicker = dynamic(() => import('../../../datepicker'))
+const TextInput = dynamic(() => import('../../../textInput'))
+const Geolocation = dynamic(() => import('../../../geo'))
+const FormMedia = dynamic(() => import('../../../media'))
 
 // OBTENER COMPONENTE
 interface ComponentSwitcherProps {

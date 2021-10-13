@@ -1,6 +1,9 @@
 // REACT
 import React, { useState, useRef, useContext } from 'react'
 
+// NEXT
+import dynamic from 'next/dynamic'
+
 // ESTILOS
 import Styles from './style.module.scss'
 
@@ -17,10 +20,12 @@ import ThemeProvider from '@mui/styles/ThemeProvider'
 
 // COMPONENTES
 import FormHeader from 'components/formHeader'
-import HookForm from './components/form'
 
 // CONTEXT
 import AuthContext from 'context/auth'
+
+// FORM
+const HookForm = dynamic(() => import('./components/form'))
 
 // PROPS
 interface FormProps {
