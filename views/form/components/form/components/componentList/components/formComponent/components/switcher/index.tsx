@@ -6,6 +6,8 @@ import FormMultipleOptions from '../../../multipleOptions'
 import SectionText from '../../../sectionText'
 import DatePicker from '../../../datepicker'
 import TextInput from '../../../textInput'
+import Geolocation from '../../../geo'
+import FormMedia from '../../../media'
 
 // MATERIAL
 import Checkbox from '@mui/material/Checkbox'
@@ -33,6 +35,12 @@ const ComponentSwitcher: React.FC<ComponentSwitcherProps> = ({ name }) => {
 			return <DatePicker />
 		case 'title':
 			return <SectionText />
+		case 'image':
+			return <FormMedia />
+		case 'video':
+			return <FormMedia isVideo />
+		case 'geo':
+			return <Geolocation />
 		default:
 			return <TextInput />
 	}
