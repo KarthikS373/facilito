@@ -1,4 +1,32 @@
 {
+	"no_disponible": {
+		"en": "",
+		"es": "$"
+	},
+	"te_queda": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar": {
+		"en": "",
+		"es": "$"
+	},
+	"confirmar": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_a_carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"sin_inventario": {
+		"en": "",
+		"es": "$"
+	},
+	"en_oferta": {
+		"en": "",
+		"es": "$"
+	},
 	"aqui_tienes_una_lista_de_horas_disponibles_selecciona_una_y_luego_haz_click_en_aceptar": {
 		"en": "",
 		"es": "$"

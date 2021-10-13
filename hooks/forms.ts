@@ -146,5 +146,5 @@ export const useFormBackground = (background?: string): void => {
 			: `url(${background}) center center/contain repeat fixed`
 		document.body.style.backgroundAttachment = 'fixed'
 		document.body.style.backgroundSize = 'contain'
-	}, [background])
+	})
 }

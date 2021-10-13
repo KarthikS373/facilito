@@ -8,6 +8,7 @@
 	overflow: hidden;
 	margin: 0 auto;
 	max-width: 1290px;
+	background-color: #fff;
 
 	@include for-size(phablet-landscape) {
 		grid-template-columns: 100%;

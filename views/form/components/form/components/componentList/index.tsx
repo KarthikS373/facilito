@@ -52,6 +52,7 @@ const FormComponentsList: React.FC<FormComponentsLisProps> = (props: FormCompone
 									helper: error ? $`Campo obligatorio` : cProps.helper,
 									showcaseMode: props.formData?.checkout?.showcaseMode || false,
 									couponProducts: props.couponProducts,
+									badge: props.formData?.badge || 'GTQ',
 									productsList: props.productsList,
 									formProducts: props.formProducts,
 									setValue: props.setValue,

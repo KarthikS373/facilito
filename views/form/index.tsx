@@ -15,7 +15,7 @@ import { formHasComponent, getCouponProducts, setGeoComponents } from './tools'
 import { generateTheme, splitBackgroundColors } from 'utils/tools'
 
 // PROVIDERS
-import ThemeProvider from '@mui/styles/ThemeProvider'
+import { ThemeProvider } from '@mui/material/styles'
 
 // COMPONENTES
 import FormHeader from 'components/formHeader'
@@ -52,7 +52,7 @@ const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 	const customTheme = generateTheme(defColors)
 
 	// TIENE PRODUCTOS
-	const hasProducts = formHasComponent(formData?.components, 'product')
+	const hasProducts = formHasComponent(formData?.components, 'products')
 
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)
@@ -67,7 +67,15 @@ const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 
 	return (
 		<ThemeProvider theme={customTheme}>
-			<div className={Styles.container}>
+			<div
+				className={Styles.container}
+				style={
+					{
+						'--primary': defColors[0],
+						'--secondary': defColors[1],
+						'--primaryDark': defColors[0],
+					} as React.CSSProperties
+				}>
 				<div className={Styles.viewContent}>
 					{/* HEADER */}
 					<FormHeader

@@ -10,6 +10,7 @@ import Radio from '@mui/material/Radio'
 
 // COMPONENTS
 const FormMultipleOptions = dynamic(() => import('../../../multipleOptions'))
+const ProductSlider = dynamic(() => import('../../../productSlider'))
 const SectionText = dynamic(() => import('../../../sectionText'))
 const DatePicker = dynamic(() => import('../../../datepicker'))
 const TextInput = dynamic(() => import('../../../textInput'))
@@ -44,6 +45,8 @@ const ComponentSwitcher: React.FC<ComponentSwitcherProps> = ({ name }) => {
 			return <FormMedia isVideo />
 		case 'geo':
 			return <Geolocation />
+		case 'products':
+			return <ProductSlider />
 		default:
 			return <TextInput />
 	}

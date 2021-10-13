@@ -2,12 +2,12 @@
 import React from 'react'
 
 // THEME
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { theme } from './theme'
 
-const ThemeProvider: React.FC = (props) => {
-	return <MuiThemeProvider theme={theme}>{props.children}</MuiThemeProvider>
+const MuiThemeProvider: React.FC = (props) => {
+	return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 
 // EXPORT
-export default ThemeProvider
+export default MuiThemeProvider

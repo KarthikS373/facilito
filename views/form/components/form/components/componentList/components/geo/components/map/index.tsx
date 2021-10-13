@@ -19,9 +19,7 @@ const Map: React.FC<MapProps> = ({ place }: MapProps) => {
 	// CARGAR POSICIÓN INICIAL
 	useInitialPosition(setLoad, langCode, place)
 
-	return (
-		<iframe title='Map' src={load} width='100%' height='100%' frameBorder='0' allowFullScreen />
-	)
+	return <iframe title='Map' src={load} width='100%' height='300' frameBorder='0' allowFullScreen />
 }
 
 export default Map

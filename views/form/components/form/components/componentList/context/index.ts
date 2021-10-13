@@ -15,6 +15,7 @@ export interface FormContextProps extends BlockComponent {
 	productsList: Product[]
 	showcaseMode: boolean
 	error: boolean
+	badge: string
 }
 
 const defContext: FormContextProps = {
@@ -31,6 +32,7 @@ const defContext: FormContextProps = {
 	helper: '',
 	color: '',
 	label: '',
+	badge: '',
 	name: '',
 	text: '',
 	id: 0,

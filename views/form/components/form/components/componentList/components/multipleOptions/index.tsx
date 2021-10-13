@@ -4,14 +4,10 @@ import React, { useContext, useState } from 'react'
 // ESTILOS
 import Styles from './style.module.scss'
 
-// ICONOS
-import InfoOutlined from '@mui/icons-material/InfoOutlined'
-
 // MATERIAL
-import Select, { SelectChangeEvent } from '@mui/material/Select'
 import type { CheckboxProps, RadioProps } from '@mui/material'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import FormHelperText from '@mui/material/FormHelperText'
 import FormControl from '@mui/material/FormControl'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormGroup from '@mui/material/FormGroup'
@@ -22,7 +18,6 @@ import FormContext from '../../context'
 
 // HOOKS
 import { setComponentValue, useComponentRegister } from '../../hooks'
-import useStrings from 'hooks/lang'
 import onCheckChange from './tools'
 
 // PROPIEDADES
@@ -40,9 +35,6 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 
 	// STRINGS
 	const id = `${props.name}_${props.id}`
-
-	// STRINGS
-	const { $ } = useStrings()
 
 	// REGISTRAR COMPONENTE
 	useComponentRegister(props.register, props.name, props.id, { required: props.required })
@@ -77,10 +69,6 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 										)
 								)}
 						</RadioGroup>
-						<FormHelperText error={props.error} className={Styles.helperOrError}>
-							{props.error && <InfoOutlined />}{' '}
-							{props.error ? $`Este campo es obligatorio` : props.helper}
-						</FormHelperText>
 					</>
 				) : eProps.InputElement ? (
 					<>
@@ -105,10 +93,6 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 										)
 								)}
 						</FormGroup>
-						<FormHelperText error={props.error} className={Styles.helperOrError}>
-							{props.error && <InfoOutlined />}{' '}
-							{props.error ? $`Este campo es obligatorio` : props.helper}
-						</FormHelperText>
 					</>
 				) : (
 					<>
@@ -131,9 +115,6 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 									</MenuItem>
 								))}
 						</Select>
-						<FormHelperText error={props.error} className={Styles.helperOrError}>
-							{props.error && <InfoOutlined />} {props.helper}
-						</FormHelperText>
 					</>
 				)}
 			</FormControl>
