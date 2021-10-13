@@ -33,6 +33,7 @@ export const useProductList = (
 /**
  * Registrar
  * @description Registrar propiedades completas de los productos
+ * @param props
  */
 export const useCustomRegister = (props: FormSearchProps): void => {
 	useEffect(() => {

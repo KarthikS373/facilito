@@ -5,7 +5,7 @@ import React, { useState, useRef, useContext } from 'react'
 import Styles from './style.module.scss'
 
 // HOOKS
-import useBusiness, { useCompanyProducts } from 'hooks/business'
+import { useCompanyProducts } from 'hooks/business'
 import { useFormBackground } from 'hooks/forms'
 
 // TOOLS
@@ -24,18 +24,15 @@ import AuthContext from 'context/auth'
 
 // PROPS
 interface FormProps {
-	companyID: string | null
+	company: Business | null
 	formData: Form | null
 	companyURL: string
 	formURL: string
 }
 
-const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
+const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 	// USUARIO
 	const { userExists } = useContext(AuthContext)
-
-	// EMPRESA
-	const [formCompany, setFormCompany] = useState<Business | null>(null)
 
 	// PRODUCTOS
 	const [products, setProducts] = useState<Product[]>([])
@@ -56,14 +53,11 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 	// COLOR DE FONDO
 	useFormBackground(formData?.background)
 
-	// LEER EMPRESA
-	useBusiness(userExists, companyID, setFormCompany)
-
 	// GEO POSICIONES
 	setGeoComponents(formData?.components, geoRef)
 
 	// USAR PRODUCTOS
-	useCompanyProducts(setProducts, userExists, companyID, hasProducts)
+	useCompanyProducts(setProducts, userExists, company?.id || null, hasProducts)
 
 	// ENVIAR FORMULARIO
 	const sendFormEvent = (data: unknown, reset: () => unknown) => {
@@ -77,8 +71,8 @@ const FormView: React.FC<FormProps> = ({ companyID, formData }: FormProps) => {
 					{/* HEADER */}
 					<FormHeader
 						formDescription={formData?.description}
-						company={formCompany || undefined}
 						banner={formData?.banner || ''}
+						company={company || undefined}
 						formTitle={formData?.title}
 						previewMode
 						clientMode

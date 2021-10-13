@@ -1,3 +1,8 @@
+/**
+ * Obtener inputs personales
+ * @description Obtener lista de propiedades de inputs personales
+ * @param personalData
+ */
 const getPersonalStrings: (personalData: FormPersonalData) => [boolean[], string[]] = (
 	personalData: FormPersonalData
 ) => {

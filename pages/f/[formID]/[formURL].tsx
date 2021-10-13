@@ -15,7 +15,7 @@ import withAuth from 'components/hoc/auth'
 
 // PROPIEDADES DEL SERVIDOR
 interface FormPageProps {
-	companyID: string | null
+	company: Business | null
 	formData: Form | null
 	companyURL: string
 	formURL: string
@@ -57,8 +57,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		} else return tmpComponent
 	})
 
+	// EMPRESA
+	let company: Business | null = null
+	if (companyID) {
+		const businessCol = db.collection('business')
+		const businessDoc = businessCol.doc(companyID)
+		company = (await businessDoc.get()).data() as Business
+	}
+
 	return {
-		props: { formData, companyID, companyURL: formID, formURL },
+		props: { formData, company, companyURL: formID, formURL },
 	}
 }
 
