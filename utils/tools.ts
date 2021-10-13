@@ -44,11 +44,14 @@ export const normalizeString = (str: string): string => {
 export const parseDate = (date: unknown): Date | null => {
 	if (date && typeof date === 'object') {
 		// @ts-ignore
-		if ('_nanoseconds' in date && '_seconds' in date) {
+		if (
+			('_nanoseconds' in date && '_seconds' in date) ||
+			('nanoseconds' in date && 'seconds' in date)
+		) {
 			// @ts-ignore
 			if ('toDate' in date) return date.toDate()
 			// @ts-ignore
-			else return new Date(date._seconds * 1000)
+			else return new Date((date._seconds || date.seconds) * 1000)
 		} else return date as Date
 	} else return null
 }
