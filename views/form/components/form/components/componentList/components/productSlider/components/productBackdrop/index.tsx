@@ -26,7 +26,10 @@ import ExtraSelect from './components/select'
 // CONTEXTO
 import FormContext from '../../../../context'
 
-interface ProductBackdropProps {
+// TOOLS
+import sendProduct, { addExtra, handleProductCounter, onClose } from './tools'
+
+export interface ProductBackdropProps {
 	onAddProduct: (product: ProductSelected, index: number) => unknown
 	currentProduct: CurrentProduct | null
 	closeBackdropProduct: EmptyFunction
@@ -42,100 +45,32 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 	// BADGE
 	const { badge } = useContext(FormContext)
 
-	// CONTADOR DE PRODUCTOS
-	const [productsCounter, setProductsCounter] = useState<number>(0)
+	// CONTADOR DE EXTRAS
 	const [extrasCounter, setExtrasCounter] = useState<(ExtraOptional[] | undefined)[]>([])
 
+	// CONTADOR DE PRODUCTOS
+	const [productsCounter, setProductsCounter] = useState<number>(0)
+
 	// AGREGAR A CONTADOR
-	const handleProductCounter = (add: number) => () => {
-		const added = Math.min(
-			Math.max(0, productsCounter + add),
-			props.currentProduct?.product.stockOption === 'inf'
-				? Infinity
-				: props.currentProduct?.product.stockOption === 'ctn'
-				? Infinity
-				: props.currentProduct?.product.count || 0
-		)
-		setProductsCounter(added)
-	}
+	const handleProductCounterEv = (add: number) => () =>
+		handleProductCounter(add, props, setProductsCounter)
 
 	// ENVIAR PRODUCTO
-	const sendProduct = async () => {
-		if (props.currentProduct?.product) {
-			// // VALIDAR EXTRAS
-			const invalidExtras: string[] = []
-			if (props.currentProduct.product.extras)
-				props.currentProduct.product.extras.forEach((extra: Extra, index: number) => {
-					if (extra.required && !extrasCounter[index]) invalidExtras.push(extra.title)
-				})
-
-			// CREAR PRODUCTO A ENVIAR
-			const extras = extrasCounter.filter(Boolean).flat() as ExtraOptional[]
-			const price: number =
-				(props.currentProduct?.product.isPromo
-					? props.currentProduct?.product.promoPrice
-					: props.currentProduct?.product.price) || 0
-			const extrasPrice = extras
-				.map((pExtra) => pExtra.price)
-				.reduce((fExtra: number, nExtra: number) => fExtra + nExtra, 0)
-
-			// PRODUCTO
-			const cartProduct: ProductSelected = {
-				product: props.currentProduct?.product,
-				count: productsCounter,
-				extras,
-				totalPrice: price * productsCounter + extrasPrice,
-			}
-
-			// ENVIAR
-			if (cartProduct.count > 0) {
-				if (!invalidExtras.length) {
-					// AGREGAR
-					props.onAddProduct(cartProduct, props.currentProduct.index)
-
-					// REINICIAR
-					setProductsCounter(0)
-					setExtrasCounter([])
-
-					// CERRAR
-					props.closeBackdropProduct()
-				} else
-					window.Alert({
-						title: $`Ocurrió un error`,
-						body: $`Las opciones o extras \"{{ extras }}\" son obligatorios, intenta nuevamente cuando se completen.`.replace(
-							'{{ extras }}',
-							invalidExtras.join(', ')
-						),
-						type: 'error',
-					})
-			} else
-				window.Alert({
-					title: $`Ocurrió un error`,
-					body: $`Selecciona al menos un producto para poder agregar al carrito, o cierra esta ventana.`,
-					type: 'error',
-				})
-		}
-	}
+	const sendProductEv = () =>
+		sendProduct(props, setExtrasCounter, extrasCounter, setProductsCounter, productsCounter)
 
 	// AGREGAR EXTRA SELECCIÓN UNICA
-	const addExtra = (index: number) => (extra: ExtraOptional[] | undefined) => {
-		setExtrasCounter((extras: (ExtraOptional[] | undefined)[]) => {
-			extras[index] = extra
-			return extras
-		})
-	}
+	const addExtraEv = (index: number) => (extra: ExtraOptional[] | undefined) =>
+		addExtra(index, extra, setExtrasCounter)
 
 	// REINICIAR
-	const onClose = () => {
-		setProductsCounter(0)
-		props.closeBackdropProduct()
-	}
+	const onCloseEv = () => onClose(setProductsCounter, props.closeBackdropProduct)
 
 	return (
 		<Backdrop className={Styles.productBackdrop} open={Boolean(props.currentProduct)}>
 			{props.currentProduct?.product && (
 				<>
-					<IconButton onClick={onClose} className={Styles.backdropClose}>
+					<IconButton onClick={onCloseEv} className={Styles.backdropClose}>
 						<Close />
 					</IconButton>
 
@@ -167,11 +102,11 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 								className={Styles.productCounter}
 								color='primary'
 								aria-label='primary button group'>
-								<Button variant='contained' onClick={handleProductCounter(-1)}>
+								<Button variant='contained' onClick={handleProductCounterEv(-1)}>
 									-
 								</Button>
 								<Button>{productsCounter}</Button>
-								<Button variant='contained' onClick={handleProductCounter(1)}>
+								<Button variant='contained' onClick={handleProductCounterEv(1)}>
 									+
 								</Button>
 							</ButtonGroup>
@@ -182,11 +117,11 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 											<div className={Styles.productExtra} key={`extra_${key}`}>
 												<span>{extra.title}</span>
 												{extra.type === 0 ? (
-													<ExtraSelect extra={extra} onSelect={addExtra(key)} />
+													<ExtraSelect extra={extra} onSelect={addExtraEv(key)} />
 												) : extra.type === 1 ? (
-													<ExtraMultiple extra={extra} onSelect={addExtra(key)} />
+													<ExtraMultiple extra={extra} onSelect={addExtraEv(key)} />
 												) : (
-													<ExtraLimited extra={extra} onSelect={addExtra(key)} />
+													<ExtraLimited extra={extra} onSelect={addExtraEv(key)} />
 												)}
 											</div>
 										)
@@ -194,9 +129,9 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 								})}
 							{!props.showCaseMode && (
 								<Button
-									variant='contained'
 									color='primary'
-									onClick={sendProduct}
+									variant='contained'
+									onClick={sendProductEv}
 									className={Styles.addToCart}>
 									<Check style={{ marginRight: '10px' }} />
 									{$`Confirmar`}

@@ -1,11 +1,12 @@
 // REACT
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // MATERIAL
 import { useTheme } from '@mui/material/styles'
+import Collapse from '@mui/material/Collapse'
 
 // ICONOS
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown'
@@ -17,7 +18,10 @@ import ProductCard from './components/productCard'
 
 // CONTEXTO
 import FormContext from '../../context'
-import Collapse from '@mui/material/Collapse'
+
+// HOOKS
+import useProductsFilter, { useProductsRegister } from './hooks'
+import sendProduct from './tools'
 
 const ProductSlider: React.FC = () => {
 	// PRODUCTOS
@@ -28,8 +32,6 @@ const ProductSlider: React.FC = () => {
 
 	// BACKDROP
 	const [currentProduct, setCurrentProduct] = useState<CurrentProduct | null>(null)
-	const openBackdropProduct = (product: CurrentProduct) => () => setCurrentProduct(product)
-	const closeBackdropProduct = () => setCurrentProduct(null)
 
 	// FORM PROPS
 	const props = useContext(FormContext)
@@ -41,89 +43,18 @@ const ProductSlider: React.FC = () => {
 	const toggleCollapsed = () => setCollapsed(!collapsed)
 
 	// ENVIAR A FORMULARIO
-	const sendProduct = (product: ProductSelected, index: number) => {
-		// AGREGAR PRODUCTO
-		const products: FormProductSliderAnswer[] = props.formProducts
-			? ((props.formProducts[`${props.name}_${props.id}`] || []) as FormProductSliderAnswer[])
-			: []
-		const tmpProductList = [...productList]
-		const extras: ExtraOptional[][] = props.formProducts
-			? ((props.formProducts[`extras_${props.name}_${props.id}`] || []) as ExtraOptional[][])
-			: []
+	const sendProductEv = (product: ProductSelected, index: number) =>
+		sendProduct(product, index, props, setProductList)
 
-		// ACTUALIZAR LISTA CON CONTADORES
-		tmpProductList[index] = {
-			...tmpProductList[index],
-			count: tmpProductList[index].count - product.count,
-		}
-
-		// AGREGAR
-		const sliderProduct: FormProductSliderAnswer = {
-			picture: product.product.picture ? product.product.picture[0] : '',
-			stockOption: product.product.stockOption,
-			productCount: product.product.count,
-			category: product.product.category,
-			totalPrice: product.totalPrice,
-			title: product.product.title,
-			sku: product.product.sku,
-			count: product.count,
-		}
-		products.push(sliderProduct)
-		extras.push(product.extras)
-
-		// PRECIO TOTAL
-		const totalPrice: number = products
-			.map((productVal: FormProductSliderAnswer) => productVal.totalPrice)
-			.reduce((price: number, nextPrice: number) => price + nextPrice, 0)
-
-		// ENVIAR
-		if (props.setValue) {
-			props.setValue(`products.summary_${props.name}_${props.id}`, totalPrice)
-			props.setValue(`products.extras_${props.name}_${props.id}`, extras)
-			props.setValue(`products.${props.name}_${props.id}`, products)
-		}
-
-		// ACTUALIZAR LISTA
-		setProductList(tmpProductList)
-	}
+	// EVENTOS DE BACKDROP
+	const openBackdropProduct = (product: CurrentProduct) => () => setCurrentProduct(product)
+	const closeBackdropProduct = () => setCurrentProduct(null)
 
 	// REGISTRAR
-	useEffect(() => {
-		if (props.register) {
-			props.register(`products.summary_${props.name}_${props.id}`, {
-				required: props.required,
-				validate: (value) => typeof value === 'number',
-			})
-			props.register(`products.extras_${props.name}_${props.id}`)
-			props.register(`products.${props.name}_${props.id}`, { required: props.required })
-		}
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [props.name, props.id])
+	useProductsRegister(props.register, props.required, props.name, props.id)
 
 	// OBTENER PRODUCTOS
-	const productsProps = props.products
-	const products = props.productsList
-
-	useEffect(() => {
-		// PRODUCTOS
-		const productsFilter: Product[] = productsProps
-			?.map((id: string) => {
-				// BUSCAR
-				let current = -1
-				products.forEach((product: Product, pIndex: number) => {
-					if (product.sku === id) current = pIndex
-				})
-
-				// RETORNAR
-				if (current >= 0) return products[current]
-				else return undefined
-			})
-			.filter(Boolean)
-			.sort((prevProduct?: Product) => (prevProduct?.featured ? -1 : 0)) as Product[]
-
-		setProductList(productsFilter)
-	}, [productsProps, products])
+	useProductsFilter(setProductList, props.productsList, props.products)
 
 	return (
 		<>
@@ -169,7 +100,7 @@ const ProductSlider: React.FC = () => {
 				closeBackdropProduct={closeBackdropProduct}
 				showCaseMode={props.showcaseMode}
 				currentProduct={currentProduct}
-				onAddProduct={sendProduct}
+				onAddProduct={sendProductEv}
 				name={props.name}
 				id={props.id}
 			/>

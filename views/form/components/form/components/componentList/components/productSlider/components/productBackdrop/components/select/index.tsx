@@ -13,6 +13,9 @@ import MenuItem from '@mui/material/MenuItem'
 // CONTEXTO
 import FormContext from '../../../../../../context'
 
+// TOOLS
+import handleSelect from './tools'
+
 interface ExtraSelectProps {
 	onSelect?: (extra: ExtraOptional[]) => unknown
 	extra: Extra
@@ -22,16 +25,15 @@ const ExtraSelect: React.FC<ExtraSelectProps> = ({ extra, onSelect }: ExtraSelec
 	// ESTADO
 	const [selectedExtra, setSelectedExtra] = useState<number | string>('')
 
-	// BADGE
+	// LENGUAJE
 	const { $ } = useStrings()
+
+	// MONEDA
 	const { badge } = useContext(FormContext)
 
 	// SELECCIONAR ITEM
-	const handleSelect = (ev: SelectChangeEvent) => {
-		const index: number = parseInt(ev.target.value.toString()) as number
-		setSelectedExtra(index)
-		onSelect && onSelect([{ name: extra.options[index].name, price: extra.options[index].price }])
-	}
+	const handleSelectEv = (ev: SelectChangeEvent) =>
+		handleSelect(extra, ev, setSelectedExtra, onSelect)
 
 	return (
 		<FormControl fullWidth required={extra.required}>
@@ -41,7 +43,7 @@ const ExtraSelect: React.FC<ExtraSelectProps> = ({ extra, onSelect }: ExtraSelec
 			<Select
 				fullWidth
 				id='extra_self_select'
-				onChange={handleSelect}
+				onChange={handleSelectEv}
 				value={selectedExtra.toString()}
 				labelId='extra_self_label_select'>
 				{extra.options.map((exOption: ExtraOptional, exOptIndex: number) => (

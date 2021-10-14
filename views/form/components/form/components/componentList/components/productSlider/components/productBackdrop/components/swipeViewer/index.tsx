@@ -28,12 +28,8 @@ const SwipeViewer: React.FC<SwipeViewerProps> = (props: SwipeViewerProps) => {
 	const [index, setIndex] = useState<number>(0)
 
 	// MANEJAR INDEX
-	const handleIndex = (add: number) => () => {
-		const limitedIndex = Math.min(Math.max(0, index + add), props.images.length - 1)
-
-		// ACTUALIZAR
-		setIndex(limitedIndex)
-	}
+	const handleIndex = (add: number) => () =>
+		setIndex(Math.min(Math.max(0, index + add), props.images.length - 1))
 
 	// CAMBIAR INDEX
 	const changeIndex = (index: number) => setIndex(index)
