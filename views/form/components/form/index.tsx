@@ -50,7 +50,7 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 	const submitButton: React.RefObject<HTMLButtonElement> = useRef(null)
 
 	// CONTIENE PRODUCTOS
-	const haveProducts: boolean = formHasComponent(props.formData?.components, 'product')
+	const haveProducts: boolean = formHasComponent(props.formData?.components, 'products')
 
 	if (props.formData) {
 		// ALERTA DE OBLIGATORIOS

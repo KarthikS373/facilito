@@ -1,14 +1,14 @@
 .container {
 	position: relative;
 	width: 100%;
-	border-radius: 15px 0 0 15px;
+	border-radius: var(--radius) 0 0 var(--radius);
 
 	.slider {
 		width: 450px;
 		height: 450px;
 
 		div {
-			border-radius: 15px 0 0 15px;
+			border-radius: var(--radius) 0 0 var(--radius);
 			height: 100%;
 			width: 100%;
 
@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 850px) {
 	.container {
-		border-radius: 15px 15px 0 0;
+		border-radius: var(--radius) var(--radius) 0 0;
 
 		.slider {
 			width: 100%;
@@ -56,7 +56,7 @@
 			max-height: 300px;
 
 			div {
-				border-radius: 15px 15px 0 0;
+				border-radius: var(--radius) var(--radius) 0 0;
 			}
 		}
 	}

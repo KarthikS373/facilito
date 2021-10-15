@@ -27,7 +27,7 @@ const ExtraMultiple: React.FC<ExtraMultipleProps> = ({ extra, onSelect }: ExtraM
 	const [checks, setChecks] = useState<boolean[]>(Array(extra.options.length).fill(false))
 
 	// STRINGS
-	const { $, langCode } = useStrings()
+	const { $ } = useStrings()
 
 	// BADGE
 	const { badge } = useContext(FormContext)
@@ -39,16 +39,19 @@ const ExtraMultiple: React.FC<ExtraMultipleProps> = ({ extra, onSelect }: ExtraM
 	const handleChecksEv = (index: number) => (_ev: React.SyntheticEvent, checked: boolean) =>
 		handleChecks(extra, index, checked, selectedChecks, setChecks, onSelect)
 
+	// RESTANTE
+	const left: number = (extra?.cant || 0) - selectedChecks
+
 	return (
 		<FormControl component='fieldset' required={extra.required}>
 			<FormGroup>
 				{
 					<FormLabel style={{ marginTop: '3px' }}>
 						{extra.cant
-							? `${$`Te queda`} ${extra.cant - selectedChecks}`
-							: langCode === 'es'
-							? `Agrega ${extra.title}`
-							: `Add ${extra.title}`}
+							? left > 0
+								? `${$`Te quedan`} ${left} ${$`restantes`}`
+								: $`Opciones completadas`
+							: `${$`Agrega`} ${extra.title}`}
 					</FormLabel>
 				}
 				{extra.options.map((exOption: ExtraOptional, exMO: number) => (

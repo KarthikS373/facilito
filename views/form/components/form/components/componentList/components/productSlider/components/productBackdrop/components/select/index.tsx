@@ -4,6 +4,9 @@ import React, { useState, useContext } from 'react'
 // HOOKS
 import useStrings from 'hooks/lang'
 
+// ESTILOS
+import Styles from './style.module.scss'
+
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
@@ -36,7 +39,7 @@ const ExtraSelect: React.FC<ExtraSelectProps> = ({ extra, onSelect }: ExtraSelec
 		handleSelect(extra, ev, setSelectedExtra, onSelect)
 
 	return (
-		<FormControl fullWidth required={extra.required}>
+		<FormControl className={Styles.selectedExtra} fullWidth required={extra.required}>
 			<InputLabel id='extra_self_label'>
 				{$`Seleccionar`} {extra.title}
 			</InputLabel>
@@ -45,7 +48,8 @@ const ExtraSelect: React.FC<ExtraSelectProps> = ({ extra, onSelect }: ExtraSelec
 				id='extra_self_select'
 				onChange={handleSelectEv}
 				value={selectedExtra.toString()}
-				labelId='extra_self_label_select'>
+				labelId='extra_self_label_select'
+				label={`${$`Seleccionar`} ${extra.title}`}>
 				{extra.options.map((exOption: ExtraOptional, exOptIndex: number) => (
 					<MenuItem key={`ex_option_${exOptIndex}`} value={exOptIndex}>
 						{exOption.name} {exOption.price > 0 ? `+${badge}${exOption.price}` : ''}

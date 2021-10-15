@@ -14,10 +14,10 @@
 
 .dropdownIcon {
 	position: absolute;
-	right: 45px;
-	top: 37px;
+	right: 50px;
+	top: 40px;
 	opacity: 0.5;
-	transition: transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out !important;
 }
 
 .sliderContainer {
@@ -37,4 +37,9 @@
 	.product:last-child {
 		margin-right: 0;
 	}
+}
+
+.helperOrError {
+	margin-top: 5px;
+	font-size: 0.9em;
 }

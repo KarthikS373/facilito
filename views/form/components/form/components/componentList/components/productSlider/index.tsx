@@ -9,8 +9,9 @@ import { useTheme } from '@mui/material/styles'
 import Collapse from '@mui/material/Collapse'
 
 // ICONOS
-import ArrowDropDown from '@mui/icons-material/ArrowDropDown'
-import ShoppingCart from '@mui/icons-material/ShoppingCart'
+import ArrowDropDown from '@mui/icons-material/ArrowDropDownOutlined'
+import ShoppingCart from '@mui/icons-material/ShoppingCartTwoTone'
+import InfoOutlined from '@mui/icons-material/InfoOutlined'
 
 // COMPONENTES
 import ProductBackdrop from './components/productBackdrop'
@@ -76,10 +77,12 @@ const ProductSlider: React.FC = () => {
 					{props.label}
 				</h3>
 			</div>
-			<ArrowDropDown
-				className={Styles.dropdownIcon}
-				style={{ transform: `rotateZ(${collapsed ? '180' : '0'}deg)` }}
-			/>
+			{props.allowProductDropdown && (
+				<ArrowDropDown
+					className={Styles.dropdownIcon}
+					style={{ transform: `rotateZ(${collapsed ? '180' : '0'}deg)` }}
+				/>
+			)}
 			<Collapse in={props.allowProductDropdown ? collapsed : true}>
 				<div className={Styles.sliderContainer}>
 					<div className={Styles.slider}>
@@ -95,7 +98,9 @@ const ProductSlider: React.FC = () => {
 					</div>
 				</div>
 			</Collapse>
-
+			<span className={Styles.helperOrError}>
+				{props.error && <InfoOutlined />} {props.helper}
+			</span>
 			<ProductBackdrop
 				closeBackdropProduct={closeBackdropProduct}
 				showCaseMode={props.showcaseMode}

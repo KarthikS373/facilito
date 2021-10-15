@@ -23,7 +23,7 @@
 		border-top: 1px solid #999;
 		padding: 10px;
 		min-width: 100%;
-		border-radius: 8px;
+		border-radius: var(--radius);
 		overflow: hidden;
 
 		& > button:nth-child(2) {
@@ -38,7 +38,7 @@
 		width: 200px;
 		height: auto;
 		background: #eee;
-		border-radius: 15px;
+		border-radius: var(--radius);
 		display: inline-flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -78,7 +78,7 @@
 
 				span:first-child {
 					position: relative;
-					top: 3px;
+					top: 0px;
 					left: 3px;
 				}
 

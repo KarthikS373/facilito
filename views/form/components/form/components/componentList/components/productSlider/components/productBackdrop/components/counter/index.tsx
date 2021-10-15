@@ -7,6 +7,8 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 
 // ESTILOS
 import Styles from './style.module.scss'
+
+// TOOLS
 import handleProductCounter from './tools'
 
 interface CounterProps {
@@ -23,8 +25,8 @@ const Counter: React.FC<CounterProps> = ({ max, onChangeVal }: CounterProps) => 
 
 	return (
 		<ButtonGroup
-			className={Styles.productCounter}
 			color='primary'
+			className={Styles.productCounter}
 			aria-label='primary button group'>
 			<Button variant='contained' onClick={handleProductCounterEv(-1)}>
 				-

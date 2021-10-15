@@ -132,8 +132,8 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 									color='primary'
 									variant='contained'
 									onClick={sendProductEv}
+									startIcon={<Check />}
 									className={Styles.addToCart}>
-									<Check style={{ marginRight: '10px' }} />
 									{$`Confirmar`}
 								</Button>
 							)}

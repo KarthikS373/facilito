@@ -1,4 +1,56 @@
 {
+	"agrega": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_al_menos_un_producto_para_poder_agregar_al_carrito_o_cierra_esta_ventana": {
+		"en": "",
+		"es": "$"
+	},
+	"restantes": {
+		"en": "",
+		"es": "$"
+	},
+	"opciones_completadas": {
+		"en": "",
+		"es": "$"
+	},
+	"te_quedan": {
+		"en": "",
+		"es": "$"
+	},
+	"restante": {
+		"en": "",
+		"es": "$"
+	},
+	"hamburguesas": {
+		"en": "",
+		"es": "$"
+	},
+	"gratis": {
+		"en": "",
+		"es": "$"
+	},
+	"ejemplo": {
+		"en": "",
+		"es": "$"
+	},
+	"ej": {
+		"en": "",
+		"es": "$"
+	},
+	"ej_alitas_honey": {
+		"en": "",
+		"es": "$"
+	},
+	"buscar_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"sin_productos": {
+		"en": "",
+		"es": "$"
+	},
 	"no_disponible": {
 		"en": "",
 		"es": "$"

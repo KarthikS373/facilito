@@ -50,23 +50,32 @@ const ExtraLimited: React.FC<ExtraLimitedProps> = (props: ExtraLimitedProps) => 
 	const handleCountersEv = (index: number) => (cSize: number) =>
 		handleCounters(index, cSize, maxSize, setSize, props)
 
+	// RESTANTE
+	const left: number = computeLeft(sizes, props.extra.cant || 0)
+
 	return (
 		<div className={Styles.optionsCant}>
 			<span style={{ '--primaryColor': theme.palette.primary.main } as React.CSSProperties}>
-				{$`Te queda`} {computeLeft(sizes, props.extra.cant || 0)}{' '}
-				{totalPrice > 0 ? `+${badge} ${totalPrice} ${props.extra.required && '*'}` : ''}
+				{left > 0
+					? `${$`Te quedan`} ${left} ${$`restante`} `
+					: totalPrice > 0
+					? $`Total `
+					: `${$`Opciones completadas`}`}
+				{totalPrice > 0 ? `+${badge} ${totalPrice} ${props.extra.required ? '*' : ''}` : ''}
 			</span>
-			{props.extra.options.map((exOption: ExtraOptional, optIndex: number) => (
-				<div key={`extra_cant_${optIndex}`}>
-					<p>
-						{exOption.name} {exOption.price > 0 ? `${badge} ${exOption.price}` : `(${$`Gratis`})`}
-					</p>
-					<Counter
-						max={totalSum === maxSize ? sizes[optIndex] : maxSize || 0}
-						onChangeVal={handleCountersEv(optIndex)}
-					/>
-				</div>
-			))}
+			<div className={Styles.options}>
+				{props.extra.options.map((exOption: ExtraOptional, optIndex: number) => (
+					<div key={`extra_cant_${optIndex}`}>
+						<p>
+							{exOption.name} {exOption.price > 0 ? `${badge} ${exOption.price}` : `(${$`Gratis`})`}
+						</p>
+						<Counter
+							max={totalSum === maxSize ? sizes[optIndex] : maxSize || 0}
+							onChangeVal={handleCountersEv(optIndex)}
+						/>
+					</div>
+				))}
+			</div>
 		</div>
 	)
 }

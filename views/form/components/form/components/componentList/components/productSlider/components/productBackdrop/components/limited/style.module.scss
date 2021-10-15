@@ -1,17 +1,26 @@
 .optionsCant {
-	margin-left: 20px;
+	position: relative;
 	margin-top: 10px;
 
 	& > span:first-child {
 		display: block;
 		margin-top: -7px;
-		margin-left: -20px;
 		margin-bottom: 10px;
 		opacity: 0.6;
 		font-size: 1rem;
 	}
-	& > div {
-		margin-top: 15px;
+
+	.options {
+		padding: 20px;
+		border-radius: var(--radius);
+		background-color: rgba(0, 0, 0, 0.03);
+
+		& > div {
+			margin-top: 10px;
+			&:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 
 	&:focus-within > span:first-child {
