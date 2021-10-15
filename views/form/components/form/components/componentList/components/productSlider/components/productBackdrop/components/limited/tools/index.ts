@@ -22,10 +22,11 @@ const computeLeft = (sizes: number[], cant: number): number => {
  */
 export const sendExtra = (newSize: number[] | undefined, props: ExtraLimitedProps): void => {
 	// CREAR ITEMS
-	const items: ExtraOptional[] | undefined = newSize
+	const items: ExtraOptionalExt[] | undefined = newSize
 		? props.extra.options
 				.map((extraOpt: ExtraOptional, exIndex: number) => ({
 					name: `${newSize[exIndex]} ${extraOpt.name}`,
+					title: props.extra.title,
 					price: extraOpt.price,
 				}))
 				.filter((_e, exIndex: number) => newSize[exIndex] && newSize[exIndex] > 0)

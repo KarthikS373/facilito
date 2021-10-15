@@ -29,8 +29,8 @@ export const sendProduct = (
 	const products: FormProductSliderAnswer[] = formProducts
 		? ((formProducts.products_0 || []) as FormProductSliderAnswer[])
 		: []
-	const extras: ExtraOptional[][] = formProducts
-		? ((formProducts.extras_products_0 || []) as ExtraOptional[][])
+	const extras: ExtraProductData[][] = formProducts
+		? ((formProducts.extras_products_0 || []) as ExtraProductData[][])
 		: []
 
 	// AGREGAR
@@ -45,7 +45,20 @@ export const sendProduct = (
 		count: product.count,
 	}
 	products.push(sliderProduct)
-	extras.push(product.extras)
+
+	// CREAR EXTRAS
+	const currentExtras: ExtraProductData[] = []
+	product.extras.forEach((extra: ExtraOptionalExt) => {
+		// BUSCAR TITULO
+		const index = Math.max(
+			currentExtras.findIndex((extraData: ExtraProductData) => extraData.title === extra.title),
+			0
+		)
+		// AGREGAR OPCION
+		currentExtras[index].options.push({ name: extra.name, price: extra.price })
+	})
+
+	extras.push(currentExtras)
 
 	// PRECIO TOTAL
 	const totalPrice: number = products

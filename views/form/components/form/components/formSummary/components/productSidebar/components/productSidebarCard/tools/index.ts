@@ -26,9 +26,9 @@ const removeProducts = (
 				.reduce((price: number, nextPrice: number) => price + nextPrice, 0)
 
 			// EXTRAS
-			let extras = values[`extras_${key}`] as ExtraOptional[][]
+			let extras = values[`extras_${key}`] as ExtraProductData[][]
 			if (extras && typeof extras === 'object') {
-				extras = extras.filter((_ex: ExtraOptional[], pIndex: number) => pIndex !== index)
+				extras = extras.filter((_ex: ExtraProductData[], pIndex: number) => pIndex !== index)
 			}
 
 			// GUARDAR EN FORMULARIO

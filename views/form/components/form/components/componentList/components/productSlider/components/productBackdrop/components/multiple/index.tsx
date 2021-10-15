@@ -18,7 +18,7 @@ import FormContext from '../../../../../../context'
 import handleChecks from './tools'
 
 interface ExtraMultipleProps {
-	onSelect?: (extra: ExtraOptional[] | undefined) => unknown
+	onSelect?: (extra: ExtraOptionalExt[] | undefined) => unknown
 	extra: Extra
 }
 

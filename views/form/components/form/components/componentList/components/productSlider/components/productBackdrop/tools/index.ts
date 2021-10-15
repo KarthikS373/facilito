@@ -11,8 +11,8 @@ import type { ProductBackdropProps } from '..'
  */
 const sendProduct = async (
 	props: ProductBackdropProps,
-	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptional[] | undefined)[]>>,
-	extrasCounter: (ExtraOptional[] | undefined)[],
+	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptionalExt[] | undefined)[]>>,
+	extrasCounter: (ExtraOptionalExt[] | undefined)[],
 	setProductsCounter: React.Dispatch<React.SetStateAction<number>>,
 	productsCounter: number
 ): Promise<void> => {
@@ -25,7 +25,7 @@ const sendProduct = async (
 			})
 
 		// CREAR PRODUCTO A ENVIAR
-		const extras = extrasCounter.filter(Boolean).flat() as ExtraOptional[]
+		const extras = extrasCounter.filter(Boolean).flat() as ExtraOptionalExt[]
 		const price: number =
 			(props.currentProduct?.product.isPromo
 				? props.currentProduct?.product.promoPrice
@@ -36,10 +36,10 @@ const sendProduct = async (
 
 		// PRODUCTO
 		const cartProduct: ProductSelected = {
+			totalPrice: price * productsCounter + extrasPrice,
 			product: props.currentProduct?.product,
 			count: productsCounter,
 			extras,
-			totalPrice: price * productsCounter + extrasPrice,
 		}
 
 		// ENVIAR
@@ -106,10 +106,10 @@ export const handleProductCounter = (
  */
 export const addExtra = (
 	index: number,
-	extra: ExtraOptional[] | undefined,
-	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptional[] | undefined)[]>>
+	extra: ExtraOptionalExt[] | undefined,
+	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptionalExt[] | undefined)[]>>
 ): void => {
-	setExtrasCounter((extras: (ExtraOptional[] | undefined)[]) => {
+	setExtrasCounter((extras: (ExtraOptionalExt[] | undefined)[]) => {
 		extras[index] = extra
 		return extras
 	})

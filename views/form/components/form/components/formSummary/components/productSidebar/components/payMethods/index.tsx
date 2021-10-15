@@ -29,9 +29,6 @@ const PayMethods: React.FC<PayMethodsProps> = (props: PayMethodsProps) => {
 	const handleMethodsEv = (ev: SelectChangeEvent) =>
 		handleMethods(ev, props.setSummaryData, props.setFieldValue)
 
-	// ENVIAR VALOR POR DEFECTO
-	const defPay: string = $`Pago en efectivo`
-
 	return (
 		<FormControl component='fieldset' className={props.className}>
 			{/* LABEL */}
@@ -40,11 +37,11 @@ const PayMethods: React.FC<PayMethodsProps> = (props: PayMethodsProps) => {
 			{/* SELECTS */}
 			<Select
 				id='pay-methods'
+				defaultValue={''}
 				onChange={handleMethodsEv}
 				label={$`Método de pago:`}
 				labelId='pay-methods-label'
-				defaultValue={defPay || ''}
-				value={(props.value as string) || defPay}>
+				value={props.value as string}>
 				<MenuItem value={$`Pago en efectivo`}>{$`Pago en efectivo`}</MenuItem>
 				<MenuItem value={$`Pago con tarjeta`}>{$`Pago con tarjeta`}</MenuItem>
 				<MenuItem value={$`Transferencia`}>{$`Transferencia`}</MenuItem>

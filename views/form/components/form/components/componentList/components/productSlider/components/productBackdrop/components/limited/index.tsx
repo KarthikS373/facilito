@@ -20,7 +20,7 @@ import Counter from '../counter'
 import computeLeft, { getTotalPrice, handleCounters } from './tools'
 
 export interface ExtraLimitedProps {
-	onSelect?: (extra: ExtraOptional[] | undefined) => unknown
+	onSelect?: (extra: ExtraOptionalExt[] | undefined) => unknown
 	extra: Extra
 }
 

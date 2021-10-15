@@ -80,8 +80,15 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 														(props.formProducts[`extras_${resp}`]
 															? // @ts-ignore
 															  props.formProducts[`extras_${resp}`][index].map(
-																	(extra: ExtraOptional, extraIndex: number) => (
-																		<span key={`extra_${resp}_${extraIndex}`}>+ {extra?.name}</span>
+																	(extra: ExtraProductData, extraIndex: number) => (
+																		<>
+																			<strong>{extra?.title}</strong>
+																			{extra?.options.map((option: ExtraOptional) => (
+																				<span key={`extra_${resp}_${extraIndex}`}>
+																					+ {option?.name}
+																				</span>
+																			))}
+																		</>
 																	)
 															  )
 															: null)}

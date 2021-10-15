@@ -20,7 +20,7 @@ import FormContext from '../../../../../../context'
 import handleSelect from './tools'
 
 interface ExtraSelectProps {
-	onSelect?: (extra: ExtraOptional[]) => unknown
+	onSelect?: (extra: ExtraOptionalExt[]) => unknown
 	extra: Extra
 }
 

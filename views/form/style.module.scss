@@ -23,18 +23,6 @@
 			overflow: hidden;
 		}
 
-		.search {
-			width: calc(100% - 80px);
-			position: relative;
-			left: 40px;
-
-			& > div:nth-child(1) {
-				& > div:nth-child(2) {
-					border-radius: var(--radius);
-				}
-			}
-		}
-
 		.submit {
 			display: block;
 			margin: 0 auto;

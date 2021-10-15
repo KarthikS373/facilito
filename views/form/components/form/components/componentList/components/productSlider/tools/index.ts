@@ -20,8 +20,8 @@ const sendProduct = (
 			? ((props.formProducts[`${props.name}_${props.id}`] || []) as FormProductSliderAnswer[])
 			: []
 		const tmpProductList = [...productList]
-		const extras: ExtraOptional[][] = props.formProducts
-			? ((props.formProducts[`extras_${props.name}_${props.id}`] || []) as ExtraOptional[][])
+		const extras: ExtraProductData[][] = props.formProducts
+			? ((props.formProducts[`extras_${props.name}_${props.id}`] || []) as ExtraProductData[][])
 			: []
 
 		// ACTUALIZAR LISTA CON CONTADORES
@@ -42,7 +42,27 @@ const sendProduct = (
 			count: product.count,
 		}
 		products.push(sliderProduct)
-		extras.push(product.extras)
+
+		// CREAR EXTRAS
+		const currentExtras: ExtraProductData[] = []
+		product.extras.forEach((extra: ExtraOptionalExt) => {
+			// BUSCAR TITULO
+			const index = currentExtras.findIndex(
+				(extraData: ExtraProductData) => extraData.title === extra.title
+			)
+
+			if (index >= 0) {
+				// AGREGAR OPCION
+				currentExtras[index].options.push({ name: extra.name, price: extra.price })
+			} else {
+				currentExtras.push({
+					title: extra.title,
+					options: [{ name: extra.name, price: extra.price }],
+				})
+			}
+		})
+
+		extras.push(currentExtras)
 
 		// PRECIO TOTAL
 		const totalPrice: number = products

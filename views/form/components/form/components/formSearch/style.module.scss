@@ -9,3 +9,10 @@
 		}
 	}
 }
+
+@media screen and (max-width: 450px) {
+	.search {
+		width: calc(100% - 50px);
+		left: 25px;
+	}
+}

@@ -84,7 +84,6 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 							components={props.formData?.components || []}
 							formProducts={formProducts}
 							products={props.products}
-							className={Styles.search}
 							setValue={setValue}
 							register={register}
 						/>

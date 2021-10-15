@@ -11,6 +11,7 @@ import Button from '@mui/material/Button'
 import Badge from '@mui/material/Badge'
 
 // ICONS
+import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone'
 import ShoppingCart from '@mui/icons-material/ShoppingCart'
 import CreditCard from '@mui/icons-material/CreditCard'
 import MoneyOff from '@mui/icons-material/MoneyOff'
@@ -81,6 +82,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 			<SwipeableDrawer
 				onClose={props.handleDrawer(false)}
 				onOpen={props.handleDrawer(true)}
+				PaperProps={{ square: false }}
+				disableBackdropTransition
 				open={props.openDrawer}
 				anchor='right'>
 				<div className={Styles.shopDrawer}>
@@ -132,21 +135,23 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 					)}
 
 					{/* MÉTODOS DE PAGO */}
-					{props.formData?.checkout?.shippingPrices?.length !== 0 && (
-						<ShippingMethods
-							shippingPrices={props.formData?.checkout?.shippingPrices}
-							value={props.summaryData.shippingMethodValue}
+					<div className={Styles.methods}>
+						{props.formData?.checkout?.shippingPrices?.length !== 0 && (
+							<ShippingMethods
+								shippingPrices={props.formData?.checkout?.shippingPrices}
+								value={props.summaryData.shippingMethodValue}
+								className={Styles.shippingOrPayMethod}
+								setSummaryData={props.setSummaryData}
+								setFieldValue={props.setValue}
+							/>
+						)}
+						<PayMethods
+							value={props.summaryData.payMethodValue}
 							className={Styles.shippingOrPayMethod}
 							setSummaryData={props.setSummaryData}
 							setFieldValue={props.setValue}
 						/>
-					)}
-					<PayMethods
-						value={props.summaryData.payMethodValue}
-						className={Styles.shippingOrPayMethod}
-						setSummaryData={props.setSummaryData}
-						setFieldValue={props.setValue}
-					/>
+					</div>
 
 					{/* TOTAL */}
 					<div className={Styles.totalPrice}>
@@ -156,13 +161,14 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 
 					{/* BOTÓN DE ENVIAR */}
 					<Button
+						startIcon={<ReceiptTwoToneIcon />}
 						className={Styles.shopSubmit}
 						disabled={props.isSubmitting}
 						onClick={props.clickOnSubmit}
 						variant='contained'
 						color='primary'
 						type='submit'>
-						{$`Enviar`}
+						<span>{$`Enviar`}</span>
 					</Button>
 				</div>
 			</SwipeableDrawer>

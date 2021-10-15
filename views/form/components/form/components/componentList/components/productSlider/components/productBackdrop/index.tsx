@@ -46,7 +46,7 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 	const { badge } = useContext(FormContext)
 
 	// CONTADOR DE EXTRAS
-	const [extrasCounter, setExtrasCounter] = useState<(ExtraOptional[] | undefined)[]>([])
+	const [extrasCounter, setExtrasCounter] = useState<(ExtraOptionalExt[] | undefined)[]>([])
 
 	// CONTADOR DE PRODUCTOS
 	const [productsCounter, setProductsCounter] = useState<number>(0)
@@ -60,7 +60,7 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 		sendProduct(props, setExtrasCounter, extrasCounter, setProductsCounter, productsCounter)
 
 	// AGREGAR EXTRA SELECCIÓN UNICA
-	const addExtraEv = (index: number) => (extra: ExtraOptional[] | undefined) =>
+	const addExtraEv = (index: number) => (extra: ExtraOptionalExt[] | undefined) =>
 		addExtra(index, extra, setExtrasCounter)
 
 	// REINICIAR

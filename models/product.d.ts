@@ -47,6 +47,11 @@ interface ExtraOptional {
 	price: number
 }
 
+interface ExtraProductData {
+	title: string
+	options: ExtraOptional[]
+}
+
 interface ExtendedOpt extends ExtraOptional {
 	id: number
 }
@@ -61,10 +66,14 @@ interface CurrentProduct {
 }
 
 interface ProductSelected {
+	extras: ExtraOptionalExt[]
+	totalPrice: number
 	product: Product
 	count: number
-	extras: ExtraOpcional[]
-	totalPrice: number
+}
+
+interface ExtraOptionalExt extends ExtraOptional {
+	title: string
 }
 
 interface Coupon {
@@ -93,5 +102,5 @@ interface FormProductSliderAnswer {
 }
 
 interface FormDataProductSliderAnswer {
-	[id: string]: FormProductSliderAnswer[] | ExtraOptional[][] | number
+	[id: string]: FormProductSliderAnswer[] | ExtraProductData[][] | number
 }

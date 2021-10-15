@@ -5,6 +5,7 @@
 	height: 100vh;
 	max-width: 380px;
 	color: #333;
+	overflow: hidden;
 
 	.shopHeader {
 		display: flex;
@@ -43,7 +44,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		margin-top: 10px;
 		padding: 15px;
 		background: rgba(0, 0, 0, 0.1);
@@ -52,26 +53,31 @@
 		span:first-child {
 			font-size: 0.8em;
 			text-transform: uppercase;
-			margin-bottom: 5px;
 		}
 
 		span:last-child {
+			margin-top: 5px;
 			font-size: 1.8em;
 			font-weight: bold;
 			display: block;
-			margin-bottom: -7px;
+			line-height: 1;
+			margin-bottom: -5px;
 		}
 	}
 
 	.shopSubmit {
 		position: absolute;
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		height: 50px;
 		width: calc(100% - 40px);
 		bottom: 20px;
 		border-radius: var(--radius);
 
-		span {
+		span:nth-child(2) {
+			position: relative;
+			top: 1px;
 			text-transform: none;
 		}
 	}
@@ -103,11 +109,19 @@
 	}
 }
 
+.methods {
+	margin-top: 15px;
+}
+
 .shoppingBadge {
 	position: fixed !important;
 	top: 20px;
 	right: 20px;
 	z-index: 2;
+
+	svg {
+		opacity: 1 !important;
+	}
 }
 
 .shoppingButton {

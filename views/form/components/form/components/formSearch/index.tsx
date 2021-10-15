@@ -33,7 +33,6 @@ export interface FormSearchProps {
 	components: BlockComponent[]
 	showCaseMode: boolean
 	products: Product[]
-	className?: string
 }
 
 const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {

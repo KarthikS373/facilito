@@ -12,11 +12,14 @@ const handleSelect = (
 	extra: Extra,
 	ev: SelectChangeEvent,
 	setSelectedExtra: React.Dispatch<React.SetStateAction<number | string>>,
-	onSelect?: (extra: ExtraOptional[]) => unknown
+	onSelect?: (extra: ExtraOptionalExt[]) => unknown
 ): void => {
 	const index: number = parseInt(ev.target.value.toString()) as number
 	setSelectedExtra(index)
-	onSelect && onSelect([{ name: extra.options[index].name, price: extra.options[index].price }])
+	onSelect &&
+		onSelect([
+			{ name: extra.options[index].name, price: extra.options[index].price, title: extra.title },
+		])
 }
 
 export default handleSelect

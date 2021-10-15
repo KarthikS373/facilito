@@ -34,9 +34,9 @@
 			&:nth-child(2)::before {
 				content: '';
 				position: absolute;
-				top: -3px;
-				left: 2px;
-				width: 2px;
+				top: -2px;
+				left: 0px;
+				width: 4px;
 				height: 28px;
 				transform-origin: top left;
 				transform: rotateZ(-45deg);
@@ -85,7 +85,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		margin-top: 10px;
 		padding: 15px;
 		background: rgba(0, 0, 0, 0.1);
@@ -94,14 +94,15 @@
 		span:first-child {
 			font-size: 0.8em;
 			text-transform: uppercase;
-			margin-bottom: 5px;
 		}
 
 		span:last-child {
+			margin-top: 5px;
 			font-size: 1.8em;
 			font-weight: bold;
 			display: block;
-			margin-bottom: -7px;
+			line-height: 1;
+			margin-bottom: -5px;
 		}
 	}
 

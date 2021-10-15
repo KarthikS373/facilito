@@ -1,4 +1,16 @@
 {
+	"porcentaje_de_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"porcentaje_de_impuesto": {
+		"en": "",
+		"es": "$"
+	},
+	"impuesto_no_incluido": {
+		"en": "",
+		"es": "$"
+	},
 	"tu_cupon_ya_no_es_valido_para_esta_compra_o_ya_caduco": {
 		"en": "",
 		"es": "$"
