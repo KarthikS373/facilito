@@ -56,7 +56,13 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 										<div className={Styles.shopProductRow} key={`product_cart_${key}_${index}`}>
 											{/* IMAGEN */}
 											<div className={Styles.pic}>
-												<Image height={50} width={50} src={product.picture} alt='Product' />
+												<Image
+													width={50}
+													height={50}
+													unoptimized
+													alt='Product'
+													src={product.picture}
+												/>
 											</div>
 
 											{/* CONTENIDO */}
