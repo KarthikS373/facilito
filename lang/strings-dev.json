@@ -1,4 +1,76 @@
 {
+	"tu_cupon_ya_no_es_valido_para_esta_compra_o_ya_caduco": {
+		"en": "",
+		"es": "$"
+	},
+	"cupon_invalido": {
+		"en": "",
+		"es": "$"
+	},
+	"escribe_aqui_el_codigo_de_tu_cupon_y_recibe_una_promocion_directamente_al_precio_total_solo_es_posible_agregar_un_cupon_por_pedido": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"codigo_del_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"envio_no_incluido": {
+		"en": "",
+		"es": "$"
+	},
+	"tienes_un_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"valor": {
+		"en": "",
+		"es": "$"
+	},
+	"items_en_carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"resumen_de_orden": {
+		"en": "",
+		"es": "$"
+	},
+	"pago_en_efectivo": {
+		"en": "",
+		"es": "$"
+	},
+	"metodo_de_pago": {
+		"en": "",
+		"es": "$"
+	},
+	"transferencia": {
+		"en": "",
+		"es": "$"
+	},
+	"tarifas_de_envio": {
+		"en": "",
+		"es": "$"
+	},
+	"resumen_de_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"total_de_tu_orden": {
+		"en": "",
+		"es": "$"
+	},
+	"pago_con_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"carrito_de_compras": {
+		"en": "",
+		"es": "$"
+	},
 	"agrega": {
 		"en": "",
 		"es": "$"

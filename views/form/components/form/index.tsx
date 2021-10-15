@@ -9,14 +9,15 @@ import Button from '@mui/material/Button'
 
 // COMPONENTES
 import FormComponentsList from './components/componentList'
+import FormSummary from './components/formSummary'
 import FormSearch from './components/formSearch'
 
 // REACT-HOOK-FORM
 import { useForm } from 'react-hook-form'
 
 // TOOLS
-import cleanFormData from './tools'
 import { formHasComponent } from 'views/form/tools'
+import cleanFormData, { getProductsCounter, getSubtotalPrice } from './tools'
 
 // HOOKS
 import useStrings from 'hooks/lang'
@@ -49,6 +50,9 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 	// REFERENCIA DE BOTÓN DE ENVIAR
 	const submitButton: React.RefObject<HTMLButtonElement> = useRef(null)
 
+	// BOTÓN DE SUBMIT 2
+	const clickOnSubmit = () => submitButton.current && submitButton.current.click()
+
 	// CONTIENE PRODUCTOS
 	const haveProducts: boolean = formHasComponent(props.formData?.components, 'products')
 
@@ -60,6 +64,15 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 		const formProducts = haveProducts
 			? (watch('products', {}) as FormDataProductSliderAnswer | undefined)
 			: undefined
+
+		// LISTENER DE CUPONES
+		const formCoupons = watch('coupons', {}) as FormDataCouponsAnswer | undefined
+
+		// CALCULAR PRECIO TOTAL
+		const subtotalPrice: number = getSubtotalPrice(formProducts)
+
+		// CONTADOR DE PRODUCTOS
+		const productsCounter: [number, number] = getProductsCounter(formProducts)
 
 		return (
 			<form onSubmit={handleSubmit(onSubmit, onError)} className={Styles.form}>
@@ -87,6 +100,21 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 						register={register}
 						errors={{}}
 					/>
+
+					{/* RESUMEN DE ORDEN */}
+					{haveProducts && (
+						<FormSummary
+							productsCounter={productsCounter}
+							cartItems={productsCounter[0]}
+							subTotalPrice={subtotalPrice}
+							clickOnSubmit={clickOnSubmit}
+							formProducts={formProducts}
+							isSubmitting={isSubmitting}
+							formCoupons={formCoupons}
+							formData={props.formData}
+							setValue={setValue}
+						/>
+					)}
 				</div>
 
 				{/* BOTÓN DE ENVIAR */}

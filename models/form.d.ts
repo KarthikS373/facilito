@@ -101,3 +101,20 @@ interface FormData extends FormAnswerItemContainer {
 	products: FormAnswerItem
 	coupons: FormAnswerItem
 }
+
+interface FormSummaryData {
+	shippingMethodValue: string
+	payMethodValue: string
+}
+
+interface FormCheckoutData {
+	shippingPrice: number
+	taxesPrice: number
+	totalPrice: string
+	cardPrice: number
+}
+
+interface ShippingPrice {
+	name: string
+	price: number
+}

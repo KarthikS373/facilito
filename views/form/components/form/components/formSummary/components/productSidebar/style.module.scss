@@ -1,0 +1,116 @@
+.shopDrawer {
+	position: relative;
+	padding: 20px;
+	width: 90vw;
+	height: 100vh;
+	max-width: 380px;
+	color: #333;
+
+	.shopHeader {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		border-bottom: 1px solid #eee;
+		padding-bottom: 8px;
+		margin-bottom: 12px;
+
+		& > svg {
+			height: 35px;
+			width: 35px;
+			margin-right: 10px;
+		}
+
+		strong {
+			font-size: 1.4em;
+		}
+
+		& > div {
+			p {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	.shopHeader + p {
+		font-size: 1.2em;
+		margin-bottom: 10px;
+	}
+
+	.totalPrice {
+		position: absolute;
+		bottom: 80px;
+		width: calc(100% - 40px);
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-top: 10px;
+		padding: 15px;
+		background: rgba(0, 0, 0, 0.1);
+		border-radius: var(--radius);
+
+		span:first-child {
+			font-size: 0.8em;
+			text-transform: uppercase;
+			margin-bottom: 5px;
+		}
+
+		span:last-child {
+			font-size: 1.8em;
+			font-weight: bold;
+			display: block;
+			margin-bottom: -7px;
+		}
+	}
+
+	.shopSubmit {
+		position: absolute;
+		display: block;
+		height: 50px;
+		width: calc(100% - 40px);
+		bottom: 20px;
+		border-radius: var(--radius);
+
+		span {
+			text-transform: none;
+		}
+	}
+}
+
+.shippingOrPayMethod {
+	width: 100%;
+}
+
+.shippingOrPayMethod:first-of-type {
+	margin-bottom: 20px;
+}
+
+.taxOrPercentage {
+	margin-bottom: 10px;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+
+	svg:first-child {
+		position: relative;
+		top: -3px;
+		margin-right: 10px;
+	}
+
+	span:last-child {
+		margin-left: 5px;
+	}
+}
+
+.shoppingBadge {
+	position: fixed !important;
+	top: 20px;
+	right: 20px;
+	z-index: 2;
+}
+
+.shoppingButton {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	color: #fff !important;
+}

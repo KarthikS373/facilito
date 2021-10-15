@@ -1,0 +1,65 @@
+.shopProductList {
+	position: relative;
+	max-height: calc(100% - 432px);
+	width: calc(100% + 40px);
+	margin-left: -20px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	.shopProductRow {
+		display: grid;
+		align-items: center;
+		justify-content: flex-start;
+		grid-template-columns: 50px 1fr 30px;
+		grid-template-rows: auto;
+		column-gap: 15px;
+		border-bottom: 1px solid #bbb;
+		opacity: 0.8;
+		background: #f5f5f5;
+		width: 100%;
+		padding: 15px 20px;
+		margin-bottom: 10px;
+
+		& > .pic {
+			width: 50px;
+			height: 50px;
+			border-radius: var(--radius);
+			overflow: hidden;
+			object-fit: cover;
+		}
+
+		& > div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			justify-self: flex-start;
+			width: 1fr;
+		}
+
+		& > button {
+			align-items: center;
+			padding: 0;
+			justify-self: flex-end;
+			width: 30px;
+			height: 30px;
+			background-color: #f44336;
+			color: #fff;
+		}
+
+		.shopProductExtra {
+			margin: 5px 0 0 10px;
+
+			span {
+				font-size: 0.9em;
+				display: block;
+			}
+		}
+	}
+
+	.shopProductRow:last-child {
+		border-bottom: none;
+	}
+
+	margin-bottom: 15px;
+}
