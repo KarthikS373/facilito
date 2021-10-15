@@ -4,6 +4,7 @@ import React from 'react'
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 
 // CONTEXTO
@@ -63,16 +64,15 @@ const timePicker = (
 		onHide: () => window.hideAlert(),
 		customElements: (
 			<FormControl fullWidth style={{ margin: '18px 0 10px 0' }}>
+				<InputLabel id='time_selector'>{inputLabel}</InputLabel>
 				<Select
 					autoFocus
 					defaultValue=''
 					id='picker-hours'
+					label={inputLabel}
 					variant='outlined'
 					onChange={handleHours}
 					labelId='picker-hours-bale'>
-					<MenuItem value='' disabled selected>
-						{inputLabel}
-					</MenuItem>
 					{timeIntervals.map((interval: (number | string)[], index: number) => (
 						<MenuItem value={interval[0]} key={`hour_${index}`}>
 							{interval[1]}

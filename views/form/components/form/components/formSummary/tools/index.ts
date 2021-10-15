@@ -147,3 +147,26 @@ export const computeCoupon = (
 		return couponDiscount
 	} else return []
 }
+
+/**
+ * Hook de cupones
+ * @description Filtrar cupones aplicables al resumen
+ * @param setCurrentCoupon
+ * @param formCoupons
+ * @param formData
+ */
+export const getFormCoupons = (
+	formCoupons: FormDataCouponsAnswer | undefined,
+	components?: BlockComponent[]
+): Coupon[] => {
+	if (formCoupons) {
+		// BUSCAR CUPONES EN FORMULARIO
+		const couponsList = Object.keys(formCoupons)
+			.map((id: string) => findCouponsById(formCoupons[id], components || []))
+			.filter((coupon: Coupon | undefined) => coupon !== undefined) as Coupon[]
+
+		// ACTUALIZAR
+		if (couponsList.length > 0) return couponsList
+		else return []
+	} else return []
+}

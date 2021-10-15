@@ -16,6 +16,7 @@ const DatePicker = dynamic(() => import('../../../datepicker'))
 const TextInput = dynamic(() => import('../../../textInput'))
 const Geolocation = dynamic(() => import('../../../geo'))
 const FormMedia = dynamic(() => import('../../../media'))
+const Coupon = dynamic(() => import('../../../coupon'))
 
 // OBTENER COMPONENTE
 interface ComponentSwitcherProps {
@@ -45,6 +46,8 @@ const ComponentSwitcher: React.FC<ComponentSwitcherProps> = ({ name }) => {
 			return <FormMedia isVideo />
 		case 'geo':
 			return <Geolocation />
+		case 'coupons':
+			return <Coupon />
 		case 'products':
 			return <ProductSlider />
 		default:

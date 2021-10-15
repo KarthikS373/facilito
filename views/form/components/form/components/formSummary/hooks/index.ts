@@ -4,34 +4,6 @@ import { useEffect } from 'react'
 // REACT-HOOK-FORM
 import { UseFormSetValue, FieldValues } from 'react-hook-form'
 
-// TOOLS
-import { findCouponsById } from '../tools'
-
-/**
- * Hook de cupones
- * @description Filtrar cupones aplicables al resumen
- * @param setCurrentCoupon
- * @param formCoupons
- * @param formData
- */
-export const useFormCoupons = (
-	setCurrentCoupon: React.Dispatch<React.SetStateAction<(Coupon | null)[]>>,
-	formCoupons: FormDataCouponsAnswer | undefined,
-	formData?: Form
-): void => {
-	useEffect(() => {
-		if (formCoupons) {
-			// BUSCAR CUPONES EN FORMULARIO
-			const couponsList = Object.keys(formCoupons)
-				.map((id: string) => findCouponsById(formCoupons[id], formData?.components || []))
-				.filter((coupon: Coupon | undefined) => coupon !== undefined) as Coupon[]
-
-			// ACTUALIZAR
-			if (couponsList.length > 0) setCurrentCoupon(couponsList)
-		}
-	}, [formCoupons, formData, setCurrentCoupon])
-}
-
 /**
  * Hook de total
  * @description Calcular y enviar total de productos
@@ -51,7 +23,7 @@ export const useSendTotalPrice = (
 	taxesPrice: number,
 	cardPrice: number,
 	shippingPrice: number
-): void => {
+): void =>
 	// ENVIAR A FORM
 	useEffect(() => {
 		if (totalPrice === 0) setValue && setValue('total', null)
@@ -71,4 +43,3 @@ export const useSendTotalPrice = (
 			)
 		}
 	}, [badge, totalPrice, setValue, discountTotal, taxesPrice, cardPrice, shippingPrice])
-}

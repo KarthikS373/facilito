@@ -1,4 +1,20 @@
 {
+	"este_cupon_solo_se_puede_seleccionar_desde_el_formulario_busca_la_seccion_y_seleccionalo_para_que_se_aplique_tu_oferta": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"de_descuento": {
+		"en": "",
+		"es": "$"
+	},
 	"porcentaje_de_tarjeta": {
 		"en": "",
 		"es": "$"

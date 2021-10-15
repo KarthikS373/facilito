@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Styles from './style.module.scss'
 
 // HOOKS
-import { useSendTotalPrice, useFormCoupons } from './hooks'
+import { useSendTotalPrice } from './hooks'
 import useStrings from 'hooks/lang'
 
 // REACT-HOOK-FORM
@@ -22,7 +22,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import MoneyOff from '@mui/icons-material/MoneyOff'
 
 // TOOLS
-import { computeCoupon } from './tools'
+import { computeCoupon, getFormCoupons } from './tools'
 
 // PROPS
 interface FormSummaryProps {
@@ -38,9 +38,6 @@ interface FormSummaryProps {
 }
 
 const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
-	// CUPONES DE SELECTS
-	const [currentCoupon, setCurrentCoupon] = useState<(Coupon | null)[]>([null])
-
 	// CUPONES DE INPUT
 	const [inputCoupon, setInputCoupon] = useState<Coupon | null>(null)
 
@@ -81,6 +78,9 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 			? subTotalPrice * ((formData?.checkout?.cardPercentage || 0) / 100)
 			: 0
 
+	// ASIGNAR CUPONES QUE VIENEN DE SELECTS
+	const currentCoupon = getFormCoupons(props.formCoupons, formData?.components)
+
 	// PRECIO DE CUPÓN Y TOTAL
 	const couponDiscount: number[] = computeCoupon(
 		props.formProducts,
@@ -108,9 +108,6 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 
 	// ABRIR O CERRAR DRAWER
 	const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
-
-	// ASIGNAR CUPONES QUE VIENEN DE SELECTS
-	useFormCoupons(setCurrentCoupon, props.formCoupons, formData)
 
 	// ENVIAR TOTAL A FORM
 	useSendTotalPrice(

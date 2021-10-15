@@ -5,6 +5,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 
 // VISTAS
+import Head from 'components/head'
 import Forms from 'views/forms'
 
 // HOOKS
@@ -12,7 +13,12 @@ import withAuth from 'components/hoc/auth'
 
 // PAGE
 const FormsPage: NextPage = () => {
-	return <Forms />
+	return (
+		<>
+			<Head />
+			<Forms />
+		</>
+	)
 }
 
 export default withAuth(FormsPage)

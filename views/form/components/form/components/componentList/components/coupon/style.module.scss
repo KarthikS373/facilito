@@ -1,0 +1,18 @@
+.optionsLabel {
+	width: 100%;
+	text-align: left;
+	font-size: 1rem;
+	color: #555;
+	margin-bottom: 10px;
+}
+
+.helperOrError {
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+
+	svg {
+		margin-right: 10px;
+		margin-left: -2px;
+	}
+}
