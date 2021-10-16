@@ -39,7 +39,7 @@ const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 	const { userExists } = useContext(AuthContext)
 
 	// PRODUCTOS
-	const [products, setProducts] = useState<Product[]>([])
+	const [products, setProducts] = useState<Product[] | null>(null)
 
 	// REFERENCIAS
 	const geoRef: React.MutableRefObject<FormAnswerItemContainer | never> = useRef({})

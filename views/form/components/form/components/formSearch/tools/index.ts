@@ -50,12 +50,19 @@ export const sendProduct = (
 	const currentExtras: ExtraProductData[] = []
 	product.extras.forEach((extra: ExtraOptionalExt) => {
 		// BUSCAR TITULO
-		const index = Math.max(
-			currentExtras.findIndex((extraData: ExtraProductData) => extraData.title === extra.title),
-			0
+		const index = currentExtras.findIndex(
+			(extraData: ExtraProductData) => extraData.title === extra.title
 		)
-		// AGREGAR OPCION
-		currentExtras[index].options.push({ name: extra.name, price: extra.price })
+
+		if (index >= 0) {
+			// AGREGAR OPCION
+			currentExtras[index].options.push({ name: extra.name, price: extra.price })
+		} else {
+			currentExtras.push({
+				title: extra.title,
+				options: [{ name: extra.name, price: extra.price }],
+			})
+		}
 	})
 
 	extras.push(currentExtras)

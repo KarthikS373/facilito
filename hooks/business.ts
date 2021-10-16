@@ -35,7 +35,7 @@ export default useBusiness
  * @param {boolean} hasProducts
  */
 export const useCompanyProducts = (
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
+	setProducts: React.Dispatch<React.SetStateAction<Product[] | null>>,
 	isAuth: boolean,
 	companyID: string | null,
 	hasProducts: boolean
@@ -44,7 +44,7 @@ export const useCompanyProducts = (
 		if (isAuth && companyID)
 			if (hasProducts)
 				getProducts(companyID).then((products: Product[] | null) => {
-					if (products) setProducts(products)
+					setProducts(products)
 				})
 	}, [setProducts, isAuth, companyID, hasProducts])
 }

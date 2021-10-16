@@ -11,8 +11,8 @@ import Button from '@mui/material/Button'
 import Badge from '@mui/material/Badge'
 
 // ICONS
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone'
 import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone'
-import ShoppingCart from '@mui/icons-material/ShoppingCart'
 import CreditCard from '@mui/icons-material/CreditCard'
 import MoneyOff from '@mui/icons-material/MoneyOff'
 
@@ -74,7 +74,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 					onClick={props.handleDrawer(true)}
 					className={Styles.shoppingButton}
 					style={{ backgroundColor: theme.palette.primary.main }}>
-					<ShoppingCart />
+					<ShoppingCartTwoToneIcon />
 				</IconButton>
 			</Badge>
 
@@ -89,7 +89,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 				<div className={Styles.shopDrawer}>
 					{/* HEADER */}
 					<div className={Styles.shopHeader}>
-						<ShoppingCart />
+						<ShoppingCartTwoToneIcon />
 						<div>
 							<strong>{$`Carrito de compras`}</strong>
 						</div>

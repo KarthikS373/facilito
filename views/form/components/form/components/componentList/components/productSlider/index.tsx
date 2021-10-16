@@ -9,9 +9,10 @@ import { useTheme } from '@mui/material/styles'
 import Collapse from '@mui/material/Collapse'
 
 // ICONOS
+import ShoppingBagTwoToneIcon from '@mui/icons-material/ShoppingBagTwoTone'
 import ArrowDropDown from '@mui/icons-material/ArrowDropDownOutlined'
-import ShoppingCart from '@mui/icons-material/ShoppingCartTwoTone'
 import InfoOutlined from '@mui/icons-material/InfoOutlined'
+import Skeleton from '@mui/material/Skeleton'
 
 // COMPONENTES
 import ProductBackdrop from './components/productBackdrop'
@@ -26,7 +27,7 @@ import sendProduct from './tools'
 
 const ProductSlider: React.FC = () => {
 	// PRODUCTOS
-	const [productList, setProductList] = useState<Product[]>([])
+	const [productList, setProductList] = useState<Product[] | null>(null)
 
 	// COLLAPSE
 	const [collapsed, setCollapsed] = useState<boolean>(false)
@@ -51,6 +52,9 @@ const ProductSlider: React.FC = () => {
 	const openBackdropProduct = (product: CurrentProduct) => () => setCurrentProduct(product)
 	const closeBackdropProduct = () => setCurrentProduct(null)
 
+	// LISTA DE PRODUCTOS CON FALLBACK
+	const fallBackProducts: (Product | null)[] = productList ?? Array(3).fill(null)
+
 	// REGISTRAR
 	useProductsRegister(props.register, props.required, props.name, props.id)
 
@@ -65,14 +69,14 @@ const ProductSlider: React.FC = () => {
 						? {
 								border: '2px solid rgba(0,0,0,.3)',
 								borderColor: !collapsed ? theme.palette.primary.main : 'transparent',
-								padding: '18.5px 32px 18.5px 14px',
-								borderRadius: '15px',
+								padding: '20px',
+								borderRadius: 'var(--radius)',
 						  }
 						: undefined
 				}
 				className={Styles.dropDownLabel}
 				onClick={props.allowProductDropdown ? toggleCollapsed : undefined}>
-				{props.allowProductDropdown && <ShoppingCart />}
+				{props.allowProductDropdown && <ShoppingBagTwoToneIcon color='primary' />}
 				<h3 className={Styles.title} style={{ fontSize: '1rem' }}>
 					{props.label}
 				</h3>
@@ -86,15 +90,35 @@ const ProductSlider: React.FC = () => {
 			<Collapse in={props.allowProductDropdown ? collapsed : true}>
 				<div className={Styles.sliderContainer}>
 					<div className={Styles.slider}>
-						{productList &&
-							productList.map((productSpace: Product | null, key: number) => (
-								<ProductCard
-									key={`product_card_${props.name}_${props.id}_${key}`}
-									openBackdropProduct={openBackdropProduct}
-									productSpace={productSpace}
-									index={key}
-								/>
-							))}
+						{fallBackProducts &&
+							fallBackProducts.map((productSpace: Product | null, key: number) =>
+								productSpace ? (
+									<ProductCard
+										key={`product_card_${props.name}_${props.id}_${key}`}
+										openBackdropProduct={openBackdropProduct}
+										productSpace={productSpace}
+										index={key}
+									/>
+								) : (
+									<div
+										className={Styles.skeleton}
+										key={`product_skeleton_${props.name}_${props.id}_${key}`}>
+										<Skeleton variant='rectangular' width={200} height={196} animation='wave' />
+										<div>
+											<Skeleton variant='text' />
+											<Skeleton variant='text' />
+											<Skeleton variant='text' />
+											<Skeleton variant='text' />
+											<Skeleton
+												variant='rectangular'
+												className={Styles.btn}
+												width={170}
+												height={40}
+											/>
+										</div>
+									</div>
+								)
+							)}
 					</div>
 				</div>
 			</Collapse>

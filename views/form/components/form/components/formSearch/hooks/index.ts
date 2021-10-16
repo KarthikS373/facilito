@@ -19,7 +19,7 @@ export const useProductList = (
 		props.components.forEach((component: BlockComponent) => {
 			if (component.name === 'products' && component.products) {
 				component.products.forEach((sku: string) => {
-					const currentProduct = props.products.find((product: Product) => product.sku === sku)
+					const currentProduct = props.products?.find((product: Product) => product.sku === sku)
 					if (currentProduct) newProductsList.push(currentProduct)
 				})
 			}

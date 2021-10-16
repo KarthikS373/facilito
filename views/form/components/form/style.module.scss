@@ -20,15 +20,18 @@
 	}
 
 	.submit {
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin: 0 auto;
 		margin-top: 30px;
 		height: 50px;
 		border-radius: var(--radius);
-		padding: 0 15px;
+		padding: 0 20px;
 
-		span {
-			text-transform: none;
+		span:nth-child(2) {
+			position: relative;
+			top: 1px;
 		}
 	}
 }

@@ -12,7 +12,7 @@ export interface FormContextProps extends BlockComponent {
 	onDate?: (ev: Date | null) => unknown
 	allowProductDropdown: boolean
 	couponProducts: string[]
-	productsList: Product[]
+	productsList: Product[] | null
 	showcaseMode: boolean
 	error: boolean
 	badge: string

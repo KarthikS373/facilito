@@ -10,8 +10,12 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import RadioGroup from '@mui/material/RadioGroup'
+import InputLabel from '@mui/material/InputLabel'
 import FormGroup from '@mui/material/FormGroup'
 import MenuItem from '@mui/material/MenuItem'
+
+// ICONS
+import InfoOutlined from '@mui/icons-material/InfoOutlined'
 
 // CONTEXTO
 import FormContext from '../../context'
@@ -19,6 +23,7 @@ import FormContext from '../../context'
 // HOOKS
 import { setComponentValue, useComponentRegister } from '../../hooks'
 import onCheckChange from './tools'
+import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface OptionsComponent {
@@ -34,6 +39,9 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 	const props = useContext(FormContext)
 
 	// STRINGS
+	const { $ } = useStrings()
+
+	// STRINGS
 	const id = `${props.name}_${props.id}`
 
 	// REGISTRAR COMPONENTE
@@ -45,8 +53,16 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 
 	return (
 		<>
+			{props.label && (
+				<h3
+					className={Styles.optionsLabel}
+					style={{
+						marginBottom: !eProps.InputElement ? '10px' : '-10px',
+					}}>
+					{props.label}
+				</h3>
+			)}
 			<FormControl variant={!eProps.InputElement ? 'outlined' : undefined}>
-				{props.label && <h3 className={Styles.optionsLabel}>{props.label}</h3>}
 				{eProps.isRadio ? (
 					<>
 						<RadioGroup
@@ -96,12 +112,13 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 					</>
 				) : (
 					<>
+						<InputLabel id='coupon_selector'>{`${$`Seleccionar`} ${props.label}`}</InputLabel>
 						<Select
 							id={id}
 							name={id}
 							defaultValue=''
 							error={props.error}
-							className={Styles.selectBox}
+							label={`${$`Seleccionar`} ${props.label}`}
 							onChange={
 								setComponentValue(props.setValue, props.name, props.id) as (
 									event: SelectChangeEvent<string>,
@@ -117,6 +134,13 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 						</Select>
 					</>
 				)}
+				<span
+					className={Styles.helperOrError}
+					style={{
+						marginTop: !eProps.InputElement ? '5px' : '0px',
+					}}>
+					{props.error && <InfoOutlined />} {props.helper}
+				</span>
 			</FormControl>
 		</>
 	)

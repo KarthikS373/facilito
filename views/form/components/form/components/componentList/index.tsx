@@ -18,8 +18,8 @@ interface FormComponentsLisProps {
 	errors: DeepMap<FieldValues, FieldError>
 	setValue: UseFormSetValue<FieldValues>
 	register: UseFormRegister<FieldValues>
+	productsList: Product[] | null
 	couponProducts: string[]
-	productsList: Product[]
 	formData?: Form
 }
 

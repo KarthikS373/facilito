@@ -31,8 +31,8 @@ export interface FormSearchProps {
 	register: UseFormRegister<FieldValues> | null
 	setValue: UseFormSetValue<FieldValues> | null
 	components: BlockComponent[]
+	products: Product[] | null
 	showCaseMode: boolean
-	products: Product[]
 }
 
 const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {

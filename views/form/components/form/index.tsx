@@ -7,6 +7,9 @@ import Styles from './style.module.scss'
 // MATERIAL
 import Button from '@mui/material/Button'
 
+// ICONOS
+import ReceiptTwoToneIcon from '@mui/icons-material/ReceiptTwoTone'
+
 // COMPONENTES
 import FormComponentsList from './components/componentList'
 import FormSummary from './components/formSummary'
@@ -26,8 +29,8 @@ import useStrings from 'hooks/lang'
 interface HookFormProps {
 	sendFormEvent: (data: unknown, reset: () => unknown) => void
 	formData: Form | undefined
+	products: Product[] | null
 	couponProducts: string[]
-	products: Product[]
 }
 
 const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
@@ -123,8 +126,9 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 					ref={submitButton}
 					variant='contained'
 					disabled={isSubmitting}
-					className={Styles.submit}>
-					{$`Enviar`}
+					className={Styles.submit}
+					startIcon={<ReceiptTwoToneIcon />}>
+					<span>{$`Enviar`}</span>
 				</Button>
 			</form>
 		)

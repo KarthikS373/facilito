@@ -9,28 +9,30 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form'
  * @param productsProps
  */
 const useProductsFilter = (
-	setProductList: React.Dispatch<React.SetStateAction<Product[]>>,
-	products: Product[],
+	setProductList: React.Dispatch<React.SetStateAction<Product[] | null>>,
+	products: Product[] | null,
 	productsProps: string[] | undefined
 ): void => {
 	useEffect(() => {
-		// PRODUCTOS
-		const productsFilter: Product[] = productsProps
-			?.map((id: string) => {
-				// BUSCAR
-				let current = -1
-				products.forEach((product: Product, pIndex: number) => {
-					if (product.sku === id) current = pIndex
+		if (products) {
+			// PRODUCTOS
+			const productsFilter: Product[] = productsProps
+				?.map((id: string) => {
+					// BUSCAR
+					let current = -1
+					products?.forEach((product: Product, pIndex: number) => {
+						if (product.sku === id) current = pIndex
+					})
+
+					// RETORNAR
+					if (current >= 0 && products) return products[current]
+					else return undefined
 				})
+				.filter(Boolean)
+				.sort((prevProduct?: Product) => (prevProduct?.featured ? -1 : 0)) as Product[]
 
-				// RETORNAR
-				if (current >= 0) return products[current]
-				else return undefined
-			})
-			.filter(Boolean)
-			.sort((prevProduct?: Product) => (prevProduct?.featured ? -1 : 0)) as Product[]
-
-		setProductList(productsFilter)
+			setProductList(productsFilter)
+		} else setProductList(null)
 	}, [setProductList, productsProps, products])
 }
 

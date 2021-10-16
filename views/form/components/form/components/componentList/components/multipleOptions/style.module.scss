@@ -3,7 +3,6 @@
 	text-align: left;
 	font-size: 1rem;
 	color: #555;
-	margin-bottom: -10px;
 }
 
 .formGroup {
@@ -19,13 +18,10 @@
 .helperOrError {
 	display: flex;
 	align-items: center;
+	color: #555;
 
 	svg {
 		margin-right: 10px;
 		margin-left: -2px;
 	}
-}
-
-.selectBox {
-	margin-top: 20px;
 }
