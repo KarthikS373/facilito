@@ -24,7 +24,7 @@ const Info: React.FC = () => {
 			title={$`Editar producto`}
 			description={$`Configura los aspectos mas importantes de tu producto.`}>
 			<Button fullWidth variant='outlined' startIcon={<VisibilityTwoToneIcon />}>
-				{$`Visualizar producto`}
+				{$`Pre-Visualizar`}
 			</Button>
 		</PageInfo>
 	)

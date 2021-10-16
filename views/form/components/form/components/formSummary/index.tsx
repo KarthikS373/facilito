@@ -18,8 +18,8 @@ import ProductSidebar from './components/productSidebar'
 import { showCouponAlert } from './components/coupon'
 
 // ICONOS
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined'
-import MoneyOff from '@mui/icons-material/MoneyOff'
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingTwoTone'
+import MoneyOff from '@mui/icons-material/MoneyOffTwoTone'
 
 // TOOLS
 import { computeCoupon, getFormCoupons } from './tools'

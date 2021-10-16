@@ -13,7 +13,7 @@ const showInfo = ($: TemplateStrBuilder): void => {
 				<ul>
 					<li>
 						<b>{$`Stock limitado a disponibilidad`}</b>
-						<p>{$`Esta opcion mostrara un mensaje de "No disponible" cuando el producto se acabe en tu stock.`}</p>
+						<p>{$`Esta opcion mostrara un mensaje de "No disponible" cuando el producto se acabe.`}</p>
 					</li>
 					<br />
 					<li>

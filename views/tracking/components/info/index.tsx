@@ -34,7 +34,7 @@ const Info: React.FC<InfoProps> = ({ changeFilter, filter }) => {
 				onClick={changeFilter}
 				style={{ backgroundColor: '#fbfbfb' }}
 				startIcon={<SortByAlphaTwoTone />}>
-				{filter === 'asc' ? $`Filtrar ascendente` : $`Filtrar descendente`}
+				{filter === 'asc' ? $`Filtro ascendente` : $`Filtro descendente`}
 			</Button>
 		</PageInfo>
 	)

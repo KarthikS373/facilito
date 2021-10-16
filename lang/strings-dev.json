@@ -1,4 +1,24 @@
 {
+	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe": {
+		"en": "",
+		"es": "$"
+	},
+	"previsualizar": {
+		"en": "",
+		"es": "$"
+	},
+	"visualizar": {
+		"en": "",
+		"es": "$"
+	},
+	"filtro_descendente": {
+		"en": "",
+		"es": "$"
+	},
+	"filtro_ascendente": {
+		"en": "",
+		"es": "$"
+	},
 	"invitado": {
 		"en": "",
 		"es": "$"

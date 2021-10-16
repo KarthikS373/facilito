@@ -5,7 +5,7 @@ export const theme = createTheme({
 		button: {
 			textTransform: 'none',
 		},
-		fontFamily: 'Orkney',
+		fontFamily: 'Montserrat',
 	},
 	components: {
 		MuiPaper: {

@@ -1,23 +1,23 @@
 @import 'styles/mixins';
 
 @font-face {
-	src: url('../fonts/orkney-light.otf');
-	font-family: 'Orkney';
+	src: url('../fonts/Montserrat-Light.ttf');
+	font-family: 'Montserrat';
 	font-weight: 300;
 }
 @font-face {
-	src: url('../fonts/orkney-regular.otf');
-	font-family: 'Orkney';
+	src: url('../fonts/Montserrat-Regular.ttf');
+	font-family: 'Montserrat';
 	font-weight: 400;
 }
 @font-face {
-	src: url('../fonts/orkney-medium.otf');
-	font-family: 'Orkney';
+	src: url('../fonts/Montserrat-Medium.ttf');
+	font-family: 'Montserrat';
 	font-weight: 500;
 }
 @font-face {
-	src: url('../fonts/orkney-bold.otf');
-	font-family: 'Orkney';
+	src: url('../fonts/Montserrat-Bold.ttf');
+	font-family: 'Montserrat';
 	font-weight: 600;
 }
 
@@ -26,7 +26,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	outline: none;
-	font-family: 'Orkney';
+	font-family: 'Montserrat';
 	user-select: none;
 	-webkit-user-drag: none;
 }

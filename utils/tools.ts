@@ -195,7 +195,7 @@ export const generateTheme = (defColors: string[]): Theme =>
 			button: {
 				textTransform: 'none',
 			},
-			fontFamily: 'Orkney',
+			fontFamily: 'Montserrat',
 		},
 		components: {
 			MuiPaper: {
