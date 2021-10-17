@@ -36,7 +36,7 @@ const sendProduct = async (
 
 		// PRODUCTO
 		const cartProduct: ProductSelected = {
-			totalPrice: price * productsCounter + extrasPrice,
+			totalPrice: (price + extrasPrice) * productsCounter,
 			product: props.currentProduct?.product,
 			count: productsCounter,
 			extras,
