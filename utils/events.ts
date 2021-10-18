@@ -136,3 +136,29 @@ export const appointmentsListener = async (
 		}
 	})
 }
+
+/**
+ * Guardar eventos
+ * @description Guardar eventos en db
+ * @param companyID
+ * @param formID
+ * @param eventData
+ */
+export const saveEvents = async (
+	companyID: string,
+	formID: string,
+	eventData: EventAppointment[]
+): Promise<void> => {
+	const { getDoc, setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const eventDoc = await getEventDoc(companyID, formID)
+	const eventForm = (await getDoc(eventDoc)).data() as EventFormContainer
+
+	// LEER EVENTOS
+	const events = eventForm?.events || []
+	eventData.forEach((event: EventAppointment) => events.push(event))
+
+	// GUARDAR
+	await setDoc(eventDoc, { events }, { merge: true })
+}

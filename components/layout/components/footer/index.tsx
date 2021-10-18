@@ -7,12 +7,22 @@ import useStrings from 'hooks/lang'
 // ESTILOS
 import Styles from './style.module.scss'
 
-const Footer: React.FC = () => {
+interface FooterProps {
+	hideFooter: boolean
+}
+const Footer: React.FC<FooterProps> = ({ hideFooter }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	return (
-		<footer className={Styles.footer}>
+		<footer
+			className={Styles.footer}
+			style={{
+				maxWidth: hideFooter ? '650px' : '100%',
+				borderRadius: hideFooter ? 'var(--radius) var(--radius) 0 0 ' : '0px',
+				background: hideFooter ? 'rgba(0,0,0,.4)' : '#547BAE',
+				backdropFilter: hideFooter ? 'blur(10px)' : 'none',
+			}}>
 			<strong>{$`Facilito©`}</strong>
 			<div>
 				<a

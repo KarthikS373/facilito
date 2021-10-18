@@ -252,7 +252,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 							</p>
 						)}
 						{formData?.checkout?.shippingNotIncluded && (
-							<p>
+							<p className={Styles.shipping}>
 								<LocalShippingOutlinedIcon /> {$`Envío no incluido`}
 							</p>
 						)}

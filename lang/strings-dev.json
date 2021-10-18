@@ -1,4 +1,112 @@
 {
+	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_este_formulario_si_deseasdeseas_ver_tu_orden_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"respuestas_enviadas": {
+		"en": "",
+		"es": "$"
+	},
+	"deseas_ver_tu_orden_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_este_formulario_si_deseas": {
+		"en": "",
+		"es": "$"
+	},
+	"nueva_respuesta": {
+		"en": "",
+		"es": "$"
+	},
+	"enviado_el": {
+		"en": "",
+		"es": "$"
+	},
+	"para_el_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"deseas_verlo_ahora": {
+		"en": "",
+		"es": "$"
+	},
+	"hola_hay_una_nueva_respuesta_de": {
+		"en": "",
+		"es": "$"
+	},
+	"envio": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_estan_enviando_tus_respuestas_espera_un_momento_esto_no_suele_tardar_mucho_no_te_salgas_del_formulario_por_favor": {
+		"en": "",
+		"es": "$"
+	},
+	"enviando_respuestas": {
+		"en": "",
+		"es": "$"
+	},
+	"falto_verificar_el_captcha": {
+		"en": "",
+		"es": "$"
+	},
+	"solo_numeros_sin_espacios": {
+		"en": "",
+		"es": "$"
+	},
+	"2_digitos": {
+		"en": "",
+		"es": "$"
+	},
+	"sin_espacios": {
+		"en": "",
+		"es": "$"
+	},
+	"tu_pago_no_se_proceso_correctamente_intenta_nuevamente_asegurate_de_tener_los_fondos_necesarios_y_tu_tarjeta_habilitada": {
+		"en": "",
+		"es": "$"
+	},
+	"se_esta_procesando_tu_pago_no_salgas_de_esta_pagina_o_no_se_completara_tu_orden": {
+		"en": "",
+		"es": "$"
+	},
+	"espera_un_momento": {
+		"en": "",
+		"es": "$"
+	},
+	"cvv2": {
+		"en": "",
+		"es": "$"
+	},
+	"ano": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"titular_de_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"llena_el_siguiente_formulario_para_procesar_tu_pago_tus_datos_son_confidenciales_y_no_seran_compartidos_con_nadie": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"errr": {
+		"en": "",
+		"es": "$"
+	},
+	"object_object": {
+		"en": "",
+		"es": "$"
+	},
 	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe": {
 		"en": "",
 		"es": "$"

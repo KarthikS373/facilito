@@ -92,6 +92,16 @@ interface FormAnswerItemContainer {
 	[index: string]: FormAnswerItem
 }
 
+interface FormAnswerItemParsed {
+	[index: string]:
+		| {
+				[index: string]: string
+				answer: string | FormProductSliderAnswer[] | ExtraOptional[][] | Date[]
+				quest: string
+		  }
+		| undefined
+}
+
 interface FormSortedAnswer {
 	answer: FormAnswerItem
 	key: string
@@ -117,4 +127,9 @@ interface FormCheckoutData {
 interface ShippingPrice {
 	name: string
 	price: number
+}
+
+interface OrderedAnswer {
+	answer: FormAnswerItem
+	key: string
 }

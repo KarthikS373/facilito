@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // DB
 import type { Unsubscribe } from '@firebase/firestore'
 import { getCollection } from './db'
@@ -127,4 +128,96 @@ export const removeFormSchema = async (companyID: string, id: string): Promise<v
 
 	// BORRAR
 	if (formDoc) return deleteDoc(formDoc)
+}
+
+/**
+ * Cambiar las reservaciones
+ * @description Cambiar las reservaciones de eventos en un formulario
+ * @param dateKeys
+ * @param companyID
+ * @param id
+ */
+export const changeReservations = async (
+	dateKeys: string[],
+	companyID: string,
+	id: string
+): Promise<void> => {
+	const { getDoc, setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formDoc = await getFormDoc(companyID, id)
+	const currentForm = (await getDoc(formDoc)).data() as Form
+
+	if (currentForm) {
+		// CAMBIAR RESERVACIONES
+		dateKeys.forEach((key: string) => {
+			// INDEX
+			let index = 0
+
+			// BUSCAR COMPONENTE
+			if (currentForm && currentForm.components) {
+				const component: BlockComponent | undefined = currentForm.components.find(
+					(cp: BlockComponent, cIndex: number) => {
+						if (`${cp.name}_${cp.id}` === key) {
+							index = cIndex
+							return true
+						} else return false
+					}
+				)
+
+				// CAMBIAR
+				if (component) {
+					component.reservations = (component.reservations || 1) - 1
+					currentForm.components[index] = component
+				}
+			}
+		})
+
+		// ASIGNAR
+		await setDoc(formDoc, currentForm)
+	}
+}
+
+/**
+ * Cambiar cupones
+ * @description Cambiar el contador de un cupon dentro de un formulario
+ * @param couponCodes
+ * @param companyID
+ * @param id
+ * @returns
+ */
+export const changeCouponsCount = async (
+	couponCodes: string[],
+	companyID: string,
+	id: string
+): Promise<void> => {
+	const { getDoc, setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formDoc = await getFormDoc(companyID, id)
+	const currentForm = (await getDoc(formDoc)).data() as Form
+
+	if (currentForm) {
+		// CAMBIAR CUPONES
+		currentForm.components.forEach((component: BlockComponent, compIndex: number) => {
+			component.coupons?.forEach((coupon: Coupon, coupIndex: number) => {
+				couponCodes.forEach((code: string) => {
+					if (coupon.id.trim().toUpperCase() === code.toUpperCase()) {
+						if (
+							currentForm.components[compIndex].coupons &&
+							// @ts-ignore
+							currentForm.components[compIndex].coupons[coupIndex]
+						)
+							// @ts-ignore
+							currentForm.components[compIndex].coupons[coupIndex].count =
+								// @ts-ignore
+								(currentForm.components[compIndex].coupons[coupIndex].count || 1) - 1
+					}
+				})
+			})
+		})
+
+		// ASIGNAR
+		return setDoc(formDoc, currentForm)
+	}
 }

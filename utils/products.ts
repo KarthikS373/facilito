@@ -73,6 +73,36 @@ export const replaceProducts = async (
 }
 
 /**
+ * Agregar muchos productos
+ * @description Agregar productos como arreglo
+ * @param data
+ * @param companyID
+ * @returns
+ */
+export const bulkUpdateProducts = async (
+	data: Partial<Product>[],
+	companyID?: string
+): Promise<void> => {
+	if (companyID) {
+		const { getDoc, setDoc, doc } = await import('firebase/firestore')
+
+		// BUSCAR
+		const col = await getCollection('products')
+		const companyProducts = doc(col, companyID)
+		const productsData = (await getDoc(companyProducts)).data() as { [sku: string]: Product }
+
+		// ACTUALIZAR
+		data.forEach((product: Partial<Product>) => {
+			// ACTUALIZAR
+			if (product.sku) productsData[product.sku] = { ...productsData[product.sku], ...product }
+		})
+
+		// ASIGNAR PRODUCTO
+		return setDoc(companyProducts, productsData)
+	}
+}
+
+/**
  * Actualizar categorías
  * @description Actualiza todos los productos con una nueva categoría
  * @param  {Product[]} products

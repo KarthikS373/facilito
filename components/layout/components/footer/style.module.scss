@@ -1,13 +1,13 @@
 @import 'styles/mixins';
 
 .footer {
-	background: #547bae;
 	height: 50px;
 	padding: calc(var(--margin) - 5px) var(--margin);
 	display: flex;
 	align-items: center;
 	font-size: 0.9em;
 	justify-content: space-between;
+	margin: 0 auto;
 
 	strong {
 		color: #fff;

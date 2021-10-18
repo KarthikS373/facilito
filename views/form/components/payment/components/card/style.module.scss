@@ -1,0 +1,42 @@
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	& > div {
+		margin: 0;
+		overflow: hidden;
+	}
+	.captcha {
+		margin-top: 10px;
+	}
+
+	form {
+		width: 100%;
+		max-width: 273px;
+		display: grid;
+		grid-template-rows: 1fr 1fr 1fr;
+		row-gap: 25px;
+
+		& > .security {
+			display: grid;
+			grid-template-columns: 75px 75px 1fr;
+			column-gap: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.container {
+		flex-direction: column;
+
+		form {
+			margin-top: 20px;
+		}
+	}
+}

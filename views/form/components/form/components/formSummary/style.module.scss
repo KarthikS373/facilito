@@ -32,7 +32,7 @@
 				margin-right: 20px;
 			}
 
-			&:nth-child(2)::before {
+			&.shipping::before {
 				content: '';
 				position: absolute;
 				top: -2px;

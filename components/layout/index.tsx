@@ -41,7 +41,7 @@ const Layout: React.FC = (props) => {
 					'--primary': theme.palette.primary.main,
 					'--secondary': theme.palette.secondary.main,
 					'--primaryDark': theme.palette.primary.dark,
-					backgroundColor: /^\/f\/\w+\/\w+$/.test(path) ? 'transparent' : '#fff',
+					backgroundColor: !showTopbar ? 'transparent' : '#fff',
 				} as React.CSSProperties
 			}
 			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
@@ -51,7 +51,7 @@ const Layout: React.FC = (props) => {
 					backgroundColor: !showTopbar ? 'transparent' : 'rgb(248, 248, 248)',
 				}}>
 				{props.children}
-				<Footer />
+				<Footer hideFooter={!showTopbar} />
 			</main>
 		</div>
 	)

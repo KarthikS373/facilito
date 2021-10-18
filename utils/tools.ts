@@ -184,6 +184,21 @@ export const splitBackgroundColors: (background: string) => [string, string, str
 }
 
 /**
+ * Abrir ventana
+ * @description Abrir ventana nueva (error con safari)
+ * @param url
+ */
+export const openNewWindow = (url: string): void => {
+	// CREAR ANCHOR
+	const anchor = document.createElement('a')
+	anchor.href = url
+
+	// ABRIR
+	anchor.setAttribute('target', '_blank')
+	anchor.click()
+}
+
+/**
  * Generar tema
  * @description Generar un tema de mui
  * @param defColors

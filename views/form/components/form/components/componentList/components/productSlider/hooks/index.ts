@@ -54,7 +54,7 @@ export const useProductsRegister = (
 		if (register) {
 			register(`products.summary_${name}_${id}`, {
 				required,
-				validate: (value) => typeof value === 'number',
+				valueAsNumber: true,
 			})
 			register(`products.extras_${name}_${id}`)
 			register(`products.${name}_${id}`, { required })

@@ -4,7 +4,7 @@
  * @description Limpia todos los datos no necesarios en un formulario
  * @param data
  */
-const cleanFormData = (data: unknown): unknown => {
+const cleanFormData = (data: { [id: string]: unknown }): { [id: string]: unknown } => {
 	// @ts-ignore
 	const tmpData = { ...data, ...data.products, ...data.coupons }
 	delete tmpData.products

@@ -101,6 +101,10 @@ interface FormProductSliderAnswer {
 	category: string
 }
 
+interface ParsedProduct extends FormProductSliderAnswer {
+	discount: number
+}
+
 interface FormDataProductSliderAnswer {
 	[id: string]: FormProductSliderAnswer[] | ExtraProductData[][] | number
 }

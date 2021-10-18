@@ -212,3 +212,100 @@ export const updateAnswerState = async (
 		return setDoc(answerDoc, answerData, { merge: true })
 	}
 }
+
+/**
+ * Guardar respuesta
+ * @description Mezcla las respuestas y guarda en la posicion correcta la siguiente
+ * @param companyID
+ * @param id
+ * @param form
+ * @returns
+ */
+export const saveFormAnswer = async (
+	companyID: string,
+	id: string,
+	form: FormAnswerItemContainer
+): Promise<number> => {
+	const { getDoc, setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formDoc = await getAnswerDoc(companyID, id)
+	const formData = (await getDoc(formDoc)).data() as FormAnswer
+
+	// VALORES POR DEFECTO
+	const defAnswers: FormAnswer = { data: [], dates: [], states: [] }
+	const answersData = formData || defAnswers
+
+	// AGREGAR
+	answersData.data.push(form)
+	answersData.states.push(0)
+	answersData.dates.push(new Date())
+
+	// GUARDAR
+	await setDoc(formDoc, { ...answersData }, { merge: true })
+	return answersData.data.length
+}
+
+/**
+ * Ordenar respuestas
+ * @description Ordenar las respuestas segun el listado de componentes del formulario
+ * @param components
+ * @param formData
+ * @returns
+ */
+export const orderAnswers = (
+	components: FormComponent[],
+	formData: FormAnswerItemContainer
+): OrderedAnswer[] => {
+	// CREAR TEXTO
+	const data = { ...formData }
+	let multiIndex = 0
+	const orderedAnswers: OrderedAnswer[] = []
+	const dataKeys: string[] = Object.keys(data)
+
+	// RECORRER
+	components.forEach((component: FormComponent, index: number) => {
+		// COMPONENTE
+		const componentKey = `${component.name}_${component.id}`
+
+		// BUSCAR
+		if (component.name === 'multiple') multiIndex = index
+		dataKeys.forEach((key: string) => {
+			if (componentKey === key) {
+				const answer: FormAnswerItem = data[key]
+				orderedAnswers.push({ answer, key })
+			}
+		})
+	})
+	// DATOS PERSONALES
+	const personalObj = [
+		{ answer: data.personal_name_0, key: 'personal_name_0' },
+		{ answer: data.personal_phone_0, key: 'personal_phone_0' },
+		{ answer: data.personal_email_0, key: 'personal_email_0' },
+		{ answer: data.personal_address_0, key: 'personal_address_0' },
+		{ answer: data.personal_instructions_0, key: 'personal_instructions_0' },
+	].filter((answer) => answer.answer !== undefined) as OrderedAnswer[]
+
+	// AGREGAR DATOS EXTRA
+	orderedAnswers.splice(multiIndex, 0, ...personalObj)
+	orderedAnswers.push({ answer: data.products_0, key: 'products_0' })
+
+	// DATOS BANCARIOS
+	orderedAnswers.push({ answer: data.payMethod, key: 'payMethod' })
+	dataKeys.forEach((key: string) => {
+		if (key.startsWith('bank_account_')) orderedAnswers.push({ answer: data[key], key })
+	})
+
+	// MÉTODOS DE ENVIÓ
+	orderedAnswers.push({ answer: data.shippingMethod, key: 'shippingMethod' })
+
+	// CUPONES Y TOTAL
+	orderedAnswers.push({ answer: data.coupon, key: 'coupon' })
+	orderedAnswers.push({ answer: data.total, key: 'total' })
+
+	// RETORNAR
+	const dataAnswers = orderedAnswers
+		.filter((answer) => answer.answer !== undefined)
+		.flat() as OrderedAnswer[]
+	return dataAnswers
+}

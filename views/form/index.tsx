@@ -9,9 +9,10 @@ import Styles from './style.module.scss'
 
 // HOOKS
 import { useCompanyProducts } from 'hooks/business'
+import useStrings from 'hooks/lang'
 
 // TOOLS
-import { formHasComponent, getCouponProducts, setGeoComponents } from './tools'
+import { formHasComponent, getCouponProducts, sendForm, setGeoComponents } from './tools'
 import { generateTheme, splitBackgroundColors } from 'utils/tools'
 
 // PROVIDERS
@@ -34,9 +35,12 @@ interface FormProps {
 	formURL: string
 }
 
-const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
+const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL }: FormProps) => {
 	// USUARIO
 	const { userExists } = useContext(AuthContext)
+
+	// STRINGS
+	const { $ } = useStrings()
 
 	// PRODUCTOS
 	const [products, setProducts] = useState<Product[] | null>(null)
@@ -61,9 +65,8 @@ const FormView: React.FC<FormProps> = ({ company, formData }: FormProps) => {
 	useCompanyProducts(setProducts, userExists, company?.id || null, hasProducts)
 
 	// ENVIAR FORMULARIO
-	const sendFormEvent = (data: unknown, reset: () => unknown) => {
-		console.log(data, reset)
-	}
+	const sendFormEvent = (data: { [id: string]: unknown }, reset: EmptyFunction) =>
+		sendForm($, data, reset, formData, company, defColors, geoRef, formURL, companyURL)
 
 	return (
 		<ThemeProvider theme={customTheme}>

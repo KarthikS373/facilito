@@ -27,7 +27,7 @@ import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface HookFormProps {
-	sendFormEvent: (data: unknown, reset: () => unknown) => void
+	sendFormEvent: (data: { [id: string]: unknown }, reset: () => unknown) => void
 	formData: Form | undefined
 	products: Product[] | null
 	couponProducts: string[]
@@ -48,7 +48,8 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 	} = useForm()
 
 	// ENVIAR FORM
-	const onSubmit = (data: unknown) => props.sendFormEvent(cleanFormData(data), clearErrors)
+	const onSubmit = (data: { [id: string]: unknown }) =>
+		props.sendFormEvent(cleanFormData(data), clearErrors)
 
 	// REFERENCIA DE BOTÓN DE ENVIAR
 	const submitButton: React.RefObject<HTMLButtonElement> = useRef(null)
@@ -61,7 +62,10 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 
 	if (props.formData) {
 		// ALERTA DE OBLIGATORIOS
-		const onError = () => window.Alert({ title: 'Error', body: 'Error', type: 'error' })
+		const onError = (err: unknown) => {
+			console.log(err)
+			window.Alert({ title: 'Error', body: 'Errr', type: 'error' })
+		}
 
 		// LISTENER DE PRODUCTOS
 		const formProducts = haveProducts
