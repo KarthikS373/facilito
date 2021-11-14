@@ -95,6 +95,24 @@ export const readTemplates = async (): Promise<Form[]> => {
 }
 
 /**
+ * Leer formulario
+ * @description Leer formulario de DB
+ * @param companyID
+ * @param id
+ * @returns
+ */
+export const readFormSchema = async (companyID: string, id: string): Promise<Form | null> => {
+	const { getDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formDoc = await getFormDoc(companyID, id)
+	const form = (await getDoc(formDoc)).data() as Form
+
+	// RETORNAR
+	return form || null
+}
+
+/**
  * Guardar formulario
  * @description Guarda un objeto Form en la DB
  * @param  {string} companyID
@@ -219,5 +237,112 @@ export const changeCouponsCount = async (
 
 		// ASIGNAR
 		return setDoc(formDoc, currentForm)
+	}
+}
+
+/**
+ * Extraer componentes
+ * @description Remover propiedades agregadas a los componentes de un formulario
+ * @param original
+ * @returns
+ */
+export const extractFormComponent = (original: FormContainerProps): FormContainerProps => {
+	// COPIAR
+	const copy = { ...original }
+	const keys: Array<keyof FormContainerProps> = [
+		'onChangePersonalOptions',
+		'personalOptions',
+		'productsList',
+		'formValues',
+		'onRequired',
+		'onDates',
+		'onChange',
+		'onDelete',
+		'onCopy',
+		'onFile',
+		'active',
+		'range',
+		'badge',
+	]
+
+	// BORRAR
+	keys.forEach((prop: keyof FormContainerProps) => delete copy[prop])
+
+	// RETORNAR
+	return copy
+}
+
+/**
+ * Cambiar url de facilito
+ * @param companyID
+ * @param id
+ * @param newUrl
+ */
+export const replaceFormURL = async (
+	companyID: string,
+	id: string,
+	newUrl: string
+): Promise<void> => {
+	const { setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formsCol = await getFormDoc(companyID, id)
+
+	// AGREGAR NUEVO
+	await setDoc(formsCol, { url: newUrl }, { merge: true })
+}
+
+/**
+ * Guardar metodos de envio
+ * @description Guardar metodos de envio de un formulario
+ * @param companyID
+ * @param id
+ * @param answersConnection
+ */
+export const saveFormSendMethods = async (
+	companyID: string,
+	id: string,
+	answersConnection: ConnectionMethods
+): Promise<void> => {
+	const { setDoc } = await import('firebase/firestore')
+
+	// LEER
+	const formDoc = await getFormDoc(companyID, id)
+
+	// GUARDAR
+	return setDoc(formDoc, { answersConnection }, { merge: true })
+}
+
+/**
+ * Publicar
+ * @description Cambiar el estado de un formulario a publico
+ * @param companyID
+ * @param id
+ */
+export const publishForm = async (companyID: string, id: string): Promise<void> => {
+	if (companyID?.length) {
+		// LEER
+		const { setDoc } = await import('firebase/firestore')
+		const formDoc = await getFormDoc(companyID, id)
+
+		// GUARDAR
+		await setDoc(formDoc, { public: true }, { merge: true })
+	}
+}
+
+/**
+ * No Publicar
+ * @description Cambiar el estado de un formulario a no publico
+ * @param companyID
+ * @param id
+ */
+export const unPublishForm = async (companyID: string, id: string): Promise<void> => {
+	if (companyID?.length) {
+		// LEER
+		const { setDoc } = await import('firebase/firestore')
+		const formDoc = await getFormDoc(companyID, id)
+
+		// GUARDAR
+		await setDoc(formDoc, { public: false }, { merge: true })
 	}
 }

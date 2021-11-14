@@ -1,0 +1,26 @@
+.container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	column-gap: var(--margin);
+	position: relative;
+	padding: calc(var(--margin) - 5px) var(--margin);
+	background-color: #fff !important;
+	z-index: 10 !important;
+
+	.actions {
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+		align-items: center;
+		column-gap: var(--margin);
+	}
+
+	.titleInp {
+		height: 50px;
+
+		& > div {
+			height: 100%;
+		}
+	}
+}

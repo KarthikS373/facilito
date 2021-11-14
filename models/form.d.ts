@@ -133,3 +133,42 @@ interface OrderedAnswer {
 	answer: FormAnswerItem
 	key: string
 }
+
+interface FormContainerProps extends BlockComponent {
+	[index: string]: typeof BlockComponent[keyof BlockComponent]
+	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
+	onChangePersonalOptions?: (options: FormPersonalData) => unknown
+	personalOptions?: FormPersonalData
+	onRequired?: (required: boolean) => unknown
+	onFile?: (url: string) => unknown
+	onDelete?: EmptyFunction
+	onCopy?: EmptyFunction
+	active?: boolean
+	formId?: string
+}
+
+interface CustomFormState {
+	title: string
+	banner: string
+	background: string
+	description: string
+	url: string
+}
+
+type FormInputValue =
+	| string
+	| string[]
+	| boolean[]
+	| number
+	| (Date | null)[]
+	| Product[]
+	| boolean
+	| Coupon[]
+
+interface FcltRequest {
+	target: string
+	info: {
+		companyID: string
+		formID: string
+	}
+}

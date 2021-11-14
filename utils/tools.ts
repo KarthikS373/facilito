@@ -368,3 +368,96 @@ export const generateTheme = (defColors: string[]): Theme =>
 			},
 		},
 	})
+
+/**
+ * Obtener codigo QR
+ * @description Obtener dataURL de un codigo QR
+ * @param url
+ * @returns
+ */
+export const getQRCode: (url: string) => Promise<string> = (url: string) =>
+	new Promise((resolve, reject) => {
+		import('qrcode').then((qrCode) => {
+			const qr = qrCode.default
+			qr.toDataURL(url, (err, url: string) => {
+				if (err) reject(err)
+				else resolve(url)
+			})
+		})
+	})
+
+/**
+ * Copiar a portapapeles
+ * @description Copiar texto a portapapeles
+ * @param event
+ * @param title
+ * @param text
+ * @param customElements
+ * @param str
+ */
+export const copyToClipboard = (
+	event: React.ChangeEvent | React.MouseEvent,
+	title: string,
+	text: string,
+	customElements?: JSX.Element,
+	str?: string
+): void => {
+	// EVITAR LINK
+	if (event.preventDefault) event.preventDefault()
+
+	// COPIAR
+	if (navigator.clipboard && navigator.clipboard.writeText)
+		navigator.clipboard.writeText(str || window.location.href).then(() =>
+			window.Alert({
+				title,
+				body: text,
+				type: 'confirm',
+				customElements,
+			})
+		)
+}
+
+/**
+ * Descargar QR
+ * @description Descargar codigo qr como imagen
+ * @param dataURL
+ * @param filename
+ */
+export const downloadQR = (dataURL: string, filename: string): void => {
+	// CREAR ANCHOR
+	const anchor = document.createElement('a')
+	anchor.href = dataURL
+
+	// ABRIR
+	anchor.setAttribute('download', filename)
+	anchor.click()
+}
+
+/**
+ * Compartir link
+ * @description Compartir link con la api Share
+ * @param ev
+ * @param title
+ * @param text
+ */
+export const shareLink = (
+	ev: React.ChangeEvent | React.MouseEvent,
+	title: string,
+	text: string
+): void => {
+	// VERIFICAR SI ESTA DISPONIBLE LA API
+	if (navigator.share) {
+		// EVITAR LINK
+		ev.preventDefault()
+
+		// COMPARTIR
+		navigator
+			.share({
+				title,
+				text,
+				url: window.location.href,
+			})
+			.then(() => window.hideAlert())
+			.catch(() => window.hideAlert())
+	}
+}

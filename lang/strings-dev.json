@@ -1,4 +1,140 @@
 {
+	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_del_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_de_este_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_este_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_en_este_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_en_este_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar_cambios": {
+		"en": "",
+		"es": "$"
+	},
+	"si_anulas_la_publicacion_este_formulario_solo_sera_visible_para_tu_empresa_y_no_podras_recibir_respuestas_hasta_que_lo_vuelvas_a_publicar": {
+		"en": "",
+		"es": "$"
+	},
+	"anular_publicacion": {
+		"en": "",
+		"es": "$"
+	},
+	"publicando": {
+		"en": "",
+		"es": "$"
+	},
+	"formulario_sin_titulo": {
+		"en": "",
+		"es": "$"
+	},
+	"se_han_guardado_tus_cambios_correctamente": {
+		"en": "",
+		"es": "$"
+	},
+	"guardando_cambios": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_comportamiento_del_carrito_el_checkout_y_productos_en_este_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"acordeon_de_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"mostrar_buscador": {
+		"en": "",
+		"es": "$"
+	},
+	"modo_vitrina": {
+		"en": "",
+		"es": "$"
+	},
+	"monto_minimo_de_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_metodos_de_envio_y_precios_correspondientes_disponibles_para_tus_clientes": {
+		"en": "",
+		"es": "$"
+	},
+	"publicar": {
+		"en": "",
+		"es": "$"
+	},
+	"desc": {
+		"en": "",
+		"es": "$"
+	},
+	"conectado_a_email": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_whatsapp": {
+		"en": "",
+		"es": "$"
+	},
+	"conectado_a_whatsapp": {
+		"en": "",
+		"es": "$"
+	},
+	"url_del_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"descargar_codigo_qr": {
+		"en": "",
+		"es": "$"
+	},
+	"insertar_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"compartir_enlace": {
+		"en": "",
+		"es": "$"
+	},
+	"ocultar": {
+		"en": "",
+		"es": "$"
+	},
+	"ajustes": {
+		"en": "",
+		"es": "$"
+	},
+	"titulo_del_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"checkout": {
+		"en": "",
+		"es": "$"
+	},
+	"compartir": {
+		"en": "",
+		"es": "$"
+	},
+	"personalizar": {
+		"en": "",
+		"es": "$"
+	},
 	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_este_formulario_si_deseasdeseas_ver_tu_orden_en_tiempo_real": {
 		"en": "",
 		"es": "$"

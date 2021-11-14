@@ -1,0 +1,29 @@
+.checkoutOptions {
+	display: grid !important;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+	column-gap: var(--margin);
+	width: 100%;
+}
+
+.checkoutInputs {
+	& > button:nth-child(1) {
+		height: 50px;
+
+		span {
+			text-transform: none;
+		}
+	}
+
+	& > div {
+		margin-top: var(--margin);
+	}
+}
+
+.checkoutChecks {
+	& > label {
+		margin: 0;
+		width: max-content;
+		justify-content: flex-end;
+	}
+}

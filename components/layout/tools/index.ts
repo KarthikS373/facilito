@@ -8,7 +8,7 @@ const evaluateTopbarPath = (path: string): boolean => {
 	if (/\/f\/.+\/respuestas/.test(path)) return true
 	else if (/\/f\/.+\/.+$/.test(path)) return false
 	else if (path === '/formularios') return true
-	else if (/\/f\/(.+)$/.test(path)) return true
+	else if (/\/f\/(.+)$/.test(path)) return false
 	else if (path === '/tracking') return true
 	else if (/\/t\/(.+)\/editar/.test(path)) return true
 	else if (/\/t\/(.+)$/.test(path)) return false
