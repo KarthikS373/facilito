@@ -25,6 +25,7 @@ import { onDragEnd } from './tools'
 // CONTEXTO
 import BusinessContext from 'context/business'
 import UserContext from 'context/user'
+import CustomizeMenu from './components/customize'
 
 // PROPIEDADES
 interface FormViewProps {
@@ -47,7 +48,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	const [formCheckout, setFormCheckout] = useState<FormCheckout | undefined>(undefined)
 
 	// MENU DE PERSONALIZACIÓN
-	const [, setOpenCustomized] = useState<boolean>(false)
+	const [openCustomized, setOpenCustomized] = useState<boolean>(false)
 
 	// REFERENCIA DE COMPONENTES
 	const componentsList: React.MutableRefObject<BlockComponent[]> = useRef([
@@ -89,6 +90,18 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	const saveSendMethods = (answersConnection?: ConnectionMethods) => {
 		if (!answersConnection) delete formData.current.answersConnection
 		else formData.current.answersConnection = answersConnection
+	}
+
+	// CAMBIAR COLOR DE FONDO
+	const changeBackground = (background: string) => {
+		formData.current.background = background
+		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, background }))
+	}
+
+	// CAMBIAR BANNER DE FONDO
+	const changeBanner = (banner: string) => {
+		formData.current.banner = banner
+		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, banner }))
 	}
 
 	// CAMBIAR OPCIONES DE CHECKOUT
@@ -141,6 +154,17 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 						onChangeCheckoutOptions={setCheckoutOptions}
 						answersConnection={formData.current.answersConnection}
 						defValue={formProps.title !== initialFormData.title ? formProps.title : undefined}
+					/>
+
+					{/* MENU DE PERSONALIZACION */}
+					<CustomizeMenu
+						id={id}
+						open={openCustomized}
+						onBanner={changeBanner}
+						onColor={changeBackground}
+						defaultBanner={formProps.banner}
+						onBack={handleCustomizeMenu(false)}
+						defaultBackground={formProps.background}
 					/>
 
 					{/* LISTA DRAG A DROP */}

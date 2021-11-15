@@ -44,9 +44,6 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	const [settingsMenu, setSettingsMenu] = useState<HTMLElement | null>(null)
 	const openSettingsMenu = Boolean(settingsMenu)
 
-	// PUBLICAR
-	const [published, setPublished] = useState<boolean>(props.public)
-
 	// CERRAR MENU
 	const onClose = () => setSettingsMenu(null)
 
@@ -66,8 +63,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	const openFormSettingsMenu = () => showSettingsMenu(props)
 
 	// MOSTRAR MENU DE PUBLICACION
-	const showPublishMenu = () =>
-		publishFormEvent($, props, published, setPublished, company.business)
+	const showPublishMenu = () => publishFormEvent($, props, props.public, company.business)
 
 	// ABRIR MENU DE CHECKOUT
 	const openCheckoutMenu = () =>
@@ -90,8 +86,8 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 					<Button
 						fullWidth
 						variant='outlined'
-						startIcon={published ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
-						{published ? $`Ocultar` : $`Publicar`}
+						startIcon={props.public ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
+						{props.public ? $`Ocultar` : $`Publicar`}
 					</Button>
 				</MenuList>
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>

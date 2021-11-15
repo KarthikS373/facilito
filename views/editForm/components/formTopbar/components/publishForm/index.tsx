@@ -12,11 +12,18 @@ import PublicLink from './components/link'
 import { publishForm, unPublishForm } from 'utils/forms'
 import showSettingsMenu from '../settingsMenu'
 
+/**
+ * Publicar
+ * @description Publicar formulario y mostrar link
+ * @param $
+ * @param props
+ * @param published
+ * @param company
+ */
 const publishFormEvent = (
 	$: TemplateStrBuilder,
 	props: FormTopbarProps,
 	published: boolean,
-	setPublished: React.Dispatch<React.SetStateAction<boolean>>,
 	company: Business | null
 ): void => {
 	// GUARDAR
@@ -43,10 +50,7 @@ const publishFormEvent = (
 						body: 'Ahora tu formulario sera visible para todos, puedes compartirles el siguiente link:',
 						type: 'confirm',
 						confirmText: $`Ver ahora`,
-						onHide: () => {
-							setPublished(true)
-							props.onPublish(true)
-						},
+						onHide: () => props.onPublish(true),
 						onConfirm: () =>
 							window.open(`${window.location.origin}/f/${company?.url}/${props.url}`),
 						customElements: <PublicLink url={props.url} />,
@@ -71,7 +75,7 @@ const publishFormEvent = (
 				type: 'confirm',
 				onConfirm: () => {
 					props.onPublish(false)
-					unPublishForm(company?.id, props.id).then(() => setPublished(false))
+					unPublishForm(company?.id, props.id)
 				},
 			})
 		}
