@@ -1,0 +1,43 @@
+.container {
+	.content {
+		display: grid;
+		grid-template-rows: repeat(6, auto);
+		row-gap: 10px;
+		align-items: center;
+		margin: var(--margin) 0;
+
+		.link {
+			display: flex;
+			align-items: center;
+
+			svg {
+				margin-right: 10px;
+			}
+		}
+
+		.check {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+
+			.label {
+				display: flex;
+				align-items: center;
+
+				svg {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+
+	.actions {
+		margin-top: -20px;
+		justify-content: flex-end;
+		display: flex;
+
+		& > button:first-child {
+			width: 100px;
+		}
+	}
+}

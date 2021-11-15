@@ -48,9 +48,9 @@ interface FormPersonalData {
 }
 
 interface ConnectionMethods {
-	[index: string]: ('whatsapp' | 'email')[] | number | string
+	[index: string]: ('whatsapp' | 'email')[] | number | string | undefined
 	methods: ('whatsapp' | 'email')[]
-	whatsapp: number
+	whatsapp: string
 	email: string
 }
 

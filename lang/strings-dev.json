@@ -1,4 +1,104 @@
 {
+	"preferencias": {
+		"en": "",
+		"es": "$"
+	},
+	"guardando_ajustes": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_no_valido": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_de_respuestas_para_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_para_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_link_y_las_opciones_de_envio_para_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"ajustes_globales": {
+		"en": "",
+		"es": "$"
+	},
+	"correo_electronico_no_valido": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_url_ya_esta_en_uso": {
+		"en": "",
+		"es": "$"
+	},
+	"formulario_creado": {
+		"en": "",
+		"es": "$"
+	},
+	"codigo_copiado": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_se_muestran_todas_las_opciones_para_mostrar_tu_formulario_al_mundo": {
+		"en": "",
+		"es": "$"
+	},
+	"ya_no_hay_ocupaciones_disponibles_en_este_horario_intenta_de_nuevo_mas_tarde": {
+		"en": "",
+		"es": "$"
+	},
+	"descargar_qr": {
+		"en": "",
+		"es": "$"
+	},
+	"insertar_codigo": {
+		"en": "",
+		"es": "$"
+	},
+	"algunos_bloques_tienen_campos_vacios_es_probable_que_algunos_bloques_no_se_muestren_como_deseas": {
+		"en": "",
+		"es": "$"
+	},
+	"campos_vacios": {
+		"en": "",
+		"es": "$"
+	},
+	"largo": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_un_tamano": {
+		"en": "",
+		"es": "$"
+	},
+	"mediano": {
+		"en": "",
+		"es": "$"
+	},
+	"pequeno": {
+		"en": "",
+		"es": "$"
+	},
+	"copiar_codigo": {
+		"en": "",
+		"es": "$"
+	},
+	"compartir_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"tambien_puedes_compartir_la_url_en_un_link_corto": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_esta_la_url_completa_de_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_del_formulario": {
 		"en": "",
 		"es": "$"

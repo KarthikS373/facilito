@@ -1,34 +1,28 @@
 // REACT
-import React, { MouseEvent, useContext } from 'react'
+import React, { useContext } from 'react'
 
 // IMAGENES
 import Image from 'next/image'
 
-// MATERIAL
-import MenuItem from '@mui/material/MenuItem'
-import Menu from '@mui/material/Menu'
-import Fade from '@mui/material/Fade'
-
-// ICONOS
-import GetApp from '@mui/icons-material/GetApp'
-import Share from '@mui/icons-material/Share'
-import Code from '@mui/icons-material/Code'
+// MATERIAl
+import ColorButton from 'components/button'
+import Button from '@mui/material/Button'
 
 // HOOKS
 import useStrings from 'hooks/lang'
 
 // TOOLS
-import { copyToClipboard, downloadQR, shareLink } from 'utils/tools'
+import { downloadQR } from 'utils/tools'
 
 // COMPONENTES
-import FormFrame from './components/formFrame'
 import BusinessContext from 'context/business'
 
+// ESTILOS
+import Styles from './style.module.scss'
+import { useTheme } from '@mui/material/styles'
+
 interface ShareMenuProps {
-	shareOptions: HTMLElement | null
-	onClose: EmptyFunction
 	formQR: string
-	open: boolean
 	url?: string
 	id: string
 }
@@ -40,116 +34,70 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 	// EMPRESA
 	const { business } = useContext(BusinessContext)
 
-	// COPIAR LINK
-	const shareForm = (ev: MouseEvent) => {
-		if ('share' in navigator) {
-			window.Alert({
-				title: 'Compartir formulario',
-				body: 'Espera un momento, se esta cargando el link de tu formulario...',
-				type: 'window',
-				fixed: false,
-			})
-			shareLink(ev, 'Facilito APP', 'Responde este formulario en Facilito-APP')
-		} else
-			copyToClipboard(
-				ev,
-				$`Compartir formulario`,
-				'',
-				<div>
-					<p>
-						{$`Aquí esta la url completa de tu formulario.`}
-						<br />
-						<a
-							style={{ display: 'block', marginTop: '10px', color: 'var(--lightblue)' }}
-							target='_blank'
-							rel='noopener noreferrer'
-							href={`${window.location.origin}/f/${business?.url}/${props.url}`}
-							title='FormURL'>{`${window.location.origin}/f/${business?.url}/${props.url}`}</a>
-						<br />
-					</p>
-					<p>
-						{$`También puedes compartir la url en un link corto.`}
-						<br />
-						<a
-							style={{ display: 'block', marginTop: '10px', color: 'var(--lightblue)' }}
-							target='_blank'
-							rel='noopener noreferrer'
-							href={`https://${fclt}`}
-							title='Short Link'>
-							{fclt}
-						</a>
-					</p>
-				</div>,
-				`${window.location.origin}/f/${business?.url}/${props.url}`
-			)
-
-		// CERRAR
-		props.onClose()
-	}
-
-	// CREAR IFRAME
-	const copyIFrame = (ev: MouseEvent) => {
-		// GUARDAR SIZE
-		const url = `${window.location.origin}/f/${business?.url}/${props.url}`
-		let iFrameSize = "width='300' height='400'"
-		const saveSize = (w: string, h: string) => (iFrameSize = `width='${w}' height='${h}'`)
-
-		// COMPONENTE
-		window.Alert({
-			title: $`Insertar formulario`,
-			body: '',
-			type: 'confirm',
-			confirmText: $`Copiar código`,
-			onHide: props.onClose,
-			onConfirm: () => {
-				// CREAR Y COPIAR IFRAME
-				const iframeCode = `<iframe src='${url}' ${iFrameSize} title='${props.url}'/>`
-				copyToClipboard(
-					ev,
-					$`Código copiado`,
-					$`El código de tu formulario para insertar se ha copiado correctamente a tu portapapeles.`,
-					undefined,
-					iframeCode
-				)
-			},
-			customElements: <FormFrame url={url} onSize={saveSize} />,
-		})
-	}
-
-	// CERRAR
-	const handlePublishOptionsClose = () => props.onClose()
-
 	// DESCARGAR QR
 	const downloadQREmb = () => downloadQR(props.formQR, props.id)
 
 	// FCLT
 	const fclt = `fclt.cc/${props.url}`
 
+	// COPIAR IFRAME
+	const copyIframe = () =>
+		navigator.clipboard
+			.writeText(`<iframe title='facilito_form' src='${`https://${fclt}`}'/>`)
+			.then(() => window.Snack('Código copiado'))
+
+	// TEMA
+	const theme = useTheme()
+
 	return (
-		<Menu
-			keepMounted
-			id='share-menu'
-			anchorEl={props.shareOptions}
-			open={props.open}
-			TransitionComponent={Fade}
-			onClose={handlePublishOptionsClose}>
-			<MenuItem onClick={shareForm}>
-				<Share />
-				{$`Compartir enlace`}
-			</MenuItem>
-			<MenuItem onClick={copyIFrame}>
-				<Code />
-				{$`Insertar formulario`}
-			</MenuItem>
-			<MenuItem onClick={downloadQREmb}>
-				<div>
-					<GetApp />
-					{$`Descargar código QR`}
+		<div>
+			<div className={Styles.info}>
+				<p>
+					{$`Aquí esta la url completa de tu formulario.`}
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						className={Styles.link}
+						href={`${window.location.origin}/f/${business?.url}/${props.url}`}
+						style={{ color: theme.palette.primary.main }}
+						title='FormURL'>{`${window.location.origin}/f/${business?.url}/${props.url}`}</a>
+					<br />
+				</p>
+				<p>
+					{$`También puedes compartir la url en un link corto.`}
+
+					<a
+						target='_blank'
+						title='Short Link'
+						rel='noopener noreferrer'
+						href={`https://${fclt}`}
+						style={{ color: theme.palette.primary.main }}
+						className={Styles.link}>
+						{fclt}
+					</a>
+				</p>
+			</div>
+			<div className={Styles.actions}>
+				<Image height={192} width={192} alt='qr' src={props.formQR} />
+				<div className={Styles.btn}>
+					<Button fullWidth variant='outlined' onClick={copyIframe}>{$`Insertar codigo`}</Button>
+					<ColorButton
+						fullWidth
+						$style={{ background: theme.palette.primary.main, color: '#fff' }}
+						onClick={downloadQREmb}>{$`Descargar QR`}</ColorButton>
 				</div>
-				<Image src='/assets/brand/logo.png' unoptimized alt='Form QR' height={30} width={30} />
-			</MenuItem>
-		</Menu>
+			</div>
+		</div>
 	)
 }
 
-export default ShareMenu
+const showShareMenu = (formQR: string, id: string, url?: string): void => {
+	window.Alert({
+		title: 'Compartir formulario',
+		body: 'Aqui se muestran todas las opciones para mostrar tu formulario al mundo.',
+		type: '',
+		customElements: <ShareMenu formQR={formQR} url={url} id={id} />,
+	})
+}
+
+export default showShareMenu

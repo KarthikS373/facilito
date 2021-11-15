@@ -43,6 +43,7 @@ const FlagPhoneInput: React.FC<FlagPhoneInputProps> = (props: FlagPhoneInputProp
 	return (
 		<PhoneInput
 			name={props.name}
+			value={props.value}
 			defaultCountry={country}
 			onChange={props.onChange}
 			numberInputProps={tmpProps}

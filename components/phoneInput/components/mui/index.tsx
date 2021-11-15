@@ -8,6 +8,16 @@ const MuiPhoneInput: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldP
 	props,
 	ref
 ) => {
-	return <TextField {...props} inputRef={ref} fullWidth type='tel' />
+	return (
+		<TextField
+			{...props}
+			InputProps={{
+				startAdornment: <></>,
+			}}
+			inputRef={ref}
+			fullWidth
+			type='tel'
+		/>
+	)
 }
 export default forwardRef(MuiPhoneInput)

@@ -1,168 +1,85 @@
 // REACT
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'
 import InputAdornment from '@mui/material/InputAdornment'
+import Button from '@mui/material/Button/Button'
 import TextField from '@mui/material/TextField'
-import MenuItem from '@mui/material/MenuItem'
 import Checkbox from '@mui/material/Checkbox'
-import Menu from '@mui/material/Menu'
-import Fade from '@mui/material/Fade'
 
+// COMPONENTES
 import PhoneField from 'components/phoneInput'
+import ColorButton from 'components/button'
 
 // ICONOS
+import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 import WhatsApp from '@mui/icons-material/WhatsApp'
 import Create from '@mui/icons-material/Create'
 import Email from '@mui/icons-material/Email'
 import Cloud from '@mui/icons-material/Cloud'
 import Link from '@mui/icons-material/Link'
-import useStrings from 'hooks/lang'
-import { verifyEmail } from 'utils/auth'
-import { deleteURL, validateURL } from 'utils/urls'
 
-// PROPIEDADES
-interface SettingsMenuProps {
-	updateConnectionMethods: (answersConnection?: ConnectionMethods) => unknown
-	onAnswersConnection: (answersConnection?: ConnectionMethods) => unknown
-	connectionMethods?: ConnectionMethods
-	publishOptions: null | HTMLElement
-	onChangeURL: (url: string) => Promise<void>
-	onSave: (ctrl: boolean) => unknown
-	onClose: EmptyFunction
-	open: boolean
-	url: string
-}
+// TOOLS
+import handleChecks, {
+	FormTopbarProps,
+	getDefValues,
+	handleInputs,
+	SendData,
+	SettingsMenuProps,
+	validateFclt,
+} from './tools'
+import useStrings from 'hooks/lang'
+
+// ESTILOS
+import Styles from './style.module.scss'
+import { useTheme } from '@mui/material/styles'
 
 // ICONOS
-const optionIcons = [<WhatsApp key='w_1' />, <Email key='e_1' />, <Cloud key='c_1' />]
+const optionIcons = [
+	<WhatsApp key='w_1' />,
+	<Email key='e_1' color='primary' />,
+	<Cloud key='c_1' />,
+]
 
 const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// ESTADO
-	const [whatsappNumber, setWhatsappNumber] = useState<string | undefined>(
-		props.connectionMethods?.whatsapp.toString()
-	)
-	const [email, setEmail] = useState<string | undefined>(props.connectionMethods?.email)
+	const [formData, setFormData] = useState<SendData>(getDefValues(props))
 
 	// ERRORES [whatsapp, email, link]
 	const [errs, setErrs] = useState<[boolean, boolean, boolean]>([false, false, false])
 
-	// REFERENCIAS
-	const [formURL, setFormURL] = useState<string>(props.url)
-
-	// ACTUALIZAR ESTADO CON PROPS
-	const { url } = props
-	useEffect(() => {
-		setFormURL(url)
-	}, [url])
+	// SHORT
+	const fclt = `fclt.cc/${formData.link}`
 
 	// ACTUALIZAR WHATSAPP , EMAIL
-	const handlePhone = (phone: string) => setWhatsappNumber(phone)
-	const handleInput = (ev: ChangeEvent<HTMLInputElement>) => setEmail(ev.target.value)
+	const handleData = <T,>(ev: T) => handleInputs(ev, setFormData, setErrs)
 
-	// ACTUALIZAR NOMBRE DE FORMULARIO
-	const updateFormURL = (ev: ChangeEvent<HTMLInputElement>) => setFormURL(ev.target.value)
+	// VALIDAR URL
+	const validateLink = () => validateFclt(props, formData, setErrs, errs)
 
-	const changeSendMethods = (key: 'whatsapp' | 'email') => (ev: ChangeEvent<HTMLInputElement>) => {
-		// ACTUALIZAR MÉTODOS DE ENVÍO
-		// CHECKED
-		const { checked } = ev.target
+	// TEMA
+	const theme = useTheme()
 
-		// REMOVER
-		const methods = [...(props.connectionMethods?.methods || [])].filter(
-			(value: 'whatsapp' | 'email') => {
-				if (!checked) return value !== key
-				else return value
-			}
-		)
-
-		// AGREGAR
-		if (checked) {
-			// WHATSAPP
-			if (key === 'whatsapp') {
-				if (whatsappNumber && whatsappNumber?.toString().length >= 3) {
-					setErrs((prevErrs: [boolean, boolean, boolean]) => [false, false, prevErrs[2]])
-					methods.push(key)
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [true, false, prevErrs[2]])
-			}
-
-			// EMAIL
-			else if (key === 'email') {
-				if (email && verifyEmail(email)) {
-					setErrs((prevErrs: [boolean, boolean, boolean]) => [false, false, prevErrs[2]])
-					methods.push(key)
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [false, true, prevErrs[2]])
-			}
-		}
-
-		// ACTUALIZAR
-		const updatedMethods: ConnectionMethods = {
-			whatsapp: whatsappNumber ? +whatsappNumber : props.connectionMethods?.whatsapp || 0,
-			email: email || props.connectionMethods?.email || '',
-			methods,
-		}
-
-		props.updateConnectionMethods(updatedMethods)
-		props.onAnswersConnection(updatedMethods)
-		props.onSave(false)
-	}
-
-	// ACTUALIZAR PROPS
-	const whatsapp = props.connectionMethods?.whatsapp
-	const cEmail = props.connectionMethods?.email
-	useEffect(() => {
-		setEmail(cEmail)
-		setWhatsappNumber(whatsapp?.toString())
-	}, [whatsapp, cEmail])
-
-	// CERRAR
-	const handlePublishOptionsClose = () => {
-		// ACTUALIZAR URL
-		if (url !== formURL) {
-			validateURL(formURL).then((validURL: boolean) => {
-				if (validURL) {
-					// CERRAR
-					props.onClose()
-
-					// BORRAR URL ANTERIOR
-					deleteURL(url).then(() => {
-						setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], false])
-						props.onChangeURL(formURL)
-					})
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], true])
-			})
-		}
-
-		// CERRAR
-		else {
-			setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], false])
-			props.onClose()
-		}
-	}
-
-	// SHORT
-	const fclt = `fclt.cc/${formURL}`
+	// ACTUALIZAR INPUTS
+	const changeSendMethodsEv =
+		(key: 'whatsapp' | 'email') => (ev: React.ChangeEvent<HTMLInputElement>) =>
+			handleChecks(key, ev, setErrs, setFormData)
 
 	return (
-		<Menu
-			keepMounted
-			id='settings-menu'
-			open={props.open}
-			TransitionComponent={Fade}
-			anchorEl={props.publishOptions}
-			onClose={handlePublishOptionsClose}>
-			<MenuItem onKeyDown={(e) => e.stopPropagation()}>
+		<div className={Styles.container}>
+			<div className={Styles.content}>
 				<TextField
 					fullWidth
 					type='text'
+					name='link'
 					color='primary'
-					value={formURL}
 					error={errs[2]}
-					onChange={updateFormURL}
+					value={formData.link}
+					onChange={handleData}
 					label={$`URL del formulario`}
 					helperText={errs[2] ? $`Esta url ya está en uso.` : undefined}
 					InputProps={{
@@ -173,84 +90,107 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 						),
 					}}
 				/>
-			</MenuItem>
-			<MenuItem onKeyDown={(e) => e.stopPropagation()}>
-				<Link />
-				<a target='_blank' rel='noopener noreferrer' href={`https://${fclt}`} title={fclt}>
-					{fclt}
-				</a>
-			</MenuItem>
-			<MenuItem key={`checkLabel_0`} onKeyDown={(e) => e.stopPropagation()}>
-				<FormControlLabel
-					control={
-						<Checkbox
-							color='primary'
-							onChange={changeSendMethods('whatsapp')}
-							style={{ color: '#075e54' }}
-							checked={
-								props.connectionMethods?.methods
-									? props.connectionMethods.methods.includes('whatsapp')
-									: false
-							}
-						/>
-					}
-					label={
-						<div style={{ color: '#075e54' }}>
-							{optionIcons[0]} {$`Conectado a WhatsApp`}
-						</div>
-					}
-				/>
-				<PhoneField
-					error={errs[0]}
-					variant='outlined'
-					placeholder='+50235678555'
-					label={$`Número de WhatsApp`}
-					onChange={handlePhone}
-					value={whatsappNumber?.toString() || ''}
-				/>
-			</MenuItem>
-			<MenuItem key={`checkLabel_1`} onKeyDown={(e) => e.stopPropagation()}>
-				<FormControlLabel
-					control={
-						<Checkbox
-							color='primary'
-							onChange={changeSendMethods('email')}
-							style={{ color: 'var(--blue)' }}
-							checked={
-								props.connectionMethods?.methods
-									? props.connectionMethods.methods.includes('email')
-									: false
-							}
-						/>
-					}
-					label={
-						<div style={{ color: 'var(--blue)' }}>
-							{optionIcons[1]} {$`Conectado a Email`}
-						</div>
-					}
-				/>
-				<TextField
+				<div className={Styles.link}>
+					<Link color='primary' />
+					<a
+						title={fclt}
+						target='_blank'
+						href={`https://${fclt}`}
+						rel='noopener noreferrer'
+						style={{ color: theme.palette.primary.main }}>
+						{fclt}
+					</a>
+				</div>
+				<div>
+					<FormControlLabel
+						className={Styles.check}
+						control={
+							<Checkbox
+								color='primary'
+								style={{ color: '#075E54' }}
+								onChange={changeSendMethodsEv('whatsapp')}
+								checked={formData.methods?.includes('whatsapp') ?? false}
+							/>
+						}
+						label={
+							<div style={{ color: '#075E54' }} className={Styles.label}>
+								{optionIcons[0]} {$`Conectado a WhatsApp`}
+							</div>
+						}
+					/>
+					<PhoneField
+						name='whatsapp'
+						error={errs[0]}
+						variant='outlined'
+						onChange={handleData}
+						placeholder='+50235678555'
+						label={$`Número de WhatsApp`}
+						value={formData.whatsapp ?? ''}
+					/>
+				</div>
+				<div>
+					<FormControlLabel
+						className={Styles.check}
+						control={
+							<Checkbox
+								color='primary'
+								onChange={changeSendMethodsEv('email')}
+								checked={formData.methods?.includes('email') ?? false}
+							/>
+						}
+						label={
+							<div className={Styles.label}>
+								{optionIcons[1]} {$`Conectado a Email`}
+							</div>
+						}
+					/>
+					<TextField
+						fullWidth
+						name='email'
+						type='email'
+						color='primary'
+						error={errs[1]}
+						variant='outlined'
+						onChange={handleData}
+						label={$`Correo electrónico`}
+						placeholder='name@domain.com'
+						value={formData.email ?? ''}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position='start'>
+									<Email />
+								</InputAdornment>
+							),
+						}}
+					/>
+				</div>
+			</div>
+			<div className={Styles.actions}>
+				<Button fullWidth onClick={window.hideAlert}>{$`Cancelar`}</Button>
+				<ColorButton
 					fullWidth
-					type='email'
-					color='primary'
-					error={errs[1]}
-					variant='outlined'
-					onChange={handleInput}
-					label={$`Correo electrónico`}
-					placeholder='name@domain.com'
-					helperText={errs[1] ? $`Correo electrónico no valido` : undefined}
-					value={email || ''}
-					InputProps={{
-						startAdornment: (
-							<InputAdornment position='start'>
-								<Email />
-							</InputAdornment>
-						),
-					}}
-				/>
-			</MenuItem>{' '}
-		</Menu>
+					variant='contained'
+					onClick={validateLink}
+					startIcon={<SaveTwoTone />}
+					$style={{
+						width: 130,
+						background: theme.palette.primary.main,
+						color: '#fff',
+					}}>{$`Guardar`}</ColorButton>
+			</div>
+		</div>
 	)
 }
 
-export default SettingsMenu
+// MOSTRAR MENU
+const showSettingsMenu = (props: FormTopbarProps, connectionMethods?: ConnectionMethods): void => {
+	window.Alert({
+		title: 'Ajustes globales',
+		body: 'Configura el tu link dinamico (fclt) y las opciones de envio de respuestas para tu formulario.',
+		type: 'confirm',
+		hideActions: true,
+		customElements: <SettingsMenu {...props} connectionMethods={connectionMethods} />,
+	})
+}
+
+export default showSettingsMenu

@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, MouseEvent, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 // NEXT
 import Image from 'next/image'
@@ -20,7 +20,10 @@ import AccountMenu from './components/accountMenu'
 // CONTEXTOS
 import UserContext from 'context/user'
 
-const AccountButton: React.FC = () => {
+interface AccountButtonProps {
+	disablePortal?: boolean
+}
+const AccountButton: React.FC<AccountButtonProps> = ({ disablePortal }) => {
 	// USUARIO
 	const userCtx = useContext(UserContext)
 
@@ -32,7 +35,8 @@ const AccountButton: React.FC = () => {
 	const closeAccountMenu = () => setAccountMenu(null)
 
 	// ABRIR MENU
-	const openAccountMenuEv = (ev: MouseEvent<HTMLButtonElement>) => setAccountMenu(ev.currentTarget)
+	const openAccountMenuEv = (ev: React.MouseEvent<HTMLButtonElement>) =>
+		setAccountMenu(ev.currentTarget)
 
 	return (
 		<>
@@ -58,9 +62,18 @@ const AccountButton: React.FC = () => {
 			</Button>
 
 			{/* MENU DE CUENTA */}
-			<AccountMenu onClose={closeAccountMenu} open={openAccountMenu} anchorEl={accountMenu} />
+			<AccountMenu
+				disablePortal={disablePortal ?? true}
+				onClose={closeAccountMenu}
+				open={openAccountMenu}
+				anchorEl={accountMenu}
+			/>
 		</>
 	)
+}
+
+AccountButton.defaultProps = {
+	disablePortal: true,
 }
 
 export default AccountButton

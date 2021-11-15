@@ -372,17 +372,30 @@ export const generateTheme = (defColors: string[]): Theme =>
 /**
  * Obtener codigo QR
  * @description Obtener dataURL de un codigo QR
- * @param url
+ * @param content
  * @returns
  */
-export const getQRCode: (url: string) => Promise<string> = (url: string) =>
+export const getQRCode: (url: string) => Promise<string> = (content: string) =>
 	new Promise((resolve, reject) => {
-		import('qrcode').then((qrCode) => {
-			const qr = qrCode.default
-			qr.toDataURL(url, (err, url: string) => {
-				if (err) reject(err)
-				else resolve(url)
-			})
+		import('qrcode-with-logos').then(async (qrCode) => {
+			const QrCodeWithLogo = qrCode.default
+
+			try {
+				const qr = await new QrCodeWithLogo({
+					content,
+					width: 500,
+					logo: {
+						src: `http://${window.location.host}/images/icon_flat.png`,
+						logoSize: 0.15,
+						borderSize: 0.05,
+					},
+				}).getCanvas()
+
+				resolve(qr.toDataURL())
+			} catch (e) {
+				reject(e)
+				return ''
+			}
 		})
 	})
 

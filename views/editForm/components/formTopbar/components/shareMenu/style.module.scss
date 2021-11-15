@@ -1,0 +1,35 @@
+.link {
+	display: block;
+	margin-top: 10px;
+	width: 100%;
+	overflow: scroll;
+}
+
+.info {
+	margin-top: 10px;
+}
+
+.actions {
+	margin: var(--margin) 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: var(--margin);
+	align-items: center;
+
+	& > *:first-child::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.05);
+		border-radius: var(--radius);
+	}
+
+	.btn {
+		display: grid;
+		grid-template-rows: auto auto;
+		row-gap: var(--margin);
+	}
+}

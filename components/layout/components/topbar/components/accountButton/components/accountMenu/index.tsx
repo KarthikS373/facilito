@@ -25,11 +25,12 @@ import PopperMenuList from 'components/popperMenu'
 // PROPS
 interface AccountMenuProps {
 	anchorEl: HTMLElement | null
+	disablePortal: boolean
 	onClose: EmptyFunction
 	open: boolean
 }
 
-const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) => {
+const AccountMenu: React.FC<AccountMenuProps> = ({ disablePortal, anchorEl, onClose, open }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -47,10 +48,10 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ anchorEl, onClose, open }) =>
 
 	return (
 		<PopperMenuList
-			disablePortal
-			anchorEl={anchorEl}
-			onClose={onClose}
 			open={open}
+			onClose={onClose}
+			anchorEl={anchorEl}
+			disablePortal={disablePortal}
 			placement='bottom-end'>
 			<MenuItem onClick={logout}>
 				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
