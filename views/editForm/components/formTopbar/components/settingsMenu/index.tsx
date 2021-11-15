@@ -183,13 +183,13 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 }
 
 // MOSTRAR MENU
-const showSettingsMenu = (props: FormTopbarProps, connectionMethods?: ConnectionMethods): void => {
+const showSettingsMenu = (props: FormTopbarProps): void => {
 	window.Alert({
 		title: 'Ajustes globales',
 		body: 'Configura el tu link dinamico (fclt) y las opciones de envio de respuestas para tu formulario.',
 		type: 'confirm',
 		hideActions: true,
-		customElements: <SettingsMenu {...props} connectionMethods={connectionMethods} />,
+		customElements: <SettingsMenu {...props} />,
 	})
 }
 

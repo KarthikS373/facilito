@@ -3,6 +3,9 @@ import React, { useContext, useState } from 'react'
 
 // ICONOS
 import RoomPreferencesTwoToneIcon from '@mui/icons-material/RoomPreferencesTwoTone'
+import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone'
+import PublicOffTwoTone from '@mui/icons-material/PublicOffTwoTone'
+import PublicTwoToneIcon from '@mui/icons-material/PublicTwoTone'
 import ShareTwoTone from '@mui/icons-material/ShareTwoTone'
 import SettingsIcon from '@mui/icons-material/Settings'
 import ReceiptIcon from '@mui/icons-material/Receipt'
@@ -31,6 +34,7 @@ import BusinessContext from 'context/business'
 
 // ESTILOS
 import Styles from './style.module.scss'
+import publishFormEvent from './components/publishForm'
 
 const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// BUSINESS
@@ -39,6 +43,9 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// MENU DE OPCIONES
 	const [settingsMenu, setSettingsMenu] = useState<HTMLElement | null>(null)
 	const openSettingsMenu = Boolean(settingsMenu)
+
+	// PUBLICAR
+	const [published, setPublished] = useState<boolean>(props.public)
 
 	// CERRAR MENU
 	const onClose = () => setSettingsMenu(null)
@@ -56,7 +63,11 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	const openShareMenu = () => showShareMenu(props.formQR, props.id, props.url)
 
 	// MOSTRAR MENU DE OPCIONES
-	const openFormSettingsMenu = () => showSettingsMenu(props, props.answersConnection)
+	const openFormSettingsMenu = () => showSettingsMenu(props)
+
+	// MOSTRAR MENU DE PUBLICACION
+	const showPublishMenu = () =>
+		publishFormEvent($, props, published, setPublished, company.business)
 
 	// ABRIR MENU DE CHECKOUT
 	const openCheckoutMenu = () =>
@@ -75,6 +86,14 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 				anchorEl={settingsMenu}
 				open={openSettingsMenu}
 				placement='bottom-end'>
+				<MenuList onClick={showPublishMenu} className={Styles.menuItem}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={published ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
+						{published ? $`Ocultar` : $`Publicar`}
+					</Button>
+				</MenuList>
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>
 					<Button fullWidth variant='outlined' startIcon={<ShareTwoTone />}>{$`Compartir`}</Button>
 				</MenuList>
@@ -83,6 +102,12 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						fullWidth
 						variant='outlined'
 						startIcon={<RoomPreferencesTwoToneIcon />}>{$`Preferencias`}</Button>
+				</MenuList>
+				<MenuList onClick={props.onCustomize} className={Styles.menuItem}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<PaletteTwoToneIcon />}>{$`Personalizar`}</Button>
 				</MenuList>
 			</PopperMenuList>
 			<div className={Styles.container}>
