@@ -5,7 +5,6 @@ import React, { useContext, useState } from 'react'
 import Styles from '../../../../style.module.scss'
 
 // MATERIAL
-import { useTheme } from '@mui/material/styles'
 import Button from '@mui/material/Button'
 import Input from '@mui/material/Input'
 
@@ -18,6 +17,8 @@ import Add from '@mui/icons-material/Add'
 // TYPES
 import { CheckboxProps } from '@mui/material/Checkbox'
 import { RadioProps } from '@mui/material/Radio'
+
+// HOOK
 import FormContext from 'views/editForm/components/viewer/context'
 import useStrings from 'hooks/lang'
 
@@ -45,9 +46,6 @@ const cleanEmptys = (optionsList: EditableOptionProps[]) => [...optionsList].fil
 const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOptionsProps) => {
 	// STRINGS
 	const { $ } = useStrings()
-
-	// TEMA
-	const theme = useTheme()
 
 	// FORM PROPS
 	const props = useContext(FormContext)

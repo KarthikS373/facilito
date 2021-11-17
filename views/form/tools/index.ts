@@ -302,7 +302,7 @@ export const getWhatsappAnswers = (
 	// QUERY STRING
 	const queryString = new URLSearchParams({
 		text: stringAns,
-		phone: phone?.toString() || '',
+		phone: phone?.toString().replace('+', '') ?? '',
 	}).toString() as string
 
 	// RETURN
@@ -636,7 +636,7 @@ export const sendForm = async (
 							formData.title,
 							formData.components,
 							$,
-							formData.answersConnection.whatsapp
+							+formData.answersConnection.whatsapp
 						)
 						openNewWindow(`https://api.whatsapp.com/send?${whatsappText}`)
 						successAlert()
