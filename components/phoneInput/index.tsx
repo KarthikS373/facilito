@@ -47,15 +47,9 @@ const FlagPhoneInput: React.FC<FlagPhoneInputProps> = (props: FlagPhoneInputProp
 			defaultCountry={country}
 			onChange={props.onChange}
 			numberInputProps={tmpProps}
+			className={Styles.container}
 			placeholder={props.placeholder}
 			inputComponent={CustomPhoneNumber}
-			className={`${Styles.container} ${
-				props.variant === 'outlined'
-					? Styles.outlined
-					: props.variant === 'standard'
-					? Styles.standard
-					: Styles.standard
-			}`}
 		/>
 	)
 }

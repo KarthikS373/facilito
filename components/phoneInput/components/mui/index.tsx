@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react'
 
 // MATERIAL
 import TextField, { TextFieldProps } from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
 
 const MuiPhoneInput: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
 	props,
@@ -12,7 +13,11 @@ const MuiPhoneInput: React.ForwardRefRenderFunction<HTMLInputElement, TextFieldP
 		<TextField
 			{...props}
 			InputProps={{
-				startAdornment: <></>,
+				startAdornment: (
+					<InputAdornment position='start'>
+						<div style={{ width: 38 }} />
+					</InputAdornment>
+				),
 			}}
 			inputRef={ref}
 			fullWidth

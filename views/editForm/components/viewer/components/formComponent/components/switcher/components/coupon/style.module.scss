@@ -1,0 +1,95 @@
+.label {
+	background-color: #f0f0f0;
+	width: 100%;
+	padding: 0 20px;
+	border-radius: 10px 10px 0px 0px;
+	min-height: 50px;
+
+	&:hover::before {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+	}
+
+	input {
+		font-family: 'Orkney';
+	}
+}
+
+.labelPreview {
+	margin-top: -5px;
+	background-color: #fff;
+	padding: 0;
+	left: 0px;
+	width: calc(100% - 40px);
+	min-height: 35px;
+	font-weight: normal;
+	color: #000;
+}
+
+.helper {
+	background-color: #fff;
+	font-size: 0.9em;
+	height: 40px;
+	margin-top: -8px;
+	padding: 10px 20px;
+	border: none;
+	color: #555;
+}
+
+.sliderContainer {
+	position: relative;
+	left: 20px;
+	width: calc(100% - 40px);
+	overflow-x: scroll;
+	align-self: flex-start;
+
+	.slider {
+		display: flex;
+
+		.product {
+			position: relative;
+			width: 150px;
+			height: 150px;
+			background: #eee;
+			border-radius: 10px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			cursor: pointer;
+			overflow: hidden;
+
+			.productClose {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+
+			& > img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			& > svg {
+				height: 50px;
+				width: 50px;
+				opacity: 0.7;
+			}
+		}
+	}
+}
+
+.requestGeo {
+	margin-top: 10px;
+}
+
+.showCoupon {
+	align-self: flex-start;
+	margin-bottom: -20px;
+	margin-left: 20px;
+}
+
+.requestGeoPreview {
+	margin-bottom: 10px;
+	margin-right: 10px;
+}

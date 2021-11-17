@@ -172,3 +172,15 @@ interface FcltRequest {
 		formID: string
 	}
 }
+
+interface FormComponentItemProps {
+	icon: JSX.Element
+	text: string
+	ref?: unknown
+}
+
+interface FormInputProps extends FormContainerProps {
+	onAddValue?: (props: keyof BlockComponent) => (values: string[]) => unknown
+	onWrite?: (props: keyof BlockComponent) => (ev: React.ChangeEvent) => unknown
+	preview?: boolean
+}

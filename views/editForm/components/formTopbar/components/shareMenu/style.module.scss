@@ -29,7 +29,7 @@
 
 	.btn {
 		display: grid;
-		grid-template-rows: auto auto;
+		grid-template-rows: auto auto auto;
 		row-gap: var(--margin);
 	}
 }

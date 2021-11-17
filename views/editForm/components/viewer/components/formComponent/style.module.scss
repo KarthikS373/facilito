@@ -1,0 +1,118 @@
+.container {
+	padding-bottom: 25px;
+
+	.content {
+		position: relative;
+		box-shadow: 4px 4px 20px #0000001a;
+		border-radius: 15px;
+		background-color: #fff;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px 20px 0 20px;
+		overflow: hidden;
+
+		& > svg {
+			width: 35px;
+			height: 35px;
+			color: #000;
+			opacity: 0.25;
+			transform: rotate(90deg) !important;
+			margin-bottom: 7px;
+			transition: opacity 0.3s ease;
+		}
+
+		.componentIcon {
+			position: absolute;
+			top: 15px;
+			right: 40px;
+		}
+
+	.active {
+		padding-left: 30px;
+
+		& > svg {
+			opacity: 0.25;
+		}
+
+		.activeBar {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 7px;
+			height: 100%;
+		}
+	}
+
+	.inactive {
+		padding: 15px 20px;
+		& > svg {
+			opacity: 0;
+		}
+
+		&:hover > svg:first-child {
+			opacity: 0.25;
+		}
+	}
+}
+
+// ANIMACIÓN DE COPIAR
+@keyframes copyFrames {
+	0% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(40px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	75% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.copyAnim {
+	animation: copyFrames 0.5s linear 1;
+}
+
+// ANIMACIÓN DE BORRAR
+@keyframes deleteFrames {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(-20px);
+		opacity: 0;
+	}
+}
+
+.deleteAnim {
+	animation: deleteFrames 0.5s var(--transition) 1;
+}
+
+@media screen and (max-width: 850px) {
+	.container {
+		.content {
+			.daysRange {
+				flex-direction: column;
+
+				fieldset {
+					width: 100%;
+				}
+			}
+
+			.gridInputs {
+				width: 100%;
+				margin-top: 20px;
+			}
+		}
+	}
+}

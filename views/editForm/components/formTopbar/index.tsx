@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 
 // ICONOS
 import RoomPreferencesTwoToneIcon from '@mui/icons-material/RoomPreferencesTwoTone'
+import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone'
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone'
 import PublicOffTwoTone from '@mui/icons-material/PublicOffTwoTone'
 import PublicTwoToneIcon from '@mui/icons-material/PublicTwoTone'
@@ -11,7 +12,7 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 
 // MATERIAL
-import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
 import TextField from '@mui/material/TextField'
 import MenuList from '@mui/material/MenuList'
 import Button from '@mui/material/Button'
@@ -20,6 +21,7 @@ import Button from '@mui/material/Button'
 import AccountButton from 'components/layout/components/topbar/components/accountButton'
 import { FormTopbarProps } from './components/settingsMenu/tools'
 import showSettingsMenu from './components/settingsMenu'
+import publishFormEvent from './components/publishForm'
 import showCheckoutAlert from './components/checkout'
 import SaveOnCloud from './components/saveOnCloud'
 import PopperMenuList from 'components/popperMenu'
@@ -34,7 +36,6 @@ import BusinessContext from 'context/business'
 
 // ESTILOS
 import Styles from './style.module.scss'
-import publishFormEvent from './components/publishForm'
 
 const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// BUSINESS
@@ -82,6 +83,18 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 				anchorEl={settingsMenu}
 				open={openSettingsMenu}
 				placement='bottom-end'>
+				<MenuList onClick={props.onCustomize} className={Styles.menuItem}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<PaletteTwoToneIcon />}>{$`Personalizar`}</Button>
+				</MenuList>
+				<MenuList onClick={openFormSettingsMenu} className={Styles.menuItem}>
+					<Button
+						fullWidth
+						variant='outlined'
+						startIcon={<RoomPreferencesTwoToneIcon />}>{$`Preferencias`}</Button>
+				</MenuList>
 				<MenuList onClick={showPublishMenu} className={Styles.menuItem}>
 					<Button
 						fullWidth
@@ -92,18 +105,6 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 				</MenuList>
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>
 					<Button fullWidth variant='outlined' startIcon={<ShareTwoTone />}>{$`Compartir`}</Button>
-				</MenuList>
-				<MenuList onClick={openFormSettingsMenu} className={Styles.menuItem}>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<RoomPreferencesTwoToneIcon />}>{$`Preferencias`}</Button>
-				</MenuList>
-				<MenuList onClick={props.onCustomize} className={Styles.menuItem}>
-					<Button
-						fullWidth
-						variant='outlined'
-						startIcon={<PaletteTwoToneIcon />}>{$`Personalizar`}</Button>
 				</MenuList>
 			</PopperMenuList>
 			<div className={Styles.container}>
@@ -117,6 +118,13 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 					autoComplete='off'
 					onChange={sendTitle}
 					className={Styles.titleInp}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position='start'>
+								<BorderColorTwoToneIcon />
+							</InputAdornment>
+						),
+					}}
 					defaultValue={props.defValue}
 					placeholder={$`Titulo del formulario`}
 				/>
@@ -130,9 +138,9 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 					{/* GUARDAR */}
 					<SaveOnCloud onSave={props.onSave} />
 
-					<IconButton onClick={openMenu}>
-						<SettingsIcon />
-					</IconButton>
+					<Button variant='outlined' onClick={openMenu} startIcon={<SettingsIcon />}>
+						{$`Configuración`}
+					</Button>
 
 					{/* CUENTA */}
 					<AccountButton disablePortal={false} />

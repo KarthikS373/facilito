@@ -4,9 +4,13 @@ import React, { useContext } from 'react'
 // IMAGENES
 import Image from 'next/image'
 
-// MATERIAl
-import ColorButton from 'components/button'
+// MATERIAls
 import Button from '@mui/material/Button'
+
+// ICONOS
+import DownloadIcon from '@mui/icons-material/DownloadTwoTone'
+import LinkIcon from '@mui/icons-material/LinkTwoTone'
+import Code from '@mui/icons-material/CodeTwoTone'
 
 // HOOKS
 import useStrings from 'hooks/lang'
@@ -46,6 +50,10 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 			.writeText(`<iframe title='facilito_form' src='${`https://${fclt}`}'/>`)
 			.then(() => window.Snack('Código copiado'))
 
+	// COPIAR LINK
+	const copyLink = () =>
+		navigator.clipboard.writeText(`https://${fclt}`).then(() => window.Snack('Link copiado'))
+
 	// TEMA
 	const theme = useTheme()
 
@@ -80,11 +88,21 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 			<div className={Styles.actions}>
 				<Image height={192} width={192} alt='qr' src={props.formQR} />
 				<div className={Styles.btn}>
-					<Button fullWidth variant='outlined' onClick={copyIframe}>{$`Insertar codigo`}</Button>
-					<ColorButton
+					<Button
+						startIcon={<LinkIcon />}
 						fullWidth
-						$style={{ background: theme.palette.primary.main, color: '#fff' }}
-						onClick={downloadQREmb}>{$`Descargar QR`}</ColorButton>
+						variant='outlined'
+						onClick={copyLink}>{$`Copiar link`}</Button>
+					<Button
+						startIcon={<Code />}
+						fullWidth
+						variant='outlined'
+						onClick={copyIframe}>{$`Insertar codigo`}</Button>
+					<Button
+						fullWidth
+						startIcon={<DownloadIcon />}
+						variant='outlined'
+						onClick={downloadQREmb}>{$`Descargar QR`}</Button>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,184 @@
 {
+	"hasta_hhmm": {
+		"en": "",
+		"es": "$"
+	},
+	"desde_hhmm": {
+		"en": "",
+		"es": "$"
+	},
+	"ocupaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_una_cantidad_de_ocupaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"duracion_horas": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_las_horas_disponibles": {
+		"en": "",
+		"es": "$"
+	},
+	"habilitar_intervalos": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_los_dias_de_la_semana_disponibles": {
+		"en": "",
+		"es": "$"
+	},
+	"duplicar": {
+		"en": "",
+		"es": "$"
+	},
+	"jueves": {
+		"en": "",
+		"es": "$"
+	},
+	"viernes": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_esta_seccion": {
+		"en": "",
+		"es": "$"
+	},
+	"sabado": {
+		"en": "",
+		"es": "$"
+	},
+	"miercoles": {
+		"en": "",
+		"es": "$"
+	},
+	"martes": {
+		"en": "",
+		"es": "$"
+	},
+	"lunes": {
+		"en": "",
+		"es": "$"
+	},
+	"domingo": {
+		"en": "",
+		"es": "$"
+	},
+	"todos": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_tu_pregunta_aqui_respuesta_con_caracteres_ilimitados": {
+		"en": "",
+		"es": "$"
+	},
+	"texto_de_la_opcion": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_texto_de_ayuda": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_o_pregunta_para_las_opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"preguntar_datos_personales": {
+		"en": "",
+		"es": "$"
+	},
+	"mover": {
+		"en": "",
+		"es": "$"
+	},
+	"haz_click_en_personalizar": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_portada_a_tu_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_del_formulario": {
+		"en": "",
+		"es": "$"
+	},
+	"secciones": {
+		"en": "",
+		"es": "$"
+	},
+	"carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"multimedia": {
+		"en": "",
+		"es": "$"
+	},
+	"basicos": {
+		"en": "",
+		"es": "$"
+	},
+	"configuracion": {
+		"en": "",
+		"es": "$"
+	},
+	"cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"mapa": {
+		"en": "",
+		"es": "$"
+	},
+	"video": {
+		"en": "",
+		"es": "$"
+	},
+	"imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"enlace": {
+		"en": "",
+		"es": "$"
+	},
+	"fecha_y_hora": {
+		"en": "",
+		"es": "$"
+	},
+	"desplegable": {
+		"en": "",
+		"es": "$"
+	},
+	"casillas": {
+		"en": "",
+		"es": "$"
+	},
+	"varias_opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"parrafo": {
+		"en": "",
+		"es": "$"
+	},
+	"respuesta_corta": {
+		"en": "",
+		"es": "$"
+	},
+	"copiar_link": {
+		"en": "",
+		"es": "$"
+	},
 	"esto_remplazara_el_fondo_degradado": {
 		"en": "",
 		"es": "$"

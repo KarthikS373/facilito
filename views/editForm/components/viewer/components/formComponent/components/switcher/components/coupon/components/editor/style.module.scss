@@ -1,0 +1,140 @@
+.container {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.preview {
+		position: relative;
+		width: 300px;
+		transition: opacity 0.2s ease-in-out;
+
+		& > div {
+			p {
+				text-align: center;
+				width: 70%;
+			}
+		}
+
+		.settings {
+			display: flex;
+			position: absolute;
+			top: 0;
+		}
+
+		.chips {
+			margin-top: 15px;
+		}
+	}
+
+	.preview > div:first-child {
+		position: relative;
+		height: 150px;
+		width: 100%;
+		background: #eee;
+		border-radius: 10px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		input {
+			margin-bottom: 5px;
+			text-transform: uppercase;
+			margin-top: -35px;
+			border: none;
+			text-transform: uppercase;
+			font-size: 1.4em;
+			font-weight: bold;
+			text-align: center;
+			background: transparent;
+		}
+
+		span {
+			color: #fff;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			display: block;
+			padding: 10px 20px;
+			text-align: center;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			height: 50px;
+			width: 50px;
+			top: 50%;
+			right: -25px;
+			transform: translateY(-50%);
+			background: #fff;
+			border-radius: 100%;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			height: 50px;
+			width: 50px;
+			top: 50%;
+			left: -25px;
+			transform: translateY(-50%);
+			background: #fff;
+			border-radius: 100%;
+		}
+	}
+
+	.data {
+		position: relative;
+		width: 225px;
+
+		.count {
+			display: grid;
+			grid-template-columns: 1fr 90px;
+			column-gap: 15px;
+			margin-bottom: 20px;
+
+			.couponCount {
+				position: relative;
+				top: 6px;
+			}
+		}
+
+		.discountOptions {
+			width: 100%;
+		}
+
+		.multipleOptions {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			column-gap: 15px;
+		}
+
+		.productOptions {
+			position: relative;
+			margin-top: -17px;
+
+			& > div:first-child {
+				margin-bottom: 5px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		flex-direction: column;
+
+		.preview {
+			width: 100%;
+		}
+
+		.data {
+			width: 100%;
+			margin-top: 25px;
+		}
+	}
+}

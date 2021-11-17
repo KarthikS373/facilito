@@ -2,6 +2,9 @@
 import React, { useMemo, useRef, useState, useContext } from 'react'
 
 // COMPONENTES
+import ComponentsSideBar from './components/formComponents'
+import ComponentsViewer from './components/viewer'
+import CustomizeMenu from './components/customize'
 import FormTopbar from './components/formTopbar'
 import FormHeader from 'components/formHeader'
 
@@ -16,7 +19,8 @@ import { ThemeProvider } from '@mui/material/styles'
 
 // UTILS
 import { initialCustomFormState, formComponentsList, initialFormData } from './utils/initials'
-import { updateCheckoutOptions, updateUrl } from './tools/formProps'
+import { updateCheckoutOptions, updatePersonalInputs, updateUrl } from './tools/formProps'
+import { copyComponent, deleteComponent, saveComponentProps } from './tools/components'
 import { generateTheme, splitBackgroundColors } from 'utils/tools'
 import { extractFormComponent } from 'utils/forms'
 import { saveFormOnCloud } from './tools/cloud'
@@ -25,7 +29,9 @@ import { onDragEnd } from './tools'
 // CONTEXTO
 import BusinessContext from 'context/business'
 import UserContext from 'context/user'
-import CustomizeMenu from './components/customize'
+
+// ESTILO
+import Styles from './style.module.scss'
 
 // PROPIEDADES
 interface FormViewProps {
@@ -104,6 +110,10 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, banner }))
 	}
 
+	// COPIAR COMPONENTE
+	const copyComp = (index: number) =>
+		copyComponent(index, components, componentsList, setComponents)
+
 	// CAMBIAR OPCIONES DE CHECKOUT
 	const setCheckoutOptions = (checkoutOptions: FormCheckout) =>
 		updateCheckoutOptions(formData, checkoutOptions, setFormCheckout, business?.id)
@@ -120,6 +130,25 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 		setOpenCustomized(open)
 		if (!open) saveCurrentForm(false)
 	}
+
+	// CAMBIAR OPCIONES DE INPUTS CON DATOS PERSONALES
+	const setPersonalInputs = (personalOptions: FormPersonalData) =>
+		updatePersonalInputs(formData, personalOptions, components)
+
+	// CAMBIAR OBLIGATORIO
+	const changeRequiredComponent = (index: number, required: boolean) =>
+		(componentsList.current[index].required = required)
+
+	// EVENTO AL SUBIR ARCHIVO
+	const saveSrcComponent = (index: number, src: string) => (componentsList.current[index].src = src)
+
+	// BORRAR COMPONENTE
+	const deleteComp = (index: number) =>
+		deleteComponent(index, components, componentsList, setComponents)
+
+	// GUARDAR DATOS DE COMPONENTES
+	const saveCompProps = (index: number, component: keyof BlockComponent, val: FormInputValue) =>
+		saveComponentProps(index, component, val, components, componentsList)
 
 	// CARGAR DESDE CLOUD
 	useCloudForm(
@@ -138,47 +167,50 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 		<>
 			<div>
 				<ThemeProvider theme={theme}>
-					{/* TOPBAR */}
-					<FormTopbar
-						onTitle={setTitle}
-						url={formProps.url}
-						onChangeURL={setUrl}
-						onPublish={onPublish}
-						onSave={saveCurrentForm}
-						id={formData.current.id}
-						formQR={formData.current.qr}
-						checkoutOptions={formCheckout}
-						public={formData.current.public}
-						onAnswersConnection={saveSendMethods}
-						onCustomize={handleCustomizeMenu(true)}
-						onChangeCheckoutOptions={setCheckoutOptions}
-						answersConnection={formData.current.answersConnection}
-						defValue={formProps.title !== initialFormData.title ? formProps.title : undefined}
-					/>
+					<div className={Styles.container}>
+						{/* TOPBAR */}
+						<FormTopbar
+							onTitle={setTitle}
+							url={formProps.url}
+							onChangeURL={setUrl}
+							onPublish={onPublish}
+							onSave={saveCurrentForm}
+							id={formData.current.id}
+							formQR={formData.current.qr}
+							checkoutOptions={formCheckout}
+							public={formData.current.public}
+							onAnswersConnection={saveSendMethods}
+							onCustomize={handleCustomizeMenu(true)}
+							onChangeCheckoutOptions={setCheckoutOptions}
+							answersConnection={formData.current.answersConnection}
+							defValue={formProps.title !== initialFormData.title ? formProps.title : undefined}
+						/>
 
-					{/* MENU DE PERSONALIZACION */}
-					<CustomizeMenu
-						id={id}
-						open={openCustomized}
-						onBanner={changeBanner}
-						onColor={changeBackground}
-						defaultBanner={formProps.banner}
-						onBack={handleCustomizeMenu(false)}
-						defaultBackground={formProps.background}
-					/>
+						{/* MENU DE PERSONALIZACION */}
+						<CustomizeMenu
+							id={id}
+							open={openCustomized}
+							onBanner={changeBanner}
+							onColor={changeBackground}
+							defaultBanner={formProps.banner}
+							onBack={handleCustomizeMenu(false)}
+							defaultBackground={formProps.background}
+						/>
 
-					{/* LISTA DRAG A DROP */}
-					<DragDropContext onDragEnd={reOrderComponents}>
-						<div>
+						<DragDropContext onDragEnd={reOrderComponents}>
+							{/* COMPONENTES */}
+							<ComponentsSideBar />
+
 							{/* VIEWER DE COMPONENTES */}
 							<div
 								ref={viewerRef}
+								className={Styles.viewer}
 								style={{
 									background: formProps.background.startsWith('transparent linear-gradient')
 										? formProps.background
 										: `url(${formProps.background}) center center/cover no-repeat fixed`,
 								}}>
-								<div>
+								<div className={Styles.viewContent}>
 									{/* HEADER */}
 									<FormHeader
 										banner={formProps.banner}
@@ -186,10 +218,23 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 										formDescription={formProps.description}
 										onChangeDescription={saveDescription}
 									/>
+
+									{/* LISTA DE COMPONENTES */}
+									<ComponentsViewer
+										personalOptions={formData.current.includePersonalData}
+										onChangePersonalOptions={setPersonalInputs}
+										onRequired={changeRequiredComponent}
+										onFile={saveSrcComponent}
+										onChange={saveCompProps}
+										components={components}
+										onDelete={deleteComp}
+										onCopy={copyComp}
+										formId={id}
+									/>
 								</div>
 							</div>
-						</div>
-					</DragDropContext>
+						</DragDropContext>
+					</div>
 				</ThemeProvider>
 			</div>
 		</>

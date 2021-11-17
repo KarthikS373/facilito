@@ -6,6 +6,7 @@ import Styles from './style.module.scss'
 
 // NEXT
 import { useRouter } from 'next/router'
+import NextLink from 'next/link'
 import Image from 'next/image'
 
 // COMPONENTES
@@ -27,6 +28,7 @@ import getActiveRoute from './utils/routes'
 
 // HOC
 import useStrings from 'hooks/lang'
+import ROUTES from 'router/routes'
 
 // PROPS
 interface SideBarProps {
@@ -50,7 +52,9 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				}`}>
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
-						<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+						<NextLink href={ROUTES.forms} passHref>
+							<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+						</NextLink>
 					</div>
 					<IconButton color='inherit' aria-label='info'>
 						<InfoTwoTone />
