@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // COMPONENTES
 import Map from './components/map'

@@ -3,19 +3,19 @@
 import React, { useState, MouseEvent, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // NEXT
 import Image from 'next/image'
 
 // MATERIAL
+import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Autocomplete from '@mui/material/Autocomplete'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputLabel from '@mui/material/InputLabel'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Input from '@mui/material/Input'
 import Menu from '@mui/material/Menu'
 
@@ -27,8 +27,6 @@ import {
 	Draggable,
 	DroppableProvided,
 } from 'react-beautiful-dnd'
-// @ts-ignore
-import NaturalDragAnimation from 'natural-drag-animation-rbdnd'
 
 // ICONOS
 import Search from '@mui/icons-material/Search'
@@ -214,45 +212,36 @@ const ProductSlider: React.FC = () => {
 											index={key}
 											draggableId={`product_${props.id}_${key}`}
 											key={`product_${props.id}_${key}`}>
-											{(provided, snapshot) => (
-												<NaturalDragAnimation
-													style={provided.draggableProps.style}
-													snapshot={snapshot}>
-													{(style: React.CSSProperties) => (
-														<div
-															ref={provided.innerRef}
-															{...provided.draggableProps}
-															{...provided.dragHandleProps}
-															className={Styles.productItemDrag}
-															style={style}>
-															<span>
-																{currentProduct ? currentProduct.title : $`Agregar producto`}
-															</span>
-															<div
-																className={Styles.product}
-																onClick={currentProduct ? undefined : handleSearchProducts}>
-																{currentProduct && (
-																	<IconButton
-																		onClick={removeProduct(key)}
-																		className={Styles.productClose}>
-																		<Close />
-																	</IconButton>
-																)}
-																{productId ? (
-																	<Image
-																		unoptimized
-																		src={currentProduct?.picture[0] ?? ''}
-																		alt={currentProduct?.picture[0]}
-																		height={100}
-																		width={100}
-																	/>
-																) : (
-																	<Add />
-																)}
-															</div>
-														</div>
-													)}
-												</NaturalDragAnimation>
+											{(provided) => (
+												<div
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+													className={Styles.productItemDrag}>
+													<span>{currentProduct ? currentProduct.title : $`Agregar producto`}</span>
+													<div
+														className={Styles.product}
+														onClick={currentProduct ? undefined : handleSearchProducts}>
+														{currentProduct && (
+															<IconButton
+																onClick={removeProduct(key)}
+																className={Styles.productClose}>
+																<Close />
+															</IconButton>
+														)}
+														{productId ? (
+															<Image
+																unoptimized
+																src={currentProduct?.picture[0] ?? '/images/logo.png'}
+																alt={currentProduct?.picture[0]}
+																height={100}
+																width={100}
+															/>
+														) : (
+															<Add />
+														)}
+													</div>
+												</div>
 											)}
 										</Draggable>
 									)

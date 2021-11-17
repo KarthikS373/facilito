@@ -116,14 +116,14 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 					<div className={Styles.actions}>
 						{/* BOTÓN DE COPIAR */}
 						<Tooltip title={$`Duplicar`} placement='top' arrow>
-							<IconButton onClick={handleCopy}>
+							<IconButton size='small' onClick={handleCopy}>
 								<FilterNoneRounded />
 							</IconButton>
 						</Tooltip>
 
 						{/* BOTÓN DE BORRAR */}
 						<Tooltip title={$`Borrar`} placement='top' arrow>
-							<IconButton onClick={handleDelete}>
+							<IconButton size='small' onClick={handleDelete}>
 								<DeleteOutlineRounded />
 							</IconButton>
 						</Tooltip>

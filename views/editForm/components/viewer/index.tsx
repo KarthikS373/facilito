@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // REACT
-import React, { CSSProperties, useState } from 'react'
+import React, { useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // DND
 import { Droppable, Draggable, DroppableProvided } from 'react-beautiful-dnd'
-// @ts-ignore
-import NaturalDragAnimation from 'natural-drag-animation-rbdnd'
 
 // COMPONENTES
 import FormComponent from './components/formComponent'
@@ -63,32 +61,26 @@ const ComponentsViewer: React.FC<ComponentsViewerProps> = (props: ComponentsView
 								index={key}
 								draggableId={`component_${componentProps.id}`}
 								key={`component_${componentProps.id}`}>
-								{(provided, snapshot) => (
-									<NaturalDragAnimation style={provided.draggableProps.style} snapshot={snapshot}>
-										{(style: CSSProperties) => (
-											<div
-												ref={provided.innerRef}
-												{...provided.draggableProps}
-												{...provided.dragHandleProps}
-												className={Styles.itemDrag}
-												onClick={setActiveFromIndex(componentProps.id)}
-												style={style}>
-												<FormComponent
-													{...componentProps}
-													formId={props.formId}
-													id={componentProps.id}
-													onFile={uploadFile(key)}
-													onCopy={copyComponent(key)}
-													onChange={saveComponent(key)}
-													onDelete={deleteComponent(key)}
-													onRequired={changeRequired(key)}
-													personalOptions={props.personalOptions}
-													active={componentProps.id === activeComponent}
-													onChangePersonalOptions={props.onChangePersonalOptions}
-												/>
-											</div>
-										)}
-									</NaturalDragAnimation>
+								{(providedDrag) => (
+									<div
+										ref={providedDrag.innerRef}
+										{...providedDrag.draggableProps}
+										{...providedDrag.dragHandleProps}
+										onClick={setActiveFromIndex(componentProps.id)}>
+										<FormComponent
+											{...componentProps}
+											formId={props.formId}
+											id={componentProps.id}
+											onFile={uploadFile(key)}
+											onCopy={copyComponent(key)}
+											onChange={saveComponent(key)}
+											onDelete={deleteComponent(key)}
+											onRequired={changeRequired(key)}
+											personalOptions={props.personalOptions}
+											active={componentProps.id === activeComponent}
+											onChangePersonalOptions={props.onChangePersonalOptions}
+										/>
+									</div>
 								)}
 							</Draggable>
 						))}

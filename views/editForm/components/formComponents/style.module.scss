@@ -26,7 +26,6 @@
 	grid-row: 1/3;
 	padding: var(--margin);
 	z-index: 12;
-
 	transition: transform 0.2s var(--transition);
 
 	@include for-size(tablet-landscape) {
@@ -80,7 +79,6 @@
 
 		.item {
 			display: flex;
-			user-select: none;
 			align-items: center;
 			justify-content: flex-start;
 			background: #fff;

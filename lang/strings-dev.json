@@ -1,4 +1,68 @@
 {
+	"utiliza_el_siguiente_buscador_para_seleccionar_un_producto_y_agregarlo_a_tu_bloque_de_productos_solo_puedes_seleccionar_un_producto_a_la_vez": {
+		"en": "",
+		"es": "$"
+	},
+	"escribe_tu_enlace_aqui_ej_httpsexamplecom": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_del_enlace": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_enlace_a_la_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion_a_la_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"buscar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_estos_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"ocultar_mapa": {
+		"en": "",
+		"es": "$"
+	},
+	"enviar_ubicacion_del_cliente": {
+		"en": "",
+		"es": "$"
+	},
+	"ciudad": {
+		"en": "",
+		"es": "$"
+	},
+	"pais": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_enlace_al_video": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion_al_video": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_un_archivo_maximo_10mb_por_archivo": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_tu_pregunta_aqui_respuesta_con_maximo_de_60_caracteres": {
+		"en": "",
+		"es": "$"
+	},
 	"hasta_hhmm": {
 		"en": "",
 		"es": "$"

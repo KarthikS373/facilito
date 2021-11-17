@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
@@ -16,11 +16,6 @@ import MenuItem from '@mui/material/MenuItem'
 import Checkbox from '@mui/material/Checkbox'
 import Switch from '@mui/material/Switch'
 import Input from '@mui/material/Input'
-
-// MATERIAL UI PICKERS
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import DateFnsAdapter from '@mui/lab/AdapterDateFns'
-import esLocale from 'date-fns/locale/es'
 
 // COMPONENTES
 import TimeInput from './components/dateInput'
@@ -36,6 +31,11 @@ import getDaysStr, {
 	setAllDays,
 	sendTime,
 } from './tools'
+
+// MATERIAL UI PICKERS
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import DateFnsAdapter from '@mui/lab/AdapterDateFns'
+import esLocale from 'date-fns/locale/es'
 
 const DatePicker: React.FC = () => {
 	// FORM PROPS

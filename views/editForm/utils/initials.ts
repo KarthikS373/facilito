@@ -78,6 +78,13 @@ export const formComponentsList: FormContainerProps[] = [
 		id: Math.round(Math.random() * 100000),
 	},
 
+	// LOCALIZACIÓN
+	{
+		...defFormComponent,
+		name: 'geo',
+		id: Math.round(Math.random() * 100000),
+	},
+
 	// VINCULO
 	{
 		...defFormComponent,
@@ -114,13 +121,6 @@ export const formComponentsList: FormContainerProps[] = [
 	{
 		...defFormComponent,
 		name: 'products',
-		id: Math.round(Math.random() * 100000),
-	},
-
-	// LOCALIZACIÓN
-	{
-		...defFormComponent,
-		name: 'geo',
 		id: Math.round(Math.random() * 100000),
 	},
 

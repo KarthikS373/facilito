@@ -19,8 +19,6 @@ import ROUTES from 'router/routes'
 
 // DND
 import { Draggable, Droppable, DroppableProvided } from 'react-beautiful-dnd'
-// @ts-ignore
-import NaturalDragAnimation from 'natural-drag-animation-rbdnd'
 
 // UTILS
 import { getComponentsItems } from './utils'
@@ -59,44 +57,38 @@ const ComponentsSideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 					</IconButton>
 				</div>
 				<Droppable droppableId='components' isDropDisabled>
-					{(provided: DroppableProvided) => (
+					{(providedDrop: DroppableProvided) => (
 						<ul
-							className={Styles.componentList}
-							{...provided.droppableProps}
-							ref={provided.innerRef}>
+							ref={providedDrop.innerRef}
+							{...providedDrop.droppableProps}
+							className={Styles.componentList}>
 							{componentsItems.map((item: FormComponentItemProps, key: number) => (
 								<Draggable index={key} key={`cItem_${key}`} draggableId={`cItem_${key}`}>
-									{(provided, snapshot) => (
-										<NaturalDragAnimation style={provided.draggableProps.style} snapshot={snapshot}>
-											{(style: React.CSSProperties) => (
-												<>
-													{(key === 0 && <h3>{$`Básicos`}</h3>) ||
-														(key === 7 && <h3>{$`Secciones`}</h3>) ||
-														(key === 9 && <h3>{$`Multimedia`}</h3>) ||
-														(key === 11 && <h3>{$`Carrito`}</h3>)}
-													<div
-														ref={provided.innerRef}
-														{...provided.draggableProps}
-														{...provided.dragHandleProps}
-														className={Styles.itemDrag}
-														style={style}>
-														<div
-															className={Styles.item}
-															style={{
-																borderColor: theme.palette.primary.main,
-																color: theme.palette.primary.main,
-															}}>
-															{item.icon}
-															<p>{item.text}</p>
-														</div>
-													</div>
-												</>
-											)}
-										</NaturalDragAnimation>
+									{(providedDrag) => (
+										<>
+											{(key === 0 && <h3>{$`Básicos`}</h3>) ||
+												(key === 7 && <h3>{$`Secciones`}</h3>) ||
+												(key === 9 && <h3>{$`Multimedia`}</h3>) ||
+												(key === 11 && <h3>{$`Carrito`}</h3>)}
+											<div
+												ref={providedDrag.innerRef}
+												{...providedDrag.draggableProps}
+												{...providedDrag.dragHandleProps}
+												className={Styles.itemDrag}>
+												<div
+													className={Styles.item}
+													style={{
+														borderColor: theme.palette.primary.main,
+														color: theme.palette.primary.main,
+													}}>
+													{item.icon}
+													<p>{item.text}</p>
+												</div>
+											</div>
+										</>
 									)}
 								</Draggable>
 							))}
-							{provided.placeholder}
 						</ul>
 					)}
 				</Droppable>

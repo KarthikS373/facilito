@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useContext, useState } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'

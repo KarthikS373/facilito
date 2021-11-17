@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // NEXT
 import Image from 'next/image'

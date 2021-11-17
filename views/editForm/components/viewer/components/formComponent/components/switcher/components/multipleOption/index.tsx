@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
-import Styles from '../../../../FormComponent.module.scss'
+import Styles from '../../../../style.module.scss'
 
 // MATERIAL
 import { useTheme } from '@mui/material/styles'
@@ -150,9 +150,7 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 				))}
 			</div>
 			{!props.preview && (
-				<Button
-					style={{ background: theme.palette.info.main }}
-					onClick={addOption(optionsList.length - 1)}>
+				<Button onClick={addOption(optionsList.length - 1)}>
 					<Add /> {$`Agregar opción`}
 				</Button>
 			)}
