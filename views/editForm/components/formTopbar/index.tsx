@@ -37,11 +37,17 @@ import BusinessContext from 'context/business'
 // ESTILOS
 import Styles from './style.module.scss'
 
-const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
+const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// BUSINESS
 	const company = useContext(BusinessContext)
 
-	const [props, setProps] = useState<FormTopbarProps>(defProps)
+	// MÉTODOS DE CONEXIÓN
+	const [connectionMethods, setConnectionMethods] = useState<ConnectionMethods | undefined>(
+		props.answersConnection
+	)
+
+	// PUBLICAR
+	const [published, setPublished] = useState<boolean>(props.public)
 
 	// MENU DE OPCIONES
 	const [settingsMenu, setSettingsMenu] = useState<HTMLElement | null>(null)
@@ -63,10 +69,12 @@ const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 	const openShareMenu = () => showShareMenu(props.formQR, props.id, props.url)
 
 	// MOSTRAR MENU DE OPCIONES
-	const openFormSettingsMenu = () => showSettingsMenu(props)
+	const openFormSettingsMenu = () =>
+		showSettingsMenu(props, setConnectionMethods, connectionMethods)
 
 	// MOSTRAR MENU DE PUBLICACION
-	const showPublishMenu = () => publishFormEvent($, props, props.public, company.business)
+	const showPublishMenu = () =>
+		publishFormEvent($, props, props.public, setPublished, setConnectionMethods, company.business)
 
 	// ABRIR MENU DE CHECKOUT
 	const openCheckoutMenu = () =>
@@ -77,8 +85,10 @@ const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 			props.onChangeCheckoutOptions
 		)
 
+	// ACTUALIZAR ESTADO DE PUBLICACIÓN
 	useEffect(() => {
-		setProps(props)
+		setPublished(props.public)
+		setConnectionMethods(props.answersConnection)
 	}, [props])
 
 	return (
@@ -88,6 +98,8 @@ const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 				onClose={onClose}
 				anchorEl={settingsMenu}
 				open={openSettingsMenu}
+				style={{ zIndex: 10 }}
+				disablePortal={false}
 				placement='bottom-end'>
 				<MenuList onClick={props.onCustomize} className={Styles.menuItem}>
 					<Button
@@ -105,8 +117,8 @@ const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 					<Button
 						fullWidth
 						variant='outlined'
-						startIcon={props.public ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
-						{props.public ? $`Ocultar` : $`Publicar`}
+						startIcon={published ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
+						{published ? $`Ocultar` : $`Publicar`}
 					</Button>
 				</MenuList>
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>
@@ -149,7 +161,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 					</Button>
 
 					{/* CUENTA */}
-					<AccountButton disablePortal={false} />
+					<AccountButton />
 				</div>
 			</div>
 		</>

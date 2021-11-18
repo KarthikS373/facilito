@@ -24,6 +24,8 @@ const publishFormEvent = (
 	$: TemplateStrBuilder,
 	props: FormTopbarProps,
 	published: boolean,
+	setPublished: React.Dispatch<React.SetStateAction<boolean>>,
+	setConnectionMethods: React.Dispatch<React.SetStateAction<ConnectionMethods | undefined>>,
 	company: Business | null
 ): void => {
 	// GUARDAR
@@ -50,7 +52,10 @@ const publishFormEvent = (
 						body: 'Ahora tu formulario sera visible para todos, puedes compartirles el siguiente link:',
 						type: 'confirm',
 						confirmText: $`Ver ahora`,
-						onHide: () => props.onPublish(true),
+						onHide: () => {
+							props.onPublish(true)
+							setPublished(true)
+						},
 						onConfirm: () =>
 							window.open(`${window.location.origin}/f/${company?.url}/${props.url}`),
 						customElements: <PublicLink url={props.url} />,
@@ -63,7 +68,7 @@ const publishFormEvent = (
 				props.answersConnection?.whatsapp.toString().length === 0 ||
 				props.answersConnection?.email.length === 0
 			)
-				showSettingsMenu(props)
+				showSettingsMenu(props, setConnectionMethods)
 			else publishMethod()
 		}
 
@@ -75,6 +80,7 @@ const publishFormEvent = (
 				type: 'confirm',
 				onConfirm: () => {
 					props.onPublish(false)
+					setPublished(false)
 					unPublishForm(company?.id, props.id)
 				},
 			})

@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useContext, useRef } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 // IMAGE
 import Image from 'next/image'
@@ -38,21 +38,20 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 	const company = useContext(BusinessContext)
 
 	// IMAGENES
-	const [images, setImages] = useState<ImagesState>(getDefValues(props))
-
-	// OBTENER COLORES
-	const defColors = splitBackgroundColors(props.defaultBackground ?? '')
-
-	// COLORES
-	const colors: React.MutableRefObject<string[]> = useRef(defColors)
+	const [images, setImages] = useState<ImagesState>(
+		getDefValues(props.defaultBackground, props.defaultBanner)
+	)
+	const [colors, setDefColors] = useState<[string, string, string]>(
+		splitBackgroundColors(props.defaultBackground ?? '')
+	)
 
 	// CAMBIAR COLORES
 	const handleColors = (index: number) => (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeColors(index, ev, colors)
+		changeColors(index, ev, setDefColors)
 
 	// CAMBIAR INCLINACIÓN
 	const handleColorDegrees = (_event: unknown, newValue: number | number[]) =>
-		changeColorDegrees(newValue, colors)
+		changeColorDegrees(newValue, setDefColors)
 
 	// LEER ARCHIVO
 	const readFile = (prefix: string) => (ev: React.ChangeEvent) =>
@@ -60,6 +59,11 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 
 	// GUARDAR
 	const onClose = () => saveColors(colors, props.onColor, props.onBack)
+
+	useEffect(() => {
+		setImages(getDefValues(props.defaultBackground, props.defaultBanner))
+		setDefColors(splitBackgroundColors(props.defaultBackground ?? ''))
+	}, [props.defaultBackground, props.defaultBanner])
 
 	return (
 		<SideBar open={props.open} onClose={onClose}>
@@ -75,13 +79,13 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 							type='color'
 							onChange={handleColors(0)}
 							className={Styles.colorInp}
-							defaultValue={colors.current[0]}
+							value={colors[0]}
 						/>
 						<input
 							type='color'
 							className={Styles.colorInp}
 							onChange={handleColors(1)}
-							defaultValue={colors.current[1]}
+							value={colors[1]}
 						/>
 						<div>
 							<span>{$`Grado de inclinación`}</span>
@@ -92,7 +96,7 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 								valueLabelDisplay='auto'
 								onChange={handleColorDegrees}
 								aria-labelledby='degrees-slider'
-								defaultValue={+colors.current[2]}
+								value={+colors[2]}
 							/>
 						</div>
 					</div>

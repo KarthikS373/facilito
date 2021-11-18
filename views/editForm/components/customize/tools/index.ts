@@ -76,9 +76,9 @@ const saveFile = (
  * @param props
  * @returns
  */
-export const getDefValues = (props: CustomizeMenuProps): ImagesState => ({
-	banner: props.defaultBanner ?? '',
-	background: props.defaultBackground ?? '',
+export const getDefValues = (defaultBackground: string, defaultBanner: string): ImagesState => ({
+	banner: defaultBanner.toString() ?? '',
+	background: defaultBackground.toString() ?? '',
 })
 
 /**
@@ -92,13 +92,17 @@ export const getDefValues = (props: CustomizeMenuProps): ImagesState => ({
 export const changeColors = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	colors: React.MutableRefObject<string[]>
+	setDefColors: React.Dispatch<React.SetStateAction<[string, string, string]>>
 ): void => {
 	// VALOR
 	const value: string = ev.target.value
 
 	// ASIGNAR
-	colors.current[index] = value
+	setDefColors((colors) => {
+		const tmpColors = [...colors]
+		tmpColors[index] = value.toString()
+		return tmpColors as [string, string, string]
+	})
 }
 
 /**
@@ -110,10 +114,14 @@ export const changeColors = (
  */
 export const changeColorDegrees = (
 	newValue: number | number[],
-	colors: React.MutableRefObject<string[]>
+	setDefColors: React.Dispatch<React.SetStateAction<[string, string, string]>>
 ): void => {
 	// ASIGNAR
-	colors.current[2] = newValue.toString()
+	setDefColors((colors) => {
+		const tmpColors = [...colors]
+		tmpColors[2] = newValue.toString()
+		return tmpColors as [string, string, string]
+	})
 }
 
 /**
@@ -123,12 +131,12 @@ export const changeColorDegrees = (
  * @param onColor
  */
 export const saveColors = (
-	colors: React.MutableRefObject<string[]>,
+	colors: string[],
 	onColor: (back: string) => void,
 	onBack: EmptyFunction
 ): void => {
 	onColor(
-		`transparent linear-gradient(${colors.current[2]}deg, ${colors.current[0]} 0%, ${colors.current[1]} 100%) 0% 0% no-repeat padding-box`
+		`transparent linear-gradient(${colors[2]}deg, ${colors[0]} 0%, ${colors[1]} 100%) 0% 0% no-repeat padding-box`
 	)
 	onBack()
 }

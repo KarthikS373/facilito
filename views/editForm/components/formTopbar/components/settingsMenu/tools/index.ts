@@ -30,6 +30,7 @@ export interface SendData extends ConnectionMethods {
 
 // PROPS PARA MENU
 export interface SettingsMenuProps extends FormTopbarProps {
+	setConnectionMethods: React.Dispatch<React.SetStateAction<ConnectionMethods | undefined>>
 	connectionMethods?: ConnectionMethods
 }
 
@@ -104,6 +105,7 @@ export const validateFclt = (
 			if (change && formData.link) props.onChangeURL(formData.link)
 
 			// SALIR
+			props.setConnectionMethods(tmpData)
 			window.hideAlert()
 		}
 	}

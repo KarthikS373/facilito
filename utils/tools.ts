@@ -175,7 +175,7 @@ export const getDataURL = (
 export const splitBackgroundColors: (background: string) => [string, string, string] = (
 	background: string
 ) => {
-	if ((background || '').startsWith('transparent linear-gradient')) {
+	if ((background?.toString() ?? '').startsWith('transparent linear-gradient')) {
 		const firstColor: string = background.slice(36, 43)
 		const secondColor: string = background.slice(48, 55)
 		const degrees: string = background.slice(28, 31)
@@ -359,12 +359,12 @@ export const generateTheme = (defColors: string[]): Theme =>
 		},
 		palette: {
 			secondary: {
-				main: defColors[1],
+				main: `#${defColors[1]}`,
 			},
 			primary: {
-				main: defColors[0],
-				light: defColors[0],
-				dark: defColors[0],
+				main: `#${defColors[0]}`,
+				light: `#${defColors[0]}`,
+				dark: `#${defColors[0]}`,
 			},
 		},
 	})
