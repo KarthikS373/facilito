@@ -49,9 +49,9 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 
 	return (
 		<div className={Styles.container}>
-			{props.banner.length > 0 ? (
+			{props.banner.length ? (
 				<div className={Styles.banner}>
-					<Image unoptimized layout='fill' alt='Banner' src={props.banner} />
+					<Image unoptimized height={100} width={100} alt='Banner' src={props.banner} />
 				</div>
 			) : (
 				<div className={Styles.defBanner}>

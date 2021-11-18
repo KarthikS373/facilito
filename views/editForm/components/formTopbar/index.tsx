@@ -1,5 +1,5 @@
 // REACT
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 
 // ICONOS
 import RoomPreferencesTwoToneIcon from '@mui/icons-material/RoomPreferencesTwoTone'
@@ -37,9 +37,11 @@ import BusinessContext from 'context/business'
 // ESTILOS
 import Styles from './style.module.scss'
 
-const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
+const FormTopbar: React.FC<FormTopbarProps> = (defProps: FormTopbarProps) => {
 	// BUSINESS
 	const company = useContext(BusinessContext)
+
+	const [props, setProps] = useState<FormTopbarProps>(defProps)
 
 	// MENU DE OPCIONES
 	const [settingsMenu, setSettingsMenu] = useState<HTMLElement | null>(null)
@@ -74,6 +76,10 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 			company.business?.badge ?? '',
 			props.onChangeCheckoutOptions
 		)
+
+	useEffect(() => {
+		setProps(props)
+	}, [props])
 
 	return (
 		<>
