@@ -79,7 +79,10 @@ const Coupon: React.FC = () => {
 								key={`coupon_${props.id}_${key}`}
 								onClick={openCouponEv(coupon === null)}>
 								{coupon && (
-									<IconButton onClick={deleteCouponEv(key)} className={Styles.productClose}>
+									<IconButton
+										size='small'
+										onClick={deleteCouponEv(key)}
+										className={Styles.productClose}>
 										<Close />
 									</IconButton>
 								)}

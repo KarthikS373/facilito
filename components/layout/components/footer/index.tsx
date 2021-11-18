@@ -18,10 +18,7 @@ const Footer: React.FC<FooterProps> = ({ hideFooter }) => {
 		<footer
 			className={Styles.footer}
 			style={{
-				maxWidth: hideFooter ? '650px' : '100%',
-				borderRadius: hideFooter ? 'var(--radius) var(--radius) 0 0 ' : '0px',
-				background: hideFooter ? 'rgba(0,0,0,.4)' : '#547BAE',
-				backdropFilter: hideFooter ? 'blur(10px)' : 'none',
+				display: hideFooter ? 'none' : 'flex',
 			}}>
 			<strong>{$`Facilito©`}</strong>
 			<div>

@@ -1,4 +1,36 @@
 {
+	"mostrar_cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_tus_cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"en_tu_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"tipo_de_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"codigo_aqui": {
+		"en": "",
+		"es": "$"
+	},
+	"promocion": {
+		"en": "",
+		"es": "$"
+	},
+	"descuento": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_puedes_editar_tu_cupon_y_tambien_compartir_como_imagen": {
+		"en": "",
+		"es": "$"
+	},
 	"utiliza_el_siguiente_buscador_para_seleccionar_un_producto_y_agregarlo_a_tu_bloque_de_productos_solo_puedes_seleccionar_un_producto_a_la_vez": {
 		"en": "",
 		"es": "$"

@@ -10,7 +10,7 @@
 	}
 
 	input {
-		font-family: 'Orkney';
+		font-family: 'Montserrat';
 	}
 }
 
@@ -35,6 +35,15 @@
 	color: #555;
 }
 
+.requiredSpan {
+	position: absolute;
+	top: 58px;
+	left: 22px;
+	font-weight: bold;
+	font-size: 1em;
+	color: var(--lightblue);
+}
+
 .sliderContainer {
 	position: relative;
 	left: 20px;
@@ -57,11 +66,17 @@
 			flex-direction: column;
 			cursor: pointer;
 			overflow: hidden;
+			padding: 10px;
+			margin-right: var(--margin);
 
 			.productClose {
 				position: absolute;
 				top: 0;
 				right: 0;
+			}
+
+			& > div > p {
+				text-align: center;
 			}
 
 			& > img {
