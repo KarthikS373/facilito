@@ -7,3 +7,4 @@ interface Window {
 }
 
 type BaseEvent = { target: { name: string; value: string } }
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>

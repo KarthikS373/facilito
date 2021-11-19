@@ -1,4 +1,32 @@
 {
+	"valor_menor": {
+		"en": "",
+		"es": "$"
+	},
+	"valor_mayor": {
+		"en": "",
+		"es": "$"
+	},
+	"bienvenido_lua_development_studio": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_citas": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_tracking": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_productos": {
+		"en": "",
+		"es": "$"
+	},
 	"se_esta_subiendo_tu_archivo_esto_dependera_de_tu_velocidad_no_te_salgas_de_la_aplicacion_por_favor": {
 		"en": "",
 		"es": "$"

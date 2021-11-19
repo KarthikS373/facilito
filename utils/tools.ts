@@ -204,8 +204,8 @@ export const openNewWindow = (url: string): void => {
  * @param defColors
  * @returns
  */
-export const generateTheme = (defColors: string[]): Theme =>
-	createTheme({
+export const generateTheme = (defColors: string[]): Theme => {
+	return createTheme({
 		typography: {
 			button: {
 				textTransform: 'none',
@@ -359,15 +359,16 @@ export const generateTheme = (defColors: string[]): Theme =>
 		},
 		palette: {
 			secondary: {
-				main: `#${defColors[1]}`,
+				main: `${defColors[1]}`,
 			},
 			primary: {
-				main: `#${defColors[0]}`,
-				light: `#${defColors[0]}`,
-				dark: `#${defColors[0]}`,
+				main: `${defColors[0]}`,
+				light: `${defColors[0]}`,
+				dark: `${defColors[0]}`,
 			},
 		},
 	})
+}
 
 /**
  * Obtener codigo QR

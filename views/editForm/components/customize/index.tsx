@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
 // IMAGE
 import Image from 'next/image'
@@ -23,6 +23,7 @@ import saveFile, {
 } from './tools'
 import { splitBackgroundColors } from 'utils/tools'
 import useStrings from 'hooks/lang'
+import useStateProps from './hooks'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
@@ -41,6 +42,8 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 	const [images, setImages] = useState<ImagesState>(
 		getDefValues(props.defaultBackground, props.defaultBanner)
 	)
+
+	// COLORES
 	const [colors, setDefColors] = useState<[string, string, string]>(
 		splitBackgroundColors(props.defaultBackground ?? '')
 	)
@@ -60,10 +63,8 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 	// GUARDAR
 	const onClose = () => saveColors(colors, props.onColor, props.onBack)
 
-	useEffect(() => {
-		setImages(getDefValues(props.defaultBackground, props.defaultBanner))
-		setDefColors(splitBackgroundColors(props.defaultBackground ?? ''))
-	}, [props.defaultBackground, props.defaultBanner])
+	// HOOKS
+	useStateProps(props.defaultBackground, props.defaultBanner, setImages, setDefColors)
 
 	return (
 		<SideBar open={props.open} onClose={onClose}>
@@ -71,10 +72,13 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 				<h2>
 					<Palette /> {$`Personalizar`}
 				</h2>
+
+				{/* MENU */}
 				<h3>{$`Cambiar fondo`}</h3>
 				<div className={Styles.colors}>
 					<p>{$`Selecciona dos colores`}</p>
 					<div>
+						{/* COLORES */}
 						<input
 							type='color'
 							onChange={handleColors(0)}
@@ -87,20 +91,24 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 							onChange={handleColors(1)}
 							value={colors[1]}
 						/>
+
+						{/* SLIDER DE GRADOS */}
 						<div>
 							<span>{$`Grado de inclinación`}</span>
 							<Slider
 								marks
 								min={0}
 								max={360}
+								color='primary'
+								value={+colors[2]}
 								valueLabelDisplay='auto'
 								onChange={handleColorDegrees}
 								aria-labelledby='degrees-slider'
-								value={+colors[2]}
 							/>
 						</div>
 					</div>
 				</div>
+				{/* IMAGEN DE FONDO */}
 				<div className={Styles.image}>
 					<p>{$`Sube una imagen como fondo`}</p>
 					<div>
@@ -122,6 +130,8 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 						<span>{$`Esto remplazara el fondo degradado.`}</span>
 					</div>
 				</div>
+
+				{/* IMAGEN DE BANNER */}
 				<div className={Styles.image}>
 					<h3>{$`Cambiar portada`}</h3>
 					<p>{$`Sube una imagen de portada`}</p>

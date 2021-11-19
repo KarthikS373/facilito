@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
+import StylesGlb from '../../../../style.module.scss'
 import Styles from './style.module.scss'
 
 // ICONOS
@@ -53,17 +54,17 @@ const Coupon: React.FC = () => {
 				placeholder={$`Describe el titulo de tus cupones`}
 				required
 				defaultValue={props.label}
-				className={`${Styles.label} ${props.preview && Styles.labelPreview}`}
+				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
 				id={`${props.name}_${props.id}`}
 				inputProps={{ 'aria-label': 'Answer' }}
 				onChange={props.onWrite && props.onWrite('label')}
 			/>
-			{props.required && props.preview && <span className={Styles.requiredSpan}>＊</span>}
+			{props.required && props.preview && <span className={StylesGlb.requiredSpan}>＊</span>}
 			<input
 				required
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}

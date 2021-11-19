@@ -2,7 +2,8 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
-import Styles from '../../../../style.module.scss'
+import StylesGlb from '../../../../style.module.scss'
+import Styles from './style.module.scss'
 
 // MATERIAL
 import Button from '@mui/material/Button'
@@ -111,8 +112,8 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 						? $`Describe el titulo o pregunta para las casillas`
 						: $`Describe el titulo o pregunta para las opciones`
 				}
-				className={`${Styles.label} ${props.preview && Styles.labelPreview} ${
-					props.preview && Styles.titlePreview
+				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview} ${
+					props.preview && StylesGlb.titlePreview
 				}`}
 				style={{ height: '35px' }}
 				id={`${props.name}_label_${props.id}`}
@@ -120,13 +121,13 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 				inputProps={{ 'aria-label': 'Answer' }}
 			/>
 
-			{props.required && props.preview && <span className={Styles.requiredSpan}>＊</span>}
+			{props.required && props.preview && <span className={StylesGlb.requiredSpan}>＊</span>}
 
 			<input
 				required
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}
@@ -148,7 +149,7 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 				))}
 			</div>
 			{!props.preview && (
-				<Button onClick={addOption(optionsList.length - 1)}>
+				<Button variant='contained' onClick={addOption(optionsList.length - 1)}>
 					<Add /> {$`Agregar opción`}
 				</Button>
 			)}

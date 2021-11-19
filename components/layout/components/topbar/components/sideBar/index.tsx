@@ -62,6 +62,19 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				</div>
 				<ul>
 					<li>
+						<Link rKey='products' passHref>
+							<ColorButton
+								fullWidth
+								onClick={onClose}
+								variant='outlined'
+								$style={{
+									borderColor: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
+								}}
+								startIcon={<ShoppingCartTwoTone />}>{$`Crear productos`}</ColorButton>
+						</Link>
+					</li>
+					<li>
 						<Link rKey='forms' passHref>
 							<ColorButton
 								fullWidth
@@ -71,7 +84,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 									borderColor: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<DescriptionTwoTone />}>{$`Formularios`}</ColorButton>
+								startIcon={<DescriptionTwoTone />}>{$`Crear tienda`}</ColorButton>
 						</Link>
 					</li>
 					<li>
@@ -85,22 +98,10 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 
 									color: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<ComputerTwoTone />}>{$`Tracking`}</ColorButton>
+								startIcon={<ComputerTwoTone />}>{$`Configurar tracking`}</ColorButton>
 						</Link>
 					</li>
-					<li>
-						<Link rKey='products' passHref>
-							<ColorButton
-								fullWidth
-								onClick={onClose}
-								variant='outlined'
-								$style={{
-									borderColor: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
-									color: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
-								}}
-								startIcon={<ShoppingCartTwoTone />}>{$`Productos`}</ColorButton>
-						</Link>
-					</li>
+
 					<li>
 						<Link rKey='calendar' passHref>
 							<ColorButton
@@ -111,7 +112,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								$style={{
 									borderColor: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
-								}}>{$`Calendario`}</ColorButton>
+								}}>{$`Ver citas`}</ColorButton>
 						</Link>
 					</li>
 				</ul>

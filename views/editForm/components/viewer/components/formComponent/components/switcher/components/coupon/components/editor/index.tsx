@@ -22,6 +22,7 @@ import LocalOffer from '@mui/icons-material/LocalOffer'
 
 // HOOKS
 import { useCompanyProducts } from 'hooks/business'
+import { useTheme } from '@mui/material/styles'
 import BusinessContext from 'context/business'
 import { saveCoupons } from '../../tools'
 import useStrings from 'hooks/lang'
@@ -83,6 +84,9 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 	// LABELS
 	const typeLabels = [$`Descuento`, $`Promoción`]
 
+	// TEMA
+	const theme = useTheme()
+
 	return (
 		<form className={Styles.container}>
 			<div
@@ -114,7 +118,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 						{coupon.type === 'discount' && '% '}
 						{$`en tu compra`}
 					</p>
-					<span style={{ background: '' }}>{company.business?.name} ©</span>
+					<span style={{ background: theme.palette.primary.main }}>{company.business?.name} ©</span>
 				</div>
 				<div className={Styles.chips}>
 					{coupon.products &&
@@ -143,6 +147,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 						</InputLabel>
 						<Select
 							fullWidth
+							label={$`Tipo de cupón`}
 							labelId='coupon-type-select-placeholder-label-label'
 							id='coupon-type-select-placeholder-label'
 							value={coupon.type}
@@ -186,10 +191,10 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 							renderInput={(params) => (
 								<TextField
 									{...params}
-									label={$`Buscar productos`}
+									fullWidth
 									margin='normal'
 									variant='outlined'
-									fullWidth
+									label={$`Buscar productos`}
 									InputProps={{ ...params.InputProps, type: 'text' }}
 								/>
 							)}
@@ -250,7 +255,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 							variant='outlined'
 							value={coupon.percent || ''}
 							placeholder='50'
-							label={$`en tu compra`}
+							label={$`Descuento`}
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position='start'>

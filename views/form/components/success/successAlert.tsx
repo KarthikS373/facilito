@@ -18,6 +18,11 @@ const successAlert = (
 	index: number,
 	$: TemplateStrBuilder
 ): void => {
+	const copyUrl = () =>
+		navigator.clipboard.writeText(
+			`https://facilito-dev.web.app/l/${companyURL}/${formURL}/?index=${index - 1}`
+		)
+
 	window.Alert({
 		title: 'Respuestas enviadas',
 		body: `${$`Gracias por responder, se guardaron tus respuestas correctamente, puedes cerrar este formulario si deseas`}.${
@@ -41,8 +46,8 @@ const successAlert = (
 						whiteSpace: 'nowrap',
 						overflow: 'hidden',
 						textOverflow: 'ellipsis',
-					}}>{`${window.location.origin}/l/${companyURL}/${formURL}/?index=${index - 1}`}</span>
-				<IconButton>
+					}}>{`https://facilito-dev.web.app/l/${companyURL}/${formURL}/?index=${index - 1}`}</span>
+				<IconButton onClick={copyUrl}>
 					<FileCopy />
 				</IconButton>
 			</div>

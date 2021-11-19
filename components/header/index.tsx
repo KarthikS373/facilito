@@ -91,12 +91,16 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>
-					<Link rKey='guest' passHref>
+					<a
+						target='_blank'
+						style={{ borderRadius: 'var(--radius)' }}
+						title={businessCtx.business?.url ?? ''}
+						href={`https://facilito-dev.web.app/e/${businessCtx.business?.url}`}>
 						<Button
 							fullWidth
 							variant='outlined'
 							startIcon={<VisibilityTwoTone />}>{$`Ver como visitante`}</Button>
-					</Link>
+					</a>
 					{children || (
 						<Link rKey='forms' passHref>
 							<ColorButton

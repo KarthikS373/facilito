@@ -19,6 +19,7 @@ import ROUTES from 'router/routes'
 
 // DND
 import { Draggable, Droppable, DroppableProvided } from 'react-beautiful-dnd'
+import NaturalDragAnimation from 'components/naturalDnd'
 
 // UTILS
 import { getComponentsItems } from './utils'
@@ -64,28 +65,36 @@ const ComponentsSideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 							className={Styles.componentList}>
 							{componentsItems.map((item: FormComponentItemProps, key: number) => (
 								<Draggable index={key} key={`cItem_${key}`} draggableId={`cItem_${key}`}>
-									{(providedDrag) => (
-										<>
-											{(key === 0 && <h3>{$`Básicos`}</h3>) ||
-												(key === 7 && <h3>{$`Secciones`}</h3>) ||
-												(key === 9 && <h3>{$`Multimedia`}</h3>) ||
-												(key === 11 && <h3>{$`Carrito`}</h3>)}
-											<div
-												ref={providedDrag.innerRef}
-												{...providedDrag.draggableProps}
-												{...providedDrag.dragHandleProps}
-												className={Styles.itemDrag}>
-												<div
-													className={Styles.item}
-													style={{
-														borderColor: theme.palette.primary.main,
-														color: theme.palette.primary.main,
-													}}>
-													{item.icon}
-													<p>{item.text}</p>
-												</div>
-											</div>
-										</>
+									{(providedDrag, snapshot) => (
+										<NaturalDragAnimation
+											style={providedDrag.draggableProps.style}
+											snapshot={snapshot}>
+											{(style) => (
+												<>
+													{(key === 0 && <h3>{$`Básicos`}</h3>) ||
+														(key === 7 && <h3>{$`Secciones`}</h3>) ||
+														(key === 9 && <h3>{$`Multimedia`}</h3>) ||
+														(key === 11 && <h3>{$`Carrito`}</h3>)}
+													<div
+														ref={providedDrag.innerRef}
+														{...providedDrag.draggableProps}
+														{...providedDrag.dragHandleProps}
+														className={Styles.itemDrag}
+														style={style}>
+														<div
+															className={Styles.item}
+															style={{
+																borderColor: theme.palette.primary.main,
+																color: theme.palette.primary.main,
+																boxShadow: snapshot.isDragging ? '0 0 15px rgba(0,0,0,.1)' : 'none',
+															}}>
+															{item.icon}
+															<p>{item.text}</p>
+														</div>
+													</div>
+												</>
+											)}
+										</NaturalDragAnimation>
 									)}
 								</Draggable>
 							))}

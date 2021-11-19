@@ -1,5 +1,5 @@
 // REACT
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 
 // ICONOS
 import RoomPreferencesTwoToneIcon from '@mui/icons-material/RoomPreferencesTwoTone'
@@ -28,6 +28,7 @@ import PopperMenuList from 'components/popperMenu'
 import showShareMenu from './components/shareMenu'
 
 // HOOKS
+import useStateProps from './hooks'
 import useStrings from 'hooks/lang'
 import updateTitle from './tools'
 
@@ -86,10 +87,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 		)
 
 	// ACTUALIZAR ESTADO DE PUBLICACIÓN
-	useEffect(() => {
-		setPublished(props.public)
-		setConnectionMethods(props.answersConnection)
-	}, [props])
+	useStateProps(props.public, props.answersConnection, setPublished, setConnectionMethods)
 
 	return (
 		<>

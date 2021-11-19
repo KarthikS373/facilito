@@ -12,9 +12,9 @@ import React, {
 import Styles from './style.module.scss'
 
 // ICONOS
-import DeleteOutlineRounded from '@mui/icons-material/DeleteOutlineRounded'
-import FilterNoneRounded from '@mui/icons-material/FilterNoneRounded'
-import DragIndicator from '@mui/icons-material/DragIndicator'
+import FilterNoneRounded from '@mui/icons-material/FilterNoneTwoTone'
+import DeleteOutlineRounded from '@mui/icons-material/DeleteTwoTone'
+import DragIndicator from '@mui/icons-material/DragIndicatorTwoTone'
 
 // COMPONENTES
 import { getComponent, getComponentIcon } from './components/switcher'
