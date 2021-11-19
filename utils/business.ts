@@ -32,10 +32,10 @@ export const getCompany = async (url: string): Promise<Business | null> => {
 }
 
 /**
- * Agregar formulario
+ * Agregar tienda
  * @param  {string} id
  * @param  {string} companyID
- * @description Agrega una url al arreglo de formularios
+ * @description Agrega una url al arreglo de tiendas
  */
 export const addBusinessFormURL = async (id: string, companyID: string): Promise<void> => {
 	// COLECCIÓN DE EMPRESA

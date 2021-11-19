@@ -36,7 +36,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ filter, setFilter, style }) =
 			</strong>
 			<strong onClick={changeFilter('n')}>
 				<PersonOutlineTwoTone />
-				{$`Nombre en formulario`}
+				{$`Nombre en tienda`}
 			</strong>
 			<strong onClick={changeFilter('s')}>
 				<BubbleChartTwoTone />

@@ -14,7 +14,7 @@ import showSettingsMenu from '../settingsMenu'
 
 /**
  * Publicar
- * @description Publicar formulario y mostrar link
+ * @description Publicar tienda y mostrar link
  * @param $
  * @param props
  * @param published
@@ -38,7 +38,7 @@ const publishFormEvent = (
 				// ALERT
 				window.Alert({
 					title: 'Espera un momento',
-					body: 'Se esta publicando tu formulario, esto no suele tardar mucho, no te salgas de la aplicación por favor.',
+					body: 'Se esta publicando tu tienda, esto no suele tardar mucho, no te salgas de la aplicación por favor.',
 					type: 'window',
 					customElements: <PublicLoading />,
 					fixed: true,
@@ -48,8 +48,8 @@ const publishFormEvent = (
 				props.onAnswersConnection(answersConnection)
 				publishForm(company?.id, props.id).then(() =>
 					window.Alert({
-						title: 'Formulario publicado',
-						body: 'Ahora tu formulario sera visible para todos, puedes compartirles el siguiente link:',
+						title: 'Tienda publicada',
+						body: 'Ahora tu tienda sera visible para todos, puedes compartirles el siguiente link:',
 						type: 'confirm',
 						confirmText: $`Ver ahora`,
 						onHide: () => {
@@ -76,7 +76,7 @@ const publishFormEvent = (
 		else {
 			window.Alert({
 				title: 'Anular publicación',
-				body: 'Si anulas la publicación este formulario solo sera visible para tu empresa y no podrás recibir respuestas hasta que lo vuelvas a publicar.',
+				body: 'Si anulas la publicación esta tienda solo sera visible para tu empresa y no podrás recibir respuestas hasta que lo vuelvas a publicar.',
 				type: 'confirm',
 				onConfirm: () => {
 					props.onPublish(false)

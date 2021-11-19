@@ -33,7 +33,7 @@ const EditTracking: React.FC<EditTracking> = ({ formID }) => {
 	// FORMS
 	const formsCtx = useContext(FormsContext)
 
-	// FORMULARIO
+	// TIENDA
 	const form = useForm(formID, formsCtx.forms.forms)
 
 	// TRACKING

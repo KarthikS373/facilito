@@ -47,7 +47,7 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 	const [colorMenuAnchor, setColorMenuAnchor] = useState<HTMLButtonElement | null>(null)
 	const openColorMenu = Boolean(colorMenuAnchor)
 
-	// FORMULARIOS
+	// TIENDAS
 	const formsCtx = useContext(FormsContext)
 
 	// NEGOCIO

@@ -4,7 +4,7 @@ import { getQRCode } from 'utils/tools'
 
 /**
  * Actualizar url
- * @description Actualizar y verificar nueva url para formulario
+ * @description Actualizar y verificar nueva url para tienda
  * @param newUrl
  * @param formData
  * @param company

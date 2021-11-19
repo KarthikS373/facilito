@@ -53,7 +53,9 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
 						<NextLink href={ROUTES.forms} passHref>
-							<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+							<a title='Logo'>
+								<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+							</a>
 						</NextLink>
 					</div>
 					<IconButton color='inherit' aria-label='info'>
@@ -81,8 +83,8 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								$style={{
-									borderColor: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
-									color: getActiveRoute(path, 'formularios') ? 'var(--primary)' : undefined,
+									borderColor: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
 								}}
 								startIcon={<DescriptionTwoTone />}>{$`Crear tienda`}</ColorButton>
 						</Link>

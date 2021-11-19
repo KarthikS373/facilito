@@ -22,7 +22,7 @@ const getFormDoc = async (companyID: string, formID: string) => {
 }
 
 /**
- * Listener de formularios
+ * Listener de tiendas
  * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
  * @param  {(forms:FormInterface)=>unknown} setForms
@@ -46,8 +46,8 @@ export const formsListener = async (
 }
 
 /**
- * Borrar formulario en storage
- * @description Borra todos los archivos de un formulario
+ * Borrar tienda en storage
+ * @description Borra todos los archivos de una tienda
  * @param  {string} companyID
  * @param  {string} id
  */
@@ -56,8 +56,8 @@ export const removeFormFromStorage = async (companyID: string, id: string): Prom
 }
 
 /**
- * Comparar formularios
- * @description Compara los cambios en los últimos formularios
+ * Comparar tiendas
+ * @description Compara los cambios en los últimas tiendas
  * @param  {Form[]} first
  * @param  {Form[]} second
  */
@@ -72,15 +72,15 @@ export const getFormsDifference = (first: Form[], second: Form[]): Form[] => {
 		.concat(secondIds)
 		.filter((item) => !firstIds.includes(item) || !secondIds.includes(item))
 
-	// DEVOLVER FORMULARIOS
+	// DEVOLVER TIENDAS
 	return filteredIds
 		.map((id: string) => formsUnion.find((form: Form) => form.url === id))
 		.filter((form: Form | undefined) => form !== undefined) as Form[]
 }
 
 /**
- * Formularios para templates
- * @description Obtiene los formularios en plantillasfacilito
+ * Tiendas para templates
+ * @description Obtiene las tiendas en plantillasfacilito
  */
 export const readTemplates = async (): Promise<Form[]> => {
 	const { doc, getDocs, collection: getCollectionFrb } = await import('firebase/firestore')
@@ -95,8 +95,8 @@ export const readTemplates = async (): Promise<Form[]> => {
 }
 
 /**
- * Leer formulario
- * @description Leer formulario de DB
+ * Leer tienda
+ * @description Leer tienda de DB
  * @param companyID
  * @param id
  * @returns
@@ -113,7 +113,7 @@ export const readFormSchema = async (companyID: string, id: string): Promise<For
 }
 
 /**
- * Guardar formulario
+ * Guardar tienda
  * @description Guarda un objeto Form en la DB
  * @param  {string} companyID
  * @param  {Partial<Form>} form
@@ -133,8 +133,8 @@ const saveFormSchema = async (companyID: string, form: Partial<Form>): Promise<v
 export default saveFormSchema
 
 /**
- * Borrar formulario
- * @description Borra un formulario en 'forms'
+ * Borrar tienda
+ * @description Borra un tienda en 'forms'
  * @param  {string} companyID
  * @param  {string} id
  */
@@ -150,7 +150,7 @@ export const removeFormSchema = async (companyID: string, id: string): Promise<v
 
 /**
  * Cambiar las reservaciones
- * @description Cambiar las reservaciones de eventos en un formulario
+ * @description Cambiar las reservaciones de eventos en una tienda
  * @param dateKeys
  * @param companyID
  * @param id
@@ -198,7 +198,7 @@ export const changeReservations = async (
 
 /**
  * Cambiar cupones
- * @description Cambiar el contador de un cupon dentro de un formulario
+ * @description Cambiar el contador de un cupon dentro de una tienda
  * @param couponCodes
  * @param companyID
  * @param id
@@ -242,7 +242,7 @@ export const changeCouponsCount = async (
 
 /**
  * Extraer componentes
- * @description Remover propiedades agregadas a los componentes de un formulario
+ * @description Remover propiedades agregadas a los componentes de una tienda
  * @param original
  * @returns
  */
@@ -294,7 +294,7 @@ export const replaceFormURL = async (
 
 /**
  * Guardar metodos de envio
- * @description Guardar metodos de envio de un formulario
+ * @description Guardar metodos de envio de una tienda
  * @param companyID
  * @param id
  * @param answersConnection
@@ -315,7 +315,7 @@ export const saveFormSendMethods = async (
 
 /**
  * Publicar
- * @description Cambiar el estado de un formulario a publico
+ * @description Cambiar el estado de un tiendas a publico
  * @param companyID
  * @param id
  */
@@ -332,7 +332,7 @@ export const publishForm = async (companyID: string, id: string): Promise<void> 
 
 /**
  * No Publicar
- * @description Cambiar el estado de un formulario a no publico
+ * @description Cambiar el estado de un tiendas a no publico
  * @param companyID
  * @param id
  */

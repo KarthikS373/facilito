@@ -45,7 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 	// RECORDAR USUARIO
 	const [remember, setRemember] = useState<boolean>(true)
 
-	// DATOS DEL FORMULARIO
+	// DATOS DE LA TIENDA
 	const [loginData, setLoginData] = useState<LoginData>({ ...defLoginData })
 
 	// BARRA DE PROGRESO
@@ -57,7 +57,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 		setRemember(inp.checked)
 	}
 
-	// ENVIAR FORMULARIO
+	// ENVIAR TIENDA
 	const handleSubmit = (event: FormEvent | MouseEvent) => {
 		// INICIAR SESIÓN
 		event.preventDefault()
@@ -83,7 +83,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
 				</div>
 
-				{/* FORMULARIO */}
+				{/* TIENDA */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
 					{/* EMAIL */}
 					<TextField

@@ -83,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 							</div>
 							<span>
 								{customDescription ||
-									`${businessCtx.business?.forms?.length || 0} ${$`formulario(s) creados`}`}
+									`${businessCtx.business?.forms?.length || 0} ${$`tiendass(s) creados`}`}
 							</span>
 						</div>
 					</div>
@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 								color='primary'
 								variant='contained'
 								$style={{ color: '#fff', background: 'var(--primary)' }}
-								startIcon={<DescriptionTwoTone />}>{$`Ir a formularios`}</ColorButton>
+								startIcon={<DescriptionTwoTone />}>{$`Ir a tiendas`}</ColorButton>
 						</Link>
 					)}
 				</div>

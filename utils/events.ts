@@ -25,7 +25,7 @@ const getEventDoc = async (companyID: string, id: string) => {
  * Remover eventos
  * @param  {string} companyID
  * @param  {string} id
- * @description Remueve todos los eventos de un formulario
+ * @description Remueve todos los eventos de una tienda
  */
 export const removeEventForm = async (companyID: string, id: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
@@ -42,7 +42,7 @@ export const removeEventForm = async (companyID: string, id: string): Promise<vo
  * @param  {string} companyID
  * @param  {string} formId
  * @param  {AppointmentModel} formData
- * @description Remueve todos los eventos de un formulario
+ * @description Remueve todos los eventos de una tienda
  */
 export const deleteAppointment = async (
 	companyName: string,
@@ -127,7 +127,7 @@ export const appointmentsListener = async (
 			const now = new Date()
 			const events: CustomAppointment[] = eventsData.map((cEvent: CustomAppointment) => ({
 				...cEvent,
-				title: '📝 Formulario: ' + cEvent?.title,
+				title: '📝 Tienda: ' + cEvent?.title,
 				start: parseDate(cEvent.start) || now,
 				end: parseDate(cEvent.end) || now,
 			}))

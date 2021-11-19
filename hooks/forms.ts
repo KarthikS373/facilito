@@ -6,8 +6,8 @@ import { answersListener } from 'utils/answers'
 import FormsContext from 'context/forms'
 
 /**
- * Hook de Formularios
- * @description Retornar todos los formularios de un negocio
+ * Hook de tiendas
+ * @description Retornar todas las tiendas de un negocio
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  * @param  {string} companyID
  */
@@ -25,7 +25,7 @@ const useForms = (
 		const sendFormInterface =
 			(field: keyof FormInterface) => (data: { [id: string]: Form | FormAnswer }) => {
 				setForms((prevData: FormInterface) => {
-					// FORMULARIOS
+					// TIENDAS
 					if (prevData.forms.length === 0 && field === 'forms')
 						temporalForms = data as { [id: string]: Form }
 					const prevForms =
@@ -74,7 +74,7 @@ export default useForms
 
 /**
  * Hook de filtros
- * @description Re ordena los formularios con un filtro
+ * @description Re ordena las tiendas con un filtro
  * @param  {string} filter
  * @param  {setForms:(forms:FormInterface)=>unknown} setForms
  * @param  {FormInterface} prevForms
@@ -100,7 +100,7 @@ export const useFormFilter = (
 					(filter === 'asc' && form.title.localeCompare(nextForm.title) !== -1) ||
 					(filter === 'des' && form.title.localeCompare(nextForm.title) !== 1)
 				) {
-					// SWIPE DE FORMULARIOS
+					// SWIPE DE TIENDAS
 					tmpForms[index + 1] = form
 					tmpForms[index] = nextForm
 
@@ -120,8 +120,8 @@ export const useFormFilter = (
 }
 
 /**
- * Hook de formulario
- * @description Busca un formulario en el contexto con un id
+ * Hook de tienda
+ * @description Busca una tienda en el contexto con un id
  * @param  {string} formID
  * @param  {Form[]} customForms
  */
@@ -134,8 +134,8 @@ export const useForm = (formID: string, customForms?: Form[]): Form | undefined 
 }
 
 /**
- * Hook de fondo de formulario
- * @description Asigna el fondo de un formulario al body
+ * Hook de fondo de tienda
+ * @description Asigna el fondo de una tienda al body
  * @param {string} background
  */
 export const useFormBackground = (background?: string): void => {

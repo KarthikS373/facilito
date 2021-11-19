@@ -19,8 +19,8 @@ import saveFormSchema from 'utils/forms'
 import ROUTES from 'router/routes'
 
 /**
- * Mostrar prompt de nuevo formulario
- * @description Crea una alerta con un input para crear un nuevo formulario
+ * Mostrar prompt de nueva tienda
+ * @description Crea una alerta con un input para crear una nueva tienda
  * @param  {TemplateStrBuilder} $
  * @param  {Business | null} business
  * @param  {NextRouter} router
@@ -42,8 +42,8 @@ const showNewFormPrompt = (
 
 	// ALERTA
 	window.Alert({
-		title: 'Crear formulario',
-		body: 'Para crear un nuevo formulario escribe el titulo (este tambien se mostrara como la URL pública).',
+		title: 'Crear tienda',
+		body: 'Para crear una nueva tienda escribe el titulo (este tambien se mostrara como la URL pública).',
 		type: 'confirm',
 		onConfirm: () => {
 			if (business && business.id) {
@@ -64,7 +64,7 @@ const showNewFormPrompt = (
 						})
 
 					// ROUTER
-					window.Snack('Formulario creado')
+					window.Snack('Tienda creada')
 					router.push(`${ROUTES.newForm}?title=${title}`.replace(':formID', parsedTitle))
 				})
 			}
@@ -75,7 +75,7 @@ const showNewFormPrompt = (
 				label={$`Titulo`}
 				variant='outlined'
 				onChange={changeTitleName}
-				placeholder={$`Mi formulario`}
+				placeholder={$`Mi tienda`}
 				style={{
 					marginTop: '15px',
 				}}

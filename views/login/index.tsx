@@ -13,7 +13,7 @@ const Login: React.FC = () => {
 	// ESTADO
 	const [isOnLogin, setForm] = useState<boolean>(true)
 
-	// CAMBIAR FORMULARIO
+	// CAMBIAR TIENDA
 	const changeForm = (slide: boolean) => () => setForm(slide)
 
 	return (

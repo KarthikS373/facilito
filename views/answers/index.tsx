@@ -32,7 +32,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// FORMULARIOS
+	// TIENDAS
 	const formsCtx = useContext(FormsContext)
 
 	// RESPUESTAS
@@ -41,7 +41,7 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 	// FILTROS
 	const [filter, setFilter] = useState<string>('iza')
 
-	// FORMULARIO
+	// TIENDAS
 	const currentForm: Form | undefined = useForm(formID, formsCtx.forms.forms)
 
 	// ASIGNAR FILTRO

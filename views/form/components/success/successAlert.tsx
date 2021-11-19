@@ -25,7 +25,7 @@ const successAlert = (
 
 	window.Alert({
 		title: 'Respuestas enviadas',
-		body: `${$`Gracias por responder, se guardaron tus respuestas correctamente, puedes cerrar este formulario si deseas`}.${
+		body: `${$`Gracias por responder, se guardaron tus respuestas correctamente, puedes cerrar esta tienda si deseas`}.${
 			formData?.tracking?.length ? $`¿Deseas ver tu orden en tiempo real?` : ''
 		}`,
 		customElements: formData?.tracking?.length ? (

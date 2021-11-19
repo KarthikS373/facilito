@@ -44,7 +44,7 @@ const ProductSlider: React.FC = () => {
 	// CAMBIAR COLLAPSED
 	const toggleCollapsed = () => setCollapsed(!collapsed)
 
-	// ENVIAR A FORMULARIO
+	// ENVIAR A TIENDA
 	const sendProductEv = (product: ProductSelected, index: number) =>
 		sendProduct(product, index, props, setProductList)
 

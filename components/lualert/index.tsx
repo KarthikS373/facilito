@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 
 // COMPONENTES
+import Button from '@mui/material/Button'
 import ColorButton from '../button'
 
 // ESTILOS
@@ -140,15 +141,9 @@ const AlertTemplate: React.FC<HOCProps> = (props) => {
 						{!state.fixed && state.type === 'confirm' && (
 							<li>
 								{!state.cancelBtn ? (
-									<ColorButton
-										onClick={hide}
-										$style={{
-											color: '#555',
-											background: 'transparent',
-											padding: '10px 15px',
-										}}>
+									<Button style={{ padding: '10px 15px' }} onClick={hide}>
 										{state.cancelText || props.cancelText || 'Cancel'}
-									</ColorButton>
+									</Button>
 								) : (
 									<div onClick={hide}>{state.cancelBtn}</div>
 								)}

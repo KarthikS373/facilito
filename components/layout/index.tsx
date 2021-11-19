@@ -8,7 +8,7 @@ import Styles from './style.module.scss'
 import { useRouter } from 'next/router'
 
 // UTILS
-import evaluateTopbarPath from './tools'
+import evaluateTopbarPath, { evaluateFooterPath } from './tools'
 
 // RUTAS
 import ROUTES from 'router/routes'
@@ -33,6 +33,7 @@ const Layout: React.FC = (props) => {
 
 	// MOSTRAR TOPBAR
 	const showTopbar = evaluateTopbarPath(path)
+	const showFooter = evaluateFooterPath(path)
 
 	return (
 		<div
@@ -51,7 +52,7 @@ const Layout: React.FC = (props) => {
 					backgroundColor: !showTopbar ? 'transparent' : 'rgb(248, 248, 248)',
 				}}>
 				{props.children}
-				<Footer hideFooter={!showTopbar} />
+				<Footer hideFooter={!showTopbar} minimize={showFooter} />
 			</main>
 		</div>
 	)

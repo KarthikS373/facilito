@@ -75,7 +75,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
 					<p>
-						{$`Los productos destacados se mostrarán automáticamente si añades un campo de destacado en tu formulario.`}
+						{$`Los productos destacados se mostrarán automáticamente si añades un campo de destacado en tu tienda.`}
 					</p>
 				</div>
 			</div>
@@ -96,7 +96,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				/>
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
-					<p>{$`Los productos marcados como inactivos no se mostraran en ningun formulario en donde se haya agregado.`}</p>
+					<p>{$`Los productos marcados como inactivos no se mostraran en ninguna tienda en donde se haya agregado.`}</p>
 				</div>
 			</div>
 		</div>

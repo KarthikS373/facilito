@@ -89,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const forms = docs.map((doc) => doc.data()) as Form[]
 	const response = [companyId[0], forms[0]] as [string, Form]
 
-	// FORMULARIO
+	// TIENDA
 	const companyID: string | null = response[0] || null
 	const formData: Form | null = response[1] || null
 	formData.components = formData.components.map((component) => {

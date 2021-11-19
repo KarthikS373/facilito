@@ -1,6 +1,6 @@
 /**
  * Remover productos
- * @description Remover productos de todos los datos del formulario
+ * @description Remover productos de todos los datos de la tienda
  * @param values
  * @param index
  * @param key
@@ -31,7 +31,7 @@ const removeProducts = (
 				extras = extras.filter((_ex: ExtraProductData[], pIndex: number) => pIndex !== index)
 			}
 
-			// GUARDAR EN FORMULARIO
+			// GUARDAR EN TIENDA
 			setValue(`products.${key}`, products)
 			setValue(`products.summary_${key}`, totalPrice)
 			setValue(`products.extras_${key}`, extras)

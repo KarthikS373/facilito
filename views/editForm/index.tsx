@@ -35,6 +35,7 @@ import UserContext from 'context/user'
 
 // ESTILO
 import Styles from './style.module.scss'
+import Footer from 'components/layout/components/footer'
 
 // DYNAMIC COMPONENTS
 const AlertProvider = dynamic(() => import('providers/alerts'))
@@ -53,7 +54,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	// LISTA DE COMPONENTES
 	const [components, setComponents] = useState<FormContainerProps[]>([formComponentsList[13]])
 
-	// PROPIEDADES DEL FORMULARIO
+	// PROPIEDADES DE LA TIENDA
 	const [formProps, setFormProps] = useState<CustomFormState>(initialCustomFormState)
 
 	// PROPIEDADES DE CHECKOUT
@@ -73,7 +74,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	// REFERENCIA DE PRIMER GUARDADO
 	const enableUrl: React.MutableRefObject<boolean> = useRef(true)
 
-	// REFERENCIA DE FORMULARIO ACTUAL
+	// REFERENCIA DE TIENDA ACTUAL
 	const formData: React.MutableRefObject<Form> = useRef({ ...initialFormData })
 
 	// ON DRAG
@@ -83,7 +84,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	// GUARDAR DESCRIPCIÓN
 	const saveDescription = (description: string) => (formData.current.description = description)
 
-	// GUARDAR FORMULARIO EN CLOUD
+	// GUARDAR TIENDA EN CLOUD
 	const saveCurrentForm = (ctrl: boolean) =>
 		saveFormOnCloud(ctrl, componentsList, formData, business, enableUrl)
 
@@ -124,7 +125,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	const setCheckoutOptions = (checkoutOptions: FormCheckout) =>
 		updateCheckoutOptions(formData, checkoutOptions, setFormCheckout, business?.id)
 
-	// ACTUALIZAR ID DE FORMULARIO
+	// ACTUALIZAR ID DE TIENDA
 	const setUrl = (newUrl: string) =>
 		updateUrl(newUrl, formData, business, saveCurrentForm, setFormProps, enableUrl)
 
@@ -238,6 +239,8 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 										onCopy={copyComp}
 										formId={id}
 									/>
+
+									<Footer hideFooter={true} minimize={false} />
 								</div>
 							</div>
 						</DragDropContext>

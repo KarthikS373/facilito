@@ -9,17 +9,25 @@ import Styles from './style.module.scss'
 
 interface FooterProps {
 	hideFooter: boolean
+	minimize: boolean
 }
-const Footer: React.FC<FooterProps> = ({ hideFooter }) => {
+const Footer: React.FC<FooterProps> = ({ hideFooter, minimize }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	return (
 		<footer
 			className={Styles.footer}
-			style={{
-				display: hideFooter ? 'none' : 'flex',
-			}}>
+			style={
+				!minimize
+					? {
+							maxWidth: hideFooter ? '650px' : '100%',
+							borderRadius: hideFooter ? 'var(--radius) var(--radius) 0 0 ' : '0px',
+							background: hideFooter ? 'rgba(0,0,0,.4)' : '#547BAE',
+							backdropFilter: hideFooter ? 'blur(10px)' : 'none',
+					  }
+					: { display: 'none' }
+			}>
 			<strong>{$`Facilito©`}</strong>
 			<div>
 				<a

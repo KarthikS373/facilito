@@ -27,8 +27,8 @@ const ROUTES: RoutesProps = {
 	// LOGIN
 	login: '/cuenta',
 
-	// FORMULARIOS
-	forms: '/formularios',
+	// TIENDAS
+	forms: '/tiendas',
 	newForm: '/f/:formID',
 	answers: '/f/:formID/respuestas',
 	form: '/f/:companyURL/:formURL',

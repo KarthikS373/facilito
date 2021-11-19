@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /**
- * Limpiar formulario
- * @description Limpia todos los datos no necesarios en un formulario
+ * Limpiar tienda
+ * @description Limpia todos los datos no necesarios en una tienda
  * @param data
  */
 const cleanFormData = (data: { [id: string]: unknown }): { [id: string]: unknown } => {

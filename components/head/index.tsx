@@ -6,7 +6,7 @@ import Head from 'next/head'
 
 const MHead: React.FC = () => {
 	// TITULO
-	const title = 'Crea formularios avanzados, e-commerce y mucho más | Facilito'
+	const title = 'Crea tiendas avanzadas, e-commerce y mucho más | Facilito'
 
 	return (
 		<Head>

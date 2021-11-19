@@ -62,7 +62,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
 				title={$`Informacion general`}
-				body={$`Estos datos se mostraran en las tarjetas de producto en tus formularios seleccionados.`}
+				body={$`Estos datos se mostraran en las tarjetas de producto en tus tiendas seleccionadas.`}
 			/>
 
 			<TextField

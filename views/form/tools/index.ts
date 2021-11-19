@@ -76,7 +76,7 @@ export const getCouponProducts = (coupons: (Coupon[] | undefined)[] | undefined)
 
 /**
  * Tiene productos
- * @description Verificar si un formulario tiene productos
+ * @description Verificar si una tiene tiene productos
  * @param formComponents
  */
 export const formHasComponent = (
@@ -276,7 +276,7 @@ export const getWhatsappAnswers = (
 
 	let firstTransferTitle = true
 	const stringAns: string =
-		`*${companyName}*\n\n📝 ${$`Formulario`}: ${formTitle}\n${ansDate}\n${'-'.repeat(
+		`*${companyName}*\n\n📝 ${$`Tienda`}: ${formTitle}\n${ansDate}\n${'-'.repeat(
 			ansDate.length + 3
 		)}\n` +
 		orderAnswersData
@@ -339,7 +339,7 @@ export const getEmailAnswers = (
 
 	let firstTransferTitle = true
 	const stringAns: string =
-		`<h1>${companyName}</h1><h2>📝 ${$`Formulario`}: ${formTitle}</h2><h3>${ansDate}</h3><hr/>` +
+		`<h1>${companyName}</h1><h2>📝 ${$`Tienda`}: ${formTitle}</h2><h3>${ansDate}</h3><hr/>` +
 		orderAnswersData
 			.map((reqAnswer: OrderedAnswer) => {
 				const isBankAccountName: boolean = reqAnswer.key.startsWith('bank_account_name')
@@ -407,7 +407,7 @@ export const sendForm = async (
 		// ALERTA DE INICIO
 		window.Alert({
 			title: 'Enviando respuestas...',
-			body: 'Gracias por responder, se están enviando tus respuestas espera un momento esto no suele tardar mucho, no te salgas del formulario por favor.',
+			body: 'Gracias por responder, se están enviando tus respuestas espera un momento esto no suele tardar mucho, no te salgas de la tienda por favor.',
 			type: 'window',
 		})
 
@@ -527,7 +527,7 @@ export const sendForm = async (
 					const appointment: EventAppointment = {
 						startDate,
 						endDate,
-						title: formData?.title || 'Formulario sin titulo',
+						title: formData?.title || 'Tienda sin titulo',
 						background: defColors[0],
 						id: formData?.id || '',
 						email: filterData.personal_email_0 ? filterData.personal_email_0.answer.toString() : '',
@@ -598,7 +598,7 @@ export const sendForm = async (
 						const pushData: PushData = {
 							url: '',
 							title: $`Nueva respuesta`,
-							message: `${$`Hola, hay una nueva respuesta de`} ${filterData.personal_name_0.answer.toString()} ${$`para el formulario`} "${
+							message: `${$`Hola, hay una nueva respuesta de`} ${filterData.personal_name_0.answer.toString()} ${$`para la tienda`} "${
 								formData?.title
 							}", ${$`¿Deseas verlo ahora?`}`,
 							form: formData?.url,

@@ -29,7 +29,7 @@ const PublicLink: React.FC<PublicLinkProps> = ({ url }) => {
 				rel='noopener noreferrer'
 				href={`${window.location.origin}/f/${company.business?.url}/${url}`}
 				target='_blank'>{`${window.location.origin}/f/${company.business?.url}/${url}`}</a>{' '}
-			{$`¿Te gustaría ver tu formulario ahora?`}
+			{$`¿Te gustaría ver tu tienda ahora?`}
 		</p>
 	)
 }

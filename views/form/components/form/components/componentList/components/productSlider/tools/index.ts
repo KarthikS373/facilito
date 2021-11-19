@@ -1,8 +1,8 @@
 import type { FormContextProps } from '../../../context'
 
 /**
- * Enviar formulario
- * @description Enviar producto como respuesta del formulario
+ * Enviar tienda
+ * @description Enviar producto como respuesta de la tienda
  * @param product
  * @param index
  * @param props

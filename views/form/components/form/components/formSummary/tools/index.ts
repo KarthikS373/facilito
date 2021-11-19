@@ -160,7 +160,7 @@ export const getFormCoupons = (
 	components?: BlockComponent[]
 ): Coupon[] => {
 	if (formCoupons) {
-		// BUSCAR CUPONES EN FORMULARIO
+		// BUSCAR CUPONES EN TIENDA
 		const couponsList = Object.keys(formCoupons)
 			.map((id: string) => findCouponsById(formCoupons[id], components || []))
 			.filter((coupon: Coupon | undefined) => coupon !== undefined) as Coupon[]

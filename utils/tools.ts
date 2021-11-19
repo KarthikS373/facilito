@@ -250,7 +250,7 @@ export const generateTheme = (defColors: string[]): Theme => {
 						padding: '10px 15px',
 
 						'&:hover': {
-							borderColor: 'rgba(0,0,0,.2)',
+							borderColor: '#511F73',
 							backgroundColor: '#FBFBFB',
 						},
 					},
@@ -308,7 +308,7 @@ export const generateTheme = (defColors: string[]): Theme => {
 						},
 
 						'&:hover': {
-							borderColor: 'rgba(0,0,0,.2)',
+							borderColor: '#511F73',
 						},
 
 						'& .MuiBadge-badge': {

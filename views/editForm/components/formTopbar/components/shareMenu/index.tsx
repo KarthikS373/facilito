@@ -61,7 +61,7 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 		<div>
 			<div className={Styles.info}>
 				<p>
-					{$`Aquí esta la url completa de tu formulario.`}
+					{$`Aquí esta la url completa de tu tienda.`}
 					<a
 						target='_blank'
 						rel='noopener noreferrer'
@@ -111,8 +111,8 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 
 const showShareMenu = (formQR: string, id: string, url?: string): void => {
 	window.Alert({
-		title: 'Compartir formulario',
-		body: 'Aqui se muestran todas las opciones para mostrar tu formulario al mundo.',
+		title: 'Compartir tienda',
+		body: 'Aqui se muestran todas las opciones para mostrar tu tienda al mundo.',
 		type: '',
 		customElements: <ShareMenu formQR={formQR} url={url} id={id} />,
 	})

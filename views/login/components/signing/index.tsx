@@ -50,7 +50,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 	// BARRA DE PROGRESO
 	const progressRef: RefObject<HTMLDivElement> = useRef(null)
 
-	// ENVIAR FORMULARIO
+	// ENVIAR TIENDA
 	const handleSubmit = (event: MouseEvent | FormEvent) => {
 		event.preventDefault()
 		startSigning(event, signingData, progressRef, true, true)
@@ -75,7 +75,6 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
 				</div>
 
-				{/* FORMULARIO */}
 				<form className={Styles.form} onSubmit={handleSubmit}>
 					{/* NOMBRE */}
 					<TextField

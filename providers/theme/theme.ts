@@ -45,7 +45,7 @@ export const theme = createTheme({
 					padding: '10px 15px',
 
 					'&:hover': {
-						borderColor: 'rgba(0,0,0,.2)',
+						borderColor: '#511F73',
 						backgroundColor: '#FBFBFB',
 					},
 				},
@@ -103,7 +103,7 @@ export const theme = createTheme({
 					},
 
 					'&:hover': {
-						borderColor: 'rgba(0,0,0,.2)',
+						borderColor: '#511F73',
 					},
 
 					'& .MuiBadge-badge': {

@@ -57,7 +57,7 @@ const showCheckoutAlert = (
 	// MOSTRAR
 	window.Alert({
 		title: 'Checkout',
-		body: 'Configura el todo comportamiento del carrito, el checkout (resumen de compra) y productos dentro del formulario.',
+		body: 'Configura el todo comportamiento del carrito, el checkout (resumen de compra) y productos dentro de la tienda.',
 		type: 'confirm',
 		maxWidth: 520,
 		onConfirm: () => onChangeCheckoutOptions && onChangeCheckoutOptions(checkoutSettings),

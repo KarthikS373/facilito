@@ -50,7 +50,9 @@ const ComponentsSideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 				<div className={Styles.brand}>
 					<div className={Styles.logo}>
 						<Link href={ROUTES.forms} passHref>
-							<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+							<a title='Logo'>
+								<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
+							</a>
 						</Link>
 					</div>
 					<IconButton color='inherit' aria-label='info'>

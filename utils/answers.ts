@@ -19,7 +19,7 @@ const getAnswerDoc = async (companyID: string, formID: string) => {
 }
 
 /**
- * Listener de formularios
+ * Listener de tiendas
  * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
  * @param  {(forms: { [id: string]: FormAnswer }) => unknown} setAnswers
@@ -79,7 +79,7 @@ export const getAnswersDifference = (
 
 /**
  * Borrar respuestas
- * @description Borra todas las respuestas de un formulario
+ * @description Borra todas las respuestas de una tienda
  * @param  {string} companyID
  * @param  {string} formID
  */
@@ -122,7 +122,7 @@ export const deleteAnswer = async (
 
 /**
  * Ordenar respuestas
- * @description Ordena un objeto de respuestas según el orden del formulario
+ * @description Ordena un objeto de respuestas según el orden de la tienda
  * @param  {FormComponent[]} components
  * @param  {FormAnswerItemContainer} formData
  */
@@ -248,7 +248,7 @@ export const saveFormAnswer = async (
 
 /**
  * Ordenar respuestas
- * @description Ordenar las respuestas segun el listado de componentes del formulario
+ * @description Ordenar las respuestas segun el listado de componentes de la tienda
  * @param components
  * @param formData
  * @returns

@@ -6,7 +6,6 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 // VIEWS
-
 import dynamic from 'next/dynamic'
 const NewFormView = dynamic(() => import('views/editForm'), { ssr: false })
 

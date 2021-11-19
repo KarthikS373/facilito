@@ -79,7 +79,7 @@ export const showEventInfo =
 						<Link rKey='newForm' id={event.resource?.id}>
 							{(window.innerWidth > 500 && (
 								<Button variant='outlined' startIcon={<DescriptionTwoTone />}>
-									{$`Formulario`}
+									{$`Tienda`}
 								</Button>
 							)) ||
 								(window.innerWidth <= 500 && (

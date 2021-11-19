@@ -19,7 +19,7 @@ const TemplatesInfo: React.FC = () => {
 			<FileCopyTwoTone />
 			<div>
 				<h2>{$`Iniciar con plantilla`}</h2>
-				<p>{$`Crea tus formularios desde diseños personalizados.`}</p>
+				<p>{$`Crea tus tiendas desde diseños personalizados.`}</p>
 			</div>
 		</div>
 	)

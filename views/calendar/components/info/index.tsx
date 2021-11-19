@@ -56,7 +56,7 @@ const Info: React.FC<InfoProps> = ({ viewState, changeView }) => {
 			<PageInfo
 				title={$`Calendario y eventos`}
 				icon={<EventAvailableTwoTone />}
-				description={$`Administra los eventos creados desde todos tus formularios.`}>
+				description={$`Administra los eventos creados desde todas tus tiendass.`}>
 				<Button
 					fullWidth
 					variant='outlined'

@@ -86,7 +86,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 					error={errs[2]}
 					value={formData.link}
 					onChange={handleData}
-					label={$`URL del formulario`}
+					label={$`URL de la tienda`}
 					helperText={errs[2] ? $`Esta url ya está en uso.` : undefined}
 					InputProps={{
 						startAdornment: (
@@ -113,13 +113,12 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 						control={
 							<Checkbox
 								color='primary'
-								style={{ color: '#075E54' }}
 								onChange={changeSendMethodsEv('whatsapp')}
 								checked={formData.methods?.includes('whatsapp') ?? false}
 							/>
 						}
 						label={
-							<div style={{ color: '#075E54' }} className={Styles.label}>
+							<div className={Styles.label}>
 								{optionIcons[0]} {$`Conectado a WhatsApp`}
 							</div>
 						}
@@ -164,7 +163,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position='start'>
-									<Email />
+									<Email color='primary' />
 								</InputAdornment>
 							),
 						}}
@@ -196,7 +195,7 @@ const showSettingsMenu = (
 ): void => {
 	window.Alert({
 		title: 'Ajustes globales',
-		body: 'Configura el tu link dinamico (fclt) y las opciones de envio de respuestas para tu formulario.',
+		body: 'Configura el tu link dinamico (fclt) y las opciones de envio de respuestas para tu tienda.',
 		type: 'confirm',
 		hideActions: true,
 		customElements: (

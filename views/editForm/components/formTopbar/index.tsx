@@ -142,7 +142,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						),
 					}}
 					defaultValue={props.defValue}
-					placeholder={$`Titulo del formulario`}
+					placeholder={$`Titulo de la tienda`}
 				/>
 
 				<div className={Styles.actions}>

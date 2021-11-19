@@ -5,8 +5,8 @@ import { removeEventForm } from 'utils/events'
 import removeFile from 'utils/storage'
 
 /**
- * Borrar formulario
- * @description Borra un formulario del estado
+ * Borrar tienda
+ * @description Borra una tienda del estado
  * @param  {string} formID
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  * @param  {(forms: FormInterface) => unknown} setGlobalForms
@@ -19,8 +19,8 @@ const deleteForm = (
 	companyID?: string
 ): void => {
 	window.Alert({
-		title: 'Borrar formulario',
-		body: '¿Estas seguro de que quieres borrar este formulario?, todos los datos relacionados se perderan.',
+		title: 'Borrar tienda',
+		body: '¿Estas seguro de que quieres borrar esta tienda?, todos los datos relacionados se perderan.',
 		type: 'confirm',
 		onConfirm: async () => {
 			// ACTUALIZAR
@@ -55,7 +55,7 @@ const deleteForm = (
 				await removeAnswersForm(companyID, formID)
 				await removeFormSchema(companyID, formID)
 				await removeEventForm(companyID, formID)
-				window.Snack('Formulario borrado')
+				window.Snack('Tienda borrada')
 			}
 		},
 	})

@@ -26,10 +26,10 @@ const Info: React.FC<InfoProps> = ({ formID }) => {
 		<PageInfo
 			title={$`Lista de respuestas`}
 			icon={<QuestionAnswerTwoTone />}
-			description={$`Imprime y visualiza todas las respuestas de este formulario.`}>
+			description={$`Imprime y visualiza todas las respuestas de esta tienda.`}>
 			<Link rKey='forms' id={formID}>
 				<Button fullWidth variant='outlined' startIcon={<DescriptionTwoTone />}>
-					{$`Abrir formulario`}
+					{$`Abrir tienda`}
 				</Button>
 			</Link>
 		</PageInfo>

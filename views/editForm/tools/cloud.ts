@@ -3,7 +3,7 @@ import saveFormSchema from 'utils/forms'
 import { saveUrl } from 'utils/urls'
 
 /**
- * @description Guardar formulario en DB
+ * @description Guardar tienda en DB
  * @param ctrl
  * @param componentsList
  * @param formData

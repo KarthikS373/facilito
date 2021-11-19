@@ -27,7 +27,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// FORMULARIOS
+	// TIENDAS
 	const [forms, setForms] = useState<FormInterface>({
 		forms: [],
 		answers: [],
@@ -36,12 +36,12 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
-	// FORMULARIOS
+	// TIENDAS
 	const formsCtx = useContext(FormsContext)
 
 	useFormFilter(filter || 'asc', setForms, formsCtx.forms)
 
-	// BORRAR FORMULARIO
+	// BORRAR TIENDA
 	const deleteFormEv = (formID: string) => () =>
 		deleteForm(formID, setForms, formsCtx.setForms, businessCtx.business?.id)
 

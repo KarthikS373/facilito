@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { readTemplates } from 'utils/forms'
 
 /**
- * Hook de formularios de plantillas
- * @description Retorna una lista de formularios en 'plantillas facilito'
+ * Hook de tiendas de plantillas
+ * @description Retorna una lista de tiendas en 'plantillas facilito'
  * @param  {React.Dispatch<React.SetStateAction<Form[]>>} setTemplates
  * @param  {string} companyID
  */

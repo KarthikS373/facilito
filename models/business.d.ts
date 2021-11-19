@@ -27,7 +27,7 @@ interface Business {
 	categories?: string[]
 	products?: string[]
 
-	// FORMULARIOS LISTA DE ID
+	// TIENDAS LISTA DE ID
 	forms?: string[]
 
 	// USUARIOS LISTA DE CORREOS

@@ -12,7 +12,7 @@ export const initialFormData: Form = {
 	qr: '',
 	banner: '',
 	badge: 'GTQ',
-	title: 'Formulario sin titulo',
+	title: 'Tienda sin titulo',
 	description: '',
 	public: false,
 	background:

@@ -64,7 +64,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 	// USAR PRODUCTOS
 	useCompanyProducts(setProducts, userExists, company?.id || null, hasProducts)
 
-	// ENVIAR FORMULARIO
+	// ENVIAR TIENDA
 	const sendFormEvent = (data: { [id: string]: unknown }, reset: EmptyFunction) =>
 		sendForm($, data, reset, formData, company, defColors, geoRef, formURL, companyURL)
 
@@ -90,7 +90,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 						clientMode
 					/>
 
-					{/* FORMULARIO */}
+					{/* TIENDA */}
 					{formData && (
 						<HookForm
 							sendFormEvent={sendFormEvent}

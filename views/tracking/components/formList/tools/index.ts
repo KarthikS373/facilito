@@ -2,8 +2,8 @@
 import saveFormSchema from 'utils/forms'
 
 /**
- * Borrar eventos de formulario
- * @description Borra todos los eventos de un formulario
+ * Borrar eventos de tienda
+ * @description Borra todos los eventos de una tienda
  * @param  {string} formID
  * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
  * @param  {(forms: FormInterface) => unknown} setGlobalForms
@@ -18,7 +18,7 @@ const deleteForm = (
 	if (companyID)
 		window.Alert({
 			title: 'Borrar tracking',
-			body: '¿Estas seguro de que quieres borrar todos los estados de tracking presentes en este formulario?',
+			body: '¿Estas seguro de que quieres borrar todos los estados de tracking presentes en esta tienda?',
 			type: 'confirm',
 			onConfirm: async () => {
 				// ACTUALIZAR
@@ -36,7 +36,7 @@ const deleteForm = (
 
 					window.Snack('Guardando...')
 					saveFormSchema(companyID, { tracking: [], id: formID }).then(() =>
-						window.Snack('Formulario guardado')
+						window.Snack('Tienda guardada')
 					)
 					setGlobalForms(updatedForms)
 

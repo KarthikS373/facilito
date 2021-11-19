@@ -9,7 +9,7 @@ export interface LinkInfo {
 }
 
 /**
- * Buscar formularios y productos
+ * Buscar tiendas y productos
  * @description Busca todos los items en el contexto global
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {FormInterface} forms
@@ -25,7 +25,7 @@ const searchItems = (
 	const value: string = normalizeString(ev.target.value)
 	const tmpLinks: LinkInfo[] = []
 
-	// BUSCAR EN FORMULARIOS
+	// BUSCAR EN TIENDAS
 	if (value.length > 0) {
 		for (let formsIndex = 0, length = forms.forms.length; formsIndex < length; formsIndex++) {
 			if (

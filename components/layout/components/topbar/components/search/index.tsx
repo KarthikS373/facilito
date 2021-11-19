@@ -61,7 +61,7 @@ const Search: React.FC = () => {
 					variant='outlined'
 					className={Styles.search}
 					onChange={onChangeSearch}
-					placeholder={$`Buscar formularios, productos`}
+					placeholder={$`Buscar tiendas, productos`}
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position='start'>

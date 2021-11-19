@@ -127,7 +127,7 @@ export const changeColorDegrees = (
 
 /**
  * Guardar colores
- * @description Guardar los colores en el formulario
+ * @description Guardar los colores en la tienda
  * @param colors
  * @param onColor
  */

@@ -51,7 +51,7 @@ const AddNewForm: React.FC = () => {
 				<span>
 					{$`Crear`}
 					<br />
-					{$`Formulario`}
+					{$`Tienda`}
 				</span>
 			</div>
 		</button>

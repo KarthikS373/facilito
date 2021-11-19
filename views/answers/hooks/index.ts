@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { filterAnswers } from '../tools'
 
 /**
- * Hook de respuestas de formulario
- * @description Obtiene las respuestas de un formulario desde su ID
+ * Hook de respuestas de tienda
+ * @description Obtiene las respuestas de una tienda desde su ID
  * @param  {string} filter
  * @param  {string} formID
  * @param  {FormInterface} forms

@@ -1,8 +1,8 @@
 import { getCountryCode, getIP, getPostalAndCity } from 'utils/location'
 
 /**
- * Crear pago con formulario
- * @description Crear pago en pagalo desde datos de formulario
+ * Crear pago con tienda
+ * @description Crear pago en pagalo desde datos de tienda
  * @param data
  * @param badge
  * @param cardData

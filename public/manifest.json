@@ -21,9 +21,9 @@
 	],
 	"shortcuts": [
 		{
-			"name": "Formularios",
-			"url": "/formularios",
-			"description": "Visualiza la lista completa de todos tus formularios creados."
+			"name": "Tiendas",
+			"url": "/tiendas",
+			"description": "Visualiza la lista completa de todos tus tiendas creadas."
 		},
 		{
 			"name": "Productos",
@@ -38,7 +38,7 @@
 		{
 			"name": "Tracking",
 			"url": "/tracking",
-			"description": "Configura las ordenes en tus formularios con notificaciones."
+			"description": "Configura las ordenes en tus tiendas con notificaciones."
 		}
 	]
 }

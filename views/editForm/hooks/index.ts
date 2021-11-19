@@ -6,8 +6,8 @@ import { readFormSchema } from 'utils/forms'
 import { getQRCode } from 'utils/tools'
 
 /**
- * Guardar y leer formulario
- * @description Guardar datos de formulario en db
+ * Guardar y leer tienda
+ * @description Guardar datos de tienda en db
  * @param formData
  * @param company
  * @param id
@@ -50,7 +50,7 @@ export const useCloudForm = (
 				(url: string) => (formData.current.qr = url)
 			)
 
-		// LEER FORMULARIO
+		// LEER TIENDA
 		if (company?.id)
 			readFormSchema(company?.id, formData.current.id).then((form: Form | null) => {
 				if (form) {

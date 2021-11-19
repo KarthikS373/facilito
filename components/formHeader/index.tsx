@@ -57,7 +57,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 				<div className={Styles.defBanner}>
 					{!props.clientMode && (
 						<>
-							<p>{$`Agrega una portada a tu formulario`}</p>
+							<p>{$`Agrega una portada a tu tienda`}</p>
 							<span>{$`Haz click en 'Personalizar'`}</span>
 						</>
 					)}
@@ -73,7 +73,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 					<Business />
 				)}
 				<h1>{company?.name}</h1>
-				<h2>{props.formTitle ?? $`Formulario sin titulo`}</h2>
+				<h2>{props.formTitle ?? $`Tienda sin titulo`}</h2>
 				{props.clientMode ? (
 					<p>{props.formDescription}</p>
 				) : (
@@ -82,7 +82,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 						defaultValue={props.formDescription}
 						rows={3}
 						id='description'
-						placeholder={$`Descripción del formulario`}
+						placeholder={$`Descripción de la tienda`}
 						onChange={sendDescription}
 						className={props.previewMode ? Styles.previewDescription : undefined}
 					/>

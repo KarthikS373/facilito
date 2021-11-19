@@ -24,7 +24,7 @@ export const useComponentRegister = (
 
 /**
  * Asignar valor de componente
- * @description Asigna el valor de un componente dentro del formulario
+ * @description Asigna el valor de un componente dentro de la tienda
  * @param setValue
  * @param name
  * @param id

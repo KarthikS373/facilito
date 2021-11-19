@@ -51,7 +51,7 @@ const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
 				title={$`Caracteristicas en stock`}
-				body={$`Esta informacion sera utilizada en el carrito, y en el resumen de compra en tus formularios.`}
+				body={$`Esta informacion sera utilizada en el carrito, y en el resumen de compra en tus tiendas.`}
 			/>
 
 			<div className={Styles.row}>

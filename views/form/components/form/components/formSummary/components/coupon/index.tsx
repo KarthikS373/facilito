@@ -47,10 +47,10 @@ export const showCouponAlert = (
 							else return false
 						})
 					)
-						// ALERTA DE CUPÓN EN FORMULARIO
+						// ALERTA DE CUPÓN EN TIENDA
 						window.Alert({
 							title: 'Cupón invalido',
-							body: 'Este cupón solo se puede seleccionar desde el formulario, busca la sección y seleccionalo para que se aplique tu oferta.',
+							body: 'Este cupón solo se puede seleccionar desde la tienda, busca la sección y seleccionalo para que se aplique tu oferta.',
 							onHide: () => setInputCoupon(null),
 							type: 'error',
 						})
