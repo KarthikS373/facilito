@@ -5,7 +5,7 @@ import { DraggableStateSnapshot } from 'react-beautiful-dnd'
  * @param {number} x
  * @returns
  */
-const defSigmoid = (x: number) => x / (1 + Math.abs(x))
+const defSigmoid = (x: number): number => x / (1 + Math.abs(x))
 export default defSigmoid
 
 export interface Props {

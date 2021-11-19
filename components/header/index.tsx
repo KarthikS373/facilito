@@ -93,6 +93,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 				<div className={Styles.actions}>
 					<a
 						target='_blank'
+						rel='noreferrer noopener'
 						style={{ borderRadius: 'var(--radius)' }}
 						title={businessCtx.business?.url ?? ''}
 						href={`https://facilito-dev.web.app/e/${businessCtx.business?.url}`}>
