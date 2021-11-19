@@ -3,13 +3,15 @@
 import React, { useState, MouseEvent, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../style.module.scss'
+import StylesGlb from '../../../../style.module.scss'
+import Styles from './style.module.scss'
 
 // NEXT
 import Image from 'next/image'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import InputAdornment from '@mui/material/InputAdornment'
 import Autocomplete from '@mui/material/Autocomplete'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
@@ -29,7 +31,7 @@ import {
 } from 'react-beautiful-dnd'
 
 // ICONOS
-import Search from '@mui/icons-material/Search'
+import Search from '@mui/icons-material/SearchTwoTone'
 import Close from '@mui/icons-material/Close'
 import Add from '@mui/icons-material/Add'
 
@@ -160,7 +162,15 @@ const ProductSlider: React.FC = () => {
 								margin='normal'
 								variant='outlined'
 								fullWidth
-								InputProps={{ ...params.InputProps, type: 'text' }}
+								InputProps={{
+									...params.InputProps,
+									type: 'text',
+									startAdornment: (
+										<InputAdornment position='start'>
+											<Search color='primary' />
+										</InputAdornment>
+									),
+								}}
 							/>
 						)}
 					/>
@@ -178,19 +188,19 @@ const ProductSlider: React.FC = () => {
 				placeholder={$`Describe el titulo de estos productos`}
 				required
 				defaultValue={props.label}
-				className={`${Styles.label} ${props.preview && Styles.labelPreview}`}
+				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
 				id={`${props.name}_${props.id}`}
 				inputProps={{ 'aria-label': 'Answer' }}
 				onChange={props.onWrite && props.onWrite('label')}
 			/>
-			{props.required && props.preview && <span className={Styles.requiredSpan}>＊</span>}
+			{props.required && props.preview && <span className={StylesGlb.requiredSpan}>＊</span>}
 			<input
 				required
 				aria-label='Helper'
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}
 				placeholder={$`Agrega un texto de ayuda`}
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				onChange={props.onWrite && props.onWrite('helper')}
 			/>
 			<DragDropContext onDragEnd={handleDragNDrop}>
@@ -224,6 +234,7 @@ const ProductSlider: React.FC = () => {
 														onClick={currentProduct ? undefined : handleSearchProducts}>
 														{currentProduct && (
 															<IconButton
+																size='small'
 																onClick={removeProduct(key)}
 																className={Styles.productClose}>
 																<Close />
@@ -234,8 +245,8 @@ const ProductSlider: React.FC = () => {
 																unoptimized
 																src={currentProduct?.picture[0] ?? '/images/logo.png'}
 																alt={currentProduct?.picture[0]}
-																height={100}
-																width={100}
+																height={150}
+																width={150}
 															/>
 														) : (
 															<Add />
@@ -262,6 +273,7 @@ const ProductSlider: React.FC = () => {
 					<FormControl fullWidth>
 						<InputLabel id='category-select'>{$`Categoría`}</InputLabel>
 						<Select
+							label={$`Categoría`}
 							fullWidth
 							id='category-select'
 							onChange={setCategory}
@@ -276,7 +288,7 @@ const ProductSlider: React.FC = () => {
 					</FormControl>
 				</MenuItem>
 				<MenuItem onClick={productsAlert}>
-					<Search style={{ marginRight: '10px' }} />
+					<Search style={{ marginRight: '10px' }} color='primary' />
 					{$`Buscar producto`}
 				</MenuItem>
 			</Menu>

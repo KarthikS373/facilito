@@ -2,7 +2,8 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../style.module.scss'
+import StylesGlb from '../../../../style.module.scss'
+import Styles from './style.module.scss'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
@@ -90,8 +91,8 @@ const DatePicker: React.FC = () => {
 				required
 				placeholder={$`Describe el titulo de esta sección.`}
 				defaultValue={props.label}
-				className={`${Styles.label} ${props.preview && Styles.labelPreview} ${
-					props.preview && Styles.titlePreview
+				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview} ${
+					props.preview && StylesGlb.titlePreview
 				}`}
 				id={`${props.name}_${props.id}`}
 				onChange={props.onWrite && props.onWrite('label')}
@@ -100,7 +101,7 @@ const DatePicker: React.FC = () => {
 			<input
 				required
 				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				placeholder={
 					props.isAnchor
 						? $`Escribe tu enlace aquí (ej: https://example.com)`
@@ -164,6 +165,7 @@ const DatePicker: React.FC = () => {
 										fullWidth
 										labelId='duration-select'
 										id='duration-select'
+										label={$`Duración (horas)`}
 										onChange={handleDurationEv}
 										defaultValue={props.duration?.toString() || ''}
 										value={duration === 0 ? '' : duration?.toString()}>

@@ -1,0 +1,29 @@
+.threeInputs {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 10px;
+	margin-bottom: 20px;
+}
+
+.threeInputsPreview {
+	width: calc(100% - 40px);
+}
+
+.mapPreview {
+	width: calc(100% - 40px);
+}
+
+.requestGeo {
+	margin-top: 10px;
+}
+
+.requestGeoContainer {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.requestGeoPreview {
+	margin-bottom: 10px;
+	margin-right: 10px;
+}

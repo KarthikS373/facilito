@@ -67,7 +67,7 @@ const EditableOption: React.FC<EditableOptionProps> = (props: EditableOptionProp
 			/>
 			{!formProps.preview && (
 				<Tooltip title={$`Borrar`} arrow placement='left'>
-					<IconButton onClick={props.onClose}>
+					<IconButton size='small' onClick={props.onClose}>
 						<Close />
 					</IconButton>
 				</Tooltip>

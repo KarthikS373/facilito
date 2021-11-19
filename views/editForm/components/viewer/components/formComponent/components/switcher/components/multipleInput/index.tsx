@@ -68,9 +68,9 @@ const MultipleInput: React.FC = () => {
 							key={`multiple_personal_${key}`}
 							control={
 								<Checkbox
+									name={field}
 									color='primary'
 									checked={optionsList[key]}
-									name={field}
 									onChange={onChangeOption(optionsKeys[key])}
 								/>
 							}

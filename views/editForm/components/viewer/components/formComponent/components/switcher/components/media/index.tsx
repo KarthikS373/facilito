@@ -2,7 +2,8 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../style.module.scss'
+import StylesGlb from '../../../../style.module.scss'
+import Styles from './style.module.scss'
 
 // NEXT
 import Image from 'next/image'
@@ -78,7 +79,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 	return (
 		<>
 			{currentImage !== null && !props.preview && (
-				<IconButton className={Styles.removeImage} onClick={removeImage}>
+				<IconButton size='small' className={Styles.removeImage} onClick={removeImage}>
 					<Close />
 				</IconButton>
 			)}
@@ -109,7 +110,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 			/>
 			<input
 				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				defaultValue={props.alt}
 				placeholder={
 					eProps.isVideo
@@ -121,7 +122,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 			/>
 			<input
 				aria-label='Href'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				defaultValue={props.href}
 				style={{ color: 'var(--blue)' }}
 				placeholder={

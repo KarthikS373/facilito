@@ -1,0 +1,50 @@
+.daysRange {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 0 20px;
+	margin-top: 10px;
+	width: 100%;
+
+	fieldset {
+		width: 250px;
+	}
+}
+
+.gridChecks {
+	margin: 15px 200px 15px 0;
+	display: grid !important;
+	grid-template-columns: auto auto;
+	grid-template-rows: repeat(4, auto);
+}
+
+.gridInputs {
+	width: 250px;
+
+	h3 {
+		color: rgba(0, 0, 0, 0.54);
+		font-size: 1rem;
+		font-weight: normal;
+		margin-bottom: 25px;
+	}
+}
+
+.dateField {
+	& > div {
+		&:hover::before {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+		}
+	}
+}
+
+.dateRow {
+	margin-top: 20px;
+	width: calc(100% - 40px);
+
+	h3 {
+		color: rgba(0, 0, 0, 0.54);
+		font-size: 1rem;
+		font-weight: normal;
+		margin-bottom: 5px;
+	}
+}

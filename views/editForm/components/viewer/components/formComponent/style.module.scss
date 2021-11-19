@@ -38,69 +38,6 @@
 			color: var(--lightblue);
 		}
 
-		.sliderContainer {
-			position: relative;
-			left: 20px;
-			width: calc(100% - 40px);
-			overflow-x: scroll;
-			align-self: flex-start;
-
-			.slider {
-				display: flex;
-
-				.productItemDrag {
-					display: block;
-					margin-right: 15px;
-
-					&:last-child {
-						margin-right: 0;
-					}
-
-					& > span {
-						display: block;
-						text-align: center;
-						margin-bottom: 10px;
-						width: 150px;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-					}
-
-					.product {
-						position: relative;
-						width: 150px;
-						height: 150px;
-						background: #eee;
-						border-radius: 10px;
-						display: inline-flex;
-						align-items: center;
-						justify-content: center;
-						flex-direction: column;
-						cursor: pointer;
-						overflow: hidden;
-
-						.productClose {
-							position: absolute;
-							top: 0;
-							right: 0;
-						}
-
-						& > img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-						}
-
-						& > svg {
-							height: 50px;
-							width: 50px;
-							opacity: 0.7;
-						}
-					}
-				}
-			}
-		}
-
 		.label {
 			background-color: #f0f0f0;
 			width: 100%;
@@ -110,102 +47,6 @@
 
 			&:hover::before {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-			}
-
-			input {
-				font-family: 'Orkney';
-			}
-		}
-
-		.threeInputs {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			column-gap: 10px;
-			margin-bottom: 20px;
-		}
-
-		.threeInputsPreview {
-			width: calc(100% - 40px);
-		}
-
-		.mapPreview {
-			width: calc(100% - 40px);
-		}
-
-		.requestGeo {
-			margin-top: 10px;
-		}
-
-		.showCoupon {
-			align-self: flex-start;
-			margin-bottom: -20px;
-			margin-left: 20px;
-		}
-
-		.requestGeoPreview {
-			margin-bottom: 10px;
-			margin-right: 10px;
-		}
-
-		.requestGeoContainer {
-			width: 100%;
-			display: flex;
-			justify-content: flex-end;
-		}
-
-		.daysRange {
-			display: flex;
-			align-items: flex-start;
-			justify-content: space-between;
-			padding: 0 20px;
-			margin-top: 10px;
-			width: 100%;
-
-			& * {
-				font-family: 'Orkney';
-			}
-
-			fieldset {
-				width: 250px;
-			}
-		}
-
-		.gridInputs {
-			width: 250px;
-
-			h3 {
-				color: rgba(0, 0, 0, 0.54);
-				font-size: 1rem;
-				font-weight: normal;
-				margin-bottom: 10px;
-			}
-		}
-
-		.actionBtn {
-			position: absolute;
-			bottom: 13px;
-			right: 270px;
-			width: 45px;
-			height: 45px;
-			display: flex;
-			padding: 0;
-
-			svg {
-				width: 30px;
-				margin: 0;
-				height: 30px;
-			}
-		}
-
-		.dateRow {
-			margin-top: 20px;
-			width: calc(100% - 40px);
-
-			h3 {
-				color: rgba(0, 0, 0, 0.54);
-				font-size: 1rem;
-				font-weight: normal;
-				margin-bottom: 5px;
 			}
 		}
 
@@ -231,25 +72,10 @@
 			}
 		}
 
-		.dateField {
-			& > div {
-				&:hover::before {
-					border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-				}
-			}
-		}
-
 		.titleField {
 			color: #333;
 			text-align: left;
 			width: 100%;
-		}
-
-		.gridChecks {
-			margin-right: 200px;
-			display: grid;
-			grid-template-columns: auto auto;
-			grid-template-rows: repeat(4, auto);
 		}
 
 		.labelPreview {
@@ -279,91 +105,6 @@
 			color: #555;
 		}
 
-		.options {
-			margin-top: 0px;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-		}
-
-		.multipleInputs {
-			width: 100%;
-			padding: 0 20px 20px 20px;
-
-			& * {
-				font-family: 'Orkney';
-			}
-		}
-
-		.optionsPreview {
-			margin-top: 5px;
-			margin-bottom: 25px;
-			position: relative;
-			left: 20px;
-		}
-
-		.options + button {
-			width: 155px;
-			align-self: flex-end;
-			padding-top: 10px;
-			min-height: 45px;
-
-			svg {
-				margin-right: 5px;
-				margin-top: -3px;
-				margin-left: -5px;
-			}
-
-			span {
-				color: #fff;
-				text-transform: none;
-			}
-		}
-
-		.removeImage {
-			position: absolute;
-			top: 58px;
-			right: 25px;
-			z-index: 2;
-		}
-
-		.mediaLabel {
-			position: relative;
-			background-color: #f5f5f5;
-			width: 100%;
-			min-height: 200px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			border-radius: var(--radius);
-			border: 4px dashed #999;
-
-			img,
-			video {
-				width: 100%;
-				height: 200px;
-				object-fit: contain;
-			}
-
-			& > svg {
-				width: 100px;
-				height: 100px;
-				color: #777;
-			}
-
-			& > p {
-				color: #555;
-				width: 160px;
-				text-align: center;
-			}
-		}
-
-		input[type='file'] + input {
-			font-style: italic;
-		}
-
 		.actions {
 			border-top: 2px solid rgba(0, 0, 0, 0.25);
 			width: 100%;
@@ -376,9 +117,7 @@
 
 			button {
 				color: #666;
-			}
 
-			button:nth-child(2) {
 				width: 49px;
 				height: 49px;
 				padding: 0;
@@ -387,6 +126,14 @@
 					color: #666;
 					width: 30px;
 					height: 30px;
+				}
+			}
+
+			button:nth-child(1) {
+				svg {
+					color: #666;
+					width: 23px;
+					height: 23px;
 				}
 			}
 

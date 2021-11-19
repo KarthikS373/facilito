@@ -75,7 +75,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 
 	// MOSTRAR MENU DE PUBLICACION
 	const showPublishMenu = () =>
-		publishFormEvent($, props, props.public, setPublished, setConnectionMethods, company.business)
+		publishFormEvent($, props, published, setPublished, setConnectionMethods, company.business)
 
 	// ABRIR MENU DE CHECKOUT
 	const openCheckoutMenu = () =>

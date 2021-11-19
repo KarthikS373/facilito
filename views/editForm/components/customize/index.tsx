@@ -96,7 +96,6 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 						<div>
 							<span>{$`Grado de inclinación`}</span>
 							<Slider
-								marks
 								min={0}
 								max={360}
 								color='primary'

@@ -1,4 +1,5 @@
 import { compressImage, getURL, uploadFile } from 'utils/storage'
+import { pad } from 'utils/tools'
 
 export interface CustomizeMenuProps {
 	onBanner: (bannerString: string) => unknown
@@ -119,7 +120,7 @@ export const changeColorDegrees = (
 	// ASIGNAR
 	setDefColors((colors) => {
 		const tmpColors = [...colors]
-		tmpColors[2] = newValue.toString()
+		tmpColors[2] = pad(newValue.toString(), 3)
 		return tmpColors as [string, string, string]
 	})
 }

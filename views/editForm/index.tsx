@@ -11,6 +11,9 @@ import FormHeader from 'components/formHeader'
 // DND
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
+// NEXT
+import dynamic from 'next/dynamic'
+
 // HOOKS
 import { useCloudForm } from './hooks'
 
@@ -32,6 +35,9 @@ import UserContext from 'context/user'
 
 // ESTILO
 import Styles from './style.module.scss'
+
+// DYNAMIC COMPONENTS
+const AlertProvider = dynamic(() => import('providers/alerts'))
 
 // PROPIEDADES
 interface FormViewProps {
@@ -167,6 +173,7 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 		<>
 			<div>
 				<ThemeProvider theme={theme}>
+					<AlertProvider />
 					<div className={Styles.container}>
 						{/* TOPBAR */}
 						<FormTopbar

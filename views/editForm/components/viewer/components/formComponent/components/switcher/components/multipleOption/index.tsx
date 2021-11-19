@@ -149,9 +149,14 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 				))}
 			</div>
 			{!props.preview && (
-				<Button variant='contained' onClick={addOption(optionsList.length - 1)}>
-					<Add /> {$`Agregar opción`}
-				</Button>
+				<div className={Styles.addOption}>
+					<Button
+						startIcon={<Add />}
+						variant='contained'
+						onClick={addOption(optionsList.length - 1)}>
+						{$`Agregar opción`}
+					</Button>
+				</div>
 			)}
 		</>
 	)

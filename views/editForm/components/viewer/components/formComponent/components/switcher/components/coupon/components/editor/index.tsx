@@ -18,7 +18,8 @@ import Chip from '@mui/material/Chip'
 // ICONOS
 import FormatListNumbered from '@mui/icons-material/FormatListNumbered'
 import FormatListBulleted from '@mui/icons-material/FormatListBulleted'
-import LocalOffer from '@mui/icons-material/LocalOffer'
+import LocalOffer from '@mui/icons-material/LocalOfferTwoTone'
+import SearchIcon from '@mui/icons-material/SearchTwoTone'
 
 // HOOKS
 import { useCompanyProducts } from 'hooks/business'
@@ -195,7 +196,16 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 									margin='normal'
 									variant='outlined'
 									label={$`Buscar productos`}
-									InputProps={{ ...params.InputProps, type: 'text' }}
+									placeholder={$`Ej: ` + companyProducts?.[0].title}
+									InputProps={{
+										...params.InputProps,
+										type: 'text',
+										startAdornment: (
+											<InputAdornment position='start'>
+												<SearchIcon color='primary' />
+											</InputAdornment>
+										),
+									}}
 								/>
 							)}
 						/>

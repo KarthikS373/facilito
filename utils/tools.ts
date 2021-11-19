@@ -475,3 +475,13 @@ export const shareLink = (
 			.catch(() => window.hideAlert())
 	}
 }
+
+/**
+ * Agregar ceros a la izquierda
+ * @param input
+ * @param length
+ * @returns
+ */
+export const pad = (input: string, length: number): string => {
+	return input.length < length ? pad('0' + input, length) : input
+}
