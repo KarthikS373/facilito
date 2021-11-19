@@ -100,6 +100,7 @@ export const validateFclt = (
 			window.Snack('Guardando ajustes...')
 			const tmpData = { ...formData }
 			delete tmpData.link
+
 			props.onAnswersConnection(tmpData)
 			props.onSave(false)
 			if (change && formData.link) props.onChangeURL(formData.link)
@@ -176,9 +177,9 @@ export const handleInputs = <T extends unknown>(
  * @description Crear valores por defecto para estado
  * @param props
  */
-export const getDefValues = (props: SettingsMenuProps): SendData =>
-	props.connectionMethods
-		? { ...props.connectionMethods, link: props.url }
-		: { methods: [], whatsapp: '', email: '', link: props.url }
+export const getDefValues = (link: string, connectionMethods?: ConnectionMethods): SendData =>
+	connectionMethods
+		? { ...connectionMethods, link }
+		: { methods: [], whatsapp: '', email: '', link }
 
 export default handleChecks

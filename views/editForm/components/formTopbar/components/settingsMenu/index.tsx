@@ -34,6 +34,7 @@ import useStrings from 'hooks/lang'
 // ESTILOS
 import Styles from './style.module.scss'
 import { useTheme } from '@mui/material/styles'
+import useDefProps from './hooks'
 
 // ICONOS
 const optionIcons = [
@@ -47,7 +48,9 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 	const { $ } = useStrings()
 
 	// ESTADO
-	const [formData, setFormData] = useState<SendData>(getDefValues(props))
+	const [formData, setFormData] = useState<SendData>(
+		getDefValues(props.url, props.connectionMethods)
+	)
 
 	// ERRORES [whatsapp, email, link]
 	const [errs, setErrs] = useState<[boolean, boolean, boolean]>([false, false, false])
@@ -68,6 +71,9 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 	const changeSendMethodsEv =
 		(key: 'whatsapp' | 'email') => (ev: React.ChangeEvent<HTMLInputElement>) =>
 			handleChecks(key, ev, setErrs, setFormData)
+
+	// HOOKS
+	useDefProps(props.url, setFormData, props.connectionMethods)
 
 	return (
 		<div className={Styles.container}>
@@ -125,7 +131,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 						onChange={handleData}
 						placeholder='+50235678555'
 						label={$`Número de WhatsApp`}
-						value={formData.whatsapp ?? ''}
+						value={formData.whatsapp.toString() ?? ''}
 					/>
 				</div>
 				<div>

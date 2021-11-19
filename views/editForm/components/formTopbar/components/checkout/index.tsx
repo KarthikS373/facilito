@@ -3,7 +3,6 @@ import React from 'react'
 
 // COMPONENTES
 import showShippingMethods from './components/shippingMethods'
-import ColorButton from 'components/button'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -12,6 +11,7 @@ import FormControl from '@mui/material/FormControl'
 import FormGroup from '@mui/material/FormGroup'
 import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
+import Button from '@mui/material/Button'
 
 // ICONOS
 import CreditCard from '@mui/icons-material/CreditCard'
@@ -65,14 +65,13 @@ const showCheckoutAlert = (
 			<div style={{ marginTop: 'var(--margin)' }}>
 				<FormControl component='fieldset' className={Styles.checkoutOptions}>
 					<FormGroup className={Styles.checkoutInputs}>
-						<ColorButton
+						<Button
 							color='primary'
 							variant='contained'
 							onClick={shippingMethods}
-							startIcon={<Motorcycle />}
-							$style={{ color: '#fff', background: '#1AA5BB' }}>
+							startIcon={<Motorcycle />}>
 							{$`Tarifas de envío`}
-						</ColorButton>
+						</Button>
 						<TextField
 							label={$`Porcentaje de impuesto`}
 							variant='outlined'
