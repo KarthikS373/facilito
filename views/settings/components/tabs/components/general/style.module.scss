@@ -1,0 +1,15 @@
+.container {
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 100%;
+	row-gap: 20px;
+
+	hr {
+		opacity: 0.2;
+		margin: 5px 0;
+	}
+
+	.row {
+		display: flex;
+	}
+}

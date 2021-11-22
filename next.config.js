@@ -13,6 +13,7 @@ module.exports = withBundleAnalyzer(
 		},
 		images: {
 			domains: [
+				'www.merchantequip.com',
 				'googleusercontent.com',
 				'lh3.googleusercontent.com',
 				'lh5.googleusercontent.com',

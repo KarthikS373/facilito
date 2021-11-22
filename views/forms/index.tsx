@@ -43,7 +43,7 @@ const Forms: React.FC = () => {
 					onClick={changeFilterEv}
 					startIcon={<SortByAlphaTwoTone />}
 					$style={{ backgroundColor: '#fbfbfb' }}>
-					{filter === 'asc' ? $`Filtrar ascendente` : $`Filtrar descendente`}
+					{filter === 'asc' ? $`Filtro ascendente` : $`Filtro descendente`}
 				</ColorButton>
 			</Header>
 			<NewForm />

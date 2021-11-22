@@ -1,71 +1,58 @@
 // REACT
-import React, { useContext, useState } from 'react'
+import React from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
-
-// TIPOS
-import type { SelectChangeEvent } from '@mui/material/Select'
 
 // COMPONENTES
 import TabInfo from '../tabInfo'
 
 // MATERIAL
+import Select, { SelectChangeEvent } from '@mui/material/Select'
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
 
 // ICONOS
 import FormatColorTextTwoToneIcon from '@mui/icons-material/FormatColorTextTwoTone'
-import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone'
 import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
 
-// CONTEXTO
-import BusinessContext from 'context/business'
-
 // HOOKS
+import onChangeInput, { onChangeCategory } from './tools'
+import type { GeneralProps } from '../../tools'
+import getCategories from './utils/initials'
 import useStrings from 'hooks/lang'
 
-// UTILS
-import changeProductProps, { GeneralProps } from '../../tools'
-import changeCategory from './tools'
-
-const General: React.FC<GeneralProps> = ({ show, productRef }) => {
+const General: React.FC<GeneralProps> = ({ show, businessRef }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// BUSINESS
-	const businessCtx = useContext(BusinessContext)
+	// CATEGORIAS
+	const categories = getCategories($)
 
-	// ESTADO DE CATEGORIA
-	const [category, setCategory] = useState<string>(productRef.current.category)
+	// GUARDAR DATOS
+	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) => onChangeInput(ev, businessRef)
 
-	// ACTUALIZAR
-	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeProductProps(ev, productRef)
-
-	// CAMBIAR CATEGORIAS
-	const handleCategory = (ev: SelectChangeEvent<string>) =>
-		changeCategory(ev, setCategory, productRef)
+	// GUARDAR CATEGORIA
+	const handleCategory = (ev: SelectChangeEvent) => onChangeCategory(ev, businessRef)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
 				title={$`Informacion general`}
-				body={$`Estos datos se mostraran en las tarjetas de producto en tus tiendas seleccionadas.`}
+				body={$`Esta informacion se mostrara en todas tus tiendas asi como en los links`}
 			/>
 
 			<TextField
-				id='title'
-				name='title'
+				id='name'
+				name='name'
 				variant='outlined'
 				onChange={handleInputs}
-				label={$`Título del producto`}
-				placeholder={$`Añade un título corto`}
-				defaultValue={productRef.current.title || ''}
+				label={$`Nombre del negocio`}
+				placeholder={$`Nombre legal de tu marca`}
+				defaultValue={businessRef.current?.name ?? ''}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
@@ -81,8 +68,8 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 				variant='outlined'
 				name='description'
 				onChange={handleInputs}
-				defaultValue={productRef.current.description}
-				label={$`Descripción del producto`}
+				defaultValue={businessRef.current?.description ?? ''}
+				label={$`Descripción del negocio`}
 				placeholder={$`Añade una descripción`}
 				InputProps={{
 					startAdornment: (
@@ -105,12 +92,12 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						label={$`Categoria`}
 						onChange={handleCategory}
 						labelId='category-label'
-						value={category === $` Sin categoria` ? '' : category}
+						defaultValue={businessRef.current?.category ?? ''}
 						inputProps={{
 							name: 'category',
 							id: 'category',
 						}}>
-						{businessCtx.business?.categories?.map((category: string) => (
+						{categories?.map((category: string) => (
 							<MenuItem key={category} value={category}>
 								{category}
 							</MenuItem>
@@ -118,25 +105,6 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<MenuItem value={$`Nueva categoria`}>{$`Nueva categoria`}</MenuItem>
 					</Select>
 				</FormControl>
-				{category === $`Nueva categoria` && (
-					<TextField
-						defaultValue=''
-						id='new_category'
-						variant='outlined'
-						name='new_category'
-						onChange={handleInputs}
-						style={{ marginLeft: '15px', minWidth: '250px' }}
-						label={$`Categoria del producto`}
-						placeholder={$`Añade una categoria`}
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position='start'>
-									<CategoryTwoToneIcon color='primary' />
-								</InputAdornment>
-							),
-						}}
-					/>
-				)}
 			</div>
 		</div>
 	)

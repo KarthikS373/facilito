@@ -26,16 +26,10 @@ import MoneyTwoTone from '@mui/icons-material/MoneyTwoTone'
 import TollTwoTone from '@mui/icons-material/TollTwoTone'
 
 // UTILS
-import changeProductProps from '../../tools'
+import changeProductProps, { GeneralProps } from '../../tools'
 
 // HOOKS
 import useStrings from 'hooks/lang'
-
-// PROPS
-interface GeneralProps {
-	show: boolean
-	productRef: React.MutableRefObject<Product>
-}
 
 const Stock: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS

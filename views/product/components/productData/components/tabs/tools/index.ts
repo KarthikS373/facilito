@@ -1,5 +1,11 @@
 /* eslint-disable dot-notation */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+
+export interface GeneralProps {
+	show: boolean
+	productRef: React.MutableRefObject<Product>
+}
+
 /**
  * Cambiar producto
  * @description Actualiza en la DB y en el contexto las propiedades de un producto

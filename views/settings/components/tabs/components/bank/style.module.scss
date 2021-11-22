@@ -1,0 +1,9 @@
+.container {
+	padding: 20px;
+
+	.accounts {
+		margin-top: var(--margin);
+		display: grid;
+		row-gap: 25px;
+	}
+}

@@ -5,6 +5,9 @@ import React from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
+// COMPONENTES
+import Head from 'components/head'
+
 // VIEWS
 import dynamic from 'next/dynamic'
 const NewFormView = dynamic(() => import('views/editForm'), { ssr: false })
@@ -14,7 +17,12 @@ const EditForm: NextPage = () => {
 	const router = useRouter()
 	const { formID } = router.query
 
-	return <NewFormView id={(formID as string) ?? ''} />
+	return (
+		<>
+			<Head />
+			<NewFormView id={(formID as string) ?? ''} />
+		</>
+	)
 }
 
 export default EditForm

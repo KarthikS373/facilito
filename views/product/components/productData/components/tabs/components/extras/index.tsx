@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -16,12 +16,9 @@ import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
 import addExtra, { removeExtra } from './tools'
+import { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
-
-interface GeneralProps {
-	show: boolean
-	productRef: React.MutableRefObject<Product>
-}
+import useDefExtras from './hooks'
 
 const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS
@@ -37,9 +34,7 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 	const deleteExtra = (extIndex: number) => () => removeExtra(extIndex, productRef, setExtras)
 
 	// EXTRAS INICIALES
-	useEffect(() => {
-		setExtras(productRef.current.extras?.map((ext: Extra, id: number) => ({ ...ext, id })) || [])
-	}, [setExtras, productRef])
+	useDefExtras(productRef, setExtras)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>

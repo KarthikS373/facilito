@@ -1,4 +1,480 @@
 {
+	"agregar_informacion_general_y_bancaria_sobre_el_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_el_cargo_correspondiente_a_cada_colaborador_dentro_de_tu_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"usuarios": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_cargo": {
+		"en": "",
+		"es": "$"
+	},
+	"administrador": {
+		"en": "",
+		"es": "$"
+	},
+	"administrar_usuarios": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_el_cargo_correspondiente_a_cada_colaborador_en_tu_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"completa_los_datos_de_tu_tarjeta_y_valida_el_captcha_para_continuar": {
+		"en": "",
+		"es": "$"
+	},
+	"principal": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_y_de_pago_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_y_de_pago_son_confidenciales": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_pagos": {
+		"en": "",
+		"es": "$"
+	},
+	"eliminar_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"banco_internacional": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_del_banco": {
+		"en": "",
+		"es": "$"
+	},
+	"tipo_de_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"empresarial": {
+		"en": "",
+		"es": "$"
+	},
+	"ahorro": {
+		"en": "",
+		"es": "$"
+	},
+	"monetaria": {
+		"en": "",
+		"es": "$"
+	},
+	"12316546154": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_la_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"titular_de_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_de_la_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_se_mostraran_al_realizar_pagos_con_transferencia_en_las_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_se_mostraran_al_realizar_pagos_con_transferencia": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_se_mostraran_cuando_hacen_pagos_con_transferencia": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_se_mostraran_a_tus_clientes_cuando_hacen_pagos_con_transferencia": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_seran_proporcionados_a_tus_clientes_cuando_hacen_pagos_con_transferencia": {
+		"en": "",
+		"es": "$"
+	},
+	"informacion_bancaria": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_se_mostrara_en_todas_tus_tiendas_asi_como_en_los_links": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_del_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_legal_de_tu_marca": {
+		"en": "",
+		"es": "$"
+	},
+	"veterinaria": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_del_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"transporte": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_se_mostrara_en_todas_tiendas_asi_como_en_los_links": {
+		"en": "",
+		"es": "$"
+	},
+	"viajes_y_turismo": {
+		"en": "",
+		"es": "$"
+	},
+	"vestuario_y_calzado": {
+		"en": "",
+		"es": "$"
+	},
+	"universidades": {
+		"en": "",
+		"es": "$"
+	},
+	"tienda_online": {
+		"en": "",
+		"es": "$"
+	},
+	"tecnologia": {
+		"en": "",
+		"es": "$"
+	},
+	"taxi": {
+		"en": "",
+		"es": "$"
+	},
+	"supermercado": {
+		"en": "",
+		"es": "$"
+	},
+	"servicios_profesionales": {
+		"en": "",
+		"es": "$"
+	},
+	"restaurante": {
+		"en": "",
+		"es": "$"
+	},
+	"servicio_tecnico": {
+		"en": "",
+		"es": "$"
+	},
+	"servicio_de_mensajeria": {
+		"en": "",
+		"es": "$"
+	},
+	"salud_y_equipamiento_medico": {
+		"en": "",
+		"es": "$"
+	},
+	"ropa_de_mujer_hombre_y_nino": {
+		"en": "",
+		"es": "$"
+	},
+	"ropa_interior_y_accesorios": {
+		"en": "",
+		"es": "$"
+	},
+	"relojes_y_joyas": {
+		"en": "",
+		"es": "$"
+	},
+	"redes_sociales": {
+		"en": "",
+		"es": "$"
+	},
+	"peliculas": {
+		"en": "",
+		"es": "$"
+	},
+	"panaderia_y_reposteria": {
+		"en": "",
+		"es": "$"
+	},
+	"otros": {
+		"en": "",
+		"es": "$"
+	},
+	"optica": {
+		"en": "",
+		"es": "$"
+	},
+	"musica": {
+		"en": "",
+		"es": "$"
+	},
+	"medico": {
+		"en": "",
+		"es": "$"
+	},
+	"marketing_y_publicidad": {
+		"en": "",
+		"es": "$"
+	},
+	"marca_personal": {
+		"en": "",
+		"es": "$"
+	},
+	"libros_revistas_y_comics": {
+		"en": "",
+		"es": "$"
+	},
+	"hosteleria": {
+		"en": "",
+		"es": "$"
+	},
+	"lavanderia": {
+		"en": "",
+		"es": "$"
+	},
+	"kiosco": {
+		"en": "",
+		"es": "$"
+	},
+	"juegos_y_juguetes": {
+		"en": "",
+		"es": "$"
+	},
+	"inmobiliaria": {
+		"en": "",
+		"es": "$"
+	},
+	"imprenta": {
+		"en": "",
+		"es": "$"
+	},
+	"fotografia_y_video": {
+		"en": "",
+		"es": "$"
+	},
+	"hospedajes": {
+		"en": "",
+		"es": "$"
+	},
+	"hogar_y_muebles": {
+		"en": "",
+		"es": "$"
+	},
+	"herramientas_y_construccion": {
+		"en": "",
+		"es": "$"
+	},
+	"gimnasio": {
+		"en": "",
+		"es": "$"
+	},
+	"entretenimiento": {
+		"en": "",
+		"es": "$"
+	},
+	"flete_y_mudanzas": {
+		"en": "",
+		"es": "$"
+	},
+	"finanzas": {
+		"en": "",
+		"es": "$"
+	},
+	"farmacia": {
+		"en": "",
+		"es": "$"
+	},
+	"eventos": {
+		"en": "",
+		"es": "$"
+	},
+	"deportes_y_fitness": {
+		"en": "",
+		"es": "$"
+	},
+	"electronica_audio_y_video": {
+		"en": "",
+		"es": "$"
+	},
+	"electrodomesticos": {
+		"en": "",
+		"es": "$"
+	},
+	"educacion": {
+		"en": "",
+		"es": "$"
+	},
+	"diseno_grafico": {
+		"en": "",
+		"es": "$"
+	},
+	"dentista": {
+		"en": "",
+		"es": "$"
+	},
+	"delivery": {
+		"en": "",
+		"es": "$"
+	},
+	"concesionario": {
+		"en": "",
+		"es": "$"
+	},
+	"computacion_e_informatica": {
+		"en": "",
+		"es": "$"
+	},
+	"coaching": {
+		"en": "",
+		"es": "$"
+	},
+	"cafeteria": {
+		"en": "",
+		"es": "$"
+	},
+	"cine": {
+		"en": "",
+		"es": "$"
+	},
+	"cerrajeria_y_ferreteria": {
+		"en": "",
+		"es": "$"
+	},
+	"celulares_y_telefonia": {
+		"en": "",
+		"es": "$"
+	},
+	"carpinteria": {
+		"en": "",
+		"es": "$"
+	},
+	"carniceria_y_pescaderia": {
+		"en": "",
+		"es": "$"
+	},
+	"bar": {
+		"en": "",
+		"es": "$"
+	},
+	"automotor": {
+		"en": "",
+		"es": "$"
+	},
+	"arte": {
+		"en": "",
+		"es": "$"
+	},
+	"aseguradoras": {
+		"en": "",
+		"es": "$"
+	},
+	"belleza_y_cuidado_personal": {
+		"en": "",
+		"es": "$"
+	},
+	"bebes_y_maternidad": {
+		"en": "",
+		"es": "$"
+	},
+	"animales_y_mascotas": {
+		"en": "",
+		"es": "$"
+	},
+	"alimentos_y_bebidas": {
+		"en": "",
+		"es": "$"
+	},
+	"usuario": {
+		"en": "",
+		"es": "$"
+	},
+	"pago": {
+		"en": "",
+		"es": "$"
+	},
+	"bancaria": {
+		"en": "",
+		"es": "$"
+	},
+	"tiendas_creadas": {
+		"en": "",
+		"es": "$"
+	},
+	"tiendas_creados": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_en_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"abrir_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"imprime_y_visualiza_todas_las_respuestas_de_esta_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"administra_los_eventos_creados_desde_todas_tus_tiendass": {
+		"en": "",
+		"es": "$"
+	},
+	"ir_a_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ninguna_tienda_en_donde_se_haya_agregado": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado_en_tu_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra_en_tus_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_tiendas_seleccionadas": {
+		"en": "",
+		"es": "$"
+	},
 	"te_gustaria_ver_tu_tienda_ahora": {
 		"en": "",
 		"es": "$"

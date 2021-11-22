@@ -15,21 +15,16 @@ import TabInfo from '../tabInfo'
 import InfoTwoTone from '@mui/icons-material/InfoTwoTone'
 
 // HOOKS
+import { GeneralProps } from '../../tools'
+import onChangeSwitch from './tools'
 import useStrings from 'hooks/lang'
 
-interface GeneralProps {
-	show: boolean
-	productRef: React.MutableRefObject<Product>
-}
 const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// GUARDAR CAMBIOS
-	const onChangeSwitch = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, checked } = ev.target
-		productRef.current[name] = checked
-	}
+	const handleSwitch = (ev: React.ChangeEvent<HTMLInputElement>) => onChangeSwitch(ev, productRef)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
@@ -44,7 +39,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<Switch
 							name='isPromo'
 							color='primary'
-							onChange={onChangeSwitch}
+							onChange={handleSwitch}
 							defaultChecked={productRef.current.isPromo}
 						/>
 					}
@@ -66,7 +61,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<Switch
 							name='featured'
 							color='primary'
-							onChange={onChangeSwitch}
+							onChange={handleSwitch}
 							defaultChecked={productRef.current.featured}
 						/>
 					}
@@ -88,7 +83,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 						<Switch
 							name='active'
 							color='primary'
-							onChange={onChangeSwitch}
+							onChange={handleSwitch}
 							defaultChecked={productRef.current.active}
 						/>
 					}

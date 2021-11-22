@@ -24,3 +24,19 @@ export const getUser = async (email: string): Promise<User | null> => {
 		} else return null
 	} else return null
 }
+
+/**
+ * Cambiar rol de usuario
+ * @param email
+ * @param role
+ */
+export const changeUserRole = async (email: string, role: string): Promise<void> => {
+	const { doc, setDoc } = await import('firebase/firestore')
+
+	// BUSCAR
+	const collection = await getCollection('users')
+	const userDoc = doc(collection, email)
+
+	// ASIGNAR
+	return setDoc(userDoc, { role }, { merge: true })
+}

@@ -83,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 							</div>
 							<span>
 								{customDescription ||
-									`${businessCtx.business?.forms?.length || 0} ${$`tiendass(s) creados`}`}
+									`${businessCtx.business?.forms?.length || 0} ${$`tienda(s) creadas`}`}
 							</span>
 						</div>
 					</div>

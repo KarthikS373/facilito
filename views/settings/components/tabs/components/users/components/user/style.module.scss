@@ -1,0 +1,42 @@
+.container {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 50px 1fr 200px;
+	column-gap: var(--margin);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding: var(--margin) 0;
+
+	&:first-child {
+		padding-top: 0;
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+
+	.info {
+		opacity: 0.8;
+		max-width: 210px;
+		overflow: hidden;
+
+		& > strong,
+		& > p {
+			width: 100%;
+			display: block;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
+
+	.image {
+		display: flex;
+		align-items: center;
+
+		& img {
+			overflow: hidden;
+			border-radius: 100%;
+		}
+	}
+}
