@@ -40,6 +40,7 @@ const Card: React.FC<CardProps> = ({ card, onDelete, onSetMain }) => {
 				<Image
 					width={45}
 					height={40}
+					unoptimized
 					alt={paymentCode}
 					src={`https://www.merchantequip.com/image/?bgcolor=FFFFFF&logos=${paymentCode}&height=64`}
 				/>

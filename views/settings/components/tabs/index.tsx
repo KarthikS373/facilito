@@ -28,7 +28,12 @@ import useStrings from 'hooks/lang'
 import { GeneralProps } from './tools'
 
 // PROPS
-const CustomTabs: React.FC<GeneralProps> = ({ userRoles, businessRef }) => {
+const CustomTabs: React.FC<GeneralProps> = ({
+	userRoles,
+	businessRef,
+	bannerRef,
+	backgroundRef,
+}) => {
 	// ESTADOS
 	const [tabIndex, setTabIndex] = useState<number>(0)
 
@@ -39,7 +44,7 @@ const CustomTabs: React.FC<GeneralProps> = ({ userRoles, businessRef }) => {
 	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
 
 	return (
-		<div>
+		<div className={Styles.container}>
 			<Paper style={{ background: '#fcfcfc', width: '540px' }}>
 				<Tabs
 					value={tabIndex}
@@ -53,10 +58,34 @@ const CustomTabs: React.FC<GeneralProps> = ({ userRoles, businessRef }) => {
 					<Tab className={Styles.tab} icon={<ExtensionTwoToneIcon />} label={$`Pago`} />
 					<Tab className={Styles.tab} icon={<SettingsTwoToneIcon />} label={$`Usuarios`} />
 				</Tabs>
-				<General show={tabIndex === 0} businessRef={businessRef} userRoles={userRoles} />
-				<Bank show={tabIndex === 1} businessRef={businessRef} userRoles={userRoles} />
-				<Payments show={tabIndex === 2} businessRef={businessRef} userRoles={userRoles} />
-				<Users show={tabIndex === 3} businessRef={businessRef} userRoles={userRoles} />
+				<Payments
+					show={tabIndex === 2}
+					businessRef={businessRef}
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					backgroundRef={backgroundRef}
+				/>
+				<General
+					show={tabIndex === 0}
+					businessRef={businessRef}
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					backgroundRef={backgroundRef}
+				/>
+				<Users
+					show={tabIndex === 3}
+					businessRef={businessRef}
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					backgroundRef={backgroundRef}
+				/>
+				<Bank
+					show={tabIndex === 1}
+					businessRef={businessRef}
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					backgroundRef={backgroundRef}
+				/>
 			</Paper>
 		</div>
 	)

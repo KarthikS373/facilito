@@ -96,3 +96,41 @@ export const getURL = async (path: string): Promise<string> => {
 	const url = await getDownloadURL(refs)
 	return url
 }
+
+/**
+ * Guardar archivos de banner y background
+ * @param path
+ * @param background
+ * @param onImage
+ */
+export const saveFile = (path: string, background: File | string): Promise<string> => {
+	return new Promise((resolve, reject) => {
+		// LEER
+		if (typeof background === 'object') {
+			// ALERTA
+			window.Alert({
+				title: 'Espera...',
+				body: 'Se esta subiendo tu archivo, esto dependerá de tu velocidad, no te salgas de la aplicación por favor.',
+				type: 'window',
+				fixed: true,
+			})
+
+			// SUBIR A CLOUD
+			uploadFile(background, path)
+				.then(() => {
+					getURL(path)
+						.then((src: string) => {
+							if (src) {
+								// REGRESAR
+								window.hideAlert()
+
+								// CAMBIAR FONDO
+								resolve(src)
+							}
+						})
+						.catch(reject)
+				})
+				.catch(reject)
+		} else resolve(background)
+	})
+}

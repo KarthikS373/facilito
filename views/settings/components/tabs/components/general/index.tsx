@@ -68,9 +68,9 @@ const General: React.FC<GeneralProps> = ({ show, businessRef }) => {
 				variant='outlined'
 				name='description'
 				onChange={handleInputs}
-				defaultValue={businessRef.current?.description ?? ''}
 				label={$`Descripción del negocio`}
 				placeholder={$`Añade una descripción`}
+				defaultValue={businessRef.current?.description ?? ''}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>
@@ -90,8 +90,8 @@ const General: React.FC<GeneralProps> = ({ show, businessRef }) => {
 						color='primary'
 						variant='outlined'
 						label={$`Categoria`}
-						onChange={handleCategory}
 						labelId='category-label'
+						onChange={handleCategory}
 						defaultValue={businessRef.current?.category ?? ''}
 						inputProps={{
 							name: 'category',

@@ -70,7 +70,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
 					<p>
-						{$`Los productos destacados se mostrarán automáticamente si añades un campo de destacado en tu tienda.`}
+						{$`Los productos destacados se mostrarán automáticamente si añades un campo de destacado.`}
 					</p>
 				</div>
 			</div>

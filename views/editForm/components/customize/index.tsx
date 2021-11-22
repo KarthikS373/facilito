@@ -1,159 +1,51 @@
 // REACT
-import React, { useState, useContext } from 'react'
-
-// IMAGE
-import Image from 'next/image'
-
-// ICONOS
-import ImageOutlined from '@mui/icons-material/ImageTwoTone'
-import Palette from '@mui/icons-material/PaletteTwoTone'
+import React, { useRef, useContext } from 'react'
 
 // COMPONENTES
-import Slider from '@mui/material/Slider'
+import CustomBackground from 'components/customBackground'
 import SideBar from 'components/sideBar'
 
 // UTILS
-import saveFile, {
-	changeColorDegrees,
-	changeColors,
-	CustomizeMenuProps,
-	getDefValues,
-	ImagesState,
-	saveColors,
-} from './tools'
-import { splitBackgroundColors } from 'utils/tools'
-import useStrings from 'hooks/lang'
-import useStateProps from './hooks'
+import { CustomizeMenuProps, handleClose } from './tools'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-// ESTILOS
-import Styles from './style.module.scss'
-
 const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) => {
-	// STRINGS
-	const { $ } = useStrings()
-
 	// BUSINESS
 	const company = useContext(BusinessContext)
 
-	// IMAGENES
-	const [images, setImages] = useState<ImagesState>(
-		getDefValues(props.defaultBackground, props.defaultBanner)
-	)
+	// REFERENCIAS
+	const backgroundRef: React.MutableRefObject<File | string> = useRef('')
+	const bannerRef: React.MutableRefObject<File | string> = useRef('')
 
-	// COLORES
-	const [colors, setDefColors] = useState<[string, string, string]>(
-		splitBackgroundColors(props.defaultBackground ?? '')
-	)
+	// TEMPORAL BACKGROUND
+	const onBackground = (image: File | string) => (backgroundRef.current = image)
 
-	// CAMBIAR COLORES
-	const handleColors = (index: number) => (ev: React.ChangeEvent<HTMLInputElement>) =>
-		changeColors(index, ev, setDefColors)
+	// TEMPORAL BANNER
+	const onBanner = (image: File | string) => (bannerRef.current = image)
 
-	// CAMBIAR INCLINACIÓN
-	const handleColorDegrees = (_event: unknown, newValue: number | number[]) =>
-		changeColorDegrees(newValue, setDefColors)
-
-	// LEER ARCHIVO
-	const readFile = (prefix: string) => (ev: React.ChangeEvent) =>
-		saveFile(ev, prefix, company.business, props, setImages)
-
-	// GUARDAR
-	const onClose = () => saveColors(colors, props.onColor, props.onBack)
-
-	// HOOKS
-	useStateProps(props.defaultBackground, props.defaultBanner, setImages, setDefColors)
+	// GUARDAR COLORES
+	const onClose = () =>
+		handleClose(
+			backgroundRef,
+			bannerRef,
+			props.onColor,
+			props.onBanner,
+			props.onBack,
+			company.business?.id,
+			props.id
+		)
 
 	return (
 		<SideBar open={props.open} onClose={onClose}>
-			<div className={Styles.container}>
-				<h2>
-					<Palette /> {$`Personalizar`}
-				</h2>
-
-				{/* MENU */}
-				<h3>{$`Cambiar fondo`}</h3>
-				<div className={Styles.colors}>
-					<p>{$`Selecciona dos colores`}</p>
-					<div>
-						{/* COLORES */}
-						<input
-							type='color'
-							onChange={handleColors(0)}
-							className={Styles.colorInp}
-							value={colors[0]}
-						/>
-						<input
-							type='color'
-							className={Styles.colorInp}
-							onChange={handleColors(1)}
-							value={colors[1]}
-						/>
-
-						{/* SLIDER DE GRADOS */}
-						<div>
-							<span>{$`Grado de inclinación`}</span>
-							<Slider
-								min={0}
-								max={360}
-								color='primary'
-								value={+colors[2]}
-								valueLabelDisplay='auto'
-								onChange={handleColorDegrees}
-								aria-labelledby='degrees-slider'
-							/>
-						</div>
-					</div>
-				</div>
-				{/* IMAGEN DE FONDO */}
-				<div className={Styles.image}>
-					<p>{$`Sube una imagen como fondo`}</p>
-					<div>
-						<label htmlFor='formBackground'>
-							{!images.background.startsWith('transparent linear-gradient') ? (
-								<Image unoptimized width={50} height={50} alt='formBack' src={images.background} />
-							) : (
-								<ImageOutlined />
-							)}
-						</label>
-						<input
-							type='file'
-							accept='image/*'
-							multiple={false}
-							id='formBackground'
-							style={{ display: 'none' }}
-							onChange={readFile('background')}
-						/>
-						<span>{$`Esto remplazara el fondo degradado.`}</span>
-					</div>
-				</div>
-
-				{/* IMAGEN DE BANNER */}
-				<div className={Styles.image}>
-					<h3>{$`Cambiar portada`}</h3>
-					<p>{$`Sube una imagen de portada`}</p>
-					<div>
-						<label htmlFor='formBanner'>
-							{images.banner.length ? (
-								<Image unoptimized src={images.banner} alt='formBanner' width={50} height={50} />
-							) : (
-								<ImageOutlined />
-							)}
-						</label>
-						<input
-							type='file'
-							id='formBanner'
-							accept='image/*'
-							multiple={false}
-							style={{ display: 'none' }}
-							onChange={readFile('banner')}
-						/>
-						<span>{$`Sube una imagen de 650px x 250px`}</span>
-					</div>
-				</div>
-			</div>
+			<CustomBackground
+				defaultBackground={props.defaultBackground}
+				defaultBanner={props.defaultBanner}
+				onBackground={onBackground}
+				onBanner={onBanner}
+				showTitle
+			/>
 		</SideBar>
 	)
 }

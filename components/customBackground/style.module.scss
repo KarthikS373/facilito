@@ -1,0 +1,142 @@
+.container {
+	width: 100%;
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	color: #333;
+
+	& > button {
+		margin-left: -15px;
+		margin-bottom: 10px;
+	}
+
+	h2 {
+		margin: 0;
+		opacity: 0.8;
+		display: flex;
+		align-items: center;
+
+		svg {
+			margin-right: 5px;
+			margin-left: -2px;
+		}
+	}
+
+	h3 {
+		opacity: 0.8;
+		margin-top: 5px;
+	}
+
+	h3:nth-child(6) {
+		margin-top: 15px;
+	}
+
+	.colors {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+
+		& > div {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			height: 50px;
+
+			& > input:nth-child(2) {
+				margin-left: -10px;
+			}
+		}
+
+		p {
+			margin-bottom: 10px;
+			opacity: 0.8;
+			display: block;
+		}
+
+		.colorInp {
+			appearance: none;
+			width: 50px;
+			height: 50px;
+			outline: none;
+			border: none;
+			background: transparent;
+			cursor: pointer;
+
+			&::-webkit-color-swatch,
+			&::-webkit-color-swatch-wrapper {
+				border: none;
+				border-radius: 100%;
+				border: 2px solid #fff;
+				padding: 0;
+			}
+		}
+
+		.degrees {
+			width: 165px;
+			margin-left: var(--margin);
+
+			& > span:first-child {
+				color: #555;
+			}
+		}
+	}
+
+	.image {
+		border-top: 1px solid #999;
+		width: 100%;
+		margin-top: 15px;
+		padding-top: 15px;
+
+		& > h3 {
+			margin-top: -3px;
+			opacity: 0.8;
+		}
+
+		p {
+			margin-bottom: 10px;
+			opacity: 0.8;
+			display: block;
+		}
+
+		& > div {
+			display: flex;
+			align-items: center;
+			margin-top: -10px;
+
+			label {
+				width: 60px;
+				height: 60px;
+				margin-right: 10px;
+				padding: 0;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img,
+				svg {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					opacity: 0.45;
+				}
+
+				img {
+					width: 80%;
+					height: 80%;
+					border-radius: 10px;
+				}
+			}
+
+			span {
+				display: block;
+				font-size: 0.9em;
+				width: 150px;
+				color: #555;
+				opacity: 0.8;
+			}
+		}
+	}
+}

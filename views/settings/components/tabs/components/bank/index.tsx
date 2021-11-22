@@ -16,7 +16,13 @@ import addAccount, { deleteAccount } from './tools'
 import { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
 
-const Bank: React.FC<GeneralProps> = ({ show, businessRef, userRoles }) => {
+const Bank: React.FC<GeneralProps> = ({
+	show,
+	businessRef,
+	userRoles,
+	backgroundRef,
+	bannerRef,
+}) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -52,9 +58,11 @@ const Bank: React.FC<GeneralProps> = ({ show, businessRef, userRoles }) => {
 						show={show}
 						index={index}
 						account={account}
+						bannerRef={bannerRef}
 						userRoles={userRoles}
 						key={`account_${index}`}
 						businessRef={businessRef}
+						backgroundRef={backgroundRef}
 						onDelete={deleteAccountEv(index)}
 					/>
 				))}

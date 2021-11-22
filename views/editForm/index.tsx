@@ -2,7 +2,8 @@
 import React, { useMemo, useRef, useState, useContext } from 'react'
 
 // COMPONENTES
-import ComponentsSideBar from './components/formComponents'
+import ComponentsSideBar from './components/componentsSidebar'
+import Footer from 'components/layout/components/footer'
 import ComponentsViewer from './components/viewer'
 import CustomizeMenu from './components/customize'
 import FormTopbar from './components/formTopbar'
@@ -35,7 +36,6 @@ import UserContext from 'context/user'
 
 // ESTILO
 import Styles from './style.module.scss'
-import Footer from 'components/layout/components/footer'
 
 // DYNAMIC COMPONENTS
 const AlertProvider = dynamic(() => import('providers/alerts'))

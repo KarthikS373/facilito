@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react'
 
 // COMPONENTES
+import Customize from './components/customize'
 import ColorButton from 'components/button'
 import PageInfo from 'components/pageInfo'
 import Header from 'components/header'
@@ -18,6 +19,9 @@ import defBusiness from './utils/initials'
 import useStrings from 'hooks/lang'
 import saveBusiness from './tools'
 
+// ESTILOS
+import Styles from './style.module.scss'
+
 const SettingsView: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
@@ -30,11 +34,22 @@ const SettingsView: React.FC = () => {
 	const businessRef = useRef(business ?? defBusiness)
 	businessRef.current = business ?? defBusiness
 
+	const backgroundRef: React.MutableRefObject<File | string> = useRef('')
+	const bannerRef: React.MutableRefObject<File | string> = useRef('')
+
 	// ROLES
 	const userRoles = useRef<UserRole[]>([])
 
 	// GUARDAR
-	const saveBusinessEv = () => saveBusiness(businessCtx.setBusinessDB, businessRef, userRoles)
+	const saveBusinessEv = () =>
+		saveBusiness(
+			businessCtx.setBusinessDB,
+			businessRef,
+			userRoles,
+			backgroundRef,
+			bannerRef,
+			businessCtx.business?.id
+		)
 
 	return (
 		<View>
@@ -45,7 +60,7 @@ const SettingsView: React.FC = () => {
 					onClick={saveBusinessEv}
 					startIcon={<SaveTwoTone />}
 					$style={{ background: 'var(--primary)', color: '#fff' }}>
-					{$`Guardar producto`}
+					{$`Guardar datos`}
 				</ColorButton>
 			</Header>
 			<PageInfo
@@ -53,7 +68,22 @@ const SettingsView: React.FC = () => {
 				description={$`Agregar informacion general y bancaria sobre el negocio.`}
 				icon={<AdminPanelSettingsTwoToneIcon />}
 			/>
-			<Tabs businessRef={businessRef} userRoles={userRoles} show />
+			<div className={Styles.container}>
+				<Tabs
+					show
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					businessRef={businessRef}
+					backgroundRef={backgroundRef}
+				/>
+				<Customize
+					show
+					userRoles={userRoles}
+					bannerRef={bannerRef}
+					businessRef={businessRef}
+					backgroundRef={backgroundRef}
+				/>
+			</div>
 		</View>
 	)
 }

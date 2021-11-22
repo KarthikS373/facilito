@@ -157,8 +157,7 @@ const CardForm: React.FC<CardFormProps> = ({ amount, onChange }) => {
 							name='cvc'
 							label={$`CVV2`}
 							placeholder='123'
-							defaultValue=''
-							value={state.cvc}
+							value={state.cvc || ''}
 							onChange={handleInputChangeEv}
 							onFocus={handleInputFocusEv()}
 							InputProps={{

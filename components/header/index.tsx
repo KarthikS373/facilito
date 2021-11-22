@@ -42,12 +42,9 @@ const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
 			<div
 				className={Styles.background}
 				style={{
-					background:
-						businessCtx.business?.backgroundImage === 'none'
-							? businessCtx.business?.background
-							: '',
+					background: businessCtx.business?.backgroundImage ? '' : businessCtx.business?.background,
 				}}>
-				{businessCtx.business && businessCtx.business.backgroundImage !== 'none' && (
+				{businessCtx.business?.backgroundImage && (
 					<Image
 						unoptimized
 						layout='fill'

@@ -1,3 +1,5 @@
+import ROUTES from 'router/routes'
+
 /**
  * Evaluá ruta
  * @description Valida las rutas donde se mostrará el topbar
@@ -28,7 +30,9 @@ const evaluateTopbarPath = (path: string): boolean => {
  */
 export const evaluateFooterPath = (path: string): boolean => {
 	// MOSTRAR
-	if (/\/f\/(.+)$/.test(path)) return true
+	if (/\/f\/.+\/respuestas/.test(path)) return false
+	else if (/\/f\/(.+)$/.test(path)) return true
+	else if (path === ROUTES.login) return true
 	// OCULTAR
 	else return false
 }
