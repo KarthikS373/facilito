@@ -39,3 +39,14 @@ export const handleClose = async (
 		onBanner(await saveFile(`/${companyId}/forms/${id}/banner`, bannerRef.current))
 	onBack()
 }
+
+/**
+ * Valores por defecto
+ * @description Obtener valores por defecto para estado de imagenes
+ * @param props
+ * @returns
+ */
+export const getDefValues = (defaultBackground: string, defaultBanner: string): ImagesState => ({
+	banner: defaultBanner?.toString() ?? '',
+	background: defaultBackground?.toString() ?? '',
+})

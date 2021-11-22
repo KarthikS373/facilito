@@ -17,6 +17,7 @@ import { generateTheme, splitBackgroundColors } from 'utils/tools'
 
 // PROVIDERS
 import { ThemeProvider } from '@mui/material/styles'
+import AlertProvider from 'providers/alerts'
 
 // COMPONENTES
 import FormHeader from 'components/formHeader'
@@ -70,6 +71,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 
 	return (
 		<ThemeProvider theme={customTheme}>
+			<AlertProvider />
 			<div
 				className={Styles.container}
 				style={
