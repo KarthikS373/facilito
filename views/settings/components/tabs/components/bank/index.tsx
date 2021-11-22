@@ -16,7 +16,7 @@ import addAccount, { deleteAccount } from './tools'
 import { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
 
-const Bank: React.FC<GeneralProps> = ({ show, businessRef }) => {
+const Bank: React.FC<GeneralProps> = ({ show, businessRef, userRoles }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -29,7 +29,7 @@ const Bank: React.FC<GeneralProps> = ({ show, businessRef }) => {
 	const handleAccount = () => addAccount(setAccounts)
 
 	// BORRAR CUENTA
-	const deleteAccountEv = (index: number) => () => deleteAccount(setAccounts, index)
+	const deleteAccountEv = (index: number) => () => deleteAccount(businessRef, setAccounts, index)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
@@ -52,6 +52,7 @@ const Bank: React.FC<GeneralProps> = ({ show, businessRef }) => {
 						show={show}
 						index={index}
 						account={account}
+						userRoles={userRoles}
 						key={`account_${index}`}
 						businessRef={businessRef}
 						onDelete={deleteAccountEv(index)}

@@ -4,7 +4,10 @@ import showCardForm from '../components/newCard'
  * Agregar cuenta
  * @param setAccounts
  */
-const addAccount = (setAccounts: SetState<CompanyPaymentAccount[]>): void => {
+const addAccount = (
+	businessRef: React.MutableRefObject<Business | null>,
+	setAccounts: SetState<CompanyPaymentAccount[]>
+): void => {
 	// MOSTRAR ALERTA DE CUENTA
 	showCardForm((data) => {
 		if (data) {
@@ -16,6 +19,7 @@ const addAccount = (setAccounts: SetState<CompanyPaymentAccount[]>): void => {
 				})
 
 				if (tmpAccounts.every((account) => account.main === false)) tmpAccounts[0].main = true
+				if (businessRef.current) businessRef.current.paymentAccounts = tmpAccounts
 				return tmpAccounts
 			})
 		}
@@ -28,12 +32,14 @@ const addAccount = (setAccounts: SetState<CompanyPaymentAccount[]>): void => {
  * @param index
  */
 export const deleteAccount = (
+	businessRef: React.MutableRefObject<Business | null>,
 	setAccounts: SetState<CompanyPaymentAccount[]>,
 	index: number
 ): void => {
 	setAccounts((accounts) => {
 		const tmpAccounts = [...accounts].filter((_a, key: number) => key !== index)
 		if (tmpAccounts.every((account) => account.main === false)) tmpAccounts[0].main = true
+		if (businessRef.current) businessRef.current.paymentAccounts = tmpAccounts
 		return tmpAccounts
 	})
 }
@@ -44,12 +50,14 @@ export const deleteAccount = (
  * @param index
  */
 export const setAccountAsMain = (
+	businessRef: React.MutableRefObject<Business | null>,
 	setAccounts: SetState<CompanyPaymentAccount[]>,
 	index: number
 ): void => {
 	setAccounts((accounts) => {
 		const tmpAccounts = [...accounts].map((account) => ({ ...account, main: false }))
 		tmpAccounts[index].main = true
+		if (businessRef.current) businessRef.current.paymentAccounts = tmpAccounts
 		return tmpAccounts
 	})
 }

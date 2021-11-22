@@ -27,13 +27,13 @@ const Payments: React.FC<GeneralProps> = ({ show, businessRef }) => {
 	)
 
 	// AGREGAR CUENTA
-	const handleAccount = () => addAccount(setAccounts)
+	const handleAccount = () => addAccount(businessRef, setAccounts)
 
 	// BORRAR CUENTA
-	const deleteAccountEv = (index: number) => () => deleteAccount(setAccounts, index)
+	const deleteAccountEv = (index: number) => () => deleteAccount(businessRef, setAccounts, index)
 
 	// HACER UNA CUENTA COMO PRINCIPAL
-	const setMain = (index: number) => () => setAccountAsMain(setAccounts, index)
+	const setMain = (index: number) => () => setAccountAsMain(businessRef, setAccounts, index)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>

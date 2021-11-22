@@ -21,9 +21,14 @@ const addAccount = (setAccounts: SetState<CompanyBankAccount[]>): void => {
  * @param setAccounts
  * @param index
  */
-export const deleteAccount = (setAccounts: SetState<CompanyBankAccount[]>, index: number): void => {
+export const deleteAccount = (
+	businessRef: React.MutableRefObject<Business | null>,
+	setAccounts: SetState<CompanyBankAccount[]>,
+	index: number
+): void => {
 	setAccounts((accounts) => {
 		const tmpAccounts = [...accounts].filter((_a, key: number) => key !== index)
+		if (businessRef.current) businessRef.current.bankAccounts = tmpAccounts
 		return tmpAccounts
 	})
 }
