@@ -54,13 +54,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 					<div className={Styles.logo}>
 						<NextLink href={ROUTES.forms} passHref>
 							<a title='Logo'>
-								<Image
-									unoptimized
-									src='/assets/brand/logo_mask.png'
-									alt='Icon'
-									height={45}
-									width={85}
-								/>
+								<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
 							</a>
 						</NextLink>
 					</div>

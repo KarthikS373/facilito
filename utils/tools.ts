@@ -188,8 +188,6 @@ export const splitBackgroundColors = (
 				img.decoding = 'async'
 				img.src = background?.toString()
 
-				img.onerror = () => console.log(img)
-
 				img.onload = () => {
 					const Vibrant = nodeVbrnt.default
 					const vibrant = new Vibrant(img)
