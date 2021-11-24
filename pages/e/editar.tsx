@@ -5,9 +5,15 @@ import { NextPage } from 'next'
 
 // VISTAS
 import SettingsView from 'views/settings'
+import Head from 'components/head'
 
 const SettingsPage: NextPage = () => {
-	return <SettingsView />
+	return (
+		<>
+			<Head />
+			<SettingsView />
+		</>
+	)
 }
 
 export default SettingsPage
