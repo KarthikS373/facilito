@@ -50,7 +50,7 @@ const Card: React.FC<CardProps> = ({ card, onDelete, onSetMain }) => {
 					<p className={Styles.cardNumber}>{card.account}</p>
 				</div>
 
-				{card.main && <strong>{$`Principal`}</strong>}
+				{card.main && <span>{$`Principal`}</span>}
 			</div>
 			<div className={Styles.actions}>
 				<IconButton onClick={onDelete}>

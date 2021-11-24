@@ -1,5 +1,5 @@
 // REACT
-import React, { useMemo, useRef, useState, useContext } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 
 // COMPONENTES
 import ComponentsSideBar from './components/componentsSidebar'
@@ -25,9 +25,9 @@ import { ThemeProvider } from '@mui/material/styles'
 import { initialCustomFormState, formComponentsList, initialFormData } from './utils/initials'
 import { updateCheckoutOptions, updatePersonalInputs, updateUrl } from './tools/formProps'
 import { copyComponent, deleteComponent, saveComponentProps } from './tools/components'
-import { generateTheme, splitBackgroundColors } from 'utils/tools'
 import { extractFormComponent } from 'utils/forms'
 import { saveFormOnCloud } from './tools/cloud'
+import { defThemeColors, generateTheme } from 'utils/tools'
 import { onDragEnd } from './tools'
 
 // CONTEXTO
@@ -36,6 +36,7 @@ import UserContext from 'context/user'
 
 // ESTILO
 import Styles from './style.module.scss'
+import usePaletteColors from 'hooks/theme'
 
 // DYNAMIC COMPONENTS
 const AlertProvider = dynamic(() => import('providers/alerts'))
@@ -62,6 +63,9 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 
 	// MENU DE PERSONALIZACIÓN
 	const [openCustomized, setOpenCustomized] = useState<boolean>(false)
+
+	// ACTUALIZAR
+	const [defColors, setDefColors] = useState<string[]>(defThemeColors)
 
 	// REFERENCIA DE COMPONENTES
 	const componentsList: React.MutableRefObject<BlockComponent[]> = useRef([
@@ -90,8 +94,6 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 
 	// OBTENER COLORES
 	const { background } = formProps
-	const defColors = useMemo(() => splitBackgroundColors(background), [background])
-	const theme = useMemo(() => generateTheme(defColors), [defColors])
 
 	// GUARDA TITULO
 	const setTitle = (title: string) => {
@@ -157,6 +159,9 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	const saveCompProps = (index: number, component: keyof BlockComponent, val: FormInputValue) =>
 		saveComponentProps(index, component, val, components, componentsList)
 
+	// COLORES
+	usePaletteColors(setDefColors, background)
+
 	// CARGAR DESDE CLOUD
 	useCloudForm(
 		formData,
@@ -173,9 +178,18 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	return (
 		<>
 			<div>
-				<ThemeProvider theme={theme}>
+				<ThemeProvider theme={generateTheme(defColors)}>
 					<AlertProvider />
-					<div className={Styles.container}>
+					<div
+						className={Styles.container}
+						style={
+							{
+								'--primary': defColors[0],
+								'--secondary': defColors[1],
+								'--primaryDark': defColors[0],
+								'--secondaryDark': defColors[3],
+							} as React.CSSProperties
+						}>
 						{/* TOPBAR */}
 						<FormTopbar
 							onTitle={setTitle}

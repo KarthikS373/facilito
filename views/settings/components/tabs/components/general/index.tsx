@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -21,16 +21,24 @@ import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
 
 // HOOKS
 import onChangeInput, { onChangeCategory } from './tools'
-import type { GeneralProps } from '../../tools'
 import getCategories from './utils/initials'
 import useStrings from 'hooks/lang'
 
-const General: React.FC<GeneralProps> = ({ show, businessRef }) => {
+// CONTEXTO
+import SettingsContext from 'views/settings/context'
+
+interface TabProps {
+	show: boolean
+}
+const General: React.FC<TabProps> = ({ show }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// CATEGORIAS
 	const categories = getCategories($)
+
+	// CONTEXTO
+	const { businessRef } = useContext(SettingsContext)
 
 	// GUARDAR DATOS
 	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) => onChangeInput(ev, businessRef)

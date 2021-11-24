@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -14,12 +14,20 @@ import AddTwoTone from '@mui/icons-material/AddTwoTone'
 
 // HOOKS
 import addAccount, { deleteAccount, setAccountAsMain } from './tools'
-import type { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
 
-const Payments: React.FC<GeneralProps> = ({ show, businessRef }) => {
+// CONTEXTO
+import SettingsContext from 'views/settings/context'
+
+interface TabProps {
+	show: boolean
+}
+const Payments: React.FC<TabProps> = ({ show }) => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// CONTEXTO
+	const { businessRef } = useContext(SettingsContext)
 
 	// CUENTAS
 	const [accounts, setAccounts] = useState<CompanyPaymentAccount[]>(

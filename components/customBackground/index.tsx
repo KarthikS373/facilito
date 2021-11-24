@@ -5,15 +5,18 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 // ICONOS
-import ImageOutlined from '@mui/icons-material/ImageTwoTone'
+import SlideshowTwoTone from '@mui/icons-material/SlideshowTwoTone'
 import PaletteTwoTone from '@mui/icons-material/PaletteTwoTone'
+import ImageOutlined from '@mui/icons-material/ImageTwoTone'
 
 // COMPONENTES
+import ColorButton from 'components/button'
 import Slider from '@mui/material/Slider'
 
 // UTILS
 import saveFile, { changeColorDegrees, changeColors, getDefValues, ImagesState } from './tools'
-import { splitBackgroundColors } from 'utils/tools'
+import { defThemeColors } from 'utils/tools'
+import usePaletteColors from 'hooks/theme'
 import useStrings from 'hooks/lang'
 import useStateProps from './hooks'
 
@@ -27,6 +30,7 @@ interface CustomBackgroundProps {
 	bannerDescription?: string
 	defaultBanner: string
 	defaultBackground: string
+	onGalleryBtn?: EmptyFunction
 	onBanner: (image: File) => void
 	onBackground: (image: File | string) => void
 }
@@ -37,6 +41,7 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 	showTitle,
 	bannerTitle,
 	bannerText,
+	onGalleryBtn,
 	bannerDescription,
 	defaultBanner,
 	defaultBackground,
@@ -48,9 +53,7 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 	const [images, setImages] = useState<ImagesState>(getDefValues(defaultBackground, defaultBanner))
 
 	// COLORES
-	const [colors, setDefColors] = useState<[string, string, string]>(
-		splitBackgroundColors(defaultBackground ?? '')
-	)
+	const [colors, setDefColors] = useState<string[]>(defThemeColors)
 
 	// CAMBIAR COLORES
 	const handleColors = (index: number) => (ev: React.ChangeEvent<HTMLInputElement>) =>
@@ -65,7 +68,10 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 		saveFile(ev, prefix, onBackground, onBanner, setImages)
 
 	// HOOKS
-	useStateProps(defaultBackground, defaultBanner, setImages, setDefColors)
+	useStateProps(defaultBackground, defaultBanner, setImages)
+
+	// COLORES
+	usePaletteColors(setDefColors, defaultBackground)
 
 	return (
 		<div className={Styles.container}>
@@ -113,23 +119,42 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 			<div className={Styles.image}>
 				<p>{$`Sube una imagen como fondo`}</p>
 				<div>
-					<label htmlFor='formBackground'>
-						{images.background.length &&
-						!images.background.startsWith('transparent linear-gradient') ? (
-							<Image unoptimized src={images.background} width={50} height={50} alt='background' />
-						) : (
-							<ImageOutlined />
-						)}
-					</label>
-					<input
-						type='file'
-						accept='image/*'
-						multiple={false}
-						id='formBackground'
-						style={{ display: 'none' }}
-						onChange={readFile('background')}
-					/>
-					<span>{$`Esto remplazara el fondo degradado.`}</span>
+					<div>
+						<label htmlFor='formBackground'>
+							{images.background.length &&
+							!images.background.startsWith('transparent linear-gradient') ? (
+								<Image
+									unoptimized
+									src={images.background}
+									width={50}
+									height={50}
+									alt='background'
+								/>
+							) : (
+								<ImageOutlined />
+							)}
+						</label>
+						<input
+							type='file'
+							accept='image/*'
+							multiple={false}
+							id='formBackground'
+							style={{ display: 'none' }}
+							onChange={readFile('background')}
+						/>
+						<span>{$`Esto remplazara el fondo degradado.`}</span>
+					</div>
+					{onGalleryBtn && (
+						<ColorButton
+							color='primary'
+							variant='outlined'
+							onClick={onGalleryBtn}
+							startIcon={<SlideshowTwoTone />}
+							$style={{
+								color: 'var(--primary)',
+								borderColor: 'var(--primary)',
+							}}>{$`Abrir galeria`}</ColorButton>
+					)}
 				</div>
 			</div>
 
@@ -138,24 +163,26 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 				<h3>{bannerTitle?.length ? bannerTitle : $`Cambiar portada`}</h3>
 				<p>{bannerText?.length ? bannerText : $`Sube una imagen de portada`}</p>
 				<div>
-					<label htmlFor='bannerInp'>
-						{images.banner?.length ? (
-							<Image unoptimized src={images.banner} width={50} height={50} alt='banner' />
-						) : (
-							<ImageOutlined />
-						)}
-					</label>
-					<input
-						type='file'
-						id='bannerInp'
-						accept='image/*'
-						multiple={false}
-						style={{ display: 'none' }}
-						onChange={readFile('banner')}
-					/>
-					<span>
-						{bannerDescription?.length ? bannerDescription : $`Sube una imagen de 650px x 250px`}
-					</span>
+					<div>
+						<label htmlFor='bannerInp'>
+							{images.banner?.length ? (
+								<Image unoptimized src={images.banner} width={50} height={50} alt='banner' />
+							) : (
+								<ImageOutlined />
+							)}
+						</label>
+						<input
+							type='file'
+							id='bannerInp'
+							accept='image/*'
+							multiple={false}
+							style={{ display: 'none' }}
+							onChange={readFile('banner')}
+						/>
+						<span>
+							{bannerDescription?.length ? bannerDescription : $`Sube una imagen de 650px x 250px`}
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -167,6 +194,7 @@ CustomBackground.defaultProps = {
 	bannerDescription: '',
 	bannerText: '',
 	bannerTitle: '',
+	onGalleryBtn: undefined,
 }
 
 export default CustomBackground

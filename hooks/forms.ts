@@ -143,8 +143,8 @@ export const useFormBackground = (background?: string): void => {
 	useEffect(() => {
 		document.body.style.background = background?.startsWith('transparent linear-gradient')
 			? background
-			: `url(${background}) center center/contain repeat fixed`
+			: `no-repeat center/cover url(${background})`
 		document.body.style.backgroundAttachment = 'fixed'
-		document.body.style.backgroundSize = 'contain'
+		document.body.style.backgroundSize = 'cover'
 	})
 }

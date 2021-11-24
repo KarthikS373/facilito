@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
@@ -15,24 +15,29 @@ import Grid3x3TwoToneIcon from '@mui/icons-material/Grid3x3TwoTone'
 import Delete from '@mui/icons-material/DeleteTwoTone'
 
 // TOOLS
-import { GeneralProps } from 'views/settings/components/tabs/tools'
 import onChangeInput, { onChangeAccountType } from './tools'
 import getBankAccountType from './utils'
 import useStrings from 'hooks/lang'
+
+// CONTEXTO
+import SettingsContext from 'views/settings/context'
 
 // ESTILOS
 import Styles from './style.module.scss'
 
 // PROPS
-interface AccountProps extends GeneralProps {
+interface AccountProps {
 	index: number
 	account: CompanyBankAccount
 	onDelete: EmptyFunction
 }
 
-const Account: React.FC<AccountProps> = ({ index, account, businessRef, onDelete }) => {
+const Account: React.FC<AccountProps> = ({ index, account, onDelete }) => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// CONTEXTO
+	const { businessRef } = useContext(SettingsContext)
 
 	// GUARDAR
 	const handleInputs = (ev: React.ChangeEvent<HTMLInputElement>) =>

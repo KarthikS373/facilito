@@ -57,8 +57,8 @@
 
 		.colorInp {
 			appearance: none;
-			width: 50px;
-			height: 50px;
+			min-width: 50px;
+			min-height: 50px;
 			outline: none;
 			border: none;
 			background: transparent;
@@ -75,10 +75,12 @@
 
 		.degrees {
 			width: 165px;
-			margin-left: var(--margin);
+			margin-left: 5px;
 
 			& > span:first-child {
 				color: #555;
+				width: 165px;
+				display: block;
 			}
 		}
 	}
@@ -103,39 +105,46 @@
 		& > div {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 			margin-top: -10px;
 
-			label {
-				width: 60px;
-				height: 60px;
-				margin-right: 10px;
-				padding: 0;
-				cursor: pointer;
+			& > div {
 				display: flex;
 				align-items: center;
-				justify-content: center;
+				justify-content: space-between;
 
-				img,
-				svg {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					opacity: 0.45;
+				label {
+					width: 60px;
+					height: 60px;
+					margin-right: 10px;
+					padding: 0;
+					cursor: pointer;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					img,
+					svg {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						opacity: 0.45;
+					}
+
+					img {
+						width: 80%;
+						height: 80%;
+						border-radius: 10px;
+					}
 				}
 
-				img {
-					width: 80%;
-					height: 80%;
-					border-radius: 10px;
+				& > span {
+					display: block;
+					font-size: 0.9em;
+					width: 150px;
+					color: #555;
+					opacity: 0.8;
 				}
-			}
-
-			span {
-				display: block;
-				font-size: 0.9em;
-				width: 150px;
-				color: #555;
-				opacity: 0.8;
 			}
 		}
 	}

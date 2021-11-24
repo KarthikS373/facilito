@@ -19,6 +19,9 @@ import defBusiness from './utils/initials'
 import useStrings from 'hooks/lang'
 import saveBusiness from './tools'
 
+// CONTEXTO
+import SettingsContext from './context'
+
 // ESTILOS
 import Styles from './style.module.scss'
 
@@ -69,20 +72,16 @@ const SettingsView: React.FC = () => {
 				icon={<AdminPanelSettingsTwoToneIcon />}
 			/>
 			<div className={Styles.container}>
-				<Tabs
-					show
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					businessRef={businessRef}
-					backgroundRef={backgroundRef}
-				/>
-				<Customize
-					show
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					businessRef={businessRef}
-					backgroundRef={backgroundRef}
-				/>
+				<SettingsContext.Provider
+					value={{
+						userRoles,
+						bannerRef,
+						businessRef,
+						backgroundRef,
+					}}>
+					<Tabs />
+					<Customize />
+				</SettingsContext.Provider>
 			</div>
 		</View>
 	)

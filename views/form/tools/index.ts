@@ -385,7 +385,7 @@ export const sendForm = async (
 	reset: EmptyFunction,
 	formData: Form | null,
 	company: Business | null,
-	defColors: [string, string, string],
+	defColors: string[],
 	geoRef: React.MutableRefObject<FormAnswerItemContainer | never>,
 	formURL: string,
 	companyURL: string

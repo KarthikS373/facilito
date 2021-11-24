@@ -38,6 +38,7 @@
 		"natural-drag-animation-rbdnd": "^2.1.0",
 		"next": "^11.0.1",
 		"next-pwa": "^5.2.24",
+		"node-vibrant": "^3.1.6",
 		"qrcode": "^1.4.4",
 		"qrcode-with-logos": "^1.0.3",
 		"react": "^17.0.2",

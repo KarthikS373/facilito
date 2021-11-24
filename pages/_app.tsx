@@ -48,10 +48,10 @@ const FacilitoApp = ({
 
 	return (
 		<CacheProvider value={emotionCache}>
-			<ThemeProvider>
-				<AuthProvider>
-					<UserProvider>
-						<BusinessProvider>
+			<AuthProvider>
+				<UserProvider>
+					<BusinessProvider>
+						<ThemeProvider>
 							<FormsProvider>
 								<ProductsProvider>
 									<PortrayProvider settings={{ mainLang: 'es' }}>
@@ -64,10 +64,10 @@ const FacilitoApp = ({
 									</PortrayProvider>
 								</ProductsProvider>
 							</FormsProvider>
-						</BusinessProvider>
-					</UserProvider>
-				</AuthProvider>
-			</ThemeProvider>
+						</ThemeProvider>
+					</BusinessProvider>
+				</UserProvider>
+			</AuthProvider>
 		</CacheProvider>
 	)
 }

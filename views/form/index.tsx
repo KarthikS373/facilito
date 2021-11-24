@@ -13,7 +13,7 @@ import useStrings from 'hooks/lang'
 
 // TOOLS
 import { formHasComponent, getCouponProducts, sendForm, setGeoComponents } from './tools'
-import { generateTheme, splitBackgroundColors } from 'utils/tools'
+import { defThemeColors, generateTheme } from 'utils/tools'
 
 // PROVIDERS
 import { ThemeProvider } from '@mui/material/styles'
@@ -24,6 +24,7 @@ import FormHeader from 'components/formHeader'
 
 // CONTEXT
 import AuthContext from 'context/auth'
+import usePaletteColors from 'hooks/theme'
 
 // FORM
 const HookForm = dynamic(() => import('./components/form'))
@@ -46,15 +47,14 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 	// PRODUCTOS
 	const [products, setProducts] = useState<Product[] | null>(null)
 
+	// COLORES
+	const [defColors, setDefColors] = useState<string[]>(defThemeColors)
+
 	// REFERENCIAS
 	const geoRef: React.MutableRefObject<FormAnswerItemContainer | never> = useRef({})
 
 	// USAR PRODUCTOS CON CUPONES
 	const coupons = getCouponProducts(formData?.components.map((component) => component.coupons))
-
-	// COLORES POR DEFECTO
-	const defColors = splitBackgroundColors(formData ? formData.background : '')
-	const customTheme = generateTheme(defColors)
 
 	// TIENE PRODUCTOS
 	const hasProducts = formHasComponent(formData?.components, 'products')
@@ -65,12 +65,15 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 	// USAR PRODUCTOS
 	useCompanyProducts(setProducts, userExists, company?.id || null, hasProducts)
 
+	// COLORERS
+	usePaletteColors(setDefColors, formData?.background ?? '')
+
 	// ENVIAR TIENDA
 	const sendFormEvent = (data: { [id: string]: unknown }, reset: EmptyFunction) =>
 		sendForm($, data, reset, formData, company, defColors, geoRef, formURL, companyURL)
 
 	return (
-		<ThemeProvider theme={customTheme}>
+		<ThemeProvider theme={generateTheme(defColors)}>
 			<AlertProvider />
 			<div
 				className={Styles.container}
@@ -79,6 +82,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 						'--primary': defColors[0],
 						'--secondary': defColors[1],
 						'--primaryDark': defColors[0],
+						'--secondaryDark': defColors[3],
 					} as React.CSSProperties
 				}>
 				<div className={Styles.viewContent}>

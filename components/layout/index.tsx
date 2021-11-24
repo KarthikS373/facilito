@@ -42,6 +42,7 @@ const Layout: React.FC = (props) => {
 					'--primary': theme.palette.primary.main,
 					'--secondary': theme.palette.secondary.main,
 					'--primaryDark': theme.palette.primary.dark,
+					'--secondaryDark': theme.palette.secondary.dark,
 					backgroundColor: !showTopbar ? 'transparent' : '#fff',
 				} as React.CSSProperties
 			}

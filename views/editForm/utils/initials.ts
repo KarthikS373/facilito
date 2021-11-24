@@ -16,7 +16,7 @@ export const initialFormData: Form = {
 	description: '',
 	public: false,
 	background:
-		'transparent linear-gradient(042deg, #346898 0%, #511F73 100%) 0% 0% no-repeat padding-box',
+		'transparent linear-gradient(042deg, #1AA5BB 0%, #511F73 100%) 0% 0% no-repeat padding-box',
 	url: '',
 	id: '',
 	components: [],
@@ -145,5 +145,5 @@ export const initialCustomFormState: CustomFormState = {
 	banner: '',
 	description: '',
 	background:
-		'transparent linear-gradient(042deg, #346898 0%, #511F73 100%) 0% 0% no-repeat padding-box',
+		'transparent linear-gradient(042deg, #1AA5BB 0%, #511F73 100%) 0% 0% no-repeat padding-box',
 }

@@ -33,6 +33,13 @@ const saveBusiness = (
 					)
 					businessRef.current.backgroundImage = backUrl
 					businessRef.current.background = ''
+
+					let defGallery = businessRef.current.gallery ?? []
+					defGallery.push(backUrl)
+					defGallery = [...new Set(defGallery)]
+
+					// ASIGNAR GALERIA
+					businessRef.current.gallery = defGallery
 				} else {
 					businessRef.current.background = backgroundRef.current
 					businessRef.current.backgroundImage = ''

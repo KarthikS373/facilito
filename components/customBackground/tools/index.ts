@@ -70,7 +70,7 @@ export const getDefValues = (defaultBackground: string, defaultBanner: string): 
 export const changeColors = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setDefColors: React.Dispatch<React.SetStateAction<[string, string, string]>>,
+	setDefColors: React.Dispatch<React.SetStateAction<string[]>>,
 	onBackground: (image: File | string) => void
 ): void => {
 	// VALOR
@@ -98,7 +98,7 @@ export const changeColors = (
  */
 export const changeColorDegrees = (
 	newValue: number | number[],
-	setDefColors: React.Dispatch<React.SetStateAction<[string, string, string]>>,
+	setDefColors: React.Dispatch<React.SetStateAction<string[]>>,
 	onBackground: (image: File | string) => void
 ): void => {
 	// ASIGNAR
@@ -108,7 +108,7 @@ export const changeColorDegrees = (
 		onBackground(
 			`transparent linear-gradient(${tmpColors[2]}deg, ${tmpColors[0]} 0%, ${tmpColors[1]} 100%) 0% 0% no-repeat padding-box`
 		)
-		return tmpColors as [string, string, string]
+		return tmpColors
 	})
 }
 

@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -12,17 +12,25 @@ import User from './components/user'
 import TabInfo from '../tabInfo'
 
 // TOOLS
-import type { GeneralProps } from '../../tools'
 import changeUserRole from './tools'
 import useStrings from 'hooks/lang'
 import useUsers from './hooks'
 
-const Users: React.FC<GeneralProps> = ({ show, businessRef, userRoles }) => {
+// CONTEXTO
+import SettingsContext from 'views/settings/context'
+
+interface TabProps {
+	show: boolean
+}
+const Users: React.FC<TabProps> = ({ show }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// USUARIOS
 	const [users, setUsers] = useState<User[]>([])
+
+	// CONTEXTO
+	const { businessRef, userRoles } = useContext(SettingsContext)
 
 	// CAMBIAR ROLE
 	const onSelect = (email: string) => (ev: SelectChangeEvent) =>

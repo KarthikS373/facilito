@@ -167,20 +167,66 @@ export const getDataURL = (
 	}
 }
 
+export const defThemeColors = ['#1AA5BB', '#511F73', '042']
+
 /**
  * Separar fondo
  * @description Retorna una lista de colores si es un fondo degradado
  * @param background
  */
-export const splitBackgroundColors: (background: string) => [string, string, string] = (
-	background: string
-) => {
+export const splitBackgroundColors = (
+	background: string,
+	onColors?: (colors: string[]) => void
+): void => {
+	if (background?.toString().length) {
+		if ((background?.toString() ?? '').startsWith('transparent linear-gradient')) {
+			if (onColors) onColors(getBackgroundColors(background?.toString() ?? ''))
+		} else {
+			import('node-vibrant').then((nodeVbrnt) => {
+				const img = new Image()
+				img.crossOrigin = 'anonymous'
+				img.decoding = 'async'
+				img.src = background?.toString()
+
+				img.onerror = () => console.log(img)
+
+				img.onload = () => {
+					const Vibrant = nodeVbrnt.default
+					const vibrant = new Vibrant(img)
+					vibrant
+						.getPalette()
+						.then((palette) => {
+							if (onColors)
+								onColors([
+									palette.Vibrant?.hex ?? '#1AA5BB',
+									palette.Muted?.hex ?? '#511F73',
+									'042',
+									palette.DarkMuted?.hex ?? '#547BAE',
+								])
+						})
+						.catch((err) => console.log(err))
+				}
+			})
+		}
+	} else {
+		if (onColors) onColors(defThemeColors as [string, string, string])
+	}
+}
+
+/**
+ * Obtener colores de un fondo
+ * @param background
+ * @returns
+ */
+export const getBackgroundColors = (background: string): string[] => {
 	if ((background?.toString() ?? '').startsWith('transparent linear-gradient')) {
 		const firstColor: string = background.slice(36, 43)
 		const secondColor: string = background.slice(48, 55)
 		const degrees: string = background.slice(28, 31)
 		return [firstColor, secondColor, degrees]
-	} else return ['#346898', '#511F73', '042']
+	} else {
+		return defThemeColors
+	}
 }
 
 /**
@@ -250,7 +296,7 @@ export const generateTheme = (defColors: string[]): Theme => {
 						padding: '10px 15px',
 
 						'&:hover': {
-							borderColor: '#511F73',
+							borderColor: `${defColors[1]}`,
 							backgroundColor: '#FBFBFB',
 						},
 					},
@@ -308,7 +354,7 @@ export const generateTheme = (defColors: string[]): Theme => {
 						},
 
 						'&:hover': {
-							borderColor: '#511F73',
+							borderColor: `${defColors[1]}`,
 						},
 
 						'& .MuiBadge-badge': {
@@ -360,11 +406,13 @@ export const generateTheme = (defColors: string[]): Theme => {
 		palette: {
 			secondary: {
 				main: `${defColors[1]}`,
+				light: `${defColors[1]}`,
+				dark: `${defColors[3] ?? '#547BAE'}`,
 			},
 			primary: {
 				main: `${defColors[0]}`,
 				light: `${defColors[0]}`,
-				dark: `${defColors[0]}`,
+				dark: `${defColors[0] ?? '#547BAE'}`,
 			},
 		},
 	})

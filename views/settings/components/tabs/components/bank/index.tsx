@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 // COMPONENTES
 import ColorButton from 'components/button'
@@ -13,29 +13,32 @@ import Styles from './style.module.scss'
 
 // HOOKS
 import addAccount, { deleteAccount } from './tools'
-import { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
 
-const Bank: React.FC<GeneralProps> = ({
-	show,
-	businessRef,
-	userRoles,
-	backgroundRef,
-	bannerRef,
-}) => {
+// CONTEXTO
+import SettingsContext from 'views/settings/context'
+
+interface TabProps {
+	show: boolean
+}
+const Bank: React.FC<TabProps> = ({ show }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
+	// CONTEXTO
+	const props = useContext(SettingsContext)
+
 	// CUENTAS
 	const [accounts, setAccounts] = useState<CompanyBankAccount[]>(
-		businessRef.current?.bankAccounts ?? []
+		props.businessRef.current?.bankAccounts ?? []
 	)
 
 	// AGREGAR CUENTA
 	const handleAccount = () => addAccount(setAccounts)
 
 	// BORRAR CUENTA
-	const deleteAccountEv = (index: number) => () => deleteAccount(businessRef, setAccounts, index)
+	const deleteAccountEv = (index: number) => () =>
+		deleteAccount(props.businessRef, setAccounts, index)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
@@ -55,14 +58,9 @@ const Bank: React.FC<GeneralProps> = ({
 			<div className={Styles.accounts}>
 				{accounts.map((account, index) => (
 					<Account
-						show={show}
 						index={index}
 						account={account}
-						bannerRef={bannerRef}
-						userRoles={userRoles}
 						key={`account_${index}`}
-						businessRef={businessRef}
-						backgroundRef={backgroundRef}
 						onDelete={deleteAccountEv(index)}
 					/>
 				))}

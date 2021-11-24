@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 
 // TOOLS
 import { ImagesState, getDefValues } from '../tools'
-import { splitBackgroundColors } from 'utils/tools'
 
 /**
  * Hook para propiedades del estado
@@ -15,13 +14,11 @@ import { splitBackgroundColors } from 'utils/tools'
 const useStateProps = (
 	defaultBackground: string,
 	defaultBanner: string,
-	setImages: React.Dispatch<React.SetStateAction<ImagesState>>,
-	setDefColors: React.Dispatch<React.SetStateAction<[string, string, string]>>
+	setImages: React.Dispatch<React.SetStateAction<ImagesState>>
 ): void => {
 	useEffect(() => {
 		setImages(getDefValues(defaultBackground, defaultBanner))
-		setDefColors(splitBackgroundColors(defaultBackground ?? ''))
-	}, [defaultBackground, defaultBanner, setImages, setDefColors])
+	}, [defaultBackground, defaultBanner, setImages])
 }
 
 export default useStateProps

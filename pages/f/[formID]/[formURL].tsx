@@ -20,7 +20,7 @@ import { useFormBackground } from 'hooks/forms'
 import withAuth from 'components/hoc/auth'
 
 // TOOLS
-import { splitBackgroundColors } from 'utils/tools'
+import { getBackgroundColors } from 'utils/tools'
 
 // PROPIEDADES DEL SERVIDOR
 interface FormPageProps {
@@ -33,7 +33,7 @@ interface FormPageProps {
 // PAGE
 const FormPage: NextPage<FormPageProps> = (props) => {
 	// COLORES POR DEFECTO
-	const defColors = splitBackgroundColors(props.formData ? props.formData.background : '')
+	const defColors = getBackgroundColors(props.formData?.background ?? '')
 
 	// COLOR DE FONDO
 	useFormBackground(props.formData?.background)

@@ -10,9 +10,9 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
 // ICONS
-import ExtensionTwoToneIcon from '@mui/icons-material/ExtensionTwoTone'
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
-import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
+import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone'
+import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone'
+import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
 
 // COMPONENTES
@@ -24,16 +24,8 @@ import Bank from './components/bank'
 // HOOKS
 import useStrings from 'hooks/lang'
 
-// CONTEXTO
-import { GeneralProps } from './tools'
-
 // PROPS
-const CustomTabs: React.FC<GeneralProps> = ({
-	userRoles,
-	businessRef,
-	bannerRef,
-	backgroundRef,
-}) => {
+const CustomTabs: React.FC = () => {
 	// ESTADOS
 	const [tabIndex, setTabIndex] = useState<number>(0)
 
@@ -54,38 +46,14 @@ const CustomTabs: React.FC<GeneralProps> = ({
 					onChange={handleChange}
 					aria-label='settings_sections'>
 					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
-					<Tab className={Styles.tab} icon={<MenuBookTwoToneIcon />} label={$`Bancaria`} />
-					<Tab className={Styles.tab} icon={<ExtensionTwoToneIcon />} label={$`Pago`} />
-					<Tab className={Styles.tab} icon={<SettingsTwoToneIcon />} label={$`Usuarios`} />
+					<Tab className={Styles.tab} icon={<AccountBalanceTwoToneIcon />} label={$`Bancaria`} />
+					<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
+					<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
 				</Tabs>
-				<Payments
-					show={tabIndex === 2}
-					businessRef={businessRef}
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					backgroundRef={backgroundRef}
-				/>
-				<General
-					show={tabIndex === 0}
-					businessRef={businessRef}
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					backgroundRef={backgroundRef}
-				/>
-				<Users
-					show={tabIndex === 3}
-					businessRef={businessRef}
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					backgroundRef={backgroundRef}
-				/>
-				<Bank
-					show={tabIndex === 1}
-					businessRef={businessRef}
-					userRoles={userRoles}
-					bannerRef={bannerRef}
-					backgroundRef={backgroundRef}
-				/>
+				<Payments show={tabIndex === 2} />
+				<General show={tabIndex === 0} />
+				<Users show={tabIndex === 3} />
+				<Bank show={tabIndex === 1} />
 			</Paper>
 		</div>
 	)
