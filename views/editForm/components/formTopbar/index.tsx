@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react'
 // ICONOS
 import RoomPreferencesTwoToneIcon from '@mui/icons-material/RoomPreferencesTwoTone'
 import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone'
+import VisibilityTwoTone from '@mui/icons-material/VisibilityTwoTone'
 import PaletteTwoToneIcon from '@mui/icons-material/PaletteTwoTone'
 import PublicOffTwoTone from '@mui/icons-material/PublicOffTwoTone'
 import PublicTwoToneIcon from '@mui/icons-material/PublicTwoTone'
@@ -37,6 +38,7 @@ import BusinessContext from 'context/business'
 
 // ESTILOS
 import Styles from './style.module.scss'
+import ROUTES from 'router/routes'
 
 const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// BUSINESS
@@ -118,6 +120,20 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						startIcon={published ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
 						{published ? $`Ocultar` : $`Publicar`}
 					</Button>
+				</MenuList>
+				<MenuList className={Styles.menuItem}>
+					<a
+						target='_blank'
+						title={props.url}
+						rel='noreferrer noopener'
+						href={ROUTES.form
+							.replace(':formURL', props.url)
+							.replace(':companyURL', company.business?.url ?? '')}>
+						<Button
+							fullWidth
+							variant='outlined'
+							startIcon={<VisibilityTwoTone />}>{$`Visualizar`}</Button>
+					</a>
 				</MenuList>
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>
 					<Button fullWidth variant='outlined' startIcon={<ShareTwoTone />}>{$`Compartir`}</Button>

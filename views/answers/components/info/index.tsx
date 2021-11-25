@@ -27,7 +27,7 @@ const Info: React.FC<InfoProps> = ({ formID }) => {
 			title={$`Lista de respuestas`}
 			icon={<QuestionAnswerTwoTone />}
 			description={$`Imprime y visualiza todas las respuestas de esta tienda.`}>
-			<Link rKey='forms' id={formID}>
+			<Link rKey='newForm' id={formID}>
 				<Button fullWidth variant='outlined' startIcon={<DescriptionTwoTone />}>
 					{$`Abrir tienda`}
 				</Button>

@@ -6,6 +6,7 @@ export interface GeneralProps {
 	backgroundRef: React.MutableRefObject<File | string>
 	bannerRef: React.MutableRefObject<File | string>
 	userRoles: React.MutableRefObject<UserRole[]>
+	setCustomBackground: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 // VALOR POR DEFECTO
@@ -14,6 +15,7 @@ const DefContext: GeneralProps = {
 	backgroundRef: { current: '' },
 	bannerRef: { current: '' },
 	userRoles: { current: [] },
+	setCustomBackground: () => null,
 }
 
 // CONTEXTO

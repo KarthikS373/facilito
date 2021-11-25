@@ -10,7 +10,7 @@
 	max-width: 1367px;
 	background-color: #fff;
 
-	@include for-size(phablet-landscape) {
+	@include for-size(tablet-landscape) {
 		grid-template-columns: 100%;
 	}
 
@@ -28,7 +28,7 @@
 		grid-row: 2/3;
 		grid-column: 2/3;
 
-		@include for-size(phablet-landscape) {
+		@include for-size(tablet-landscape) {
 			grid-row: 2/3;
 			grid-column: 1/3;
 		}

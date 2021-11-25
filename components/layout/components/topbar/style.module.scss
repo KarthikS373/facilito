@@ -15,7 +15,7 @@
 		height: 100%;
 		padding: 0;
 
-		@include for-size(phablet-landscape) {
+		@include for-size(tablet-landscape) {
 			grid-template-columns: auto 1fr auto auto auto auto;
 		}
 
@@ -27,7 +27,7 @@
 		.menuBtn {
 			display: none;
 
-			@include for-size(phablet-landscape) {
+			@include for-size(tablet-landscape) {
 				display: flex;
 			}
 		}

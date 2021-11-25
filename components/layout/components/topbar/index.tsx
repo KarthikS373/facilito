@@ -13,8 +13,8 @@ import Badge from '@mui/material/Badge'
 
 // ICONOS
 import NotificationsTwoTone from '@mui/icons-material/NotificationsTwoTone'
+import PaymentsTwoToneIcon from '@mui/icons-material/PaymentsTwoTone'
 import TranslateTwoTone from '@mui/icons-material/TranslateTwoTone'
-import MoneyTwoTone from '@mui/icons-material/MoneyTwoTone'
 import MenuTwoTone from '@mui/icons-material/MenuTwoTone'
 
 // COMPONENTES
@@ -83,7 +83,7 @@ const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar }) => {
 						aria-label='badge'
 						variant='outlined'
 						className={Styles.badgeBtn}
-						startIcon={<MoneyTwoTone />}
+						startIcon={<PaymentsTwoToneIcon />}
 						onClick={openBadgeMenu}>
 						<span>{businessCtx.business?.badge}</span>
 					</Button>

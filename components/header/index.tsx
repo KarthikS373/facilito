@@ -27,29 +27,34 @@ import BusinessContext from 'context/business'
 // PROPS
 interface HeaderProps {
 	customDescription?: string
+	customBackground?: string
 }
 
-const Header: React.FC<HeaderProps> = ({ children, customDescription }) => {
+const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescription }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
+	// FONDO
+	const background =
+		customBackground ??
+		(businessCtx.business?.backgroundImage ? '' : businessCtx.business?.background)
+
+	console.log(customBackground)
+
 	return (
 		<div className={Styles.container}>
 			{/* FONDO */}
-			<div
-				className={Styles.background}
-				style={{
-					background: businessCtx.business?.backgroundImage ? '' : businessCtx.business?.background,
-				}}>
-				{businessCtx.business?.backgroundImage && (
+			<div className={Styles.background} style={{ background }}>
+				{((customBackground && !customBackground?.startsWith('transparent linear-gradient')) ||
+					businessCtx.business?.backgroundImage) && (
 					<Image
 						unoptimized
 						layout='fill'
 						alt='Background'
-						src={businessCtx.business.backgroundImage || ''}
+						src={customBackground ?? businessCtx.business?.backgroundImage ?? ''}
 					/>
 				)}
 			</div>

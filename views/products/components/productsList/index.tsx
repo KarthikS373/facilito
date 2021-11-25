@@ -36,8 +36,14 @@ interface ProductsListProps {
 	filter: string
 	products: Product[]
 	setFilter: (newFilter: string) => void
+	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
-const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products }) => {
+const ProductsList: React.FC<ProductsListProps> = ({
+	setFilter,
+	setProducts,
+	filter,
+	products,
+}) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -55,7 +61,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ setFilter, filter, products
 	const closeRowMenu = () => setCurrentRow(null)
 
 	// BORRAR PRODUCTO
-	const deleteProductEv = () => deleteProduct(productsCtx, products, currentIndex)
+	const deleteProductEv = () => deleteProduct(productsCtx, products, currentIndex, setProducts)
 
 	// ASIGNAR FILA
 	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {

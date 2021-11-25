@@ -41,8 +41,13 @@ const saveBusiness = (
 					// ASIGNAR GALERIA
 					businessRef.current.gallery = defGallery
 				} else {
-					businessRef.current.background = backgroundRef.current
-					businessRef.current.backgroundImage = ''
+					if (backgroundRef.current.startsWith('transparent linear-gradient')) {
+						businessRef.current.background = backgroundRef.current
+						businessRef.current.backgroundImage = ''
+					} else {
+						businessRef.current.backgroundImage = backgroundRef.current
+						businessRef.current.background = ''
+					}
 				}
 			}
 

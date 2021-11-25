@@ -1,4 +1,76 @@
 {
+	"debes_agregar_un_sku_nombre_y_categoria_primero_para_poder_guardar_este_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"debes_agregar_un_sku_nombre_y_categoria_para_poder_guardar_este_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"cada_opcion_agrega_un_precio_adicional_al_total_con_diferentes_formas_de_seleccion": {
+		"en": "",
+		"es": "$"
+	},
+	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto_con_diferentes_formas_de_seleccion": {
+		"en": "",
+		"es": "$"
+	},
+	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto_y_tienen_diferentes_formas_de_seleccion": {
+		"en": "",
+		"es": "$"
+	},
+	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"respuesta_de": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_estados_de_tracking_para_el_pedido_del_cliente": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_estados_de_tracking_para_el_pedido": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_estados_para_el_pedido": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_estados_de_su_pedido": {
+		"en": "",
+		"es": "$"
+	},
+	"respueta_de": {
+		"en": "",
+		"es": "$"
+	},
+	"de_esta_manera_se_mostrara_el_producto_en_tus_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"asi_se_mostrara_en_tus_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_tarjeta_se_mostrara_en_tus_tiendas_cuando_selecciones_un_carrousel_de_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"asi_se_vera_este_producto_en_tus_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"aplicaciones_moviles": {
+		"en": "",
+		"es": "$"
+	},
+	"estas_seguro_de_querer_borrar_esta_repuesta_este_proceso_sera_permanente": {
+		"en": "",
+		"es": "$"
+	},
 	"aqui_esta_la_url_completa_de_tu_tienda": {
 		"en": "",
 		"es": "$"

@@ -40,7 +40,7 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
 				title={$`Variables dinamicas`}
-				body={$`Son opciones o extras agregadas a tu producto, con diferentes formas de seleccion.`}>
+				body={$`Cada opción agrega un precio adicional al total con diferentes formas de seleccion.`}>
 				<ColorButton
 					color='primary'
 					variant='outlined'

@@ -84,7 +84,12 @@ const Products: React.FC = () => {
 			<Info onOpenSideBar={handleSideBar(true)} />
 
 			{/* LISTA DE PRODUCTOS */}
-			<ProductsList filter={filter} setFilter={changeFilterEv} products={products} />
+			<ProductsList
+				filter={filter}
+				products={products}
+				setFilter={changeFilterEv}
+				setProducts={setProducts}
+			/>
 
 			{/* SIDEBAR DE CATEGORÍAS */}
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />

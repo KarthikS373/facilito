@@ -69,7 +69,7 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 					{$`Guardar producto`}
 				</ColorButton>
 			</Header>
-			<Info />
+			<Info product={productRef} />
 			<ProductData productRef={productRef} imagesRef={imagesRef} />
 		</View>
 	)

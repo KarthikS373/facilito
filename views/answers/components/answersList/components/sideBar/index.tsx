@@ -24,6 +24,7 @@ import useStrings from 'hooks/lang'
 import Styles from './style.module.scss'
 
 interface SideBarProps {
+	name?: string
 	open: boolean
 	formID: string
 	filter: string
@@ -37,6 +38,7 @@ interface SideBarProps {
 const CustomSideBar: React.FC<SideBarProps> = ({
 	filter,
 	open,
+	name,
 	currentIndex,
 	answerIndex,
 	tracking,
@@ -75,6 +77,10 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 
 	return (
 		<SideBar open={open} onClose={onClose}>
+			<div className={Styles.infoPersonal}>
+				<h3>{`${$`Respuesta de`} ${name}`}</h3>
+				<p>{$`Configura los estados de tracking para el pedido del cliente.`}</p>
+			</div>
 			<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
 				{tracking.map((option: FormTrackingStep, optionIndex: number) => (
 					<Step

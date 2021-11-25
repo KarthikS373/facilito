@@ -2,6 +2,7 @@
 import React from 'react'
 
 // COMPONENTES
+import showProduct from './components/preview'
 import PageInfo from 'components/pageInfo'
 
 // ICONOS
@@ -14,16 +15,26 @@ import Button from '@mui/material/Button'
 // STRINGS
 import useStrings from 'hooks/lang'
 
-const Info: React.FC = () => {
+interface InfoProps {
+	product: React.MutableRefObject<Product>
+}
+const Info: React.FC<InfoProps> = ({ product }) => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// VISUALIZAR PRODUCTO
+	const openPreview = () => showProduct(product)
 
 	return (
 		<PageInfo
 			icon={<ShoppingBagTwoToneIcon />}
 			title={$`Editar producto`}
 			description={$`Configura los aspectos mas importantes de tu producto.`}>
-			<Button fullWidth variant='outlined' startIcon={<VisibilityTwoToneIcon />}>
+			<Button
+				onClick={openPreview}
+				fullWidth
+				variant='outlined'
+				startIcon={<VisibilityTwoToneIcon />}>
 				{$`Pre-Visualizar`}
 			</Button>
 		</PageInfo>

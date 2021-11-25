@@ -34,13 +34,15 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 				backgroundColor: !product.active ? 'rgba(255, 0, 0, .03)' : '',
 			}}>
 			<span>
-				<Image
-					unoptimized
-					src={product.picture ? product.picture[0] || '' : ''}
-					alt={product.title}
-					height={48}
-					width={48}
-				/>
+				{product.picture?.[0] && product.picture[0].length > 0 && (
+					<Image
+						unoptimized
+						src={product.picture ? product.picture[0] || '' : ''}
+						alt={product.title}
+						height={48}
+						width={48}
+					/>
+				)}
 			</span>
 			<span>
 				<strong>{product.title}</strong>

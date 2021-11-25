@@ -4,7 +4,7 @@
 	display: none;
 	transition: opacity 0.2s ease-in-out;
 
-	@include for-size(phablet-landscape) {
+	@include for-size(tablet-landscape) {
 		display: block;
 		position: absolute;
 		top: 0px;
@@ -29,14 +29,13 @@
 	transition: transform 0.2s var(--transition);
 
 	@include for-size(tablet-landscape) {
-		width: 205px;
-	}
-
-	@include for-size(phablet-landscape) {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 225px;
+	}
+
+	@include for-size(phone-portrait-min) {
+		width: 270px;
 	}
 
 	.brand {
@@ -69,9 +68,9 @@
 	}
 }
 
-@include for-size(phablet-landscape) {
+@include for-size(tablet-landscape) {
 	.closedTabContainer {
-		transform: translateX(-225px);
+		transform: translateX(-300px);
 	}
 
 	.closedShadow {
@@ -86,5 +85,11 @@
 
 	.openTabContainer {
 		transform: translateX(0);
+	}
+}
+
+@include for-size(phone-portrait-min) {
+	.closedTabContainer {
+		transform: translateX(-270px);
 	}
 }

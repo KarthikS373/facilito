@@ -44,6 +44,7 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props: CustomizeMenuProps) 
 				defaultBanner={props.defaultBanner}
 				onBackground={onBackground}
 				onBanner={onBanner}
+				responsive
 				showTitle
 			/>
 		</SideBar>

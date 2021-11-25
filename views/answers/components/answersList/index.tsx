@@ -134,6 +134,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 				updateAnswerState={updateAnswerState}
 				answerIndex={answers[currentIndex]?.index - 1}
 				stateIndex={answers[currentIndex]?.stateIndex || 0}
+				name={answers[currentIndex]?.data.personal_name_0?.answer}
 			/>
 			<PopperMenuList
 				open={openRowMenu}

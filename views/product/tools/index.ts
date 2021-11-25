@@ -16,23 +16,33 @@ const saveProduct = (
 	$: TemplateStrBuilder,
 	companyID?: string
 ): void => {
-	if (productRef.current.sku?.length && companyID?.length) {
+	// VALIDAR CAMPOS
+	const valid = productRef.current.sku?.length * productRef.current?.category?.length
+
+	if (valid !== 0 && companyID?.length) {
 		// GUARDAR EN STORAGE
-		window.Snack($`Subiendo imagenes...`)
-		saveProductImages(imagesRef.current, productRef.current.sku, companyID).then(
-			(urls: string[]) => {
-				// GUARDAR EN DB
-				productRef.current.picture = urls.map((url: string, urlIndex: number) => {
-					if (productRef.current.picture[urlIndex]?.length)
-						return productRef.current.picture[urlIndex]
-					else return url
-				})
-				setProducts({
-					[productRef.current.sku]: productRef.current,
-				})
-			}
-		)
-	}
+		if (imagesRef.current.every((image) => image !== null)) {
+			window.Snack($`Subiendo imagenes...`)
+			saveProductImages(imagesRef.current, productRef.current.sku, companyID).then(
+				(urls: string[]) => {
+					// GUARDAR EN DB
+					productRef.current.picture = urls.map((url: string, urlIndex: number) => {
+						if (productRef.current.picture[urlIndex]?.length)
+							return productRef.current.picture[urlIndex]
+						else return url
+					})
+					setProducts({
+						[productRef.current.sku]: productRef.current,
+					})
+				}
+			)
+		}
+	} else
+		window.Alert({
+			title: 'Ocurrio un error',
+			body: 'Debes agregar un SKU, Nombre y Categoria primero para poder guardar este producto.',
+			type: 'error',
+		})
 }
 
 export default saveProduct

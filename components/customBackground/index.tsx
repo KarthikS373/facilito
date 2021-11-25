@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // IMAGE
 import Image from 'next/image'
@@ -10,6 +10,7 @@ import PaletteTwoTone from '@mui/icons-material/PaletteTwoTone'
 import ImageOutlined from '@mui/icons-material/ImageTwoTone'
 
 // COMPONENTES
+import showGallery from './components/gallery'
 import ColorButton from 'components/button'
 import Slider from '@mui/material/Slider'
 
@@ -22,15 +23,16 @@ import useStateProps from './hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'
+import BusinessContext from 'context/business'
 
 interface CustomBackgroundProps {
 	showTitle?: boolean
 	bannerTitle?: string
 	bannerText?: string
-	bannerDescription?: string
+	responsive?: boolean
 	defaultBanner: string
 	defaultBackground: string
-	onGalleryBtn?: EmptyFunction
+	bannerDescription?: string
 	onBanner: (image: File) => void
 	onBackground: (image: File | string) => void
 }
@@ -40,8 +42,8 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 	onBanner,
 	showTitle,
 	bannerTitle,
+	responsive,
 	bannerText,
-	onGalleryBtn,
 	bannerDescription,
 	defaultBanner,
 	defaultBackground,
@@ -55,6 +57,9 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 	// COLORES
 	const [colors, setDefColors] = useState<string[]>(defThemeColors)
 
+	// BUSINESS
+	const company = useContext(BusinessContext)
+
 	// CAMBIAR COLORES
 	const handleColors = (index: number) => (ev: React.ChangeEvent<HTMLInputElement>) =>
 		changeColors(index, ev, setDefColors, onBackground)
@@ -66,6 +71,10 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 	// LEER ARCHIVO
 	const readFile = (prefix: 'background' | 'banner') => (ev: React.ChangeEvent) =>
 		saveFile(ev, prefix, onBackground, onBanner, setImages)
+
+	// ABRIR GALERIA
+	const openGallery = () =>
+		showGallery({ business: company.business, onSelect: onBackground, setImages })
 
 	// HOOKS
 	useStateProps(defaultBackground, defaultBanner, setImages)
@@ -118,7 +127,11 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 			{/* IMAGEN DE FONDO */}
 			<div className={Styles.image}>
 				<p>{$`Sube una imagen como fondo`}</p>
-				<div>
+				<div
+					style={{
+						flexDirection: responsive ? 'column' : 'row',
+						alignItems: responsive ? 'flex-start' : 'center',
+					}}>
 					<div>
 						<label htmlFor='formBackground'>
 							{images.background.length &&
@@ -144,17 +157,19 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 						/>
 						<span>{$`Esto remplazara el fondo degradado.`}</span>
 					</div>
-					{onGalleryBtn && (
-						<ColorButton
-							color='primary'
-							variant='outlined'
-							onClick={onGalleryBtn}
-							startIcon={<SlideshowTwoTone />}
-							$style={{
-								color: 'var(--primary)',
-								borderColor: 'var(--primary)',
-							}}>{$`Abrir galeria`}</ColorButton>
-					)}
+					<ColorButton
+						color='primary'
+						variant='outlined'
+						onClick={openGallery}
+						fullWidth={responsive}
+						startIcon={<SlideshowTwoTone />}
+						$style={{
+							color: 'var(--primary)',
+							borderColor: 'var(--primary)',
+							marginTop: responsive ? '15px' : '0',
+						}}>
+						{$`Abrir galeria`}
+					</ColorButton>
 				</div>
 			</div>
 
@@ -194,7 +209,7 @@ CustomBackground.defaultProps = {
 	bannerDescription: '',
 	bannerText: '',
 	bannerTitle: '',
-	onGalleryBtn: undefined,
+	responsive: false,
 }
 
 export default CustomBackground

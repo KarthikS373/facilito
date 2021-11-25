@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 // COMPONENTES
 import Customize from './components/customize'
@@ -33,6 +33,9 @@ const SettingsView: React.FC = () => {
 	const businessCtx = useContext(BusinessContext)
 	const business = businessCtx.business
 
+	// FONDO
+	const [customBackground, setCustomBackground] = useState<string | undefined>()
+
 	// REFERENCIAS
 	const businessRef = useRef(business ?? defBusiness)
 	businessRef.current = business ?? defBusiness
@@ -56,7 +59,7 @@ const SettingsView: React.FC = () => {
 
 	return (
 		<View>
-			<Header>
+			<Header customBackground={customBackground}>
 				<ColorButton
 					color='primary'
 					variant='contained'
@@ -78,6 +81,7 @@ const SettingsView: React.FC = () => {
 						bannerRef,
 						businessRef,
 						backgroundRef,
+						setCustomBackground,
 					}}>
 					<Tabs />
 					<Customize />

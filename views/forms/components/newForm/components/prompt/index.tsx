@@ -56,6 +56,7 @@ const showNewFormPrompt = (
 						await saveFormSchema(business.id, {
 							...customForm,
 							title,
+							id: parsedTitle,
 							url: `${business.url}_${parsedTitle}`,
 							company: {
 								user: user.email,
@@ -65,7 +66,7 @@ const showNewFormPrompt = (
 
 					// ROUTER
 					window.Snack('Tienda creada')
-					router.push(`${ROUTES.newForm}?title=${title}`.replace(':formID', parsedTitle))
+					await router.push(`${ROUTES.newForm}?title=${title}`.replace(':formID', parsedTitle))
 				})
 			}
 		},

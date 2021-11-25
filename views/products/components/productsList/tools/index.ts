@@ -10,10 +10,11 @@ import type { ProductContextProps } from 'context/products'
 const deleteProduct = (
 	productsCtx: ProductContextProps,
 	products: Product[],
-	currentIndex: number
+	currentIndex: number,
+	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
 ): void => {
 	window.Alert({
-		title: 'Borrar productos',
+		title: 'Borrar producto',
 		body: '¿Estas seguro de querer borrar este producto de tu inventario, esta acción sera permanente?',
 		type: 'confirm',
 		onConfirm: () => {
@@ -24,6 +25,7 @@ const deleteProduct = (
 			})
 
 			// ACTUALIZAR
+			setProducts(Object.values(tmpProducts))
 			productsCtx.setProducts(tmpProducts, false)
 		},
 	})

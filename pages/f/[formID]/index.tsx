@@ -15,12 +15,12 @@ const NewFormView = dynamic(() => import('views/editForm'), { ssr: false })
 const EditForm: NextPage = () => {
 	// ROUTER
 	const router = useRouter()
-	const { formID } = router.query
+	const { formID, title } = router.query
 
 	return (
 		<>
 			<Head />
-			<NewFormView id={(formID as string) ?? ''} />
+			<NewFormView id={(formID as string) ?? ''} formTitle={(title as string) ?? ''} />
 		</>
 	)
 }

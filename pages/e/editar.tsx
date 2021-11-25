@@ -7,6 +7,9 @@ import { NextPage } from 'next'
 import SettingsView from 'views/settings'
 import Head from 'components/head'
 
+// HOOKS
+import withAuth from 'components/hoc/auth'
+
 const SettingsPage: NextPage = () => {
 	return (
 		<>
@@ -16,4 +19,4 @@ const SettingsPage: NextPage = () => {
 	)
 }
 
-export default SettingsPage
+export default withAuth(SettingsPage)
