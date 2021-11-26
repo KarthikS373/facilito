@@ -32,14 +32,31 @@ export default saveAllCategories
  */
 export const removeAllCategories = (
 	index: number,
-	categories: string[],
+	setCategories: React.Dispatch<React.SetStateAction<string[]>>,
 	setBusinessDB: (business: Partial<Business>) => unknown
 ): void => {
-	// CREAR NUEVA LISTA
-	const newCategories: string[] = categories.filter(
-		(_category: string, catIndex: number) => catIndex !== index
-	)
+	setCategories((prevCategories) => {
+		// CREAR NUEVA LISTA
+		const newCategories: string[] = prevCategories.filter(
+			(_category: string, catIndex: number) => catIndex !== index
+		)
 
-	// GUARDAR EN DB
-	setBusinessDB({ categories: newCategories })
+		// GUARDAR EN DB
+		setBusinessDB({ categories: newCategories })
+		return newCategories
+	})
+}
+
+/**
+ * Agregar nueva categoria
+ * @param setCategories
+ */
+export const addNewCategory = (
+	setCategories: React.Dispatch<React.SetStateAction<string[]>>
+): void => {
+	setCategories((categories: string[]) => {
+		const tmpCategories = [...categories]
+		tmpCategories.push('')
+		return tmpCategories
+	})
 }

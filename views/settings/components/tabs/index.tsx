@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -25,10 +25,11 @@ import Bank from './components/bank'
 import useStrings from 'hooks/lang'
 
 // PROPS
-const CustomTabs: React.FC = () => {
-	// ESTADOS
-	const [tabIndex, setTabIndex] = useState<number>(0)
-
+interface TabsProps {
+	tabIndex: number
+	setTabIndex: SetState<number>
+}
+const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 	// STRINGS
 	const { $ } = useStrings()
 

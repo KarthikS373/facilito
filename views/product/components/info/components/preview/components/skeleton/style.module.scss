@@ -1,0 +1,19 @@
+.skeleton {
+	border-radius: var(--radius);
+	overflow: hidden;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	margin-right: 15px;
+
+	& > div {
+		padding: 15px;
+
+		.btn {
+			margin-top: 7px;
+			border-radius: var(--radius);
+		}
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

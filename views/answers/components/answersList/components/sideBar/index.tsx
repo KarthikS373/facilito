@@ -11,6 +11,9 @@ import Stepper from '@mui/material/Stepper'
 import Button from '@mui/material/Button'
 import Step from '@mui/material/Step'
 
+// ICONOS
+import QuestionAnswerTwoToneIcon from '@mui/icons-material/QuestionAnswerTwoTone'
+
 // COMPONENTES
 import SideBar from 'components/sideBar'
 
@@ -78,7 +81,10 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 	return (
 		<SideBar open={open} onClose={onClose}>
 			<div className={Styles.infoPersonal}>
-				<h3>{`${$`Respuesta de`} ${name}`}</h3>
+				<h2>
+					<QuestionAnswerTwoToneIcon />
+					{`${$`Respuesta de`} ${name}`}
+				</h2>
 				<p>{$`Configura los estados de tracking para el pedido del cliente.`}</p>
 			</div>
 			<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>

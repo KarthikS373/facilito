@@ -3,13 +3,12 @@ import React, { useContext, useRef, useState } from 'react'
 // COMPONENTES
 import Customize from './components/customize'
 import ColorButton from 'components/button'
-import PageInfo from 'components/pageInfo'
 import Header from 'components/header'
+import Info from './components/info'
 import Tabs from './components/tabs'
 import View from 'components/view'
 
 // ICONOS
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone'
 import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // TOOLS
@@ -36,6 +35,9 @@ const SettingsView: React.FC = () => {
 	// FONDO
 	const [customBackground, setCustomBackground] = useState<string | undefined>()
 
+	// TABS
+	const [tabIndex, setTabIndex] = useState<number>(0)
+
 	// REFERENCIAS
 	const businessRef = useRef(business ?? defBusiness)
 	businessRef.current = business ?? defBusiness
@@ -45,6 +47,9 @@ const SettingsView: React.FC = () => {
 
 	// ROLES
 	const userRoles = useRef<UserRole[]>([])
+
+	// ABRIR SUBSCRIPCION
+	const openSub = () => setTabIndex(2)
 
 	// GUARDAR
 	const saveBusinessEv = () =>
@@ -69,11 +74,7 @@ const SettingsView: React.FC = () => {
 					{$`Guardar datos`}
 				</ColorButton>
 			</Header>
-			<PageInfo
-				title={$`Configurar negocio`}
-				description={$`Agregar informacion general y bancaria sobre el negocio.`}
-				icon={<AdminPanelSettingsTwoToneIcon />}
-			/>
+			<Info onAction={openSub} />
 			<div className={Styles.container}>
 				<SettingsContext.Provider
 					value={{
@@ -83,7 +84,7 @@ const SettingsView: React.FC = () => {
 						backgroundRef,
 						setCustomBackground,
 					}}>
-					<Tabs />
+					<Tabs tabIndex={tabIndex} setTabIndex={setTabIndex} />
 					<Customize />
 				</SettingsContext.Provider>
 			</div>

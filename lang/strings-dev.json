@@ -1,4 +1,36 @@
 {
+	"agregar_categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"lista_de_todas_las_categorias_creadas_para_tus_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"lista_de_todas_las_categorias_para_tus_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"lista_de_categorias_para_tus_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"subscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas_el_resto_de_imagenes_se_mostraran_al_seleccionarlo": {
+		"en": "",
+		"es": "$"
+	},
+	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas_el_resto_de_imagenes_se_mostraran_al_seleccionar_el_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas": {
+		"en": "",
+		"es": "$"
+	},
 	"debes_agregar_un_sku_nombre_y_categoria_primero_para_poder_guardar_este_producto": {
 		"en": "",
 		"es": "$"
