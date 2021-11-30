@@ -46,6 +46,7 @@ const CompanyView: React.FC<CompanyViewProps> = ({ company, forms }) => {
 					{company?.description && <p>{company.description}</p>}
 				</div>
 				<div className={Styles.forms}>
+					{/* ATRAS */}
 					<IconButton onClick={handleNext(-1)} disabled={activeStep === 0}>
 						<KeyboardArrowLeft />
 					</IconButton>
@@ -71,6 +72,7 @@ const CompanyView: React.FC<CompanyViewProps> = ({ company, forms }) => {
 						</div>
 					</div>
 
+					{/* SIGUIENTE */}
 					<IconButton onClick={handleNext(1)} disabled={activeStep === forms.length - 2}>
 						<KeyboardArrowRight />
 					</IconButton>
