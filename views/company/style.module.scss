@@ -1,0 +1,143 @@
+.container {
+	padding: 20px 20px 0 20px;
+
+	.content {
+		background: #fff;
+		width: 100%;
+		max-width: 650px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 65px;
+		padding: 0 30px 30px 30px;
+		border-radius: var(--radius) var(--radius) 0 0;
+
+		.info {
+			opacity: 0.8;
+
+			& > * {
+				line-height: 1.4;
+			}
+
+			h1 {
+				text-align: center;
+				margin: 15px 0 5px 0;
+			}
+
+			p {
+				text-align: center;
+				font-size: 1.2em;
+
+				&:first-of-type {
+					font-size: 1em;
+					margin: 0 0 5px 0;
+				}
+
+				&:last-of-type {
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+				}
+			}
+		}
+
+		.image {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 130px;
+			width: 130px;
+			border-radius: 100%;
+			overflow: hidden;
+			margin-top: -65px;
+			background: #f5f5f5;
+
+			svg {
+				height: 80px;
+				width: 80px;
+				opacity: 0.8;
+			}
+		}
+
+		.forms {
+			width: 100%;
+			margin-top: 30px;
+			padding: 10px 2px;
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			column-gap: var(--margin);
+			align-items: center;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			& > div:nth-of-type(2) {
+				width: 100%;
+				overflow: hidden;
+			}
+
+			.sliderContainer {
+				width: 100%;
+				margin-top: 15px;
+				overflow-x: hidden;
+
+				.slider {
+					display: flex;
+					align-items: center;
+					width: max-content;
+					transition: transform 0.2s ease-in-out;
+
+					.form {
+						width: 150px;
+						display: block;
+						cursor: pointer;
+						margin-right: var(--margin);
+						border: 2px solid var(--secondary);
+						border-radius: var(--radius);
+						overflow: hidden;
+						transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+						&:last-of-type {
+							margin-right: 0;
+						}
+
+						&:hover {
+							border-color: var(--secondaryDark);
+							transform: scale(1.03);
+						}
+
+						img {
+							object-fit: cover;
+						}
+
+						.formInfo {
+							padding: 10px;
+							width: 150px;
+							font-size: 0.9em;
+
+							span,
+							h3 {
+								width: 100%;
+								display: block;
+								margin: 0;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+								color: var(--primary);
+							}
+
+							span {
+								color: #000;
+								opacity: 0.8;
+								margin-top: -3px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

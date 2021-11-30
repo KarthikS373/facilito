@@ -35,6 +35,9 @@ const Layout: React.FC = (props) => {
 	const showTopbar = evaluateTopbarPath(path)
 	const showFooter = evaluateFooterPath(path)
 
+	// PUBLIC PATH
+	const isPublic = /\/e\/(.+)/.test(path) && path !== ROUTES.edit
+
 	return (
 		<div
 			style={
@@ -44,6 +47,7 @@ const Layout: React.FC = (props) => {
 					'--primaryDark': theme.palette.primary.dark,
 					'--secondaryDark': theme.palette.secondary.dark,
 					backgroundColor: !showTopbar ? 'transparent' : '#fff',
+					alignItems: isPublic ? 'center' : 'unset',
 				} as React.CSSProperties
 			}
 			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
@@ -53,7 +57,11 @@ const Layout: React.FC = (props) => {
 					backgroundColor: !showTopbar ? 'transparent' : 'rgb(248, 248, 248)',
 				}}>
 				{props.children}
-				<Footer hideFooter={!showTopbar} minimize={showFooter} />
+				<Footer
+					hideFooter={!showTopbar}
+					minimize={showFooter}
+					radius={isPublic ? '0 0 var(--radius) var(--radius)' : undefined}
+				/>
 			</main>
 		</div>
 	)

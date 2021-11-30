@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 						rel='noreferrer noopener'
 						style={{ borderRadius: 'var(--radius)' }}
 						title={businessCtx.business?.url ?? ''}
-						href={`https://facilito-dev.web.app/e/${businessCtx.business?.url}`}>
+						href={`/e/${businessCtx.business?.url}`}>
 						<Button
 							fullWidth
 							variant='outlined'

@@ -15,16 +15,17 @@ import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import sendDescription from './tools'
 
 // PROPS
 interface FormHeaderProps {
 	onChangeDescription?: (text: string) => unknown
 	formDescription?: string
 	previewMode?: boolean
-	formTitle?: string
 	clientMode?: boolean
-	banner: string
+	formTitle?: string
 	company?: Business
+	banner: string
 }
 
 const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
@@ -35,14 +36,8 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 	const { $ } = useStrings()
 
 	// ENVIAR DESCRIPCIÓN
-	const sendDescription = (ev: React.ChangeEvent) => {
-		// INPUT
-		const inp = ev.target as HTMLInputElement
-		const val: string = inp.value.trim()
-
-		// ENVIAR
-		props.onChangeDescription && props.onChangeDescription(val)
-	}
+	const descriptionHandler = (ev: React.ChangeEvent) =>
+		sendDescription(ev, props.onChangeDescription)
 
 	// EMPRESA
 	const company = props.company || business
@@ -78,12 +73,12 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 					<p>{props.formDescription}</p>
 				) : (
 					<textarea
-						readOnly={props.previewMode}
-						defaultValue={props.formDescription}
 						rows={3}
 						id='description'
+						readOnly={props.previewMode}
+						onChange={descriptionHandler}
+						defaultValue={props.formDescription}
 						placeholder={$`Descripción de la tienda`}
-						onChange={sendDescription}
 						className={props.previewMode ? Styles.previewDescription : undefined}
 					/>
 				)}
