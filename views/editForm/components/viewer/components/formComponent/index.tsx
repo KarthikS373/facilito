@@ -126,7 +126,7 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 								<DeleteOutlineRounded color='primary' />
 							</IconButton>
 						</Tooltip>
-						1{/* SWITCH DE OBLIGATORIO */}
+						{/* SWITCH DE OBLIGATORIO */}
 						{!hideRequired && (
 							<Tooltip title={$`Obligatorio`} placement='top' arrow>
 								<FormControlLabel

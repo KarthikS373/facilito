@@ -22,22 +22,47 @@ const ProductsProvider: React.FC = (props) => {
 	useProducts(setLocalProducts, businessCtx.business?.id)
 
 	// GUARDAR PRODUCTOS GLOBAL
-	const setProducts = (products: { [id: string]: Product }, merge = true) =>
+	const setProducts = (
+		products: { [id: string]: Product },
+		merge = true,
+		initialSKU = '',
+		onSuccess?: () => unknown
+	) =>
 		setLocalProducts((prevProducts: { [id: string]: Product }) => {
 			// ACTUALIZAR
+			const tmpProducts = { ...prevProducts }
+			if (initialSKU?.length) delete tmpProducts[initialSKU]
+
 			const newProducts: { [id: string]: Product } = merge
-				? { ...prevProducts, ...products }
+				? { ...tmpProducts, ...products }
 				: products
 
-			window.Snack('Guardando...')
-			// GUARDAR EN DB PRODUCTOS
-			replaceProducts(newProducts, businessCtx.business?.id).then(() =>
-				window.Snack('Productos guardados')
+			// ERROR SKU DUPLICADO
+			const isRepeatedSKU = Object.keys(tmpProducts).some((sku) =>
+				Object.keys(products).some((newSku) => newSku === sku)
 			)
 
-			// GUARDAR EN NEGOCIO
-			businessCtx.setBusinessDB({ products: Object.keys(newProducts) })
-			return newProducts
+			if (!isRepeatedSKU) {
+				window.Snack('Guardando...')
+
+				// GUARDAR EN DB PRODUCTOS
+				replaceProducts(newProducts, businessCtx.business?.id).then(() =>
+					window.Snack('Producto(s) guardados')
+				)
+
+				// GUARDAR EN NEGOCIO
+				businessCtx.setBusinessDB({ products: Object.keys(newProducts) })
+				if (onSuccess) onSuccess()
+				return newProducts
+			} else {
+				window.Alert({
+					title: 'Ocurrio un error',
+					body: 'Este SKU ya se esta usando en otro producto, los SKUs deben ser unicos, escribe uno nuevo.',
+					type: 'error',
+				})
+
+				return prevProducts
+			}
 		})
 
 	return (

@@ -1,4 +1,24 @@
 {
+	"este_sku_ya_se_esta_usando_en_otro_producto_los_skus_deben_ser_unicos_escribe_uno_nuevo": {
+		"en": "",
+		"es": "$"
+	},
+	"este_sku_ya_se_esta_usando_en_otro_producto_los_skus_deben_ser_unicos_por_favor_escribe_uno_nuevo": {
+		"en": "",
+		"es": "$"
+	},
+	"este_sku_ya_se_esta_usando_en_otro_producto_por_favor_escribe_uno_nuevo": {
+		"en": "",
+		"es": "$"
+	},
+	"debes_agregar_un_sku_y_nombre_primero_para_poder_guardar_este_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"borrar_producto": {
+		"en": "",
+		"es": "$"
+	},
 	"agregar_categoria": {
 		"en": "",
 		"es": "$"

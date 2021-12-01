@@ -1,4 +1,6 @@
 import { saveProductImages } from 'utils/products'
+import { NextRouter } from 'next/router'
+import ROUTES from 'router/routes'
 
 /**
  * Guardar producto
@@ -10,18 +12,25 @@ import { saveProductImages } from 'utils/products'
  * @param  {string} companyID
  */
 const saveProduct = async (
-	setProducts: (products: { [id: string]: Product }, merge?: boolean) => unknown,
+	setProducts: (
+		products: { [id: string]: Product },
+		merge?: boolean,
+		initialSKU?: string,
+		onSuccess?: () => unknown
+	) => unknown,
 	productRef: React.MutableRefObject<Product>,
 	imagesRef: React.MutableRefObject<(File | null)[]>,
 	$: TemplateStrBuilder,
+	history: NextRouter,
+	productID?: string,
 	companyID?: string
 ): Promise<void> => {
 	// VALIDAR CAMPOS
-	const valid = productRef.current.sku?.length * productRef.current?.category?.length
+	const valid = productRef.current.sku?.length * productRef.current?.title?.length
 
 	if (valid && companyID?.length) {
 		// GUARDAR EN STORAGE
-		if (imagesRef.current.every((image) => image !== null)) {
+		if (imagesRef.current.some((image) => image !== null)) {
 			window.Snack($`Subiendo imagenes...`)
 
 			const urls: string[] = await saveProductImages(
@@ -39,13 +48,21 @@ const saveProduct = async (
 		}
 
 		// GUARDAR
-		setProducts({
-			[productRef.current.sku]: productRef.current,
-		})
+		setProducts(
+			{
+				[productRef.current.sku]: productRef.current,
+			},
+			true,
+			productID,
+			() => {
+				// REDIRECCIONAR
+				history.replace(ROUTES.editProduct.replace(':productID', productRef.current.sku))
+			}
+		)
 	} else
 		window.Alert({
 			title: 'Ocurrio un error',
-			body: 'Debes agregar un SKU, Nombre y Categoria primero para poder guardar este producto.',
+			body: 'Debes agregar un SKU y Nombre primero para poder guardar este producto.',
 			type: 'error',
 		})
 }

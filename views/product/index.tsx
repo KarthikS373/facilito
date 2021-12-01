@@ -7,6 +7,9 @@ import Header from 'components/header'
 import Info from './components/info'
 import View from 'components/view'
 
+// NEXT
+import { useRouter } from 'next/router'
+
 // ICONOS
 import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
@@ -44,6 +47,9 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 	// PRODUCTO
 	const product = useProduct(productID, productsCtx.products)
 
+	// HISTORY
+	const history = useRouter()
+
 	// REFERENCIAS
 	const productRef: React.MutableRefObject<Product> = useRef(product || defProduct)
 	productRef.current = product || defProduct
@@ -52,7 +58,15 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 
 	// GUARDAR PRODUCTO
 	const saveProductData = () =>
-		saveProduct(productsCtx.setProducts, productRef, imagesRef, $, businessCtx.business?.id)
+		saveProduct(
+			productsCtx.setProducts,
+			productRef,
+			imagesRef,
+			$,
+			history,
+			productID,
+			businessCtx.business?.id
+		)
 
 	return (
 		<View>

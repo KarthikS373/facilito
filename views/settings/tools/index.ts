@@ -64,7 +64,6 @@ const saveBusiness = (
 			}
 
 			// CAMBIAR NEGOCIO
-			console.log(backgroundRef.current)
 			if (businessRef.current.id?.length) setBusiness(businessRef.current)
 		})
 	}

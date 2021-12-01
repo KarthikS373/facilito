@@ -3,7 +3,12 @@ import { createContext, Context } from 'react'
 // KEYS
 export interface ProductContextProps {
 	products: { [id: string]: Product }
-	setProducts: (products: { [id: string]: Product }, merge?: boolean) => unknown
+	setProducts: (
+		products: { [id: string]: Product },
+		merge?: boolean,
+		initialSKU?: string,
+		onSuccess?: () => unknown
+	) => unknown
 }
 
 // VALOR POR DEFECTO

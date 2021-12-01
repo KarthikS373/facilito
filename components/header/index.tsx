@@ -42,8 +42,6 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 		customBackground ??
 		(businessCtx.business?.backgroundImage ? '' : businessCtx.business?.background)
 
-	console.log(customBackground)
-
 	return (
 		<div className={Styles.container}>
 			{/* FONDO */}
