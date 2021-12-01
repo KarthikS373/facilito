@@ -61,7 +61,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ disablePortal, anchorEl, onCl
 
 			<MenuItem onClick={goToSettings}>
 				<Button variant='outlined' fullWidth startIcon={<SettingsTwoTone />}>
-					{$`Configuraciones`}
+					{$`Ajustes`}
 				</Button>
 			</MenuItem>
 		</PopperMenuList>

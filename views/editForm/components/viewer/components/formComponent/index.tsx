@@ -117,13 +117,13 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 						{/* BOTÓN DE COPIAR */}
 						<Tooltip title={$`Duplicar`} placement='top' arrow>
 							<IconButton size='small' onClick={handleCopy}>
-								<FilterNoneRounded color='primary' />
+								<FilterNoneRounded />
 							</IconButton>
 						</Tooltip>
 						{/* BOTÓN DE BORRAR */}
 						<Tooltip title={$`Borrar`} placement='top' arrow>
 							<IconButton size='small' onClick={handleDelete}>
-								<DeleteOutlineRounded color='primary' />
+								<DeleteOutlineRounded />
 							</IconButton>
 						</Tooltip>
 						{/* SWITCH DE OBLIGATORIO */}

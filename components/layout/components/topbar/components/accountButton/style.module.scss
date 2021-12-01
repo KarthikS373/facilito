@@ -16,11 +16,16 @@
 	}
 }
 
-.accountBtnContent > span {
+.accountBtnContent > span,
+.accountBtnContent > strong {
 	display: block;
 	line-height: 1;
 	text-align: left;
 	margin: 0;
+}
+
+.accountBtnContent > strong {
+	text-transform: capitalize;
 }
 
 .accountBtnContent > span:last-child {

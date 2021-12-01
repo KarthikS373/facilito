@@ -56,7 +56,7 @@ const AccountButton: React.FC<AccountButtonProps> = ({ disablePortal }) => {
 					</div>
 				}>
 				<div className={Styles.accountBtnContent}>
-					<span>{userCtx.user?.name.split(' ')[0]?.toUpperCase()}</span>
+					<strong>{userCtx.user?.name.split(' ')[0]?.toLowerCase()}</strong>
 					<span>{userCtx.user?.role}</span>
 				</div>
 			</Button>

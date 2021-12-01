@@ -14,11 +14,11 @@ import ColorButton from 'components/button'
 import Link from 'components/link'
 
 // ICONS
+import ShareLocationTwoToneIcon from '@mui/icons-material/ShareLocationTwoTone'
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone'
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
 import ArrowBackTwoTone from '@mui/icons-material/ArrowBackTwoTone'
-import ComputerTwoTone from '@mui/icons-material/ComputerTwoTone'
 import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
 
 // MATERIAL
@@ -120,7 +120,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 									borderColor: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<ComputerTwoTone />}>
+								startIcon={<ShareLocationTwoToneIcon />}>
 								{expanded ? $`Configurar tracking` : ''}
 							</ColorButton>
 						</Link>

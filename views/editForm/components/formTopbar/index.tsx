@@ -162,6 +162,10 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 				/>
 
 				<div className={Styles.actions}>
+					<Button variant='outlined' onClick={openMenu} startIcon={<SettingsIcon />}>
+						{$`Configuración`}
+					</Button>
+
 					{/* CONFIGURACION */}
 					<Button variant='outlined' onClick={openCheckoutMenu} startIcon={<ReceiptIcon />}>
 						{$`Checkout`}
@@ -169,10 +173,6 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 
 					{/* GUARDAR */}
 					<SaveOnCloud onSave={props.onSave} />
-
-					<Button variant='outlined' onClick={openMenu} startIcon={<SettingsIcon />}>
-						{$`Configuración`}
-					</Button>
 
 					{/* CUENTA */}
 					<AccountButton />
