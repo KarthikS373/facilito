@@ -32,9 +32,11 @@ import useStrings from 'hooks/lang'
 // PROPIEDADES
 interface CustomAppBarProps {
 	showSearchBar: boolean
+	setExpanded: SetState<boolean>
+	expanded: boolean
 }
 
-const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar }) => {
+const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar, setExpanded, expanded }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -62,7 +64,12 @@ const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar }) => {
 	return (
 		<>
 			{/* DRAWER PRINCIPAL */}
-			<SideBar onClose={handleDrawer(false)} open={openDrawer} />
+			<SideBar
+				setExpanded={setExpanded}
+				expanded={expanded}
+				onClose={handleDrawer(false)}
+				open={openDrawer}
+			/>
 
 			<AppBar position='static' className={Styles.container}>
 				<Toolbar>

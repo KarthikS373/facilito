@@ -15,10 +15,11 @@ import Link from 'components/link'
 
 // ICONS
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
+import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone'
 import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import ArrowBackTwoTone from '@mui/icons-material/ArrowBackTwoTone'
 import ComputerTwoTone from '@mui/icons-material/ComputerTwoTone'
 import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
-import InfoTwoTone from '@mui/icons-material/InfoTwoTone'
 
 // MATERIAL
 import IconButton from '@mui/material/IconButton'
@@ -34,9 +35,14 @@ import ROUTES from 'router/routes'
 interface SideBarProps {
 	onClose: () => void
 	open: boolean
+	setExpanded: SetState<boolean>
+	expanded: boolean
 }
 
-const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
+const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded }) => {
+	// ESTADO
+	const collapse = () => setExpanded(!expanded)
+
 	// STRINGS
 	const { $ } = useStrings()
 
@@ -51,15 +57,23 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 					open ? Styles.openTabContainer : Styles.closedTabContainer
 				}`}>
 				<div className={Styles.brand}>
-					<div className={Styles.logo}>
-						<NextLink href={ROUTES.forms} passHref>
-							<a title='Logo'>
-								<Image unoptimized src='/assets/brand/logo.png' alt='Icon' height={45} width={85} />
-							</a>
-						</NextLink>
-					</div>
-					<IconButton color='inherit' aria-label='info'>
-						<InfoTwoTone />
+					{expanded && (
+						<div className={Styles.logo}>
+							<NextLink href={ROUTES.forms} passHref>
+								<a title='Logo'>
+									<Image
+										unoptimized
+										src='/assets/brand/logo.png'
+										alt='Icon'
+										height={45}
+										width={85}
+									/>
+								</a>
+							</NextLink>
+						</div>
+					)}
+					<IconButton onClick={collapse} color='inherit' aria-label='info'>
+						{expanded ? <ArrowBackTwoTone /> : <ArrowForwardTwoTone />}
 					</IconButton>
 				</div>
 				<ul>
@@ -69,11 +83,14 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
+								className={!expanded ? Styles.collapseLink : ''}
 								$style={{
 									borderColor: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'productos') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<ShoppingCartTwoTone />}>{$`Crear productos`}</ColorButton>
+								startIcon={<ShoppingCartTwoTone />}>
+								{expanded ? $`Crear productos` : undefined}
+							</ColorButton>
 						</Link>
 					</li>
 					<li>
@@ -82,11 +99,14 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
+								className={!expanded ? Styles.collapseLink : ''}
 								$style={{
 									borderColor: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<DescriptionTwoTone />}>{$`Crear tienda`}</ColorButton>
+								startIcon={<DescriptionTwoTone />}>
+								{expanded ? $`Crear tienda` : undefined}
+							</ColorButton>
 						</Link>
 					</li>
 					<li>
@@ -95,12 +115,14 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								fullWidth
 								onClick={onClose}
 								variant='outlined'
+								className={!expanded ? Styles.collapseLink : ''}
 								$style={{
 									borderColor: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
-
 									color: getActiveRoute(path, 'tracking') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<ComputerTwoTone />}>{$`Configurar tracking`}</ColorButton>
+								startIcon={<ComputerTwoTone />}>
+								{expanded ? $`Configurar tracking` : ''}
+							</ColorButton>
 						</Link>
 					</li>
 
@@ -111,10 +133,13 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 								onClick={onClose}
 								variant='outlined'
 								startIcon={<TodayTwoTone />}
+								className={!expanded ? Styles.collapseLink : ''}
 								$style={{
 									borderColor: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'calendario') ? 'var(--primary)' : undefined,
-								}}>{$`Ver citas`}</ColorButton>
+								}}>
+								{expanded ? $`Ver citas` : ''}
+							</ColorButton>
 						</Link>
 					</li>
 				</ul>

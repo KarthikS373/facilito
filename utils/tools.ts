@@ -292,10 +292,20 @@ export const generateTheme = (defColors: string[]): Theme => {
 						fontSize: '1rem',
 						backgroundColor: '#FBFBFB',
 						padding: '10px 15px',
+						transition: 'color 0.1s ease-in-out',
+
+						'& > .MuiButton-startIcon': {
+							transition: 'color 0.1s ease-in-out',
+						},
 
 						'&:hover': {
-							borderColor: `${defColors[1]}`,
+							borderColor: `${defColors[0]}`,
 							backgroundColor: '#FBFBFB',
+							color: `${defColors[0]}`,
+
+							'& > .MuiButton-startIcon': {
+								color: `${defColors[0]}`,
+							},
 						},
 					},
 				},
@@ -352,7 +362,10 @@ export const generateTheme = (defColors: string[]): Theme => {
 						},
 
 						'&:hover': {
-							borderColor: `${defColors[1]}`,
+							borderColor: `${defColors[0]}`,
+							'& .MuiSvgIcon-root': {
+								color: `${defColors[0]}`,
+							},
 						},
 
 						'& .MuiBadge-badge': {

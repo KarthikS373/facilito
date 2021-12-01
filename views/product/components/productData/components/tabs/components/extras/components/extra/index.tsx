@@ -155,21 +155,21 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						onClick={addOptionalEv(options.length - 1)}>
 						{$`Agregar opcion`}
 					</Button>
-					<IconButton onClick={deleteExtra}>
-						<DeleteTwoTone />
-					</IconButton>
+					<FormControlLabel
+						control={
+							<Switch
+								name='required'
+								color='primary'
+								onChange={toggleRequiredEv}
+								defaultChecked={extra.required}
+							/>
+						}
+						label={$`Obligatorio`}
+					/>
 				</div>
-				<FormControlLabel
-					control={
-						<Switch
-							name='required'
-							color='primary'
-							onChange={toggleRequiredEv}
-							defaultChecked={extra.required}
-						/>
-					}
-					label={$`Obligatorio`}
-				/>
+				<IconButton onClick={deleteExtra}>
+					<DeleteTwoTone />
+				</IconButton>
 			</div>
 
 			{/* OPCIONES */}

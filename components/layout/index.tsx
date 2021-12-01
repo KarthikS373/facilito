@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useState } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -24,6 +24,9 @@ import dynamic from 'next/dynamic'
 const Topbar = dynamic(() => import('./components/topbar'))
 
 const Layout: React.FC = (props) => {
+	// ESTADO
+	const [expanded, setExpanded] = useState<boolean>(true)
+
 	// TEMA
 	const theme = useTheme()
 
@@ -48,10 +51,11 @@ const Layout: React.FC = (props) => {
 					'--secondaryDark': theme.palette.secondary.dark,
 					backgroundColor: !showTopbar ? 'transparent' : '#fff',
 					alignItems: isPublic ? 'center' : 'unset',
+					gridTemplateColumns: expanded ? '300px 1fr' : '90px 1fr',
 				} as React.CSSProperties
 			}
 			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
-			{showTopbar && <Topbar showSearchBar />}
+			{showTopbar && <Topbar expanded={expanded} showSearchBar setExpanded={setExpanded} />}
 			<main
 				style={{
 					backgroundColor: !showTopbar ? 'transparent' : 'rgb(248, 248, 248)',

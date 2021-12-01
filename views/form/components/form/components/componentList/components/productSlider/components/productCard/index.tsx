@@ -28,6 +28,7 @@ interface ProductCardProps {
 	openBackdropProduct: (product: CurrentProduct) => EmptyFunction
 	productSpace: Product | null
 	index: number
+	preview?: boolean
 }
 
 const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
@@ -54,26 +55,28 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 			style={{
 				pointerEvents: unActive ? 'none' : 'all',
 			}}>
-			<div className={Styles.badges}>
-				{props.productSpace?.count === 0 && props.productSpace?.stockOption === 'lim' && (
-					<Tooltip placement='top' title={$`Sin inventario`} arrow>
-						<DoNotDisturbAltTwoToneIcon
-							className={Styles.zero}
-							style={{ background: theme.palette.primary.main }}
-						/>
-					</Tooltip>
-				)}
-				{props.productSpace?.isPromo && (
-					<Tooltip placement='top' title={$`En oferta`} arrow>
-						<LocalOffer style={{ background: theme.palette.primary.main }} />
-					</Tooltip>
-				)}
-				{thisProductHasCoupon && (
-					<Tooltip placement='top' title={$`Oferta con cupón`} arrow>
-						<ConfirmationNumber style={{ background: theme.palette.primary.main }} />
-					</Tooltip>
-				)}
-			</div>
+			{!props.preview && (
+				<div className={Styles.badges}>
+					{props.productSpace?.count === 0 && props.productSpace?.stockOption === 'lim' && (
+						<Tooltip placement='top' title={$`Sin inventario`} arrow>
+							<DoNotDisturbAltTwoToneIcon
+								className={Styles.zero}
+								style={{ background: theme.palette.primary.main }}
+							/>
+						</Tooltip>
+					)}
+					{props.productSpace?.isPromo && (
+						<Tooltip placement='top' title={$`En oferta`} arrow>
+							<LocalOffer style={{ background: theme.palette.primary.main }} />
+						</Tooltip>
+					)}
+					{thisProductHasCoupon && (
+						<Tooltip placement='top' title={$`Oferta con cupón`} arrow>
+							<ConfirmationNumber style={{ background: theme.palette.primary.main }} />
+						</Tooltip>
+					)}
+				</div>
+			)}
 			{props.productSpace && (
 				<div
 					className={Styles.product}
@@ -84,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 						index: props.index,
 						product: props.productSpace,
 					})}>
-					{unActive && <div className={Styles.unActive}>{$`No disponible`}</div>}
+					{unActive && !props.preview && <div className={Styles.unActive}>{$`No disponible`}</div>}
 					<Image
 						unoptimized
 						width={196}

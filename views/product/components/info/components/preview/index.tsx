@@ -20,6 +20,7 @@ const showProduct = (product: React.MutableRefObject<Product>): void => {
 				<ProductSkeleton />
 				<ProductCard
 					index={0}
+					preview
 					productSpace={product.current}
 					openBackdropProduct={() => () => null}
 				/>

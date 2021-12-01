@@ -19,7 +19,7 @@
 
 .container {
 	position: relative;
-	width: 300px;
+	width: 100%;
 	background-color: rgb(243, 243, 243);
 	border-radius: 0 10px 0 0;
 	height: 100%;
@@ -58,8 +58,10 @@
 
 		li {
 			margin-bottom: 15px;
+			height: 50px;
 
 			a {
+				height: 50px;
 				display: flex;
 				justify-content: flex-start;
 				padding-left: 20px;
@@ -91,5 +93,21 @@
 @include for-size(phone-portrait-min) {
 	.closedTabContainer {
 		transform: translateX(-270px);
+	}
+}
+
+.collapseLink {
+	max-width: 50px;
+	min-width: 0 !important;
+	margin: 0 !important;
+	display: flex;
+	grid-template-columns: 50px;
+	justify-content: center !important;
+	align-items: center !important;
+	padding: 0 !important;
+	overflow: hidden;
+
+	span {
+		margin: 0;
 	}
 }
