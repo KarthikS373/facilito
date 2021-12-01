@@ -52,6 +52,8 @@ const Layout: React.FC = (props) => {
 					backgroundColor: !showTopbar ? 'transparent' : '#fff',
 					alignItems: isPublic ? 'center' : 'unset',
 					gridTemplateColumns: expanded ? '300px 1fr' : '90px 1fr',
+					display: !showTopbar ? 'flex' : 'grid',
+					justifyContent: !showTopbar ? 'center' : 'unset',
 				} as React.CSSProperties
 			}
 			className={`${Styles.container} ${path === ROUTES.login ? Styles.fullMain : ''}`}>
@@ -59,6 +61,7 @@ const Layout: React.FC = (props) => {
 			<main
 				style={{
 					backgroundColor: !showTopbar ? 'transparent' : 'rgb(248, 248, 248)',
+					width: !showTopbar ? '100%' : 'auto',
 				}}>
 				{props.children}
 				<Footer

@@ -35,12 +35,14 @@ const ProductsProvider: React.FC = (props) => {
 
 			const newProducts: { [id: string]: Product } = merge
 				? { ...tmpProducts, ...products }
-				: products
+				: { ...products }
 
 			// ERROR SKU DUPLICADO
-			const isRepeatedSKU = Object.keys(tmpProducts).some((sku) =>
-				Object.keys(products).some((newSku) => newSku === sku)
-			)
+			const isRepeatedSKU = merge
+				? Object.keys(tmpProducts).some((sku) =>
+						Object.keys(products).some((newSku) => newSku === sku)
+				  )
+				: false
 
 			if (!isRepeatedSKU) {
 				window.Snack('Guardando...')

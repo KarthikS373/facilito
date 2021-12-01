@@ -16,7 +16,7 @@ import Link from 'components/link'
 // ICONS
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone'
-import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
 import ArrowBackTwoTone from '@mui/icons-material/ArrowBackTwoTone'
 import ComputerTwoTone from '@mui/icons-material/ComputerTwoTone'
 import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
@@ -104,7 +104,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 									borderColor: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
 									color: getActiveRoute(path, 'tiendas') ? 'var(--primary)' : undefined,
 								}}
-								startIcon={<DescriptionTwoTone />}>
+								startIcon={<StorefrontTwoToneIcon />}>
 								{expanded ? $`Crear tienda` : undefined}
 							</ColorButton>
 						</Link>
