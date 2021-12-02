@@ -8,7 +8,7 @@ import FormsContext from 'context/forms'
 // HOOKS
 import useForms from 'hooks/forms'
 
-const ProductsProvider: React.FC = (props) => {
+const FormsProvider: React.FC = (props) => {
 	// ESTADO
 	const [forms, setForms] = useState<FormInterface>({
 		answers: [],
@@ -38,4 +38,4 @@ const ProductsProvider: React.FC = (props) => {
 	)
 }
 
-export default ProductsProvider
+export default FormsProvider

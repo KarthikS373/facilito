@@ -1,4 +1,8 @@
 {
+	"tienda_sin_titulo": {
+		"en": "",
+		"es": "$"
+	},
 	"este_sku_ya_se_esta_usando_en_otro_producto_los_skus_deben_ser_unicos_escribe_uno_nuevo": {
 		"en": "",
 		"es": "$"

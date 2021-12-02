@@ -11,8 +11,10 @@ import type { NextRouter } from 'next/router'
 import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
 
 // UTILS
+import { formComponentsList, initialFormData } from 'views/editForm/utils/initials'
 import { addBusinessFormURL } from 'utils/business'
 import { normalizeString } from 'utils/tools'
+import { Theme } from '@mui/material/styles'
 import saveFormSchema from 'utils/forms'
 
 // RUTAS
@@ -31,7 +33,8 @@ const showNewFormPrompt = (
 	business: Business | null,
 	router: NextRouter,
 	customForm?: Form,
-	user?: User | null
+	user?: User | null,
+	theme?: Theme
 ): void => {
 	// GUARDAR
 	let title = ''
@@ -52,11 +55,13 @@ const showNewFormPrompt = (
 				window.Snack('Creando...')
 				addBusinessFormURL(parsedTitle, business.id).then(async () => {
 					window.hideAlert()
-					if (customForm && user)
+					if (user)
 						await saveFormSchema(business.id, {
-							...customForm,
+							...(customForm ?? initialFormData),
 							title,
 							id: parsedTitle,
+							background: `transparent linear-gradient(042deg, ${theme?.palette.primary.main} 0%, ${theme?.palette.secondary.main} 100%) 0% 0% no-repeat padding-box`,
+							components: [{ ...formComponentsList[formComponentsList.length - 1] }],
 							url: `${business.url}_${parsedTitle}`,
 							company: {
 								user: user.email,

@@ -19,6 +19,7 @@ import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import UserContext from 'context/user'
 
 const AddNewForm: React.FC = () => {
 	// STRINGS
@@ -28,6 +29,9 @@ const AddNewForm: React.FC = () => {
 	const theme = useTheme()
 	const secondaryColor = theme.palette.secondary.main
 
+	// USUARIO
+	const userCtx = useContext(UserContext)
+
 	// ROUTER
 	const router = useRouter()
 
@@ -35,7 +39,8 @@ const AddNewForm: React.FC = () => {
 	const businessCtx = useContext(BusinessContext)
 
 	// MOSTRAR ALERTA
-	const showPrompt = () => showNewFormPrompt($, businessCtx.business, router)
+	const showPrompt = () =>
+		showNewFormPrompt($, businessCtx.business, router, undefined, userCtx.user, theme)
 
 	return (
 		<button className={Styles.btn} onClick={showPrompt}>

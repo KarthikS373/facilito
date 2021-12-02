@@ -92,26 +92,32 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	// TIENDA
 	const companyID: string | null = response[0] || null
 	const formData: Form | null = response[1] || null
-	formData.components = formData.components.map((component) => {
-		const tmpComponent = { ...component }
-		if (component.name === 'date') {
-			const time = JSON.parse(JSON.stringify(component.time))
-			tmpComponent.time = time
-			return tmpComponent
-		} else return tmpComponent
-	})
 
-	// EMPRESA
-	let company: Business | null = null
-	if (companyID) {
-		const businessCol = db.collection('business')
-		const businessDoc = businessCol.doc(companyID)
-		company = (await businessDoc.get()).data() as Business
-	}
+	if (formData && companyID) {
+		formData.components = formData.components.map((component) => {
+			const tmpComponent = { ...component }
+			if (component.name === 'date') {
+				const time = JSON.parse(JSON.stringify(component.time))
+				tmpComponent.time = time
+				return tmpComponent
+			} else return tmpComponent
+		})
 
-	return {
-		props: { formData, company, companyURL: formID, formURL },
-	}
+		// EMPRESA
+		let company: Business | null = null
+		if (companyID) {
+			const businessCol = db.collection('business')
+			const businessDoc = businessCol.doc(companyID)
+			company = (await businessDoc.get()).data() as Business
+		}
+
+		return {
+			props: { formData, company, companyURL: formID, formURL },
+		}
+	} else
+		return {
+			props: { formData: null, company: null, companyURL: formID, formURL },
+		}
 }
 
 export default withAuth(FormPage, { tryAnonymous: true })

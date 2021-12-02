@@ -39,7 +39,7 @@ interface FormProps {
 
 const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL }: FormProps) => {
 	// USUARIO
-	const { userExists } = useContext(AuthContext)
+	const { userExists, user } = useContext(AuthContext)
 
 	// STRINGS
 	const { $ } = useStrings()
@@ -72,43 +72,45 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 	const sendFormEvent = (data: { [id: string]: unknown }, reset: EmptyFunction) =>
 		sendForm($, data, reset, formData, company, defColors, geoRef, formURL, companyURL)
 
-	return (
-		<ThemeProvider theme={generateTheme(defColors)}>
-			<AlertProvider />
-			<div
-				className={Styles.container}
-				style={
-					{
-						'--primary': defColors[0],
-						'--secondary': defColors[1],
-						'--primaryDark': defColors[0],
-						'--secondaryDark': defColors[3],
-					} as React.CSSProperties
-				}>
-				<div className={Styles.viewContent}>
-					{/* HEADER */}
-					<FormHeader
-						formDescription={formData?.description}
-						banner={formData?.banner || ''}
-						company={company || undefined}
-						formTitle={formData?.title}
-						previewMode
-						clientMode
-					/>
-
-					{/* TIENDA */}
-					{formData && (
-						<HookForm
-							sendFormEvent={sendFormEvent}
-							couponProducts={coupons}
-							formData={formData}
-							products={products}
+	if (formData?.public || (!formData?.public && !user?.isAnonymous))
+		return (
+			<ThemeProvider theme={generateTheme(defColors)}>
+				<AlertProvider />
+				<div
+					className={Styles.container}
+					style={
+						{
+							'--primary': defColors[0],
+							'--secondary': defColors[1],
+							'--primaryDark': defColors[0],
+							'--secondaryDark': defColors[3],
+						} as React.CSSProperties
+					}>
+					<div className={Styles.viewContent}>
+						{/* HEADER */}
+						<FormHeader
+							formDescription={formData?.description}
+							banner={formData?.banner || ''}
+							company={company || undefined}
+							formTitle={formData?.title}
+							previewMode
+							clientMode
 						/>
-					)}
+
+						{/* TIENDA */}
+						{formData && (
+							<HookForm
+								sendFormEvent={sendFormEvent}
+								couponProducts={coupons}
+								formData={formData}
+								products={products}
+							/>
+						)}
+					</div>
 				</div>
-			</div>
-		</ThemeProvider>
-	)
+			</ThemeProvider>
+		)
+	else return <></>
 }
 
 export default FormView
