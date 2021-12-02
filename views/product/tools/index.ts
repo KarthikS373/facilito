@@ -32,7 +32,6 @@ const saveProduct = async (
 		// GUARDAR EN STORAGE
 		if (imagesRef.current.some((image) => image !== null)) {
 			window.Snack($`Subiendo imagenes...`)
-
 			const urls: string[] = await saveProductImages(
 				imagesRef.current,
 				productRef.current.sku,
@@ -41,7 +40,10 @@ const saveProduct = async (
 
 			// GUARDAR EN DB
 			productRef.current.picture = urls.map((url: string, urlIndex: number) => {
-				if (productRef.current.picture[urlIndex]?.length)
+				if (
+					productRef.current.picture[urlIndex]?.length &&
+					!productRef.current.picture[urlIndex].startsWith('data:image')
+				)
 					return productRef.current.picture[urlIndex]
 				else return url
 			})
@@ -53,10 +55,11 @@ const saveProduct = async (
 				[productRef.current.sku]: productRef.current,
 			},
 			true,
-			productID,
+			productID ?? '',
 			() => {
 				// REDIRECCIONAR
-				history.replace(ROUTES.editProduct.replace(':productID', productRef.current.sku))
+				if (productRef.current.sku?.length)
+					history.replace(ROUTES.editProduct.replace(':productID', productRef.current.sku))
 			}
 		)
 	} else
