@@ -1,4 +1,4 @@
-[![Nextjs Deployment](https://github.com/weareluastudio/facilito-app/actions/workflows/main.yml/badge.svg?branch=ssr&event=deployment)](https://github.com/weareluastudio/facilito-app/actions/workflows/main.yml)
+[![Nextjs Deployment](https://github.com/weareluastudio/facilito-app/actions/workflows/main.yml/badge.svg?branch=ssr)](https://github.com/weareluastudio/facilito-app/actions/workflows/main.yml)
 
 ## Getting Started
 
