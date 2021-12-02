@@ -78,14 +78,21 @@
 				justify-content: center;
 				height: 125px;
 				width: 125px;
+				background: #f5f5f5;
+				overflow: hidden;
+				border-radius: 100%;
 
 				@include for-size(phone-portrait) {
 					padding-top: 0;
 				}
 
-				img {
-					border-radius: 100%;
+				svg {
+					height: 60px;
+					width: 60px;
+					opacity: 0.8;
+				}
 
+				img {
 					@include for-size(small-desktop) {
 						height: 125px;
 						width: 125px;

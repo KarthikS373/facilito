@@ -1,6 +1,7 @@
 import { UserRole } from '../components/tabs/components/users/tools'
 import { changeUserRole } from 'utils/user'
 import { saveFile } from 'utils/storage'
+import { getBackgroundColors, getVibrant } from 'utils/tools'
 
 /**
  * Guardar datos nuevos en db
@@ -40,13 +41,37 @@ const saveBusiness = (
 
 					// ASIGNAR GALERIA
 					businessRef.current.gallery = defGallery
+					const vibrantColors = await getVibrant(backUrl)
+					businessRef.current.theme = {
+						primary: vibrantColors[0],
+						secondary: vibrantColors[1],
+						muted: vibrantColors[3],
+						deg: '042',
+					}
 				} else {
 					if (backgroundRef.current.startsWith('transparent linear-gradient')) {
 						businessRef.current.background = backgroundRef.current
 						businessRef.current.backgroundImage = ''
+
+						// COLORES
+						const colors = getBackgroundColors(backgroundRef.current)
+						businessRef.current.theme = {
+							primary: colors[0],
+							secondary: colors[1],
+							muted: colors[1],
+							deg: colors[2],
+						}
 					} else {
 						businessRef.current.backgroundImage = backgroundRef.current
 						businessRef.current.background = ''
+
+						const vibrantColors = await getVibrant(backgroundRef.current)
+						businessRef.current.theme = {
+							primary: vibrantColors[0],
+							secondary: vibrantColors[1],
+							muted: vibrantColors[3],
+							deg: '042',
+						}
 					}
 				}
 			}

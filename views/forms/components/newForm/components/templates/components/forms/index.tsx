@@ -2,6 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // MATERIAL
+import Skeleton from '@mui/material/Skeleton'
 import ColorButton from 'components/button'
 
 // ROUTER
@@ -53,22 +54,26 @@ const NewForm: React.FC = () => {
 
 	return (
 		<>
-			{templates.map((template: Form, index: number) => (
-				<ColorButton
-					fullWidth
-					key={template.id}
-					variant='outlined'
-					className={Styles.btn}
-					onClick={showCard(template)}
-					endIcon={templateIcons[index]}
-					$style={{
-						lineHeight: 1.1,
-						textAlign: 'left',
-						borderColor: 'rgba(0,0,0,.2)',
-					}}>
-					{template.title}
-				</ColorButton>
-			))}
+			{templates.length > 0
+				? templates.map((template: Form, index: number) => (
+						<ColorButton
+							fullWidth
+							key={template.id}
+							variant='outlined'
+							className={Styles.btn}
+							onClick={showCard(template)}
+							endIcon={templateIcons[index]}
+							$style={{
+								lineHeight: 1.1,
+								textAlign: 'left',
+								borderColor: 'rgba(0,0,0,.2)',
+							}}>
+							{template.title}
+						</ColorButton>
+				  ))
+				: Array(7)
+						.fill({})
+						.map((_s, index) => <Skeleton key={index} className={Styles.btn} />)}
 		</>
 	)
 }

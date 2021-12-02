@@ -182,34 +182,47 @@ export const splitBackgroundColors = (
 		if ((background?.toString() ?? '').startsWith('transparent linear-gradient')) {
 			if (onColors) onColors(getBackgroundColors(background?.toString() ?? ''))
 		} else {
-			import('node-vibrant').then((nodeVbrnt) => {
-				const img = new Image()
-				img.crossOrigin = 'anonymous'
-				img.decoding = 'async'
-				img.src = background?.toString()
-
-				img.onload = () => {
-					const Vibrant = nodeVbrnt.default
-					const vibrant = new Vibrant(img)
-					vibrant
-						.getPalette()
-						.then((palette) => {
-							if (onColors)
-								onColors([
-									palette.Vibrant?.hex ?? '#1AA5BB',
-									palette.Muted?.hex ?? '#511F73',
-									'042',
-									palette.DarkMuted?.hex ?? '#547BAE',
-								])
-						})
-						.catch((err) => console.log(err))
-				}
-			})
+			getVibrant(background)
+				.then((colors) => {
+					if (onColors) onColors(colors)
+				})
+				.catch((err) => console.log(err))
 		}
 	} else {
 		if (onColors) onColors(defThemeColors as [string, string, string])
 	}
 }
+
+/**
+ * Obtener colores con node-vibrant
+ * @param background
+ * @returns
+ */
+export const getVibrant = (background: string): Promise<string[]> =>
+	new Promise((resolve) => {
+		import('node-vibrant').then((nodeVbrnt) => {
+			const img = new Image()
+			img.crossOrigin = 'anonymous'
+			img.decoding = 'async'
+			img.src = background?.toString()
+
+			img.onload = () => {
+				const Vibrant = nodeVbrnt.default
+				const vibrant = new Vibrant(img)
+				vibrant
+					.getPalette()
+					.then((palette) => {
+						resolve([
+							palette.Vibrant?.hex ?? '#1AA5BB',
+							palette.Muted?.hex ?? '#511F73',
+							'042',
+							palette.DarkMuted?.hex ?? '#547BAE',
+						])
+					})
+					.catch((err) => console.log(err))
+			}
+		})
+	})
 
 /**
  * Obtener colores de un fondo

@@ -12,9 +12,11 @@ import Link from 'components/link'
 import Styles from './style.module.scss'
 
 // MATERIAL
+import Skeleton from '@mui/material/Skeleton'
 import Button from '@mui/material/Button'
 
 // ICON
+import BusinessCenterTwoToneIcon from '@mui/icons-material/BusinessCenterTwoTone'
 import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
 import VisibilityTwoTone from '@mui/icons-material/VisibilityTwoTone'
 
@@ -61,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 				{/* NEGOCIO */}
 				<div className={Styles.businessContainer}>
 					<div className={Styles.businessPic}>
-						{businessCtx.business?.picture && (
+						{businessCtx.business?.picture ? (
 							<Image
 								unoptimized
 								alt='Business'
@@ -69,22 +71,38 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 								height={150}
 								width={150}
 							/>
+						) : (
+							<BusinessCenterTwoToneIcon />
 						)}
 					</div>
 					<div className={Styles.businessInfo}>
 						<div>
-							<span>@{businessCtx.business?.url}</span>
-							<h1>{businessCtx.business?.name}</h1>
+							<span>
+								{businessCtx.business?.url ? (
+									`@${businessCtx.business?.url}`
+								) : (
+									<Skeleton width={250} />
+								)}
+							</span>
+							<h1>{businessCtx.business?.name ?? <Skeleton />}</h1>
 						</div>
 						<div>
 							<div className={Styles.businessSubs}>
-								<span>{businessCtx.business?.category}</span>
+								{businessCtx.business?.category ? (
+									<span>{businessCtx.business?.category}</span>
+								) : (
+									<Skeleton />
+								)}
 								<span>{businessCtx.business?.subscription?.plan || $`Plan basico`}</span>
 							</div>
-							<span>
-								{customDescription ||
-									`${businessCtx.business?.forms?.length || 0} ${$`tienda(s) creadas`}`}
-							</span>
+							{businessCtx.business ? (
+								<span>
+									{customDescription ||
+										`${businessCtx.business?.forms?.length || 0} ${$`tienda(s) creadas`}`}
+								</span>
+							) : (
+								<Skeleton />
+							)}
 						</div>
 					</div>
 				</div>

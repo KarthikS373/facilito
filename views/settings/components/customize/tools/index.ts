@@ -19,7 +19,7 @@ const setImageRef = (
 		else {
 			// LEER DE ARCHIVO
 			const reader = new FileReader()
-			reader.onloadend = () => {
+			reader.onload = () => {
 				const src: string = reader.result?.toString() ?? ''
 
 				// CAMBIAR FONDO

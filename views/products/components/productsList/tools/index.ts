@@ -31,4 +31,19 @@ const deleteProduct = (
 	})
 }
 
+/**
+ * Seleccionar fila
+ * @param index
+ * @param ev
+ */
+export const selectRow = (
+	ev: React.MouseEvent<HTMLButtonElement>,
+	index: number,
+	setCurrentRow: SetState<HTMLElement | null>,
+	setCurrentIndex: SetState<number>
+): void => {
+	setCurrentRow(ev.currentTarget)
+	setCurrentIndex(index)
+}
+
 export default deleteProduct

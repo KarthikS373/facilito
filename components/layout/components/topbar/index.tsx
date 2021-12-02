@@ -92,7 +92,7 @@ const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar, setExpanded, expan
 						className={Styles.badgeBtn}
 						startIcon={<PaymentsTwoToneIcon />}
 						onClick={openBadgeMenu}>
-						<span>{businessCtx.business?.badge}</span>
+						<span>{businessCtx.business?.badge ?? 'GTQ'}</span>
 					</Button>
 
 					{/* LENGUAJE */}
@@ -101,7 +101,11 @@ const Topbar: React.FC<CustomAppBarProps> = ({ showSearchBar, setExpanded, expan
 						aria-label='langCode'
 						startIcon={<TranslateTwoTone />}
 						onClick={changeLangCode(businessCtx.business?.lang === 'es' ? 'en' : 'es')}>
-						{businessCtx.business?.lang === 'es' ? $`Español` : $`English`}
+						{businessCtx.business
+							? businessCtx.business?.lang === 'es'
+								? $`Español`
+								: $`English`
+							: $`Español`}
 					</Button>
 
 					{/* NOTIFICACIONES */}

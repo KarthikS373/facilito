@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Styles from './style.module.scss'
 
 // MATERIAL
+import Skeleton from '@mui/material/Skeleton'
 import Button from '@mui/material/Button'
 
 // ICONOS
@@ -56,8 +57,12 @@ const AccountButton: React.FC<AccountButtonProps> = ({ disablePortal }) => {
 					</div>
 				}>
 				<div className={Styles.accountBtnContent}>
-					<strong>{userCtx.user?.name.split(' ')[0]?.toLowerCase()}</strong>
-					<span>{userCtx.user?.role}</span>
+					{userCtx.user ? (
+						<strong>{userCtx.user?.name.split(' ')[0]?.toLowerCase()}</strong>
+					) : (
+						<Skeleton width={40} />
+					)}
+					{userCtx.user ? <span>{userCtx.user?.role}</span> : <Skeleton width={40} />}
 				</div>
 			</Button>
 

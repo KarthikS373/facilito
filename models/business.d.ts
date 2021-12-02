@@ -44,6 +44,14 @@ interface Business {
 
 	// PERMISOS
 	permissions?: CompanyPermissions
+
+	// TEMA
+	theme?: {
+		primary: string
+		secondary: string
+		muted: string
+		deg: string
+	}
 }
 
 // PERMISOS

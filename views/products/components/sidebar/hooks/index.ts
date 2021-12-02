@@ -6,11 +6,11 @@ import { useEffect } from 'react'
  * @param setCategories
  */
 const useDefCategories = (
-	defCategories: string[],
+	defCategories: string[] | undefined,
 	setCategories: React.Dispatch<React.SetStateAction<string[]>>
 ): void => {
 	useEffect(() => {
-		setCategories(defCategories)
+		setCategories(defCategories ?? [])
 	}, [defCategories, setCategories])
 }
 

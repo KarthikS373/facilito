@@ -7,6 +7,7 @@ import Styles from './style.module.scss'
 // MATERIAL
 import TableContainer from '@mui/material/TableContainer'
 import MenuItem from '@mui/material/MenuItem'
+import Skeleton from '@mui/material/Skeleton'
 import Paper from '@mui/material/Paper'
 
 // COMPONENTES
@@ -17,7 +18,7 @@ import ProductRow from './components/row'
 import Link from 'components/link'
 
 // UTILS
-import deleteProduct from './tools'
+import deleteProduct, { selectRow } from './tools'
 
 // CONTEXTO
 import ProductsContext from 'context/products'
@@ -64,10 +65,8 @@ const ProductsList: React.FC<ProductsListProps> = ({
 	const deleteProductEv = () => deleteProduct(productsCtx, products, currentIndex, setProducts)
 
 	// ASIGNAR FILA
-	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) => {
-		setCurrentRow(ev.currentTarget)
-		setCurrentIndex(index)
-	}
+	const handleRow = (index: number) => (ev: React.MouseEvent<HTMLButtonElement>) =>
+		selectRow(ev, index, setCurrentRow, setCurrentIndex)
 
 	// FILA
 	const row = useCallback(
@@ -76,13 +75,22 @@ const ProductsList: React.FC<ProductsListProps> = ({
 			const product: Product = products[Math.max(0, newIndex)]
 			return newIndex === -1 ? (
 				<TableHead style={style} key='header_00' filter={filter} setFilter={setFilter} />
-			) : (
+			) : product ? (
 				<ProductRow
 					style={style}
 					key={product.sku}
 					product={product}
 					handleRow={handleRow(newIndex)}
 				/>
+			) : (
+				<div className={Styles.productSkeleton}>
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+				</div>
 			)
 		},
 		[filter, setFilter, products]
@@ -96,7 +104,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
 						height={272}
 						itemSize={68}
 						width='100%'
-						itemCount={products.length + 1}
+						itemCount={products.length === 0 ? 4 : products.length + 1}
 						className={Styles.listContainer}>
 						{row}
 					</List>

@@ -33,10 +33,9 @@ const CustomSideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
-	const defCategories: string[] = businessCtx.business?.categories || []
 
 	// ESTADO
-	const [categories, setCategories] = useState<string[]>(defCategories)
+	const [categories, setCategories] = useState<string[]>(businessCtx.business?.categories ?? [])
 
 	// AGREGAR CATEGORIA
 	const addCategory = () => addNewCategory(setCategories)
@@ -50,7 +49,7 @@ const CustomSideBar: React.FC<SideBarProps> = ({ open, onClose }) => {
 		removeAllCategories(index, setCategories, businessCtx.setBusinessDB)
 
 	// HOOKS
-	useDefCategories(defCategories, setCategories)
+	useDefCategories(businessCtx.business?.categories, setCategories)
 
 	return (
 		<SideBar open={open} onClose={onClose}>
