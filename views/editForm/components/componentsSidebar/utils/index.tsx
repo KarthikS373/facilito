@@ -34,11 +34,11 @@ export const getComponentsItems = ($: TemplateStrBuilder): FormComponentItemProp
 		},
 		{
 			icon: <RadioButtonChecked />,
-			text: $`Varias opciones`,
+			text: $`Opcion unica`,
 		},
 		{
 			icon: <CheckBox />,
-			text: $`Casillas`,
+			text: $`Varias opciones`,
 		},
 		{
 			icon: <ArrowDropDownCircle />,

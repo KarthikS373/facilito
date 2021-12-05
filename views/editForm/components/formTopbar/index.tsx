@@ -101,18 +101,23 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 				style={{ zIndex: 10 }}
 				disablePortal={false}
 				placement='bottom-end'>
+				{/* PERSONALIZAR */}
 				<MenuList onClick={props.onCustomize} className={Styles.menuItem}>
 					<Button
 						fullWidth
 						variant='outlined'
 						startIcon={<PaletteTwoToneIcon />}>{$`Personalizar`}</Button>
 				</MenuList>
+
+				{/* AJUSTES */}
 				<MenuList onClick={openFormSettingsMenu} className={Styles.menuItem}>
 					<Button
 						fullWidth
 						variant='outlined'
 						startIcon={<RoomPreferencesTwoToneIcon />}>{$`Preferencias`}</Button>
 				</MenuList>
+
+				{/* PUBLICAR */}
 				<MenuList onClick={showPublishMenu} className={Styles.menuItem}>
 					<Button
 						fullWidth
@@ -121,20 +126,15 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						{published ? $`Ocultar` : $`Publicar`}
 					</Button>
 				</MenuList>
-				<MenuList className={Styles.menuItem}>
-					<a
-						target='_blank'
-						title={props.url}
-						rel='noreferrer noopener'
-						href={ROUTES.form
-							.replace(':formURL', props.url)
-							.replace(':companyURL', company.business?.url ?? '')}>
-						<Button
-							fullWidth
-							variant='outlined'
-							startIcon={<VisibilityTwoTone />}>{$`Visualizar`}</Button>
-					</a>
+
+				{/* CHECKOUT */}
+				<MenuList onClick={openCheckoutMenu} className={Styles.menuItem}>
+					<Button fullWidth variant='outlined' startIcon={<ReceiptIcon />}>
+						{$`Checkout`}
+					</Button>
 				</MenuList>
+
+				{/* COMPARTIR */}
 				<MenuList onClick={openShareMenu} className={Styles.menuItem}>
 					<Button fullWidth variant='outlined' startIcon={<ShareTwoTone />}>{$`Compartir`}</Button>
 				</MenuList>
@@ -166,10 +166,19 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						{$`Configuración`}
 					</Button>
 
-					{/* CONFIGURACION */}
-					<Button variant='outlined' onClick={openCheckoutMenu} startIcon={<ReceiptIcon />}>
-						{$`Checkout`}
-					</Button>
+					{/* VISUALIZAR */}
+					<a
+						target='_blank'
+						title={props.url}
+						rel='noreferrer noopener'
+						href={ROUTES.form
+							.replace(':formURL', props.url)
+							.replace(':companyURL', company.business?.url ?? '')}>
+						<Button
+							fullWidth
+							variant='outlined'
+							startIcon={<VisibilityTwoTone />}>{$`Visualizar`}</Button>
+					</a>
 
 					{/* GUARDAR */}
 					<SaveOnCloud onSave={props.onSave} />

@@ -7,3 +7,14 @@
 		margin-left: 17px;
 	}
 }
+
+.stdContainer {
+	position: relative;
+	width: 100%;
+
+	& > div:first-child {
+		margin-right: -40px;
+		margin-left: 17px;
+		margin-top: -10px;
+	}
+}

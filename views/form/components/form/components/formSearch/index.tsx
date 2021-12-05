@@ -99,6 +99,7 @@ const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {
 						InputProps={{
 							...params.InputProps,
 							type: 'text',
+							endAdornment: <></>,
 							startAdornment: (
 								<InputAdornment position='start'>
 									<Search color='primary' />

@@ -200,6 +200,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 									InputProps={{
 										...params.InputProps,
 										type: 'text',
+										endAdornment: <></>,
 										startAdornment: (
 											<InputAdornment position='start'>
 												<SearchIcon color='primary' />

@@ -165,6 +165,7 @@ const ProductSlider: React.FC = () => {
 								InputProps={{
 									...params.InputProps,
 									type: 'text',
+									endAdornment: <></>,
 									startAdornment: (
 										<InputAdornment position='start'>
 											<Search color='primary' />
