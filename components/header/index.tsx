@@ -21,6 +21,7 @@ import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
 import VisibilityTwoTone from '@mui/icons-material/VisibilityTwoTone'
 
 // HOC
+import { transformBackground } from 'utils/tools'
 import useStrings from 'hooks/lang'
 
 // CONTEXTO
@@ -40,24 +41,14 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 	const businessCtx = useContext(BusinessContext)
 
 	// FONDO
-	const background =
-		customBackground ??
-		(businessCtx.business?.backgroundImage ? '' : businessCtx.business?.background)
+	const background = transformBackground(
+		customBackground ?? (businessCtx.business?.background || businessCtx.business?.backgroundImage)
+	)
 
 	return (
 		<div className={Styles.container}>
 			{/* FONDO */}
-			<div className={Styles.background} style={{ background }}>
-				{((customBackground && !customBackground?.startsWith('transparent linear-gradient')) ||
-					businessCtx.business?.backgroundImage) && (
-					<Image
-						unoptimized
-						layout='fill'
-						alt='Background'
-						src={customBackground ?? businessCtx.business?.backgroundImage ?? ''}
-					/>
-				)}
-			</div>
+			<div className={Styles.background} style={{ background }} />
 
 			<div className={Styles.content}>
 				{/* NEGOCIO */}

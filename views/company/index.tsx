@@ -16,11 +16,11 @@ import IconButton from '@mui/material/IconButton'
 
 interface CompanyViewProps {
 	company: Business | null
-	companyURL: string
+	hideForms?: boolean
 	forms: Form[]
 }
 
-const CompanyView: React.FC<CompanyViewProps> = ({ company, forms }) => {
+const CompanyView: React.FC<CompanyViewProps> = ({ company, hideForms, forms }) => {
 	// ESTADO
 	const [activeStep, setActiveStep] = React.useState(0)
 
@@ -45,41 +45,47 @@ const CompanyView: React.FC<CompanyViewProps> = ({ company, forms }) => {
 					<p>{company?.category ?? ''}</p>
 					{company?.description && <p>{company.description}</p>}
 				</div>
-				<div className={Styles.forms}>
-					{/* ATRAS */}
-					<IconButton onClick={handleNext(-1)} disabled={activeStep === 0}>
-						<KeyboardArrowLeft />
-					</IconButton>
+				{!hideForms && (
+					<div className={Styles.forms}>
+						{/* ATRAS */}
+						<IconButton onClick={handleNext(-1)} disabled={activeStep === 0}>
+							<KeyboardArrowLeft />
+						</IconButton>
 
-					<div className={Styles.sliderContainer}>
-						<div
-							className={Styles.slider}
-							style={{ transform: `translateX(-${activeStep * 170}px)` }}>
-							{forms.map((form) => (
-								<a
-									key={form.id}
-									target='_blank'
-									className={Styles.form}
-									rel='noreferrer noopener'
-									href={`/f/${company?.url}/${form.url}`}>
-									{form.banner && <Image src={form.banner} alt='Logo' height={100} width={150} />}
-									<div className={Styles.formInfo}>
-										<h3>{form.title}</h3>
-										<span>{form.url}</span>
-									</div>
-								</a>
-							))}
+						<div className={Styles.sliderContainer}>
+							<div
+								className={Styles.slider}
+								style={{ transform: `translateX(-${activeStep * 170}px)` }}>
+								{forms.map((form) => (
+									<a
+										key={form.id}
+										target='_blank'
+										className={Styles.form}
+										rel='noreferrer noopener'
+										href={`/f/${company?.url}/${form.url}`}>
+										{form.banner && <Image src={form.banner} alt='Logo' height={100} width={150} />}
+										<div className={Styles.formInfo}>
+											<h3>{form.title}</h3>
+											<span>{form.url}</span>
+										</div>
+									</a>
+								))}
+							</div>
 						</div>
-					</div>
 
-					{/* SIGUIENTE */}
-					<IconButton onClick={handleNext(1)} disabled={activeStep === forms.length - 2}>
-						<KeyboardArrowRight />
-					</IconButton>
-				</div>
+						{/* SIGUIENTE */}
+						<IconButton onClick={handleNext(1)} disabled={activeStep === forms.length - 2}>
+							<KeyboardArrowRight />
+						</IconButton>
+					</div>
+				)}
 			</div>
 		</div>
 	)
+}
+
+CompanyView.defaultProps = {
+	hideForms: false,
 }
 
 export default CompanyView

@@ -1,20 +1,20 @@
 import { createContext, Context } from 'react'
 
 // KEYS
-interface ContextProps {
+export interface BusinessContextProps {
 	business: Business | null
 	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
 	setBusinessDB(business: Partial<Business>): void
 }
 
 // VALOR POR DEFECTO
-const DefContext: ContextProps = {
+const DefContext: BusinessContextProps = {
 	business: null,
 	setBusiness: () => null,
 	setBusinessDB: () => null,
 }
 
 // CONTEXTO
-const BusinessContext: Context<ContextProps> = createContext(DefContext)
+const BusinessContext: Context<BusinessContextProps> = createContext(DefContext)
 
 export default BusinessContext

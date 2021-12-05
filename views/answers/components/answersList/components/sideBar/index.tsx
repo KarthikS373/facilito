@@ -1,26 +1,21 @@
 // REACT
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 // UTILS
 import handleStep from './tools'
-
-// MATERIAL
-import StepContent from '@mui/material/StepContent'
-import StepLabel from '@mui/material/StepLabel'
-import Stepper from '@mui/material/Stepper'
-import Button from '@mui/material/Button'
-import Step from '@mui/material/Step'
 
 // ICONOS
 import QuestionAnswerTwoToneIcon from '@mui/icons-material/QuestionAnswerTwoTone'
 
 // COMPONENTES
 import SideBar from 'components/sideBar'
+import States from './components/states'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
 
 // STRINGS
+import useDefaultStep from './hooks'
 import useStrings from 'hooks/lang'
 
 // ESTILOS
@@ -74,51 +69,23 @@ const CustomSideBar: React.FC<SideBarProps> = ({
 		)
 
 	// ACTUALIZAR PASOS
-	useEffect(() => {
-		setActiveStep(stateIndex)
-	}, [stateIndex])
+	useDefaultStep(stateIndex, setActiveStep)
 
 	return (
 		<SideBar open={open} onClose={onClose}>
 			<div className={Styles.infoPersonal}>
 				<h2>
 					<QuestionAnswerTwoToneIcon />
-					{`${$`Respuesta de`} ${name}`}
+					{`${$`Respuesta de`} ${name?.split(' ')[0]}`}
 				</h2>
 				<p>{$`Configura los estados de tracking para el pedido del cliente.`}</p>
 			</div>
-			<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
-				{tracking.map((option: FormTrackingStep, optionIndex: number) => (
-					<Step
-						key={option.name}
-						style={
-							{
-								'--currentColor': option.color,
-								'--btnColor': optionIndex === 0 ? '#555' : option.color,
-							} as React.CSSProperties
-						}>
-						<StepLabel className={Styles.stepTitle}>{option.name}</StepLabel>
-						<StepContent>
-							<p>{option.description || $`Descripción no disponible en este momento...`}</p>
-							<div className={Styles.actions}>
-								<div>
-									<Button disabled={activeStep === 0} onClick={changeStep(-1)}>
-										{$`Regresar`}
-									</Button>
-									<Button
-										color='primary'
-										variant='contained'
-										onClick={changeStep(1)}
-										disabled={activeStep === tracking.length - 1}
-										className={activeStep === tracking.length - 1 ? Styles.disabled : ''}>
-										{$`Siguiente`}
-									</Button>
-								</div>
-							</div>
-						</StepContent>
-					</Step>
-				))}
-			</Stepper>
+			<States
+				steps={tracking}
+				activeStep={activeStep}
+				onNext={changeStep(1)}
+				onBack={changeStep(-1)}
+			/>
 		</SideBar>
 	)
 }

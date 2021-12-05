@@ -1,0 +1,50 @@
+.content {
+	padding: 10px !important;
+	background-color: transparent !important;
+
+	p,
+	.stepTitle > span:last-child > span {
+		line-height: 1.1;
+		font-size: 1rem;
+		opacity: 0.7;
+	}
+
+	p {
+		margin-bottom: 15px;
+	}
+
+	.stepTitle > span:first-of-type > svg {
+		color: var(--currentColor);
+
+		text {
+			fill: #fff;
+			font-weight: bold;
+		}
+	}
+
+	.actions,
+	.actions > div {
+		width: 100%;
+	}
+
+	.actions > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		button {
+			width: 50%;
+			height: 45px;
+
+			&:first-of-type {
+				opacity: 0.7;
+				color: var(--btnColor);
+			}
+
+			&:last-child {
+				background-color: var(--currentColor);
+				color: #fff;
+			}
+		}
+	}
+}

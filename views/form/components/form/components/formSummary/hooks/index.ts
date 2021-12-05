@@ -43,3 +43,17 @@ export const useSendTotalPrice = (
 			)
 		}
 	}, [badge, totalPrice, setValue, discountTotal, taxesPrice, cardPrice, shippingPrice])
+
+/**
+ * Hook de datos por defecto
+ * @param setData
+ * @param defSummaryData
+ */
+export const useDefData = (
+	setData: SetState<FormSummaryData>,
+	defSummaryData?: FormSummaryData
+): void => {
+	useEffect(() => {
+		if (defSummaryData) setData(defSummaryData)
+	}, [setData, defSummaryData])
+}

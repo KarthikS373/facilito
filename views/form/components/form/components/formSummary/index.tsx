@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Styles from './style.module.scss'
 
 // HOOKS
-import { useSendTotalPrice } from './hooks'
+import { useDefData, useSendTotalPrice } from './hooks'
 import useStrings from 'hooks/lang'
 
 // REACT-HOOK-FORM
@@ -34,7 +34,9 @@ interface FormSummaryProps {
 	subTotalPrice: number
 	isSubmitting: boolean
 	cartItems: number
+	preview?: boolean
 	formData?: Form
+	defSummaryData?: FormSummaryData
 }
 
 const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
@@ -45,10 +47,12 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 
 	// DATOS DE RESUMEN
-	const [summaryData, setSummaryData] = useState<FormSummaryData>({
-		shippingMethodValue: '',
-		payMethodValue: '',
-	})
+	const [summaryData, setSummaryData] = useState<FormSummaryData>(
+		props.defSummaryData ?? {
+			shippingMethodValue: '',
+			payMethodValue: '',
+		}
+	)
 
 	// STRINGS
 	const { $ } = useStrings()
@@ -109,6 +113,12 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 	// ABRIR O CERRAR DRAWER
 	const handleDrawer = (open: boolean) => () => setOpenDrawer(open)
 
+	// MOSTRAR RESUMEN
+	const showContent: boolean =
+		props.preview ||
+		(props.formProducts !== undefined &&
+			Object.values(props.formProducts).filter(Boolean).length > 0)
+
 	// ENVIAR TOTAL A FORM
 	useSendTotalPrice(
 		setValue,
@@ -120,22 +130,27 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 		shippingPrice
 	)
 
+	// DATOS POR DEFECTO
+	useDefData(setSummaryData, props.defSummaryData)
+
 	return (
 		<>
-			<ProductSidebar
-				checkoutData={{ cardPrice, shippingPrice, taxesPrice, totalPrice: totalText }}
-				productsCounter={props.productsCounter}
-				clickOnSubmit={props.clickOnSubmit}
-				formProducts={props.formProducts}
-				isSubmitting={props.isSubmitting}
-				setSummaryData={setSummaryData}
-				handleDrawer={handleDrawer}
-				setValue={props.setValue}
-				formData={props.formData}
-				summaryData={summaryData}
-				openDrawer={openDrawer}
-			/>
-			{props.formProducts && Object.values(props.formProducts).filter(Boolean).length > 0 && (
+			{!props.preview && (
+				<ProductSidebar
+					checkoutData={{ cardPrice, shippingPrice, taxesPrice, totalPrice: totalText }}
+					productsCounter={props.productsCounter}
+					clickOnSubmit={props.clickOnSubmit}
+					formProducts={props.formProducts}
+					isSubmitting={props.isSubmitting}
+					setSummaryData={setSummaryData}
+					handleDrawer={handleDrawer}
+					setValue={props.setValue}
+					formData={props.formData}
+					summaryData={summaryData}
+					openDrawer={openDrawer}
+				/>
+			)}
+			{showContent && (
 				<div className={Styles.jagged}>
 					<h2>{$`Resumen de orden`}</h2>
 					<ul>
@@ -148,7 +163,9 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 						{/* ITEMS DE CARRITO */}
 						<li>
 							<span onClick={handleDrawer(true)}>
-								{$`Items en carrito`} ({props.cartItems})
+								{!props.preview
+									? `${$`Items en carrito`} (${props.cartItems})`
+									: $`Subtotal de productos`}
 							</span>
 							<span>
 								+ {badge} {subTotalPrice.toFixed(2)}
@@ -203,7 +220,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 									<span>{coupon ? coupon.id : $`¿Tienes un cupón?`}</span>
 									{currentCoupon && (
 										<span>
-											- {badge} {couponDiscount[index].toFixed(2)}
+											- {badge} {couponDiscount[index]?.toFixed(2)}
 										</span>
 									)}
 								</li>
@@ -211,16 +228,18 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 						)}
 
 						{/* INPUT DE CUPÓN */}
-						<li>
-							<span onClick={showCouponAlertEv}>
-								{inputCoupon ? inputCoupon.id : $`¿Tienes un cupón?`}
-							</span>
-							{inputCoupon && (
-								<span>
-									- {badge} {couponDiscount[couponDiscount.length - 1].toFixed(2)}
+						{!props.preview && (
+							<li>
+								<span onClick={showCouponAlertEv}>
+									{inputCoupon ? inputCoupon.id : $`¿Tienes un cupón?`}
 								</span>
-							)}
-						</li>
+								{inputCoupon && (
+									<span>
+										- {badge} {couponDiscount[couponDiscount.length - 1]?.toFixed(2)}
+									</span>
+								)}
+							</li>
+						)}
 					</ul>
 
 					{/* MÉTODOS DE ENVÍO Y PAGO */}
@@ -267,6 +286,10 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 			)}
 		</>
 	)
+}
+
+FormSummary.defaultProps = {
+	preview: false,
 }
 
 export default FormSummary

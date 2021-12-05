@@ -19,6 +19,33 @@ const getAnswerDoc = async (companyID: string, formID: string) => {
 }
 
 /**
+ * Listener para respuestas de un solo formulario
+ * @param companyID
+ * @param formID
+ * @param setAnswer
+ * @returns
+ */
+export const formAnswerListener = async (
+	companyID: string,
+	formID: string,
+	setAnswer: (answer: FormAnswer) => unknown
+): Promise<Unsubscribe> => {
+	const { collection, doc, onSnapshot } = await import('firebase/firestore')
+
+	// LEER
+	const businessCol = await getCollection('business')
+	const businessDoc = doc(businessCol, companyID)
+	const answersCol = collection(businessDoc, 'answers')
+	const answerDoc = doc(answersCol, formID)
+
+	// LISTENER
+	return onSnapshot(answerDoc, (snap) => {
+		const answer = snap.data() as FormAnswer
+		setAnswer(answer)
+	})
+}
+
+/**
  * Listener de tiendas
  * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
@@ -237,9 +264,9 @@ export const saveFormAnswer = async (
 	const answersData = formData || defAnswers
 
 	// AGREGAR
+	answersData.dates.push(new Date())
 	answersData.data.push(form)
 	answersData.states.push(0)
-	answersData.dates.push(new Date())
 
 	// GUARDAR
 	await setDoc(formDoc, { ...answersData }, { merge: true })

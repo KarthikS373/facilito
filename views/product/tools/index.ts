@@ -1,3 +1,4 @@
+import { BusinessContextProps } from 'context/business'
 import { saveProductImages } from 'utils/products'
 import { NextRouter } from 'next/router'
 import ROUTES from 'router/routes'
@@ -22,20 +23,20 @@ const saveProduct = async (
 	imagesRef: React.MutableRefObject<(File | null)[]>,
 	$: TemplateStrBuilder,
 	history: NextRouter,
-	productID?: string,
-	companyID?: string
+	businessCtx: BusinessContextProps,
+	productID?: string
 ): Promise<void> => {
 	// VALIDAR CAMPOS
 	const valid = productRef.current.sku?.length * productRef.current?.title?.length
 
-	if (valid && companyID?.length) {
+	if (valid && businessCtx?.business?.id?.length) {
 		// GUARDAR EN STORAGE
 		if (imagesRef.current.some((image) => image !== null)) {
 			window.Snack($`Subiendo imagenes...`)
 			const urls: string[] = await saveProductImages(
 				imagesRef.current,
 				productRef.current.sku,
-				companyID
+				businessCtx.business.id
 			)
 
 			// GUARDAR EN DB
@@ -46,6 +47,18 @@ const saveProduct = async (
 				)
 					return productRef.current.picture[urlIndex]
 				else return url
+			})
+		}
+
+		// CATEGORIAS NUEVAS
+		if (
+			productRef.current.category?.length &&
+			!businessCtx.business.categories?.includes(productRef.current.category)
+		) {
+			businessCtx.setBusinessDB({
+				categories: [...(businessCtx.business.categories ?? []), productRef.current.category]
+					.filter(Boolean)
+					.filter((category) => category.length > 0),
 			})
 		}
 

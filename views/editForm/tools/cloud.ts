@@ -54,7 +54,7 @@ export const saveFormOnCloud = async (
 
 	// GUARDAR URL
 	if (enableUrl.current && company?.id) {
-		saveUrl(formData.current.fclt !== undefined, formData.current.url, {
+		await saveUrl(formData.current.fclt !== undefined, formData.current.url, {
 			target: `${window.location.origin}/f/${company?.url}/${formData.current.url}`,
 			info: {
 				companyID: company.id,

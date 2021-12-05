@@ -33,6 +33,8 @@ export const evaluateFooterPath = (path: string): boolean => {
 	if (/\/f\/.+\/respuestas/.test(path)) return false
 	else if (/\/f\/(.+)$/.test(path)) return true
 	else if (path === ROUTES.login) return true
+	else if (/\/t\/.+\/editar/.test(path)) return false
+	else if (/\/t\/.+\/.+/.test(path)) return true
 	// OCULTAR
 	else return false
 }

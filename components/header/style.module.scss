@@ -15,6 +15,7 @@
 		height: calc(195px + var(--margin));
 		background-size: cover;
 		margin-top: calc(var(--margin) * -1);
+		transition: background 0.2s ease-in-out;
 
 		@include for-size(phone-landscape) {
 			position: absolute;

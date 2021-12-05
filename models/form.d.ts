@@ -75,6 +75,12 @@ interface FormAnswer {
 	states: number[]
 }
 
+interface FormAnswerTracking {
+	data: FormAnswerItemContainer
+	date: string
+	state: number
+}
+
 interface FormAnswerSelf {
 	data: FormAnswerItemContainer
 	date: Date

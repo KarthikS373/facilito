@@ -6,12 +6,12 @@ import { useEffect } from 'react'
  * @description Crear eventos de guardado con intervalos y botones
  * @param onSave
  */
-const useIntervalSave = ($: TemplateStrBuilder, onSave: (ctrl: boolean) => unknown): void => {
+const useIntervalSave = (onSave: (ctrl: boolean) => unknown): void => {
 	useEffect(() => {
 		// INTERVALO
 		const interval = setTimeout(() => {
 			onSave(false)
-			window.Snack($`Guardando cambios...`)
+			window.Snack('Guardando cambios...')
 		}, 60_000)
 
 		const ctrl = (ev: KeyboardEvent) => {
@@ -20,7 +20,7 @@ const useIntervalSave = ($: TemplateStrBuilder, onSave: (ctrl: boolean) => unkno
 				if (ev.key === 's') {
 					ev.preventDefault()
 					onSave(true)
-					window.Snack($`Guardando cambios...`)
+					window.Snack('Guardando cambios...')
 				}
 		}
 
@@ -32,7 +32,7 @@ const useIntervalSave = ($: TemplateStrBuilder, onSave: (ctrl: boolean) => unkno
 			window.removeEventListener('keydown', ctrl)
 			clearTimeout(interval)
 		}
-	}, [])
+	}, [onSave])
 }
 
 export default useIntervalSave

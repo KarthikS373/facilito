@@ -1,5 +1,9 @@
 @mixin for-size($size) {
-	@if $size == small-desktop {
+	@if $size == large-desktop {
+		@media (max-width: 1600px) {
+			@content;
+		}
+	} @else if $size == small-desktop {
 		@media (max-width: 1200px) {
 			@content;
 		}

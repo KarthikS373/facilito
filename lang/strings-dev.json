@@ -1,4 +1,36 @@
 {
+	"subtotal_de_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_se_muestra_el_estado_de_tu_pedido_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_se_mostra_el_estado_de_tu_pedido_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"pedido_de": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_esta_tienda_si_deseasdeseas_ver_tu_orden_en_tiempo_real": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_esta_tienda_si_deseas": {
+		"en": "",
+		"es": "$"
+	},
+	"para_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_estan_enviando_tus_respuestas_espera_un_momento_esto_no_suele_tardar_mucho_no_te_salgas_de_la_tienda_por_favor": {
+		"en": "",
+		"es": "$"
+	},
 	"tienda_sin_titulo": {
 		"en": "",
 		"es": "$"

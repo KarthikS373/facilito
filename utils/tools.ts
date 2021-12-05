@@ -557,3 +557,14 @@ export const shareLink = (
 export const pad = (input: string, length: number): string => {
 	return input.length < length ? pad('0' + input, length) : input
 }
+
+/**
+ * Convertir fondo a linear-gradient o url(src)
+ * @param background
+ * @returns
+ */
+export const transformBackground = (background?: string): string => {
+	if (background?.startsWith('transparent linear-gradient')) return background
+	else if (background?.startsWith('http')) return `url('${background}') no-repeat center/cover`
+	else return 'transparent'
+}

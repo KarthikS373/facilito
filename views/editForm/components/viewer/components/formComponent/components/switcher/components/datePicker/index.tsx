@@ -169,7 +169,7 @@ const DatePicker: React.FC = () => {
 										onChange={handleDurationEv}
 										defaultValue={props.duration?.toString() || ''}
 										value={duration === 0 ? '' : duration?.toString()}>
-										{Array(intervals)
+										{Array(Math.max(0, Number.isNaN(intervals) ? 0 : +intervals))
 											.fill({})
 											.map((_s, index: number) => (
 												<MenuItem key={`duration_${index}`} value={60 * (index + 1)}>

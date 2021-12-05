@@ -544,8 +544,8 @@ export const sendForm = async (
 			) as EventAppointment[]
 
 		// ENVIAR
-		if (formData?.id && companyID) {
-			await saveFormAnswer(companyID, formData?.id, addAnswerIcons(filterData, $)).then(
+		if (formData && companyID) {
+			await saveFormAnswer(companyID, formData.id, addAnswerIcons(filterData, $)).then(
 				async (index: number) => {
 					//  ALERTA DE EXITO
 					const successAlert = () => successAlertComponent(formData, companyURL, formURL, index, $)

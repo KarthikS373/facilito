@@ -58,15 +58,7 @@ const Product: React.FC<ProductProps> = ({ productID }) => {
 
 	// GUARDAR PRODUCTO
 	const saveProductData = () =>
-		saveProduct(
-			productsCtx.setProducts,
-			productRef,
-			imagesRef,
-			$,
-			history,
-			productID,
-			businessCtx.business?.id
-		)
+		saveProduct(productsCtx.setProducts, productRef, imagesRef, $, history, businessCtx, productID)
 
 	return (
 		<View>
