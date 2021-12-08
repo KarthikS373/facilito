@@ -68,7 +68,8 @@ export const replaceProducts = async (
 		const productsDoc = doc(col, companyID)
 
 		// PRODUCTOS
-		return setDoc(productsDoc, products)
+		if (!Object.values(products).some((product) => product.sku.length === 0))
+			return setDoc(productsDoc, products)
 	}
 }
 

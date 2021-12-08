@@ -83,8 +83,8 @@ export const getSummaryData = (
 ): FormSummaryData | undefined => {
 	if (data) {
 		return {
-			shippingMethodValue: data.data.shippingMethod.answer ?? '',
-			payMethodValue: data.data.payMethod.answer ?? $`Pago en efectivo`,
+			shippingMethodValue: data.data?.shippingMethod?.answer ?? '',
+			payMethodValue: data.data?.payMethod?.answer ?? $`Pago en efectivo`,
 		}
 	}
 }
