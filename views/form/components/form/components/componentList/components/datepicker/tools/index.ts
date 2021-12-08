@@ -37,8 +37,9 @@ export const onChangeInterval = (
 	setCurrentDate: React.Dispatch<React.SetStateAction<(Date | null)[]>>
 ): void => {
 	if (reservations) {
-		if (dates.every((date: Date | null) => date !== null && date !== undefined))
+		if (dates.every((date: Date | null) => date !== null && date !== undefined)) {
 			setCurrentDate(dates)
+		}
 	} else
 		window.Alert({
 			title: 'Ocurrió un error',

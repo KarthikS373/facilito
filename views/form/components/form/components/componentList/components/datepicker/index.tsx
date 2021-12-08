@@ -49,7 +49,8 @@ const MUIDatePicker: React.FC = () => {
 	const disableDatesEv = (day: Date | null) => disableDates(day, props.daysOfWeek)
 
 	// SELECCIONAR TIEMPO
-	const timePickerComponent = () => timePicker(props, currentDate, $`Seleccionar horarios`)
+	const timePickerComponent = (date: DateRange<Date> | Date | null) =>
+		timePicker(props, date, $`Seleccionar horarios`)
 
 	return (
 		<LocalizationProvider

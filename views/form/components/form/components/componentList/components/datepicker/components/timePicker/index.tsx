@@ -3,6 +3,7 @@ import React from 'react'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import { DateRange } from '@mui/lab/DateRangePicker'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -15,7 +16,7 @@ import { parseDate } from 'utils/tools'
 
 const timePicker = (
 	{ duration, time, setValue, id, name }: FormContextProps,
-	currentDate: (Date | null)[],
+	currentDate: DateRange<Date> | Date | null,
 	inputLabel: string
 ): void => {
 	// CALCULAR INTERVALOS
@@ -50,13 +51,18 @@ const timePicker = (
 		zIndex: 1301,
 		cancelBtn: <></>,
 		onConfirm: () => {
-			currentDate.forEach((date: Date | null) => {
-				// CONFIGURAR HORAS
-				if (date) {
-					date.setHours(currentTime)
-					date.setMinutes(0)
+			if (currentDate) {
+				if ('setHours' in currentDate) {
+					currentDate.setHours(currentTime)
+				} else {
+					currentDate.forEach((date: Date | null) => {
+						// CONFIGURAR HORAS
+						if (date) {
+							date.setHours(currentTime)
+						}
+					})
 				}
-			})
+			}
 
 			// ENVIAR Y REINICIAR
 			setValue && setValue(`${name}_${id}`, currentDate)

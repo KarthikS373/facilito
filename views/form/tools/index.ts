@@ -54,19 +54,19 @@ export const getCouponProducts = (coupons: (Coupon[] | undefined)[] | undefined)
 	// PRODUCTOS CON CUPONES
 	const productCoupons = coupons
 		? coupons
-				.map((coupon) => {
-					if (coupon)
-						return coupon
-							.map((coupon: Coupon) =>
-								coupon.products
-									? coupon.products.map((product: Partial<Product>) => product.sku || false)
-									: ['']
-							)
-							.flat()
-					else return false
-				})
-				.flat()
-				.filter(Boolean)
+			.map((coupon) => {
+				if (coupon)
+					return coupon
+						.map((coupon: Coupon) =>
+							coupon.products
+								? coupon.products.map((product: Partial<Product>) => product.sku || false)
+								: ['']
+						)
+						.flat()
+				else return false
+			})
+			.flat()
+			.filter(Boolean)
 		: ([] as string[])
 
 	// ELIMINAR DUPLICADOS
@@ -88,11 +88,11 @@ export const formHasComponent = (
 	// COMPONENTES DE LOCALIZACIÓN
 	const hasComponent: boolean = formComponents
 		? formComponents?.some(
-				(component: BlockComponent) =>
-					component.name === name &&
-					(withSwitch1 ? component.switch_1 : true) &&
-					(withSwitch2 ? component.switch_2 : true)
-		  )
+			(component: BlockComponent) =>
+				component.name === name &&
+				(withSwitch1 ? component.switch_1 : true) &&
+				(withSwitch2 ? component.switch_2 : true)
+		)
 		: false
 
 	return hasComponent
@@ -137,27 +137,27 @@ export const reduceAnswers = (
 		},
 		personal_email_0: data.personal_email_0
 			? {
-					quest: `📮 ${$`Correo electrónico`}`,
-					answer: data.personal_email_0 as string,
-			  }
+				quest: `📮 ${$`Correo electrónico`}`,
+				answer: data.personal_email_0 as string,
+			}
 			: undefined,
 		personal_phone_0: data.personal_phone_0
 			? {
-					quest: `📞 ${$`Número de teléfono`}`,
-					answer: data.personal_phone_0 as string,
-			  }
+				quest: `📞 ${$`Número de teléfono`}`,
+				answer: data.personal_phone_0 as string,
+			}
 			: undefined,
 		personal_address_0: data.personal_address_0
 			? {
-					quest: `📪 ${$`Dirección`}`,
-					answer: data.personal_address_0 as string,
-			  }
+				quest: `📪 ${$`Dirección`}`,
+				answer: data.personal_address_0 as string,
+			}
 			: undefined,
 		personal_instructions_0: data.personal_instructions_0
 			? {
-					quest: `🔍 ${$`Observaciones`}`,
-					answer: data.personal_instructions_0 as string,
-			  }
+				quest: `🔍 ${$`Observaciones`}`,
+				answer: data.personal_instructions_0 as string,
+			}
 			: undefined,
 	}
 
@@ -182,8 +182,7 @@ export const reduceAnswers = (
 										`\n ${ex.title}\n ${ex.options
 											.map(
 												(option: ExtraOptional) =>
-													`\n    + ${option.name}${option.price > 0 ? ' - ' : ''}${
-														option.price > 0 ? badge : ''
+													`\n    + ${option.name}${option.price > 0 ? ' - ' : ''}${option.price > 0 ? badge : ''
 													} ${option.price > 0 ? option.price.toFixed(2) : ''}`
 											)
 											.join('')}`
@@ -222,11 +221,10 @@ export const addAnswerIcons = (
 	Object.keys(customDates).forEach((key: string) => {
 		if (key.startsWith('date')) {
 			customDates[key].quest = '📆 ' + customDates[key].quest
-			customDates[key].answer = `${dateToString(customDates[key].answer[0] as unknown as Date)}${
-				customDates[key].answer.length === 2
-					? `- ${dateToString(customDates[key].answer[1] as unknown as Date)}`
-					: ''
-			}`
+			customDates[key].answer = `${dateToString(customDates[key].answer[0] as unknown as Date)}${customDates[key].answer.length === 2
+				? `- ${dateToString(customDates[key].answer[1] as unknown as Date)}`
+				: ''
+				}`
 		} else if (key.startsWith('short')) customDates[key].quest = '🗒 ' + customDates[key].quest
 		else if (key.startsWith('long')) customDates[key].quest = '📄 ' + customDates[key].quest
 		else if (key.startsWith('radios')) customDates[key].quest = '🔘 ' + customDates[key].quest
@@ -283,15 +281,13 @@ export const getWhatsappAnswers = (
 			.map((reqAnswer: OrderedAnswer) => {
 				const isBankAccountName: boolean = reqAnswer.key.startsWith('bank_account_name')
 				const isBankAccountBankName: boolean = reqAnswer.key.startsWith('bank_account_bank')
-				const ansText = `${
-					isBankAccountName
-						? firstTransferTitle
-							? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma`
-							: ''
+				const ansText = `${isBankAccountName
+					? firstTransferTitle
+						? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma`
 						: ''
-				} *${reqAnswer.answer.quest}*:\n${reqAnswer.answer.answer}${
-					reqAnswer.key.startsWith('bank_account_') ? (isBankAccountBankName ? '\n' : '') : '\n'
-				}`
+					: ''
+					} *${reqAnswer.answer.quest}*:\n${reqAnswer.answer.answer}${reqAnswer.key.startsWith('bank_account_') ? (isBankAccountBankName ? '\n' : '') : '\n'
+					}`
 
 				// IMPEDIR TEXTO DE BANCO
 				if (isBankAccountName) firstTransferTitle = false
@@ -345,16 +341,15 @@ export const getEmailAnswers = (
 				const isBankAccountName: boolean = reqAnswer.key.startsWith('bank_account_name')
 				const answer = reqAnswer.answer.answer
 				if (typeof answer === 'string') {
-					const ansText = `<p>${
-						isBankAccountName
-							? firstTransferTitle
-								? `<p>${$`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma:`}</p><br/><br/>`
-								: ''
+					const ansText = `<p>${isBankAccountName
+						? firstTransferTitle
+							? `<p>${$`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma:`}</p><br/><br/>`
 							: ''
-					}<strong>${reqAnswer.answer.quest}</strong>:<br/>${reqAnswer.answer.answer
-						.toString()
-						.replace(/\n/g, '<br/>')
-						.replace(/\s\s\s\s\+\s/g, '&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;')}</p>\n`
+						: ''
+						}<strong>${reqAnswer.answer.quest}</strong>:<br/>${reqAnswer.answer.answer
+							.toString()
+							.replace(/\n/g, '<br/>')
+							.replace(/\s\s\s\s\+\s/g, '&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;')}</p>\n`
 
 					// IMPEDIR TEXTO DE BANCO
 					if (isBankAccountName) firstTransferTitle = false
@@ -446,14 +441,14 @@ export const sendForm = async (
 					id === 'total'
 						? $`Total de tu orden`
 						: id === 'payMethod'
-						? $`Pago en efectivo`
-						: id === 'shippingMethod'
-						? $`Envío`
-						: id === 'coupon'
-						? $`Cupón`
-						: compQuest
-						? compQuest?.label
-						: '',
+							? $`Pago en efectivo`
+							: id === 'shippingMethod'
+								? $`Envío`
+								: id === 'coupon'
+									? $`Cupón`
+									: compQuest
+										? compQuest?.label
+										: '',
 			}
 		})
 
@@ -568,12 +563,9 @@ export const sendForm = async (
 										// AVISO DE STOCK VACIÓ
 										if (countDiff === 0 && company)
 											sendMail(
-												`<h1>${$`Hola`} ${
-													company.name
-												}</h1><br/><p>${$`Facilito te informa que el producto`} <strong>${
-													product.title
-												}</strong> - ${
-													product.sku
+												`<h1>${$`Hola`} ${company.name
+												}</h1><br/><p>${$`Facilito te informa que el producto`} <strong>${product.title
+												}</strong> - ${product.sku
 												} ${$`se acaba de agotar, agrega mas al inventario o cambia su disponibilidad.`}</p>`,
 												$`Producto agotado`,
 												company.users
@@ -598,9 +590,8 @@ export const sendForm = async (
 						const pushData: PushData = {
 							url: '',
 							title: $`Nueva respuesta`,
-							message: `${$`Hola, hay una nueva respuesta de`} ${filterData.personal_name_0.answer.toString()} ${$`para la tienda`} "${
-								formData?.title
-							}", ${$`¿Deseas verlo ahora?`}`,
+							message: `${$`Hola, hay una nueva respuesta de`} ${filterData.personal_name_0.answer.toString()} ${$`para la tienda`} "${formData?.title
+								}", ${$`¿Deseas verlo ahora?`}`,
 							form: formData?.url,
 							tokens: company?.tokens || [],
 						}
