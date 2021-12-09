@@ -89,7 +89,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 				style={{ border: currentImage !== null ? 'none' : '4px dashed #999' }}>
 				{currentImage !== null ? (
 					!eProps.isVideo ? (
-						<Image height={100} width={100} src={currentImage} alt='Uploaded' />
+						<Image unoptimized height={100} width={100} src={currentImage} alt='Uploaded' />
 					) : (
 						<video src={currentImage} controls />
 					)

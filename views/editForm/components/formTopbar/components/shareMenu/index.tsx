@@ -86,7 +86,7 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 				</p>
 			</div>
 			<div className={Styles.actions}>
-				<Image height={192} width={192} alt='qr' src={props.formQR} />
+				<Image unoptimized height={192} width={192} alt='qr' src={props.formQR} />
 				<div className={Styles.btn}>
 					<Button
 						startIcon={<LinkIcon />}

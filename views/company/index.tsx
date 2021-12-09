@@ -35,7 +35,7 @@ const CompanyView: React.FC<CompanyViewProps> = ({ company, hideForms, forms }) 
 			<div className={Styles.content}>
 				<div className={Styles.image}>
 					{company?.picture ? (
-						<Image src={company?.picture} alt='Logo' height={130} width={130} />
+						<Image unoptimized src={company?.picture} alt='Logo' height={130} width={130} />
 					) : (
 						<BusinessCenterTwoToneIcon />
 					)}
@@ -63,7 +63,9 @@ const CompanyView: React.FC<CompanyViewProps> = ({ company, hideForms, forms }) 
 										className={Styles.form}
 										rel='noreferrer noopener'
 										href={`/f/${company?.url}/${form.url}`}>
-										{form.banner && <Image src={form.banner} alt='Logo' height={100} width={150} />}
+										{form.banner && (
+											<Image unoptimized src={form.banner} alt='Logo' height={100} width={150} />
+										)}
 										<div className={Styles.formInfo}>
 											<h3>{form.title}</h3>
 											<span>{form.url}</span>
