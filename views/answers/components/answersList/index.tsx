@@ -24,6 +24,7 @@ import PrintTwoTone from '@mui/icons-material/PrintTwoTone'
 // MATERIAL
 import TableContainer from '@mui/material/TableContainer'
 import MenuItem from '@mui/material/MenuItem'
+import Skeleton from '@mui/material/Skeleton'
 import Paper from '@mui/material/Paper'
 
 // CONTEXTO
@@ -97,7 +98,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 			const answer: FormAnswerSelf = answers[newIndex]
 			return newIndex === -1 ? (
 				<TableHead key='header_00' style={style} filter={filter} setFilter={setFilter} />
-			) : (
+			) : answer ? (
 				<AnswerRow
 					{...answer}
 					style={style}
@@ -105,6 +106,15 @@ const AnswersList: React.FC<AnswersListProps> = ({
 					handleRow={handleRow(newIndex)}
 					state={tracking[answer.stateIndex]?.name}
 				/>
+			) : (
+				<div className={Styles.answerSkeleton}>
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+					<Skeleton />
+				</div>
 			)
 		},
 		[filter, setFilter, tracking, answers]
@@ -119,7 +129,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 						itemSize={68}
 						width='100%'
 						className={Styles.listContainer}
-						itemCount={(answers?.length || 0) + 1}>
+						itemCount={answers.length === 0 ? 4 : answers.length + 1}>
 						{row}
 					</List>
 				</TableContainer>

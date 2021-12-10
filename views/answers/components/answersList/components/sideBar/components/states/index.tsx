@@ -50,9 +50,9 @@ const States: React.FC<StatesProps> = ({ activeStep, steps, onNext, onBack, hide
 										color='primary'
 										variant='contained'
 										onClick={onNext}
-										disabled={activeStep === steps.length - 1}
-										className={activeStep === steps.length - 1 ? Styles.disabled : ''}>
-										{$`Siguiente`}
+										disabled={activeStep === steps.length}
+										className={activeStep === steps.length ? Styles.disabled : ''}>
+										{activeStep === steps.length - 1 ? $`Terminar` : $`Siguiente`}
 									</Button>
 								</div>
 							</div>

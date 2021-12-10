@@ -8,6 +8,9 @@ import deleteForm from './tools'
 // ESTILOS
 import Styles from './style.module.scss'
 
+// MATERIAL
+import Skeleton from '@mui/material/Skeleton'
+
 // CONTEXTO
 import BusinessContext from 'context/business'
 import FormsContext from 'context/forms'
@@ -47,16 +50,20 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 
 	return (
 		<div className={Styles.container}>
-			{forms.forms.map((form: Form, index: number) => (
-				<FormCard
-					form={form}
-					key={`${form.id}_${index}`}
-					bottomLink='trackingSettings'
-					contentLink='trackingSettings'
-					onDelete={deleteFormEv(form.id)}
-					bottomSection={`${forms.forms[index]?.tracking?.length || 0} ${$`estado(s)`}`}
-				/>
-			))}
+			{forms.forms.length > 0
+				? forms.forms.map((form: Form, index: number) => (
+						<FormCard
+							form={form}
+							key={`${form.id}_${index}`}
+							bottomLink='trackingSettings'
+							contentLink='trackingSettings'
+							onDelete={deleteFormEv(form.id)}
+							bottomSection={`${forms.forms[index]?.tracking?.length || 0} ${$`estado(s)`}`}
+						/>
+				  ))
+				: Array(6)
+						.fill({})
+						.map((_f, index) => <Skeleton key={index} className={Styles.formSkeleton} />)}
 		</div>
 	)
 }

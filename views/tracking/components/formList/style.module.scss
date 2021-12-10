@@ -12,4 +12,9 @@
 	@include for-size(phone-landscape) {
 		grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
 	}
+
+	.formSkeleton {
+		height: 150px;
+		transform: unset !important;
+	}
 }

@@ -52,7 +52,6 @@ const saveProduct = async (
 		}
 
 		// GUARDAR
-		console.log(productRef.current)
 		setProducts(
 			{
 				[sku]: productRef.current,
