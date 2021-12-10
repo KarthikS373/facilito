@@ -21,7 +21,12 @@ const onChangeCategory = (
 }
 
 interface SaveCategoryProps {
-	setProducts: (products: { [id: string]: Product }, merge?: boolean) => unknown
+	setProducts: (
+		products: { [id: string]: Product },
+		merge?: boolean,
+		initialSKU?: string,
+		onSuccess?: () => unknown
+	) => unknown
 	onChange: (newCategory: string) => unknown
 	products: { [id: string]: Product }
 	onClose: () => unknown
@@ -51,7 +56,9 @@ export const saveCategory = ({
 			changeProductsCategory(Object.values(products), category, value).map(
 				(product: Product, index: number) => [keys[index], product]
 			)
-		)
+		),
+		false,
+		''
 	)
 
 	// CERRAR

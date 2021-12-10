@@ -24,7 +24,7 @@ const BusinessProvider: React.FC = (props) => {
 	useBusiness(auth.userExists, userCtx.user?.business || null, setBusiness)
 
 	// GUARDAR NEGOCIO GLOBAL
-	const setBusinessDB = (business: Partial<Business>) =>
+	const setBusinessDB = (business: Partial<Business>, onSuccess?: EmptyFunction) =>
 		setBusiness((prevBusiness: Business | null) => {
 			if (prevBusiness) {
 				// COPIAR
@@ -32,9 +32,10 @@ const BusinessProvider: React.FC = (props) => {
 
 				// GUARDAR
 				window.Snack('Guardando...')
-				replaceBusiness(prevBusiness.id, newBusiness).then(() =>
+				replaceBusiness(prevBusiness.id, newBusiness).then(() => {
 					window.Snack('Guardado correctamente')
-				)
+					if (onSuccess) onSuccess()
+				})
 
 				// ACTUALIZAR
 				return newBusiness

@@ -4,7 +4,7 @@ import { createContext, Context } from 'react'
 export interface BusinessContextProps {
 	business: Business | null
 	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
-	setBusinessDB(business: Partial<Business>): void
+	setBusinessDB(business: Partial<Business>, onSuccess?: EmptyFunction): void
 }
 
 // VALOR POR DEFECTO

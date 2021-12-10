@@ -28,6 +28,7 @@ const saveProduct = async (
 ): Promise<void> => {
 	// VALIDAR CAMPOS
 	const valid = productRef.current.sku?.length * productRef.current?.title?.length
+	const sku = productRef.current.sku
 
 	if (valid && businessCtx?.business?.id?.length) {
 		// GUARDAR EN STORAGE
@@ -35,7 +36,7 @@ const saveProduct = async (
 			window.Snack($`Subiendo imagenes...`)
 			const urls: string[] = await saveProductImages(
 				imagesRef.current,
-				productRef.current.sku,
+				sku,
 				businessCtx.business.id
 			)
 
@@ -50,29 +51,36 @@ const saveProduct = async (
 			})
 		}
 
-		// CATEGORIAS NUEVAS
-		if (
-			productRef.current.category?.length &&
-			!businessCtx.business.categories?.includes(productRef.current.category)
-		) {
-			businessCtx.setBusinessDB({
-				categories: [...(businessCtx.business.categories ?? []), productRef.current.category]
-					.filter(Boolean)
-					.filter((category) => category.length > 0),
-			})
-		}
-
 		// GUARDAR
 		setProducts(
 			{
-				[productRef.current.sku]: productRef.current,
+				[sku]: productRef.current,
 			},
 			true,
 			productID ?? '',
-			() => {
-				// REDIRECCIONAR
-				if (productRef.current.sku?.length)
-					history.replace(ROUTES.editProduct.replace(':productID', productRef.current.sku))
+			async () => {
+				// CATEGORIAS NUEVAS
+				if (businessCtx.business) {
+					if (
+						productRef.current.category?.length &&
+						!businessCtx.business.categories?.includes(productRef.current.category)
+					) {
+						businessCtx.setBusinessDB(
+							{
+								categories: [
+									...(businessCtx.business.categories ?? []),
+									productRef.current.category,
+								]
+									.filter(Boolean)
+									.filter((category) => category.length > 0),
+							},
+							() => {
+								// REDIRECCIONAR
+								if (sku?.length) history.replace(ROUTES.editProduct.replace(':productID', sku))
+							}
+						)
+					}
+				}
 			}
 		)
 	} else
