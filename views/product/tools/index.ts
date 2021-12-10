@@ -61,6 +61,11 @@ const saveProduct = async (
 			async () => {
 				// CATEGORIAS NUEVAS
 				if (businessCtx.business) {
+					const redirect = () => {
+						// REDIRECCIONAR
+						if (sku?.length) history.replace(ROUTES.editProduct.replace(':productID', sku))
+					}
+
 					if (
 						productRef.current.category?.length &&
 						!businessCtx.business.categories?.includes(productRef.current.category)
@@ -74,19 +79,16 @@ const saveProduct = async (
 									.filter(Boolean)
 									.filter((category) => category.length > 0),
 							},
-							() => {
-								// REDIRECCIONAR
-								if (sku?.length) history.replace(ROUTES.editProduct.replace(':productID', sku))
-							}
+							redirect
 						)
-					}
+					} else redirect()
 				}
 			}
 		)
 	} else
 		window.Alert({
 			title: 'Ocurrio un error',
-			body: 'Debes agregar un SKU y Nombre primero para poder guardar este producto.',
+			body: 'Debes agregar un SKUm, Nombre primero para poder guardar este producto.',
 			type: 'error',
 		})
 }
