@@ -8,8 +8,8 @@
  */
 const changeOptionProps = (
 	ev: React.ChangeEvent<HTMLInputElement>,
-	index: number,
 	extraIndex: number,
+	optionIndex: number,
 	localProduct: React.MutableRefObject<Product>
 ): void => {
 	// EVENTOS
@@ -17,8 +17,8 @@ const changeOptionProps = (
 
 	// COPIA
 	if (localProduct.current.extras && localProduct.current.extras[extraIndex]) {
-		localProduct.current.extras[extraIndex].options[index] = {
-			...localProduct.current.extras[extraIndex].options[index],
+		localProduct.current.extras[extraIndex].options[optionIndex] = {
+			...localProduct.current.extras[extraIndex].options[optionIndex],
 			[name]: value,
 		}
 	}
