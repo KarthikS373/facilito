@@ -28,32 +28,39 @@ const States: React.FC<StatesProps> = ({ activeStep, steps, onNext, onBack, hide
 
 	return (
 		<Stepper className={Styles.content} activeStep={activeStep} orientation='vertical'>
-			{steps.map((option: FormTrackingStep, optionIndex: number) => (
+			{steps.map((option: FormTrackingStep | null, optionIndex: number) => (
 				<Step
-					key={option.name}
+					key={option?.name}
 					style={
 						{
-							'--currentColor': option.color,
-							'--btnColor': optionIndex === 0 ? '#555' : option.color,
+							'--currentColor': option?.color,
+							'--btnColor': optionIndex === 0 ? '#555' : option?.color,
 						} as React.CSSProperties
 					}>
-					<StepLabel className={Styles.stepTitle}>{option.name}</StepLabel>
+					<StepLabel className={Styles.stepTitle}>{option?.name}</StepLabel>
 					<StepContent>
-						<p>{option.description || $`Descripción no disponible en este momento...`}</p>
+						<p>{option?.description || $`Descripción no disponible en este momento...`}</p>
 						{!hideActions && (
 							<div className={Styles.actions}>
-								<div>
+								<div
+									style={{
+										flexDirection: activeStep === steps.length - 1 ? 'row-reverse' : 'row',
+									}}>
 									<Button disabled={activeStep === 0} onClick={onBack}>
 										{$`Regresar`}
 									</Button>
-									<Button
-										color='primary'
-										variant='contained'
-										onClick={onNext}
-										disabled={activeStep === steps.length}
-										className={activeStep === steps.length ? Styles.disabled : ''}>
-										{activeStep === steps.length - 1 ? $`Terminar` : $`Siguiente`}
-									</Button>
+									{activeStep < steps.length - 1 ? (
+										<Button
+											color='primary'
+											variant='contained'
+											onClick={onNext}
+											disabled={activeStep === steps.length}
+											className={activeStep === steps.length ? Styles.disabled : ''}>
+											{activeStep === steps.length - 2 ? $`Terminar` : $`Siguiente`}
+										</Button>
+									) : (
+										<div style={{ display: 'none' }} />
+									)}
 								</div>
 							</div>
 						)}

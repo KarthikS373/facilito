@@ -26,17 +26,21 @@ const handleStep = (
 	setActiveStep((prevActiveStep) => {
 		// CALCULAR SIGUIENTE PASO
 		const newStep: number = prevActiveStep + step
-		window.Snack('Actualizando...')
 
-		// ACTUALIZAR EN LOCAL Y DB
-		updateAnswerState(index, newStep, formID, companyID)
-		updateLocalAnswerState(currentIndex, newStep)
+		if (newStep < 5) {
+			window.Snack('Actualizando...')
 
-		// OCULTAR SI EXISTE EL FILTRO POR ESTADO
-		if (filter === 'saz' || filter === 'sza') setTimeout(onClose, 400)
+			// ACTUALIZAR EN LOCAL Y DB
+			updateAnswerState(index, newStep, formID, companyID)
+			updateLocalAnswerState(currentIndex, newStep)
 
-		// ALERTA
-		window.Snack('Tracking actualizado')
+			// OCULTAR SI EXISTE EL FILTRO POR ESTADO
+			if (filter === 'saz' || filter === 'sza') setTimeout(onClose, 400)
+
+			// ALERTA
+			window.Snack('Tracking actualizado')
+		}
+
 		return newStep
 	})
 
