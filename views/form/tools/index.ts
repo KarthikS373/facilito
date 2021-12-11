@@ -222,8 +222,8 @@ export const addAnswerIcons = (
 		if (key.startsWith('date')) {
 			customDates[key].quest = '📆 ' + customDates[key].quest
 			customDates[key].answer = `${dateToString(customDates[key].answer[0] as unknown as Date)}${customDates[key].answer.length === 2
-				? `- ${dateToString(customDates[key].answer[1] as unknown as Date)}`
-				: ''
+					? `- ${dateToString(customDates[key].answer[1] as unknown as Date)}`
+					: ''
 				}`
 		} else if (key.startsWith('short')) customDates[key].quest = '🗒 ' + customDates[key].quest
 		else if (key.startsWith('long')) customDates[key].quest = '📄 ' + customDates[key].quest
@@ -282,10 +282,10 @@ export const getWhatsappAnswers = (
 				const isBankAccountName: boolean = reqAnswer.key.startsWith('bank_account_name')
 				const isBankAccountBankName: boolean = reqAnswer.key.startsWith('bank_account_bank')
 				const ansText = `${isBankAccountName
-					? firstTransferTitle
-						? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma`
+						? firstTransferTitle
+							? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma`
+							: ''
 						: ''
-					: ''
 					} *${reqAnswer.answer.quest}*:\n${reqAnswer.answer.answer}${reqAnswer.key.startsWith('bank_account_') ? (isBankAccountBankName ? '\n' : '') : '\n'
 					}`
 
@@ -342,10 +342,10 @@ export const getEmailAnswers = (
 				const answer = reqAnswer.answer.answer
 				if (typeof answer === 'string') {
 					const ansText = `<p>${isBankAccountName
-						? firstTransferTitle
-							? `<p>${$`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma:`}</p><br/><br/>`
+							? firstTransferTitle
+								? `<p>${$`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma:`}</p><br/><br/>`
+								: ''
 							: ''
-						: ''
 						}<strong>${reqAnswer.answer.quest}</strong>:<br/>${reqAnswer.answer.answer
 							.toString()
 							.replace(/\n/g, '<br/>')

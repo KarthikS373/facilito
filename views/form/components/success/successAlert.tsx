@@ -20,7 +20,7 @@ const successAlert = (
 ): void => {
 	const copyUrl = () =>
 		navigator.clipboard.writeText(
-			`https://facilito-dev.web.app/l/${companyURL}/${formURL}/?index=${index - 1}`
+			`https://facilito-release.web.app/t/${companyURL}/${formURL}/?index=${index - 1}`
 		)
 
 	window.Alert({
@@ -46,7 +46,9 @@ const successAlert = (
 						whiteSpace: 'nowrap',
 						overflow: 'hidden',
 						textOverflow: 'ellipsis',
-					}}>{`https://facilito-dev.web.app/l/${companyURL}/${formURL}/?index=${index - 1}`}</span>
+					}}>{`https://facilito-release.web.app/t/${companyURL}/${formURL}/?index=${
+					index - 1
+				}`}</span>
 				<IconButton onClick={copyUrl}>
 					<FileCopy />
 				</IconButton>
@@ -56,7 +58,7 @@ const successAlert = (
 		),
 		onConfirm: () => {
 			if (formData?.tracking?.length)
-				openNewWindow(`${window.location.origin}/l/${companyURL}/${formURL}/?index=${index - 1}`)
+				openNewWindow(`${window.location.origin}/t/${companyURL}/${formURL}/?index=${index - 1}`)
 		},
 		type: formData?.tracking?.length ? 'confirm' : 'window',
 	})
