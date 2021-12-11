@@ -53,15 +53,14 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ disablePortal, anchorEl, onCl
 			anchorEl={anchorEl}
 			disablePortal={disablePortal}
 			placement='bottom-end'>
-			<MenuItem onClick={logout}>
-				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
-					{$`Cerrar sesión`}
-				</Button>
-			</MenuItem>
-
 			<MenuItem onClick={goToSettings}>
 				<Button variant='outlined' fullWidth startIcon={<SettingsTwoTone />}>
 					{$`Ajustes`}
+				</Button>
+			</MenuItem>
+			<MenuItem onClick={logout}>
+				<Button variant='outlined' fullWidth startIcon={<ExitToAppTwoTone />}>
+					{$`Salir`}
 				</Button>
 			</MenuItem>
 		</PopperMenuList>
