@@ -27,9 +27,12 @@ const SwipeViewer: React.FC<SwipeViewerProps> = (props: SwipeViewerProps) => {
 	// CONTADOR
 	const [index, setIndex] = useState<number>(0)
 
+	// LISTA DE IMAGENEES
+	const imageList = props.images?.filter((img) => img?.length) ?? []
+
 	// MANEJAR INDEX
 	const handleIndex = (add: number) => () =>
-		setIndex(Math.min(Math.max(0, index + add), props.images.length - 1))
+		setIndex(Math.min(Math.max(0, index + add), imageList.length - 1))
 
 	// CAMBIAR INDEX
 	const changeIndex = (index: number) => setIndex(index)
@@ -37,17 +40,17 @@ const SwipeViewer: React.FC<SwipeViewerProps> = (props: SwipeViewerProps) => {
 	return (
 		<div className={Styles.container}>
 			<SwipeableViews
+				index={index}
 				enableMouseEvents
 				className={Styles.slider}
-				index={index}
 				onChangeIndex={changeIndex}>
-				{props.images.map((pic: string, key: number) => (
+				{imageList.map((pic: string, key: number) => (
 					<div key={`picture_${key}`}>
 						<Image
-							height={450}
+							src={pic}
 							width={450}
 							unoptimized
-							src={pic}
+							height={450}
 							alt={props.alts ? props.alts[key] : ''}
 						/>
 					</div>
@@ -55,12 +58,17 @@ const SwipeViewer: React.FC<SwipeViewerProps> = (props: SwipeViewerProps) => {
 			</SwipeableViews>
 			{props.images.length > 1 && (
 				<div className={Styles.swipeControls}>
-					<IconButton onClick={handleIndex(-1)}>
-						<ChevronLeft />
-					</IconButton>
-					<IconButton onClick={handleIndex(1)}>
-						<ChevronRight />
-					</IconButton>
+					{index !== 0 && (
+						<IconButton className={Styles.leftBtn} onClick={handleIndex(-1)}>
+							<ChevronLeft />
+						</IconButton>
+					)}
+
+					{index < imageList.length - 1 && (
+						<IconButton className={Styles.rightBtn} onClick={handleIndex(1)}>
+							<ChevronRight />
+						</IconButton>
+					)}
 				</div>
 			)}
 		</div>

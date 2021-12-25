@@ -70,6 +70,7 @@ interface ProductSelected {
 	totalPrice: number
 	product: Product
 	count: number
+	price: number
 }
 
 interface ExtraOptionalExt extends ExtraOptional {
@@ -93,6 +94,7 @@ interface FormDataCouponsAnswer {
 interface FormProductSliderAnswer {
 	count: number
 	totalPrice: number
+	price: number
 	title: string
 	picture: string
 	sku: string

@@ -31,15 +31,16 @@ const sendProduct = async (
 				? props.currentProduct?.product.promoPrice
 				: props.currentProduct?.product.price) || 0
 		const extrasPrice = extras
-			.map((pExtra) => pExtra.price)
+			.map((pExtra) => +pExtra.price)
 			.reduce((fExtra: number, nExtra: number) => fExtra + nExtra, 0)
 
 		// PRODUCTO
 		const cartProduct: ProductSelected = {
-			totalPrice: (price + extrasPrice) * productsCounter,
+			totalPrice: (+price + +extrasPrice) * productsCounter,
 			product: props.currentProduct?.product,
 			count: productsCounter,
 			extras,
+			price,
 		}
 
 		// ENVIAR

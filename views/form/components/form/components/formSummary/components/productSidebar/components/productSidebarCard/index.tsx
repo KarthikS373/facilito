@@ -70,8 +70,7 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 												{product.category && <span>{product.category}</span>}
 												<span>{`${product.count} x ${product.title}`}</span>
 												<strong>
-													{props.formData?.badge}{' '}
-													{product.totalPrice ? product.totalPrice.toFixed(2) : ''}
+													{props.formData?.badge} {(+product.price)?.toFixed(2) ?? '0.00'}
 												</strong>
 
 												{/* INFORMACIÓN DE EXTRAS */}
@@ -80,16 +79,26 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 														(props.formProducts[`extras_${resp}`]
 															? // @ts-ignore
 															  props.formProducts[`extras_${resp}`][index].map(
-																	(extra: ExtraProductData, extraIndex: number) => (
-																		<div key={`product_cart_${key}_${index}_extra_${extraIndex}`}>
-																			<strong>{extra?.title}</strong>
-																			{extra?.options.map((option: ExtraOptional) => (
-																				<span key={`extra_${resp}_${extraIndex}`}>
-																					+ {option?.name}
-																				</span>
-																			))}
-																		</div>
-																	)
+																	(extra: ExtraProductData, extraIndex: number) => {
+																		const extraPrice: number =
+																			extra?.options
+																				.map((opt) => opt.price)
+																				.reduce((a, b) => a + b, 0) ?? 0
+
+																		return (
+																			<div key={`product_cart_${key}_${index}_extra_${extraIndex}`}>
+																				<strong>
+																					{extra?.title} +{props.formData?.badge}
+																					{(+extraPrice).toFixed(2)}
+																				</strong>
+																				{extra?.options.map((option: ExtraOptional) => (
+																					<span key={`extra_${resp}_${extraIndex}`}>
+																						+ {option?.name}
+																					</span>
+																				))}
+																			</div>
+																		)
+																	}
 															  )
 															: null)}
 												</div>
