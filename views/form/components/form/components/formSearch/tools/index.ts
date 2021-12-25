@@ -43,6 +43,7 @@ export const sendProduct = (
 		title: product.product.title,
 		sku: product.product.sku,
 		count: product.count,
+		price: product.price,
 	}
 	products.push(sliderProduct)
 
