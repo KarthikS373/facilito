@@ -64,7 +64,11 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 		// ALERTA DE OBLIGATORIOS
 		const onError = (err: unknown) => {
 			console.log(err)
-			window.Alert({ title: 'Error', body: 'Errr', type: 'error' })
+			window.Alert({
+				title: 'Ocurrio un error',
+				body: 'Es posible que algunos campos obligatorios esten vacios, por favor intenta nuevamente.',
+				type: 'error',
+			})
 		}
 
 		// LISTENER DE PRODUCTOS

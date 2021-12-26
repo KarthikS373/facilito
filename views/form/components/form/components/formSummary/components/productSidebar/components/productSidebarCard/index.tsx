@@ -69,9 +69,11 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 											<div>
 												{product.category && <span>{product.category}</span>}
 												<span>{`${product.count} x ${product.title}`}</span>
-												<strong>
-													{props.formData?.badge} {(+product.price)?.toFixed(2) ?? '0.00'}
-												</strong>
+												{!Number.isNaN(+product.price) && (
+													<strong>
+														{props.formData?.badge} {(+product.price)?.toFixed(2) ?? '0.00'}
+													</strong>
+												)}
 
 												{/* INFORMACIÓN DE EXTRAS */}
 												<div className={Styles.shopProductExtra}>
@@ -88,8 +90,11 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 																		return (
 																			<div key={`product_cart_${key}_${index}_extra_${extraIndex}`}>
 																				<strong>
-																					{extra?.title} +{props.formData?.badge}
-																					{(+extraPrice).toFixed(2)}
+																					{extra?.title}
+																					{+extraPrice !== 0
+																						? ` +${props.formData?.badge}
+																					${(+extraPrice).toFixed(2)}`
+																						: ''}
 																				</strong>
 																				{extra?.options.map((option: ExtraOptional) => (
 																					<span key={`extra_${resp}_${extraIndex}`}>

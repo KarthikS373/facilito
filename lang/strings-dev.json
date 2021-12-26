@@ -1,4 +1,12 @@
 {
+	"es_posible_que_algunos_campos_obligatorios_esten_vacios_por_favor_intenta_nuevamente": {
+		"en": "",
+		"es": "$"
+	},
+	"es_posible_que_algunos_campos_obligatorios_esten_vacios": {
+		"en": "",
+		"es": "$"
+	},
 	"las_opciones_o_extras_cantidad_son_obligatorios_intenta_nuevamente_cuando_se_completen": {
 		"en": "",
 		"es": "$"

@@ -65,7 +65,11 @@ const timePicker = (
 			}
 
 			// ENVIAR Y REINICIAR
-			setValue && setValue(`${name}_${id}`, currentDate)
+			setValue &&
+				setValue(
+					`${name}_${id}`,
+					currentDate ? ('setHours' in currentDate ? [currentDate] : currentDate) : null
+				)
 		},
 		onHide: () => window.hideAlert(),
 		customElements: (

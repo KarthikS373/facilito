@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // TODO: IMPROVE THIS S**T
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /// TOOLS
@@ -174,21 +175,24 @@ export const reduceAnswers = (
 				tmpData[key]!.answer = (
 					answer?.map(
 						(resp: FormProductSliderAnswer, productIndex: number) =>
-							`${resp.title} - ${badge} ${parseFloat(resp.totalPrice.toString()).toFixed(2)} ${(
-								tmpData[`extras_${key}`]?.answer[productIndex] as unknown as ExtraProductData[]
-							)
-								?.map(
-									(ex: ExtraProductData) =>
-										`\n ${ex.title}\n ${ex.options
-											.map(
-												(option: ExtraOptional) =>
-													`\n    + ${option.name}${option.price > 0 ? ' - ' : ''}${
-														option.price > 0 ? badge : ''
-													} ${option.price > 0 ? option.price.toFixed(2) : ''}`
-											)
-											.join('')}`
-								)
-								.join('')}`
+							`${resp.count} x ${resp.title} - ${badge} ${parseFloat(resp.price.toString()).toFixed(
+								2
+							)} ${
+								// @ts-ignore
+								(data[`extras_${key}`]?.[productIndex] as unknown as ExtraProductData[])
+									?.map(
+										(ex: ExtraProductData) =>
+											`\n ${ex.title}${ex.options
+												.map(
+													(option: ExtraOptional) =>
+														`\n    + ${option.name}${+option.price > 0 ? ' - ' : ''}${
+															+option.price > 0 ? badge : ''
+														} ${+option.price > 0 ? (+option.price).toFixed(2) : ''}`
+												)
+												.join('')}`
+									)
+									.join('')
+							}`
 					) || []
 				).join('\n\n')
 			} else delete tmpData[key]
