@@ -5,6 +5,7 @@ import React from 'react'
 import type { AppProps } from 'next/app'
 
 // PROVIDERS
+import PermissionsProvider from 'providers/permissions'
 import BusinessProvider from 'providers/business'
 import ProductsProvider from 'providers/products'
 import PortrayProvider from 'providers/lang'
@@ -30,8 +31,8 @@ import 'styles/mixins.scss'
 import dynamic from 'next/dynamic'
 
 const CssBaseline = dynamic(() => import('@mui/material/CssBaseline'))
-const AlertProvider = dynamic(() => import('providers/alerts'))
 const GlobalSnack = dynamic(() => import('components/snackbar'))
+const AlertProvider = dynamic(() => import('providers/alerts'))
 const clientSideEmotionCache = createEmotionCache()
 
 interface FacilitoAppProps extends AppProps {
@@ -51,20 +52,22 @@ const FacilitoApp = ({
 			<AuthProvider>
 				<UserProvider>
 					<BusinessProvider>
-						<ThemeProvider>
-							<FormsProvider>
-								<ProductsProvider>
-									<PortrayProvider settings={{ mainLang: 'es' }}>
-										<AlertProvider />
-										<GlobalSnack />
-										<Layout>
-											<CssBaseline />
-											<Component {...pageProps} />
-										</Layout>
-									</PortrayProvider>
-								</ProductsProvider>
-							</FormsProvider>
-						</ThemeProvider>
+						<PermissionsProvider>
+							<ThemeProvider>
+								<FormsProvider>
+									<ProductsProvider>
+										<PortrayProvider settings={{ mainLang: 'es' }}>
+											<AlertProvider />
+											<GlobalSnack />
+											<Layout>
+												<CssBaseline />
+												<Component {...pageProps} />
+											</Layout>
+										</PortrayProvider>
+									</ProductsProvider>
+								</FormsProvider>
+							</ThemeProvider>
+						</PermissionsProvider>
 					</BusinessProvider>
 				</UserProvider>
 			</AuthProvider>

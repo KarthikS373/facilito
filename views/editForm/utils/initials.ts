@@ -127,6 +127,7 @@ export const formComponentsList: FormContainerProps[] = [
 	// CUPONES
 	{
 		...defFormComponent,
+		switch_1: true,
 		name: 'coupons',
 		id: Math.round(Math.random() * 100000),
 	},
