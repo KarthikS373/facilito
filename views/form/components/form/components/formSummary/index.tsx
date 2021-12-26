@@ -29,6 +29,8 @@ interface FormSummaryProps {
 	formProducts: FormDataProductSliderAnswer | undefined
 	formCoupons: FormDataCouponsAnswer | undefined
 	setValue: UseFormSetValue<FieldValues>
+	defSummaryData?: FormSummaryData
+	permissions?: CompanyPermissions
 	clickOnSubmit: EmptyFunction
 	productsCounter: number[]
 	subTotalPrice: number
@@ -36,7 +38,6 @@ interface FormSummaryProps {
 	cartItems: number
 	preview?: boolean
 	formData?: Form
-	defSummaryData?: FormSummaryData
 }
 
 const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
@@ -258,6 +259,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 						<PayMethods
 							value={summaryData.payMethodValue}
 							setSummaryData={setSummaryData}
+							permissions={props.permissions}
 							className={Styles.payMethods}
 							setFieldValue={setValue}
 						/>

@@ -50,7 +50,8 @@ const NewForm: React.FC = () => {
 	useTemplateForms(setTemplates, businessCtx.business?.id)
 
 	// MOSTRAR INFORMACION
-	const showCard = (form: Form) => () => showTemplateCard(form, $, showPrompt)
+	const showCard = (form: Form) => () =>
+		showTemplateCard(form, $, showPrompt, businessCtx.business?.permissions)
 
 	return (
 		<>

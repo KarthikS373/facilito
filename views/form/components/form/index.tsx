@@ -28,6 +28,7 @@ import useStrings from 'hooks/lang'
 // PROPIEDADES
 interface HookFormProps {
 	sendFormEvent: (data: { [id: string]: unknown }, reset: () => unknown) => void
+	permissions?: CompanyPermissions
 	formData: Form | undefined
 	products: Product[] | null
 	couponProducts: string[]
@@ -115,6 +116,7 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 					{haveProducts && (
 						<FormSummary
 							productsCounter={productsCounter}
+							permissions={props.permissions}
 							cartItems={productsCounter[0]}
 							subTotalPrice={subtotalPrice}
 							clickOnSubmit={clickOnSubmit}

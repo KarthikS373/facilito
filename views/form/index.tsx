@@ -100,6 +100,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 						{/* TIENDA */}
 						{formData && (
 							<HookForm
+								permissions={company?.permissions}
 								sendFormEvent={sendFormEvent}
 								couponProducts={coupons}
 								formData={formData}

@@ -59,11 +59,11 @@ interface CompanyPermissions {
 	[index: string]: boolean
 	templates: boolean
 	payments: boolean
+	print: boolean // TODO: revisar permisos de impresion
 	products: boolean
 	calendar: boolean
 	tracking: boolean
 	forms: boolean
-	print: boolean
 }
 
 // PAGOS Y BANCO

@@ -18,15 +18,18 @@ import CreditCard from '@mui/icons-material/CreditCard'
 import Motorcycle from '@mui/icons-material/CarRental'
 import MoneyOff from '@mui/icons-material/MoneyOff'
 
+// CONTEXT
+import defaultSettings from './utils/initials'
+
 // ESTILOS
 import Styles from './style.module.scss'
-import defaultSettings from './utils/initials'
 
 const showCheckoutAlert = (
 	$: TemplateStrBuilder,
 	checkoutOptions: FormCheckout | undefined,
 	badge: string,
-	onChangeCheckoutOptions?: (options: FormCheckout) => unknown
+	onChangeCheckoutOptions?: (options: FormCheckout) => unknown,
+	permissions?: CompanyPermissions
 ): void => {
 	// DEFAULT PROPS
 	const checkoutSettings: FormCheckout = checkoutOptions || defaultSettings
@@ -89,23 +92,25 @@ const showCheckoutAlert = (
 								),
 							}}
 						/>
-						<TextField
-							label={$`Porcentaje de tarjeta`}
-							variant='outlined'
-							fullWidth
-							type='number'
-							placeholder='3%'
-							name='cardPercentage'
-							defaultValue={checkoutSettings.cardPercentage || ''}
-							onChange={saveCheckoutInputs}
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position='start'>
-										<CreditCard color='primary' />
-									</InputAdornment>
-								),
-							}}
-						/>
+						{(!permissions || permissions.payments) && (
+							<TextField
+								label={$`Porcentaje de tarjeta`}
+								variant='outlined'
+								fullWidth
+								type='number'
+								placeholder='3%'
+								name='cardPercentage'
+								defaultValue={checkoutSettings.cardPercentage || ''}
+								onChange={saveCheckoutInputs}
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position='start'>
+											<CreditCard color='primary' />
+										</InputAdornment>
+									),
+								}}
+							/>
+						)}
 						<TextField
 							label={$`Monto mínimo de compra`}
 							variant='outlined'

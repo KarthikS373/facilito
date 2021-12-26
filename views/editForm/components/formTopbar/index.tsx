@@ -85,7 +85,8 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 			$,
 			props.checkoutOptions,
 			company.business?.badge ?? '',
-			props.onChangeCheckoutOptions
+			props.onChangeCheckoutOptions,
+			company.business?.permissions
 		)
 
 	// ACTUALIZAR ESTADO DE PUBLICACIÓN

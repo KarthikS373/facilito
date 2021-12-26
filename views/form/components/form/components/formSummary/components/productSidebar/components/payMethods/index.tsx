@@ -17,6 +17,7 @@ import handleMethods from './tools'
 interface PayMethodsProps {
 	setSummaryData: React.Dispatch<React.SetStateAction<FormSummaryData>>
 	setFieldValue: (name: string, value: string | null) => unknown
+	permissions?: CompanyPermissions
 	className?: string
 	value: unknown
 }
@@ -43,7 +44,9 @@ const PayMethods: React.FC<PayMethodsProps> = (props: PayMethodsProps) => {
 				labelId='pay-methods-label'
 				value={props.value as string}>
 				<MenuItem value={$`Pago en efectivo`}>{$`Pago en efectivo`}</MenuItem>
-				<MenuItem value={$`Pago con tarjeta`}>{$`Pago con tarjeta`}</MenuItem>
+				{(!props.permissions || props.permissions?.payments) && (
+					<MenuItem value={$`Pago con tarjeta`}>{$`Pago con tarjeta`}</MenuItem>
+				)}
 				<MenuItem value={$`Transferencia`}>{$`Transferencia`}</MenuItem>
 			</Select>
 		</FormControl>
