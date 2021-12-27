@@ -36,7 +36,7 @@ export const validateURL = async (url: string): Promise<boolean> => {
 
 	const col = await getCollection('urls')
 	const urlDoc = doc(col, url)
-	const exists = (await getDoc(urlDoc)).exists
+	const exists = (await getDoc(urlDoc)).exists()
 
 	return !exists ?? false
 }

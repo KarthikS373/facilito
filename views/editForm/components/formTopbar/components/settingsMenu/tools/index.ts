@@ -158,15 +158,24 @@ export const handleInputs = <T extends unknown>(
 	}
 
 	// ERRORES
-	if ((value ?? '').toString().length === 0 || (name === 'whatsapp' && (value ?? '').length < 6)) {
-		setErrs((errs) => {
-			const tmpErrs = [...errs]
+	setErrs((errs) => {
+		const tmpErrs = [...errs]
+		if (
+			(value ?? '').toString().length === 0 ||
+			(name === 'whatsapp' && (value ?? '').toString().length < 6) ||
+			(name === 'email' && !verifyEmail(value.toString()))
+		) {
 			if (name === 'whatsapp') tmpErrs[0] = true
 			else if (name === 'email') tmpErrs[1] = true
 			else if (name === 'link') tmpErrs[2] = true
-			return tmpErrs as [boolean, boolean, boolean]
-		})
-	}
+		} else {
+			if (name === 'whatsapp') tmpErrs[0] = false
+			else if (name === 'email') tmpErrs[1] = false
+			else if (name === 'link') tmpErrs[2] = false
+		}
+
+		return tmpErrs as [boolean, boolean, boolean]
+	})
 
 	// ACTUALIZAR
 	setFormData((prevData) => ({ ...prevData, [name]: value ?? '' }))
