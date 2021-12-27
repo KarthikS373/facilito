@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -22,6 +22,7 @@ import Users from './components/users'
 import Bank from './components/bank'
 
 // HOOKS
+import UserContext from 'context/user'
 import useStrings from 'hooks/lang'
 
 // PROPS
@@ -32,6 +33,9 @@ interface TabsProps {
 const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// USUARIO
+	const { user } = useContext(UserContext)
 
 	// ACTUALIZAR
 	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
@@ -48,13 +52,23 @@ const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 					aria-label='settings_sections'>
 					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
 					<Tab className={Styles.tab} icon={<AccountBalanceTwoToneIcon />} label={$`Bancaria`} />
-					<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
-					<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
+					{user?.role === 'admin' && (
+						<>
+							{' '}
+							<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
+							<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
+						</>
+					)}
 				</Tabs>
-				<Payments show={tabIndex === 2} />
-				<General show={tabIndex === 0} />
-				<Users show={tabIndex === 3} />
+
 				<Bank show={tabIndex === 1} />
+				<General show={tabIndex === 0} />
+				{user?.role === 'admin' && (
+					<>
+						<Users show={tabIndex === 3} />
+						<Payments show={tabIndex === 2} />
+					</>
+				)}
 			</Paper>
 		</div>
 	)

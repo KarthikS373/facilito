@@ -22,6 +22,7 @@ import Styles from './style.module.scss'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import UserContext from 'context/user'
 
 // FNS
 import startOfWeek from 'date-fns/startOfWeek'
@@ -50,6 +51,9 @@ interface SchedulerProps {
 const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
 	// STRINGS
 	const { $, langCode } = useStrings()
+
+	// USUARIO
+	const { user } = useContext(UserContext)
 
 	// NEGOCIO
 	const businessCtx = useContext(BusinessContext)
@@ -81,7 +85,7 @@ const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
 				events={appointments}
 				localizer={localizer}
 				style={{ height: 500 }}
-				onSelectEvent={showEventInfo($, businessCtx.business)}
+				onSelectEvent={showEventInfo($, businessCtx.business, user?.role)}
 				components={{ toolbar: CustomToolbar, event: CustomEvent }}
 				messages={{
 					noEventsInRange: $`Sin eventos en este periodo`,

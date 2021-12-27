@@ -21,29 +21,42 @@ import PersonTwoTone from '@mui/icons-material/PersonTwoTone'
 
 // BORRAR EVENTO
 const deleteEvent =
-	($: TemplateStrBuilder, business: Business | null, event: CustomAppointment) => () => {
-		window.Alert({
-			title: 'Borrar evento',
-			type: 'confirm',
-			body: '¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permanente.',
-			onCancel: () => {
-				setTimeout(() => showEventInfo($, business)(event), 300)
-			},
-			onConfirm: () => {
-				deleteAppointment(
-					business?.name || '',
-					business?.users ? business?.users[0] : '',
-					business?.id || '',
-					event.resource?.id || '',
-					event
-				)
-			},
-		})
+	(
+		$: TemplateStrBuilder,
+		business: Business | null,
+		event: CustomAppointment,
+		role: User['role']
+	) =>
+	() => {
+		if (role === 'admin') {
+			window.Alert({
+				title: 'Borrar evento',
+				type: 'confirm',
+				body: '¿Estas seguro de querer borrar este evento?, Se notificara al cliente de esta accion permanente.',
+				hasNextAlert: true,
+				onCancel: () => showEventInfo($, business, role)(event),
+				onConfirm: () => {
+					deleteAppointment(
+						business?.name || '',
+						business?.users ? business?.users[0] : '',
+						business?.id || '',
+						event.resource?.id || '',
+						event
+					)
+				},
+			})
+		} else
+			window.Alert({
+				title: 'Ocurrió un error',
+				body: 'Actualmente no tienes los permisos necesarios para acceder a esta funcionalidad.',
+				type: 'error',
+				onHide: () => showEventInfo($, business, role)(event),
+			})
 	}
 
 // MOSTRAR INFORMACION
 export const showEventInfo =
-	($: TemplateStrBuilder, business: Business | null) =>
+	($: TemplateStrBuilder, business: Business | null, role: User['role']) =>
 	(event: CustomAppointment): void => {
 		window.Alert({
 			title: '',
@@ -91,13 +104,13 @@ export const showEventInfo =
 						{(window.innerWidth > 500 && (
 							<Button
 								variant='outlined'
-								onClick={deleteEvent($, business, event)}
+								onClick={deleteEvent($, business, event, role)}
 								startIcon={<DeleteTwoTone />}>
 								{$`Eliminar`}
 							</Button>
 						)) ||
 							(window.innerWidth <= 500 && (
-								<IconButton onClick={deleteEvent($, business, event)}>
+								<IconButton onClick={deleteEvent($, business, event, role)}>
 									<DeleteTwoTone />
 								</IconButton>
 							))}

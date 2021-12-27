@@ -13,20 +13,24 @@ import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 
 // TOOLS
 import { UserRole } from './components/tabs/components/users/tools'
+import saveBusiness, { openSub } from './tools'
 import BusinessContext from 'context/business'
 import defBusiness from './utils/initials'
 import useStrings from 'hooks/lang'
-import saveBusiness from './tools'
 
 // CONTEXTO
 import SettingsContext from './context'
 
 // ESTILOS
 import Styles from './style.module.scss'
+import UserContext from 'context/user'
 
 const SettingsView: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// USUARIO
+	const { user } = useContext(UserContext)
 
 	// COMPANY
 	const businessCtx = useContext(BusinessContext)
@@ -49,7 +53,7 @@ const SettingsView: React.FC = () => {
 	const userRoles = useRef<UserRole[]>([])
 
 	// ABRIR SUBSCRIPCION
-	const openSub = () => setTabIndex(2)
+	const openSubEv = () => openSub(setTabIndex, user?.role)
 
 	// GUARDAR
 	const saveBusinessEv = () =>
@@ -74,7 +78,7 @@ const SettingsView: React.FC = () => {
 					{$`Guardar datos`}
 				</ColorButton>
 			</Header>
-			<Info onAction={openSub} />
+			<Info onAction={openSubEv} />
 			<div className={Styles.container}>
 				<SettingsContext.Provider
 					value={{

@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -27,6 +27,10 @@ import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
 import CreateTwoTone from '@mui/icons-material/CreateTwoTone'
 import MailTwoTone from '@mui/icons-material/MailTwoTone'
 
+// CONTEXTO
+import UserContext from 'context/user'
+import handleDelete from './tools'
+
 // PROPS
 interface FormCardProps {
 	form: Form
@@ -46,6 +50,9 @@ const FormCard: React.FC<FormCardProps> = ({
 	// STRINGS
 	const { $ } = useStrings()
 
+	// USUARIO
+	const { user } = useContext(UserContext)
+
 	// ESTADOS MENU
 	const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
 	const openCardMenu = Boolean(menuAnchor)
@@ -55,6 +62,9 @@ const FormCard: React.FC<FormCardProps> = ({
 		const anchor = ev.currentTarget
 		setMenuAnchor(anchor)
 	}
+
+	// BORRAR
+	const onDeleteEv = () => handleDelete(onDelete, user?.role)
 
 	// CERRAR MENU
 	const closeCardMenu = () => setMenuAnchor(null)
@@ -153,7 +163,7 @@ const FormCard: React.FC<FormCardProps> = ({
 					<Button
 						fullWidth
 						variant='outlined'
-						onClick={onDelete}
+						onClick={onDeleteEv}
 						className={Styles.menuBtn}
 						startIcon={<DeleteTwoTone />}>
 						{$`Borrar`}
