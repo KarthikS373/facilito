@@ -45,8 +45,8 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	useFormFilter(filter || 'asc', setForms, formsCtx.forms)
 
 	// BORRAR TIENDA
-	const deleteFormEv = (formID: string) => () =>
-		deleteForm(formID, setForms, formsCtx.setFormsDB, businessCtx.business?.id)
+	const deleteFormEv = (formID: string, url: string) => () =>
+		deleteForm(formID, url, setForms, formsCtx.setFormsDB, businessCtx.business?.id)
 
 	return (
 		<div className={Styles.container}>
@@ -58,7 +58,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 							bottomLink='answers'
 							contentLink='newForm'
 							key={`${form?.id}_${index}`}
-							onDelete={deleteFormEv(form?.id ?? '')}
+							onDelete={deleteFormEv(form?.id ?? '', form.url)}
 							bottomSection={`${forms.answers[index]?.data.length || 0} ${$`respuesta(s)`}`}
 						/>
 				  ))

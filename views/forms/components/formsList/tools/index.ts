@@ -3,6 +3,7 @@ import { removeAnswersForm } from 'utils/answers'
 import { removeFormSchema } from 'utils/forms'
 import { removeEventForm } from 'utils/events'
 import removeFile from 'utils/storage'
+import { deleteURL } from 'utils/urls'
 
 /**
  * Borrar tienda
@@ -14,6 +15,7 @@ import removeFile from 'utils/storage'
  */
 const deleteForm = (
 	formID: string,
+	url: string,
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
 	setGlobalForms: (forms: Partial<FormInterface>) => unknown,
 	companyID?: string
@@ -55,6 +57,7 @@ const deleteForm = (
 				await removeAnswersForm(companyID, formID)
 				await removeFormSchema(companyID, formID)
 				await removeEventForm(companyID, formID)
+				await deleteURL(url)
 				window.Snack('Tienda borrada')
 			}
 		},
