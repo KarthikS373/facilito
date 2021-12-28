@@ -38,9 +38,9 @@ import useDefProps from './hooks'
 
 // ICONOS
 const optionIcons = [
-	<WhatsApp key='w_1' />,
+	<WhatsApp key='w_1' color='primary' />,
 	<Email key='e_1' color='primary' />,
-	<Cloud key='c_1' />,
+	<Cloud key='c_1' color='primary' />,
 ]
 
 const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {

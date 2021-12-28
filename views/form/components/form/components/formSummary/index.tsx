@@ -144,6 +144,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 					formProducts={props.formProducts}
 					isSubmitting={props.isSubmitting}
 					setSummaryData={setSummaryData}
+					permissions={props.permissions}
 					handleDrawer={handleDrawer}
 					setValue={props.setValue}
 					formData={props.formData}

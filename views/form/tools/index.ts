@@ -400,11 +400,8 @@ export const sendForm = async (
 		// PROCESAR PAGO
 		if (data.payMethod === $`Pago con tarjeta`) {
 			//  MAMMAMARIA Y FRANKS
-			await paymentAlert(
-				data,
-				(data.total as string).replace(formData?.badge || 'GTQ', '').substr(1),
-				reset,
-				'cardpoint'
+			await paymentAlert(data, formData?.badge ?? 'GTQ', reset, 'processPayment').catch((err) =>
+				console.log(err)
 			)
 		}
 

@@ -34,6 +34,7 @@ interface ProductSidebarProps {
 	formProducts: FormDataProductSliderAnswer | undefined
 	handleDrawer: (open: boolean) => EmptyFunction
 	setValue: UseFormSetValue<FieldValues>
+	permissions?: CompanyPermissions
 	checkoutData: FormCheckoutData
 	clickOnSubmit: EmptyFunction
 	summaryData: FormSummaryData
@@ -149,6 +150,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 							value={props.summaryData.payMethodValue}
 							className={Styles.shippingOrPayMethod}
 							setSummaryData={props.setSummaryData}
+							permissions={props.permissions}
 							setFieldValue={props.setValue}
 						/>
 					</div>
