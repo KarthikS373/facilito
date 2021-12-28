@@ -11,8 +11,8 @@ import Styles from './style.module.scss'
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker'
 import { RangeInput } from '@mui/lab/DateRangePicker/RangeTypes'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import MobileDatePicker from '@mui/lab/MobileDatePicker'
 import DateFnsAdapter from '@mui/lab/AdapterDateFns'
+import DatePicker from '@mui/lab/DatePicker'
 import enLocale from 'date-fns/locale/en-US'
 import esLocale from 'date-fns/locale/es'
 
@@ -57,13 +57,16 @@ const MUIDatePicker: React.FC = () => {
 			dateAdapter={DateFnsAdapter}
 			locale={langCode === 'es' ? esLocale : enLocale}>
 			{!props.switch_1 ? (
-				<MobileDatePicker
+				<DatePicker
 					disablePast
+					showTodayButton
+					todayText={$`Hoy`}
 					showToolbar={false}
 					onChange={onChange}
 					okText={$`Aceptar`}
 					cancelText={$`Cancelar`}
 					value={currentDate[0]}
+					allowSameDateSelection
 					showDaysOutsideCurrentMonth
 					className={Styles.datepicker}
 					onAccept={timePickerComponent}
@@ -76,8 +79,11 @@ const MUIDatePicker: React.FC = () => {
 					<label className={Styles.label}>{props.label + (props.required ? '*' : '')}</label>
 					<DateRangePicker
 						disablePast
+						showTodayButton
+						todayText={$`Hoy`}
 						showToolbar={false}
 						okText={$`Aceptar`}
+						allowSameDateSelection
 						cancelText={$`Cancelar`}
 						showDaysOutsideCurrentMonth
 						className={Styles.datepicker}

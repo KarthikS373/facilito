@@ -86,7 +86,6 @@ const handleChecks = (
  * @param formURL
  * @param setErrs
  */
-// TODO: Verificar que valide bien el link
 export const validateFclt = (
 	props: SettingsMenuProps,
 	formData: SendData,
