@@ -13,12 +13,13 @@ import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
 // UTILS
 import { formComponentsList, initialFormData } from 'views/editForm/utils/initials'
 import { addBusinessFormURL } from 'utils/business'
-import { normalizeString } from 'utils/tools'
+import { getQRCode, normalizeString } from 'utils/tools'
 import { Theme } from '@mui/material/styles'
 import saveFormSchema from 'utils/forms'
 
 // RUTAS
 import ROUTES from 'router/routes'
+import { saveUrl } from 'utils/urls'
 
 /**
  * Mostrar prompt de nueva tienda
@@ -55,7 +56,13 @@ const showNewFormPrompt = (
 				window.Snack('Creando...')
 				addBusinessFormURL(parsedTitle, business.id).then(async () => {
 					window.hideAlert()
-					if (user)
+					if (user) {
+						// CREAR
+						const qr = await getQRCode(
+							`${window.location.origin}/f/${business?.url}/${business.url}_${parsedTitle}`
+						)
+
+						// GUARDAR FORMULARIO
 						await saveFormSchema(business.id, {
 							...(customForm ?? initialFormData),
 							title,
@@ -63,15 +70,26 @@ const showNewFormPrompt = (
 							background: `transparent linear-gradient(042deg, ${theme?.palette.primary.main} 0%, ${theme?.palette.secondary.main} 100%) 0% 0% no-repeat padding-box`,
 							components: [{ ...formComponentsList[formComponentsList.length - 1] }],
 							url: `${business.url}_${parsedTitle}`,
+							qr,
 							company: {
 								user: user.email,
 								url: business.url,
 							},
 						})
 
+						// GHUARDAR URL
+						await saveUrl(false, `${business.url}_${parsedTitle}`, {
+							target: `${window.location.origin}/f/${business?.url}/${business.url}_${parsedTitle}`,
+							info: {
+								companyID: business.id,
+								formID: parsedTitle,
+							},
+						})
+					}
+
 					// ROUTER
 					window.Snack('Tienda creada')
-					await router.push(`${ROUTES.newForm}?title=${title}`.replace(':formID', parsedTitle))
+					await router.push(ROUTES.newForm.replace(':formID', parsedTitle))
 				})
 			}
 		},

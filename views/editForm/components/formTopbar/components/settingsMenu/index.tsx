@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -26,7 +26,6 @@ import handleChecks, {
 	getDefValues,
 	handleInputs,
 	SendData,
-	SettingsMenuProps,
 	validateFclt,
 } from './tools'
 import useStrings from 'hooks/lang'
@@ -35,6 +34,7 @@ import useStrings from 'hooks/lang'
 import Styles from './style.module.scss'
 import { useTheme } from '@mui/material/styles'
 import useDefProps from './hooks'
+import FormsContext from 'context/forms'
 
 // ICONOS
 const optionIcons = [
@@ -43,14 +43,15 @@ const optionIcons = [
 	<Cloud key='c_1' color='primary' />,
 ]
 
-const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
+const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 	// STRINGS
 	const { $ } = useStrings()
 
+	// FORMULARIO
+	const formsCtx = useContext(FormsContext)
+
 	// ESTADO
-	const [formData, setFormData] = useState<SendData>(
-		getDefValues(props.url, props.connectionMethods)
-	)
+	const [formData, setFormData] = useState<SendData>(getDefValues(props.formData))
 
 	// ERRORES [whatsapp, email, link]
 	const [errs, setErrs] = useState<[boolean, boolean, boolean]>([false, false, false])
@@ -62,7 +63,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 	const handleData = <T,>(ev: T) => handleInputs(ev, setFormData, setErrs)
 
 	// VALIDAR URL
-	const validateLink = () => validateFclt(props, formData, setErrs, errs)
+	const validateLink = () => validateFclt(props, formsCtx, formData, setErrs, errs)
 
 	// TEMA
 	const theme = useTheme()
@@ -73,7 +74,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 			handleChecks(key, ev, setErrs, setFormData)
 
 	// HOOKS
-	useDefProps(props.url, setFormData, props.connectionMethods)
+	useDefProps(setFormData, props.formData)
 
 	return (
 		<div className={Styles.container}>
@@ -188,23 +189,13 @@ const SettingsMenu: React.FC<SettingsMenuProps> = (props) => {
 }
 
 // MOSTRAR MENU
-const showSettingsMenu = (
-	props: FormTopbarProps,
-	setConnectionMethods: React.Dispatch<React.SetStateAction<ConnectionMethods | undefined>>,
-	connectionMethods?: ConnectionMethods
-): void => {
+const showSettingsMenu = (props: FormTopbarProps): void => {
 	window.Alert({
 		title: 'Ajustes globales',
 		body: 'Configura el tu link dinamico (fclt) y las opciones de envio de respuestas para tu tienda.',
 		type: 'confirm',
 		hideActions: true,
-		customElements: (
-			<SettingsMenu
-				{...props}
-				setConnectionMethods={setConnectionMethods}
-				connectionMethods={connectionMethods}
-			/>
-		),
+		customElements: <SettingsMenu {...props} />,
 	})
 }
 

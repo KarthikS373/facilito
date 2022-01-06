@@ -23,9 +23,6 @@ import showSettingsMenu from '../settingsMenu'
 const publishFormEvent = (
 	$: TemplateStrBuilder,
 	props: FormTopbarProps,
-	published: boolean,
-	setPublished: React.Dispatch<React.SetStateAction<boolean>>,
-	setConnectionMethods: React.Dispatch<React.SetStateAction<ConnectionMethods | undefined>>,
 	company: Business | null
 ): void => {
 	// GUARDAR
@@ -33,8 +30,8 @@ const publishFormEvent = (
 
 	// PUBLICAR
 	if (company?.id) {
-		if (!published) {
-			const publishMethod = (answersConnection?: ConnectionMethods) => {
+		if (!props.formData.current.public) {
+			const publishMethod = () => {
 				// ALERT
 				window.Alert({
 					title: 'Espera un momento',
@@ -45,30 +42,28 @@ const publishFormEvent = (
 				})
 
 				// PUBLICAR
-				props.onAnswersConnection(answersConnection)
-				publishForm(company?.id, props.id).then(() =>
+				publishForm(company?.id, props.formData.current.id).then(() =>
 					window.Alert({
 						title: 'Tienda publicada',
 						body: 'Ahora tu tienda sera visible para todos, puedes compartirles el siguiente link:',
 						type: 'confirm',
 						confirmText: $`Ver ahora`,
-						onHide: () => {
-							props.onPublish(true)
-							setPublished(true)
-						},
+						onHide: () => props.onPublish(true),
 						onConfirm: () =>
-							window.open(`${window.location.origin}/f/${company?.url}/${props.url}`),
-						customElements: <PublicLink url={props.url} />,
+							window.open(
+								`${window.location.origin}/f/${company?.url}/${props.formData.current.url}`
+							),
+						customElements: <PublicLink url={props.formData.current.url} />,
 					})
 				)
 			}
 
 			// VERIFICAR MÉTODOS DE ENVIÓ
 			if (
-				props.answersConnection?.whatsapp.toString().length === 0 ||
-				props.answersConnection?.email.length === 0
+				props.formData.current.answersConnection?.whatsapp.toString().length === 0 ||
+				props.formData.current.answersConnection?.email.length === 0
 			)
-				showSettingsMenu(props, setConnectionMethods)
+				showSettingsMenu(props)
 			else publishMethod()
 		}
 
@@ -80,8 +75,7 @@ const publishFormEvent = (
 				type: 'confirm',
 				onConfirm: () => {
 					props.onPublish(false)
-					setPublished(false)
-					unPublishForm(company?.id, props.id)
+					unPublishForm(company?.id, props.formData.current.id)
 				},
 			})
 		}

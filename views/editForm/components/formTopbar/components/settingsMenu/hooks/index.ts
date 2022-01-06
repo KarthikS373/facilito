@@ -7,14 +7,10 @@ import { useEffect } from 'react'
  * @param url
  * @param setFormData
  */
-const useDefProps = (
-	url: string,
-	setFormData: SetState<SendData>,
-	connectionMethods?: ConnectionMethods
-): void => {
+const useDefProps = (setFormData: SetState<SendData>, form: React.MutableRefObject<Form>): void => {
 	useEffect(() => {
-		setFormData(getDefValues(url, connectionMethods))
-	}, [connectionMethods, url, setFormData])
+		setFormData(getDefValues(form))
+	}, [form, setFormData])
 }
 
 export default useDefProps

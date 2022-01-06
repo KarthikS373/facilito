@@ -1,14 +1,14 @@
 import { createContext, Context } from 'react'
 
 // KEYS
-interface ContextProps {
+export interface FormsContextProps {
 	forms: FormInterface
 	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
 	setFormsDB: (forms: Partial<FormInterface>) => unknown
 }
 
 // VALOR POR DEFECTO
-const DefContext: ContextProps = {
+const DefContext: FormsContextProps = {
 	forms: {
 		answers: [],
 		forms: [],
@@ -18,6 +18,6 @@ const DefContext: ContextProps = {
 }
 
 // CONTEXTO
-const FormsContext: Context<ContextProps> = createContext(DefContext)
+const FormsContext: Context<FormsContextProps> = createContext(DefContext)
 
 export default FormsContext

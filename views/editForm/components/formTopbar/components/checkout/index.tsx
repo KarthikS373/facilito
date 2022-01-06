@@ -3,6 +3,7 @@ import React from 'react'
 
 // COMPONENTES
 import showShippingMethods from './components/shippingMethods'
+import { updateFormProp } from 'views/editForm/tools'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -19,6 +20,7 @@ import Motorcycle from '@mui/icons-material/CarRental'
 import MoneyOff from '@mui/icons-material/MoneyOff'
 
 // CONTEXT
+import { FormsContextProps } from 'context/forms'
 import defaultSettings from './utils/initials'
 
 // ESTILOS
@@ -26,13 +28,13 @@ import Styles from './style.module.scss'
 
 const showCheckoutAlert = (
 	$: TemplateStrBuilder,
-	checkoutOptions: FormCheckout | undefined,
-	badge: string,
-	onChangeCheckoutOptions?: (options: FormCheckout) => unknown,
-	permissions?: CompanyPermissions
+	formData: React.MutableRefObject<Form>,
+	formsCtx: FormsContextProps,
+	business: Business | null,
+	onSave: (ctrl: boolean) => unknown
 ): void => {
 	// DEFAULT PROPS
-	const checkoutSettings: FormCheckout = checkoutOptions || defaultSettings
+	const checkoutSettings: FormCheckout = formData.current.checkout ?? defaultSettings
 
 	// GUARDAR MÉTODOS DE ENVÍO
 	const saveCheckoutShippings = (shippingsList: ShippingPrice[]) =>
@@ -50,11 +52,12 @@ const showCheckoutAlert = (
 	const shippingMethods = () =>
 		showShippingMethods(
 			$,
-			badge,
-			checkoutOptions,
 			checkoutSettings,
+			formsCtx,
+			formData,
+			business,
 			saveCheckoutShippings,
-			onChangeCheckoutOptions
+			onSave
 		)
 
 	// MOSTRAR
@@ -63,7 +66,10 @@ const showCheckoutAlert = (
 		body: 'Configura el todo comportamiento del carrito, el checkout (resumen de compra) y productos dentro de la tienda.',
 		type: 'confirm',
 		maxWidth: 520,
-		onConfirm: () => onChangeCheckoutOptions && onChangeCheckoutOptions(checkoutSettings),
+		onConfirm: () => {
+			updateFormProp('checkout', checkoutSettings, formsCtx, formData)
+			onSave(false)
+		},
 		customElements: (
 			<div style={{ marginTop: 'var(--margin)' }}>
 				<FormControl component='fieldset' className={Styles.checkoutOptions}>
@@ -92,7 +98,7 @@ const showCheckoutAlert = (
 								),
 							}}
 						/>
-						{(!permissions || permissions.payments) && (
+						{(!business?.permissions || business?.permissions.payments) && (
 							<TextField
 								label={$`Porcentaje de tarjeta`}
 								variant='outlined'
@@ -123,7 +129,9 @@ const showCheckoutAlert = (
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position='start'>
-										<span>{badge.trim() === 'GTQ' ? 'Q' : badge.trim().charAt(0)}</span>
+										<span>
+											{business?.badge.trim() === 'GTQ' ? 'Q' : business?.badge.trim().charAt(0)}
+										</span>
 									</InputAdornment>
 								),
 							}}

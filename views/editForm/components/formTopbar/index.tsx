@@ -29,12 +29,12 @@ import PopperMenuList from 'components/popperMenu'
 import showShareMenu from './components/shareMenu'
 
 // HOOKS
-import useStateProps from './hooks'
 import useStrings from 'hooks/lang'
 import updateTitle from './tools'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import FormsContext from 'context/forms'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -44,13 +44,8 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	// BUSINESS
 	const company = useContext(BusinessContext)
 
-	// MÉTODOS DE CONEXIÓN
-	const [connectionMethods, setConnectionMethods] = useState<ConnectionMethods | undefined>(
-		props.answersConnection
-	)
-
-	// PUBLICAR
-	const [published, setPublished] = useState<boolean>(props.public)
+	// FORMULARIO
+	const formsCtx = useContext(FormsContext)
 
 	// MENU DE OPCIONES
 	const [settingsMenu, setSettingsMenu] = useState<HTMLElement | null>(null)
@@ -69,28 +64,17 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	const sendTitle = (ev: React.ChangeEvent) => updateTitle(ev, props.onTitle)
 
 	// MOSTRAR MENU DE COMPARTIR
-	const openShareMenu = () => showShareMenu(props.formQR, props.id, props.url)
+	const openShareMenu = () => showShareMenu(props.formData)
 
 	// MOSTRAR MENU DE OPCIONES
-	const openFormSettingsMenu = () =>
-		showSettingsMenu(props, setConnectionMethods, connectionMethods)
+	const openFormSettingsMenu = () => showSettingsMenu(props)
 
 	// MOSTRAR MENU DE PUBLICACION
-	const showPublishMenu = () =>
-		publishFormEvent($, props, published, setPublished, setConnectionMethods, company.business)
+	const showPublishMenu = () => publishFormEvent($, props, company.business)
 
 	// ABRIR MENU DE CHECKOUT
 	const openCheckoutMenu = () =>
-		showCheckoutAlert(
-			$,
-			props.checkoutOptions,
-			company.business?.badge ?? '',
-			props.onChangeCheckoutOptions,
-			company.business?.permissions
-		)
-
-	// ACTUALIZAR ESTADO DE PUBLICACIÓN
-	useStateProps(props.public, props.answersConnection, setPublished, setConnectionMethods)
+		showCheckoutAlert($, props.formData, formsCtx, company.business, props.onSave)
 
 	return (
 		<>
@@ -123,8 +107,10 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 					<Button
 						fullWidth
 						variant='outlined'
-						startIcon={published ? <PublicOffTwoTone /> : <PublicTwoToneIcon />}>
-						{published ? $`Ocultar` : $`Publicar`}
+						startIcon={
+							props.formData.current.public ? <PublicOffTwoTone /> : <PublicTwoToneIcon />
+						}>
+						{props.formData.current.public ? $`Ocultar` : $`Publicar`}
 					</Button>
 				</MenuList>
 
@@ -158,7 +144,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 							</InputAdornment>
 						),
 					}}
-					defaultValue={props.defValue}
+					value={props.formData.current.title}
 					placeholder={$`Titulo de la tienda`}
 				/>
 
@@ -170,10 +156,10 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 					{/* VISUALIZAR */}
 					<a
 						target='_blank'
-						title={props.url}
+						title={props.formData.current.url}
 						rel='noreferrer noopener'
 						href={ROUTES.form
-							.replace(':formURL', props.url)
+							.replace(':formURL', props.formData.current.url)
 							.replace(':companyURL', company.business?.url ?? '')}>
 						<Button
 							fullWidth

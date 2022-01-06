@@ -1,22 +1,16 @@
+import { FormsContextProps } from 'context/forms'
 import { verifyEmail } from 'utils/auth'
 import { deleteURL, validateURL } from 'utils/urls'
+import { updateFormProp } from 'views/editForm/tools'
 
 // PROPIEDADES
 export interface FormTopbarProps {
-	onAnswersConnection: (answersConnection?: ConnectionMethods) => unknown
-	onChangeCheckoutOptions?: (options: FormCheckout) => unknown
+	formData: React.MutableRefObject<Form>
 	onChangeURL: (url: string) => Promise<void>
-	onPublish: (published: boolean) => unknown
-	answersConnection?: ConnectionMethods
-	onTitle: (title: string) => unknown
 	onSave: (ctrl: boolean) => unknown
-	checkoutOptions?: FormCheckout
+	onTitle: (title: string) => unknown
+	onPublish: (published: boolean) => unknown
 	onCustomize: EmptyFunction
-	defValue?: string
-	public: boolean
-	formQR: string
-	url: string
-	id: string
 }
 
 enum MethodValue {
@@ -26,12 +20,6 @@ enum MethodValue {
 
 export interface SendData extends ConnectionMethods {
 	link?: string
-}
-
-// PROPS PARA MENU
-export interface SettingsMenuProps extends FormTopbarProps {
-	setConnectionMethods: React.Dispatch<React.SetStateAction<ConnectionMethods | undefined>>
-	connectionMethods?: ConnectionMethods
 }
 
 /**
@@ -87,8 +75,9 @@ const handleChecks = (
  * @param setErrs
  */
 export const validateFclt = (
-	props: SettingsMenuProps,
-	formData: SendData,
+	props: FormTopbarProps,
+	formsCtx: FormsContextProps,
+	formSendData: SendData,
 	setErrs: React.Dispatch<React.SetStateAction<[boolean, boolean, boolean]>>,
 	errs: [boolean, boolean, boolean]
 ): void => {
@@ -97,27 +86,26 @@ export const validateFclt = (
 		if (errs.every((err) => err === false)) {
 			// GUARDAR
 			window.Snack('Guardando ajustes...')
-			const tmpData = { ...formData }
+			const tmpData = { ...formSendData }
 			delete tmpData.link
 
-			props.onAnswersConnection(tmpData)
+			updateFormProp('answersConnection', tmpData, formsCtx, props.formData)
 			props.onSave(false)
-			if (change && formData.link) props.onChangeURL(formData.link)
+			if (change && formSendData.link) props.onChangeURL(formSendData.link)
 
 			// SALIR
-			props.setConnectionMethods(tmpData)
 			window.hideAlert()
 		}
 	}
 
 	// ACTUALIZAR URL
-	if (props.url !== formData.link) {
-		if (formData.link) {
-			validateURL(formData.link).then((validURL: boolean) => {
+	if (props.formData.current.url !== formSendData.link) {
+		if (formSendData.link) {
+			validateURL(formSendData.link).then((validURL: boolean) => {
 				if (validURL) {
 					// BORRAR URL ANTERIOR
-					deleteURL(props.url).then(() => {
-						if (formData.link) {
+					deleteURL(props.formData.current.url).then(() => {
+						if (formSendData.link) {
 							setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], false])
 							sendData(true)
 						}
@@ -185,9 +173,9 @@ export const handleInputs = <T extends unknown>(
  * @description Crear valores por defecto para estado
  * @param props
  */
-export const getDefValues = (link: string, connectionMethods?: ConnectionMethods): SendData =>
-	connectionMethods
-		? { ...connectionMethods, link }
-		: { methods: [], whatsapp: '', email: '', link }
+export const getDefValues = (form: React.MutableRefObject<Form>): SendData =>
+	form.current.answersConnection
+		? { ...form.current.answersConnection, link: form.current.url }
+		: { methods: [], whatsapp: '', email: '', link: form.current.url }
 
 export default handleChecks

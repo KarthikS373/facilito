@@ -1,6 +1,8 @@
 // UTILS
 import saveFormSchema, { replaceFormURL } from 'utils/forms'
+import { FormsContextProps } from 'context/forms'
 import { getQRCode } from 'utils/tools'
+import { updateFormProp } from '.'
 
 /**
  * Actualizar url
@@ -17,8 +19,7 @@ export const updateUrl = async (
 	formData: React.MutableRefObject<Form>,
 	company: Business | null,
 	saveCurrentForm: (ctrl: boolean) => unknown,
-	setFormProps: React.Dispatch<React.SetStateAction<CustomFormState>>,
-	enableUrl: React.MutableRefObject<boolean>
+	formsCtx: FormsContextProps
 ): Promise<void> => {
 	// COPIAR Y ASIGNAR
 	const id: string = formData.current.id
@@ -27,11 +28,11 @@ export const updateUrl = async (
 	// REMPLAZAR
 	if (company?.id) {
 		// HABILITAR CAMBIO DE URL
-		enableUrl.current = true
 		delete formData.current.fclt
 
 		// REMPLAZAR
 		await replaceFormURL(company.id, id, newUrl)
+
 		// CREAR QR NUEVO
 		const qrUrl = await getQRCode(`${window.location.origin}/f/${company?.url}/${newUrl}`)
 		formData.current.qr = qrUrl
@@ -40,28 +41,8 @@ export const updateUrl = async (
 		await saveCurrentForm(false)
 
 		// ACTUALIZAR
-		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, url: newUrl }))
+		updateFormProp('url', newUrl, formsCtx, formData)
 	}
-}
-
-/**
- * Inputs personales
- * @description Actualizar inputs de datos de personales
- * @param formData
- * @param personalOptions
- * @param components
- */
-export const updatePersonalInputs = (
-	formData: React.MutableRefObject<Form>,
-	personalOptions: FormPersonalData,
-	components: FormContainerProps[]
-): void => {
-	formData.current.includePersonalData = personalOptions
-
-	// BUSCAR COMPONENTE DE CALENDARIO ( CORREO OBLIGATORIO )
-	components.forEach((component: FormContainerProps) => {
-		if (component.name.startsWith('date')) formData.current.includePersonalData.email = true
-	})
 }
 
 /**

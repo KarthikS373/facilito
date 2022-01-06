@@ -109,12 +109,14 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 	)
 }
 
-const showShareMenu = (formQR: string, id: string, url?: string): void => {
+const showShareMenu = (form: React.MutableRefObject<Form>): void => {
 	window.Alert({
 		title: 'Compartir tienda',
 		body: 'Aqui se muestran todas las opciones para mostrar tu tienda al mundo.',
 		type: '',
-		customElements: <ShareMenu formQR={formQR} url={url} id={id} />,
+		customElements: (
+			<ShareMenu formQR={form.current.qr} url={form.current.url} id={form.current.id} />
+		),
 	})
 }
 

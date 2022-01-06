@@ -1,4 +1,5 @@
 interface Form {
+	[index: string]: FormValue
 	includePersonalData: FormPersonalData
 	answersConnection?: ConnectionMethods
 	tracking?: FormTrackingStep[]
@@ -18,6 +19,20 @@ interface Form {
 	qr: string
 	id: string
 }
+
+type FormValue =
+	| FormPersonalData
+	| ConnectionMethods
+	| FormTrackingStep[]
+	| BlockComponent[]
+	| 'cash'
+	| 'card'
+	| FormCheckout
+	| FormCompany
+	| string
+	| boolean
+	| 'es'
+	| 'en'
 
 interface FormTrackingStep {
 	name: string
@@ -145,8 +160,6 @@ interface FormContainerProps extends BlockComponent {
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 	onChangePersonalOptions?: (options: FormPersonalData) => unknown
 	personalOptions?: FormPersonalData
-	onRequired?: (required: boolean) => unknown
-	onFile?: (url: string) => unknown
 	onDelete?: EmptyFunction
 	onCopy?: EmptyFunction
 	active?: boolean

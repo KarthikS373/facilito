@@ -17,6 +17,7 @@ import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import getDefaultState, { addShipping, deleteShipping, setShippingValue } from './tools'
+import { FormsContextProps } from 'context/forms'
 import type { ShippingPriceExt } from './tools'
 import BusinessContext from 'context/business'
 
@@ -109,21 +110,18 @@ const ShippingMethods: React.FC<ShippingMethodsProps> = ({ onChange, defaultList
 // ALERTA DE MÉTODOS DE ENVÍO
 const showShippingMethods = (
 	$: TemplateStrBuilder,
-	badge: string,
-	checkoutOptions: FormCheckout | undefined,
 	checkoutSettings: FormCheckout,
+	formsCtx: FormsContextProps,
+	formData: React.MutableRefObject<Form>,
+	business: Business | null,
 	saveCheckoutShippings: (shippingsList: ShippingPrice[]) => void,
-	onChangeCheckoutOptions?: (options: FormCheckout) => unknown
+	onSave: (ctrl: boolean) => unknown
 ): unknown =>
 	window.Alert({
 		title: $`Tarifas de envío`,
 		hasNextAlert: true,
 		body: $`Configura los métodos de envío y precios correspondientes disponibles para tus clientes.`,
-		onHide: () => showCheckoutAlert($, checkoutOptions, badge, onChangeCheckoutOptions),
-		onConfirm: () => {
-			if (onChangeCheckoutOptions) onChangeCheckoutOptions(checkoutSettings)
-			showCheckoutAlert($, checkoutOptions, badge, onChangeCheckoutOptions)
-		},
+		onHide: () => showCheckoutAlert($, formData, formsCtx, business, onSave),
 		type: 'confirm',
 		customElements: (
 			<ShippingMethods

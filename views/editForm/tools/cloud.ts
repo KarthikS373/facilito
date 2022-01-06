@@ -1,6 +1,5 @@
 // UTILS
 import saveFormSchema from 'utils/forms'
-import { saveUrl } from 'utils/urls'
 
 /**
  * @description Guardar tienda en DB
@@ -13,19 +12,15 @@ import { saveUrl } from 'utils/urls'
  */
 export const saveFormOnCloud = async (
 	ctrl: boolean,
-	componentsList: React.MutableRefObject<BlockComponent[]>,
 	formData: React.MutableRefObject<Form>,
-	company: Business | null,
-	enableUrl: React.MutableRefObject<boolean>
+	company: Business | null
 ): Promise<void> => {
 	// BUSCAR ERRORES
 	if (ctrl) {
 		// ERROR
 		let emptyError = false
 
-		// RECORRER
-		const componentsCopy = [...componentsList.current]
-		componentsCopy.forEach((component: BlockComponent) => {
+		formData.current.components.forEach((component: BlockComponent) => {
 			if (component.name !== 'multiple') {
 				if (component.name !== 'image' && component.name !== 'video') {
 					if (component.label.length === 0)
@@ -52,19 +47,19 @@ export const saveFormOnCloud = async (
 			})
 	}
 
-	// GUARDAR URL
-	if (enableUrl.current && company?.id) {
-		await saveUrl(formData.current.fclt !== undefined, formData.current.url, {
-			target: `${window.location.origin}/f/${company?.url}/${formData.current.url}`,
-			info: {
-				companyID: company.id,
-				formID: formData.current.id,
-			},
-		})
-		enableUrl.current = false
-	}
-
 	// GUARDAR
-	formData.current.components = componentsList.current
 	if (company) await saveFormSchema(company?.id, formData.current)
+}
+
+/**
+ * Guardar metodos de envio
+ * @param formData
+ * @param answersConnection
+ */
+export const saveSendMethods = (
+	formData: React.MutableRefObject<Form>,
+	answersConnection?: ConnectionMethods
+): void => {
+	if (!answersConnection) delete formData.current.answersConnection
+	else formData.current.answersConnection = answersConnection
 }

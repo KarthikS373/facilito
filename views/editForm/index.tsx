@@ -2,41 +2,32 @@
 import React, { useRef, useState, useContext } from 'react'
 
 // COMPONENTES
-import ComponentsSideBar from './components/componentsSidebar'
-import Footer from 'components/layout/components/footer'
-import ComponentsViewer from './components/viewer'
+import FormComponents from './components/formComponents'
 import CustomizeMenu from './components/customize'
 import FormTopbar from './components/formTopbar'
-import FormHeader from 'components/formHeader'
-
-// DND
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 // NEXT
 import dynamic from 'next/dynamic'
 
 // HOOKS
-import { useCloudForm } from './hooks'
+import usePaletteColors from 'hooks/theme'
 
 // MATERIAL
 import { ThemeProvider } from '@mui/material/styles'
 
 // UTILS
-import { initialCustomFormState, formComponentsList, initialFormData } from './utils/initials'
-import { updateCheckoutOptions, updatePersonalInputs, updateUrl } from './tools/formProps'
-import { copyComponent, deleteComponent, saveComponentProps } from './tools/components'
-import { extractFormComponent } from 'utils/forms'
-import { saveFormOnCloud } from './tools/cloud'
+import { updateUrl } from './tools/formProps'
+import { getForm, updateFormProp } from './tools'
 import { defThemeColors, generateTheme } from 'utils/tools'
-import { onDragEnd } from './tools'
+import { initialFormData } from './utils/initials'
+import { saveFormOnCloud } from './tools/cloud'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
-import UserContext from 'context/user'
+import FormsContext from 'context/forms'
 
 // ESTILO
 import Styles from './style.module.scss'
-import usePaletteColors from 'hooks/theme'
 
 // DYNAMIC COMPONENTS
 const AlertProvider = dynamic(() => import('providers/alerts'))
@@ -47,19 +38,15 @@ interface FormViewProps {
 	formTitle?: string
 }
 
-const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
-	// EMPRESA, STRINGS Y USUARIO
+const NewFormView: React.FC<FormViewProps> = ({ id }) => {
+	// EMPRESA
 	const { business } = useContext(BusinessContext)
-	const { user } = useContext(UserContext)
 
-	// LISTA DE COMPONENTES
-	const [components, setComponents] = useState<FormContainerProps[]>([formComponentsList[13]])
+	// FORMULARIOS
+	const formsCtx = useContext(FormsContext)
 
-	// PROPIEDADES DE LA TIENDA
-	const [formProps, setFormProps] = useState<CustomFormState>(initialCustomFormState)
-
-	// PROPIEDADES DE CHECKOUT
-	const [formCheckout, setFormCheckout] = useState<FormCheckout | undefined>(undefined)
+	// FORMULARIP ACTUAL
+	const currentForm = getForm(id, formsCtx.forms.forms)
 
 	// MENU DE PERSONALIZACIÓN
 	const [openCustomized, setOpenCustomized] = useState<boolean>(false)
@@ -67,113 +54,29 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 	// ACTUALIZAR
 	const [defColors, setDefColors] = useState<string[]>(defThemeColors)
 
-	// REFERENCIA DE COMPONENTES
-	const componentsList: React.MutableRefObject<BlockComponent[]> = useRef([
-		extractFormComponent(formComponentsList[13]),
-	])
-
-	// REFERENCIA DE VIEWER DE COMPONENTES
-	const viewerRef: React.RefObject<HTMLDivElement> = useRef(null)
-
-	// REFERENCIA DE PRIMER GUARDADO
-	const enableUrl: React.MutableRefObject<boolean> = useRef(true)
-
 	// REFERENCIA DE TIENDA ACTUAL
-	const formData: React.MutableRefObject<Form> = useRef({ ...initialFormData })
+	const formData: React.MutableRefObject<Form> = useRef(currentForm ?? initialFormData)
 
-	// ON DRAG
-	const reOrderComponents = (res: DropResult) =>
-		onDragEnd(res, components, componentsList, setComponents, formData)
-
-	// GUARDAR DESCRIPCIÓN
-	const saveDescription = (description: string) => (formData.current.description = description)
+	// ASIGNAR DATOS A REF
+	formData.current = currentForm ?? initialFormData
 
 	// GUARDAR TIENDA EN CLOUD
-	const saveCurrentForm = (ctrl: boolean) =>
-		saveFormOnCloud(ctrl, componentsList, formData, business, enableUrl)
+	const saveCurrentForm = (ctrl: boolean) => saveFormOnCloud(ctrl, formData, business)
 
-	// OBTENER COLORES
-	const { background } = formProps
-
-	// GUARDA TITULO
-	const setTitle = (title: string) => {
-		formData.current.title = title
-		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, title }))
-	}
-
-	// GUARDAR MÉTODOS DE ENVIÓ
-	const saveSendMethods = (answersConnection?: ConnectionMethods) => {
-		if (!answersConnection) delete formData.current.answersConnection
-		else formData.current.answersConnection = answersConnection
-	}
-
-	// CAMBIAR COLOR DE FONDO
-	const changeBackground = (background: string) => {
-		formData.current.background = background
-		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, background }))
-	}
-
-	// CAMBIAR BANNER DE FONDO
-	const changeBanner = (banner: string) => {
-		formData.current.banner = banner
-		setFormProps((prevProps: CustomFormState) => ({ ...prevProps, banner }))
-	}
-
-	// COPIAR COMPONENTE
-	const copyComp = (index: number) =>
-		copyComponent(index, components, componentsList, setComponents)
-
-	// CAMBIAR OPCIONES DE CHECKOUT
-	const setCheckoutOptions = (checkoutOptions: FormCheckout) =>
-		updateCheckoutOptions(formData, checkoutOptions, setFormCheckout, business?.id)
+	// CAMBIAR PROPIEDAD
+	const changeFormProp = (prop: keyof Form) => (newValue: FormValue) =>
+		updateFormProp(prop, newValue, formsCtx, formData)
 
 	// ACTUALIZAR ID DE TIENDA
 	const setUrl = (newUrl: string) =>
-		updateUrl(newUrl, formData, business, saveCurrentForm, setFormProps, enableUrl)
-
-	// PUBLICAR
-	const onPublish = (published: boolean) => (formData.current.public = published)
+		updateUrl(newUrl, formData, business, saveCurrentForm, formsCtx)
 
 	// ABRIR MENU DE PERSONALIZAR
-	const handleCustomizeMenu = (open: boolean) => () => {
-		setOpenCustomized(open)
-		if (!open) saveCurrentForm(false)
-	}
-
-	// CAMBIAR OPCIONES DE INPUTS CON DATOS PERSONALES
-	const setPersonalInputs = (personalOptions: FormPersonalData) =>
-		updatePersonalInputs(formData, personalOptions, components)
-
-	// CAMBIAR OBLIGATORIO
-	const changeRequiredComponent = (index: number, required: boolean) =>
-		(componentsList.current[index].required = required)
-
-	// EVENTO AL SUBIR ARCHIVO
-	const saveSrcComponent = (index: number, src: string) => (componentsList.current[index].src = src)
-
-	// BORRAR COMPONENTE
-	const deleteComp = (index: number) =>
-		deleteComponent(index, components, componentsList, setComponents)
-
-	// GUARDAR DATOS DE COMPONENTES
-	const saveCompProps = (index: number, component: keyof BlockComponent, val: FormInputValue) =>
-		saveComponentProps(index, component, val, components, componentsList)
+	const handleCustomizeMenu = (open: boolean) => () =>
+		saveCurrentForm(false) && setOpenCustomized(open)
 
 	// COLORES
-	usePaletteColors(setDefColors, background)
-
-	// CARGAR DESDE CLOUD
-	useCloudForm(
-		formData,
-		business,
-		id,
-		user || null,
-		componentsList,
-		setComponents,
-		setFormProps,
-		setFormCheckout,
-		formTitle
-	)
+	usePaletteColors(setDefColors, formData.current.background)
 
 	return (
 		<>
@@ -192,72 +95,30 @@ const NewFormView: React.FC<FormViewProps> = ({ id, formTitle }) => {
 						}>
 						{/* TOPBAR */}
 						<FormTopbar
-							onTitle={setTitle}
-							url={formProps.url}
+							formData={formData}
 							onChangeURL={setUrl}
-							onPublish={onPublish}
 							onSave={saveCurrentForm}
-							id={formData.current.id}
-							formQR={formData.current.qr}
-							checkoutOptions={formCheckout}
-							public={formData.current.public}
-							onAnswersConnection={saveSendMethods}
+							onTitle={changeFormProp('title')}
+							onPublish={changeFormProp('public')}
 							onCustomize={handleCustomizeMenu(true)}
-							onChangeCheckoutOptions={setCheckoutOptions}
-							answersConnection={formData.current.answersConnection}
-							defValue={formProps.title !== initialFormData.title ? formProps.title : undefined}
 						/>
 
 						{/* MENU DE PERSONALIZACION */}
 						<CustomizeMenu
 							id={id}
 							open={openCustomized}
-							onBanner={changeBanner}
-							onColor={changeBackground}
-							defaultBanner={formProps.banner}
+							onBanner={changeFormProp('banner')}
 							onBack={handleCustomizeMenu(false)}
-							defaultBackground={formProps.background}
+							onColor={changeFormProp('background')}
+							defaultBanner={formData.current.banner}
+							defaultBackground={formData.current.background}
 						/>
 
-						<DragDropContext onDragEnd={reOrderComponents}>
-							{/* COMPONENTES */}
-							<ComponentsSideBar />
-
-							{/* VIEWER DE COMPONENTES */}
-							<div
-								ref={viewerRef}
-								className={Styles.viewer}
-								style={{
-									background: formProps.background.startsWith('transparent linear-gradient')
-										? formProps.background
-										: `url(${formProps.background}) center center/cover no-repeat fixed`,
-								}}>
-								<div className={Styles.viewContent}>
-									{/* HEADER */}
-									<FormHeader
-										banner={formProps.banner}
-										formTitle={formProps.title}
-										formDescription={formProps.description}
-										onChangeDescription={saveDescription}
-									/>
-
-									{/* LISTA DE COMPONENTES */}
-									<ComponentsViewer
-										personalOptions={formData.current.includePersonalData}
-										onChangePersonalOptions={setPersonalInputs}
-										onRequired={changeRequiredComponent}
-										onFile={saveSrcComponent}
-										onChange={saveCompProps}
-										components={components}
-										onDelete={deleteComp}
-										onCopy={copyComp}
-										formId={id}
-									/>
-
-									<Footer hideFooter={true} minimize={false} />
-								</div>
-							</div>
-						</DragDropContext>
+						<FormComponents
+							id={id}
+							formData={formData}
+							onChangeDescription={changeFormProp('description')}
+						/>
 					</div>
 				</ThemeProvider>
 			</div>

@@ -53,22 +53,17 @@ const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
 					<Tab className={Styles.tab} icon={<AccountBalanceTwoToneIcon />} label={$`Bancaria`} />
 					{user?.role === 'admin' && (
-						<>
-							{' '}
-							<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
-							<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
-						</>
+						<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
+					)}
+					{user?.role === 'admin' && (
+						<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
 					)}
 				</Tabs>
 
 				<Bank show={tabIndex === 1} />
 				<General show={tabIndex === 0} />
-				{user?.role === 'admin' && (
-					<>
-						<Users show={tabIndex === 3} />
-						<Payments show={tabIndex === 2} />
-					</>
-				)}
+				{user?.role === 'admin' && <Users show={tabIndex === 3} />}
+				{user?.role === 'admin' && <Payments show={tabIndex === 2} />}
 			</Paper>
 		</div>
 	)
