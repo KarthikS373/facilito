@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import StylesGlb from '../../../../style.module.scss'
+import StylesText from '../textInput/style.module.scss'
 import Styles from './style.module.scss'
 
 // NEXT
@@ -81,7 +81,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 			/>
 			<input
 				aria-label='Helper'
-				className={`${StylesGlb.label} ${StylesGlb.helper}`}
+				className={`${StylesText.label} ${StylesText.helper}`}
 				defaultValue={props.alt}
 				placeholder={
 					eProps.isVideo
@@ -93,7 +93,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 			/>
 			<input
 				aria-label='Href'
-				className={`${StylesGlb.label} ${StylesGlb.helper}`}
+				className={`${StylesText.label} ${StylesText.helper}`}
 				defaultValue={props.href}
 				style={{ color: 'var(--blue)' }}
 				placeholder={

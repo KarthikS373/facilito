@@ -1,6 +1,39 @@
 .container {
 	padding-bottom: 25px;
 
+	.active {
+		padding-left: 30px;
+
+		.dragZone {
+			& svg {
+				opacity: 0.25;
+			}
+		}
+
+		.activeBar {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 7px;
+			height: 100%;
+		}
+	}
+
+	.inactive {
+		padding: 15px 20px;
+
+		.dragZone {
+			& svg {
+				opacity: 0;
+			}
+		}
+
+		&:hover > svg:first-child {
+			opacity: 0.25;
+		}
+	}
+
 	.content {
 		position: relative;
 		box-shadow: 4px 4px 20px #0000001a;
@@ -35,82 +68,6 @@
 			position: absolute;
 			top: 15px;
 			right: 40px;
-		}
-
-		.requiredSpan {
-			position: absolute;
-			top: 58px;
-			left: 22px;
-			font-weight: bold;
-			font-size: 1em;
-			color: var(--lightblue);
-		}
-
-		.label {
-			background-color: #f0f0f0;
-			width: 100%;
-			padding: 0 20px;
-			border-radius: 10px 10px 0px 0px;
-			min-height: 50px;
-
-			&:hover::before {
-				border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-			}
-		}
-
-		.inputRow {
-			margin-top: 20px;
-			margin-left: 20px;
-			width: calc(100% - 40px);
-			align-self: flex-start;
-
-			h3 {
-				color: rgba(0, 0, 0, 0.54);
-				font-size: 1rem;
-				font-weight: normal;
-				margin-bottom: 10px;
-			}
-
-			& > div {
-				display: flex;
-
-				.dateField:first-child {
-					margin-right: 20px;
-				}
-			}
-		}
-
-		.titleField {
-			color: #333;
-			text-align: left;
-			width: 100%;
-		}
-
-		.labelPreview {
-			margin-top: -5px;
-			background-color: #fff;
-			padding: 0;
-			left: 0px;
-			width: calc(100% - 40px);
-			min-height: 35px;
-			font-weight: normal;
-			color: #000;
-		}
-
-		.titlePreview {
-			&::before {
-				display: none;
-			}
-		}
-
-		.helper {
-			background-color: #fff;
-			font-size: 0.9em;
-			height: 40px;
-			margin-top: -8px;
-			padding: 10px 20px;
-			border: none;
-			color: #555;
 		}
 
 		.actions {
@@ -154,39 +111,6 @@
 			}
 		}
 	}
-
-	.active {
-		padding-left: 30px;
-
-		.dragZone {
-			& svg {
-				opacity: 0.25;
-			}
-		}
-
-		.activeBar {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 7px;
-			height: 100%;
-		}
-	}
-
-	.inactive {
-		padding: 15px 20px;
-
-		.dragZone {
-			& svg {
-				opacity: 0;
-			}
-		}
-
-		&:hover > svg:first-child {
-			opacity: 0.25;
-		}
-	}
 }
 
 // ANIMACIÓN DE COPIAR
@@ -227,23 +151,4 @@
 
 .deleteAnim {
 	animation: deleteFrames 0.5s var(--transition) 1;
-}
-
-@media screen and (max-width: 850px) {
-	.container {
-		.content {
-			.daysRange {
-				flex-direction: column;
-
-				fieldset {
-					width: 100%;
-				}
-			}
-
-			.gridInputs {
-				width: 100%;
-				margin-top: 20px;
-			}
-		}
-	}
 }

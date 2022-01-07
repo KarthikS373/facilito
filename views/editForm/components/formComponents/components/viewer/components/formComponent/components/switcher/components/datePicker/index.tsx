@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react'
 
 // ESTILOS
-import StylesGlb from '../../../../style.module.scss'
+import StylesText from '../textInput/style.module.scss'
 import Styles from './style.module.scss'
 
 // MATERIAL
@@ -91,8 +91,8 @@ const DatePicker: React.FC = () => {
 				required
 				placeholder={$`Describe el titulo de esta sección.`}
 				defaultValue={props.label}
-				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview} ${
-					props.preview && StylesGlb.titlePreview
+				className={`${StylesText.label} ${props.preview && StylesText.labelPreview} ${
+					props.preview && StylesText.titlePreview
 				}`}
 				id={`${props.name}_${props.id}`}
 				onChange={props.onWrite && props.onWrite('label')}
@@ -101,7 +101,7 @@ const DatePicker: React.FC = () => {
 			<input
 				required
 				aria-label='Helper'
-				className={`${StylesGlb.label} ${StylesGlb.helper}`}
+				className={`${StylesText.label} ${StylesText.helper}`}
 				placeholder={
 					props.isAnchor
 						? $`Escribe tu enlace aquí (ej: https://example.com)`

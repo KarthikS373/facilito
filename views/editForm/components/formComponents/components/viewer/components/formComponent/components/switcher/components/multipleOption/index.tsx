@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
-import StylesGlb from '../../../../style.module.scss'
+import StylesText from '../textInput/style.module.scss'
 import Styles from './style.module.scss'
 
 // MATERIAL
@@ -60,8 +60,8 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 						? $`Describe el titulo o pregunta para las casillas`
 						: $`Describe el titulo o pregunta para las opciones`
 				}
-				className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview} ${
-					props.preview && StylesGlb.titlePreview
+				className={`${StylesText.label} ${props.preview && StylesText.labelPreview} ${
+					props.preview && StylesText.titlePreview
 				}`}
 				style={{ height: '35px' }}
 				id={`${props.name}_label_${props.id}`}
@@ -69,13 +69,13 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 				inputProps={{ 'aria-label': 'Answer' }}
 			/>
 
-			{props.required && props.preview && <span className={StylesGlb.requiredSpan}>＊</span>}
+			{props.required && props.preview && <span className={StylesText.requiredSpan}>＊</span>}
 
 			<input
 				required
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${StylesGlb.label} ${StylesGlb.helper}`}
+				className={`${StylesText.label} ${StylesText.helper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}

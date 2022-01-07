@@ -8,11 +8,11 @@
 export const animateDelete = (
 	formComponentRef: React.RefObject<HTMLInputElement>,
 	enableUnMount: React.MutableRefObject<boolean>,
-	Styles: { [id: string]: string }
+	deleteAnim: string
 ): void => {
 	// ANIMAR
 	if (formComponentRef.current) {
-		formComponentRef.current.classList.add(Styles.deleteAnim)
+		formComponentRef.current.classList.add(deleteAnim)
 		enableUnMount.current = true
 	}
 }
@@ -27,11 +27,11 @@ export const animateDelete = (
 export const animateCopy = (
 	formComponentRef: React.RefObject<HTMLInputElement>,
 	enableCopy: React.MutableRefObject<boolean>,
-	Styles: { [id: string]: string }
+	copyAnim: string
 ): void => {
 	// ANIMAR
 	if (formComponentRef.current) {
-		formComponentRef.current.classList.add(Styles.copyAnim)
+		formComponentRef.current.classList.add(copyAnim)
 		enableCopy.current = true
 	}
 }
@@ -46,19 +46,21 @@ export const handleComponent = (
 	formComponentRef: React.RefObject<HTMLInputElement>,
 	enableCopy: React.MutableRefObject<boolean>,
 	enableUnMount: React.MutableRefObject<boolean>,
-	props: FormContainerProps,
-	Styles: { [id: string]: string }
+	copyAnim: string,
+	deleteAnim: string,
+	onDelete?: EmptyFunction,
+	onCopy?: EmptyFunction
 ): void => {
 	ev.persist()
-	if (formComponentRef.current && props.onCopy && props.onDelete) {
+	if (formComponentRef.current && onCopy && onDelete) {
 		if (enableCopy.current) {
 			enableCopy.current = false
-			formComponentRef.current.classList.remove(Styles.copyAnim)
-			props.onCopy()
+			formComponentRef.current.classList.remove(copyAnim)
+			onCopy()
 		} else if (enableUnMount.current) {
 			enableUnMount.current = false
-			formComponentRef.current.classList.remove(Styles.deleteAnim)
-			props.onDelete()
+			formComponentRef.current.classList.remove(deleteAnim)
+			onDelete()
 		}
 	}
 }

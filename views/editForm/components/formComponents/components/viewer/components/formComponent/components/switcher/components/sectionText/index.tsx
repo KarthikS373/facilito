@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 
 // ESTILOS
-import Styles from '../../../../style.module.scss'
+import Styles from '../textInput/style.module.scss'
 
 // MATERIAL
 import Input from '@mui/material/Input'

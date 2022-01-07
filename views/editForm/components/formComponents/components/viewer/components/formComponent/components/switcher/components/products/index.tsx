@@ -3,7 +3,7 @@
 import React, { useState, MouseEvent, useContext } from 'react'
 
 // ESTILOS
-import StylesGlb from '../../../../style.module.scss'
+import StylesGlb from '../textInput/style.module.scss'
 import Styles from './style.module.scss'
 
 // NEXT

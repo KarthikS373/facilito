@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 // ESTILOS
-import StylesGlb from '../../../../style.module.scss'
+import StylesText from '../textInput/style.module.scss'
 import Styles from './style.module.scss'
 
 // COMPONENTES
@@ -62,7 +62,7 @@ const Geolocation: React.FC = () => {
 					placeholder={$`País`}
 					required
 					defaultValue={props.label}
-					className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
+					className={`${StylesText.label} ${props.preview && StylesText.labelPreview}`}
 					id={`${props.name}_${props.id}`}
 					name='country'
 					inputProps={{ 'aria-label': 'Country' }}
@@ -73,7 +73,7 @@ const Geolocation: React.FC = () => {
 					required
 					name='city'
 					defaultValue={props.helper}
-					className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
+					className={`${StylesText.label} ${props.preview && StylesText.labelPreview}`}
 					id={`${props.name}_helper_${props.id}`}
 					inputProps={{ 'aria-label': 'City' }}
 					onChange={handleWriteEv('helper')}
@@ -83,7 +83,7 @@ const Geolocation: React.FC = () => {
 					required
 					name='address'
 					defaultValue={props.text}
-					className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
+					className={`${StylesText.label} ${props.preview && StylesText.labelPreview}`}
 					id={`${props.name}_text_${props.id}`}
 					inputProps={{ 'aria-label': 'Address' }}
 					onChange={handleWriteEv('text')}

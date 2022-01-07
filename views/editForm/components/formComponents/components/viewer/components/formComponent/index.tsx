@@ -59,14 +59,10 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 	const formComponentRef: RefObject<HTMLInputElement> = useRef(null)
 
 	// ANIMAR BORRAR
-	const handleDelete = () => animateDelete(formComponentRef, enableUnMount, Styles)
+	const handleDelete = () => animateDelete(formComponentRef, enableUnMount, Styles.deleteAnim)
 
 	// ANIMAR COPIA
-	const handleCopy = () => animateCopy(formComponentRef, enableCopy, Styles)
-
-	// ELIMINAR ANIMACIÓN
-	const handleComponentAnim = (ev: AnimationEvent) =>
-		handleComponent(ev, formComponentRef, enableCopy, enableUnMount, props, Styles)
+	const handleCopy = () => animateCopy(formComponentRef, enableCopy, Styles.copyAnim)
 
 	// CAMBIAR OBLIGATORIO
 	const handleRequired = (_ev: unknown, checked: boolean) =>
@@ -78,6 +74,19 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 
 	// OCULTAR OBLIGATORIO
 	const hideRequired: boolean = getNotRequired(props.name)
+
+	// ELIMINAR ANIMACIÓN
+	const handleComponentAnim = (ev: AnimationEvent) =>
+		handleComponent(
+			ev,
+			formComponentRef,
+			enableCopy,
+			enableUnMount,
+			Styles.copyAnim,
+			Styles.deleteAnim,
+			props.onDelete,
+			props.onCopy
+		)
 
 	return (
 		<div className={Styles.container} ref={formComponentRef} onAnimationEnd={handleComponentAnim}>
