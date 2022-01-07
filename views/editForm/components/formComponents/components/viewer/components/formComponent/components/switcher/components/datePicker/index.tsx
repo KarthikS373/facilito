@@ -22,7 +22,7 @@ import Input from '@mui/material/Input'
 import TimeInput from './components/dateInput'
 
 // TOOLS
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
 import getDaysStr, {
 	handleDuration,

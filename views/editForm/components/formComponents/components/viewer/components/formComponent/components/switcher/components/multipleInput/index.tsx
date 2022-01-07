@@ -13,9 +13,10 @@ import FormGroup from '@mui/material/FormGroup'
 import Checkbox from '@mui/material/Checkbox'
 
 // ENV
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
-import useStrings from 'hooks/lang'
 import { initialFormData } from 'views/editForm/utils/initials'
+import onChangeOption, { optionsKeys } from './tools'
+import FormContext from '../../../../../../context'
+import useStrings from 'hooks/lang'
 
 const MultipleInput: React.FC = () => {
 	// STRINGS
@@ -26,20 +27,14 @@ const MultipleInput: React.FC = () => {
 
 	// ESTADO
 	const [personalOptions, setPersonalOptions] = useState<FormPersonalData>(
-		props.personalOptions || initialFormData.includePersonalData
+		props.personalOptions ?? initialFormData.includePersonalData
 	)
 
 	// OBTENER VALORES
-	const onChangeOption = (key: keyof FormPersonalData) => (ev: ChangeEvent<HTMLInputElement>) => {
-		// ASIGNAR
-		const checked: boolean = ev.target.checked
-		const options: FormPersonalData = { ...personalOptions }
-		options[key] = checked
+	const onChangeOptionEv = (key: keyof FormPersonalData) => (ev: ChangeEvent<HTMLInputElement>) =>
+		onChangeOption(key, ev, setPersonalOptions, props.onChangePersonalOptions)
 
-		// ENVIAR
-		props.onChangePersonalOptions && props.onChangePersonalOptions(options)
-		setPersonalOptions(options)
-	}
+	const fields = [$`Número de teléfono`, $`Correo electrónico`, $`Dirección`, $`Observaciones`]
 
 	// LISTA DE OPCIONES
 	const optionsList = [
@@ -48,8 +43,6 @@ const MultipleInput: React.FC = () => {
 		personalOptions.address,
 		personalOptions.instructions,
 	]
-	const optionsKeys: (keyof FormPersonalData)[] = ['phone', 'email', 'address', 'instructions']
-	const fields = [$`Número de teléfono`, $`Correo electrónico`, $`Dirección`, $`Observaciones`]
 
 	return (
 		<>
@@ -71,7 +64,7 @@ const MultipleInput: React.FC = () => {
 									name={field}
 									color='primary'
 									checked={optionsList[key]}
-									onChange={onChangeOption(optionsKeys[key])}
+									onChange={onChangeOptionEv(optionsKeys[key])}
 								/>
 							}
 							label={field}

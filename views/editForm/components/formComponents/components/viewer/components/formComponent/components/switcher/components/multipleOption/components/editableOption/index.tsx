@@ -1,5 +1,5 @@
 // REACT
-import React, { ChangeEvent, KeyboardEvent, useContext } from 'react'
+import React, { useContext } from 'react'
 
 // MATERIAL
 import { CheckboxProps } from '@mui/material/Checkbox/Checkbox'
@@ -8,14 +8,15 @@ import Tooltip from '@mui/material/Tooltip'
 import Input from '@mui/material/Input'
 
 // ESTILOS
-import Styles from './Editable.module.scss'
+import Styles from './style.module.scss'
 
 // ICONOS
 import Close from '@mui/icons-material/Close'
 import useStrings from 'hooks/lang'
 
 // CONTEXTO
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import FormContext from '../../../../../../../../context'
+import onEnter, { sendOptionText } from './tools'
 
 export interface EditableOptionProps {
 	InputElement?: React.FC<CheckboxProps>
@@ -35,29 +36,18 @@ const EditableOption: React.FC<EditableOptionProps> = (props: EditableOptionProp
 	const formProps = useContext(FormContext)
 
 	// EVENTO DE ENTER
-	const onEnter = (event: KeyboardEvent) => {
-		if (event.key === 'Enter') {
-			event.preventDefault()
-			props.onEnter()
-		}
-	}
+	const onEnterEv = (ev: React.KeyboardEvent) => onEnter(ev, props.onEnter)
 
 	// ENVIAR TEXTO DE OPCIÓN
-	const sendOptionText = (ev: ChangeEvent) => {
-		// INPUT
-		const inp = ev.target as HTMLInputElement
-
-		// ENVIAR
-		props.onChange(inp.value)
-	}
+	const sendOptionTextEv = (ev: React.ChangeEvent) => sendOptionText(ev, props.onChange)
 
 	return (
 		<div className={Styles.container}>
 			{props.InputElement && <props.InputElement color='primary' checked={false} />}
 			<Input
 				autoFocus={!formProps.preview}
-				onKeyDown={onEnter}
-				onChange={sendOptionText}
+				onKeyDown={onEnterEv}
+				onChange={sendOptionTextEv}
 				value={props.value}
 				placeholder={props.placeholder}
 				className={`${Styles.input} ${formProps.preview && Styles.optionPreview}`}

@@ -10,6 +10,7 @@ import { Droppable, Draggable, DroppableProvided } from 'react-beautiful-dnd'
 
 // COMPONENTES
 import FormComponent from './components/formComponent'
+import NaturalDragAnimation from 'components/naturalDnd'
 
 // PROPIEDADES
 interface ComponentsViewerProps {
@@ -37,9 +38,8 @@ const ComponentsViewer: React.FC<ComponentsViewerProps> = (props: ComponentsView
 	const copyComponent = (index: number) => () => props.onCopy(index)
 
 	// ACTIVAR COMPONENTE
-	const setActiveFromIndex = (index: number) => () => {
-		if (activeComponent !== index) setActiveComponent(index)
-	}
+	const setActiveFromIndex = (index: number) => () =>
+		activeComponent !== index && setActiveComponent(index)
 
 	return (
 		<div
@@ -53,24 +53,31 @@ const ComponentsViewer: React.FC<ComponentsViewerProps> = (props: ComponentsView
 								index={key}
 								draggableId={`component_${componentProps.id}`}
 								key={`component_${componentProps.id}`}>
-								{(providedDrag) => (
-									<div
-										ref={providedDrag.innerRef}
-										{...providedDrag.draggableProps}
-										{...providedDrag.dragHandleProps}
-										onClick={setActiveFromIndex(componentProps.id)}>
-										<FormComponent
-											{...componentProps}
-											formId={props.formId}
-											id={componentProps.id}
-											onCopy={copyComponent(key)}
-											onChange={saveComponent(key)}
-											onDelete={deleteComponent(key)}
-											personalOptions={props.personalOptions}
-											active={componentProps.id === activeComponent}
-											onChangePersonalOptions={props.onChangePersonalOptions}
-										/>
-									</div>
+								{(providedDrag, snapshot) => (
+									<NaturalDragAnimation
+										style={providedDrag.draggableProps.style}
+										snapshot={snapshot}>
+										{(style) => (
+											<div
+												ref={providedDrag.innerRef}
+												{...providedDrag.draggableProps}
+												style={style}
+												onClick={setActiveFromIndex(componentProps.id)}>
+												<FormComponent
+													{...componentProps}
+													formId={props.formId}
+													id={componentProps.id}
+													onCopy={copyComponent(key)}
+													onChange={saveComponent(key)}
+													onDelete={deleteComponent(key)}
+													personalOptions={props.personalOptions}
+													dragProps={providedDrag.dragHandleProps}
+													active={componentProps.id === activeComponent}
+													onChangePersonalOptions={props.onChangePersonalOptions}
+												/>
+											</div>
+										)}
+									</NaturalDragAnimation>
 								)}
 							</Draggable>
 						))}

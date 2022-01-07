@@ -95,9 +95,11 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 				</div>
 
 				{/* ICONO DE MOVER */}
-				<Tooltip title={$`Mover`} placement='right' arrow>
-					<DragIndicator />
-				</Tooltip>
+				<div {...props.dragProps} className={Styles.dragZone}>
+					<Tooltip title={$`Mover`} placement='right' arrow>
+						<DragIndicator />
+					</Tooltip>
+				</div>
 
 				{/* CONTENIDO COMPONENTE */}
 				<FormContext.Provider

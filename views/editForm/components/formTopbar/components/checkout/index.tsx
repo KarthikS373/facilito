@@ -3,7 +3,6 @@ import React from 'react'
 
 // COMPONENTES
 import showShippingMethods from './components/shippingMethods'
-import { updateFormProp } from 'views/editForm/tools'
 
 // MATERIAL
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -19,7 +18,8 @@ import CreditCard from '@mui/icons-material/CreditCard'
 import Motorcycle from '@mui/icons-material/CarRental'
 import MoneyOff from '@mui/icons-material/MoneyOff'
 
-// CONTEXT
+// TOOLS
+import { updateFormProp } from 'views/editForm/tools'
 import { FormsContextProps } from 'context/forms'
 import defaultSettings from './utils/initials'
 

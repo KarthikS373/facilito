@@ -8,8 +8,8 @@ import SaveTwoTone from '@mui/icons-material/SaveTwoTone'
 import Button from '@mui/material/Button/Button'
 
 // HOOKS
-import useStrings from 'hooks/lang'
 import useIntervalSave from './hooks'
+import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface SaveProps {

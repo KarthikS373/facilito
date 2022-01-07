@@ -6,8 +6,10 @@ import Styles from '../../../../style.module.scss'
 
 // MATERIAL
 import Input from '@mui/material/Input'
+
+// TOOLS
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
 
 // PROPIEDADES DE TEXTO
 interface TextComponentProps {

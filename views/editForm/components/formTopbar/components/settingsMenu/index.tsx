@@ -28,13 +28,13 @@ import handleChecks, {
 	SendData,
 	validateFclt,
 } from './tools'
+import FormsContext from 'context/forms'
 import useStrings from 'hooks/lang'
+import useDefProps from './hooks'
 
 // ESTILOS
 import Styles from './style.module.scss'
 import { useTheme } from '@mui/material/styles'
-import useDefProps from './hooks'
-import FormsContext from 'context/forms'
 
 // ICONOS
 const optionIcons = [

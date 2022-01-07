@@ -9,14 +9,15 @@ import Styles from './style.module.scss'
 // NEXT
 import Image from 'next/image'
 
+// COMPONENTES
+import NaturalDragAnimation from 'components/naturalDnd'
+import searchProducts from './components/search'
+
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import InputAdornment from '@mui/material/InputAdornment'
-import Autocomplete from '@mui/material/Autocomplete'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputLabel from '@mui/material/InputLabel'
-import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import Input from '@mui/material/Input'
 import Menu from '@mui/material/Menu'
@@ -36,24 +37,28 @@ import Close from '@mui/icons-material/Close'
 import Add from '@mui/icons-material/Add'
 
 // UTILS
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
-import { useCompanyProducts } from 'hooks/business'
+import handleDragNDrop, { removeProduct, setCategory } from './tools'
+import FormContext from '../../../../../../context'
 import BusinessContext from 'context/business'
+import ProductsContext from 'context/products'
 import useStrings from 'hooks/lang'
 
 const ProductSlider: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
+
+	// NEGOCIO
 	const company = useContext(BusinessContext)
 
 	// CONTEXTO
 	const props = useContext(FormContext)
 
 	// PRODUCTOS
-	const [companyProducts, setCompanyProducts] = useState<Product[] | null>([])
-	const [productsList, setProductList] = useState<string[]>(
-		props.products ? [...props.products] : ['']
-	)
+	const productsCtx = useContext(ProductsContext)
+	const companyProducts = Object.values(productsCtx.products)
+
+	// LISTA DE PRODUCTOS
+	const [productsList, setProductList] = useState<string[]>(props.products ?? [])
 
 	// CATEGORÍAS
 	const [selectedCategory, setSelectedCategory] = useState<string>('')
@@ -62,126 +67,34 @@ const ProductSlider: React.FC = () => {
 	const [openSearchProducts, setOpenSearchProducts] = useState<HTMLInputElement | null>(null)
 
 	// REORDENAR DRAG N DROP
-	const handleDragNDrop = (res: DropResult) => {
-		setProductList((prevProductList: string[]) => {
-			const tmpList = [...prevProductList]
-			const [reorderedItem] = tmpList.splice(res.source.index, 1)
-
-			// AGREGAR A ESTADO Y REFERENCIA
-			tmpList.splice(res.destination?.index || 0, 0, reorderedItem)
-
-			// ACTUALIZAR
-			props.onChange && props.onChange('products', tmpList)
-			return tmpList
-		})
-	}
+	const dndEvent = (res: DropResult) => handleDragNDrop(res, setProductList, props.onChange)
 
 	// ABRIR MENU DE BÚSQUEDA
 	const handleSearchProducts = (ev: MouseEvent<HTMLInputElement>) =>
 		setOpenSearchProducts(ev.currentTarget)
+
+	// CERRAR BUSQUEDA
 	const closeSearchProducts = () => setOpenSearchProducts(null)
 
 	// REMOVER PRODUCTOS
-	const removeProduct = (index: number) => () => {
-		// ELIMINAR
-		const productsCopy = [...productsList]
-		const filteredProducts = productsCopy.filter((_product: string, key: number) => index !== key)
+	const removeProductEv = (index: number) => () =>
+		removeProduct(index, setProductList, props.onChange)
 
-		// ACTUALIZAR
-		setProductList(filteredProducts)
-		props.onChange && props.onChange('products', filteredProducts)
-	}
+	// BUSCAR PRODUCTOS
+	const showSearchProducts = () =>
+		searchProducts($, closeSearchProducts, setProductList, companyProducts, props.onChange)
 
 	// CARGAR CATEGORÍA
-	const setCategory = (ev: SelectChangeEvent) => {
-		// CERRAR
-		closeSearchProducts()
-
-		// SELECCIONAR
-		const category: string = ev.target.value as string
-		setSelectedCategory(category)
-
-		// ASIGNAR A SLIDER
-		const companyCategories: string[] | undefined = company.business?.categories
-		if (companyCategories) {
-			const products: string[] = companyProducts
-				?.map((product: Product) => (product.category === category ? product.sku : false))
-				.filter(Boolean) as string[]
-			// ACTUALIZAR
-			products.push('')
-			setProductList(products)
-
-			// ENVIAR
-			props.onChange && props.onChange('products', products)
-		}
-	}
-
-	// ALERTA DE PRODUCTOS
-	const productsAlert = async () => {
-		closeSearchProducts()
-
-		// LEER PRODUCTOS
-		const listCopy = [...productsList]
-		let tmpProduct: Product | undefined
-
-		// GUARDAR PRODUCTO
-		const saveProduct = (_ev: unknown, product: string | Product | null) => {
-			// AGREGAR
-			if (product && typeof product !== 'string') tmpProduct = product
-		}
-
-		// MOSTRAR
-		window.Alert({
-			type: 'confirm',
-			title: 'Buscar productos',
-			body: 'Utiliza el siguiente buscador para seleccionar un producto y agregarlo a tu bloque de productos, solo puedes seleccionar un producto a la vez.',
-			onHide: () => window.hideAlert(),
-			onConfirm: () => {
-				// AGREGAR
-				if (tmpProduct) {
-					listCopy.unshift(tmpProduct.sku)
-					setProductList(listCopy)
-
-					// ENVIAR
-					props.onChange && props.onChange('products', listCopy)
-				}
-			},
-			customElements: (
-				<div style={{ position: 'relative', marginTop: '10px' }}>
-					<Autocomplete
-						freeSolo
-						id='product-search'
-						options={companyProducts || []}
-						getOptionLabel={(option) => (option ? option.title : '')}
-						onChange={saveProduct}
-						noOptionsText='Sin productos'
-						renderInput={(params) => (
-							<TextField
-								{...params}
-								label={$`Buscar productos`}
-								margin='normal'
-								variant='outlined'
-								fullWidth
-								InputProps={{
-									...params.InputProps,
-									type: 'text',
-									endAdornment: <></>,
-									startAdornment: (
-										<InputAdornment position='start'>
-											<Search color='primary' />
-										</InputAdornment>
-									),
-								}}
-							/>
-						)}
-					/>
-				</div>
-			),
-		})
-	}
-
-	// OBTENER TODOS LOS PRODUCTOS
-	useCompanyProducts(setCompanyProducts, true, company.business?.id ?? null, true)
+	const setCategoryEv = (ev: SelectChangeEvent) =>
+		setCategory(
+			ev,
+			closeSearchProducts,
+			setSelectedCategory,
+			companyProducts,
+			company.business,
+			setProductList,
+			props.onChange
+		)
 
 	return (
 		<>
@@ -204,10 +117,16 @@ const ProductSlider: React.FC = () => {
 				className={`${StylesGlb.label} ${StylesGlb.helper}`}
 				onChange={props.onWrite && props.onWrite('helper')}
 			/>
-			<DragDropContext onDragEnd={handleDragNDrop}>
+			<DragDropContext onDragEnd={dndEvent}>
 				<div
 					className={Styles.sliderContainer}
 					style={props.preview ? { marginBottom: '25px' } : undefined}>
+					<div className={Styles.productItemDrag}>
+						<span>{$`Agregar producto`}</span>
+						<div onClick={handleSearchProducts} className={Styles.product}>
+							<Add />
+						</div>
+					</div>
 					<Droppable droppableId={`products_${props.id}`} direction='horizontal'>
 						{(provided: DroppableProvided) => (
 							<div className={Styles.slider} {...provided.droppableProps} ref={provided.innerRef}>
@@ -216,44 +135,46 @@ const ProductSlider: React.FC = () => {
 									const currentProduct: Product | undefined = companyProducts?.find(
 										(product: Product) => (product ? product.sku === productId : false)
 									)
-									// PRODUCTOS
 
 									return (
 										<Draggable
 											index={key}
 											draggableId={`product_${props.id}_${key}`}
 											key={`product_${props.id}_${key}`}>
-											{(provided) => (
-												<div
-													ref={provided.innerRef}
-													{...provided.draggableProps}
-													{...provided.dragHandleProps}
-													className={Styles.productItemDrag}>
-													<span>{currentProduct ? currentProduct.title : $`Agregar producto`}</span>
-													<div
-														className={Styles.product}
-														onClick={currentProduct ? undefined : handleSearchProducts}>
-														{currentProduct && (
-															<IconButton
-																size='small'
-																onClick={removeProduct(key)}
-																className={Styles.productClose}>
-																<Close />
-															</IconButton>
-														)}
-														{productId ? (
-															<Image
-																unoptimized
-																src={currentProduct?.picture[0] ?? '/images/logo.png'}
-																alt={currentProduct?.picture[0]}
-																height={150}
-																width={150}
-															/>
-														) : (
-															<Add />
-														)}
-													</div>
-												</div>
+											{(providedDrag, snapshot) => (
+												<NaturalDragAnimation
+													style={providedDrag.draggableProps.style}
+													snapshot={snapshot}>
+													{(style) => (
+														<div
+															ref={providedDrag.innerRef}
+															{...providedDrag.draggableProps}
+															{...providedDrag.dragHandleProps}
+															className={Styles.productItemDrag}
+															style={style}>
+															<span>{currentProduct?.title}</span>
+															<div className={Styles.product}>
+																{currentProduct && (
+																	<IconButton
+																		size='small'
+																		onClick={removeProductEv(key)}
+																		className={Styles.productClose}>
+																		<Close />
+																	</IconButton>
+																)}
+																{productId && (
+																	<Image
+																		unoptimized
+																		src={currentProduct?.picture[0] ?? '/images/logo.png'}
+																		alt={currentProduct?.picture[0]}
+																		height={150}
+																		width={150}
+																	/>
+																)}
+															</div>
+														</div>
+													)}
+												</NaturalDragAnimation>
 											)}
 										</Draggable>
 									)
@@ -277,7 +198,7 @@ const ProductSlider: React.FC = () => {
 							label={$`Categoría`}
 							fullWidth
 							id='category-select'
-							onChange={setCategory}
+							onChange={setCategoryEv}
 							labelId='category-select'
 							value={selectedCategory}>
 							{company.business?.categories?.map((category: string, key: number) => (
@@ -288,7 +209,7 @@ const ProductSlider: React.FC = () => {
 						</Select>
 					</FormControl>
 				</MenuItem>
-				<MenuItem onClick={productsAlert}>
+				<MenuItem onClick={showSearchProducts}>
 					<Search style={{ marginRight: '10px' }} color='primary' />
 					{$`Buscar producto`}
 				</MenuItem>

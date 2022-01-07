@@ -8,7 +8,7 @@ import Styles from '../../../../style.module.scss'
 import Input from '@mui/material/Input'
 
 // CONTEXTO
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
 
 interface SectionTextProps {

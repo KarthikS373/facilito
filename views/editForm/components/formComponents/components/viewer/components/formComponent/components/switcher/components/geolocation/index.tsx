@@ -13,8 +13,11 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Tooltip from '@mui/material/Tooltip'
 import Switch from '@mui/material/Switch'
 import Input from '@mui/material/Input'
+
+// TOOLS
+import { handleSwitch, handleWrite } from './tools'
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
 
 // ESTADO
 interface CustomPlaceString {
@@ -30,46 +33,27 @@ const Geolocation: React.FC = () => {
 	// FORM PROPS
 	const props = useContext(FormContext)
 
-	// ESTADO
+	// LUGAR
 	const [customPlace, setCustomPlace] = useState<CustomPlaceString>({
 		country: props.label,
 		city: props.helper,
 		address: props.text,
 	})
+
+	// SWITCHS
 	const [geoSwitch, setGeoSwitch] = useState<[boolean, boolean]>([
-		props.switch_1 || false,
-		props.switch_2 || false,
+		props.switch_1 ?? false,
+		props.switch_2 ?? false,
 	])
 
-	// GUARDAR LUGAR
-	const saveCustomPlace = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = ev.target
-		setCustomPlace((prevPlace: CustomPlaceString) => ({
-			...prevPlace,
-			[name]: value,
-		}))
-	}
-
 	// ENVIAR DATOS
-	const handleWrite = (prop: keyof BlockComponent) => (ev: React.ChangeEvent<HTMLInputElement>) => {
-		if (props.onWrite) props.onWrite(prop)(ev)
-		saveCustomPlace(ev)
-	}
+	const handleWriteEv = (prop: keyof BlockComponent) => (ev: React.ChangeEvent<HTMLInputElement>) =>
+		handleWrite(prop, ev, setCustomPlace)
 
 	// GUARDAR SWITCH
-	const handleSwitch =
-		(prop: keyof BlockComponent, index: number) => (_ev: unknown, checked: boolean) => {
-			setGeoSwitch((prevSwitch: [boolean, boolean]) => {
-				// CAMBIAR
-				const tmpSwitch = [...prevSwitch] as [boolean, boolean]
-				tmpSwitch[index] = checked
-
-				// EVITAR DESACTIVAR AMBOS
-				if (tmpSwitch[1] && !tmpSwitch[0]) return prevSwitch
-				else return tmpSwitch
-			})
-			props.onChange && props.onChange(prop, checked)
-		}
+	const handleSwitchEv =
+		(prop: keyof BlockComponent, index: number) => (_ev: unknown, checked: boolean) =>
+			handleSwitch(prop, index, checked, setGeoSwitch, props.onChange)
 
 	return (
 		<>
@@ -82,7 +66,7 @@ const Geolocation: React.FC = () => {
 					id={`${props.name}_${props.id}`}
 					name='country'
 					inputProps={{ 'aria-label': 'Country' }}
-					onChange={handleWrite('label')}
+					onChange={handleWriteEv('label')}
 				/>
 				<Input
 					placeholder={$`Ciudad`}
@@ -92,7 +76,7 @@ const Geolocation: React.FC = () => {
 					className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
 					id={`${props.name}_helper_${props.id}`}
 					inputProps={{ 'aria-label': 'City' }}
-					onChange={handleWrite('helper')}
+					onChange={handleWriteEv('helper')}
 				/>
 				<Input
 					placeholder={$`Dirección`}
@@ -102,7 +86,7 @@ const Geolocation: React.FC = () => {
 					className={`${StylesGlb.label} ${props.preview && StylesGlb.labelPreview}`}
 					id={`${props.name}_text_${props.id}`}
 					inputProps={{ 'aria-label': 'Address' }}
-					onChange={handleWrite('text')}
+					onChange={handleWriteEv('text')}
 				/>
 			</div>
 			<Map
@@ -114,7 +98,7 @@ const Geolocation: React.FC = () => {
 					<FormControlLabel
 						className={`${Styles.requestGeo} ${props.preview ? Styles.requestGeoPreview : ''}`}
 						value='start'
-						onChange={handleSwitch('switch_1', 0)}
+						onChange={handleSwitchEv('switch_1', 0)}
 						control={<Switch checked={geoSwitch[0]} color='primary' />}
 						label={$`Enviar ubicación del cliente`}
 						labelPlacement='start'
@@ -124,7 +108,7 @@ const Geolocation: React.FC = () => {
 					<FormControlLabel
 						className={`${Styles.requestGeo} ${props.preview ? Styles.requestGeoPreview : ''}`}
 						value='start'
-						onChange={handleSwitch('switch_2', 1)}
+						onChange={handleSwitchEv('switch_2', 1)}
 						control={<Switch checked={geoSwitch[1]} color='primary' />}
 						label={$`Ocultar mapa`}
 						labelPlacement='start'

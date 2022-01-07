@@ -21,7 +21,7 @@ import openCouponEditor from './components/editor'
 
 // CONTEXTO
 import getDefCoupons, { deleteCoupon, onChangeSwitch } from './tools'
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
 
 const Coupon: React.FC = () => {

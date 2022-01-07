@@ -16,11 +16,11 @@ import usePaletteColors from 'hooks/theme'
 import { ThemeProvider } from '@mui/material/styles'
 
 // UTILS
-import { updateUrl } from './tools/formProps'
-import { getForm, updateFormProp } from './tools'
 import { defThemeColors, generateTheme } from 'utils/tools'
+import { getForm, updateFormProp } from './tools'
 import { initialFormData } from './utils/initials'
 import { saveFormOnCloud } from './tools/cloud'
+import { updateUrl } from './tools/formProps'
 
 // CONTEXTO
 import BusinessContext from 'context/business'

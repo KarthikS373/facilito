@@ -20,29 +20,14 @@ import { CheckboxProps } from '@mui/material/Checkbox'
 import { RadioProps } from '@mui/material/Radio'
 
 // HOOK
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import addOption, { removeOption, sendValues, getDefaultValue } from './tools'
+import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface MultipleOptionsProps {
 	InputElement?: React.FC<CheckboxProps | RadioProps>
 }
-
-// OPTION INITIAL
-const initialOption: EditableOptionProps = {
-	onChange: () => null,
-	onClose: () => null,
-	onEnter: () => null,
-	placeholder: '',
-	value: '',
-	id: 0,
-}
-
-//	FILTRAR
-const getFilteredValues: (optionsList: EditableOptionProps[]) => string[] = (
-	optionsList: EditableOptionProps[]
-) => [...optionsList].map((option: EditableOptionProps) => (option || { ...initialOption }).value)
-const cleanEmptys = (optionsList: EditableOptionProps[]) => [...optionsList].filter(Boolean)
 
 const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOptionsProps) => {
 	// STRINGS
@@ -53,55 +38,18 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 
 	// ESTADO
 	const [optionsList, setOptionsList] = useState<EditableOptionProps[]>(
-		props.values
-			? props.values?.map((defVal: string, id: number) => ({
-					...initialOption,
-					value: defVal,
-					id,
-			  }))
-			: [{ ...initialOption }]
+		getDefaultValue(props.values)
 	)
 
 	// AGREGAR OPCIÓN
-	const addOption = (index: number) => () => {
-		// CREAR NUEVO
-		const optionsCopy = [...optionsList]
-		const last: EditableOptionProps = optionsCopy[index] || { ...initialOption }
-		const newOption: EditableOptionProps = { ...last, value: '', id: last.id + 1 }
-
-		// AGREGAR
-		optionsCopy.splice(index + 1, 0, newOption)
-
-		// ACTUALIZAR
-		setOptionsList(cleanEmptys(optionsCopy))
-		props.onAddValue && props.onAddValue('values')(getFilteredValues(optionsCopy))
-	}
+	const addOptionEv = (index: number) => () => addOption(index, setOptionsList, props.onAddValue)
 
 	// ELIMINAR OPCIÓN
-	const removeOption = (key: number) => () => {
-		// ASIGNAR
-		const optionsCopy = [...optionsList].filter(
-			(_option: EditableOptionProps, index: number) => index !== key
-		)
-
-		// ACTUALIZAR
-		setOptionsList(cleanEmptys(optionsCopy))
-		props.onAddValue && props.onAddValue('values')(getFilteredValues(optionsCopy))
-	}
+	const removeOptionEv = (key: number) => () => removeOption(key, setOptionsList, props.onAddValue)
 
 	// ACTUALIZAR
-	const sendValues = (key: number) => (value: string) => {
-		// ASIGNAR
-		const optionsCopy = [...optionsList]
-		const tmpElm = optionsCopy[key] || { ...initialOption }
-		tmpElm.value = value
-		optionsCopy[key] = tmpElm
-
-		// ACTUALIZAR
-		setOptionsList(cleanEmptys(optionsCopy))
-		props.onAddValue && props.onAddValue('values')(getFilteredValues(optionsCopy))
-	}
-
+	const sendValuesEv = (key: number) => (value: string) =>
+		sendValues(key, value, setOptionsList, props.onAddValue)
 	return (
 		<>
 			<Input
@@ -141,10 +89,10 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 						id={key}
 						key={`${props.name}_item_${props.id}_${key}`}
 						placeholder={$`Texto de la opción` + ' ' + (key + 1)}
-						onEnter={addOption(key)}
+						onEnter={addOptionEv(key)}
 						value={selectProps.value}
-						onClose={removeOption(key)}
-						onChange={sendValues(key)}
+						onClose={removeOptionEv(key)}
+						onChange={sendValuesEv(key)}
 					/>
 				))}
 			</div>
@@ -153,7 +101,7 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 					<Button
 						startIcon={<Add />}
 						variant='contained'
-						onClick={addOption(optionsList.length - 1)}>
+						onClick={addOptionEv(optionsList.length - 1)}>
 						{$`Agregar opción`}
 					</Button>
 				</div>

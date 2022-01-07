@@ -13,14 +13,22 @@
 		padding: 10px 20px 0 20px;
 		overflow: hidden;
 
-		& > svg {
-			width: 35px;
-			height: 35px;
-			color: #000;
-			opacity: 0.25;
-			transform: rotate(90deg) !important;
-			margin-bottom: 7px;
-			transition: opacity 0.3s ease;
+		.dragZone {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+
+			& svg {
+				width: 35px;
+				height: 35px;
+				color: #000;
+				opacity: 0.25;
+				transform: rotate(90deg) !important;
+				margin-bottom: 7px;
+				transition: opacity 0.3s ease;
+			}
 		}
 
 		.componentIcon {
@@ -150,8 +158,10 @@
 	.active {
 		padding-left: 30px;
 
-		& > svg {
-			opacity: 0.25;
+		.dragZone {
+			& svg {
+				opacity: 0.25;
+			}
 		}
 
 		.activeBar {
@@ -166,8 +176,11 @@
 
 	.inactive {
 		padding: 15px 20px;
-		& > svg {
-			opacity: 0;
+
+		.dragZone {
+			& svg {
+				opacity: 0;
+			}
 		}
 
 		&:hover > svg:first-child {

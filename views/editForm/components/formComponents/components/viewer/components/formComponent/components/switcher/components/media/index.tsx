@@ -17,10 +17,10 @@ import Close from '@mui/icons-material/Close'
 import IconButton from '@mui/material/IconButton'
 
 // CONTEXTO
-import FormContext from 'views/editForm/components/formComponents/components/viewer/context'
+import FormContext from '../../../../../../context'
 import BusinessContext from 'context/business'
 import useStrings from 'hooks/lang'
-import { compressImage, getURL, uploadFile } from 'utils/storage'
+import readFile from './tools'
 
 // PROPIEDADES
 interface FormMediaProps {
@@ -28,8 +28,10 @@ interface FormMediaProps {
 }
 
 const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
-	//  STRINGS, USER Y COMPANY
+	// COMPANY
 	const company = useContext(BusinessContext)
+
+	// STRINGS
 	const { $ } = useStrings()
 
 	// PROPS
@@ -39,39 +41,8 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 	const [currentImage, setCurrentImage] = useState<string | null>(props.src || null)
 
 	// LEER ARCHIVO
-	const readFile = (ev: React.ChangeEvent) => {
-		// ARCHIVOS
-		const inp = ev.target as HTMLInputElement
-		const files = inp.files
-
-		// LEER
-		if (files && files[0]) {
-			// ALERTA
-			window.Alert({
-				title: 'Espera...',
-				body: 'Se esta subiendo tu archivo, esto dependerá de tu velocidad, no te salgas de la aplicación por favor.',
-				type: 'window',
-				fixed: true,
-			})
-
-			// SUBIR A CLOUD
-			if (company.business?.id) {
-				const path = `/${company.business?.id}/forms/${props.id}}`
-				compressImage(files[0]).then((image: File) => {
-					uploadFile(image, path).then(() => {
-						getURL(path).then((src: string) => {
-							if (src) {
-								window.hideAlert()
-								props.onChange && props.onChange('src', src)
-								setCurrentImage(src)
-							}
-						})
-					})
-				})
-			}
-		}
-		inp.value = ''
-	}
+	const readFileEv = (ev: React.ChangeEvent) =>
+		readFile(ev, props.id, company.business, setCurrentImage, props.onChange)
 
 	// ELIMINAR
 	const removeImage = () => setCurrentImage(null)
@@ -101,7 +72,7 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 				)}
 			</label>
 			<input
-				onChange={readFile}
+				onChange={readFileEv}
 				style={{ display: 'none' }}
 				id={`${props.name}_${props.id}`}
 				type='file'

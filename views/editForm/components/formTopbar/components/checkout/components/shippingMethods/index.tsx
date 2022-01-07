@@ -15,7 +15,7 @@ import showCheckoutAlert from '../..'
 // STRINGS
 import useStrings from 'hooks/lang'
 
-// CONTEXTO
+// TOOLS
 import getDefaultState, { addShipping, deleteShipping, setShippingValue } from './tools'
 import { FormsContextProps } from 'context/forms'
 import type { ShippingPriceExt } from './tools'

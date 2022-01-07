@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 // IMAGENES
 import Image from 'next/image'
 
-// MATERIAls
+// MATERIAl
 import Button from '@mui/material/Button'
 
 // ICONOS

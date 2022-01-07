@@ -162,6 +162,7 @@ interface FormContainerProps extends BlockComponent {
 	personalOptions?: FormPersonalData
 	onDelete?: EmptyFunction
 	onCopy?: EmptyFunction
+	dragProps?: unknown
 	active?: boolean
 	formId?: string
 }

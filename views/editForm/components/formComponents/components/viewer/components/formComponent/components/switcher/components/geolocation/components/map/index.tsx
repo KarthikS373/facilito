@@ -1,11 +1,9 @@
 // REACT
-// REACT
-import useStrings from 'hooks/lang'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-// UTILS
-import { getPosition } from 'utils/location'
-import { MAP_FRAME } from 'utils/maps'
+// HOOKS
+import useStrings from 'hooks/lang'
+import usePosition from './hooks'
 
 interface MapProps {
 	place?: string
@@ -20,27 +18,17 @@ const Map: React.FC<MapProps> = ({ place, className }) => {
 	const { langCode } = useStrings()
 
 	// CARGAR POSICIÓN INICIAL
-	useEffect(() => {
-		if (!place || place.length === 0)
-			getPosition().then((position: GeolocationPosition | undefined) => {
-				setLoad(
-					`${MAP_FRAME}&q=${position?.coords.latitude}, ${
-						position?.coords.longitude
-					}&language=${langCode.toLowerCase()}`
-				)
-			})
-		else setLoad(`${MAP_FRAME}&q=${place}&language=${langCode.toLowerCase()}`)
-	}, [langCode, place])
+	usePosition(langCode, setLoad, place)
 
 	return (
 		<iframe
-			className={className}
 			title='Map'
 			src={load}
 			width='100%'
 			height='100%'
 			frameBorder='0'
 			allowFullScreen
+			className={className}
 		/>
 	)
 }
