@@ -48,7 +48,7 @@ const Geolocation: React.FC = () => {
 
 	// ENVIAR DATOS
 	const handleWriteEv = (prop: keyof BlockComponent) => (ev: React.ChangeEvent<HTMLInputElement>) =>
-		handleWrite(prop, ev, setCustomPlace)
+		handleWrite(prop, ev, setCustomPlace, props.onWrite)
 
 	// GUARDAR SWITCH
 	const handleSwitchEv =
