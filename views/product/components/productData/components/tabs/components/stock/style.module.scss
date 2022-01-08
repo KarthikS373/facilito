@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	padding: 20px;
 	display: grid;
@@ -13,5 +15,11 @@
 		display: grid;
 		grid-template-columns: auto auto;
 		column-gap: 15px;
+
+		@include for-size(phone-portrait) {
+			display: grid;
+			grid-template-columns: auto;
+			row-gap: var(--margin);
+		}
 	}
 }

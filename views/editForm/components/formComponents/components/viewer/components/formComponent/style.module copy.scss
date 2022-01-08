@@ -1,0 +1,249 @@
+.container {
+	padding-bottom: 25px;
+
+	.content {
+		position: relative;
+		box-shadow: 4px 4px 20px #0000001a;
+		border-radius: 15px;
+		background-color: #fff;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px 20px 0 20px;
+		overflow: hidden;
+
+		.dragZone {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+
+			& svg {
+				width: 35px;
+				height: 35px;
+				color: #000;
+				opacity: 0.25;
+				transform: rotate(90deg) !important;
+				margin-bottom: 7px;
+				transition: opacity 0.3s ease;
+			}
+		}
+
+		.componentIcon {
+			position: absolute;
+			top: 15px;
+			right: 40px;
+		}
+
+		.requiredSpan {
+			position: absolute;
+			top: 58px;
+			left: 22px;
+			font-weight: bold;
+			font-size: 1em;
+			color: var(--lightblue);
+		}
+
+		.label {
+			background-color: #f0f0f0;
+			width: 100%;
+			padding: 0 20px;
+			border-radius: 10px 10px 0px 0px;
+			min-height: 50px;
+
+			&:hover::before {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+			}
+		}
+
+		.inputRow {
+			margin-top: 20px;
+			margin-left: 20px;
+			width: calc(100% - 40px);
+			align-self: flex-start;
+
+			h3 {
+				color: rgba(0, 0, 0, 0.54);
+				font-size: 1rem;
+				font-weight: normal;
+				margin-bottom: 10px;
+			}
+
+			& > div {
+				display: flex;
+
+				.dateField:first-child {
+					margin-right: 20px;
+				}
+			}
+		}
+
+		.titleField {
+			color: #333;
+			text-align: left;
+			width: 100%;
+		}
+
+		.labelPreview {
+			margin-top: -5px;
+			background-color: #fff;
+			padding: 0;
+			left: 0px;
+			width: calc(100% - 40px);
+			min-height: 35px;
+			font-weight: normal;
+			color: #000;
+		}
+
+		.titlePreview {
+			&::before {
+				display: none;
+			}
+		}
+
+		.helper {
+			background-color: #fff;
+			font-size: 0.9em;
+			height: 40px;
+			margin-top: -8px;
+			padding: 10px 20px;
+			border: none;
+			color: #555;
+		}
+
+		.actions {
+			border-top: 2px solid rgba(0, 0, 0, 0.25);
+			width: 100%;
+			margin-top: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			max-height: 70px;
+			padding: 10px 0;
+
+			button {
+				width: 49px;
+				height: 49px;
+				padding: 0;
+
+				svg {
+					width: 30px;
+					height: 30px;
+				}
+			}
+
+			button:nth-child(1) {
+				svg {
+					width: 23px;
+					height: 23px;
+				}
+			}
+
+			label {
+				color: #666;
+				height: 25px;
+				margin-left: 0px;
+				padding-left: 20px;
+				border-left: 2px solid rgba(0, 0, 0, 0.25);
+
+				span {
+					font-weight: lighter;
+				}
+			}
+		}
+	}
+
+	.active {
+		padding-left: 30px;
+
+		.dragZone {
+			& svg {
+				opacity: 0.25;
+			}
+		}
+
+		.activeBar {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 7px;
+			height: 100%;
+		}
+	}
+
+	.inactive {
+		padding: 15px 20px;
+
+		.dragZone {
+			& svg {
+				opacity: 0;
+			}
+		}
+
+		&:hover > svg:first-child {
+			opacity: 0.25;
+		}
+	}
+}
+
+// ANIMACIÓN DE COPIAR
+@keyframes copyFrames {
+	0% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(40px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	75% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.copyAnim {
+	animation: copyFrames 0.5s linear 1;
+}
+
+// ANIMACIÓN DE BORRAR
+@keyframes deleteFrames {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(-20px);
+		opacity: 0;
+	}
+}
+
+.deleteAnim {
+	animation: deleteFrames 0.5s var(--transition) 1;
+}
+
+@media screen and (max-width: 850px) {
+	.container {
+		.content {
+			.daysRange {
+				flex-direction: column;
+
+				fieldset {
+					width: 100%;
+				}
+			}
+
+			.gridInputs {
+				width: 100%;
+				margin-top: 20px;
+			}
+		}
+	}
+}

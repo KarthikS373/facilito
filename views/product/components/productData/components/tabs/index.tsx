@@ -38,9 +38,12 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 	// ACTUALIZAR
 	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
 
+	// WIDTH
+	const width = process.browser ? window.innerWidth : 0
+
 	return (
-		<div>
-			<Paper style={{ background: '#fcfcfc', width: '540px' }}>
+		<div className={Styles.container}>
+			<Paper style={{ background: '#fcfcfc' }}>
 				<Tabs
 					value={tabIndex}
 					textColor='primary'
@@ -48,10 +51,26 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 					indicatorColor='primary'
 					onChange={handleChange}
 					aria-label='product_sections'>
-					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
-					<Tab className={Styles.tab} icon={<MenuBookTwoToneIcon />} label={$`Catalogo`} />
-					<Tab className={Styles.tab} icon={<ExtensionTwoToneIcon />} label={$`Extras`} />
-					<Tab className={Styles.tab} icon={<SettingsTwoToneIcon />} label={$`Opciones`} />
+					<Tab
+						className={Styles.tab}
+						icon={<InfoTwoToneIcon />}
+						label={width <= 730 ? undefined : $`General`}
+					/>
+					<Tab
+						className={Styles.tab}
+						icon={<MenuBookTwoToneIcon />}
+						label={width <= 730 ? undefined : $`Catalogo`}
+					/>
+					<Tab
+						className={Styles.tab}
+						icon={<ExtensionTwoToneIcon />}
+						label={width <= 730 ? undefined : $`Extras`}
+					/>
+					<Tab
+						className={Styles.tab}
+						icon={<SettingsTwoToneIcon />}
+						label={width <= 730 ? undefined : $`Opciones`}
+					/>
 				</Tabs>
 				<General show={tabIndex === 0} productRef={productRef} />
 				<Stock show={tabIndex === 1} productRef={productRef} />

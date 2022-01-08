@@ -32,6 +32,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		width: 300px;
 	}
 
 	@include for-size(phone-portrait-min) {
@@ -73,6 +74,10 @@
 @include for-size(tablet-landscape) {
 	.closedTabContainer {
 		transform: translateX(-300px);
+	}
+
+	.backBtn {
+		display: none !important;
 	}
 
 	.closedShadow {

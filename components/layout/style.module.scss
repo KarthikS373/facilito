@@ -10,7 +10,7 @@
 	background-color: #fff;
 
 	@include for-size(tablet-landscape) {
-		grid-template-columns: 100%;
+		grid-template-columns: 100% !important;
 	}
 
 	@include for-size(phone-landscape) {

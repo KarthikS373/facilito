@@ -48,7 +48,7 @@ const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 	useImages(productRef, setImages, trigger)
 
 	return (
-		<Paper>
+		<Paper style={{ minWidth: 0 }}>
 			<div className={Styles.info}>
 				<h3>{$`Fotos del producto`}</h3>
 				<p>{$`Medidas recomendadas: 800 x 800`}</p>

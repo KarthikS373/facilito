@@ -94,7 +94,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 			/>
 
 			<hr />
-			<div className={Styles.row}>
+			<div className={`${Styles.row} ${Styles.catRow}`}>
 				<FormControl fullWidth variant='outlined'>
 					<InputLabel htmlFor='category' id='category-label'>{$`Categoria`}</InputLabel>
 					<Select
@@ -125,7 +125,7 @@ const General: React.FC<GeneralProps> = ({ show, productRef }) => {
 						variant='outlined'
 						name='new_category'
 						onChange={handleInputs}
-						style={{ marginLeft: '15px', minWidth: '250px' }}
+						className={Styles.catText}
 						label={$`Categoria del producto`}
 						placeholder={$`Añade una categoria`}
 						InputProps={{

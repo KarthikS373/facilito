@@ -72,7 +72,11 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 							</NextLink>
 						</div>
 					)}
-					<IconButton onClick={collapse} color='inherit' aria-label='info'>
+					<IconButton
+						className={Styles.backBtn}
+						onClick={collapse}
+						color='inherit'
+						aria-label='info'>
 						{expanded ? <ArrowBackTwoTone /> : <ArrowForwardTwoTone />}
 					</IconButton>
 				</div>

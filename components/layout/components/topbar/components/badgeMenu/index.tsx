@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import BusinessContext from 'context/business'
 
 // HELPERS
-import { badgeList, badgePrefix } from '../../utils/initials'
+import { badgeList, badgePrefix } from './utils/initials'
 
 // COMPONENTES
 import PopperMenuList from 'components/popperMenu'
