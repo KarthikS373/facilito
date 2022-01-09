@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
@@ -8,6 +10,15 @@
 	.row {
 		display: grid;
 		column-gap: 15px;
+
+		@include for-size(phone-portrait) {
+			grid-template-columns: 100% !important;
+			row-gap: var(--margin);
+
+			.extraCount {
+				width: 100% !important;
+			}
+		}
 	}
 
 	.options {
@@ -17,10 +28,25 @@
 		align-items: center;
 		justify-content: space-between;
 
+		@include for-size(phone-portrait) {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			align-items: flex-start;
+			column-gap: 15px;
+		}
+
 		.actions {
 			display: grid;
 			grid-template-columns: auto auto;
 			column-gap: 15px;
+
+			@include for-size(phone-portrait) {
+				grid-template-columns: 100%;
+
+				.addBtn {
+					width: 100%;
+				}
+			}
 		}
 
 		&::before {
@@ -31,6 +57,10 @@
 			width: 95px;
 			height: 2px;
 			background-color: rgba(0, 0, 0, 0.2);
+
+			@include for-size(phone-portrait) {
+				display: none;
+			}
 		}
 	}
 

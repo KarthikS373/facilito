@@ -1,6 +1,16 @@
+@import 'styles/mixins';
+
 .container {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
 	align-items: center;
 	column-gap: 15px;
+
+	@include for-size(phone-portrait) {
+		row-gap: var(--margin);
+
+		& > *:nth-child(1) {
+			grid-column: 1/5;
+		}
+	}
 }

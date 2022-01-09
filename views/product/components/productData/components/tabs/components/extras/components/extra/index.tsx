@@ -115,6 +115,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 						style={{ width: 100 }}
 						onChange={onChangeExtra}
 						defaultValue={extra.cant}
+						className={Styles.extraCount}
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position='start'>
@@ -125,7 +126,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 					/>
 				)}
 				<FormControl fullWidth variant='outlined'>
-					<InputLabel htmlFor='category' id='category-label'>{$`Tipo de variable`}</InputLabel>
+					<InputLabel htmlFor='type' id='type-label'>{$`Tipo de variable`}</InputLabel>
 					<Select
 						id='type'
 						name='type'
@@ -151,6 +152,7 @@ const Extra: React.FC<ExtraProps> = ({ extra, index, productRef, deleteExtra }) 
 				<div className={Styles.actions}>
 					<Button
 						variant='outlined'
+						className={Styles.addBtn}
 						startIcon={<AddTwoTone />}
 						onClick={addOptionalEv(options.length - 1)}>
 						{$`Agregar opcion`}
