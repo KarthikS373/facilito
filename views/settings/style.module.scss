@@ -1,5 +1,21 @@
 .container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: var(--margin);
+	border-radius: var(--radius);
 	align-items: flex-start;
-	justify-content: space-between;
+}
+
+@media screen and (max-width: 1320px) {
+	.container {
+		grid-template-columns: 1fr auto;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	.container {
+		grid-template-columns: 100%;
+		grid-template-rows: auto auto;
+		row-gap: var(--margin);
+	}
 }

@@ -40,9 +40,12 @@ const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 	// ACTUALIZAR
 	const handleChange = (_event: unknown, newValue: number) => setTabIndex(newValue)
 
+	// WIDTH
+	const width = process.browser ? window.innerWidth : 0
+
 	return (
 		<div className={Styles.container}>
-			<Paper style={{ background: '#fcfcfc', width: '540px' }}>
+			<Paper style={{ background: '#fcfcfc' }}>
 				<Tabs
 					value={tabIndex}
 					textColor='primary'
@@ -50,13 +53,29 @@ const CustomTabs: React.FC<TabsProps> = ({ tabIndex, setTabIndex }) => {
 					indicatorColor='primary'
 					onChange={handleChange}
 					aria-label='settings_sections'>
-					<Tab className={Styles.tab} icon={<InfoTwoToneIcon />} label={$`General`} />
-					<Tab className={Styles.tab} icon={<AccountBalanceTwoToneIcon />} label={$`Bancaria`} />
+					<Tab
+						className={Styles.tab}
+						icon={<InfoTwoToneIcon />}
+						label={width < 730 ? undefined : $`General`}
+					/>
+					<Tab
+						className={Styles.tab}
+						icon={<AccountBalanceTwoToneIcon />}
+						label={width < 730 ? undefined : $`Bancaria`}
+					/>
 					{user?.role === 'admin' && (
-						<Tab className={Styles.tab} icon={<PaymentTwoToneIcon />} label={$`Pago`} />
+						<Tab
+							className={Styles.tab}
+							icon={<PaymentTwoToneIcon />}
+							label={width < 730 ? undefined : $`Pago`}
+						/>
 					)}
 					{user?.role === 'admin' && (
-						<Tab className={Styles.tab} icon={<PeopleAltTwoToneIcon />} label={$`Usuarios`} />
+						<Tab
+							className={Styles.tab}
+							icon={<PeopleAltTwoToneIcon />}
+							label={width < 730 ? undefined : $`Usuarios`}
+						/>
 					)}
 				</Tabs>
 

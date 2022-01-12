@@ -17,3 +17,15 @@
 .custom {
 	padding: var(--margin);
 }
+
+@media screen and (max-width: 1320px) {
+	.container {
+		width: 430px;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	.container {
+		width: 100%;
+	}
+}

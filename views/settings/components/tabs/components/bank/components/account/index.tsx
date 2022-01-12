@@ -52,6 +52,7 @@ const Account: React.FC<AccountProps> = ({ index, account, onDelete }) => {
 	return (
 		<div className={Styles.container}>
 			<TextField
+				fullWidth
 				id='nameAccount'
 				name='nameAccount'
 				variant='outlined'
@@ -69,6 +70,7 @@ const Account: React.FC<AccountProps> = ({ index, account, onDelete }) => {
 			/>
 
 			<TextField
+				fullWidth
 				id='noAccount'
 				name='noAccount'
 				variant='outlined'
@@ -109,6 +111,7 @@ const Account: React.FC<AccountProps> = ({ index, account, onDelete }) => {
 			</FormControl>
 
 			<TextField
+				fullWidth
 				id='bank'
 				name='bank'
 				variant='outlined'

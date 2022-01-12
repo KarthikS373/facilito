@@ -28,7 +28,7 @@ const Customize: React.FC = () => {
 		setImageRef(type, backgroundRef, bannerRef, setCustomBackground, image)
 
 	return (
-		<Paper>
+		<Paper className={Styles.container}>
 			<div className={Styles.info}>
 				<h3>{$`Personalizar`}</h3>
 				<p>{$`Crea un tema seleccionando colores, sube una imagen de portada y cambia tu foto de perfil.`}</p>

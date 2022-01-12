@@ -40,7 +40,7 @@ const User: React.FC<UserProps> = ({ user, onSelect }) => {
 				<strong>{user.name}</strong>
 				<p>{user.email}</p>
 			</div>
-			<FormControl fullWidth variant='outlined'>
+			<FormControl className={Styles.role} fullWidth variant='outlined'>
 				<InputLabel htmlFor='role' id='role-label'>{$`Seleccionar cargo`}</InputLabel>
 				<Select
 					id='role'

@@ -50,9 +50,12 @@ const Card: React.FC<CardProps> = ({ card, onDelete, onSetMain }) => {
 					<p className={Styles.cardNumber}>{card.account}</p>
 				</div>
 
-				{card.main && <span>{$`Principal`}</span>}
+				{card.main && <span className={Styles.mainBadge}>{$`Principal`}</span>}
 			</div>
 			<div className={Styles.actions}>
+				{card.main && (
+					<span className={`${Styles.mainBadge} ${Styles.actionsBadge}`}>{$`Principal`}</span>
+				)}
 				<IconButton onClick={onDelete}>
 					<DeleteTwoTone />
 				</IconButton>

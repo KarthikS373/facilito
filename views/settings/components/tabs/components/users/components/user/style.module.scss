@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	display: grid;
 	align-items: center;
@@ -5,6 +7,11 @@
 	column-gap: var(--margin);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	padding: var(--margin) 0;
+
+	@include for-size(phone-portrait) {
+		grid-template-columns: 50px 1fr;
+		row-gap: var(--margin);
+	}
 
 	&:first-child {
 		padding-top: 0;
@@ -15,10 +22,19 @@
 		border-bottom: 0;
 	}
 
+	.role {
+		width: 100%;
+		grid-column: 1/4;
+	}
+
 	.info {
 		opacity: 0.8;
 		max-width: 210px;
 		overflow: hidden;
+
+		@include for-size(phone-portrait) {
+			max-width: 100%;
+		}
 
 		& > strong,
 		& > p {

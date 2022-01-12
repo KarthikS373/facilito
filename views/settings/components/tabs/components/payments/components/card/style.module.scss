@@ -1,9 +1,15 @@
+@import 'styles/mixins';
+
 .container {
 	display: flex;
 	width: 100%;
 	align-items: center;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(158, 157, 157, 0.2);
 	padding: var(--margin) 0;
+
+	@include for-size(phone-portrait) {
+		flex-direction: column;
+	}
 
 	&:first-child {
 		padding-top: 0;
@@ -39,24 +45,43 @@
 				text-overflow: ellipsis;
 			}
 		}
-
-		& > span {
-			background: var(--primary);
-			color: #fff;
-			display: flex;
-			align-items: center;
-			padding: 0px 15px;
-			height: 35px;
-			border-radius: var(--radius);
-		}
 	}
 
 	.actions {
 		display: flex;
 		align-items: center;
 
-		& > button:first-child {
-			margin-right: var(--margin);
+		& > button:nth-of-type(1) {
+			margin-right: calc(var(--margin) - 5px);
 		}
+
+		@include for-size(phone-portrait) {
+			width: 100%;
+			margin-top: 15px;
+			justify-content: flex-start;
+		}
+	}
+}
+
+.mainBadge {
+	background: var(--primary);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	padding: 0px 15px;
+	height: 35px;
+	border-radius: var(--radius);
+
+	@include for-size(phone-portrait) {
+		display: none;
+	}
+}
+
+.actionsBadge {
+	display: none;
+
+	@include for-size(phone-portrait) {
+		display: flex;
+		margin-right: 15px;
 	}
 }

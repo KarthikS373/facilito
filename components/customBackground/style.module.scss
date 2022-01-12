@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
 	width: 100%;
 	position: relative;
@@ -107,6 +109,17 @@
 			align-items: center;
 			justify-content: space-between;
 			margin-top: -10px;
+
+			@include for-size(phone-portrait) {
+				flex-direction: column !important;
+				align-items: flex-start !important;
+			}
+
+			& > button {
+				@include for-size(phone-portrait) {
+					margin-top: 15px;
+				}
+			}
 
 			& > div {
 				display: flex;

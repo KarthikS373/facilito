@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .info {
 	display: flex;
 	justify-content: space-between;
@@ -6,8 +8,18 @@
 	font-size: 1em;
 	line-height: 1.3;
 
+	@include for-size(phone-portrait) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
 	.text {
-		max-width: 340px;
+		max-width: 70%;
 		opacity: 0.8;
+
+		@include for-size(phone-portrait) {
+			max-width: 100%;
+			margin-bottom: var(--margin);
+		}
 	}
 }
