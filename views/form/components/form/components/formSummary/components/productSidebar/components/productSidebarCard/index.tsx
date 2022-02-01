@@ -26,6 +26,7 @@ interface ProductSidebarProps {
 	setFieldValue: (field: string, value: unknown) => void
 	productsCounter: number[]
 	totalPrice: string
+	preview?: boolean
 	formData?: Form
 }
 
@@ -55,15 +56,17 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 										// TARJETA
 										<div className={Styles.shopProductRow} key={`product_cart_${key}_${index}`}>
 											{/* IMAGEN */}
-											<div className={Styles.pic}>
-												<Image
-													width={50}
-													height={50}
-													unoptimized
-													alt='Product'
-													src={product.picture}
-												/>
-											</div>
+											{product.picture.length && product.picture.length > 0 && (
+												<div className={Styles.pic}>
+													<Image
+														width={50}
+														height={50}
+														unoptimized
+														alt='Product'
+														src={product.picture}
+													/>
+												</div>
+											)}
 
 											{/* CONTENIDO */}
 											<div>
@@ -87,6 +90,7 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 																				.map((opt) => opt.price)
 																				.reduce((a, b) => a + b, 0) ?? 0
 
+																		// TARJETA DE PRODUCTO
 																		return (
 																			<div key={`product_cart_${key}_${index}_extra_${extraIndex}`}>
 																				<strong>
@@ -110,9 +114,11 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 											</div>
 
 											{/* QUITAR PRODUCTO DE LISTA */}
-											<IconButton onClick={deleteProducts(resp, index)}>
-												<Remove />
-											</IconButton>
+											{!props.preview && (
+												<IconButton onClick={deleteProducts(resp, index)}>
+													<Remove />
+												</IconButton>
+											)}
 										</div>
 									)
 								)

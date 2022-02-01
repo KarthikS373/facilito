@@ -153,7 +153,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 				/>
 			)}
 			{showContent && (
-				<div className={Styles.jagged}>
+				<div className={`${Styles.jagged} ${props.preview ? Styles.previewContent : ''}`}>
 					<h2>{$`Resumen de orden`}</h2>
 					<ul>
 						{/* TÍTULOS */}
@@ -245,26 +245,28 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 					</ul>
 
 					{/* MÉTODOS DE ENVÍO Y PAGO */}
-					<div className={Styles.checkSettings}>
-						{formData?.checkout?.shippingPrices &&
-							formData?.checkout?.shippingPrices?.length !== 0 && (
-								<ShippingMethods
-									shippingPrices={formData?.checkout?.shippingPrices}
-									value={summaryData.shippingMethodValue}
-									className={Styles.shippingMethods}
-									setSummaryData={setSummaryData}
-									setFieldValue={setValue}
-								/>
-							)}
+					{!props.preview && (
+						<div className={Styles.checkSettings}>
+							{formData?.checkout?.shippingPrices &&
+								formData?.checkout?.shippingPrices?.length !== 0 && (
+									<ShippingMethods
+										shippingPrices={formData?.checkout?.shippingPrices}
+										value={summaryData.shippingMethodValue}
+										className={Styles.shippingMethods}
+										setSummaryData={setSummaryData}
+										setFieldValue={setValue}
+									/>
+								)}
 
-						<PayMethods
-							value={summaryData.payMethodValue}
-							setSummaryData={setSummaryData}
-							permissions={props.permissions}
-							className={Styles.payMethods}
-							setFieldValue={setValue}
-						/>
-					</div>
+							<PayMethods
+								value={summaryData.payMethodValue}
+								setSummaryData={setSummaryData}
+								permissions={props.permissions}
+								className={Styles.payMethods}
+								setFieldValue={setValue}
+							/>
+						</div>
+					)}
 
 					{/* MENSAJES DE IMPUESTO/ENVÍO NO INCLUIDOS */}
 					<div className={Styles.taxes}>

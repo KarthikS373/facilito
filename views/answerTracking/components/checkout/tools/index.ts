@@ -1,3 +1,6 @@
+import { sortAnswers } from 'utils/answers'
+const REGEX = /^(.+) - (\w{0,3} \d+(?:\.)?\d+)/gm
+
 /**
  * Obtener sub total
  * @param data
@@ -9,7 +12,8 @@ const getSubTotal = (data?: FormAnswerTracking): number => {
 
 		Object.entries(data.data).forEach(([name, component]) => {
 			if (name.startsWith('products')) {
-				price += parseFloat(component.answer.split('-')[1].match(/\d+(\.\d+)?/)?.[0] ?? '0')
+				const matchs = component.answer.matchAll(REGEX)
+				for (const match of matchs) price += +match?.[2]?.split(' ')[1]
 			}
 		})
 
@@ -87,6 +91,28 @@ export const getSummaryData = (
 			payMethodValue: data.data?.payMethod?.answer ?? $`Pago en efectivo`,
 		}
 	}
+}
+
+/**
+ * Obtener solo productos en respuesta
+ * @param components
+ * @param data
+ * @returns
+ */
+export const getProductsAnswer = (
+	components?: BlockComponent[],
+	data?: FormAnswerItemContainer
+): FormSortedAnswer[] => {
+	if (components && data) {
+		// ELIMINAR DATOS QUE NO SON PRODUCTOS
+		const tmp = { ...data }
+		Object.keys(tmp).forEach((key) => {
+			if (!key.startsWith('product')) delete tmp[key]
+		})
+
+		const answers = sortAnswers(components, tmp)
+		return answers
+	} else return []
 }
 
 export default getSubTotal

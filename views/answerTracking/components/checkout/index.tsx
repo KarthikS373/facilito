@@ -1,11 +1,19 @@
 import React from 'react'
 
 // COMPONENTES
+import { AnswerPreview } from 'views/answers/components/answersList/components/showAnswer'
 import FormSummary from 'views/form/components/form/components/formSummary'
 import CompanyView from 'views/company'
 
+// ICONOS
+import LocationCityTwoTone from '@mui/icons-material/LocationCityTwoTone'
+import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
+import PersonTwoTone from '@mui/icons-material/PersonTwoTone'
+import PhoneTwoTone from '@mui/icons-material/PhoneTwoTone'
+import EmailTwoTone from '@mui/icons-material/EmailTwoTone'
+
 // UTILS
-import getSubTotal, { getCoupons, getProducts, getSummaryData } from './tools'
+import getSubTotal, { getCoupons, getProducts, getProductsAnswer, getSummaryData } from './tools'
 import { transformBackground } from 'utils/tools'
 import useStrings from 'hooks/lang'
 
@@ -31,7 +39,7 @@ const Checkout: React.FC<Checkout> = ({ company, formData, data }) => {
 	const coupons = getCoupons(data)
 
 	// PRODUCTOS
-	const productos = getProducts(data)
+	const products = getProducts(data)
 
 	// DATOS DE ENVIO
 	const summaryData = getSummaryData($, data)
@@ -39,12 +47,48 @@ const Checkout: React.FC<Checkout> = ({ company, formData, data }) => {
 	return (
 		<div style={{ background }} className={Styles.container}>
 			<CompanyView company={company} forms={[]} hideForms />
+			<div className={Styles.info}>
+				{data?.data.personal_name_0 && (
+					<div className={Styles.row}>
+						<PersonTwoTone />
+						<span>{data?.data.personal_name_0?.answer}</span>
+					</div>
+				)}
+				{data?.data.personal_phone_0 && (
+					<div className={Styles.row}>
+						<PhoneTwoTone />
+						<span>{data?.data.personal_phone_0?.answer}</span>
+					</div>
+				)}
+				{data?.data.personal_email_0 && (
+					<div className={Styles.row}>
+						<EmailTwoTone />
+						<span>{data?.data.personal_email_0?.answer}</span>
+					</div>
+				)}
+				{data?.data.personal_address_0 && (
+					<div className={Styles.row}>
+						<LocationCityTwoTone />
+						<span>{data?.data.personal_address_0?.answer}</span>
+					</div>
+				)}
+				{data?.data.personal_instructions_0 && (
+					<div className={Styles.row}>
+						<DescriptionTwoTone />
+						<span>{data?.data.personal_instructions_0?.answer}</span>
+					</div>
+				)}
+			</div>
+
+			<div className={Styles.cart}>
+				<AnswerPreview preview answers={getProductsAnswer(formData?.components, data?.data)} />
+			</div>
 			<div className={Styles.summary}>
 				<FormSummary
 					formData={formData ?? undefined}
 					defSummaryData={summaryData}
 					clickOnSubmit={() => null}
-					formProducts={productos}
+					formProducts={products}
 					formCoupons={coupons}
 					setValue={() => null}
 					productsCounter={[0]}

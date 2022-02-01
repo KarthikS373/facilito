@@ -125,6 +125,20 @@
 	}
 }
 
+.previewContent {
+	.taxes {
+		margin-top: 15px;
+	}
+
+	ul {
+		li:not(:nth-child(1)) {
+			span:first-child {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
 .jagged:after {
 	--tHeight: 2vw;
 	background: #eee;
