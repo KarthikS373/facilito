@@ -1,5 +1,5 @@
 import { sortAnswers } from 'utils/answers'
-const REGEX = /^(.+) - (\w{0,3} \d+(?:\.)?\d+)/gm
+const REGEX = /^\s+(\d+(?:\.)?\d+ \w{0,3}) - (.+)/gm
 
 /**
  * Obtener sub total
@@ -12,8 +12,8 @@ const getSubTotal = (data?: FormAnswerTracking): number => {
 
 		Object.entries(data.data).forEach(([name, component]) => {
 			if (name.startsWith('products')) {
-				const matchs = component.answer.matchAll(REGEX)
-				for (const match of matchs) price += +match?.[2]?.split(' ')[1]
+				const matchs = component.answer.split('').reverse().join('').matchAll(REGEX)
+				for (const match of matchs) price += +match?.[1]?.split(' ')[0].split('').reverse().join('')
 			}
 		})
 
@@ -37,41 +37,6 @@ export const getCoupons = (data?: FormAnswerTracking): FormDataCouponsAnswer | u
 		)
 
 		return coupons
-	}
-}
-
-/**
- * Obtener productos de respuesta
- * @param data
- * @returns
- */
-export const getProducts = (data?: FormAnswerTracking): FormDataProductSliderAnswer | undefined => {
-	if (data) {
-		const products = Object.fromEntries(
-			Object.entries(data.data)
-				.filter(([name]) => name.startsWith('products'))
-				.map(([name, component]) => {
-					return [
-						name,
-						[
-							{
-								count: 1,
-								totalPrice: parseFloat(
-									component.answer.split('-')[1].match(/\d+(\.\d+)?/)?.[0] ?? '0'
-								),
-								title: '',
-								picture: '',
-								sku: '',
-								stockOption: 'inf',
-								productCount: 1,
-								category: '',
-							} as FormProductSliderAnswer,
-						],
-					]
-				})
-		)
-
-		return products
 	}
 }
 

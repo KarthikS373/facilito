@@ -1,6 +1,6 @@
 import React from 'react'
+const REGEX = /^\s+(\d+(?:\.)?\d+ \w{0,3}) - (.+) x (\d+)/gm
 
-const REGEX = /^(\d+) x (.+) - (\w{0,3} \d+(?:\.)?\d+)/gm
 /**
  * Editar titulo de producto
  * @param answer
@@ -8,13 +8,15 @@ const REGEX = /^(\d+) x (.+) - (\w{0,3} \d+(?:\.)?\d+)/gm
  */
 export const getCustomPre = (answer: string): (JSX.Element | string)[] => {
 	return answer.split(/\n/).map((part, index) => {
-		const matchs = REGEX.exec(part)
+		const matchs = REGEX.exec(part.split('').reverse().join(''))?.map((match) =>
+			match.split('').reverse().join('')
+		)
 
 		return matchs ? (
 			<>
 				{index > 0 && <hr />}
 				{index > 0 && <br />}
-				{`${matchs?.[1]} x ${matchs?.[2]} - `} {<strong>{matchs?.[3]}</strong>} {'\n'}
+				{`${matchs?.[3]} x ${matchs?.[2]} - `} {<strong>{matchs?.[1]}</strong>} {'\n'}
 			</>
 		) : (
 			part + '\n'

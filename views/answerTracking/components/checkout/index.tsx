@@ -13,7 +13,7 @@ import PhoneTwoTone from '@mui/icons-material/PhoneTwoTone'
 import EmailTwoTone from '@mui/icons-material/EmailTwoTone'
 
 // UTILS
-import getSubTotal, { getCoupons, getProducts, getProductsAnswer, getSummaryData } from './tools'
+import getSubTotal, { getCoupons, getProductsAnswer, getSummaryData } from './tools'
 import { transformBackground } from 'utils/tools'
 import useStrings from 'hooks/lang'
 
@@ -37,9 +37,6 @@ const Checkout: React.FC<Checkout> = ({ company, formData, data }) => {
 
 	// CUPONES
 	const coupons = getCoupons(data)
-
-	// PRODUCTOS
-	const products = getProducts(data)
 
 	// DATOS DE ENVIO
 	const summaryData = getSummaryData($, data)
@@ -88,12 +85,12 @@ const Checkout: React.FC<Checkout> = ({ company, formData, data }) => {
 					formData={formData ?? undefined}
 					defSummaryData={summaryData}
 					clickOnSubmit={() => null}
-					formProducts={products}
 					formCoupons={coupons}
 					setValue={() => null}
 					productsCounter={[0]}
 					subTotalPrice={total}
 					isSubmitting={false}
+					formProducts={{}}
 					cartItems={0}
 					preview
 				/>
