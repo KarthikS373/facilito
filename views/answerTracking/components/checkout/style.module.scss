@@ -48,3 +48,16 @@
 		}
 	}
 }
+
+@media screen and (max-width: 1010px) {
+	.container {
+		max-height: unset;
+	}
+
+	.info,
+	.cart,
+	.summary {
+		margin: 0 20px;
+		width: calc(100% - 40px);
+	}
+}

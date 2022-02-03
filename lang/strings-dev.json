@@ -1,4 +1,8 @@
 {
+	"impuesto": {
+		"en": "",
+		"es": "$"
+	},
 	"subtotal": {
 		"en": "",
 		"es": "$"

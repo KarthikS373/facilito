@@ -165,9 +165,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 						{/* ITEMS DE CARRITO */}
 						<li>
 							<span onClick={handleDrawer(true)}>
-								{!props.preview
-									? `${$`Items en carrito`} (${props.cartItems})`
-									: $`Subtotal de productos`}
+								{!props.preview ? `${$`Items en carrito`} (${props.cartItems})` : $`Productos`}
 							</span>
 							<span>
 								+ {badge} {subTotalPrice.toFixed(2)}
@@ -177,7 +175,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 						{/* PRECIO DE IMPUESTOS */}
 						{formData?.checkout?.taxesPercentage !== 0 && taxesPrice !== 0 && (
 							<li>
-								<span>{$`Porcentaje de impuesto`}</span>
+								<span>{props.preview ? $`Impuesto` : $`Porcentaje de impuesto`}</span>
 								<span>
 									+ {badge} {taxesPrice.toFixed(2)}
 								</span>
