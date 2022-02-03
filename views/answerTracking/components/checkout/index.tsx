@@ -5,13 +5,6 @@ import { AnswerPreview } from 'views/answers/components/answersList/components/s
 import FormSummary from 'views/form/components/form/components/formSummary'
 import CompanyView from 'views/company'
 
-// ICONOS
-import LocationCityTwoTone from '@mui/icons-material/LocationCityTwoTone'
-import DescriptionTwoTone from '@mui/icons-material/DescriptionTwoTone'
-import PersonTwoTone from '@mui/icons-material/PersonTwoTone'
-import PhoneTwoTone from '@mui/icons-material/PhoneTwoTone'
-import EmailTwoTone from '@mui/icons-material/EmailTwoTone'
-
 // UTILS
 import getSubTotal, { getCoupons, getProductsAnswer, getSummaryData } from './tools'
 import { transformBackground } from 'utils/tools'
@@ -47,32 +40,27 @@ const Checkout: React.FC<Checkout> = ({ company, formData, data }) => {
 			<div className={Styles.info}>
 				{data?.data.personal_name_0 && (
 					<div className={Styles.row}>
-						<PersonTwoTone />
-						<span>{data?.data.personal_name_0?.answer}</span>
+						<span>👨 {data?.data.personal_name_0?.answer}</span>
 					</div>
 				)}
 				{data?.data.personal_phone_0 && (
 					<div className={Styles.row}>
-						<PhoneTwoTone />
-						<span>{data?.data.personal_phone_0?.answer}</span>
+						<span>📞 {data?.data.personal_phone_0?.answer}</span>
 					</div>
 				)}
 				{data?.data.personal_email_0 && (
 					<div className={Styles.row}>
-						<EmailTwoTone />
-						<span>{data?.data.personal_email_0?.answer}</span>
+						<span>📮 {data?.data.personal_email_0?.answer}</span>
 					</div>
 				)}
 				{data?.data.personal_address_0 && (
 					<div className={Styles.row}>
-						<LocationCityTwoTone />
-						<span>{data?.data.personal_address_0?.answer}</span>
+						<span>📪 {data?.data.personal_address_0?.answer}</span>
 					</div>
 				)}
 				{data?.data.personal_instructions_0 && (
 					<div className={Styles.row}>
-						<DescriptionTwoTone />
-						<span>{data?.data.personal_instructions_0?.answer}</span>
+						<span>🔍 {data?.data.personal_instructions_0?.answer}</span>
 					</div>
 				)}
 			</div>

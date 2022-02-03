@@ -8,8 +8,7 @@
 		margin: 0 auto;
 		background: hsl(0, 0%, 98%);
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		column-gap: 20px;
+		grid-template-columns: 1fr;
 		row-gap: 10px;
 
 		.row {
