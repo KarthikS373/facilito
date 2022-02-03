@@ -1,5 +1,5 @@
 import React from 'react'
-const REGEX = /^\s+(\d+(?:\.)?\d+ \w{0,3}) - (.+) x (\d+)/gm
+const REGEX = /^Subtotal:(?: )?(\w{0,3})(?: )?(\d+(\.\d+)?)/gm
 
 /**
  * Editar titulo de producto
@@ -8,15 +8,19 @@ const REGEX = /^\s+(\d+(?:\.)?\d+ \w{0,3}) - (.+) x (\d+)/gm
  */
 export const getCustomPre = (answer: string): (JSX.Element | string)[] => {
 	return answer.split(/\n/).map((part, index) => {
-		const matchs = REGEX.exec(part.split('').reverse().join(''))?.map((match) =>
-			match.split('').reverse().join('')
-		)
+		const matchs = REGEX.exec(part)?.map((match) => match)
 
 		return matchs ? (
 			<>
 				{index > 0 && <hr />}
 				{index > 0 && <br />}
-				{`${matchs?.[3]} x ${matchs?.[2]} - `} {<strong>{matchs?.[1]}</strong>} {'\n'}
+				{`Subtotal: `}
+				{
+					<strong>
+						{matchs?.[1]} {matchs?.[2]}
+					</strong>
+				}
+				{'\n'}
 			</>
 		) : (
 			part + '\n'

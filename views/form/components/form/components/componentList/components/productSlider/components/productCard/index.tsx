@@ -88,13 +88,15 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 						product: props.productSpace,
 					})}>
 					{unActive && !props.preview && <div className={Styles.unActive}>{$`No disponible`}</div>}
-					<Image
-						unoptimized
-						width={196}
-						height={196}
-						src={props.productSpace.picture[0]}
-						alt={props.productSpace.title}
-					/>
+					{props.productSpace.picture[0] && props.productSpace.picture[0]?.length > 0 && (
+						<Image
+							unoptimized
+							width={196}
+							height={196}
+							src={props.productSpace.picture[0]}
+							alt={props.productSpace.title}
+						/>
+					)}
 					<div
 						className={Styles.productContent}
 						style={{ height: eProps.showcaseMode ? '110px' : '165px' }}>

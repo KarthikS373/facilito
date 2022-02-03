@@ -56,7 +56,7 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 										// TARJETA
 										<div className={Styles.shopProductRow} key={`product_cart_${key}_${index}`}>
 											{/* IMAGEN */}
-											{product.picture.length && product.picture.length > 0 && (
+											{product.picture && product.picture.length > 0 && (
 												<div className={Styles.pic}>
 													<Image
 														width={50}
@@ -71,9 +71,16 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 											{/* CONTENIDO */}
 											<div>
 												{product.category && <span>{product.category}</span>}
-												<span>{`${product.count} x ${product.title}`}</span>
+												<strong>
+													{$`Subtotal: `} {props.formData?.badge}{' '}
+													{(+product.totalPrice)?.toFixed(2) ?? '0.00'}
+												</strong>
+												<span>
+													<strong style={{ opacity: 0.8 }}>{product.count}</strong>
+													{` x ${product.title}`}
+												</span>
 												{!Number.isNaN(+product.price) && (
-													<strong>
+													<strong style={{ opacity: 0.8 }}>
 														{props.formData?.badge} {(+product.price)?.toFixed(2) ?? '0.00'}
 													</strong>
 												)}
@@ -93,13 +100,13 @@ const ProductSidebarList: React.FC<ProductSidebarProps> = (props: ProductSidebar
 																		// TARJETA DE PRODUCTO
 																		return (
 																			<div key={`product_cart_${key}_${index}_extra_${extraIndex}`}>
-																				<strong>
+																				<span>
 																					{extra?.title}
 																					{+extraPrice !== 0
 																						? ` +${props.formData?.badge}
 																					${(+extraPrice).toFixed(2)}`
 																						: ''}
-																				</strong>
+																				</span>
 																				{extra?.options.map((option: ExtraOptional) => (
 																					<span key={`extra_${resp}_${extraIndex}`}>
 																						+ {option?.name}

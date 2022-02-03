@@ -1,4 +1,12 @@
 {
+	"subtotal": {
+		"en": "",
+		"es": "$"
+	},
+	"debes_agregar_un_skum_nombre_primero_para_poder_guardar_este_producto": {
+		"en": "",
+		"es": "$"
+	},
 	"actualmente_no_tienes_los_permisos_necesarios_para_acceder_a_esta_funcionalidad": {
 		"en": "",
 		"es": "$"

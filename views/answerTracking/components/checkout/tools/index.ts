@@ -1,5 +1,5 @@
 import { sortAnswers } from 'utils/answers'
-const REGEX = /^\s+(\d+(?:\.)?\d+ \w{0,3}) - (.+)/gm
+const REGEX = /^Subtotal:(?: )?(\w{0,3})(?: )?(\d+(\.\d+)?)/gm
 
 /**
  * Obtener sub total
@@ -12,8 +12,8 @@ const getSubTotal = (data?: FormAnswerTracking): number => {
 
 		Object.entries(data.data).forEach(([name, component]) => {
 			if (name.startsWith('products')) {
-				const matchs = component.answer.split('').reverse().join('').matchAll(REGEX)
-				for (const match of matchs) price += +match?.[1]?.split(' ')[0].split('').reverse().join('')
+				const matchs = component.answer.matchAll(REGEX)
+				for (const match of matchs) price += +match?.[2]?.split(' ')[0]
 			}
 		})
 

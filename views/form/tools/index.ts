@@ -175,9 +175,9 @@ export const reduceAnswers = (
 				tmpData[key]!.answer = (
 					answer?.map(
 						(resp: FormProductSliderAnswer, productIndex: number) =>
-							`${resp.count} x ${resp.title} - ${badge} ${parseFloat(resp.price.toString()).toFixed(
-								2
-							)} ${
+							`${$`Subtotal: `}${badge} ${resp.totalPrice.toString()}\n${resp.count} x ${
+								resp.title
+							} - ${badge} ${parseFloat(resp.price.toString()).toFixed(2)} ${
 								// @ts-ignore
 								(data[`extras_${key}`]?.[productIndex] as unknown as ExtraProductData[])
 									?.map(

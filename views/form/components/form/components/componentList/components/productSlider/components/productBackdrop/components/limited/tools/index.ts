@@ -9,7 +9,7 @@ import type { ExtraLimitedProps } from '..'
  */
 const computeLeft = (sizes: number[], cant: number): number => {
 	// VARIABLES DE CONTEO
-	const totalSum: number = sizes.reduce((fSize: number, lSize: number) => fSize + lSize, 0)
+	const totalSum: number = sizes.reduce((fSize: number, lSize: number) => +fSize + +lSize, 0)
 	const maxSize: number = parseInt(cant.toString(), 10)
 	return maxSize - totalSum
 }
@@ -27,7 +27,7 @@ export const sendExtra = (newSize: number[] | undefined, props: ExtraLimitedProp
 				.map((extraOpt: ExtraOptional, exIndex: number) => ({
 					name: `${newSize[exIndex]} ${extraOpt.name}`,
 					title: props.extra.title,
-					price: extraOpt.price,
+					price: +newSize[exIndex] * +extraOpt.price,
 				}))
 				.filter((_e, exIndex: number) => newSize[exIndex] && newSize[exIndex] > 0)
 		: undefined
@@ -55,11 +55,11 @@ export const handleCounters = (
 	// ENVIAR
 	setSize((sizes: number[]) => {
 		// ASIGNAR
-		const newSize = [...sizes]
+		const newSize = [...sizes].map((size) => size ?? 0)
 		newSize[index] = cSize
 
 		// CALCULAR SUMA
-		const sum = newSize.reduce((fSize: number, lSize: number) => fSize + lSize, 0)
+		const sum = newSize.reduce((fSize: number, lSize: number) => +(fSize ?? 0) + +(lSize ?? 0), 0)
 
 		// ENVIAR
 		if (sum > 0) {

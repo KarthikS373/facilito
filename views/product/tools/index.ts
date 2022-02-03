@@ -63,7 +63,7 @@ const saveProduct = async (
 				if (businessCtx.business) {
 					const redirect = () => {
 						// REDIRECCIONAR
-						if (sku?.length) history.replace(ROUTES.editProduct.replace(':productID', sku))
+						if (sku?.length) history.replace(ROUTES.products)
 					}
 
 					if (

@@ -28,7 +28,7 @@ const handleChecks = (
 		const items: ExtraOptionalExt[] = extra.options
 			.map((extraOpt: ExtraOptional) => ({
 				name: extraOpt.name,
-				price: extraOpt.price,
+				price: +extraOpt.price,
 				title: extra.title,
 			}))
 			.filter((_c, eIndex: number) => currentChecks[eIndex])
