@@ -37,8 +37,10 @@ const Search: React.FC = () => {
 	// ESTADO
 	const [links, setLinks] = useState<LinkInfo[]>([])
 
-	// CONTEXTO
+	// CONTEXTO DE PRODUCTOS
 	const productsCtx = useContext(ProductsContext)
+
+	// CONTEXTO DE FORMULARIOS
 	const formsCtx = useContext(FormsContext)
 
 	// PRODUCTOS

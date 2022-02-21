@@ -23,7 +23,7 @@ const getBusinessProducts = async (
 
 		return onSnapshot(productsDoc, (snap) => {
 			const data = snap.data() as { [id: string]: Product }
-			setProducts(data)
+			setProducts(data ?? {})
 		})
 	} else return undefined
 }

@@ -55,7 +55,7 @@ const ProductsProvider: React.FC = (props) => {
 				// GUARDAR EN NEGOCIO
 				businessCtx.setBusinessDB({ products: Object.keys(newProducts) })
 				if (onSuccess) onSuccess()
-				return newProducts
+				return newProducts ?? {}
 			} else {
 				window.Alert({
 					title: 'Ocurrio un error',
@@ -63,7 +63,7 @@ const ProductsProvider: React.FC = (props) => {
 					type: 'error',
 				})
 
-				return prevProducts
+				return prevProducts ?? {}
 			}
 		})
 
