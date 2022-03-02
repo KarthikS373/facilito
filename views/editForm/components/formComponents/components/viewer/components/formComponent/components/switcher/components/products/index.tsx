@@ -145,35 +145,39 @@ const ProductSlider: React.FC = () => {
 												<NaturalDragAnimation
 													style={providedDrag.draggableProps.style}
 													snapshot={snapshot}>
-													{(style) => (
-														<div
-															ref={providedDrag.innerRef}
-															{...providedDrag.draggableProps}
-															{...providedDrag.dragHandleProps}
-															className={Styles.productItemDrag}
-															style={style}>
-															<span>{currentProduct?.title}</span>
-															<div className={Styles.product}>
-																{currentProduct && (
-																	<IconButton
-																		size='small'
-																		onClick={removeProductEv(key)}
-																		className={Styles.productClose}>
-																		<Close />
-																	</IconButton>
-																)}
-																{productId && (
-																	<Image
-																		unoptimized
-																		src={currentProduct?.picture[0] ?? '/images/logo.png'}
-																		alt={currentProduct?.picture[0]}
-																		height={150}
-																		width={150}
-																	/>
-																)}
+													{(style) =>
+														currentProduct ? (
+															<div
+																ref={providedDrag.innerRef}
+																{...providedDrag.draggableProps}
+																{...providedDrag.dragHandleProps}
+																className={Styles.productItemDrag}
+																style={style}>
+																<span>{currentProduct?.title}</span>
+																<div className={Styles.product}>
+																	{currentProduct && (
+																		<IconButton
+																			size='small'
+																			onClick={removeProductEv(key)}
+																			className={Styles.productClose}>
+																			<Close />
+																		</IconButton>
+																	)}
+																	{productId && (
+																		<Image
+																			unoptimized
+																			src={currentProduct?.picture[0] ?? '/images/logo.png'}
+																			alt={currentProduct?.picture[0]}
+																			height={150}
+																			width={150}
+																		/>
+																	)}
+																</div>
 															</div>
-														</div>
-													)}
+														) : (
+															<></>
+														)
+													}
 												</NaturalDragAnimation>
 											)}
 										</Draggable>
