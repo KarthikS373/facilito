@@ -2,13 +2,12 @@ import type { FieldValues, UseFormSetValue } from 'react-hook-form'
 
 /**
  * Cerrar backdrop
- * @description Cerrar backdrop de productos
- * @param setCurrentProduct
- * @param setCurrentKey
+ * @param  {SetState<CurrentProduct|null>} setCurrentProduct
+ * @param  {SetState<number>} setCurrentKey
  */
 const closeBackdropProduct = (
-	setCurrentProduct: React.Dispatch<React.SetStateAction<CurrentProduct | null>>,
-	setCurrentKey: React.Dispatch<React.SetStateAction<number>>
+	setCurrentProduct: SetState<CurrentProduct | null>,
+	setCurrentKey: SetState<number>
 ): void => {
 	setCurrentProduct(null)
 	setCurrentKey((currentKey) => currentKey + 1)
@@ -16,9 +15,9 @@ const closeBackdropProduct = (
 
 /**
  * Enviar producto
- * @description Parser del contenido del producto buscado
- * @param props
- * @param product
+ * @param  {ProductSelected} product
+ * @param  {FormDataProductSliderAnswer} formProducts?
+ * @param  {UseFormSetValue<FieldValues>|null} setValue?
  */
 export const sendProduct = (
 	product: ProductSelected,

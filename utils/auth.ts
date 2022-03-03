@@ -32,7 +32,6 @@ const authErrors: AuthErrorES = AuthErrorsJSON
 
 /**
  * Administrador de errores de auth
- * @description Retornar strings de error en español
  * @param  {(message:string)=>unknown} cb?
  */
 const authErrorHandler = (cb?: (message: string) => void) => (err: AuthError) => {
@@ -46,7 +45,7 @@ const authErrorHandler = (cb?: (message: string) => void) => (err: AuthError) =>
 
 /**
  * Obtener Auth
- * @description Retorna la instancia global de firebase/auth
+ * @returns {Promise<Auth>}
  */
 export const getAuth = async (): Promise<Auth> => {
 	const {
@@ -72,7 +71,7 @@ export const getAuth = async (): Promise<Auth> => {
 
 /**
  * Iniciar anónimo
- * @description Inicia sesión como usuario anónimo
+ * @returns {Promise<UserCredential>}
  */
 export const signingAnonymously = async (): Promise<UserCredential> => {
 	const { signInAnonymously: signInAnonymouslyFrb } = await import('firebase/auth')
@@ -82,8 +81,8 @@ export const signingAnonymously = async (): Promise<UserCredential> => {
 
 /**
  * Verificar correo
- * @description Verifica un string 'email' con una expresión regular
  * @param  {string} email
+ * @returns {boolean}
  */
 export const verifyEmail = (email: string): boolean => {
 	// REGEX DE EMAIL
@@ -93,7 +92,6 @@ export const verifyEmail = (email: string): boolean => {
 
 /**
  * Verificar campos de login
- * @description Verificar y retorna un mensaje de error
  * @param  {string} email
  * @param  {string} pass
  */
@@ -114,8 +112,8 @@ const verifyLoginFields = (email: string, pass: string) => {
 
 /**
  * Actualizar nombre de usuario
- * @description Actualiza el perfil en el objeto auth
  * @param  {string} displayName
+ * @returns {Promise<void> | null}
  */
 const updateUserName = async (displayName: string) => {
 	const { updateProfile } = await import('firebase/auth')
@@ -125,12 +123,12 @@ const updateUserName = async (displayName: string) => {
 
 /**
  * Registrar usuario
- * @description Registrar nuevo usuario con correo y contraseña
  * @param  {string} email
  * @param  {string} pass
  * @param  {string} name?
  * @param  {(error:string)=>unknown} onError?
  * @param  {boolean} rememberUser?
+ * @returns {Promise<void>}
  */
 export const signingUser = async (
 	email: string,
@@ -202,7 +200,6 @@ export const signingUser = async (
 
 /**
  * Asignar usuario en firestore
- * Almacena un usuario en la collection 'users' de firestore
  * @param  {Partial<User>} userData
  * @param  {boolean} merge? combinar propiedades en el usuario existente
  */
@@ -220,7 +217,6 @@ const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
 
 /**
  * Guardar usuario
- * @description Almacena y valida el usuario
  * @param  {string} name?
  */
 const saveUser = (name?: string) => (credential: UserCredential) => {
@@ -241,9 +237,9 @@ const saveUser = (name?: string) => (credential: UserCredential) => {
 
 /**
  * Iniciar con facebook
- * @description Inicio o Registro con un proveedor facebook.
  * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
+ * @returns {Promise<void>}
  */
 export const facebookSigning = async (
 	rememberUser: boolean,
@@ -278,9 +274,9 @@ export const facebookSigning = async (
 
 /**
  * Iniciar con Google
- * @description Inicio o Registro con un proveedor google.
  * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
+ * @returns {Promise<void>}
  */
 export const googleSigning = async (
 	rememberUser: boolean,
@@ -315,10 +311,10 @@ export const googleSigning = async (
 
 /**
  * Recuperar contraseña
- * @description Enviá un mensaje de recuperación al correo de la cuenta
  * @param  {string} email
  * @param  {EmptyFunction} onSuccess
  * @param  {(error:string)=>unknown} onError?
+ * @returns {Promise<void>}
  */
 export const forgotPass = async (
 	email: string,
@@ -331,7 +327,7 @@ export const forgotPass = async (
 }
 /**
  * Cerrar sesión
- * @description Enviá un evento y cierra sesión
+ * @returns {Promise<void>}
  */
 export const logout = async (): Promise<void> => {
 	const { signOut } = await import('firebase/auth')

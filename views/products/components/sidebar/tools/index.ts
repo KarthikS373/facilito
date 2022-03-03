@@ -1,10 +1,9 @@
 /**
  * Guardar categorias
- * @description Guardar en la DB las categorias y las remplaza en todos los productos
  * @param  {number} index
  * @param  {string} newCategory
  * @param  {string[]} categories
- * @param 	{(business: Partial<Business>) => unknown} setBusinessDB
+ * @param  {(business:Partial<Business>)=>unknown} setBusinessDB
  */
 const saveAllCategories = (
 	index: number,
@@ -25,14 +24,13 @@ export default saveAllCategories
 
 /**
  * Remover categorias
- * @description Quita una categoria de la DB y todos los productos
  * @param  {number} index
- * @param  {string[]} categories
- * @param 	{(business: Partial<Business>) => unknown} setBusinessDB
+ * @param  {SetState<string[]>} setCategories
+ * @param  {(business:Partial<Business>)=>unknown} setBusinessDB
  */
 export const removeAllCategories = (
 	index: number,
-	setCategories: React.Dispatch<React.SetStateAction<string[]>>,
+	setCategories: SetState<string[]>,
 	setBusinessDB: (business: Partial<Business>) => unknown
 ): void => {
 	setCategories((prevCategories) => {
@@ -49,11 +47,9 @@ export const removeAllCategories = (
 
 /**
  * Agregar nueva categoria
- * @param setCategories
+ * @param  {SetState<string[]>} setCategories
  */
-export const addNewCategory = (
-	setCategories: React.Dispatch<React.SetStateAction<string[]>>
-): void => {
+export const addNewCategory = (setCategories: SetState<string[]>): void => {
 	setCategories((categories: string[]) => {
 		const tmpCategories = [...categories]
 		tmpCategories.push('')

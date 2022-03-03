@@ -2,16 +2,15 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Administrar selectores
- * @description Administrar opciones de seleccion del extra
- * @param extra
- * @param ev
- * @param setSelectedExtra
- * @param onSelect
+ * @param  {Extra} extra
+ * @param  {SelectChangeEvent} ev
+ * @param  {SetState<number|string>} setSelectedExtra
+ * @param  {(extra:ExtraOptionalExt[])=>unknown} onSelect?
  */
 const handleSelect = (
 	extra: Extra,
 	ev: SelectChangeEvent,
-	setSelectedExtra: React.Dispatch<React.SetStateAction<number | string>>,
+	setSelectedExtra: SetState<number | string>,
 	onSelect?: (extra: ExtraOptionalExt[]) => unknown
 ): void => {
 	const index: number = parseInt(ev.target.value.toString()) as number

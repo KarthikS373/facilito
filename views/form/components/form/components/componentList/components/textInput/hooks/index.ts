@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 
 /**
  * Hook de top de label
- * @description Actualiza el margin-top del input
- * @param fieldRef
+ * @param  {React.RefObject<HTMLDivElement>} fieldRef
  */
 const useLabelTop = (fieldRef: React.RefObject<HTMLDivElement>): void => {
 	useEffect(() => {

@@ -31,12 +31,6 @@ export const AnswerPreview: React.FC<{
 	)
 }
 
-/**
- * Ver respuesta
- * @description Muestra en una alerta todas las respuestas y preguntas
- * @param  {FormAnswerItemContainer} data
- * @param  {FormComponent[]} components
- */
 const showAnswer = (data: FormAnswerItemContainer, components: FormComponent[]): void => {
 	window.Alert({
 		title: '',

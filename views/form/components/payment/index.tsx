@@ -12,7 +12,7 @@ const CardForm = dynamic(() => import('./components/card'))
 
 // MOSTRAR ALERTA DE PAGO GENERAL
 export const paymentAlert = (
-	data: { [id: string]: unknown },
+	data: Record<string, unknown>,
 	badge: string,
 	reset: () => unknown,
 	endpoint: string

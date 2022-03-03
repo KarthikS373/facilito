@@ -2,14 +2,13 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Enviar datos
- * @description Enviar datos
- * @param ev
- * @param setSummaryData
- * @param setFieldValue
+ * @param  {SelectChangeEvent} ev
+ * @param  {SetState<FormSummaryData>} setSummaryData
+ * @param  {(name:string,value:string|null)=>unknown} setFieldValue
  */
 const handleMethods = (
 	ev: SelectChangeEvent,
-	setSummaryData: React.Dispatch<React.SetStateAction<FormSummaryData>>,
+	setSummaryData: SetState<FormSummaryData>,
 	setFieldValue: (name: string, value: string | null) => unknown
 ): void => {
 	// VALOR

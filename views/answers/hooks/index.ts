@@ -9,13 +9,13 @@ import { filterAnswers } from '../tools'
  * @param  {string} formID
  * @param  {FormInterface} forms
  * @param  {string} changesTrigger
- * @param  {React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>} setAnswers
+ * @param  {SetState<FormAnswerSelf[]>} setAnswers
  */
 export const useFilters = (
 	filter: string,
 	formID: string,
 	forms: FormInterface,
-	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
+	setAnswers: SetState<FormAnswerSelf[]>
 ): void => {
 	useEffect(() => {
 		// BUSCAR

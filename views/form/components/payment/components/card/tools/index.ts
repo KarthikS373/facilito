@@ -6,13 +6,13 @@ import type { CardData } from '..'
 
 /**
  * Evento focus
- * @description Evento focus de input de tarjeta
- * @param optName
- * @returns
+ * @param  {React.FocusEvent<HTMLInputElement>} ev
+ * @param  {SetState<CardData>} setState
+ * @param  {string} optName?
  */
 export const handleInputFocus = (
 	ev: React.FocusEvent<HTMLInputElement>,
-	setState: React.Dispatch<React.SetStateAction<CardData>>,
+	setState: SetState<CardData>,
 	optName?: string
 ): void => {
 	// ASIGNAR VALOR
@@ -23,14 +23,13 @@ export const handleInputFocus = (
 }
 
 /**
- * Evento change
- * @description Actualizar valores de inputs
- * @param ev
- * @param setState
+ * Change de input de tarjeta
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<CardData>} setState
  */
 export const handleInputChange = (
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setState: React.Dispatch<React.SetStateAction<CardData>>
+	setState: SetState<CardData>
 ): void => {
 	// ASIGNAR VALOR
 	const { name, value } = ev.target
@@ -47,15 +46,16 @@ export const handleInputChange = (
 
 /**
  * Fecha de expiracion
- * @description Validar fecha de expiracion de tarjeta
- * @param isMonth
- * @returns
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {boolean} isMonth
+ * @param  {SetState<string[]>} setExpiry
+ * @param  {SetState<CardData>} setState
  */
 export const handleExpiry = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	isMonth: boolean,
-	setExpiry: React.Dispatch<React.SetStateAction<string[]>>,
-	setState: React.Dispatch<React.SetStateAction<CardData>>
+	setExpiry: SetState<string[]>,
+	setState: SetState<CardData>
 ): void => {
 	// VALOR
 	const value = Math.min(isMonth ? 12 : 100, Math.max(0, +ev.target.value))

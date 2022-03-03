@@ -1,7 +1,7 @@
 /**
  * Enviar cambio descripcion
- * @param ev
- * @param onChangeDescription
+ * @param {React.ChangeEvent} ev
+ * @param {(text: string) => unknown} onChangeDescription
  */
 const sendDescription = (
 	ev: React.ChangeEvent,

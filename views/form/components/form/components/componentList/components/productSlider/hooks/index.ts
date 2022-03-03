@@ -3,13 +3,12 @@ import type { FieldValues, UseFormRegister } from 'react-hook-form'
 
 /**
  * Usar filtro de productos
- * @description Crear filtros en el slider de productos
- * @param setProductList
- * @param products
- * @param productsProps
+ * @param  {SetState<Product[]|null>} setProductList
+ * @param  {Product[]|null} products
+ * @param  {string[]|undefined} productsProps
  */
 const useProductsFilter = (
-	setProductList: React.Dispatch<React.SetStateAction<Product[] | null>>,
+	setProductList: SetState<Product[] | null>,
 	products: Product[] | null,
 	productsProps: string[] | undefined
 ): void => {
@@ -38,11 +37,10 @@ const useProductsFilter = (
 
 /**
  * Hook de registrar componentes
- * @description Registrar las propiedades del product slider
- * @param register
- * @param required
- * @param name
- * @param id
+ * @param  {UseFormRegister<FieldValues>|null} register
+ * @param  {boolean} required
+ * @param  {string} name
+ * @param  {number} id
  */
 export const useProductsRegister = (
 	register: UseFormRegister<FieldValues> | null,

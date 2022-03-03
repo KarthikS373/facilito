@@ -1,14 +1,14 @@
 /**
  * Contador de extra
- * @description Cambiar contador de extra
- * @param add
- * @param setProductsCounter
- * @param onChangeVal
+ * @param  {number} add
+ * @param  {number} max
+ * @param  {SetState<number>} setProductsCounter
+ * @param  {(added:number)=>unknown} onChangeVal?
  */
 const handleProductCounter = (
 	add: number,
 	max: number,
-	setProductsCounter: React.Dispatch<React.SetStateAction<number>>,
+	setProductsCounter: SetState<number>,
 	onChangeVal?: (added: number) => unknown
 ): void => {
 	setProductsCounter((productsCounter: number) => {

@@ -6,8 +6,9 @@ import { getUser } from 'utils/user'
 
 /**
  * Obtener lista de usuarios por correo
- * @param users
- * @param setUsersList
+ * @param {string[]} users
+ * @param {SetState<User[]>} setUsersList
+ * @param {React.MutableRefObject<UserRole[]>} userRoles
  */
 const useUsers = (
 	users: string[],

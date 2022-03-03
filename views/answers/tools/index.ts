@@ -50,12 +50,12 @@ export default filterAnswers
  * @description Mueve el arreglo state en una fila de respuestas
  * @param  {number} index
  * @param  {number} newState
- * @param  {React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>} setAnswers
+ * @param  {SetState<FormAnswerSelf[]>} setAnswers
  */
 export const updateLocalAnswerState = (
 	index: number,
 	newState: number,
-	setAnswers: React.Dispatch<React.SetStateAction<FormAnswerSelf[]>>
+	setAnswers: SetState<FormAnswerSelf[]>
 ): void => {
 	setAnswers((prevAnswers: FormAnswerSelf[]) => {
 		// EDITAR

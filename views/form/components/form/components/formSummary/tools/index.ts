@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+
 /**
  * Buscar cupones
- * @description Buscar cupones por id
- * @param couponCode
- * @param components
- * @returns
+ * @param  {string} couponCode
+ * @param  {BlockComponent[]} components
+ * @returns {Coupon | undefined}
  */
 export const findCouponsById = (
 	couponCode: string,
@@ -24,11 +24,10 @@ export const findCouponsById = (
 
 /**
  * Precio de cupones
- * @description Calcular precio de cupones
- * @param formProducts
- * @param currentCoupon
- * @param totalPrice
- * @returns
+ * @param  {FormDataProductSliderAnswer|undefined} formProducts
+ * @param  {(Coupon|null)[]} currentCoupon
+ * @param  {number} totalPrice
+ * @returns {number[]}
  */
 export const computeCoupon = (
 	formProducts: FormDataProductSliderAnswer | undefined,
@@ -150,10 +149,9 @@ export const computeCoupon = (
 
 /**
  * Hook de cupones
- * @description Filtrar cupones aplicables al resumen
- * @param setCurrentCoupon
- * @param formCoupons
- * @param formData
+ * @param  {FormDataCouponsAnswer|undefined} formCoupons
+ * @param  {BlockComponent[]} components?
+ * @returns {Coupon[]}
  */
 export const getFormCoupons = (
 	formCoupons: FormDataCouponsAnswer | undefined,

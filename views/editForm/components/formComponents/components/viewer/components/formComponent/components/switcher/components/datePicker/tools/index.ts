@@ -3,9 +3,8 @@ import { parseDate } from 'utils/tools'
 
 /**
  * Obtener dias
- * @description Obtener dias de la semana
- * @param $
- * @returns
+ * @param  {TemplateStrBuilder} $
+ * @returns {string[]}
  */
 const getDaysStr = ($: TemplateStrBuilder): string[] => [
 	$`Todos`,
@@ -20,25 +19,22 @@ const getDaysStr = ($: TemplateStrBuilder): string[] => [
 
 /**
  * Fechas por defecto
- * @description Obtener valores de fechas por defecto
- * @param time
- * @returns
+ * @param  {(Date|null)[]|undefined} time
  */
 export const getDefDates = (time: (Date | null)[] | undefined): (Date | null)[] | undefined =>
 	time ? [time[0] ? parseDate(time[0]) : null, time[1] ? parseDate(time[1]) : null] : [null, null]
 
 /**
  * Enviar tiempo
- * @description Enviar tiempo de fecha
- * @param index
- * @param date
- * @param setIntervals
- * @param onChange
+ * @param  {keyofBlockComponent} index
+ * @param  {(Date|null)[]} date
+ * @param  {SetState<number>} setIntervals
+ * @param  {(component:keyofBlockComponent,value:FormInputValue)=>unknown} onChange?
  */
 export const sendTime = (
 	index: keyof BlockComponent,
 	date: (Date | null)[],
-	setIntervals: React.Dispatch<React.SetStateAction<number>>,
+	setIntervals: SetState<number>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 ): void => {
 	if (date[0] && date[1])
@@ -48,9 +44,8 @@ export const sendTime = (
 
 /**
  * Valores por defecto
- * @description Obtener valores por defecto para estado
- * @param daysOfWeek
- * @returns
+ * @param  {boolean[]} daysOfWeek?
+ * @returns {boolean[]}
  */
 export const getDefValues = (daysOfWeek?: boolean[]): boolean[] =>
 	daysOfWeek
@@ -59,14 +54,13 @@ export const getDefValues = (daysOfWeek?: boolean[]): boolean[] =>
 
 /**
  * Asignar dias
- * @description Asignar valores de checkbox para dias
- * @param ev
- * @param setDays
- * @param onChange
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<boolean[]>} setDays
+ * @param  {(component:keyofBlockComponent,value:FormInputValue)=>unknown} onChange?
  */
 export const setAllDays = (
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setDays: React.Dispatch<React.SetStateAction<boolean[]>>,
+	setDays: SetState<boolean[]>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 ): void => {
 	setDays(Array(8).fill(ev.target.checked))
@@ -74,15 +68,13 @@ export const setAllDays = (
 }
 
 /**
- * Duracion
- * @description Asignar duracion de fecha
- * @param ev
- * @param setDuration
- * @param onChange
+ * @param  {SelectChangeEvent} ev
+ * @param  {SetState<number>} setDuration
+ * @param  {(component:keyofBlockComponent,value:FormInputValue)=>unknown} onChange?
  */
 export const handleDuration = (
 	ev: SelectChangeEvent,
-	setDuration: React.Dispatch<React.SetStateAction<number>>,
+	setDuration: SetState<number>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 ): void => {
 	const time: number = +ev.target.value as number
@@ -92,16 +84,15 @@ export const handleDuration = (
 
 /**
  * Seleccionar dia
- * @description Seleccionar dia actual
- * @param index
- * @param ev
- * @param setDays
- * @param onChange
+ * @param  {number} index
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<boolean[]>} setDays
+ * @param  {(component:keyofBlockComponent,value:FormInputValue)=>unknown} onChange?
  */
 export const setSelectedDay = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setDays: React.Dispatch<React.SetStateAction<boolean[]>>,
+	setDays: SetState<boolean[]>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 ): void => {
 	/// COPIAR DIAS

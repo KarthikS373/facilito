@@ -5,12 +5,12 @@ import { uploadFile, compressImage, getURL } from './storage'
 
 /**
  * Obtener productos
- * @description Retorna una lista de productos por empresa
  * @param  {setProducts: (products:{[id:string]: Product}) => unknown}
  * @param  {string} companyID
+ * @returns {Promise<Unsubscribe | undefined>}
  */
 const getBusinessProducts = async (
-	setProducts: (products: { [id: string]: Product }) => unknown,
+	setProducts: (products: Record<string, Product>) => unknown,
 	companyID?: string
 ): Promise<Unsubscribe | undefined> => {
 	const { doc, onSnapshot } = await import('firebase/firestore')
@@ -22,7 +22,7 @@ const getBusinessProducts = async (
 		const productsDoc = doc(col, companyID)
 
 		return onSnapshot(productsDoc, (snap) => {
-			const data = snap.data() as { [id: string]: Product }
+			const data = snap.data() as Record<string, Product>
 			setProducts(data ?? {})
 		})
 	} else return undefined
@@ -32,8 +32,8 @@ export default getBusinessProducts
 
 /**
  * Obtener productos
- * @description Retorna todos los productos de una empresa
  * @param companyID
+ * @returns {Promise<Product[] | null>}
  */
 export const getProducts = async (companyID?: string): Promise<Product[] | null> => {
 	const { doc, getDoc } = await import('firebase/firestore')
@@ -44,19 +44,19 @@ export const getProducts = async (companyID?: string): Promise<Product[] | null>
 	if (companyID) {
 		const productsDoc = doc(col, companyID)
 		const productData = await getDoc(productsDoc)
-		const products = productData.data() as { [id: string]: Product }
+		const products = productData.data() as Record<string, Product>
 		return Object.values(products)
 	} else return null
 }
 
 /**
  * Actualizar productos
- * @description Actualiza todos los productos
- * @param  {{[id:string]:Product}} products
+ * @param  {Record<string, Product>,} products
  * @param  {string} companyID
+ * @returns {Promise<void>}
  */
 export const replaceProducts = async (
-	products: { [id: string]: Product },
+	products: Record<string, Product>,
 	companyID?: string
 ): Promise<void> => {
 	const { setDoc, doc } = await import('firebase/firestore')
@@ -75,10 +75,9 @@ export const replaceProducts = async (
 
 /**
  * Agregar muchos productos
- * @description Agregar productos como arreglo
- * @param data
- * @param companyID
- * @returns
+ * @param  {Partial<Product>[]} data
+ * @param  {string} companyID?
+ * @returns {Promise<void>}
  */
 export const bulkUpdateProducts = async (
 	data: Partial<Product>[],
@@ -105,10 +104,10 @@ export const bulkUpdateProducts = async (
 
 /**
  * Actualizar categorías
- * @description Actualiza todos los productos con una nueva categoría
  * @param  {Product[]} products
  * @param  {string} oldCategory
  * @param  {string} newCategory
+ * @returns {Product[]}
  */
 export const changeProductsCategory = (
 	products: Product[],
@@ -127,10 +126,10 @@ export const changeProductsCategory = (
 
 /**
  * Guardar imagenes de un producto
- * @description Sube a storage la lista de imagenes de un producto
- * @param  {File[]} images
+ * @param  {(File|null)[]} images
  * @param  {string} sku
- * @param  {string} companyID
+ * @param  {string} companyID?
+ * @returns {Promise<string[]>}
  */
 export const saveProductImages = async (
 	images: (File | null)[],

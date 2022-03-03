@@ -61,7 +61,7 @@ export const addSelfComponent = (
 	component: FormContainerProps,
 	components: FormContainerProps[],
 	componentsList: React.MutableRefObject<BlockComponent[]>,
-	setComponents: React.Dispatch<React.SetStateAction<FormContainerProps[]>>,
+	setComponents: SetState<FormContainerProps[]>,
 	viewerRef: React.RefObject<HTMLDivElement>
 ): void => {
 	// COPIA

@@ -30,7 +30,7 @@ import useStrings from 'hooks/lang'
 
 // PROPS
 interface ProductSidebarProps {
-	setSummaryData: React.Dispatch<React.SetStateAction<FormSummaryData>>
+	setSummaryData: SetState<FormSummaryData>
 	formProducts: FormDataProductSliderAnswer | undefined
 	handleDrawer: (open: boolean) => EmptyFunction
 	setValue: UseFormSetValue<FieldValues>

@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 
 /**
  * Hook de extras iniciales
- * @param productRef
- * @param setExtras
+ * @param  {React.MutableRefObject<Product>} productRef
+ * @param  {SetState<ExtendedExtra[]>} setExtras
  */
 const useDefExtras = (
 	productRef: React.MutableRefObject<Product>,

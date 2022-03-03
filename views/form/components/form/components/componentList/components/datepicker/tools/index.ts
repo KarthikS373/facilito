@@ -3,15 +3,14 @@ import type { DateRange } from '@mui/lab/DateRangePicker'
 
 /**
  * Cambiar fechas
- * @description Evento onchange de los pickers
- * @param date
- * @param reservations
- * @param setCurrentDate
+ * @param  {Date|null} date
+ * @param  {number|undefined} reservations
+ * @param  {SetState<(Date|null} setCurrentDate
  */
 export const onChangePicker = (
 	date: Date | null,
 	reservations: number | undefined,
-	setCurrentDate: React.Dispatch<React.SetStateAction<(Date | null)[]>>
+	setCurrentDate: SetState<(Date | null)[]>
 ): void => {
 	if (reservations) {
 		if (date) setCurrentDate([date])
@@ -26,15 +25,14 @@ export const onChangePicker = (
 
 /**
  * Cambiar intervalos
- * @description Evento onchange en date range
- * @param dates
- * @param reservations
- * @param setCurrentDate
+ * @param  {DateRange<Date|null>} dates
+ * @param  {number|undefined} reservations
+ * @param  {SetState<(Date|null} setCurrentDate
  */
 export const onChangeInterval = (
 	dates: DateRange<Date | null>,
 	reservations: number | undefined,
-	setCurrentDate: React.Dispatch<React.SetStateAction<(Date | null)[]>>
+	setCurrentDate: SetState<(Date | null)[]>
 ): void => {
 	if (reservations) {
 		if (dates.every((date: Date | null) => date !== null && date !== undefined)) {
@@ -50,11 +48,10 @@ export const onChangeInterval = (
 }
 
 /**
- * Des habilitar dias
- * @description Funcion para des habilitar dias en un picker
- * @param day
- * @param daysOfWeek
- * @returns
+ * Deshabilitar fechas
+ * @param  {Date|null} day
+ * @param  {boolean[]|undefined} daysOfWeek
+ * @returns {boolean}
  */
 export const disableDates = (day: Date | null, daysOfWeek: boolean[] | undefined): boolean => {
 	if (day && daysOfWeek) return !daysOfWeek[day.getDay()]

@@ -3,8 +3,9 @@ import { defThemeColors } from 'utils/tools'
 
 /**
  * Usar colores de negocio
- * @param setDefColors
- * @param theme
+ * @param  {SetState<string[]>} setDefColors
+ * @param  {Business['theme']} theme?
+ * @returns void
  */
 const useBusinessTheme = (setDefColors: SetState<string[]>, theme?: Business['theme']): void => {
 	useEffect(() => {

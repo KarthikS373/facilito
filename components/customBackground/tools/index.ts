@@ -8,19 +8,18 @@ export interface ImagesState {
 
 /**
  * Guardar archivo
- * @description Guardar archivos de banner y background
- * @param ev
- * @param prefix
- * @param company
- * @param props
- * @param setImages
+ * @param  {React.ChangeEvent} ev
+ * @param  {'background'|'banner'} prefix
+ * @param  {(image:File)=>void} onBackground
+ * @param  {(image:File)=>void} onBanner
+ * @param  {SetState<ImagesState>} setImages
  */
 const saveFile = (
 	ev: React.ChangeEvent,
 	prefix: 'background' | 'banner',
 	onBackground: (image: File) => void,
 	onBanner: (image: File) => void,
-	setImages: React.Dispatch<React.SetStateAction<ImagesState>>
+	setImages: SetState<ImagesState>
 ): void => {
 	// ARCHIVOS
 	const inp = ev.target as HTMLInputElement
@@ -50,9 +49,9 @@ const saveFile = (
 
 /**
  * Valores por defecto
- * @description Obtener valores por defecto para estado de imagenes
- * @param props
- * @returns
+ * @param  {string} defaultBackground
+ * @param  {string} defaultBanner
+ * @returns {ImagesState}
  */
 export const getDefValues = (defaultBackground: string, defaultBanner: string): ImagesState => ({
 	banner: defaultBanner?.toString() ?? '',
@@ -61,16 +60,15 @@ export const getDefValues = (defaultBackground: string, defaultBanner: string): 
 
 /**
  * Cambiar colores
- * @description Cambiar gradiente de colores para fondo
- * @param index
- * @param ev
- * @param onColor
- * @param defColors
+ * @param  {number} index
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<string[]>} setDefColors
+ * @param  {(image:File|string)=>void} onBackground
  */
 export const changeColors = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setDefColors: React.Dispatch<React.SetStateAction<string[]>>,
+	setDefColors: SetState<string[]>,
 	onBackground: (image: File | string) => void
 ): void => {
 	// VALOR
@@ -88,17 +86,15 @@ export const changeColors = (
 		return tmpColors as [string, string, string]
 	})
 }
-
 /**
  * Cambiar inclinacion
- * @description Cambiar inclinacion de fondo con gradientes
- * @param newValue
- * @param onColor
- * @param defColors
+ * @param  {number|number[]} newValue
+ * @param  {SetState<string[]>} setDefColors
+ * @param  {(image:File|string)=>void} onBackground
  */
 export const changeColorDegrees = (
 	newValue: number | number[],
-	setDefColors: React.Dispatch<React.SetStateAction<string[]>>,
+	setDefColors: SetState<string[]>,
 	onBackground: (image: File | string) => void
 ): void => {
 	// ASIGNAR

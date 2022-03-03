@@ -1,9 +1,8 @@
 /**
  * Cambiar opcion
- * @description Actualiza en la DB y en el contexto las propiedades de un opcional
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
- * @param  {number} index
  * @param  {number} extraIndex
+ * @param  {number} optionIndex
  * @param  {React.MutableRefObject<Product>} localProduct
  */
 const changeOptionProps = (

@@ -2,7 +2,8 @@ import showCardForm from '../components/newCard'
 
 /**
  * Agregar cuenta
- * @param setAccounts
+ * @param {React.MutableRefObject<Business | null>} businessRef
+ * @param {SetState<CompanyPaymentAccount[]>} setAccounts
  */
 const addAccount = (
 	businessRef: React.MutableRefObject<Business | null>,
@@ -28,8 +29,9 @@ const addAccount = (
 
 /**
  * Borrar cuenta
- * @param setAccounts
- * @param index
+ * @param {React.MutableRefObject<Business | null>} businessRef
+ * @param {SetState<CompanyPaymentAccount[]>} setAccounts
+ * @param {number} index
  */
 export const deleteAccount = (
 	businessRef: React.MutableRefObject<Business | null>,
@@ -46,8 +48,9 @@ export const deleteAccount = (
 
 /**
  * Hacer una cuenta principal
- * @param setAccounts
- * @param index
+ * @param {React.MutableRefObject<Business | null>} businessRef
+ * @param {SetState<CompanyPaymentAccount[]>} setAccounts
+ * @param {number} index
  */
 export const setAccountAsMain = (
 	businessRef: React.MutableRefObject<Business | null>,

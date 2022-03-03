@@ -1,12 +1,11 @@
 /**
  * Agregar extra
- * @description Agregar un extra en la lista de extra
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<ExtendedOpt[]>>} setExtras
+ * @param  {SetState<ExtendedExtra[]>} setExtras
  */
 const addExtra = (
 	productRef: React.MutableRefObject<Product>,
-	setExtras: React.Dispatch<React.SetStateAction<ExtendedExtra[]>>
+	setExtras: SetState<ExtendedExtra[]>
 ): void => {
 	setExtras((prevExtras: ExtendedExtra[]) => {
 		const newExtras = [...prevExtras]
@@ -26,15 +25,14 @@ export default addExtra
 
 /**
  * Remover extra
- * @description Remover un extra en la lista de extra
  * @param  {number} extIndex
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<ExtendedOpt[]>>} setExtras
+ * @param  {SetState<ExtendedExtra[]>} setExtras
  */
 export const removeExtra = (
 	extIndex: number,
 	productRef: React.MutableRefObject<Product>,
-	setExtras: React.Dispatch<React.SetStateAction<ExtendedExtra[]>>
+	setExtras: SetState<ExtendedExtra[]>
 ): void => {
 	setExtras((prevExtras: ExtendedExtra[]) => {
 		const newExtras = [...prevExtras].filter((_ext, index: number) => index !== extIndex)

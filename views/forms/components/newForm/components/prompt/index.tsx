@@ -21,14 +21,6 @@ import saveFormSchema from 'utils/forms'
 import ROUTES from 'router/routes'
 import { saveUrl } from 'utils/urls'
 
-/**
- * Mostrar prompt de nueva tienda
- * @description Crea una alerta con un input para crear una nueva tienda
- * @param  {TemplateStrBuilder} $
- * @param  {Business | null} business
- * @param  {NextRouter} router
- * @param  {(title:string) => Promise<void>} callback
- */
 const showNewFormPrompt = (
 	$: TemplateStrBuilder,
 	business: Business | null,

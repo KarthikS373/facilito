@@ -2,18 +2,15 @@ import type { ProductBackdropProps } from '..'
 
 /**
  * Enviar producto
- * @description Enviar producto y reiniciar
- * @param props
- * @param setExtrasCounter
- * @param extrasCounter
- * @param setProductsCounter
- * @param productsCounter
+ * @param  {ProductBackdropProps} props
+ * @param  {SetState<(ExtraOptionalExt[]|undefined} setExtrasCounter
+ * @returns {Promise<void>s}
  */
 const sendProduct = async (
 	props: ProductBackdropProps,
-	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptionalExt[] | undefined)[]>>,
+	setExtrasCounter: SetState<(ExtraOptionalExt[] | undefined)[]>,
 	extrasCounter: (ExtraOptionalExt[] | undefined)[],
-	setProductsCounter: React.Dispatch<React.SetStateAction<number>>,
+	setProductsCounter: SetState<number>,
 	productsCounter: number
 ): Promise<void> => {
 	if (props.currentProduct?.product) {
@@ -75,16 +72,14 @@ const sendProduct = async (
 
 /**
  * Contador de producto
- * @description Administrar contador
- * @param add
- * @param props
- * @param setProductsCounter
- * @returns
+ * @param  {number} add
+ * @param  {ProductBackdropProps} props
+ * @param  {SetState<number>} setProductsCounter
  */
 export const handleProductCounter = (
 	add: number,
 	props: ProductBackdropProps,
-	setProductsCounter: React.Dispatch<React.SetStateAction<number>>
+	setProductsCounter: SetState<number>
 ): void => {
 	setProductsCounter((productsCounter: number) =>
 		Math.min(
@@ -100,15 +95,14 @@ export const handleProductCounter = (
 
 /**
  * Agregar extra
- * @descripcion Agregar extra de seleccion unica
- * @param index
- * @param extra
- * @param setExtrasCounter
+ * @param  {number} index
+ * @param  {ExtraOptionalExt[]|undefined} extra
+ * @param  {SetState<(ExtraOptionalExt[]|undefined} setExtrasCounter
  */
 export const addExtra = (
 	index: number,
 	extra: ExtraOptionalExt[] | undefined,
-	setExtrasCounter: React.Dispatch<React.SetStateAction<(ExtraOptionalExt[] | undefined)[]>>
+	setExtrasCounter: SetState<(ExtraOptionalExt[] | undefined)[]>
 ): void => {
 	setExtrasCounter((extras: (ExtraOptionalExt[] | undefined)[]) => {
 		extras[index] = extra
@@ -118,12 +112,11 @@ export const addExtra = (
 
 /**
  * Evento de cerrar
- * @description Cerrar y reiniciar
- * @param setProductsCounter
- * @param closeBackdropProduct
+ * @param  {SetState<number>} setProductsCounter
+ * @param  {EmptyFunction} closeBackdropProduct
  */
 export const onClose = (
-	setProductsCounter: React.Dispatch<React.SetStateAction<number>>,
+	setProductsCounter: SetState<number>,
 	closeBackdropProduct: EmptyFunction
 ): void => {
 	setProductsCounter(0)

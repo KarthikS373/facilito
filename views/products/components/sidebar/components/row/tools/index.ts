@@ -3,17 +3,16 @@ import { changeProductsCategory } from 'utils/products'
 
 /**
  * Cambiar categoria
- * @description Guardar y actualiza la fila de categoria
  * @param  {string} category
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
- * @param  {React.Dispatch<React.SetStateAction<boolean>>} setSave
- * @param  {React.Dispatch<React.SetStateAction<string>>} setValue
+ * @param  {SetState<boolean>} setSave
+ * @param  {SetState<string>} setValue
  */
 const onChangeCategory = (
 	category: string,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setSave: React.Dispatch<React.SetStateAction<boolean>>,
-	setValue: React.Dispatch<React.SetStateAction<string>>
+	setSave: SetState<boolean>,
+	setValue: SetState<string>
 ): void => {
 	const newValue = ev.target.value
 	setSave(newValue !== category)
@@ -22,38 +21,31 @@ const onChangeCategory = (
 
 interface SaveCategoryProps {
 	setProducts: (
-		products: { [id: string]: Product },
+		products: Record<string, Product>,
 		merge?: boolean,
 		initialSKU?: string,
 		onSuccess?: () => unknown
 	) => unknown
 	onChange: (newCategory: string) => unknown
-	products: { [id: string]: Product }
+	products: Record<string, Product>
 	onClose: () => unknown
 	category: string
 	value: string
 }
+
 /**
  * Guardar categoria
- * @description Guardar y actualiza la fila de categoria
- * @param  {SaveCategoryProps} props
+ * @param  {SaveCategoryProps} options
  */
-export const saveCategory = ({
-	value,
-	onClose,
-	category,
-	onChange,
-	products,
-	setProducts,
-}: SaveCategoryProps): void => {
+export const saveCategory = (options: SaveCategoryProps): void => {
 	// CLAVES
-	const keys: string[] = Object.keys(products)
+	const keys: string[] = Object.keys(options.products)
 
 	// ACTUALIZAR
-	onChange(value)
-	setProducts(
+	options.onChange(options.value)
+	options.setProducts(
 		Object.fromEntries(
-			changeProductsCategory(Object.values(products), category, value).map(
+			changeProductsCategory(Object.values(options.products), options.category, options.value).map(
 				(product: Product, index: number) => [keys[index], product]
 			)
 		),
@@ -62,7 +54,7 @@ export const saveCategory = ({
 	)
 
 	// CERRAR
-	onClose()
+	options.onClose()
 }
 
 export default onChangeCategory

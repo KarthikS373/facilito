@@ -13,7 +13,7 @@ import { replaceProducts } from 'utils/products'
 
 const ProductsProvider: React.FC = (props) => {
 	// ESTADO
-	const [products, setLocalProducts] = useState<{ [id: string]: Product }>({})
+	const [products, setLocalProducts] = useState<Record<string, Product>>({})
 
 	// USER
 	const businessCtx = useContext(BusinessContext)
@@ -23,17 +23,17 @@ const ProductsProvider: React.FC = (props) => {
 
 	// GUARDAR PRODUCTOS GLOBAL
 	const setProducts = (
-		products: { [id: string]: Product },
+		products: Record<string, Product>,
 		merge = true,
 		initialSKU = '',
 		onSuccess?: () => unknown
 	) =>
-		setLocalProducts((prevProducts: { [id: string]: Product }) => {
+		setLocalProducts((prevProducts: Record<string, Product>) => {
 			// ACTUALIZAR
 			const tmpProducts = { ...prevProducts }
 			if (initialSKU?.length) delete tmpProducts[initialSKU]
 
-			const newProducts: { [id: string]: Product } = merge
+			const newProducts: Record<string, Product> = merge
 				? { ...tmpProducts, ...products }
 				: { ...products }
 

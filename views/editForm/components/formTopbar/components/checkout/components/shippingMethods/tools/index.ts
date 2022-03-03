@@ -13,7 +13,7 @@ export interface ShippingPriceExt extends ShippingPrice {
 export const setShippingValue = (
 	id: number,
 	name: string,
-	setShippingsList: React.Dispatch<React.SetStateAction<ShippingPriceExt[]>>,
+	setShippingsList: SetState<ShippingPriceExt[]>,
 	onChange: (shippingsList: ShippingPrice[]) => unknown,
 	ev: React.ChangeEvent<HTMLInputElement>
 ): void => {
@@ -40,7 +40,7 @@ export const setShippingValue = (
  */
 export const addShipping = (
 	id: number,
-	setShippingsList: React.Dispatch<React.SetStateAction<ShippingPriceExt[]>>,
+	setShippingsList: SetState<ShippingPriceExt[]>,
 	onChange: (shippingsList: ShippingPrice[]) => unknown
 ): void => {
 	setShippingsList((prevList: ShippingPriceExt[]) => {
@@ -64,7 +64,7 @@ export const addShipping = (
  */
 export const deleteShipping = (
 	id: number,
-	setShippingsList: React.Dispatch<React.SetStateAction<ShippingPriceExt[]>>,
+	setShippingsList: SetState<ShippingPriceExt[]>,
 	onChange: (shippingsList: ShippingPrice[]) => unknown
 ): void => {
 	setShippingsList((prevList: ShippingPriceExt[]) => {

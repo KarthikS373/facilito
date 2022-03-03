@@ -2,8 +2,8 @@ import { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Cambiar y guardar
- * @param ev
- * @param businessRef
+ * @param {React.ChangeEvent<HTMLInputElement>} ev
+ * @param {React.MutableRefObject<Business | null>} businessRef
  */
 const onChangeInput = (
 	ev: React.ChangeEvent<HTMLInputElement>,
@@ -15,8 +15,8 @@ const onChangeInput = (
 
 /**
  * Cambiar y guardar categoria
- * @param ev
- * @param businessRef
+ * @param {SelectChangeEvent} ev
+ * @param {React.MutableRefObject<Business | null>} businessRef
  */
 export const onChangeCategory = (
 	ev: SelectChangeEvent,

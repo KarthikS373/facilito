@@ -34,8 +34,8 @@ export interface SendData extends ConnectionMethods {
 const handleChecks = (
 	key: 'whatsapp' | 'email',
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setErrs: React.Dispatch<React.SetStateAction<[boolean, boolean, boolean]>>,
-	setFormData: React.Dispatch<React.SetStateAction<SendData>>
+	setErrs: SetState<[boolean, boolean, boolean]>,
+	setFormData: SetState<SendData>
 ): void => {
 	setFormData((formData) => {
 		// CHECKED
@@ -78,7 +78,7 @@ export const validateFclt = (
 	props: FormTopbarProps,
 	formsCtx: FormsContextProps,
 	formSendData: SendData,
-	setErrs: React.Dispatch<React.SetStateAction<[boolean, boolean, boolean]>>,
+	setErrs: SetState<[boolean, boolean, boolean]>,
 	errs: [boolean, boolean, boolean]
 ): void => {
 	// ACTUALIZAR
@@ -130,8 +130,8 @@ export const validateFclt = (
  */
 export const handleInputs = <T extends unknown>(
 	ev: T,
-	setFormData: React.Dispatch<React.SetStateAction<SendData>>,
-	setErrs: React.Dispatch<React.SetStateAction<[boolean, boolean, boolean]>>
+	setFormData: SetState<SendData>,
+	setErrs: SetState<[boolean, boolean, boolean]>
 ): void => {
 	// GLOBAL
 	let name = ''

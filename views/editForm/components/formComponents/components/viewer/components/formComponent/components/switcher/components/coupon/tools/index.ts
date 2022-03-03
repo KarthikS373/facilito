@@ -1,17 +1,15 @@
 /**
  * Cupones por defecto
- * @description Obtener cupones por defecto para estado
- * @param coupons
- * @returns
+ * @param  {Coupon[]} coupons?
+ * @returns {(Coupon | null)[]}
  */
 const getDefCoupons = (coupons?: Coupon[]): (Coupon | null)[] =>
 	coupons ? [...coupons, null] : [null]
 
 /**
  * Guardar cupones
- * @description Guardar y enviar todos los cupones
- * @param currentCoupons
- * @param onChange
+ * @param  {(Coupon|null)[]} currentCoupons
+ * @param  {(component:keyofBlockComponent,value:FormInputValue)=>unknown} onChange?
  */
 export const saveCoupons = (
 	currentCoupons: (Coupon | null)[],
@@ -30,10 +28,7 @@ export const saveCoupons = (
  * @param index
  * @param setCoupons
  */
-export const deleteCoupon = (
-	index: number,
-	setCoupons: React.Dispatch<React.SetStateAction<(Coupon | null)[]>>
-): void => {
+export const deleteCoupon = (index: number, setCoupons: SetState<(Coupon | null)[]>): void => {
 	setCoupons((prevCoupons: (Coupon | null)[]) => {
 		// BORRAR
 		const tmpCoupons = [...prevCoupons].filter(
@@ -55,7 +50,7 @@ export const deleteCoupon = (
  */
 export const onChangeSwitch = (
 	checked: boolean,
-	setShowCouponSwitch: React.Dispatch<React.SetStateAction<boolean>>,
+	setShowCouponSwitch: SetState<boolean>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
 ): void => {
 	setShowCouponSwitch(checked)

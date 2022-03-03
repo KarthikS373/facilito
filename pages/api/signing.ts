@@ -7,9 +7,9 @@ type RespData = { success: boolean; error?: string }
 
 /**
  * API Signing
- * @description Asignar token JWT a cookie de sesion
  * @param {NextApiRequest} req
  * @param {NextApiResponse<RespData>} res
+ * @returns {Promise<void>}
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse<RespData>): Promise<void> => {
 	// PARAMS

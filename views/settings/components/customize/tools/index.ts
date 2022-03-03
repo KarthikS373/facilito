@@ -1,15 +1,16 @@
 /**
  * Actualizar referencia de imagen
- * @param type
- * @param backgroundRef
- * @param bannerRef
- * @param image
+ * @param  {'back'|'bann'} type
+ * @param  {React.MutableRefObject<string|File>} backgroundRef
+ * @param  {React.MutableRefObject<string|File>} bannerRef
+ * @param  {SetState<string|undefined>} setCustomBackground
+ * @param  {File|string} image
  */
 const setImageRef = (
 	type: 'back' | 'bann',
 	backgroundRef: React.MutableRefObject<string | File>,
 	bannerRef: React.MutableRefObject<string | File>,
-	setCustomBackground: React.Dispatch<React.SetStateAction<string | undefined>>,
+	setCustomBackground: SetState<string | undefined>,
 	image: File | string
 ): void => {
 	if (type === 'back') {

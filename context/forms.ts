@@ -3,7 +3,7 @@ import { createContext, Context } from 'react'
 // KEYS
 export interface FormsContextProps {
 	forms: FormInterface
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>
+	setForms: SetState<FormInterface>
 	setFormsDB: (forms: Partial<FormInterface>) => unknown
 }
 

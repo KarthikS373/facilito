@@ -1,6 +1,6 @@
 /**
  * Agregar cuenta
- * @param setAccounts
+ * @param {SetState<CompanyBankAccount[]>} setAccounts
  */
 const addAccount = (setAccounts: SetState<CompanyBankAccount[]>): void => {
 	setAccounts((accounts) => {
@@ -18,8 +18,9 @@ const addAccount = (setAccounts: SetState<CompanyBankAccount[]>): void => {
 
 /**
  * Borrar cuenta
- * @param setAccounts
- * @param index
+ * @param  {React.MutableRefObject<Business|null>} businessRef
+ * @param  {SetState<CompanyBankAccount[]>} setAccounts
+ * @param  {number} index
  */
 export const deleteAccount = (
 	businessRef: React.MutableRefObject<Business | null>,

@@ -6,11 +6,10 @@ import type { CardData } from '..'
 
 /**
  * Hook de enviar
- * @description Enviar datos con cada cambio
- * @param state
- * @param captchaToken
- * @param amount
- * @param onChange
+ * @param  {CardData} state
+ * @param  {string|null} captchaToken
+ * @param  {string} amount
+ * @param  {(data:CardPointeData,captchaToken:string|null)=>unknown} onChange
  */
 const useSendData = (
 	state: CardData,
@@ -43,10 +42,9 @@ const useSendData = (
 
 /**
  * Agregar css externo
- * @description Agregar un archivo de css externo de forma dinamica
- * @param href
- * @param id
- * @param media
+ * @param  {string} href
+ * @param  {string} id
+ * @param  {string} media='all'
  */
 export const useExternalCSS = (href: string, id: string, media = 'all'): void => {
 	useEffect(() => {

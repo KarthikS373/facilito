@@ -2,17 +2,16 @@ import type { FormContextProps } from '../../../context'
 
 /**
  * Enviar tienda
- * @description Enviar producto como respuesta de la tienda
- * @param product
- * @param index
- * @param props
- * @param setProductList
+ * @param  {ProductSelected} product
+ * @param  {number} index
+ * @param  {FormContextProps} props
+ * @param  {SetState<Product[]|null>} setProductList
  */
 const sendProduct = (
 	product: ProductSelected,
 	index: number,
 	props: FormContextProps,
-	setProductList: React.Dispatch<React.SetStateAction<Product[] | null>>
+	setProductList: SetState<Product[] | null>
 ): void => {
 	setProductList((productList: Product[] | null) => {
 		if (productList !== null) {

@@ -9,7 +9,6 @@ import { signingUser } from 'utils/auth'
 
 /**
  * Iniciar validación de login
- * @description Inicia un usuario o muestra alertas de error
  * @param  {FormEvent|MouseEvent} ev
  * @param  {LoginData|SigningData} userData
  * @param  {RefObject<HTMLDivElement>} progressRef

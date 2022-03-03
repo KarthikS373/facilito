@@ -6,14 +6,13 @@ import { UseFormSetValue, FieldValues } from 'react-hook-form'
 
 /**
  * Hook de total
- * @description Calcular y enviar total de productos
- * @param setValue
- * @param badge
- * @param totalPrice
- * @param discountTotal
- * @param taxesPrice
- * @param cardPrice
- * @param shippingPrice
+ * @param  {UseFormSetValue<FieldValues>} setValue
+ * @param  {string} badge
+ * @param  {number} totalPrice
+ * @param  {number} discountTotal
+ * @param  {number} taxesPrice
+ * @param  {number} cardPrice
+ * @param  {number} shippingPrice
  */
 export const useSendTotalPrice = (
 	setValue: UseFormSetValue<FieldValues>,
@@ -46,8 +45,8 @@ export const useSendTotalPrice = (
 
 /**
  * Hook de datos por defecto
- * @param setData
- * @param defSummaryData
+ * @param  {SetState<FormSummaryData>} setData
+ * @param  {FormSummaryData} defSummaryData?
  */
 export const useDefData = (
 	setData: SetState<FormSummaryData>,

@@ -4,14 +4,10 @@ import { readTemplates } from 'utils/forms'
 
 /**
  * Hook de tiendas de plantillas
- * @description Retorna una lista de tiendas en 'plantillas facilito'
- * @param  {React.Dispatch<React.SetStateAction<Form[]>>} setTemplates
+ * @param  {SetState<Form[]>} setTemplates
  * @param  {string} companyID
  */
-const useTemplateForms = (
-	setTemplates: React.Dispatch<React.SetStateAction<Form[]>>,
-	companyID?: string
-): void => {
+const useTemplateForms = (setTemplates: SetState<Form[]>, companyID?: string): void => {
 	// LEER TEMPLATES
 	useEffect(() => {
 		if (companyID)

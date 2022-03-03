@@ -69,7 +69,7 @@ const FormView: React.FC<FormProps> = ({ company, formData, companyURL, formURL 
 	usePaletteColors(setDefColors, formData?.background ?? '')
 
 	// ENVIAR TIENDA
-	const sendFormEvent = (data: { [id: string]: unknown }, reset: EmptyFunction) =>
+	const sendFormEvent = (data: Record<string, unknown>, reset: EmptyFunction) =>
 		sendForm($, data, reset, formData, company, defColors, geoRef, formURL, companyURL)
 
 	if (formData?.public || (!formData?.public && !user?.isAnonymous))

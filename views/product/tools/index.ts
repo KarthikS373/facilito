@@ -5,16 +5,14 @@ import ROUTES from 'router/routes'
 
 /**
  * Guardar producto
- * @description Guardar el producto en la base de datos y en storage
- * @param  {(products: { [id: string]: Product }, merge?: boolean) => unknown} setProducts
+ * @param  {(products:Record<string,Product>,merge?:boolean,initialSKU?:string,onSuccess?:()=>unknown)=>unknown} setProducts
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.MutableRefObject<File[]>} imagesRef
- * @param  {TemplateStrBuilder} $
- * @param  {string} companyID
+ * @param  {React.MutableRefObject<(File|null} imagesRef
+ * @returns {Promise<void>}
  */
 const saveProduct = async (
 	setProducts: (
-		products: { [id: string]: Product },
+		products: Record<string, Product>,
 		merge?: boolean,
 		initialSKU?: string,
 		onSuccess?: () => unknown

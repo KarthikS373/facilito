@@ -1,266 +1,262 @@
 {
-	"bienvenido_juanitos_mex_restaurant": {
-		"en": "",
-		"es": "$"
-	},
 	"impuesto": {
-		"en": "",
+		"en": "Tax",
 		"es": "$"
 	},
 	"subtotal": {
-		"en": "",
+		"en": "Subtotal",
 		"es": "$"
 	},
 	"debes_agregar_un_skum_nombre_primero_para_poder_guardar_este_producto": {
-		"en": "",
+		"en": "You must add a sku, name first to be able to save this product",
 		"es": "$"
 	},
 	"actualmente_no_tienes_los_permisos_necesarios_para_acceder_a_esta_funcionalidad": {
-		"en": "",
+		"en": "You do not currently have the permits needed to access this functionality",
 		"es": "$"
 	},
 	"es_posible_que_algunos_campos_obligatorios_esten_vacios_por_favor_intenta_nuevamente": {
-		"en": "",
+		"en": "It is possible that some compulsory fields are empty please try again",
 		"es": "$"
 	},
 	"es_posible_que_algunos_campos_obligatorios_esten_vacios": {
-		"en": "",
+		"en": "It is possible that some compulsory fields are empty",
 		"es": "$"
 	},
 	"las_opciones_o_extras_cantidad_son_obligatorios_intenta_nuevamente_cuando_se_completen": {
-		"en": "",
+		"en": "The options or extra quantities are mandatory try again when completed",
 		"es": "$"
 	},
 	"salir": {
-		"en": "",
+		"en": "Exit",
 		"es": "$"
 	},
 	"opcion_unica": {
-		"en": "",
+		"en": "Unique option",
 		"es": "$"
 	},
 	"subtotal_de_productos": {
-		"en": "",
+		"en": "Subtotal products",
 		"es": "$"
 	},
 	"aqui_se_muestra_el_estado_de_tu_pedido_en_tiempo_real": {
-		"en": "",
+		"en": "Here show your order status in real time",
 		"es": "$"
 	},
 	"aqui_se_mostra_el_estado_de_tu_pedido_en_tiempo_real": {
-		"en": "",
+		"en": "Here shows your order status in real time",
 		"es": "$"
 	},
 	"pedido_de": {
-		"en": "",
+		"en": "Order for",
 		"es": "$"
 	},
 	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_esta_tienda_si_deseasdeseas_ver_tu_orden_en_tiempo_real": {
-		"en": "",
+		"en": "Thank you for replying your answers were correctly saved you can close this shop if you want to see your order in real time",
 		"es": "$"
 	},
 	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_esta_tienda_si_deseas": {
-		"en": "",
+		"en": "Thank you for replying your answers were correctly saved you can close this shop if you want to close it if you want to.",
 		"es": "$"
 	},
 	"para_la_tienda": {
-		"en": "",
+		"en": "For the shop",
 		"es": "$"
 	},
 	"gracias_por_responder_se_estan_enviando_tus_respuestas_espera_un_momento_esto_no_suele_tardar_mucho_no_te_salgas_de_la_tienda_por_favor": {
-		"en": "",
+		"en": "Thank you for replying your answers are being sent waiting for a moment this does not take long to send you out of the shop please",
 		"es": "$"
 	},
 	"tienda_sin_titulo": {
-		"en": "",
+		"en": "Untitled shop",
 		"es": "$"
 	},
 	"este_sku_ya_se_esta_usando_en_otro_producto_los_skus_deben_ser_unicos_escribe_uno_nuevo": {
-		"en": "",
+		"en": "This sku is already being used in another product skus must be one of its-kind writes a new one",
 		"es": "$"
 	},
 	"este_sku_ya_se_esta_usando_en_otro_producto_los_skus_deben_ser_unicos_por_favor_escribe_uno_nuevo": {
-		"en": "",
+		"en": "This skus is already being used in another product skus must be unique please write a new one",
 		"es": "$"
 	},
 	"este_sku_ya_se_esta_usando_en_otro_producto_por_favor_escribe_uno_nuevo": {
-		"en": "",
+		"en": "This sku is already being used on another product please write a new new one",
 		"es": "$"
 	},
 	"debes_agregar_un_sku_y_nombre_primero_para_poder_guardar_este_producto": {
-		"en": "",
+		"en": "You must add a sku and first name to be able to save this product",
 		"es": "$"
 	},
 	"borrar_producto": {
-		"en": "",
+		"en": "Delete product",
 		"es": "$"
 	},
 	"agregar_categoria": {
-		"en": "",
+		"en": "Add category",
 		"es": "$"
 	},
 	"lista_de_todas_las_categorias_creadas_para_tus_productos": {
-		"en": "",
+		"en": "List of all the categories created for your products",
 		"es": "$"
 	},
 	"lista_de_todas_las_categorias_para_tus_productos": {
-		"en": "",
+		"en": "List of all categories for your products",
 		"es": "$"
 	},
 	"lista_de_categorias_para_tus_productos": {
-		"en": "",
+		"en": "List of all categories for your productsa",
 		"es": "$"
 	},
 	"subscripcion": {
-		"en": "",
+		"en": "Subscription",
 		"es": "$"
 	},
 	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas_el_resto_de_imagenes_se_mostraran_al_seleccionarlo": {
-		"en": "",
+		"en": "This way the product will be shown in the product carousel in all your selected shops the rest of the images will be shown on selecting them",
 		"es": "$"
 	},
 	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas_el_resto_de_imagenes_se_mostraran_al_seleccionar_el_producto": {
-		"en": "",
+		"en": "This way the product will be shown in the product carousel in all your selected shops the rest of the images will be shown when selecting the product",
 		"es": "$"
 	},
 	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas": {
-		"en": "",
+		"en": "This way the product will be shown in the product carousel in all your selected shops",
 		"es": "$"
 	},
 	"debes_agregar_un_sku_nombre_y_categoria_primero_para_poder_guardar_este_producto": {
-		"en": "",
+		"en": "You must add a sku name and category first to be able to save this product",
 		"es": "$"
 	},
 	"debes_agregar_un_sku_nombre_y_categoria_para_poder_guardar_este_producto": {
-		"en": "",
+		"en": "You must add a sku name and category to be able to save this product",
 		"es": "$"
 	},
 	"cada_opcion_agrega_un_precio_adicional_al_total_con_diferentes_formas_de_seleccion": {
-		"en": "",
+		"en": "Each option adds an additional price to the total with different selection forms",
 		"es": "$"
 	},
 	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto_con_diferentes_formas_de_seleccion": {
-		"en": "",
+		"en": "Each option adds an additional price to the total of the product with different selection forms",
 		"es": "$"
 	},
 	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto_y_tienen_diferentes_formas_de_seleccion": {
-		"en": "",
+		"en": "Each option adds an additional price to the total of the product and has different selection forms",
 		"es": "$"
 	},
 	"cada_opcion_agrega_un_precio_adicional_al_total_del_producto": {
-		"en": "",
+		"en": "Each option adds an additional price to the total of the product",
 		"es": "$"
 	},
 	"respuesta_de": {
-		"en": "",
+		"en": "Answer from",
 		"es": "$"
 	},
 	"configura_los_estados_de_tracking_para_el_pedido_del_cliente": {
-		"en": "",
+		"en": "Set the Tracking states for the customer's order",
 		"es": "$"
 	},
 	"configura_los_estados_de_tracking_para_el_pedido": {
-		"en": "",
+		"en": "Configure tracking states for the order",
 		"es": "$"
 	},
 	"configura_los_estados_para_el_pedido": {
-		"en": "",
+		"en": "Set the states for the order",
 		"es": "$"
 	},
 	"configura_los_estados_de_su_pedido": {
-		"en": "",
+		"en": "Configure the states of your order",
 		"es": "$"
 	},
 	"respueta_de": {
-		"en": "",
+		"en": "answer of",
 		"es": "$"
 	},
 	"de_esta_manera_se_mostrara_el_producto_en_tus_tiendas": {
-		"en": "",
+		"en": "In this way the product will be shown in your stores",
 		"es": "$"
 	},
 	"asi_se_mostrara_en_tus_tiendas": {
-		"en": "",
+		"en": "so it will be in your stores",
 		"es": "$"
 	},
 	"esta_tarjeta_se_mostrara_en_tus_tiendas_cuando_selecciones_un_carrousel_de_productos": {
-		"en": "",
+		"en": "This card will be displayed in your stores when you select a product carrousel",
 		"es": "$"
 	},
 	"asi_se_vera_este_producto_en_tus_tiendas": {
-		"en": "",
+		"en": "This product looks like this product in your stores",
 		"es": "$"
 	},
 	"aplicaciones_moviles": {
-		"en": "",
+		"en": "Mobile apps",
 		"es": "$"
 	},
 	"estas_seguro_de_querer_borrar_esta_repuesta_este_proceso_sera_permanente": {
-		"en": "",
+		"en": "you are sure to want to delete this response this process will be permanent",
 		"es": "$"
 	},
 	"aqui_esta_la_url_completa_de_tu_tienda": {
-		"en": "",
+		"en": "Here is the full URL of your store",
 		"es": "$"
 	},
 	"aqui_se_muestran_todas_las_opciones_para_mostrar_tu_tienda_al_mundo": {
-		"en": "",
+		"en": "Here are all the options to show your store to the world",
 		"es": "$"
 	},
 	"compartir_tienda": {
-		"en": "",
+		"en": "Share Shop.",
 		"es": "$"
 	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_de_la_tienda": {
-		"en": "",
+		"en": "Configure the entire behavior of the cart Checkout purchase and products within the store",
 		"es": "$"
 	},
 	"selecciona_una_imagen_de_nuestra_galeria_o_de_tus_fondos_personalizados": {
-		"en": "",
+		"en": "Select an image of our gallery or your personalized funds",
 		"es": "$"
 	},
 	"galeria_de_fondos": {
-		"en": "",
+		"en": "Gallery of funds.",
 		"es": "$"
 	},
 	"abrir_galeria": {
-		"en": "",
+		"en": "Open gallery",
 		"es": "$"
 	},
 	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado": {
-		"en": "",
+		"en": "Featured products will be automatically shown if Anades a prominent field",
 		"es": "$"
 	},
 	"la_imagen_puede_ser_de_500px_x_500px": {
-		"en": "",
+		"en": "The image can be 500px x 500px",
 		"es": "$"
 	},
 	"sube_un_logo_o_foto_de_tu_negocio": {
-		"en": "",
+		"en": "Climb a logo or photo of your business",
 		"es": "$"
 	},
 	"suba_un_logo_o_foto_de_tu_negocio": {
-		"en": "",
+		"en": "Climb a logo or photo of your business",
 		"es": "$"
 	},
 	"cambiar_foto": {
-		"en": "",
+		"en": "Change photo",
 		"es": "$"
 	},
 	"crea_un_tema_seleccionando_colores_sube_una_imagen_de_portada_y_cambia_tu_foto_de_perfil": {
-		"en": "",
+		"en": "Create a theme by selecting colors upload a cover image and change your profile picture",
 		"es": "$"
 	},
 	"tienda_borrada": {
-		"en": "",
+		"en": "Erased store.",
 		"es": "$"
 	},
 	"estas_seguro_de_que_quieres_borrar_esta_tienda_todos_los_datos_relacionados_se_perderan": {
-		"en": "",
+		"en": "You are sure you want to delete this store all related data will be lost",
 		"es": "$"
 	},
 	"borrar_tienda": {
-		"en": "",
+		"en": "Delete store",
 		"es": "$"
 	},
 	"tienda_creada": {
@@ -832,1043 +828,1019 @@
 		"es": "$"
 	},
 	"crear_tienda": {
-		"en": "",
+		"en": "Create a store",
 		"es": "$"
 	},
 	"crear_productos": {
-		"en": "",
+		"en": "Create products",
 		"es": "$"
 	},
 	"se_esta_subiendo_tu_archivo_esto_dependera_de_tu_velocidad_no_te_salgas_de_la_aplicacion_por_favor": {
-		"en": "",
+		"en": "You are uploading your file This will depend on your speed Do not come out of the application please",
 		"es": "$"
 	},
 	"espera": {
-		"en": "",
+		"en": "waiting",
 		"es": "$"
 	},
 	"mostrar_cupones": {
-		"en": "",
+		"en": "Show coupons",
 		"es": "$"
 	},
 	"describe_el_titulo_de_tus_cupones": {
-		"en": "",
+		"en": "Describe the title of your coupons",
 		"es": "$"
 	},
 	"en_tu_compra": {
-		"en": "",
+		"en": "on your purchase",
 		"es": "$"
 	},
 	"tipo_de_cupon": {
-		"en": "",
+		"en": "Coupon type",
 		"es": "$"
 	},
 	"codigo_aqui": {
-		"en": "",
+		"en": "code here",
 		"es": "$"
 	},
 	"promocion": {
-		"en": "",
+		"en": "promotion",
 		"es": "$"
 	},
 	"descuento": {
-		"en": "",
+		"en": "discount",
 		"es": "$"
 	},
 	"aqui_puedes_editar_tu_cupon_y_tambien_compartir_como_imagen": {
-		"en": "",
+		"en": "Here you can edit your coupon and also share as image",
 		"es": "$"
 	},
 	"utiliza_el_siguiente_buscador_para_seleccionar_un_producto_y_agregarlo_a_tu_bloque_de_productos_solo_puedes_seleccionar_un_producto_a_la_vez": {
-		"en": "",
+		"en": "Use the following search engine to select a product and add it to your product block You can only select a product at a time",
 		"es": "$"
 	},
 	"escribe_tu_enlace_aqui_ej_httpsexamplecom": {
-		"en": "",
+		"en": "Write your link here eg httpsexamplecom",
 		"es": "$"
 	},
 	"describe_el_titulo_del_enlace": {
-		"en": "",
+		"en": "Describe the title of the link",
 		"es": "$"
 	},
 	"agrega_un_enlace_a_la_imagen": {
-		"en": "",
+		"en": "Add a link to the image",
 		"es": "$"
 	},
 	"agrega_una_descripcion_a_la_imagen": {
-		"en": "",
+		"en": "Add a description to the image",
 		"es": "$"
 	},
 	"agregar_producto": {
-		"en": "",
+		"en": "Add product",
 		"es": "$"
 	},
 	"buscar_producto": {
-		"en": "",
+		"en": "Find Product.",
 		"es": "$"
 	},
 	"describe_el_titulo_de_estos_productos": {
-		"en": "",
+		"en": "Describe the title of these products",
 		"es": "$"
 	},
 	"ocultar_mapa": {
-		"en": "",
+		"en": "Hide map",
 		"es": "$"
 	},
 	"enviar_ubicacion_del_cliente": {
-		"en": "",
+		"en": "Send customer location",
 		"es": "$"
 	},
 	"ciudad": {
-		"en": "",
+		"en": "town",
 		"es": "$"
 	},
 	"pais": {
-		"en": "",
+		"en": "country",
 		"es": "$"
 	},
 	"agrega_un_enlace_al_video": {
-		"en": "",
+		"en": "Add a link to video",
 		"es": "$"
 	},
 	"agrega_una_descripcion_al_video": {
-		"en": "",
+		"en": "Add a DESCRIPTION TO VIDEO",
 		"es": "$"
 	},
 	"selecciona_un_archivo_maximo_10mb_por_archivo": {
-		"en": "",
+		"en": "Select a maximum 10 MB file for file",
 		"es": "$"
 	},
 	"describe_tu_pregunta_aqui_respuesta_con_maximo_de_60_caracteres": {
-		"en": "",
+		"en": "Describe your question here answer with maximum of 60 characters",
 		"es": "$"
 	},
 	"hasta_hhmm": {
-		"en": "",
+		"en": "patient hhmm",
 		"es": "$"
 	},
 	"desde_hhmm": {
-		"en": "",
+		"en": "from HHMM.",
 		"es": "$"
 	},
 	"ocupaciones": {
-		"en": "",
+		"en": "activities",
 		"es": "$"
 	},
 	"selecciona_una_cantidad_de_ocupaciones": {
-		"en": "",
+		"en": "Select a number of occupations",
 		"es": "$"
 	},
 	"duracion_horas": {
-		"en": "",
+		"en": "Duration Hours",
 		"es": "$"
 	},
 	"selecciona_las_horas_disponibles": {
-		"en": "",
+		"en": "Select the available times",
 		"es": "$"
 	},
 	"habilitar_intervalos": {
-		"en": "",
+		"en": "Enable intervals",
 		"es": "$"
 	},
 	"selecciona_los_dias_de_la_semana_disponibles": {
-		"en": "",
+		"en": "Select the days of the week available",
 		"es": "$"
 	},
 	"duplicar": {
-		"en": "",
+		"en": "Double",
 		"es": "$"
 	},
 	"jueves": {
-		"en": "",
+		"en": "Thursday",
 		"es": "$"
 	},
 	"viernes": {
-		"en": "",
+		"en": "Friday",
 		"es": "$"
 	},
 	"agrega_una_descripcion": {
-		"en": "",
+		"en": "add a description",
 		"es": "$"
 	},
 	"describe_el_titulo_de_esta_seccion": {
-		"en": "",
+		"en": "Describe the title of this section",
 		"es": "$"
 	},
 	"sabado": {
-		"en": "",
+		"en": "Saturday",
 		"es": "$"
 	},
 	"miercoles": {
-		"en": "",
+		"en": "Wednesday",
 		"es": "$"
 	},
 	"martes": {
-		"en": "",
+		"en": "Tuesday",
 		"es": "$"
 	},
 	"lunes": {
-		"en": "",
+		"en": "Monday",
 		"es": "$"
 	},
 	"domingo": {
-		"en": "",
+		"en": "Sunday",
 		"es": "$"
 	},
 	"todos": {
-		"en": "",
+		"en": "All",
 		"es": "$"
 	},
 	"describe_tu_pregunta_aqui_respuesta_con_caracteres_ilimitados": {
-		"en": "",
+		"en": "Describe your question here Answer with unlimited characters",
 		"es": "$"
 	},
 	"texto_de_la_opcion": {
-		"en": "",
+		"en": "Option text",
 		"es": "$"
 	},
 	"agrega_un_texto_de_ayuda": {
-		"en": "",
+		"en": "Add a help text",
 		"es": "$"
 	},
 	"describe_el_titulo_o_pregunta_para_las_opciones": {
-		"en": "",
+		"en": "Describe the title or question for the options",
 		"es": "$"
 	},
 	"preguntar_datos_personales": {
-		"en": "",
+		"en": "Ask personal data",
 		"es": "$"
 	},
 	"mover": {
-		"en": "",
+		"en": "Move",
 		"es": "$"
 	},
 	"haz_click_en_personalizar": {
-		"en": "",
+		"en": "Click on Customize",
 		"es": "$"
 	},
 	"agrega_una_portada_a_tu_formulario": {
-		"en": "",
+		"en": "Add a cover to your form",
 		"es": "$"
 	},
 	"descripcion_del_formulario": {
-		"en": "",
+		"en": "Description of the form",
 		"es": "$"
 	},
 	"secciones": {
-		"en": "",
+		"en": "Sections",
 		"es": "$"
 	},
 	"carrito": {
-		"en": "",
+		"en": "Shopping cart",
 		"es": "$"
 	},
 	"multimedia": {
-		"en": "",
+		"en": "Multimedia",
 		"es": "$"
 	},
 	"basicos": {
-		"en": "",
+		"en": "Basics",
 		"es": "$"
 	},
 	"configuracion": {
-		"en": "",
+		"en": "Settings",
 		"es": "$"
 	},
 	"cupon": {
-		"en": "",
+		"en": "Coupon",
 		"es": "$"
 	},
 	"mapa": {
-		"en": "",
+		"en": "Map",
 		"es": "$"
 	},
 	"video": {
-		"en": "",
+		"en": "Video",
 		"es": "$"
 	},
 	"imagen": {
-		"en": "",
+		"en": "Image",
 		"es": "$"
 	},
 	"enlace": {
-		"en": "",
+		"en": "Link",
 		"es": "$"
 	},
 	"fecha_y_hora": {
-		"en": "",
+		"en": "Date and Time",
 		"es": "$"
 	},
 	"desplegable": {
-		"en": "",
+		"en": "Drop down",
 		"es": "$"
 	},
 	"casillas": {
-		"en": "",
+		"en": "Checks",
 		"es": "$"
 	},
 	"varias_opciones": {
-		"en": "",
+		"en": "Many options",
 		"es": "$"
 	},
 	"parrafo": {
-		"en": "",
+		"en": "Oaragraph",
 		"es": "$"
 	},
 	"respuesta_corta": {
-		"en": "",
+		"en": "Short answer",
 		"es": "$"
 	},
 	"copiar_link": {
-		"en": "",
+		"en": "Copy link",
 		"es": "$"
 	},
 	"esto_remplazara_el_fondo_degradado": {
-		"en": "",
+		"en": "this replaced the degraded background",
 		"es": "$"
 	},
 	"esto_remplazara_el_degradado": {
-		"en": "",
+		"en": "this replaced the gradient",
 		"es": "$"
 	},
 	"esta_imagen_remplazara_el_degradado": {
-		"en": "",
+		"en": "This image replaced the gradient",
 		"es": "$"
 	},
 	"remplazara_el_fondo_degradado": {
-		"en": "",
+		"en": "Replace the degraded background",
 		"es": "$"
 	},
 	"selecciona_dos_colores": {
-		"en": "",
+		"en": "Select two colors",
 		"es": "$"
 	},
 	"sube_una_imagen_de_portada": {
-		"en": "",
+		"en": "Upload a cover image",
 		"es": "$"
 	},
 	"grado_de_inclinacion": {
-		"en": "",
+		"en": "Degree of inclination",
 		"es": "$"
 	},
 	"archivo_subido_correctamente": {
-		"en": "",
+		"en": "File uploaded correctly",
 		"es": "$"
 	},
 	"sube_una_imagen_de_650px_x_250px": {
-		"en": "",
+		"en": "Climb an image of 650px x 250px",
 		"es": "$"
 	},
 	"cambiar_portada": {
-		"en": "",
+		"en": "Change cover",
 		"es": "$"
 	},
 	"personalizar_formulario": {
-		"en": "",
+		"en": "Customize Form",
 		"es": "$"
 	},
 	"esta_imagen_remplazara_el_fondo_degradado": {
-		"en": "",
+		"en": "This image replaced the background_drawn",
 		"es": "$"
 	},
 	"sube_una_imagen_como_fondo": {
-		"en": "",
+		"en": "Climb an image as a background",
 		"es": "$"
 	},
 	"selecciona_dos_colores_para_el_degradado": {
-		"en": "",
+		"en": "Select two colors for the gradient",
 		"es": "$"
 	},
 	"cambiar_fondo": {
-		"en": "",
+		"en": "Change background",
 		"es": "$"
 	},
 	"ahora_tu_formulario_sera_visible_para_todos_puedes_compartirles_el_siguiente_link": {
-		"en": "",
+		"en": "Now your form will be visible to all you can share the following link",
 		"es": "$"
 	},
 	"ver_ahora": {
-		"en": "",
+		"en": "watch now",
 		"es": "$"
 	},
 	"ahora_tu_formulario_sera_visible_para_todos_puedes_compartirles_el_siguiente_link_para_que_respondan": {
-		"en": "",
+		"en": "Now your form will be visible to all you can share the following link to answer",
 		"es": "$"
 	},
 	"formulario_publicado": {
-		"en": "",
+		"en": "Form published",
 		"es": "$"
 	},
 	"te_gustaria_ver_tu_formulario_ahora": {
-		"en": "",
+		"en": "Would you like to see your form_ahora",
 		"es": "$"
 	},
 	"se_esta_publicando_tu_formulario_esto_no_suele_tardar_mucho_no_te_salgas_de_la_aplicacion_por_favor": {
-		"en": "",
+		"en": "your form is being published this does not usually take a long time do not come out of the application please",
 		"es": "$"
 	},
 	"preferencias": {
-		"en": "",
+		"en": "preferences",
 		"es": "$"
 	},
 	"guardando_ajustes": {
-		"en": "",
+		"en": "Keeping settings.",
 		"es": "$"
 	},
 	"numero_no_valido": {
-		"en": "",
+		"en": "Number not valid",
 		"es": "$"
 	},
 	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_de_respuestas_para_tu_formulario": {
-		"en": "",
+		"en": "Configure your Dynamic Link FveloE and the Shipping Options for Your Form",
 		"es": "$"
 	},
 	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_para_tu_formulario": {
-		"en": "",
+		"en": "Configure your Dynamic Link FCLT and shipping options for your form",
 		"es": "$"
 	},
 	"configura_el_link_y_las_opciones_de_envio_para_tu_formulario": {
-		"en": "",
+		"en": "Configure the link and shipping options for your form",
 		"es": "$"
 	},
 	"ajustes_globales": {
-		"en": "",
+		"en": "Global settings",
 		"es": "$"
 	},
 	"correo_electronico_no_valido": {
-		"en": "",
+		"en": "Email not valid",
 		"es": "$"
 	},
 	"esta_url_ya_esta_en_uso": {
-		"en": "",
+		"en": "This URL is already in use",
 		"es": "$"
 	},
 	"formulario_creado": {
-		"en": "",
+		"en": "Created form",
 		"es": "$"
 	},
 	"codigo_copiado": {
-		"en": "",
+		"en": "Copy code",
 		"es": "$"
 	},
 	"aqui_se_muestran_todas_las_opciones_para_mostrar_tu_formulario_al_mundo": {
-		"en": "",
+		"en": "Here are all options to show your form to the world",
 		"es": "$"
 	},
 	"ya_no_hay_ocupaciones_disponibles_en_este_horario_intenta_de_nuevo_mas_tarde": {
-		"en": "",
+		"en": "There are no longer occupations available at this time try again later",
 		"es": "$"
 	},
 	"descargar_qr": {
-		"en": "",
+		"en": "download Qr",
 		"es": "$"
 	},
 	"insertar_codigo": {
-		"en": "",
+		"en": "Insert code",
 		"es": "$"
 	},
 	"algunos_bloques_tienen_campos_vacios_es_probable_que_algunos_bloques_no_se_muestren_como_deseas": {
-		"en": "",
+		"en": "Some blocks have empty fields are likely that some blocks are not displayed as desired",
 		"es": "$"
 	},
 	"campos_vacios": {
-		"en": "",
+		"en": "empty fields",
 		"es": "$"
 	},
 	"largo": {
-		"en": "",
+		"en": "large",
 		"es": "$"
 	},
 	"selecciona_un_tamano": {
-		"en": "",
+		"en": "Select a size",
 		"es": "$"
 	},
 	"mediano": {
-		"en": "",
+		"en": "medium",
 		"es": "$"
 	},
 	"pequeno": {
-		"en": "",
+		"en": "small",
 		"es": "$"
 	},
 	"copiar_codigo": {
-		"en": "",
+		"en": "Copy code",
 		"es": "$"
 	},
 	"compartir_formulario": {
-		"en": "",
+		"en": "Share form",
 		"es": "$"
 	},
 	"tambien_puedes_compartir_la_url_en_un_link_corto": {
-		"en": "",
+		"en": "You can also share the URL on a short link",
 		"es": "$"
 	},
 	"aqui_esta_la_url_completa_de_tu_formulario": {
-		"en": "",
+		"en": "Here is the full URL of your form",
 		"es": "$"
 	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_del_formulario": {
-		"en": "",
+		"en": "Configure the all behavior of the cart Checkout purchase summary and products within the form",
 		"es": "$"
 	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_de_este_formulario": {
-		"en": "",
+		"en": "Configure the all behavior of the cart Checkout purchase summary and products within this form",
 		"es": "$"
 	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_este_formulario": {
-		"en": "",
+		"en": "Configure the all behavior of the cart Checkout purchase summary and products within this form",
 		"es": "$"
 	},
 	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_en_este_formulario": {
-		"en": "",
+		"en": "Configure the all behavior of the cart Checkout purchase and product summary on this form",
 		"es": "$"
 	},
 	"configura_el_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_en_este_formulario": {
-		"en": "",
+		"en": "Configure the behavior of the cart Checkout purchase and product summary on this form",
 		"es": "$"
 	},
 	"guardar": {
-		"en": "",
+		"en": "Save",
 		"es": "$"
 	},
 	"guardar_cambios": {
-		"en": "",
+		"en": "save Changes",
 		"es": "$"
 	},
 	"si_anulas_la_publicacion_este_formulario_solo_sera_visible_para_tu_empresa_y_no_podras_recibir_respuestas_hasta_que_lo_vuelvas_a_publicar": {
-		"en": "",
+		"en": "If you cancel the publication this form will only be visible to your company and you can not receive answers until you return it to publicr",
 		"es": "$"
 	},
 	"anular_publicacion": {
-		"en": "",
+		"en": "Annulate publication",
 		"es": "$"
 	},
 	"publicando": {
-		"en": "",
+		"en": "Publish.",
 		"es": "$"
 	},
 	"formulario_sin_titulo": {
-		"en": "",
+		"en": "Form without title",
 		"es": "$"
 	},
 	"se_han_guardado_tus_cambios_correctamente": {
-		"en": "",
+		"en": "Your changes have been saved correctly",
 		"es": "$"
 	},
 	"guardando_cambios": {
-		"en": "",
+		"en": "keeping changes",
 		"es": "$"
 	},
 	"configura_el_comportamiento_del_carrito_el_checkout_y_productos_en_este_formulario": {
-		"en": "",
+		"en": "Configure the behavior of the checkout and products on this form",
 		"es": "$"
 	},
 	"acordeon_de_productos": {
-		"en": "",
+		"en": "Accordion of products",
 		"es": "$"
 	},
 	"mostrar_buscador": {
-		"en": "",
+		"en": "Show search engine",
 		"es": "$"
 	},
 	"modo_vitrina": {
-		"en": "",
+		"en": "vitrine",
 		"es": "$"
 	},
 	"monto_minimo_de_compra": {
-		"en": "",
+		"en": "Minimum purchase amount",
 		"es": "$"
 	},
 	"configura_los_metodos_de_envio_y_precios_correspondientes_disponibles_para_tus_clientes": {
-		"en": "",
+		"en": "Configure the shipping methods and corresponding prices available for your clients",
 		"es": "$"
 	},
 	"publicar": {
-		"en": "",
+		"en": "Publish",
 		"es": "$"
 	},
 	"desc": {
-		"en": "",
+		"en": "Desc",
 		"es": "$"
 	},
 	"conectado_a_email": {
-		"en": "",
+		"en": "connected to email",
 		"es": "$"
 	},
 	"numero_de_whatsapp": {
-		"en": "",
+		"en": "WHATSAPP NUMBER.",
 		"es": "$"
 	},
 	"conectado_a_whatsapp": {
-		"en": "",
+		"en": "connected to whatsapp.",
 		"es": "$"
 	},
 	"url_del_formulario": {
-		"en": "",
+		"en": "Form URL.",
 		"es": "$"
 	},
 	"descargar_codigo_qr": {
-		"en": "",
+		"en": "Download QR code",
 		"es": "$"
 	},
 	"insertar_formulario": {
-		"en": "",
+		"en": "Insert form",
 		"es": "$"
 	},
 	"compartir_enlace": {
-		"en": "",
+		"en": "Share url",
 		"es": "$"
 	},
 	"ocultar": {
-		"en": "",
+		"en": "Hide",
 		"es": "$"
 	},
 	"ajustes": {
-		"en": "",
+		"en": "Settings",
 		"es": "$"
 	},
 	"titulo_del_formulario": {
-		"en": "",
+		"en": "Title of the form",
 		"es": "$"
 	},
 	"checkout": {
-		"en": "",
+		"en": "checkout",
 		"es": "$"
 	},
 	"compartir": {
-		"en": "",
+		"en": "to share",
 		"es": "$"
 	},
 	"personalizar": {
-		"en": "",
+		"en": "personalize",
 		"es": "$"
 	},
 	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_este_formulario_si_deseasdeseas_ver_tu_orden_en_tiempo_real": {
-		"en": "",
+		"en": "Thank you for answering you kept your answers correctly you can close this form if you want to see your order in real time",
 		"es": "$"
 	},
 	"respuestas_enviadas": {
-		"en": "",
+		"en": "Answers sent.",
 		"es": "$"
 	},
 	"deseas_ver_tu_orden_en_tiempo_real": {
-		"en": "",
+		"en": "You want to see your order in real time",
 		"es": "$"
 	},
 	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_este_formulario_si_deseas": {
-		"en": "",
+		"en": "Thanks for answering, you saved your answers correctly You can close this form if you want",
 		"es": "$"
 	},
 	"nueva_respuesta": {
-		"en": "",
+		"en": "New response",
 		"es": "$"
 	},
 	"enviado_el": {
-		"en": "",
+		"en": "sent on",
 		"es": "$"
 	},
 	"para_el_formulario": {
-		"en": "",
+		"en": "For the form",
 		"es": "$"
 	},
 	"deseas_verlo_ahora": {
-		"en": "",
+		"en": "You want to see it now",
 		"es": "$"
 	},
 	"hola_hay_una_nueva_respuesta_de": {
-		"en": "",
+		"en": "Hello, there is a new response from",
 		"es": "$"
 	},
 	"envio": {
-		"en": "",
+		"en": "Send",
 		"es": "$"
 	},
 	"gracias_por_responder_se_estan_enviando_tus_respuestas_espera_un_momento_esto_no_suele_tardar_mucho_no_te_salgas_del_formulario_por_favor": {
-		"en": "",
+		"en": "Thanks for answering you are sending your answers wait a moment this does not usually take a long time do not come out of the form please",
 		"es": "$"
 	},
 	"enviando_respuestas": {
-		"en": "",
+		"en": "Sending answers",
 		"es": "$"
 	},
 	"falto_verificar_el_captcha": {
-		"en": "",
+		"en": "I miss verify the captcha",
 		"es": "$"
 	},
 	"solo_numeros_sin_espacios": {
-		"en": "",
+		"en": "Only numbers without spaces",
 		"es": "$"
 	},
 	"2_digitos": {
-		"en": "",
+		"en": "2 digits.",
 		"es": "$"
 	},
 	"sin_espacios": {
-		"en": "",
+		"en": "Without spaces",
 		"es": "$"
 	},
 	"tu_pago_no_se_proceso_correctamente_intenta_nuevamente_asegurate_de_tener_los_fondos_necesarios_y_tu_tarjeta_habilitada": {
-		"en": "",
+		"en": "Your payment is not properly tried to try again to make sure you have the necessary funds and your enabled card",
 		"es": "$"
 	},
 	"se_esta_procesando_tu_pago_no_salgas_de_esta_pagina_o_no_se_completara_tu_orden": {
-		"en": "",
+		"en": "you are processing your payment do not leave this page or your order is not completed",
 		"es": "$"
 	},
 	"espera_un_momento": {
-		"en": "",
+		"en": "wait a minute",
 		"es": "$"
 	},
 	"cvv2": {
-		"en": "",
+		"en": "Cvv2",
 		"es": "$"
 	},
 	"ano": {
-		"en": "",
+		"en": "Year",
 		"es": "$"
 	},
 	"numero_de_tarjeta": {
-		"en": "",
+		"en": "Card number",
 		"es": "$"
 	},
 	"titular_de_tarjeta": {
-		"en": "",
+		"en": "cardholder",
 		"es": "$"
 	},
 	"llena_el_siguiente_formulario_para_procesar_tu_pago_tus_datos_son_confidenciales_y_no_seran_compartidos_con_nadie": {
-		"en": "",
+		"en": "Fill out the following form to process your payment your data are confidential and will not be shared with anyone",
 		"es": "$"
 	},
 	"agregar_tarjeta": {
-		"en": "",
-		"es": "$"
-	},
-	"errr": {
-		"en": "",
-		"es": "$"
-	},
-	"object_object": {
-		"en": "",
+		"en": "Add card",
 		"es": "$"
 	},
 	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe": {
-		"en": "",
+		"en": "This option show a message from not available when the product runs out",
 		"es": "$"
 	},
 	"previsualizar": {
-		"en": "",
+		"en": "preview",
 		"es": "$"
 	},
 	"visualizar": {
-		"en": "",
+		"en": "to view",
 		"es": "$"
 	},
 	"filtro_descendente": {
-		"en": "",
+		"en": "Descending filter",
 		"es": "$"
 	},
 	"filtro_ascendente": {
-		"en": "",
+		"en": "Ascending Filter",
 		"es": "$"
 	},
 	"invitado": {
-		"en": "",
+		"en": "guest",
 		"es": "$"
 	},
 	"de": {
-		"en": "",
+		"en": "of",
 		"es": "$"
 	},
 	"este_cupon_solo_se_puede_seleccionar_desde_el_formulario_busca_la_seccion_y_seleccionalo_para_que_se_aplique_tu_oferta": {
-		"en": "",
+		"en": "This coupon can only be selected from the form searches for the section and select it so that your offer is applied",
 		"es": "$"
 	},
 	"seleccionar_cupon": {
-		"en": "",
+		"en": "Select Coupon.",
 		"es": "$"
 	},
 	"seleccionar_cupones": {
-		"en": "",
+		"en": "Select coupons",
 		"es": "$"
 	},
 	"de_descuento": {
-		"en": "",
+		"en": "off",
 		"es": "$"
 	},
 	"porcentaje_de_tarjeta": {
-		"en": "",
+		"en": "Percentage of card",
 		"es": "$"
 	},
 	"porcentaje_de_impuesto": {
-		"en": "",
+		"en": "Percentage of tax",
 		"es": "$"
 	},
 	"impuesto_no_incluido": {
-		"en": "",
+		"en": "Tax not included",
 		"es": "$"
 	},
 	"tu_cupon_ya_no_es_valido_para_esta_compra_o_ya_caduco": {
-		"en": "",
+		"en": "your coupon is no longer valid for this purchase or already caduco",
 		"es": "$"
 	},
 	"cupon_invalido": {
-		"en": "",
+		"en": "Invalido coupon",
 		"es": "$"
 	},
 	"escribe_aqui_el_codigo_de_tu_cupon_y_recibe_una_promocion_directamente_al_precio_total_solo_es_posible_agregar_un_cupon_por_pedido": {
-		"en": "",
+		"en": "Write here the code of your coupon and receives a promotion directly at the total price, it is only possible to add a coupon by order",
 		"es": "$"
 	},
 	"agregar_cupon": {
-		"en": "",
+		"en": "Add Cupon.",
 		"es": "$"
 	},
 	"codigo_del_cupon": {
-		"en": "",
+		"en": "Coupon code",
 		"es": "$"
 	},
 	"envio_no_incluido": {
-		"en": "",
+		"en": "Shipping not included",
 		"es": "$"
 	},
 	"tienes_un_cupon": {
-		"en": "",
+		"en": "You have a coupon",
 		"es": "$"
 	},
 	"valor": {
-		"en": "",
+		"en": "Value",
 		"es": "$"
 	},
 	"items_en_carrito": {
-		"en": "",
+		"en": "Items in cart.",
 		"es": "$"
 	},
 	"resumen_de_orden": {
-		"en": "",
+		"en": "Order Summary",
 		"es": "$"
 	},
 	"pago_en_efectivo": {
-		"en": "",
+		"en": "cash payment",
 		"es": "$"
 	},
 	"metodo_de_pago": {
-		"en": "",
+		"en": "payment method",
 		"es": "$"
 	},
 	"transferencia": {
-		"en": "",
+		"en": "transfer",
 		"es": "$"
 	},
 	"tarifas_de_envio": {
-		"en": "",
+		"en": "Shipping rates",
 		"es": "$"
 	},
 	"resumen_de_compra": {
-		"en": "",
+		"en": "Summary of purchase",
 		"es": "$"
 	},
 	"total_de_tu_orden": {
-		"en": "",
+		"en": "Total of your order",
 		"es": "$"
 	},
 	"pago_con_tarjeta": {
-		"en": "",
+		"en": "card payment",
 		"es": "$"
 	},
 	"carrito_de_compras": {
-		"en": "",
+		"en": "Shopping cart",
 		"es": "$"
 	},
 	"agrega": {
-		"en": "",
+		"en": "Add.",
 		"es": "$"
 	},
 	"selecciona_al_menos_un_producto_para_poder_agregar_al_carrito_o_cierra_esta_ventana": {
-		"en": "",
+		"en": "Select at least one product to be able to add to cart or close this window",
 		"es": "$"
 	},
 	"restantes": {
-		"en": "",
+		"en": "remaining",
 		"es": "$"
 	},
 	"opciones_completadas": {
-		"en": "",
+		"en": "Completed options",
 		"es": "$"
 	},
 	"te_quedan": {
-		"en": "",
+		"en": "left",
 		"es": "$"
 	},
 	"restante": {
-		"en": "",
+		"en": "remaining",
 		"es": "$"
 	},
 	"hamburguesas": {
-		"en": "",
+		"en": "burgers",
 		"es": "$"
 	},
 	"gratis": {
-		"en": "",
+		"en": "Free",
 		"es": "$"
 	},
 	"ejemplo": {
-		"en": "",
+		"en": "Example",
 		"es": "$"
 	},
 	"ej": {
-		"en": "",
-		"es": "$"
-	},
-	"ej_alitas_honey": {
-		"en": "",
+		"en": "Ex",
 		"es": "$"
 	},
 	"buscar_productos": {
-		"en": "",
+		"en": "Search products",
 		"es": "$"
 	},
 	"sin_productos": {
-		"en": "",
+		"en": "No products",
 		"es": "$"
 	},
 	"no_disponible": {
-		"en": "",
+		"en": "not available",
 		"es": "$"
 	},
 	"te_queda": {
-		"en": "",
+		"en": "left",
 		"es": "$"
 	},
 	"seleccionar": {
-		"en": "",
+		"en": "to select",
 		"es": "$"
 	},
 	"confirmar": {
-		"en": "",
+		"en": "confirm",
 		"es": "$"
 	},
 	"agregar_a_carrito": {
-		"en": "",
+		"en": "Add to cart.",
 		"es": "$"
 	},
 	"sin_inventario": {
-		"en": "",
+		"en": "without stock",
 		"es": "$"
 	},
 	"en_oferta": {
-		"en": "",
+		"en": "in offer",
 		"es": "$"
 	},
 	"aqui_tienes_una_lista_de_horas_disponibles_selecciona_una_y_luego_haz_click_en_aceptar": {
-		"en": "",
+		"en": "Here you have a list of available hours selects one and then click OK",
 		"es": "$"
 	},
 	"horarios": {
-		"en": "",
+		"en": "Schedule",
 		"es": "$"
 	},
 	"error": {
-		"en": "",
+		"en": "Error",
 		"es": "$"
 	},
 	"aqui_tienes_una_lista_de_horas_disponibles_selecciona_una_y_haz_click_en_aceptar": {
-		"en": "",
+		"en": "Here you have a list of available hours Select one and click OK",
 		"es": "$"
 	},
 	"seleccionar_horarios": {
-		"en": "",
+		"en": "Select schedules",
 		"es": "$"
 	},
 	"indica_instrucciones_y_opiniones": {
-		"en": "",
+		"en": "Indicates instructions and opinions",
 		"es": "$"
 	},
 	"la_direccion_debe_incluir_el_pais": {
-		"en": "",
+		"en": "The address must include the_pais",
 		"es": "$"
 	},
 	"observaciones": {
-		"en": "",
+		"en": "observations",
 		"es": "$"
 	},
 	"verifica_que_tenga_un_formato_correcto": {
-		"en": "",
+		"en": "Verify that you have a correct format",
 		"es": "$"
 	},
 	"direccion": {
-		"en": "",
+		"en": "Address",
 		"es": "$"
 	},
 	"recuerda_agregar_la_extension": {
-		"en": "",
+		"en": "Remember Add the Extension",
 		"es": "$"
 	},
 	"numero_de_telefono": {
-		"en": "",
+		"en": "Phone number",
 		"es": "$"
 	},
 	"escribe_tu_nombre": {
-		"en": "",
+		"en": "write your name",
 		"es": "$"
 	},
 	"campo": {
-		"en": "",
+		"en": "Field",
 		"es": "$"
 	},
 	"campo_obligatorio": {
-		"en": "",
+		"en": "Obligatory field",
 		"es": "$"
 	},
 	"nombre_completo": {
-		"en": "",
+		"en": "full name",
 		"es": "$"
 	},
 	"el_nombre_es_obligatorio": {
-		"en": "",
-		"es": "$"
-	},
-	"bienvenido_alex_santos": {
-		"en": "",
+		"en": "The name is mandatory",
 		"es": "$"
 	},
 	"title": {
-		"en": "",
-		"es": "$"
-	},
-	"ay_no": {
-		"en": "",
+		"en": "Titulo",
 		"es": "$"
 	},
 	"enviar": {
-		"en": "",
+		"en": "Send",
 		"es": "$"
 	},
 	"cerrando_sesion": {
-		"en": "",
-		"es": "$"
-	},
-	"": {
-		"en": "",
+		"en": "Closing session",
 		"es": "$"
 	},
 	"filtrar_descendente": {
-		"en": "",
+		"en": "Filter downward",
 		"es": "$"
 	},
 	"recuerdeme_en_este_dispositivo": {
-		"en": "",
+		"en": "Remember me on this device",
 		"es": "$"
 	},
 	"el_precio_original_se_mostrara_tachado_con_rojo_y_el_precio_promocional_se_mostrara_primero": {
-		"en": "",
+		"en": "The original price will be tacked with red and the promotional price will be firsto",
 		"es": "$"
 	},
 	"ver_como_visitante": {
-		"en": "",
+		"en": "See as a visitor",
 		"es": "$"
 	},
 	"subiendo_imagenes": {
-		"en": "",
+		"en": "Uploading images",
 		"es": "$"
 	},
 	"visualizar_producto": {

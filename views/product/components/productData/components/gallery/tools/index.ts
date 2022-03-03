@@ -2,17 +2,12 @@ import { getDataURL } from 'utils/tools'
 
 /**
  * Remover imagen de lista
- * @description Quita una imagen en una posicion
  * @param  {number} index
- * @param  {React.Dispatch<React.SetStateAction<string[]>>} setImages
+ * @param  {SetState<string[]>} setImages
  * @param  {React.MutableRefObject<Product>} productRef
  */
 export const removeImage =
-	(
-		index: number,
-		setImages: React.Dispatch<React.SetStateAction<string[]>>,
-		productRef: React.MutableRefObject<Product>
-	) =>
+	(index: number, setImages: SetState<string[]>, productRef: React.MutableRefObject<Product>) =>
 	(): void => {
 		setImages((prevImages: string[]) => {
 			const tmpImages: string[] = [...prevImages].map((image: string, imageIndex: number) =>
@@ -25,16 +20,15 @@ export const removeImage =
 
 /**
  * Actualizar lista de imagenes
- * @description Actualiza el estado de la lista de imagenes
  * @param  {number} index
- * @param  {React.Dispatch<React.SetStateAction<string[]>>} setImages
+ * @param  {SetState<string[]>} setImages
  * @param  {React.MutableRefObject<Product>} productRef
  * @param  {React.MutableRefObject<(File | null)[]>} imagesRef
  */
 const updateImageList =
 	(
 		index: number,
-		setImages: React.Dispatch<React.SetStateAction<string[]>>,
+		setImages: SetState<string[]>,
 		productRef: React.MutableRefObject<Product>,
 		imagesRef: React.MutableRefObject<(File | null)[]>
 	) =>

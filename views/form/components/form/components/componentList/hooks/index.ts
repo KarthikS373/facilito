@@ -4,11 +4,10 @@ import { UseFormSetValue, UseFormRegister, FieldValues, RegisterOptions } from '
 
 /**
  * Registrar componente
- * @description Registra un componente en react-hook-form
- * @param register
- * @param name
- * @param id
- * @param options
+ * @param  {UseFormRegister<FieldValues>|null} register
+ * @param  {string} name
+ * @param  {string|number} id
+ * @param  {RegisterOptions<FieldValues>} options?
  */
 export const useComponentRegister = (
 	register: UseFormRegister<FieldValues> | null,
@@ -24,10 +23,9 @@ export const useComponentRegister = (
 
 /**
  * Asignar valor de componente
- * @description Asigna el valor de un componente dentro de la tienda
- * @param setValue
- * @param name
- * @param id
+ * @param  {UseFormSetValue<FieldValues>|null} setValue
+ * @param  {string} name
+ * @param  {string|number} id
  */
 export const setComponentValue =
 	(setValue: UseFormSetValue<FieldValues> | null, name: string, id: string | number) =>

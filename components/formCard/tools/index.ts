@@ -1,7 +1,8 @@
 /**
  * Borrar tienda si es un admin
- * @param onDelete
- * @param role
+ * @param  {EmptyFunction} onDelete?
+ * @param  {User['role']} role?
+ * @returns void
  */
 const handleDelete = (onDelete?: EmptyFunction, role?: User['role']): void => {
 	if (onDelete) {

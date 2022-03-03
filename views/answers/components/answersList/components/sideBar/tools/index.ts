@@ -3,14 +3,15 @@ import { updateAnswerState } from 'utils/answers'
 
 /**
  * Actualizar estado de respuesta
- * @description Mueve una posicion el estado (tracking) de una respuesta
+ * @param  {EmptyFunction} onClose
  * @param  {number} currentIndex
  * @param  {number} index
  * @param  {number} step
- * @param  {React.Dispatch<React.SetStateAction<number>>} setActiveStep
- * @param  {(index:number, newState:number) => void} updateLocalAnswerState
- * @param  {string} formID
- * @param  {string} companyID
+ * @param  {string} filter
+ * @param  {SetState<number>} setActiveStep
+ * @param  {(index:number,newState:number)=>void} updateLocalAnswerState
+ * @param  {string} formID?
+ * @param  {string} companyID?
  */
 const handleStep = (
 	onClose: EmptyFunction,
@@ -18,7 +19,7 @@ const handleStep = (
 	index: number,
 	step: number,
 	filter: string,
-	setActiveStep: React.Dispatch<React.SetStateAction<number>>,
+	setActiveStep: SetState<number>,
 	updateLocalAnswerState: (index: number, newState: number) => void,
 	formID?: string,
 	companyID?: string

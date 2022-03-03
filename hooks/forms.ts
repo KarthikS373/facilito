@@ -7,27 +7,23 @@ import FormsContext from 'context/forms'
 
 /**
  * Hook de tiendas
- * @description Retornar todas las tiendas de un negocio
- * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
+ * @param  {SetState<FormInterface>} setForms
  * @param  {string} companyID
  */
-const useForms = (
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	companyID?: string
-): void => {
+const useForms = (setForms: SetState<FormInterface>, companyID?: string): void => {
 	useEffect(() => {
 		// LISTENER
-		let temporalForms: { [id: string]: Form } = {}
+		let temporalForms: Record<string, Form> = {}
 		let formsListen: EmptyFunction | null = null
 		let answersListen: EmptyFunction | null = null
 
 		// ACTUALIZAR Y MEZCLAS
 		const sendFormInterface =
-			(field: keyof FormInterface) => (data: { [id: string]: Form | FormAnswer }) => {
+			(field: keyof FormInterface) => (data: Record<string, Form | FormAnswer>) => {
 				setForms((prevData: FormInterface) => {
 					// TIENDAS
 					if (prevData.forms.length === 0 && field === 'forms')
-						temporalForms = data as { [id: string]: Form }
+						temporalForms = data as Record<string, Form>
 					const prevForms =
 						prevData.forms.length === 0
 							? Object.keys(temporalForms)
@@ -74,14 +70,13 @@ export default useForms
 
 /**
  * Hook de filtros
- * @description Re ordena las tiendas con un filtro
  * @param  {string} filter
- * @param  {setForms:(forms:FormInterface)=>unknown} setForms
+ * @param  {SetState<FormInterface>} setForms
  * @param  {FormInterface} prevForms
  */
 export const useFormFilter = (
 	filter: string,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	setForms: SetState<FormInterface>,
 	prevForms: FormInterface
 ): void => {
 	useEffect(() => {
@@ -121,9 +116,9 @@ export const useFormFilter = (
 
 /**
  * Hook de tienda
- * @description Busca una tienda en el contexto con un id
  * @param  {string} formID
- * @param  {Form[]} customForms
+ * @param  {Form[]} customForms?
+ * @returns {Form}
  */
 export const useForm = (formID: string, customForms?: Form[]): Form | undefined => {
 	// CONTEXTO
@@ -135,7 +130,6 @@ export const useForm = (formID: string, customForms?: Form[]): Form | undefined 
 
 /**
  * Hook de fondo de tienda
- * @description Asigna el fondo de una tienda al body
  * @param {string} background
  */
 export const useFormBackground = (background?: string): void => {

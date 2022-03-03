@@ -5,13 +5,13 @@
  * @param  {string} formID
  * @param  {string} companyID
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
- * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
+ * @param  {SetState<FormInterface>} setForms
  */
 const deleteState = (
 	index: number,
 	formID: string,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	setForms: SetState<FormInterface>,
 	companyID?: string
 ): void => {
 	if (companyID) {
@@ -44,13 +44,13 @@ const deleteState = (
  * @param  {number} index
  * @param  {ev: React.ChangeEvent<HTMLInputElement>} ev
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
- * @param  {React.Dispatch<React.SetStateAction<FormTrackingStep>>} setStep
+ * @param  {SetState<FormTrackingStep>} setStep
  */
 export const onStateChange = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
+	setStep: SetState<FormTrackingStep>
 ): void => {
 	const { value, name } = ev.target
 	setStep((prevStep: FormTrackingStep) => {
@@ -66,14 +66,14 @@ export const onStateChange = (
  * @param  {number} index
  * @param  {string} color
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
- * @param  {React.Dispatch<React.SetStateAction<FormTrackingStep>>} setStep
+ * @param  {SetState<FormTrackingStep>} setStep
  */
 export const changeStateColor = (
 	index: number,
 	color: string,
 	onClose: EmptyFunction,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
+	setStep: SetState<FormTrackingStep>
 ): void => {
 	onClose()
 	setStep((prevStep: FormTrackingStep) => {
@@ -88,12 +88,12 @@ export const changeStateColor = (
  * @description Reinicia todos los inputs de un estado
  * @param  {number} index
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
- * @param  {React.Dispatch<React.SetStateAction<FormTrackingStep>>} setStep
+ * @param  {SetState<FormTrackingStep>} setStep
  */
 export const clearStateInputs = (
 	index: number,
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setStep: React.Dispatch<React.SetStateAction<FormTrackingStep>>
+	setStep: SetState<FormTrackingStep>
 ): void => {
 	// LIMPIAR
 	const newStep = { name: '', description: '', color: 'var(--primary)' }

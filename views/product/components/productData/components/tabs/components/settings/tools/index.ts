@@ -1,6 +1,7 @@
 /**
  * Actualizar y cambiar switch
- * @param ev
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {React.MutableRefObject<Product>} productRef
  */
 const onChangeSwitch = (
 	ev: React.ChangeEvent<HTMLInputElement>,

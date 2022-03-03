@@ -3,13 +3,12 @@ import type { FormSearchProps } from '..'
 
 /**
  * Hook de productos
- * @description Actualizar lista de productos
- * @param props
- * @param setProductsList
+ * @param  {FormSearchProps} props
+ * @param  {SetState<Product[]>} setProductsList
  */
 export const useProductList = (
 	props: FormSearchProps,
-	setProductsList: React.Dispatch<React.SetStateAction<Product[]>>
+	setProductsList: SetState<Product[]>
 ): void => {
 	useEffect(() => {
 		// PRODUCTOS
@@ -31,9 +30,8 @@ export const useProductList = (
 }
 
 /**
- * Registrar
- * @description Registrar propiedades completas de los productos
- * @param props
+ * Registrar componente
+ * @param  {FormSearchProps} props
  */
 export const useCustomRegister = (props: FormSearchProps): void => {
 	useEffect(() => {

@@ -56,7 +56,7 @@ export const updateUrl = async (
 export const updateCheckoutOptions = (
 	formData: React.MutableRefObject<Form>,
 	checkoutOptions: FormCheckout,
-	setCheckoutOptions: React.Dispatch<React.SetStateAction<FormCheckout | undefined>>,
+	setCheckoutOptions: SetState<FormCheckout | undefined>,
 	companyID?: string
 ): void => {
 	// ASIGNAR PROPS

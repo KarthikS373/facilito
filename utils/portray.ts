@@ -8,11 +8,12 @@ import LZString from 'lz-string'
 interface ProviderProps extends Omit<IPortrayContext, '$' | 'setLang'> {
 	strings: PortrayDict
 }
+
 /**
  * Obtener texto
- * @description Lee o crea un nuevo valor en el json de strings
  * @param  {TemplateStringsArray} key
  * @param  {ProviderProps} ctx
+ * @returns {string}
  */
 const getTextFromDict = (
 	key: TemplateStringsArray,

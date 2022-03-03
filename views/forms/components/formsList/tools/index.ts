@@ -7,16 +7,16 @@ import { deleteURL } from 'utils/urls'
 
 /**
  * Borrar tienda
- * @description Borra una tienda del estado
  * @param  {string} formID
- * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
- * @param  {(forms: FormInterface) => unknown} setGlobalForms
- * @param  {string} companyID
+ * @param  {string} url
+ * @param  {SetState<FormInterface>} setForms
+ * @param  {(forms:Partial<FormInterface>)=>unknown} setGlobalForms
+ * @param  {string} companyID?
  */
 const deleteForm = (
 	formID: string,
 	url: string,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	setForms: SetState<FormInterface>,
 	setGlobalForms: (forms: Partial<FormInterface>) => unknown,
 	companyID?: string
 ): void => {

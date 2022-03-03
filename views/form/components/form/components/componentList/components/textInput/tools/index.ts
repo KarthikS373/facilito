@@ -1,8 +1,7 @@
 /**
  * Calcular tope de label
- * @description Actualizar top
- * @param fieldRef
- * @param margin
+ * @param  {React.RefObject<HTMLDivElement>} fieldRef
+ * @param  {number} margin
  */
 const computeLabelTop = (fieldRef: React.RefObject<HTMLDivElement>, margin: number): void => {
 	// LABEL

@@ -27,7 +27,7 @@ import useStrings from 'hooks/lang'
 
 // PROPIEDADES
 interface HookFormProps {
-	sendFormEvent: (data: { [id: string]: unknown }, reset: () => unknown) => void
+	sendFormEvent: (data: Record<string, unknown>, reset: () => unknown) => void
 	permissions?: CompanyPermissions
 	formData: Form | undefined
 	products: Product[] | null
@@ -49,7 +49,7 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 	} = useForm()
 
 	// ENVIAR FORM
-	const onSubmit = (data: { [id: string]: unknown }) =>
+	const onSubmit = (data: Record<string, unknown>) =>
 		props.sendFormEvent(cleanFormData(data), clearErrors)
 
 	// REFERENCIA DE BOTÓN DE ENVIAR

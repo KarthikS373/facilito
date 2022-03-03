@@ -5,12 +5,11 @@ import BusinessContext from 'context/business'
 
 /**
  * Cargar colores por defecto
- * @returns
+ * @param  {SetState<string[]>} setColors
+ * @param  {string} defBackground?
+ * @returns void
  */
-const usePaletteColors = (
-	setColors: React.Dispatch<React.SetStateAction<string[]>>,
-	defBackground?: string
-): void => {
+const usePaletteColors = (setColors: SetState<string[]>, defBackground?: string): void => {
 	const businessCtx = useContext(BusinessContext)
 
 	// COLORES

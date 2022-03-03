@@ -1,8 +1,8 @@
 /**
  * Obtener ruta activa
- * @description Obtener cual es la ruta actual
  * @param  {string} path
  * @param  {string} route
+ * @returns {boolean}
  */
 const getActiveRoute = (path: string, route: string): boolean => {
 	const trimmed: string = path.substr(1)

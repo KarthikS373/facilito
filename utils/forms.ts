@@ -6,7 +6,6 @@ import removeFile from './storage'
 
 /**
  * Leer documento
- * @description Retorna un documento en la db Forms
  * @param  {string} companyID
  * @param  {string} formID
  */
@@ -23,13 +22,13 @@ const getFormDoc = async (companyID: string, formID: string) => {
 
 /**
  * Listener de tiendas
- * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
  * @param  {(forms:FormInterface)=>unknown} setForms
+ * @returns {Promise<Unsubscribe>}
  */
 export const formsListener = async (
 	companyID: string,
-	setForms: (forms: { [id: string]: Form }) => unknown
+	setForms: (forms: Record<string, Form>) => unknown
 ): Promise<Unsubscribe> => {
 	const { doc, onSnapshot, collection: getCollectionFrb } = await import('firebase/firestore')
 
@@ -47,9 +46,9 @@ export const formsListener = async (
 
 /**
  * Borrar tienda en storage
- * @description Borra todos los archivos de una tienda
  * @param  {string} companyID
  * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const removeFormFromStorage = async (companyID: string, id: string): Promise<void> => {
 	return removeFile(`/${companyID}/forms/${id}`)
@@ -57,9 +56,9 @@ export const removeFormFromStorage = async (companyID: string, id: string): Prom
 
 /**
  * Comparar tiendas
- * @description Compara los cambios en los últimas tiendas
  * @param  {Form[]} first
  * @param  {Form[]} second
+ * @returns {Form[]}
  */
 export const getFormsDifference = (first: Form[], second: Form[]): Form[] => {
 	// OBTENER IDS
@@ -80,7 +79,7 @@ export const getFormsDifference = (first: Form[], second: Form[]): Form[] => {
 
 /**
  * Tiendas para templates
- * @description Obtiene las tiendas en plantillasfacilito
+ * @returns {Promise<Form[]>}
  */
 export const readTemplates = async (): Promise<Form[]> => {
 	const { doc, getDocs, collection: getCollectionFrb } = await import('firebase/firestore')
@@ -96,10 +95,9 @@ export const readTemplates = async (): Promise<Form[]> => {
 
 /**
  * Leer tienda
- * @description Leer tienda de DB
- * @param companyID
- * @param id
- * @returns
+ * @param  {string} companyID
+ * @param  {string} id
+ * @returns {Promise<Form | null>}
  */
 export const readFormSchema = async (companyID: string, id: string): Promise<Form | null> => {
 	const { getDoc } = await import('firebase/firestore')
@@ -114,9 +112,9 @@ export const readFormSchema = async (companyID: string, id: string): Promise<For
 
 /**
  * Guardar tienda
- * @description Guarda un objeto Form en la DB
  * @param  {string} companyID
  * @param  {Partial<Form>} form
+ * @returns {Promise<void>}
  */
 const saveFormSchema = async (companyID: string, form: Partial<Form>): Promise<void> => {
 	const { setDoc } = await import('firebase/firestore')
@@ -134,9 +132,9 @@ export default saveFormSchema
 
 /**
  * Borrar tienda
- * @description Borra un tienda en 'forms'
  * @param  {string} companyID
  * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const removeFormSchema = async (companyID: string, id: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
@@ -150,10 +148,10 @@ export const removeFormSchema = async (companyID: string, id: string): Promise<v
 
 /**
  * Cambiar las reservaciones
- * @description Cambiar las reservaciones de eventos en una tienda
- * @param dateKeys
- * @param companyID
- * @param id
+ * @param  {string[]} dateKeys
+ * @param  {string} companyID
+ * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const changeReservations = async (
 	dateKeys: string[],
@@ -198,11 +196,10 @@ export const changeReservations = async (
 
 /**
  * Cambiar cupones
- * @description Cambiar el contador de un cupon dentro de una tienda
- * @param couponCodes
- * @param companyID
- * @param id
- * @returns
+ * @param  {string[]} couponCodes
+ * @param  {string} companyID
+ * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const changeCouponsCount = async (
 	couponCodes: string[],
@@ -242,9 +239,8 @@ export const changeCouponsCount = async (
 
 /**
  * Extraer componentes
- * @description Remover propiedades agregadas a los componentes de una tienda
- * @param original
- * @returns
+ * @param  {FormContainerProps} original
+ * @returns {FormContainerProps}
  */
 export const extractFormComponent = (original: FormContainerProps): FormContainerProps => {
 	// COPIAR
@@ -274,9 +270,10 @@ export const extractFormComponent = (original: FormContainerProps): FormContaine
 
 /**
  * Cambiar url de facilito
- * @param companyID
- * @param id
- * @param newUrl
+ * @param  {string} companyID
+ * @param  {string} id
+ * @param  {string} newUrl
+ * @returns {Promise<void>}
  */
 export const replaceFormURL = async (
 	companyID: string,
@@ -291,13 +288,12 @@ export const replaceFormURL = async (
 	// AGREGAR NUEVO
 	await setDoc(formsCol, { url: newUrl }, { merge: true })
 }
-
 /**
  * Guardar metodos de envio
- * @description Guardar metodos de envio de una tienda
- * @param companyID
- * @param id
- * @param answersConnection
+ * @param  {string} companyID
+ * @param  {string} id
+ * @param  {ConnectionMethods} answersConnection
+ * @returns {Promise<void>}
  */
 export const saveFormSendMethods = async (
 	companyID: string,
@@ -315,9 +311,9 @@ export const saveFormSendMethods = async (
 
 /**
  * Publicar
- * @description Cambiar el estado de un tiendas a publico
- * @param companyID
- * @param id
+ * @param  {string} companyID
+ * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const publishForm = async (companyID: string, id: string): Promise<void> => {
 	if (companyID?.length) {
@@ -332,9 +328,9 @@ export const publishForm = async (companyID: string, id: string): Promise<void> 
 
 /**
  * No Publicar
- * @description Cambiar el estado de un tiendas a no publico
- * @param companyID
- * @param id
+ * @param  {string} companyID
+ * @param  {string} id
+ * @returns {Promise<void>}
  */
 export const unPublishForm = async (companyID: string, id: string): Promise<void> => {
 	if (companyID?.length) {

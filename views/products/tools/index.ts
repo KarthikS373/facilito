@@ -1,8 +1,8 @@
 /**
  * Filtrar productos
- * @description Re ordena los productos segun un filtro
  * @param  {Product[]} products
  * @param  {string} filter
+ * @returns {Product[]}
  */
 const filterProducts = (products: Product[], filter: string): Product[] => {
 	const tmpProducts = [...products]

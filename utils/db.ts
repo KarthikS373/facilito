@@ -8,7 +8,7 @@ let globalDB: Firestore | null = null
 /**
  * Obtener colección
  * @param  {string} colName
- * @description Retorna la collection en firestore con el nombre
+ * @returns {Promise<CollectionReference<DocumentData>>}
  */
 export const getCollection = async (
 	colName: string

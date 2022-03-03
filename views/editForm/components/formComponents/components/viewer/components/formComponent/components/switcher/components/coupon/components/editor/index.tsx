@@ -285,7 +285,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 const openCouponEditor = (
 	enableOpen: boolean,
 	coupons: (Coupon | null)[],
-	setCoupons: React.Dispatch<React.SetStateAction<(Coupon | null)[]>>,
+	setCoupons: SetState<(Coupon | null)[]>,
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown,
 	defCouponIndex?: number
 ): void => {

@@ -3,7 +3,7 @@ import { createContext, Context } from 'react'
 // KEYS
 export interface BusinessContextProps {
 	business: Business | null
-	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
+	setBusiness: SetState<Business | null>
 	setBusinessDB(business: Partial<Business>, onSuccess?: EmptyFunction): void
 }
 

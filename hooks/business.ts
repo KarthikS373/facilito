@@ -9,13 +9,12 @@ import { getProducts } from 'utils/products'
  * Hook de Business
  * @param  {boolean} isAuth
  * @param  {string|null} userBusiness
- * @param  {React.Dispatch<React.SetStateAction<Business|null>>} setBusiness
- * @description Retorna la empresa asociada a un usuario
+ * @param  {SetState<Business|null>} setBusiness
  */
 const useBusiness = (
 	isAuth: boolean,
 	userBusiness: string | null,
-	setBusiness: React.Dispatch<React.SetStateAction<Business | null>>
+	setBusiness: SetState<Business | null>
 ): void => {
 	// FETCHs
 	useEffect(() => {
@@ -28,14 +27,13 @@ export default useBusiness
 
 /**
  * Hook de productos de empresa
- * @description Retorna la lista de productos de una empresa
- * @param {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
+ * @param {SetState<Product[]>} setProducts
  * @param {boolean} isAuth
  * @param {string|null} companyID
  * @param {boolean} hasProducts
  */
 export const useCompanyProducts = (
-	setProducts: React.Dispatch<React.SetStateAction<Product[] | null>>,
+	setProducts: SetState<Product[] | null>,
 	isAuth: boolean,
 	companyID: string | null,
 	hasProducts: boolean

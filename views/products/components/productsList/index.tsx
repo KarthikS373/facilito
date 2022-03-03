@@ -37,7 +37,7 @@ interface ProductsListProps {
 	filter: string
 	products: Product[]
 	setFilter: (newFilter: string) => void
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+	setProducts: SetState<Product[]>
 }
 const ProductsList: React.FC<ProductsListProps> = ({
 	setFilter,

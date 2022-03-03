@@ -2,10 +2,9 @@ import type { ExtraLimitedProps } from '..'
 
 /**
  * Opciones restantes
- * @description Calcular opciones restantes
- * @param sizes
- * @param cant
- * @returns
+ * @param  {number[]} sizes
+ * @param  {number} cant
+ * @returns {number}
  */
 const computeLeft = (sizes: number[], cant: number): number => {
 	// VARIABLES DE CONTEO
@@ -16,9 +15,8 @@ const computeLeft = (sizes: number[], cant: number): number => {
 
 /**
  * Enviar extra
- * @description Guardar opciones de extra
- * @param newSize
- * @param props
+ * @param  {number[]|undefined} newSize
+ * @param  {ExtraLimitedProps} props
  */
 export const sendExtra = (newSize: number[] | undefined, props: ExtraLimitedProps): void => {
 	// CREAR ITEMS
@@ -38,18 +36,17 @@ export const sendExtra = (newSize: number[] | undefined, props: ExtraLimitedProp
 
 /**
  * Contadores
- * @description Guardar contadores de opciones para extra
- * @param index
- * @param cSize
- * @param maxSize
- * @param setSize
- * @param props
+ * @param  {number} index
+ * @param  {number} cSize
+ * @param  {number} maxSize
+ * @param  {SetState<number[]>} setSize
+ * @param  {ExtraLimitedProps} props
  */
 export const handleCounters = (
 	index: number,
 	cSize: number,
 	maxSize: number,
-	setSize: React.Dispatch<React.SetStateAction<number[]>>,
+	setSize: SetState<number[]>,
 	props: ExtraLimitedProps
 ): void => {
 	// ENVIAR
@@ -76,10 +73,10 @@ export const handleCounters = (
 }
 
 /**
- * Precio total
- * @description Calcular subtotal de extras
- * @param props
- * @param sizes
+ * Contadores
+ * @param  {ExtraLimitedProps} props
+ * @param  {number[]} sizes
+ * @returns {number}
  */
 export const getTotalPrice = (props: ExtraLimitedProps, sizes: number[]): number =>
 	props.extra.options

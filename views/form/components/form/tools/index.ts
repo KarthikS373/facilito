@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+
 /**
- * Limpiar tienda
- * @description Limpia todos los datos no necesarios en una tienda
- * @param data
+ *  Limpiar tienda
+ * @param  {Record<string, unknown>} data
+ * @returns {Record<string, unknown>}
  */
-const cleanFormData = (data: { [id: string]: unknown }): { [id: string]: unknown } => {
+const cleanFormData = (data: Record<string, unknown>): Record<string, unknown> => {
 	// @ts-ignore
 	const tmpData = { ...data, ...data.products, ...data.coupons }
 	delete tmpData.products
@@ -19,8 +20,8 @@ export default cleanFormData
 
 /**
  * Obtener subtotal
- * @description Calcula el subtotal de la suma de productos
- * @param values
+ * @param  {FormDataProductSliderAnswer|undefined} values
+ * @returns {number}
  */
 export const getSubtotalPrice = (values: FormDataProductSliderAnswer | undefined): number => {
 	if (values)
@@ -35,8 +36,7 @@ export const getSubtotalPrice = (values: FormDataProductSliderAnswer | undefined
 
 /**
  * Obtener contadores de productos
- * @description Cuenta los grupos de items de productos y los productos
- * @param values
+ * @param  {FormDataProductSliderAnswer|undefined} values
  */
 export const getProductsCounter: (
 	values: FormDataProductSliderAnswer | undefined

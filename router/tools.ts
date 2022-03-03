@@ -6,10 +6,10 @@ import admin from 'keys/firebase-admin'
 
 /**
  * Auth obligatorio
- * @description Verifica un endpoint con Auth
- * @param {GetServerSidePropsContext<never>} ctx
- * @param {EmptyFunction} callback
- * @param {EmptyFunction} onError
+ * @param  {NextApiRequest} req
+ * @param  {()=>Promise<T>} callback
+ * @param  {()=>Promise<T>} onError?
+ * @returns {Promise<T>}
  */
 const authRequired = async <T>(
 	req: NextApiRequest,

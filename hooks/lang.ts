@@ -17,7 +17,7 @@ interface UseStringsProps {
 
 /**
  * Hook de Strings
- * @description Retorna la informacion sobre el lenguaje
+ * @returns {UseStringsProps}
  */
 const useStrings = (): UseStringsProps => {
 	const langCtx = useContext(LangContext)

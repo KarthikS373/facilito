@@ -45,14 +45,14 @@ const getPickerProps = (props: PickerProps): PickerProps => {
  * @param      {number}                                                 index
  * @param      {(Date|null)}                                            date
  * @param      {((Date|null)[])}                                        selectedDate
- * @param      {(React.Dispatch<React.SetStateAction<(Date|null)[]>>)}  handleDateChange
+ * @param      {(SetState<(Date|null)[]>)}  handleDateChange
  * @param      {(dates:(Date|null)[])=>unknown | undefined}             onDates?
  */
 export const sendDate = (
 	index: number,
 	date: Date | null,
 	selectedDate: (Date | null)[],
-	handleDateChange: React.Dispatch<React.SetStateAction<(Date | null)[]>>,
+	handleDateChange: SetState<(Date | null)[]>,
 	onDates?: (dates: (Date | null)[]) => unknown
 ): void => {
 	// COPIAR

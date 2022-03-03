@@ -3,7 +3,6 @@ import { getCollection } from './db'
 
 /**
  * Obtener documento
- * @description Obtiene un documento en la collection answers
  * @param  {string} companyID
  * @param  {string} formID
  */
@@ -20,10 +19,10 @@ const getAnswerDoc = async (companyID: string, formID: string) => {
 
 /**
  * Listener para respuestas de un solo formulario
- * @param companyID
- * @param formID
- * @param setAnswer
- * @returns
+ * @param  {string} companyID
+ * @param  {string} formID
+ * @param  {(answer:FormAnswer)=>unknown} setAnswer
+ * @returns {Promise<Unsubscribe>}
  */
 export const formAnswerListener = async (
 	companyID: string,
@@ -47,13 +46,13 @@ export const formAnswerListener = async (
 
 /**
  * Listener de tiendas
- * @description Crea un evento listener en la collection "forms"
  * @param  {string} companyID
- * @param  {(forms: { [id: string]: FormAnswer }) => unknown} setAnswers
+ * @param  {(forms:Record<string,FormAnswer>)=>unknown} setAnswers
+ * @returns {Promise<Unsubscribe>}
  */
 export const answersListener = async (
 	companyID: string,
-	setAnswers: (forms: { [id: string]: FormAnswer }) => unknown
+	setAnswers: (forms: Record<string, FormAnswer>) => unknown
 ): Promise<Unsubscribe> => {
 	const { collection, doc, onSnapshot } = await import('firebase/firestore')
 
@@ -71,10 +70,10 @@ export const answersListener = async (
 
 /**
  * Comparar respuestas
- * @description Crea una comparación profunda entre respuestas en la db.
  * @param  {(FormAnswer|undefined)[]} first
  * @param  {(FormAnswer|undefined)[]} second
  * @param  {Form[]} forms
+ * @returns {FormInterface}
  */
 export const getAnswersDifference = (
 	first: (FormAnswer | undefined)[],
@@ -106,9 +105,9 @@ export const getAnswersDifference = (
 
 /**
  * Borrar respuestas
- * @description Borra todas las respuestas de una tienda
  * @param  {string} companyID
  * @param  {string} formID
+ * @returns {Promise<void>}
  */
 export const removeAnswersForm = async (companyID: string, formID: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
@@ -120,10 +119,10 @@ export const removeAnswersForm = async (companyID: string, formID: string): Prom
 
 /**
  * Borrar respuesta
- * @description Elimina una respuesta y re ordena el arreglo en la db
  * @param  {number} index
- * @param  {string} formID
- * @param  {string} companyID
+ * @param  {string} formID?
+ * @param  {string} companyID?
+ * @returns {Promise<void>}
  */
 export const deleteAnswer = async (
 	index: number,
@@ -146,12 +145,11 @@ export const deleteAnswer = async (
 		return setDoc(answerDoc, companyAnswers)
 	}
 }
-
 /**
  * Ordenar respuestas
- * @description Ordena un objeto de respuestas según el orden de la tienda
  * @param  {FormComponent[]} components
  * @param  {FormAnswerItemContainer} formData
+ * @returns {FormSortedAnswer[]}
  */
 export const sortAnswers = (
 	components: FormComponent[],
@@ -212,11 +210,11 @@ export const sortAnswers = (
 
 /**
  * Actualizar estado de respuesta
- * @description Mueve una posición el estado (tracking) de una respuesta
  * @param  {number} index
  * @param  {number} newState
- * @param  {string} formID
- * @param  {string} companyID
+ * @param  {string} formID?
+ * @param  {string} companyID?
+ * @returns {Promise<void>}
  */
 export const updateAnswerState = async (
 	index: number,
@@ -242,11 +240,10 @@ export const updateAnswerState = async (
 
 /**
  * Guardar respuesta
- * @description Mezcla las respuestas y guarda en la posicion correcta la siguiente
- * @param companyID
- * @param id
- * @param form
- * @returns
+ * @param  {string} companyID
+ * @param  {string} id
+ * @param  {FormAnswerItemContainer} form
+ * @returns {Promise<number>}
  */
 export const saveFormAnswer = async (
 	companyID: string,
@@ -272,13 +269,11 @@ export const saveFormAnswer = async (
 	await setDoc(formDoc, { ...answersData }, { merge: true })
 	return answersData.data.length
 }
-
 /**
  * Ordenar respuestas
- * @description Ordenar las respuestas segun el listado de componentes de la tienda
- * @param components
- * @param formData
- * @returns
+ * @param  {FormComponent[]} components
+ * @param  {FormAnswerItemContainer} formData
+ * @returns {OrderedAnswer[]}
  */
 export const orderAnswers = (
 	components: FormComponent[],

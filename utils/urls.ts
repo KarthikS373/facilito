@@ -2,11 +2,11 @@
 import { getCollection } from './db'
 
 /**
- * @description Guardar nueva URL
- * @param alreadyFclt
- * @param fcltCode
- * @param fcltRequest
- * @returns
+ * Guardar nueva URL
+ * @param  {boolean} alreadyFclt
+ * @param  {string} fcltCode
+ * @param  {FcltRequest} fcltRequest
+ * @returns {Promise<void>}
  */
 export const saveUrl = async (
 	alreadyFclt: boolean,
@@ -27,9 +27,9 @@ export const saveUrl = async (
 }
 
 /**
- * @description Validar que una url no exista para actualizar
- * @param url
- * @returns
+ * Validar url
+ * @param  {string} url
+ * @returns {Promise<boolean>}
  */
 export const validateURL = async (url: string): Promise<boolean> => {
 	const { doc, getDoc } = await import('firebase/firestore')

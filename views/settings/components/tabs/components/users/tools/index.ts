@@ -7,8 +7,9 @@ export interface UserRole {
 
 /**
  * Cambiar rol de usuario
- * @param ev
- * @param email
+ * @param {SelectChangeEvent} ev
+ * @param {string} email
+ * @param {React.MutableRefObject<UserRole[]>} userRles
  */
 const changeUserRole = (
 	ev: SelectChangeEvent,
@@ -24,8 +25,8 @@ const changeUserRole = (
 
 /**
  * Obtener usuarios con roles
- * @param users
- * @returns
+ * @param {User[]} users
+ * @returns {UserRole[]}
  */
 export const getUserRoles = (users: User[]): UserRole[] =>
 	users.map((user: User) => ({ user: user.email, role: user.role ?? 'admin' }))

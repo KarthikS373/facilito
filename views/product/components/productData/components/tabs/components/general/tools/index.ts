@@ -2,7 +2,9 @@ import { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Actualizar y cambiar categoria
- * @param ev
+ * @param  {SelectChangeEvent<string>} ev
+ * @param  {SetState<string>} setCategory
+ * @param  {React.MutableRefObject<Product>} productRef
  */
 const changeCategory = (
 	ev: SelectChangeEvent<string>,

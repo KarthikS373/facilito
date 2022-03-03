@@ -2,9 +2,9 @@ import { SelectChangeEvent } from '@mui/material'
 
 /**
  * Guardar cambios de cuenta
- * @param ev
- * @param index
- * @param businessRef
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {number} index
+ * @param  {React.MutableRefObject<Business|null>} businessRef
  */
 const onChangeInput = (
 	ev: React.ChangeEvent<HTMLInputElement>,
@@ -21,9 +21,9 @@ const onChangeInput = (
 
 /**
  * Cambiar tipo de cuenta
- * @param ev
- * @param index
- * @param businessRef
+ * @param  {SelectChangeEvent} ev
+ * @param  {number} index
+ * @param  {React.MutableRefObject<Business|null>} businessRef
  */
 export const onChangeAccountType = (
 	ev: SelectChangeEvent,

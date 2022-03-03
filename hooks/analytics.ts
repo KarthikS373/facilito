@@ -6,7 +6,6 @@ import getFirebase from 'keys/firebase'
 
 /**
  * Hook de Analytics
- * @description Inicia firebase analytics de manera segura (client side)
  */
 const useAnalytics = (): void => {
 	useEffect(() => {

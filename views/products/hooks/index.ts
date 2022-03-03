@@ -6,16 +6,15 @@ import filterProducts from '../tools'
 
 /**
  * Hook de filtros
- * @description Re ordena los productos segun un filtro
- * @param  {React.Dispatch<React.SetStateAction<Product[]>>} setProducts
+ * @param  {SetState<Product[]>} setProducts
  * @param  {string} filter
  * @param  {string} changesTrigger
- * @param  {products: {[id:string]: Product}} products
+ * @param  {products: {Record<string, Product>} products
  */
 export const useFilters = (
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
+	setProducts: SetState<Product[]>,
 	filter: string,
-	products: { [id: string]: Product }
+	products: Record<string, Product>
 ): void => {
 	useEffect(() => {
 		setProducts((prevProducts: Product[]) =>

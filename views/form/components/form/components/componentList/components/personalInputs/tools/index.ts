@@ -1,7 +1,6 @@
 /**
  * Obtener inputs personales
- * @description Obtener lista de propiedades de inputs personales
- * @param personalData
+ * @param  {FormPersonalData} personalData
  */
 const getPersonalStrings: (personalData: FormPersonalData) => [boolean[], string[]] = (
 	personalData: FormPersonalData
@@ -28,9 +27,8 @@ interface LabelsAndHelpers {
 
 /**
  * Obtener labels
- * @description Retorna la lista de labels para los inputs
- * @param $
- * @returns
+ * @param  {TemplateStrBuilder} $
+ * @returns {LabelsAndHelpers}
  */
 export const getLabelsAndHelpers = ($: TemplateStrBuilder): LabelsAndHelpers => {
 	// TEXTOS

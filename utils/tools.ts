@@ -5,7 +5,6 @@ import { createTheme, Theme } from '@mui/material/styles'
 
 /**
  * Remover tildes
- * @description Retornar un string sin tildes
  * @param  {string} str
  */
 const slugify = (str: string) => {
@@ -25,8 +24,8 @@ const slugify = (str: string) => {
 }
 /**
  * Normalizar string
- * @description Convierte un string en su cadena mas optima
  * @param  {string} str
+ * @returns {string}
  */
 export const normalizeString = (str: string): string => {
 	return slugify(str)
@@ -38,8 +37,8 @@ export const normalizeString = (str: string): string => {
 
 /**
  * Parser de date
- * @description Convierte un objeto TimeStamp o Date en Date
  * @param  {unknown} date
+ * @returns {Date | null}
  */
 export const parseDate = (date: unknown): Date | null => {
 	if (date && typeof date === 'object') {
@@ -58,8 +57,8 @@ export const parseDate = (date: unknown): Date | null => {
 
 /**
  * Fecha a string
- * @description Convierte una fecha a un string Fecha, Hora
  * @param  {Date} date
+ * @returns {string}
  */
 export const dateToString = (date: Date): string => {
 	const currentDate = parseDate(date)
@@ -70,8 +69,8 @@ export const dateToString = (date: Date): string => {
 
 /**
  * Fecha a string de hora
- * @description Convierte una fecha a un string hora
- * @param  {Date} date
+ * @param  {Date|null|string|number} date
+ * @returns {string}
  */
 export const hourToString = (date: Date | null | string | number): string => {
 	if (date && typeof date !== 'string' && typeof date !== 'number') {
@@ -86,10 +85,10 @@ export const hourToString = (date: Date | null | string | number): string => {
 
 /**
  * Enviar correo
- * @description Llama a la api sendEmail
  * @param  {string} html
  * @param  {string} subject
  * @param  {string | string[]} email
+ * @returns {Promise<HttpsCallableResult<unknown>>}
  */
 export const sendMail = async (
 	html: string,
@@ -111,7 +110,6 @@ export const sendMail = async (
 
 /**
  * Imprimir html
- * @description Imprime una ventana con text/html
  * @param  {string} html
  */
 export const printHTML = (html: string): void => {
@@ -132,25 +130,19 @@ export const printHTML = (html: string): void => {
 
 /**
  * Cambiar filtros
- * @description Cambia en localStorage el filtro
  * @param  {string} key
  * @param  {string} filter
- * @param  {React.Dispatch<React.SetStateAction<string>>} setFilter
+ * @param  {SetState<string>} setFilter
  */
-export const changeFilter = (
-	key: string,
-	filter: string,
-	setFilter: React.Dispatch<React.SetStateAction<string>>
-): void => {
+export const changeFilter = (key: string, filter: string, setFilter: SetState<string>): void => {
 	window.localStorage.setItem(key, filter)
 	setFilter(filter)
 }
 
 /**
  * Obtener imagen de input
- * @description Retorna una imagen como DataURL de un input
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
- * @param  {(data:string | ArrayBuffer | null) => void} imageCallback
+ * @param  {(data:string|ArrayBuffer|null)=>void} imageCallback
  */
 export const getDataURL = (
 	ev: React.ChangeEvent<HTMLInputElement>,
@@ -171,8 +163,8 @@ export const defThemeColors = ['#1AA5BB', '#511F73', '042']
 
 /**
  * Separar fondo
- * @description Retorna una lista de colores si es un fondo degradado
- * @param background
+ * @param  {string} background
+ * @param  {(colors:string[])=>void} onColors?
  */
 export const splitBackgroundColors = (
 	background: string,
@@ -195,8 +187,8 @@ export const splitBackgroundColors = (
 
 /**
  * Obtener colores con node-vibrant
- * @param background
- * @returns
+ * @param  {string} background
+ * @returns {Promise<string[]>}
  */
 export const getVibrant = (background: string): Promise<string[]> =>
 	new Promise((resolve) => {
@@ -226,8 +218,8 @@ export const getVibrant = (background: string): Promise<string[]> =>
 
 /**
  * Obtener colores de un fondo
- * @param background
- * @returns
+ * @param  {string} background
+ * @returns {string[]}
  */
 export const getBackgroundColors = (background: string): string[] => {
 	if ((background?.toString() ?? '').startsWith('transparent linear-gradient')) {
@@ -242,8 +234,7 @@ export const getBackgroundColors = (background: string): string[] => {
 
 /**
  * Abrir ventana
- * @description Abrir ventana nueva (error con safari)
- * @param url
+ * @param  {string} url
  */
 export const openNewWindow = (url: string): void => {
 	// CREAR ANCHOR
@@ -257,9 +248,8 @@ export const openNewWindow = (url: string): void => {
 
 /**
  * Generar tema
- * @description Generar un tema de mui
- * @param defColors
- * @returns
+ * @param  {string[]} defColors
+ * @returns {Theme}
  */
 export const generateTheme = (defColors: string[]): Theme => {
 	return createTheme({
@@ -444,9 +434,7 @@ export const generateTheme = (defColors: string[]): Theme => {
 
 /**
  * Obtener codigo QR
- * @description Obtener dataURL de un codigo QR
- * @param content
- * @returns
+ * @param  {string} url
  */
 export const getQRCode: (url: string) => Promise<string> = (content: string) =>
 	new Promise((resolve, reject) => {
@@ -474,12 +462,11 @@ export const getQRCode: (url: string) => Promise<string> = (content: string) =>
 
 /**
  * Copiar a portapapeles
- * @description Copiar texto a portapapeles
- * @param event
- * @param title
- * @param text
- * @param customElements
- * @param str
+ * @param  {React.ChangeEvent|React.MouseEvent} event
+ * @param  {string} title
+ * @param  {string} text
+ * @param  {JSX.Element} customElements?
+ * @param  {string} str?
  */
 export const copyToClipboard = (
 	event: React.ChangeEvent | React.MouseEvent,
@@ -505,9 +492,8 @@ export const copyToClipboard = (
 
 /**
  * Descargar QR
- * @description Descargar codigo qr como imagen
- * @param dataURL
- * @param filename
+ * @param  {string} dataURL
+ * @param  {string} filename
  */
 export const downloadQR = (dataURL: string, filename: string): void => {
 	// CREAR ANCHOR
@@ -521,10 +507,9 @@ export const downloadQR = (dataURL: string, filename: string): void => {
 
 /**
  * Compartir link
- * @description Compartir link con la api Share
- * @param ev
- * @param title
- * @param text
+ * @param  {React.ChangeEvent|React.MouseEvent} ev
+ * @param  {string} title
+ * @param  {string} text
  */
 export const shareLink = (
 	ev: React.ChangeEvent | React.MouseEvent,
@@ -550,9 +535,9 @@ export const shareLink = (
 
 /**
  * Agregar ceros a la izquierda
- * @param input
- * @param length
- * @returns
+ * @param  {string} input
+ * @param  {number} length
+ * @returns {string}
  */
 export const pad = (input: string, length: number): string => {
 	return input.length < length ? pad('0' + input, length) : input
@@ -560,8 +545,8 @@ export const pad = (input: string, length: number): string => {
 
 /**
  * Convertir fondo a linear-gradient o url(src)
- * @param background
- * @returns
+ * @param  {string} background?
+ * @returns {string}
  */
 export const transformBackground = (background?: string): string => {
 	if (background?.startsWith('transparent linear-gradient')) return background

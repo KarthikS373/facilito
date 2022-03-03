@@ -16,9 +16,9 @@ import paymentAlert from '../components/payment'
 
 /**
  * Referencias geo
- * @description Asignar posicion actual
- * @param formComponents
- * @param geoReferences
+ * @param  {FormComponent[]|undefined} formComponents
+ * @param  {React.MutableRefObject<FormAnswerItemContainer>} geoReferences
+ * @returns {Promise<void>}
  */
 export const setGeoRefs = async (
 	formComponents: FormComponent[] | undefined,
@@ -47,9 +47,8 @@ export const setGeoRefs = async (
 
 /**
  * Obtener cupones
- * @description Obtener lista de productos con cupon
- * @param components
- * @param setCouponProducts
+ * @param  {(Coupon[]|undefined)[]|undefined} coupons
+ * @returns {string}
  */
 export const getCouponProducts = (coupons: (Coupon[] | undefined)[] | undefined): string[] => {
 	// PRODUCTOS CON CUPONES
@@ -76,9 +75,12 @@ export const getCouponProducts = (coupons: (Coupon[] | undefined)[] | undefined)
 }
 
 /**
- * Tiene productos
- * @description Verificar si una tiene tiene productos
- * @param formComponents
+ * Un formulario tiene un componente
+ * @param  {BlockComponent[]|undefined} formComponents
+ * @param  {string} name
+ * @param  {boolean} withSwitch1=false
+ * @param  {boolean} withSwitch2=false
+ * @returns {boolean}
  */
 export const formHasComponent = (
 	formComponents: BlockComponent[] | undefined,
@@ -101,10 +103,8 @@ export const formHasComponent = (
 
 /**
  * Obtener geo componentes
- * @description Componentes de geo localizacion
- * @param formComponents
- * @param geoReferences
- * @param lang
+ * @param  {BlockComponent[]|undefined} formComponents
+ * @param  {React.MutableRefObject<FormAnswerItemContainer|never>} geoReferences
  */
 export const setGeoComponents = (
 	formComponents: BlockComponent[] | undefined,
@@ -117,15 +117,14 @@ export const setGeoComponents = (
 
 /**
  * Reducir respuestas
- * @description Convierte todas las respuestas a objetos con string
- * @param data
- * @param dataCopy
- * @param badge
- * @param $
- * @returns
+ * @param  {Record<string, unknown>} data
+ * @param  {FormAnswerItemContainer} dataCopy
+ * @param  {string} badge
+ * @param  {TemplateStrBuilder} $
+ * @returns {FormAnswerItemParsed}
  */
 export const reduceAnswers = (
-	data: { [id: string]: unknown },
+	data: Record<string, unknown>,
 	dataCopy: FormAnswerItemContainer,
 	badge: string,
 	$: TemplateStrBuilder
@@ -212,10 +211,9 @@ export const reduceAnswers = (
 
 /**
  * Agregar iconos
- * @description Agregar preguntas con iconos personalizados por tipo
- * @param filteredData
- * @param $
- * @returns
+ * @param  {FormAnswerItemContainer} filteredData
+ * @param  {TemplateStrBuilder} $
+ * @returns {FormAnswerItemContainer}
  */
 export const addAnswerIcons = (
 	filteredData: FormAnswerItemContainer,
@@ -252,14 +250,13 @@ export const addAnswerIcons = (
 
 /**
  * Obtener texto url whatsapp
- * @description Obtener texto como url de respuesta para whatsapp
- * @param data
- * @param companyName
- * @param formTitle
- * @param components
- * @param $
- * @param phone
- * @returns
+ * @param  {FormAnswerItemContainer} data
+ * @param  {string} companyName
+ * @param  {string} formTitle
+ * @param  {FormComponent[]} components
+ * @param  {TemplateStrBuilder} $
+ * @param  {number} phone?
+ * @returns {string}
  */
 export const getWhatsappAnswers = (
 	data: FormAnswerItemContainer,
@@ -312,16 +309,14 @@ export const getWhatsappAnswers = (
 	// RETURN
 	return queryString
 }
-
 /**
  * Obtener repuestas de email
- * @description Obtener texto como url de respuesta para email
- * @param data
- * @param companyName
- * @param formTitle
- * @param components
- * @param $
- * @returns
+ * @param  {FormAnswerItemContainer} data
+ * @param  {string} companyName
+ * @param  {string} formTitle
+ * @param  {FormComponent[]} components
+ * @param  {TemplateStrBuilder} $
+ * @returns {string}
  */
 export const getEmailAnswers = (
 	data: FormAnswerItemContainer,
@@ -372,20 +367,19 @@ export const getEmailAnswers = (
 
 /**
  * Enviar datos
- * @description Enviar datos y validar pago
- * @param $
- * @param data
- * @param reset
- * @param formData
- * @param company
- * @param defColors
- * @param geoRef
- * @param formURL
- * @param companyURL
+ * @param  {TemplateStrBuilder} $
+ * @param  {Record<string, unknown>} data
+ * @param  {EmptyFunction} reset
+ * @param  {Form|null} formData
+ * @param  {Business|null} company
+ * @param  {string[]} defColors
+ * @param  {React.MutableRefObject<FormAnswerItemContainer|never>} geoRef
+ * @param  {string} formURL
+ * @param  {string} companyURL
  */
 export const sendForm = async (
 	$: TemplateStrBuilder,
-	data: { [id: string]: unknown },
+	data: Record<string, unknown>,
 	reset: EmptyFunction,
 	formData: Form | null,
 	company: Business | null,

@@ -96,8 +96,8 @@ const saveBusiness = (
 
 /**
  * Abrir tab de sub
- * @param setTabIndex
- * @param role
+ * @param {SetState<number>} setTabIndex
+ * @param {User['role']} role
  */
 export const openSub = (setTabIndex: SetState<number>, role: User['role']): void => {
 	if (role !== 'admin') {

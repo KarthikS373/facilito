@@ -73,7 +73,7 @@ export const handleComponent = (
  */
 export const onRequired = (
 	checked: boolean,
-	setRequired: React.Dispatch<React.SetStateAction<boolean>>,
+	setRequired: SetState<boolean>,
 	onChange?: ((component: keyof BlockComponent, value: FormInputValue) => unknown) | undefined
 ): void => {
 	if (onChange) onChange('required', checked)

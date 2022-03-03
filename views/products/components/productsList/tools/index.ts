@@ -2,16 +2,16 @@ import type { ProductContextProps } from 'context/products'
 
 /**
  * Borrar producto
- * @description Borra un producto en la DB y context
  * @param  {ProductContextProps} productsCtx
  * @param  {Product[]} products
  * @param  {number} currentIndex
+ * @param  {SetState<Product[]>} setProducts
  */
 const deleteProduct = (
 	productsCtx: ProductContextProps,
 	products: Product[],
 	currentIndex: number,
-	setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+	setProducts: SetState<Product[]>
 ): void => {
 	window.Alert({
 		title: 'Borrar producto',
@@ -33,8 +33,10 @@ const deleteProduct = (
 
 /**
  * Seleccionar fila
- * @param index
- * @param ev
+ * @param  {React.MouseEvent<HTMLButtonElement>} ev
+ * @param  {number} index
+ * @param  {SetState<HTMLElement|null>} setCurrentRow
+ * @param  {SetState<number>} setCurrentIndex
  */
 export const selectRow = (
 	ev: React.MouseEvent<HTMLButtonElement>,

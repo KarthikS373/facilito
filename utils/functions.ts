@@ -3,8 +3,8 @@ import getFirebase from 'keys/firebase'
 
 /**
  * Obtener callable
- * @description Invoca una función callable desde cloud functions
  * @param  {string} name
+ * @returns {Promise<HttpsCallable<unknown, unknown>>}
  */
 const getCallable = async (name: string): Promise<HttpsCallable<unknown, unknown>> => {
 	const { getFunctions, httpsCallable } = await import('firebase/functions')
@@ -19,11 +19,10 @@ const getCallable = async (name: string): Promise<HttpsCallable<unknown, unknown
 
 /**
  * Enviar correo
- * @description Enviar correo electronico como html string
- * @param html
- * @param subject
- * @param email
- * @returns
+ * @param  {string} html
+ * @param  {string} subject
+ * @param  {string|string[]} email?
+ * @returns {Promise<HttpsCallableResult<unknown>>}
  */
 export const sendMail = async (
 	html: string,
@@ -43,9 +42,8 @@ export const sendMail = async (
 
 /**
  * Enviar push
- * @description Enviar notificacion push
- * @param pushData
- * @returns
+ * @param  {PushData} pushData
+ * @returns {Promise<HttpsCallableResult<unknown>>}
  */
 export const senPushNotification = async (
 	pushData: PushData

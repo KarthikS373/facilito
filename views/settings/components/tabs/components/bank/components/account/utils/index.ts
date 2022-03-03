@@ -1,8 +1,9 @@
 /**
  * Obtener tipo de cuenta bancaria
- * @param $
- * @returns
+ * @param  {TemplateStrBuilder} $
+ * @returns {string}
  */
+
 const getBankAccountType = ($: TemplateStrBuilder): string[] => [
 	$`Monetaria`,
 	$`Ahorro`,

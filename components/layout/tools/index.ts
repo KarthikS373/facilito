@@ -2,8 +2,8 @@ import ROUTES from 'router/routes'
 
 /**
  * Evaluá ruta
- * @description Valida las rutas donde se mostrará el topbar
  * @param  {string} path
+ * @returns {boolean}
  */
 const evaluateTopbarPath = (path: string): boolean => {
 	// MOSTRAR
@@ -25,8 +25,8 @@ const evaluateTopbarPath = (path: string): boolean => {
 
 /**
  * Evaluá ruta para footer
- * @description Valida las rutas donde se mostrará el topbar
  * @param  {string} path
+ * @returns {boolean}
  */
 export const evaluateFooterPath = (path: string): boolean => {
 	// MOSTRAR

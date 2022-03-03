@@ -3,7 +3,6 @@ import type { StorageReference, UploadResult } from '@firebase/storage'
 
 /**
  * Obtener referencia
- * @description Obtiene una referencia para manipular el storage
  * @param  {string} path
  */
 const getRef = async (path: string) => {
@@ -19,8 +18,8 @@ const getRef = async (path: string) => {
 
 /**
  * Borrar archivo en storage
- * @description Borra todos los archivos en una ruta
  * @param  {string} path
+ * @returns {Promise<void>}
  */
 const removeFile = async (path: string): Promise<void> => {
 	const { listAll, deleteObject } = await import('firebase/storage')
@@ -40,9 +39,9 @@ export default removeFile
 
 /**
  * Guardar archivo
- * @description Sube o actualiza un archivo en un directorio de storage
  * @param  {File} file
  * @param  {string} path
+ * @returns {Promise<UploadResult | null>}
  */
 export const uploadFile = async (file: File, path: string): Promise<UploadResult | null> => {
 	if (path.length) {
@@ -62,8 +61,8 @@ export const uploadFile = async (file: File, path: string): Promise<UploadResult
 
 /**
  * Comprimir imagen
- * @description Comprime una imagen jpeg o png
  * @param  {File} file
+ * @returns {Promise<File>}
  */
 export const compressImage = async (file: File): Promise<File> => {
 	// COMPRESS
@@ -83,8 +82,8 @@ export const compressImage = async (file: File): Promise<File> => {
 
 /**
  * Borrar archivo en storage
- * @description Borra todos los archivos en una ruta
  * @param  {string} path
+ * @returns {Promise<string>}
  */
 export const getURL = async (path: string): Promise<string> => {
 	const { getDownloadURL } = await import('firebase/storage')
@@ -99,9 +98,9 @@ export const getURL = async (path: string): Promise<string> => {
 
 /**
  * Guardar archivos de banner y background
- * @param path
- * @param background
- * @param onImage
+ * @param  {string} path
+ * @param  {File|string} background
+ * @returns {Promise<string>}
  */
 export const saveFile = (path: string, background: File | string): Promise<string> => {
 	return new Promise((resolve, reject) => {

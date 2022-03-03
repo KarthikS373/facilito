@@ -13,7 +13,7 @@ import Code from '@mui/icons-material/Code'
 
 export const showCouponAlert = (
 	$: TemplateStrBuilder,
-	setInputCoupon: React.Dispatch<React.SetStateAction<Coupon | null>>,
+	setInputCoupon: SetState<Coupon | null>,
 	setFieldValue: (name: string, value: string | null) => unknown,
 	formData?: Form
 ): void => {

@@ -2,15 +2,14 @@ import { getCountryCode, getIP, getPostalAndCity } from 'utils/location'
 
 /**
  * Crear pago con tienda
- * @description Crear pago en pagalo desde datos de tienda
- * @param data
- * @param badge
- * @param cardData
- * @param endpoint
- * @returns
+ * @param  {Record<string, unknown>} data
+ * @param  {string} badge
+ * @param  {CardPointeData} cardData
+ * @param  {string} endpoint
+ * @returns {Promise<unknown}
  */
 export const makePaymentWithFormData = async (
-	data: { [id: string]: unknown },
+	data: Record<string, unknown>,
 	badge: string,
 	cardData: CardPointeData,
 	endpoint: string

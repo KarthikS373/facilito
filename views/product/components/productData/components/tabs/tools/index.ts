@@ -8,9 +8,9 @@ export interface GeneralProps {
 
 /**
  * Cambiar producto
- * @description Actualiza en la DB y en el contexto las propiedades de un producto
- * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {BaseEvent} ev
  * @param  {React.MutableRefObject<Product>} localProduct
+ * @returns void
  */
 const changeProductProps = (ev: BaseEvent, localProduct: React.MutableRefObject<Product>): void => {
 	// EVENTOS

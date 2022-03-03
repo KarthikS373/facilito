@@ -3,7 +3,7 @@ import { DraggableStateSnapshot } from 'react-beautiful-dnd'
 /**
  * Funcion SIGMOID
  * @param {number} x
- * @returns
+ * @returns {number}
  */
 const defSigmoid = (x: number): number => x / (1 + Math.abs(x))
 export default defSigmoid

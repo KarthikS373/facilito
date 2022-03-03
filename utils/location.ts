@@ -1,7 +1,5 @@
 /**
  * Obtener posicion
- * @description Obtener posicion de API local
- * @returns
  */
 export const getPosition: () => Promise<GeolocationPosition> = () => {
 	return new Promise((resolve, reject) => {
@@ -15,8 +13,7 @@ export const getPosition: () => Promise<GeolocationPosition> = () => {
 
 /**
  * Obtener IP
- * @description Obtener ip desde el cliente
- * @returns
+ * @returns {Promise<string>}
  */
 export const getIP = async (): Promise<string> => {
 	const ip = await fetch('https://ipapi.co/json/')
@@ -28,8 +25,7 @@ export const getIP = async (): Promise<string> => {
 
 /**
  * Obtener postal code
- * @description Obtener codigo postal y ciudad desde ip
- * @returns
+ * @returns {Promise<[string, string]>}
  */
 export const getPostalAndCity = async (): Promise<[string, string]> => {
 	const ip = await fetch('https://ipapi.co/json/')
@@ -40,10 +36,10 @@ export const getPostalAndCity = async (): Promise<[string, string]> => {
 }
 
 /**
- * Reverse geocoding
- * @description API reverse geocoding de google
- * @param lat
- * @param lon
+ * Obtener direccion con lat, lon
+ * @param  {number} lat
+ * @param  {number} lon
+ * @returns {Promise}
  */
 export const reverseGeocoding = async (
 	lat: number,
@@ -67,6 +63,7 @@ export const reverseGeocoding = async (
 
 /**
  * Obtener codigo de pais
+ * @returns {Promise<string>}
  */
 export const getCountryCode = async (): Promise<string> => {
 	const ip = await fetch('https://ipapi.co/json/')

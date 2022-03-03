@@ -27,11 +27,11 @@ const saveStates = (
  * @description Agrega un objeto step vacio
  * @param  {string} formID
  * @param  {React.MutableRefObject<FormTrackingStep[]>} localTracking
- * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
+ * @param  {SetState<FormInterface>} setForms
  */
 export const addNewState = (
 	localTracking: React.MutableRefObject<FormTrackingStep[]>,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	setForms: SetState<FormInterface>,
 	formID?: string
 ): void => {
 	if (localTracking.current.length < 5 && formID) {

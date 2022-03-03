@@ -8,7 +8,6 @@ import { parseDate, sendMail } from './tools'
  * Obtener documentos
  * @param  {string} companyID
  * @param  {string} id
- * @description Retorna un documento desde la collection events
  */
 const getEventDoc = async (companyID: string, id: string) => {
 	const { collection, doc } = await import('firebase/firestore')
@@ -25,7 +24,7 @@ const getEventDoc = async (companyID: string, id: string) => {
  * Remover eventos
  * @param  {string} companyID
  * @param  {string} id
- * @description Remueve todos los eventos de una tienda
+ * @returns {Promise<void>}
  */
 export const removeEventForm = async (companyID: string, id: string): Promise<void> => {
 	const { deleteDoc } = await import('firebase/firestore')
@@ -41,8 +40,8 @@ export const removeEventForm = async (companyID: string, id: string): Promise<vo
  * @param  {string} companyEmail
  * @param  {string} companyID
  * @param  {string} formId
- * @param  {AppointmentModel} formData
- * @description Remueve todos los eventos de una tienda
+ * @param  {CustomAppointment} formData
+ * @returns {Promise<void>}
  */
 export const deleteAppointment = async (
 	companyName: string,
@@ -89,7 +88,7 @@ export const deleteAppointment = async (
  * Leer eventos
  * @param  {string} companyID
  * @param  {(events: CustomAppointment[]) => unknown} setAppointments
- * @description Crea un listener de eventos en la collection events
+ * @returns {Promise<Unsubscribe>}
  */
 export const appointmentsListener = async (
 	companyID: string,
@@ -139,10 +138,10 @@ export const appointmentsListener = async (
 
 /**
  * Guardar eventos
- * @description Guardar eventos en db
- * @param companyID
- * @param formID
- * @param eventData
+ * @param  {string} companyID
+ * @param  {string} formID
+ * @param  {EventAppointment[]} eventData
+ * @returns {Promise<void>}
  */
 export const saveEvents = async (
 	companyID: string,

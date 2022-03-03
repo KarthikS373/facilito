@@ -11,7 +11,6 @@ import { AnswerPreview } from '../components/showAnswer'
 
 /**
  * Imprimir respuestas
- * @description Render de la lista de respuestas y luego la imprime
  * @param  {FormAnswerItemContainer} data
  * @param  {FormComponent[]} components
  */

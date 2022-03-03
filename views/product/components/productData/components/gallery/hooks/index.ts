@@ -3,14 +3,13 @@ import { useEffect } from 'react'
 
 /**
  * Hook de imagenes de producto
- * @description Actualiza la lista de imagenes por producto
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<string[]>>} setImages
+ * @param  {SetState<string[]>} setImages
  * @param  {string} trigger
  */
 const useImages = (
 	productRef: React.MutableRefObject<Product>,
-	setImages: React.Dispatch<React.SetStateAction<string[]>>,
+	setImages: SetState<string[]>,
 	trigger: string
 ): void => {
 	useEffect(() => {

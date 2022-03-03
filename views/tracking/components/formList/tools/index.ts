@@ -3,16 +3,15 @@ import saveFormSchema from 'utils/forms'
 
 /**
  * Borrar eventos de tienda
- * @description Borra todos los eventos de una tienda
  * @param  {string} formID
- * @param  {React.Dispatch<React.SetStateAction<FormInterface>>} setForms
+ * @param  {SetState<FormInterface>} setForms
  * @param  {(forms: FormInterface) => unknown} setGlobalForms
  * @param  {string} companyID
  */
 const deleteForm = (
 	formID: string,
-	setForms: React.Dispatch<React.SetStateAction<FormInterface>>,
-	setGlobalForms: React.Dispatch<React.SetStateAction<FormInterface>>,
+	setForms: SetState<FormInterface>,
+	setGlobalForms: SetState<FormInterface>,
 	companyID?: string
 ): void => {
 	if (companyID)

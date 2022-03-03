@@ -1,7 +1,7 @@
 /**
  * Obtener roles de usuario
- * @param $
- * @returns
+ * @param {TemplateStrBuilder} $
+ * @returns {{ name: string; text: string }[]}
  */
 const getUserRoles = ($: TemplateStrBuilder): { name: string; text: string }[] => [
 	{

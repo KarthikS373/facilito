@@ -2,15 +2,15 @@ import { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Cupones multiples
- * @description Cambiar promociones para multiples productos
- * @param index
- * @param ev
- * @param setCoupon
+ * @param  {number} index
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<Coupon>} setCoupon
+ * @param  {(coupon:Coupon)=>unknown} onChange
  */
 export const handleMultipleCoupon = (
 	index: number,
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setCoupon: React.Dispatch<React.SetStateAction<Coupon>>,
+	setCoupon: SetState<Coupon>,
 	onChange: (coupon: Coupon) => unknown
 ): void => {
 	const { value } = ev.target
@@ -35,13 +35,13 @@ export const handleMultipleCoupon = (
 
 /**
  * Guardar producto
- * @description Guardar producto actual en cupon
- * @param product
- * @param setCoupon
+ * @param  {string|Product|null} product
+ * @param  {SetState<Coupon>} setCoupon
+ * @param  {(coupon:Coupon)=>unknown} onChange
  */
 const saveProduct = (
 	product: string | Product | null,
-	setCoupon: React.Dispatch<React.SetStateAction<Coupon>>,
+	setCoupon: SetState<Coupon>,
 	onChange: (coupon: Coupon) => unknown
 ): void => {
 	// AGREGAR
@@ -61,13 +61,13 @@ const saveProduct = (
 
 /**
  * Borrar productos
- * @description Borrar productos de cupon
- * @param index
- * @param setCoupon
+ * @param  {number} index
+ * @param  {SetState<Coupon>} setCoupon
+ * @param  {(coupon:Coupon)=>unknown} onChange
  */
 export const deleteProducts = (
 	index: number,
-	setCoupon: React.Dispatch<React.SetStateAction<Coupon>>,
+	setCoupon: SetState<Coupon>,
 	onChange: (coupon: Coupon) => unknown
 ): void => {
 	// BORRAR
@@ -85,13 +85,13 @@ export const deleteProducts = (
 
 /**
  * Cambiar tipo de cupon
- * @description Enviar valor de tipo de cada cupon
- * @param ev
- * @param setCoupon
+ * @param  {SelectChangeEvent} ev
+ * @param  {SetState<Coupon>} setCoupon
+ * @param  {(coupon:Coupon)=>unknown} onChange
  */
 export const handleCouponType = (
 	ev: SelectChangeEvent,
-	setCoupon: React.Dispatch<React.SetStateAction<Coupon>>,
+	setCoupon: SetState<Coupon>,
 	onChange: (coupon: Coupon) => unknown
 ): void => {
 	const value = ev.target.value as Coupon['type']
@@ -104,13 +104,13 @@ export const handleCouponType = (
 
 /**
  * Cambiar cupon
- * @description Cambiar valores de cupon
- * @param ev
- * @param setCoupon
+ * @param  {React.ChangeEvent<HTMLInputElement>} ev
+ * @param  {SetState<Coupon>} setCoupon
+ * @param  {(coupon:Coupon)=>unknown} onChange
  */
 export const handleCouponFields = (
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setCoupon: React.Dispatch<React.SetStateAction<Coupon>>,
+	setCoupon: SetState<Coupon>,
 	onChange: (coupon: Coupon) => unknown
 ): void => {
 	const { name, value } = ev.target
@@ -132,9 +132,8 @@ export const handleCouponFields = (
 
 /**
  * Valores por defecto
- * @description Obtener valores por defecto para estado
- * @param defCoupon
- * @returns
+ * @param  {Coupon|null} defCoupon
+ * @returns {Coupon}
  */
 export const getDefValues = (defCoupon: Coupon | null): Coupon =>
 	defCoupon ?? {

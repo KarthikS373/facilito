@@ -2,16 +2,15 @@ import type { FieldValues, UseFormSetValue } from 'react-hook-form'
 
 /**
  * Onchange de radios
- * @description Enviar datos de inputs de opcion multiple
- * @param label
- * @param id
- * @param setChecks
- * @param setValue
+ * @param  {string} label
+ * @param  {string} id
+ * @param  {SetState<string[]|undefined>} setChecks
+ * @param  {UseFormSetValue<FieldValues>|null} setValue
  */
 const onCheckChange = (
 	label: string,
 	id: string,
-	setChecks: React.Dispatch<React.SetStateAction<string[] | undefined>>,
+	setChecks: SetState<string[] | undefined>,
 	setValue: UseFormSetValue<FieldValues> | null
 ): void => {
 	setChecks((checks) => {

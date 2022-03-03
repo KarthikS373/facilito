@@ -14,7 +14,7 @@ import { useTheme } from '@mui/material/styles'
 interface GalleryProps {
 	business: Business | null
 	onSelect: (backStr: string) => void
-	setImages: React.Dispatch<React.SetStateAction<ImagesState>>
+	setImages: SetState<ImagesState>
 }
 
 const Gallery: React.FC<GalleryProps> = (props) => {
@@ -41,10 +41,6 @@ const Gallery: React.FC<GalleryProps> = (props) => {
 	)
 }
 
-/**
- * Mostrar galeria de imagenes
- * @param props
- */
 const showGallery = (props: GalleryProps): void => {
 	// GUARDAR TEMPORAL
 	let tmpBack = ''

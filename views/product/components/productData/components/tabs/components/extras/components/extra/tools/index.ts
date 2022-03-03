@@ -2,7 +2,6 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 
 /**
  * Cambiar extra
- * @description Actualiza en la DB y en el contexto las propiedades de un extra
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {number} index
  * @param  {React.MutableRefObject<Product>} localProduct
@@ -22,17 +21,16 @@ const changeExtraProps = (
 
 /**
  * Agregar opcional
- * @description Agregar un opcional en la lista de extra
  * @param  {number} extraIndex
  * @param  {number} optionIndex
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<ExtendedOpt[]>>} setOptions
+ * @param  {SetState<ExtendedOpt[]>} setOptions
  */
 export const addOptional = (
 	extraIndex: number,
 	optionIndex: number,
 	productRef: React.MutableRefObject<Product>,
-	setOptions: React.Dispatch<React.SetStateAction<ExtendedOpt[]>>
+	setOptions: SetState<ExtendedOpt[]>
 ): void => {
 	setOptions((prevOptions: ExtendedOpt[]) => {
 		const newOptions = [...prevOptions]
@@ -44,17 +42,16 @@ export const addOptional = (
 
 /**
  * Remover opcional
- * @description Remover un opcional en la lista de extra
  * @param  {number} extraIndex
  * @param  {number} optionIndex
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<ExtendedOpt[]>>} setOptions
+ * @param  {SetState<ExtendedOpt[]>} setOptions
  */
 export const removeOptional = (
 	extraIndex: number,
 	optionIndex: number,
 	productRef: React.MutableRefObject<Product>,
-	setOptions: React.Dispatch<React.SetStateAction<ExtendedOpt[]>>
+	setOptions: SetState<ExtendedOpt[]>
 ): void => {
 	setOptions((prevOptions: ExtendedOpt[]) => {
 		const newOptions = [...prevOptions].filter((_opt, pos: number) => pos !== optionIndex)
@@ -65,17 +62,16 @@ export const removeOptional = (
 
 /**
  * Cambiar tipo de extra
- * @description Edita la propiedad type del extra
  * @param  {number} index
  * @param  {SelectChangeEvent<string>} ev
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.Dispatch<React.SetStateAction<number>>} setExtraType
+ * @param  {SetState<number>} setExtraType
  */
 export const changeType = (
 	index: number,
 	ev: SelectChangeEvent<string>,
 	productRef: React.MutableRefObject<Product>,
-	setExtraType: React.Dispatch<React.SetStateAction<number>>
+	setExtraType: SetState<number>
 ): void => {
 	const value: number = parseInt(ev.target.value)
 	setExtraType(value)

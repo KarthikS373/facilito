@@ -18,7 +18,7 @@ const getBusinessDoc = async (url: string) => {
 /**
  * Obtener empresa
  * @param  {string} url
- * @description Retorna un objeto Business asociado a un URL
+ * @returns {Promise<Business | null>}
  */
 export const getCompany = async (url: string): Promise<Business | null> => {
 	if (url) {
@@ -35,7 +35,7 @@ export const getCompany = async (url: string): Promise<Business | null> => {
  * Agregar tienda
  * @param  {string} id
  * @param  {string} companyID
- * @description Agrega una url al arreglo de tiendas
+ * @returns {Promise<void>}
  */
 export const addBusinessFormURL = async (id: string, companyID: string): Promise<void> => {
 	// COLECCIÓN DE EMPRESA
@@ -58,7 +58,7 @@ export const addBusinessFormURL = async (id: string, companyID: string): Promise
  * Remplazar negocio
  * @param  {string} companyID
  * @param  {Partial<Business> | null} business
- * @description Mezcla los valores del negocio en la DB
+ * @returns {Promise<void>}
  */
 export const replaceBusiness = async (
 	companyID: string,

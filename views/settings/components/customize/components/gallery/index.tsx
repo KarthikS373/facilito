@@ -47,10 +47,6 @@ const Gallery: React.FC<GalleryProps> = (props) => {
 	)
 }
 
-/**
- * Mostrar galeria de imagenes
- * @param props
- */
 const showGallery = (props: GalleryProps): void => {
 	// GUARDAR TEMPORAL
 	let tmpBack = ''

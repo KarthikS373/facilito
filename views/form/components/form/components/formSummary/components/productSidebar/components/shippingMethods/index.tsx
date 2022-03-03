@@ -18,7 +18,7 @@ import handleMethods from './tools'
 
 // PROPIEDADES
 interface PayMethodsProps {
-	setSummaryData: React.Dispatch<React.SetStateAction<FormSummaryData>>
+	setSummaryData: SetState<FormSummaryData>
 	setFieldValue: (name: string, value: string | null) => unknown
 	shippingPrices?: ShippingPrice[]
 	className?: string

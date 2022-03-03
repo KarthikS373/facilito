@@ -10,17 +10,16 @@ export interface LinkInfo {
 
 /**
  * Buscar tiendas y productos
- * @description Busca todos los items en el contexto global
  * @param  {React.ChangeEvent<HTMLInputElement>} ev
  * @param  {FormInterface} forms
  * @param  {Product[]} products
- * @param  {React.Dispatch<React.SetStateAction<LinkInfo[]>>} setLinks
+ * @param  {SetState<LinkInfo[]>} setLinks
  */
 const searchItems = (
 	ev: React.ChangeEvent<HTMLInputElement>,
 	forms: FormInterface,
 	products: Product[],
-	setLinks: React.Dispatch<React.SetStateAction<LinkInfo[]>>
+	setLinks: SetState<LinkInfo[]>
 ): void => {
 	const value: string = normalizeString(ev.target.value)
 	const tmpLinks: LinkInfo[] = []

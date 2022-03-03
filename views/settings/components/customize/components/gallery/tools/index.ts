@@ -2,8 +2,8 @@ import imagesSplash, { imagesSplashFull } from '../utils'
 
 /**
  * Obtener todas las imagenes
- * @param business
- * @returns
+ * @param  {React.MutableRefObject<Business|null>} business
+ * @returns {string[]}
  */
 const getBusinessGallery = (business: React.MutableRefObject<Business | null>): string[] => [
 	...imagesSplash,
@@ -12,9 +12,9 @@ const getBusinessGallery = (business: React.MutableRefObject<Business | null>): 
 
 /**
  * Seleccionar imagen de galeria
- * @param index
- * @param businessRef
- * @param backgroundRef
+ * @param  {number} index
+ * @param  {React.MutableRefObject<Business|null>} business
+ * @param  {(backStr:string)=>void} onSelect
  */
 export const selectImage = (
 	index: number,

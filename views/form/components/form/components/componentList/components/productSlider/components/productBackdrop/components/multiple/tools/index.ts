@@ -1,19 +1,18 @@
 /**
  * Manejar checks
- * @description Administrar opciones de extras como checks
- * @param extra
- * @param index
- * @param checked
- * @param selectedChecks
- * @param setChecks
- * @param onSelect
+ * @param  {Extra} extra
+ * @param  {number} index
+ * @param  {boolean} checked
+ * @param  {number} selectedChecks
+ * @param  {SetState<boolean[]>} setChecks
+ * @param  {(extra:ExtraOptionalExt[]|undefined)=>unknown} onSelect?
  */
 const handleChecks = (
 	extra: Extra,
 	index: number,
 	checked: boolean,
 	selectedChecks: number,
-	setChecks: React.Dispatch<React.SetStateAction<boolean[]>>,
+	setChecks: SetState<boolean[]>,
 	onSelect?: (extra: ExtraOptionalExt[] | undefined) => unknown
 ): void => {
 	setChecks((checks: boolean[]) => {
