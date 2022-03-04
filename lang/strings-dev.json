@@ -260,99 +260,99 @@
 		"es": "$"
 	},
 	"tienda_creada": {
-		"en": "",
+		"en": "Created store",
 		"es": "$"
 	},
 	"guardar_datos": {
-		"en": "",
+		"en": "Save data",
 		"es": "$"
 	},
 	"agregar_informacion_general_y_bancaria_sobre_el_negocio": {
-		"en": "",
+		"en": "Add general and banking information about the business",
 		"es": "$"
 	},
 	"configurar_negocio": {
-		"en": "",
+		"en": "Configure business",
 		"es": "$"
 	},
 	"selecciona_el_cargo_correspondiente_a_cada_colaborador_dentro_de_tu_negocio": {
-		"en": "",
+		"en": "Select the charge corresponding to each collaborator within your business",
 		"es": "$"
 	},
 	"usuarios": {
-		"en": "",
+		"en": "users",
 		"es": "$"
 	},
 	"seleccionar_cargo": {
-		"en": "",
+		"en": "Select charge",
 		"es": "$"
 	},
 	"administrador": {
-		"en": "",
+		"en": "administrator",
 		"es": "$"
 	},
 	"administrar_usuarios": {
-		"en": "",
+		"en": "Manage users",
 		"es": "$"
 	},
 	"selecciona_el_cargo_correspondiente_a_cada_colaborador_en_tu_negocio": {
-		"en": "",
+		"en": "Select the charge corresponding to each collaborator in your business",
 		"es": "$"
 	},
 	"completa_los_datos_de_tu_tarjeta_y_valida_el_captcha_para_continuar": {
-		"en": "",
+		"en": "Complete the data of your card and valid the captcha for continuousr",
 		"es": "$"
 	},
 	"principal": {
-		"en": "",
+		"en": "principal",
 		"es": "$"
 	},
 	"tus_datos_bancarios_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
-		"en": "",
+		"en": "Your bank data are confidential and only will be used to process your subscription",
 		"es": "$"
 	},
 	"tus_datos_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
-		"en": "",
+		"en": "Your data are confidential and only will be used to process your subscription",
 		"es": "$"
 	},
 	"tus_datos_bancarios_y_de_pago_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
-		"en": "",
+		"en": "Your bank and payment data are confidential and only will be used to process your subscription",
 		"es": "$"
 	},
 	"tus_datos_bancarios_y_de_pago_son_confidenciales": {
-		"en": "",
+		"en": "your bank and payment data are confidential",
 		"es": "$"
 	},
 	"configurar_pagos": {
-		"en": "",
+		"en": "Configure payments",
 		"es": "$"
 	},
 	"eliminar_cuenta": {
-		"en": "",
+		"en": "Delete account",
 		"es": "$"
 	},
 	"banco_internacional": {
-		"en": "",
+		"en": "international Bank",
 		"es": "$"
 	},
 	"nombre_del_banco": {
-		"en": "",
+		"en": "name of the bank",
 		"es": "$"
 	},
 	"tipo_de_cuenta": {
-		"en": "",
+		"en": "account type",
 		"es": "$"
 	},
 	"empresarial": {
-		"en": "",
+		"en": "business",
 		"es": "$"
 	},
 	"ahorro": {
-		"en": "",
+		"en": "saving",
 		"es": "$"
 	},
 	"monetaria": {
-		"en": "",
+		"en": "monetary",
 		"es": "$"
 	},
 	"12316546154": {
@@ -360,471 +360,467 @@
 		"es": "$"
 	},
 	"numero_de_la_cuenta": {
-		"en": "",
+		"en": "account number",
 		"es": "$"
 	},
 	"titular_de_cuenta": {
-		"en": "",
+		"en": "account holder",
 		"es": "$"
 	},
 	"nombre_de_la_cuenta": {
-		"en": "",
+		"en": "account name",
 		"es": "$"
 	},
 	"agregar_cuenta": {
-		"en": "",
+		"en": "Add account.",
 		"es": "$"
 	},
 	"tus_datos_bancarios_se_mostraran_al_realizar_pagos_con_transferencia_en_las_tiendas": {
-		"en": "",
+		"en": "Your bank data will be displayed when making payments with transfer in stores",
 		"es": "$"
 	},
 	"tus_datos_bancarios_se_mostraran_al_realizar_pagos_con_transferencia": {
-		"en": "",
+		"en": "Your bank data will be displayed when making payments with transfer",
 		"es": "$"
 	},
 	"tus_datos_bancarios_se_mostraran_cuando_hacen_pagos_con_transferencia": {
-		"en": "",
+		"en": "Your bank details will be displayed when you make transfer payments",
 		"es": "$"
 	},
 	"tus_datos_bancarios_se_mostraran_a_tus_clientes_cuando_hacen_pagos_con_transferencia": {
-		"en": "",
+		"en": "Your bank data will be shown to your customers when they make transfer payments",
 		"es": "$"
 	},
 	"tus_datos_bancarios_seran_proporcionados_a_tus_clientes_cuando_hacen_pagos_con_transferencia": {
-		"en": "",
+		"en": "Your bank data will be provided to your customers when they make transfer payments",
 		"es": "$"
 	},
 	"informacion_bancaria": {
-		"en": "",
+		"en": "Bank information",
 		"es": "$"
 	},
 	"esta_informacion_se_mostrara_en_todas_tus_tiendas_asi_como_en_los_links": {
-		"en": "",
+		"en": "This information will be shown in all your stores as well as in the links",
 		"es": "$"
 	},
 	"descripcion_del_negocio": {
-		"en": "",
+		"en": "DESCRIPTION OF BUSINESS",
 		"es": "$"
 	},
 	"nombre_legal_de_tu_marca": {
-		"en": "",
+		"en": "Legal name of your brand",
 		"es": "$"
 	},
 	"veterinaria": {
-		"en": "",
+		"en": "Vet",
 		"es": "$"
 	},
 	"nombre_del_negocio": {
-		"en": "",
+		"en": "Business Name",
 		"es": "$"
 	},
 	"transporte": {
-		"en": "",
+		"en": "transport",
 		"es": "$"
 	},
 	"esta_informacion_se_mostrara_en_todas_tiendas_asi_como_en_los_links": {
-		"en": "",
+		"en": "This information will be shown at all stores as well as in the links",
 		"es": "$"
 	},
 	"viajes_y_turismo": {
-		"en": "",
+		"en": "travels and tourism",
 		"es": "$"
 	},
 	"vestuario_y_calzado": {
-		"en": "",
+		"en": "Clothing and footwear",
 		"es": "$"
 	},
 	"universidades": {
-		"en": "",
+		"en": "Universities",
 		"es": "$"
 	},
 	"tienda_online": {
-		"en": "",
+		"en": "Online store",
 		"es": "$"
 	},
 	"tecnologia": {
-		"en": "",
+		"en": "technology",
 		"es": "$"
 	},
 	"taxi": {
-		"en": "",
+		"en": "taxi",
 		"es": "$"
 	},
 	"supermercado": {
-		"en": "",
+		"en": "supermarket",
 		"es": "$"
 	},
 	"servicios_profesionales": {
-		"en": "",
+		"en": "professional services",
 		"es": "$"
 	},
 	"restaurante": {
-		"en": "",
+		"en": "restaurant",
 		"es": "$"
 	},
 	"servicio_tecnico": {
-		"en": "",
+		"en": "technical service",
 		"es": "$"
 	},
 	"servicio_de_mensajeria": {
-		"en": "",
+		"en": "Messenger Service",
 		"es": "$"
 	},
 	"salud_y_equipamiento_medico": {
-		"en": "",
+		"en": "Health and medical equipment",
 		"es": "$"
 	},
 	"ropa_de_mujer_hombre_y_nino": {
-		"en": "",
+		"en": "Clothes",
 		"es": "$"
 	},
 	"ropa_interior_y_accesorios": {
-		"en": "",
+		"en": "Underwear and accessories",
 		"es": "$"
 	},
 	"relojes_y_joyas": {
-		"en": "",
+		"en": "Watches and jewelry",
 		"es": "$"
 	},
 	"redes_sociales": {
-		"en": "",
+		"en": "social media",
 		"es": "$"
 	},
 	"peliculas": {
-		"en": "",
+		"en": "films",
 		"es": "$"
 	},
 	"panaderia_y_reposteria": {
-		"en": "",
+		"en": "bakery and cake shop",
 		"es": "$"
 	},
 	"otros": {
-		"en": "",
+		"en": "others",
 		"es": "$"
 	},
 	"optica": {
-		"en": "",
+		"en": "optical",
 		"es": "$"
 	},
 	"musica": {
-		"en": "",
+		"en": "music",
 		"es": "$"
 	},
 	"medico": {
-		"en": "",
+		"en": "doctor",
 		"es": "$"
 	},
 	"marketing_y_publicidad": {
-		"en": "",
+		"en": "marketing and publicity",
 		"es": "$"
 	},
 	"marca_personal": {
-		"en": "",
+		"en": "personal brand",
 		"es": "$"
 	},
 	"libros_revistas_y_comics": {
-		"en": "",
+		"en": "Books Magazines and Comics",
 		"es": "$"
 	},
 	"hosteleria": {
-		"en": "",
+		"en": "hostelry",
 		"es": "$"
 	},
 	"lavanderia": {
-		"en": "",
+		"en": "laundry",
 		"es": "$"
 	},
 	"kiosco": {
-		"en": "",
+		"en": "kiosco",
 		"es": "$"
 	},
 	"juegos_y_juguetes": {
-		"en": "",
+		"en": "Games and toys",
 		"es": "$"
 	},
 	"inmobiliaria": {
-		"en": "",
+		"en": "Inmobiliary",
 		"es": "$"
 	},
 	"imprenta": {
-		"en": "",
+		"en": "printing",
 		"es": "$"
 	},
 	"fotografia_y_video": {
-		"en": "",
+		"en": "photography and video",
 		"es": "$"
 	},
 	"hospedajes": {
-		"en": "",
+		"en": "lodging",
 		"es": "$"
 	},
 	"hogar_y_muebles": {
-		"en": "",
+		"en": "Home and furniture",
 		"es": "$"
 	},
 	"herramientas_y_construccion": {
-		"en": "",
+		"en": "Tools and Construction",
 		"es": "$"
 	},
 	"gimnasio": {
-		"en": "",
+		"en": "Gym",
 		"es": "$"
 	},
 	"entretenimiento": {
-		"en": "",
+		"en": "entertainment",
 		"es": "$"
 	},
 	"flete_y_mudanzas": {
-		"en": "",
+		"en": "Freight and moving",
 		"es": "$"
 	},
 	"finanzas": {
-		"en": "",
+		"en": "finance",
 		"es": "$"
 	},
 	"farmacia": {
-		"en": "",
+		"en": "Pharmacy",
 		"es": "$"
 	},
 	"eventos": {
-		"en": "",
+		"en": "Events",
 		"es": "$"
 	},
 	"deportes_y_fitness": {
-		"en": "",
+		"en": "Sports and fitness.",
 		"es": "$"
 	},
 	"electronica_audio_y_video": {
-		"en": "",
+		"en": "Audio and video",
 		"es": "$"
 	},
 	"electrodomesticos": {
-		"en": "",
+		"en": "home appliances",
 		"es": "$"
 	},
 	"educacion": {
-		"en": "",
+		"en": "education",
 		"es": "$"
 	},
 	"diseno_grafico": {
-		"en": "",
+		"en": "graphic design",
 		"es": "$"
 	},
 	"dentista": {
-		"en": "",
+		"en": "Dentista",
 		"es": "$"
 	},
 	"delivery": {
-		"en": "",
+		"en": "Delivery",
 		"es": "$"
 	},
 	"concesionario": {
-		"en": "",
+		"en": "concessionaire",
 		"es": "$"
 	},
 	"computacion_e_informatica": {
-		"en": "",
+		"en": "Computing and Informatica",
 		"es": "$"
 	},
 	"coaching": {
-		"en": "",
+		"en": "Coaching",
 		"es": "$"
 	},
 	"cafeteria": {
-		"en": "",
+		"en": "Cofee",
 		"es": "$"
 	},
 	"cine": {
-		"en": "",
+		"en": "Cine",
 		"es": "$"
 	},
 	"cerrajeria_y_ferreteria": {
-		"en": "",
+		"en": "Locksmith and hardware store.",
 		"es": "$"
 	},
 	"celulares_y_telefonia": {
-		"en": "",
+		"en": "Cell phones and telephony",
 		"es": "$"
 	},
 	"carpinteria": {
-		"en": "",
+		"en": "carpinteria",
 		"es": "$"
 	},
 	"carniceria_y_pescaderia": {
-		"en": "",
+		"en": "Butcher and fishmonger",
 		"es": "$"
 	},
 	"bar": {
-		"en": "",
+		"en": "bar",
 		"es": "$"
 	},
 	"automotor": {
-		"en": "",
+		"en": "automotive",
 		"es": "$"
 	},
 	"arte": {
-		"en": "",
+		"en": "Art",
 		"es": "$"
 	},
 	"aseguradoras": {
-		"en": "",
+		"en": "Insurers.",
 		"es": "$"
 	},
 	"belleza_y_cuidado_personal": {
-		"en": "",
+		"en": "Beauty and personal care",
 		"es": "$"
 	},
 	"bebes_y_maternidad": {
-		"en": "",
+		"en": "Babies and maternity",
 		"es": "$"
 	},
 	"animales_y_mascotas": {
-		"en": "",
+		"en": "Animals and pets",
 		"es": "$"
 	},
 	"alimentos_y_bebidas": {
-		"en": "",
+		"en": "food and drinks",
 		"es": "$"
 	},
 	"usuario": {
-		"en": "",
+		"en": "Username",
 		"es": "$"
 	},
 	"pago": {
-		"en": "",
+		"en": "payment",
 		"es": "$"
 	},
 	"bancaria": {
-		"en": "",
+		"en": "banking",
 		"es": "$"
 	},
 	"tiendas_creadas": {
-		"en": "",
+		"en": "Created stores",
 		"es": "$"
 	},
 	"tiendas_creados": {
-		"en": "",
+		"en": "Created stores",
 		"es": "$"
 	},
 	"nombre_en_tienda": {
-		"en": "",
+		"en": "Store name",
 		"es": "$"
 	},
 	"abrir_tienda": {
-		"en": "",
+		"en": "Open store",
 		"es": "$"
 	},
 	"imprime_y_visualiza_todas_las_respuestas_de_esta_tienda": {
-		"en": "",
+		"en": "Print and view all the answers of this store",
 		"es": "$"
 	},
 	"administra_los_eventos_creados_desde_todas_tus_tiendass": {
-		"en": "",
+		"en": "Administers the events created from all your stores",
 		"es": "$"
 	},
 	"ir_a_tiendas": {
-		"en": "",
+		"en": "Go to stores",
 		"es": "$"
 	},
 	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ninguna_tienda_en_donde_se_haya_agregado": {
-		"en": "",
+		"en": "The products marked as inactive will not be shown at no store where it has been added",
 		"es": "$"
 	},
 	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado_en_tu_tienda": {
-		"en": "",
+		"en": "Featured products will be automatically shown if Anades a prominent field in your store",
 		"es": "$"
 	},
 	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra_en_tus_tiendas": {
-		"en": "",
+		"en": "This information will be used in the cart and in the purchase summary in your stores",
 		"es": "$"
 	},
 	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_tiendas_seleccionadas": {
-		"en": "",
+		"en": "These data will be displayed on the product cards in your selected stores",
 		"es": "$"
 	},
 	"te_gustaria_ver_tu_tienda_ahora": {
-		"en": "",
+		"en": "Would you like to see your store now",
 		"es": "$"
 	},
 	"ahora_tu_tienda_sera_visible_para_todos_puedes_compartirles_el_siguiente_link": {
-		"en": "",
+		"en": "Now your store will be visible to all you can share the following link",
 		"es": "$"
 	},
 	"tienda_publicada": {
-		"en": "",
+		"en": "Published shop",
 		"es": "$"
 	},
 	"se_esta_publicando_tu_tienda_esto_no_suele_tardar_mucho_no_te_salgas_de_la_aplicacion_por_favor": {
-		"en": "",
+		"en": "you are publishing your store this usually does not take long do not come out of the application please",
 		"es": "$"
 	},
 	"si_anulas_la_publicacion_esta_tienda_solo_sera_visible_para_tu_empresa_y_no_podras_recibir_respuestas_hasta_que_lo_vuelvas_a_publicar": {
-		"en": "",
+		"en": "If you cancel the publication this store will only be visible to your company and you can not receive answers until you publish it again",
 		"es": "$"
 	},
 	"url_de_la_tienda": {
-		"en": "",
+		"en": "URL of the store",
 		"es": "$"
 	},
 	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_de_respuestas_para_tu_tienda": {
-		"en": "",
+		"en": "Configure your Dynamic Link FCLT and the shipping options for your store",
 		"es": "$"
 	},
 	"descripcion_de_la_tienda": {
-		"en": "",
+		"en": "Description of the shop",
 		"es": "$"
 	},
 	"agrega_una_portada_a_tu_tienda": {
-		"en": "",
+		"en": "Add a cover to your store",
 		"es": "$"
 	},
 	"titulo_de_la_tienda": {
-		"en": "",
+		"en": "title of the store",
 		"es": "$"
 	},
 	"para_crear_una_nueva_tienda_escribe_el_titulo_este_tambien_se_mostrara_como_la_url_publica": {
-		"en": "",
+		"en": "To create a new store writes the title this will also be displayed as the public URL",
 		"es": "$"
 	},
 	"mi_tienda": {
-		"en": "",
+		"en": "My shop",
 		"es": "$"
 	},
 	"buscar_tiendas_productos": {
-		"en": "",
+		"en": "Search shops, products",
 		"es": "$"
 	},
 	"crea_tus_tiendas_desde_disenos_personalizados": {
-		"en": "",
+		"en": "Create your stores from personalized designs",
 		"es": "$"
 	},
 	"tienda": {
-		"en": "",
+		"en": "Shop",
 		"es": "$"
 	},
 	"tiendasss_creados": {
-		"en": "",
+		"en": "Shop(s) created",
 		"es": "$"
 	},
 	"valor_menor": {
-		"en": "",
+		"en": "Menor value",
 		"es": "$"
 	},
 	"valor_mayor": {
-		"en": "",
-		"es": "$"
-	},
-	"bienvenido_lua_development_studio": {
-		"en": "",
+		"en": "Major value",
 		"es": "$"
 	},
 	"ver_citas": {
-		"en": "",
+		"en": "See Appointments",
 		"es": "$"
 	},
 	"configurar_tracking": {
-		"en": "",
+		"en": "Tracking settings",
 		"es": "$"
 	},
 	"crear_tienda": {
