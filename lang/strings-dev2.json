@@ -1,0 +1,1506 @@
+{
+	"tipo_de_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"en_tu_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"promocion": {
+		"en": "",
+		"es": "$"
+	},
+	"cantidad": {
+		"en": "",
+		"es": "$"
+	},
+	"descuento": {
+		"en": "",
+		"es": "$"
+	},
+	"codigo_aqui": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_puedes_editar_tu_cupon_y_tambien_compartir_como_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"mostrar_cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_tus_cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"buscar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_estos_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"buscar_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"utiliza_el_siguiente_buscador_para_seleccionar_un_producto_y_agregarlo_a_tu_bloque_de_productos_solo_puedes_seleccionar_un_producto_a_la_vez": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_enlace_al_video": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion_al_video": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_enlace_a_la_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion_a_la_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_un_archivo_maximo_10mb_por_archivo": {
+		"en": "",
+		"es": "$"
+	},
+	"escribe_tu_enlace_aqui_ej_httpsexamplecom": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_del_enlace": {
+		"en": "",
+		"es": "$"
+	},
+	"enviar_ubicacion_del_cliente": {
+		"en": "",
+		"es": "$"
+	},
+	"ciudad": {
+		"en": "",
+		"es": "$"
+	},
+	"ocultar_mapa": {
+		"en": "",
+		"es": "$"
+	},
+	"pais": {
+		"en": "",
+		"es": "$"
+	},
+	"hasta_hhmm": {
+		"en": "",
+		"es": "$"
+	},
+	"desde_hhmm": {
+		"en": "",
+		"es": "$"
+	},
+	"ocupaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_una_cantidad_de_ocupaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"duracion_horas": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_las_horas_disponibles": {
+		"en": "",
+		"es": "$"
+	},
+	"habilitar_intervalos": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_los_dias_de_la_semana_disponibles": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_descripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_de_esta_seccion": {
+		"en": "",
+		"es": "$"
+	},
+	"sabado": {
+		"en": "",
+		"es": "$"
+	},
+	"viernes": {
+		"en": "",
+		"es": "$"
+	},
+	"jueves": {
+		"en": "",
+		"es": "$"
+	},
+	"miercoles": {
+		"en": "",
+		"es": "$"
+	},
+	"martes": {
+		"en": "",
+		"es": "$"
+	},
+	"lunes": {
+		"en": "",
+		"es": "$"
+	},
+	"domingo": {
+		"en": "",
+		"es": "$"
+	},
+	"todos": {
+		"en": "",
+		"es": "$"
+	},
+	"guardando_cambios": {
+		"en": "",
+		"es": "$"
+	},
+	"texto_de_la_opcion": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_el_titulo_o_pregunta_para_las_opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_opcion": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_tu_pregunta_aqui_respuesta_con_caracteres_ilimitados": {
+		"en": "",
+		"es": "$"
+	},
+	"obligatorio": {
+		"en": "",
+		"es": "$"
+	},
+	"duplicar": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_un_texto_de_ayuda": {
+		"en": "",
+		"es": "$"
+	},
+	"describe_tu_pregunta_aqui_respuesta_con_maximo_de_60_caracteres": {
+		"en": "",
+		"es": "$"
+	},
+	"insertar_codigo": {
+		"en": "",
+		"es": "$"
+	},
+	"copiar_link": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_se_muestran_todas_las_opciones_para_mostrar_tu_tienda_al_mundo": {
+		"en": "",
+		"es": "$"
+	},
+	"descargar_qr": {
+		"en": "",
+		"es": "$"
+	},
+	"tambien_puedes_compartir_la_url_en_un_link_corto": {
+		"en": "",
+		"es": "$"
+	},
+	"aqui_esta_la_url_completa_de_tu_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"compartir_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"impuesto_no_incluido": {
+		"en": "",
+		"es": "$"
+	},
+	"acordeon_de_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"monto_minimo_de_compra": {
+		"en": "",
+		"es": "$"
+	},
+	"mostrar_buscador": {
+		"en": "",
+		"es": "$"
+	},
+	"modo_vitrina": {
+		"en": "",
+		"es": "$"
+	},
+	"porcentaje_de_impuesto": {
+		"en": "",
+		"es": "$"
+	},
+	"envio_no_incluido": {
+		"en": "",
+		"es": "$"
+	},
+	"tarifas_de_envio": {
+		"en": "",
+		"es": "$"
+	},
+	"porcentaje_de_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_metodos_de_envio_y_precios_correspondientes_disponibles_para_tus_clientes": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_todo_comportamiento_del_carrito_el_checkout_resumen_de_compra_y_productos_dentro_de_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"guardando_ajustes": {
+		"en": "",
+		"es": "$"
+	},
+	"conectado_a_email": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_whatsapp": {
+		"en": "",
+		"es": "$"
+	},
+	"conectado_a_whatsapp": {
+		"en": "",
+		"es": "$"
+	},
+	"url_de_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_el_tu_link_dinamico_fclt_y_las_opciones_de_envio_de_respuestas_para_tu_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"ajustes_globales": {
+		"en": "",
+		"es": "$"
+	},
+	"el_nombre_es_obligatorio": {
+		"en": "",
+		"es": "$"
+	},
+	"haz_click_en_personalizar": {
+		"en": "",
+		"es": "$"
+	},
+	"preguntar_datos_personales": {
+		"en": "",
+		"es": "$"
+	},
+	"numero_de_telefono": {
+		"en": "",
+		"es": "$"
+	},
+	"mover": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_de_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"basicos": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_una_portada_a_tu_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"multimedia": {
+		"en": "",
+		"es": "$"
+	},
+	"secciones": {
+		"en": "",
+		"es": "$"
+	},
+	"cupon": {
+		"en": "",
+		"es": "$"
+	},
+	"productos": {
+		"en": "",
+		"es": "$"
+	},
+	"video": {
+		"en": "",
+		"es": "$"
+	},
+	"imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"enlace": {
+		"en": "",
+		"es": "$"
+	},
+	"parrafo": {
+		"en": "",
+		"es": "$"
+	},
+	"mapa": {
+		"en": "",
+		"es": "$"
+	},
+	"fecha_y_hora": {
+		"en": "",
+		"es": "$"
+	},
+	"desplegable": {
+		"en": "",
+		"es": "$"
+	},
+	"varias_opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"opcion_unica": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar": {
+		"en": "",
+		"es": "$"
+	},
+	"respuesta_corta": {
+		"en": "",
+		"es": "$"
+	},
+	"sube_una_imagen_de_650px_x_250px": {
+		"en": "",
+		"es": "$"
+	},
+	"sube_una_imagen_de_portada": {
+		"en": "",
+		"es": "$"
+	},
+	"cambiar_portada": {
+		"en": "",
+		"es": "$"
+	},
+	"checkout": {
+		"en": "",
+		"es": "$"
+	},
+	"visualizar": {
+		"en": "",
+		"es": "$"
+	},
+	"configuracion": {
+		"en": "",
+		"es": "$"
+	},
+	"titulo_de_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"compartir": {
+		"en": "",
+		"es": "$"
+	},
+	"publicar": {
+		"en": "",
+		"es": "$"
+	},
+	"preferencias": {
+		"en": "",
+		"es": "$"
+	},
+	"tienda_creada": {
+		"en": "",
+		"es": "$"
+	},
+	"creando": {
+		"en": "",
+		"es": "$"
+	},
+	"hoy": {
+		"en": "",
+		"es": "$"
+	},
+	"tiempo": {
+		"en": "",
+		"es": "$"
+	},
+	"agenda": {
+		"en": "",
+		"es": "$"
+	},
+	"siguiente": {
+		"en": "",
+		"es": "$"
+	},
+	"atras": {
+		"en": "",
+		"es": "$"
+	},
+	"ayer": {
+		"en": "",
+		"es": "$"
+	},
+	"fecha": {
+		"en": "",
+		"es": "$"
+	},
+	"manana": {
+		"en": "",
+		"es": "$"
+	},
+	"todo_el_dia": {
+		"en": "",
+		"es": "$"
+	},
+	"semana_de_trabajo": {
+		"en": "",
+		"es": "$"
+	},
+	"sin_eventos_en_este_periodo": {
+		"en": "",
+		"es": "$"
+	},
+	"semana": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_como": {
+		"en": "",
+		"es": "$"
+	},
+	"dia": {
+		"en": "",
+		"es": "$"
+	},
+	"mes": {
+		"en": "",
+		"es": "$"
+	},
+	"administra_los_eventos_creados_desde_todas_tus_tiendass": {
+		"en": "",
+		"es": "$"
+	},
+	"calendario_y_eventos": {
+		"en": "",
+		"es": "$"
+	},
+	"estas_seguro_se_querer_borrar_este_estado_presiona_guardar_estados_para_hacer_efectivos_los_cambios": {
+		"en": "",
+		"es": "$"
+	},
+	"borrar_estado": {
+		"en": "",
+		"es": "$"
+	},
+	"maximo_250_caracteres": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"una_palabra": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_estado": {
+		"en": "",
+		"es": "$"
+	},
+	"asigna_titulos_descripciones_y_colores_para_cada_estado": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_tus_estados": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar_estados": {
+		"en": "",
+		"es": "$"
+	},
+	"eventos_creados": {
+		"en": "",
+		"es": "$"
+	},
+	"estados": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_mensajes_y_pasos_para_todas_las_ordenes": {
+		"en": "",
+		"es": "$"
+	},
+	"tracking_de_ordenes": {
+		"en": "",
+		"es": "$"
+	},
+	"ir_a_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"iniciar": {
+		"en": "",
+		"es": "$"
+	},
+	"para_crear_una_nueva_tienda_escribe_el_titulo_este_tambien_se_mostrara_como_la_url_publica": {
+		"en": "",
+		"es": "$"
+	},
+	"mi_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_a_carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"de_esta_manera_se_mostrara_el_producto_en_el_carousel_de_productos_en_todas_tus_tiendas_seleccionadas_el_resto_de_imagenes_se_mostraran_al_seleccionarlo": {
+		"en": "",
+		"es": "$"
+	},
+	"visualizar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_permite_que_el_valor_del_stock_nunca_termine_y_el_producto_siempre_este_disponible": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_creara_valores_negativos_en_tu_stock_cuando_el_producto_se_encuentre_agotado": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_opcion_mostrara_un_mensaje_de_no_disponible_cuando_el_producto_se_acabe": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_imagen": {
+		"en": "",
+		"es": "$"
+	},
+	"habilitar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"tamano_maximo_2mb": {
+		"en": "",
+		"es": "$"
+	},
+	"medidas_recomendadas_800_x_800": {
+		"en": "",
+		"es": "$"
+	},
+	"fotos_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ninguna_tienda_en_donde_se_haya_agregado": {
+		"en": "",
+		"es": "$"
+	},
+	"muestra_este_producto_como_destacado_activa_su_precio_promocional_y_deshabilitar": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_destacados_se_mostraran_automaticamente_si_anades_un_campo_de_destacado": {
+		"en": "",
+		"es": "$"
+	},
+	"mostrar_como_producto_destacado": {
+		"en": "",
+		"es": "$"
+	},
+	"el_precio_original_se_mostrara_tachado_con_rojo_y_el_precio_promocional_se_mostrara_primero": {
+		"en": "",
+		"es": "$"
+	},
+	"activar_precio_promocional": {
+		"en": "",
+		"es": "$"
+	},
+	"stock_sin_limites_de_venta": {
+		"en": "",
+		"es": "$"
+	},
+	"configuracion_y_comportamiento": {
+		"en": "",
+		"es": "$"
+	},
+	"cada_opcion_agrega_un_precio_adicional_al_total_con_diferentes_formas_de_seleccion": {
+		"en": "",
+		"es": "$"
+	},
+	"variables_dinamicas": {
+		"en": "",
+		"es": "$"
+	},
+	"abrir_informacion": {
+		"en": "",
+		"es": "$"
+	},
+	"unidad": {
+		"en": "",
+		"es": "$"
+	},
+	"continuar_vendiendo_sin_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"stock_limitado_a_disponibilidad": {
+		"en": "",
+		"es": "$"
+	},
+	"opcion_de_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"porcion_caja_bolsa": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_de_unidad": {
+		"en": "",
+		"es": "$"
+	},
+	"sku_codigo_unico_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"correlativo": {
+		"en": "",
+		"es": "$"
+	},
+	"cantidad_en_inventario": {
+		"en": "",
+		"es": "$"
+	},
+	"cantidad_en_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"precio_de_oferta": {
+		"en": "",
+		"es": "$"
+	},
+	"precio_promocional": {
+		"en": "",
+		"es": "$"
+	},
+	"precio_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"precio_real": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_sera_utilizada_en_el_carrito_y_en_el_resumen_de_compra_en_tus_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"caracteristicas_en_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"anade_un_titulo_corto": {
+		"en": "",
+		"es": "$"
+	},
+	"titulo_del_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"estos_datos_se_mostraran_en_las_tarjetas_de_producto_en_tus_tiendas_seleccionadas": {
+		"en": "",
+		"es": "$"
+	},
+	"opciones": {
+		"en": "",
+		"es": "$"
+	},
+	"sin_categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"extras": {
+		"en": "",
+		"es": "$"
+	},
+	"catalogo": {
+		"en": "",
+		"es": "$"
+	},
+	"previsualizar": {
+		"en": "",
+		"es": "$"
+	},
+	"configura_los_aspectos_mas_importantes_de_tu_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"editar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"debes_agregar_un_skum_nombre_primero_para_poder_guardar_este_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"ocurrio_un_error": {
+		"en": "",
+		"es": "$"
+	},
+	"precio": {
+		"en": "",
+		"es": "$"
+	},
+	"sku": {
+		"en": "",
+		"es": "$"
+	},
+	"titulo": {
+		"en": "",
+		"es": "$"
+	},
+	"abrir_categorias": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"lista_de_todas_las_categorias_creadas_para_tus_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_producto": {
+		"en": "",
+		"es": "$"
+	},
+	"productos_creados": {
+		"en": "",
+		"es": "$"
+	},
+	"categorias": {
+		"en": "",
+		"es": "$"
+	},
+	"catalogo_de_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"agrega_productos_al_inventario_y_muestralos_en_el_carrito": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_guardaron_tus_respuestas_correctamente_puedes_cerrar_esta_tienda_si_deseas": {
+		"en": "",
+		"es": "$"
+	},
+	"respuestas_enviadas": {
+		"en": "",
+		"es": "$"
+	},
+	"nueva_respuesta": {
+		"en": "",
+		"es": "$"
+	},
+	"enviado_el": {
+		"en": "",
+		"es": "$"
+	},
+	"deseas_verlo_ahora": {
+		"en": "",
+		"es": "$"
+	},
+	"para_la_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"hola_hay_una_nueva_respuesta_de": {
+		"en": "",
+		"es": "$"
+	},
+	"pago_con_tarjeta": {
+		"en": "",
+		"es": "$"
+	},
+	"gracias_por_responder_se_estan_enviando_tus_respuestas_espera_un_momento_esto_no_suele_tardar_mucho_no_te_salgas_de_la_tienda_por_favor": {
+		"en": "",
+		"es": "$"
+	},
+	"enviando_respuestas": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre": {
+		"en": "",
+		"es": "$"
+	},
+	"escribe_tu_nombre": {
+		"en": "",
+		"es": "$"
+	},
+	"indica_instrucciones_y_opiniones": {
+		"en": "",
+		"es": "$"
+	},
+	"la_direccion_debe_incluir_el_pais": {
+		"en": "",
+		"es": "$"
+	},
+	"verifica_que_tenga_un_formato_correcto": {
+		"en": "",
+		"es": "$"
+	},
+	"observaciones": {
+		"en": "",
+		"es": "$"
+	},
+	"direccion": {
+		"en": "",
+		"es": "$"
+	},
+	"enviar": {
+		"en": "",
+		"es": "$"
+	},
+	"guardado_correctamente": {
+		"en": "",
+		"es": "$"
+	},
+	"guardando": {
+		"en": "",
+		"es": "$"
+	},
+	"espera_un_momento": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_una_imagen_de_nuestra_galeria_o_de_tus_fondos_personalizados": {
+		"en": "",
+		"es": "$"
+	},
+	"galeria_de_fondos": {
+		"en": "",
+		"es": "$"
+	},
+	"administrador": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_cargo": {
+		"en": "",
+		"es": "$"
+	},
+	"sube_una_imagen_como_fondo": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_el_cargo_correspondiente_a_cada_colaborador_dentro_de_tu_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"administrar_usuarios": {
+		"en": "",
+		"es": "$"
+	},
+	"abrir_galeria": {
+		"en": "",
+		"es": "$"
+	},
+	"esto_remplazara_el_fondo_degradado": {
+		"en": "",
+		"es": "$"
+	},
+	"grado_de_inclinacion": {
+		"en": "",
+		"es": "$"
+	},
+	"selecciona_dos_colores": {
+		"en": "",
+		"es": "$"
+	},
+	"cambiar_fondo": {
+		"en": "",
+		"es": "$"
+	},
+	"la_imagen_puede_ser_de_500px_x_500px": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_son_confidenciales_y_solo_se_usaran_para_procesar_tu_suscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"sube_un_logo_o_foto_de_tu_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"cambiar_foto": {
+		"en": "",
+		"es": "$"
+	},
+	"crea_un_tema_seleccionando_colores_sube_una_imagen_de_portada_y_cambia_tu_foto_de_perfil": {
+		"en": "",
+		"es": "$"
+	},
+	"personalizar": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_pagos": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_legal_de_tu_marca": {
+		"en": "",
+		"es": "$"
+	},
+	"nueva_categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"anade_una_descripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"descripcion_del_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_del_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_informacion_se_mostrara_en_todas_tus_tiendas_asi_como_en_los_links": {
+		"en": "",
+		"es": "$"
+	},
+	"informacion_general": {
+		"en": "",
+		"es": "$"
+	},
+	"viajes_y_turismo": {
+		"en": "",
+		"es": "$"
+	},
+	"veterinaria": {
+		"en": "",
+		"es": "$"
+	},
+	"taxi": {
+		"en": "",
+		"es": "$"
+	},
+	"vestuario_y_calzado": {
+		"en": "",
+		"es": "$"
+	},
+	"universidades": {
+		"en": "",
+		"es": "$"
+	},
+	"transporte": {
+		"en": "",
+		"es": "$"
+	},
+	"tienda_online": {
+		"en": "",
+		"es": "$"
+	},
+	"tecnologia": {
+		"en": "",
+		"es": "$"
+	},
+	"salud_y_equipamiento_medico": {
+		"en": "",
+		"es": "$"
+	},
+	"supermercado": {
+		"en": "",
+		"es": "$"
+	},
+	"servicios_profesionales": {
+		"en": "",
+		"es": "$"
+	},
+	"servicio_tecnico": {
+		"en": "",
+		"es": "$"
+	},
+	"servicio_de_mensajeria": {
+		"en": "",
+		"es": "$"
+	},
+	"redes_sociales": {
+		"en": "",
+		"es": "$"
+	},
+	"ropa_de_mujer_hombre_y_nino": {
+		"en": "",
+		"es": "$"
+	},
+	"ropa_interior_y_accesorios": {
+		"en": "",
+		"es": "$"
+	},
+	"restaurante": {
+		"en": "",
+		"es": "$"
+	},
+	"relojes_y_joyas": {
+		"en": "",
+		"es": "$"
+	},
+	"musica": {
+		"en": "",
+		"es": "$"
+	},
+	"peliculas": {
+		"en": "",
+		"es": "$"
+	},
+	"panaderia_y_reposteria": {
+		"en": "",
+		"es": "$"
+	},
+	"otros": {
+		"en": "",
+		"es": "$"
+	},
+	"optica": {
+		"en": "",
+		"es": "$"
+	},
+	"marketing_y_publicidad": {
+		"en": "",
+		"es": "$"
+	},
+	"libros_revistas_y_comics": {
+		"en": "",
+		"es": "$"
+	},
+	"lavanderia": {
+		"en": "",
+		"es": "$"
+	},
+	"medico": {
+		"en": "",
+		"es": "$"
+	},
+	"marca_personal": {
+		"en": "",
+		"es": "$"
+	},
+	"kiosco": {
+		"en": "",
+		"es": "$"
+	},
+	"inmobiliaria": {
+		"en": "",
+		"es": "$"
+	},
+	"juegos_y_juguetes": {
+		"en": "",
+		"es": "$"
+	},
+	"imprenta": {
+		"en": "",
+		"es": "$"
+	},
+	"hosteleria": {
+		"en": "",
+		"es": "$"
+	},
+	"hospedajes": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar": {
+		"en": "",
+		"es": "$"
+	},
+	"categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"hogar_y_muebles": {
+		"en": "",
+		"es": "$"
+	},
+	"herramientas_y_construccion": {
+		"en": "",
+		"es": "$"
+	},
+	"gimnasio": {
+		"en": "",
+		"es": "$"
+	},
+	"fotografia_y_video": {
+		"en": "",
+		"es": "$"
+	},
+	"flete_y_mudanzas": {
+		"en": "",
+		"es": "$"
+	},
+	"electrodomesticos": {
+		"en": "",
+		"es": "$"
+	},
+	"finanzas": {
+		"en": "",
+		"es": "$"
+	},
+	"farmacia": {
+		"en": "",
+		"es": "$"
+	},
+	"eventos": {
+		"en": "",
+		"es": "$"
+	},
+	"entretenimiento": {
+		"en": "",
+		"es": "$"
+	},
+	"electronica_audio_y_video": {
+		"en": "",
+		"es": "$"
+	},
+	"educacion": {
+		"en": "",
+		"es": "$"
+	},
+	"diseno_grafico": {
+		"en": "",
+		"es": "$"
+	},
+	"deportes_y_fitness": {
+		"en": "",
+		"es": "$"
+	},
+	"dentista": {
+		"en": "",
+		"es": "$"
+	},
+	"delivery": {
+		"en": "",
+		"es": "$"
+	},
+	"concesionario": {
+		"en": "",
+		"es": "$"
+	},
+	"computacion_e_informatica": {
+		"en": "",
+		"es": "$"
+	},
+	"coaching": {
+		"en": "",
+		"es": "$"
+	},
+	"cine": {
+		"en": "",
+		"es": "$"
+	},
+	"cerrajeria_y_ferreteria": {
+		"en": "",
+		"es": "$"
+	},
+	"celulares_y_telefonia": {
+		"en": "",
+		"es": "$"
+	},
+	"automotor": {
+		"en": "",
+		"es": "$"
+	},
+	"belleza_y_cuidado_personal": {
+		"en": "",
+		"es": "$"
+	},
+	"carpinteria": {
+		"en": "",
+		"es": "$"
+	},
+	"carniceria_y_pescaderia": {
+		"en": "",
+		"es": "$"
+	},
+	"cafeteria": {
+		"en": "",
+		"es": "$"
+	},
+	"aseguradoras": {
+		"en": "",
+		"es": "$"
+	},
+	"arte": {
+		"en": "",
+		"es": "$"
+	},
+	"bar": {
+		"en": "",
+		"es": "$"
+	},
+	"bebes_y_maternidad": {
+		"en": "",
+		"es": "$"
+	},
+	"animales_y_mascotas": {
+		"en": "",
+		"es": "$"
+	},
+	"alimentos_y_bebidas": {
+		"en": "",
+		"es": "$"
+	},
+	"tus_datos_bancarios_se_mostraran_al_realizar_pagos_con_transferencia_en_las_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"informacion_bancaria": {
+		"en": "",
+		"es": "$"
+	},
+	"usuarios": {
+		"en": "",
+		"es": "$"
+	},
+	"pago": {
+		"en": "",
+		"es": "$"
+	},
+	"bancaria": {
+		"en": "",
+		"es": "$"
+	},
+	"general": {
+		"en": "",
+		"es": "$"
+	},
+	"subscripcion": {
+		"en": "",
+		"es": "$"
+	},
+	"agregar_informacion_general_y_bancaria_sobre_el_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"guardar_datos": {
+		"en": "",
+		"es": "$"
+	},
+	"espanol": {
+		"en": "",
+		"es": "$"
+	},
+	"iniciar_con_google": {
+		"en": "",
+		"es": "$"
+	},
+	"iniciar_con_facebook": {
+		"en": "",
+		"es": "$"
+	},
+	"registrarme": {
+		"en": "",
+		"es": "$"
+	},
+	"olvidaste_tu_contrasena": {
+		"en": "",
+		"es": "$"
+	},
+	"iniciar_sesion": {
+		"en": "",
+		"es": "$"
+	},
+	"recuerdeme_en_este_dispositivo": {
+		"en": "",
+		"es": "$"
+	},
+	"securepass124": {
+		"en": "",
+		"es": "$"
+	},
+	"contrasena": {
+		"en": "",
+		"es": "$"
+	},
+	"exampledomaincom": {
+		"en": "",
+		"es": "$"
+	},
+	"correo_electronico": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_de_usuario": {
+		"en": "",
+		"es": "$"
+	},
+	"john_doe": {
+		"en": "",
+		"es": "$"
+	},
+	"cerrando_sesion": {
+		"en": "",
+		"es": "$"
+	},
+	"salir": {
+		"en": "",
+		"es": "$"
+	},
+	"ajustes": {
+		"en": "",
+		"es": "$"
+	},
+	"buscar_tiendas_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_citas": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_tracking": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"english": {
+		"en": "",
+		"es": "$"
+	},
+	"borrar": {
+		"en": "",
+		"es": "$"
+	},
+	"editar": {
+		"en": "",
+		"es": "$"
+	},
+	"respuestas": {
+		"en": "",
+		"es": "$"
+	},
+	"crea_tus_tiendas_desde_disenos_personalizados": {
+		"en": "",
+		"es": "$"
+	},
+	"iniciar_con_plantilla": {
+		"en": "",
+		"es": "$"
+	},
+	"tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"crear": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_como_visitante": {
+		"en": "",
+		"es": "$"
+	},
+	"plan_basico": {
+		"en": "",
+		"es": "$"
+	},
+	"filtro_ascendente": {
+		"en": "",
+		"es": "$"
+	},
+	"tiendas_creadas": {
+		"en": "",
+		"es": "$"
+	},
+	"politicas_de_privacidad": {
+		"en": "",
+		"es": "$"
+	},
+	"terminos_y_condiciones": {
+		"en": "",
+		"es": "$"
+	},
+	"facilito": {
+		"en": "",
+		"es": "$"
+	},
+	"aceptar": {
+		"en": "",
+		"es": "$"
+	},
+	"cancelar": {
+		"en": "",
+		"es": "$"
+	}
+}

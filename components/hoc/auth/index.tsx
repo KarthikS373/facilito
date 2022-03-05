@@ -37,7 +37,7 @@ function withAuth<T>(Page: NextPage<T>, props?: WithAuthProps): NextPage<T> {
 					else if (path !== ROUTES.login) router.replace(ROUTES.login)
 				} else if (path === ROUTES.login) {
 					router.replace(ROUTES.forms).then(() => {
-						window.Snack(`Bienvenido ${user.displayName}`)
+						window.Snack(`Bienvenido ` + user.displayName)
 					})
 				}
 			}
