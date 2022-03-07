@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useEffect } from 'react' 
 
 // ADMIN
 import admin from 'keys/firebase-admin'
@@ -22,7 +22,6 @@ import withAuth from 'components/hoc/auth'
 // TOOLS
 import { getBackgroundColors } from 'utils/tools'
 import useStrings from 'hooks/lang'
-import { useEffect } from 'react'
 
 // PROPIEDADES DEL SERVIDOR
 interface FormPageProps {
