@@ -33,6 +33,7 @@ interface FormPageProps {
 
 // PAGE
 const FormPage: NextPage<FormPageProps> = (props) => {
+	// CAMBIAR LENGUAJE
 	const { setLangCode } = useStrings()
 
 	// COLORES POR DEFECTO
@@ -45,10 +46,12 @@ const FormPage: NextPage<FormPageProps> = (props) => {
 	const title = `📝${props.formData?.title || ''} - ${props.company?.name || ''} | Facilito`
 
 	// LEGUAJE
-	const langCode = props.formData?.lang
+	const formLangCode = props.formData?.lang
+
+	// ACTUALIZAR LENGUAJE
 	useEffect(() => {
-		setLangCode(langCode ?? 'es')
-	}, [setLangCode, langCode])
+		setLangCode(formLangCode ?? 'es')
+	}, [setLangCode, formLangCode])
 
 	return (
 		<>

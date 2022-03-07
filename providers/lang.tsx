@@ -1,6 +1,9 @@
 // REACT
 import React, { useState, useContext, useEffect } from 'react'
 
+// ROUTER
+import { useRouter } from 'next/router'
+
 // CONTEXTO
 import BusinessContext from 'context/business'
 import PortrayContext from 'context/lang'
@@ -13,6 +16,9 @@ interface PortrayContextProps {
 }
 
 const PortrayProvider: React.FC<PortrayContextProps> = (props) => {
+	// HISTORY
+	const router = useRouter()
+
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
@@ -21,10 +27,13 @@ const PortrayProvider: React.FC<PortrayContextProps> = (props) => {
 	const [langCode, setLang] = useState<string>(mainLang)
 
 	// INICIAL
+	const path = router.asPath
 	const businessLang: string = businessCtx.business?.lang || 'es'
 	useEffect(() => {
-		setLang(businessLang)
-	}, [businessLang])
+		if (!path.match(/\/f\/.+\/.+$/)) {
+			setLang(businessLang)
+		}
+	}, [businessLang, path])
 
 	// RENDER
 	return (
