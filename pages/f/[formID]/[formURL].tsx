@@ -46,9 +46,10 @@ const FormPage: NextPage<FormPageProps> = (props) => {
 	const title = `📝${props.formData?.title || ''} - ${props.company?.name || ''} | Facilito`
 
 	// LEGUAJE
+	const langCode = props.formData?.lang
 	useEffect(() => {
-		setLangCode(props.formData?.lang ?? 'es')
-	}, [])
+		setLangCode(langCode ?? 'es')
+	}, [setLangCode, langCode])
 
 	return (
 		<>
