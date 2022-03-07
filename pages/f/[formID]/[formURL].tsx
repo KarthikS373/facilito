@@ -1,5 +1,5 @@
 // REACT
-import React, { useEffect } from 'react' 
+import React, { useEffect } from 'react'
 
 // ADMIN
 import admin from 'keys/firebase-admin'
