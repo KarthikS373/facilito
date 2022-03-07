@@ -21,6 +21,8 @@ import withAuth from 'components/hoc/auth'
 
 // TOOLS
 import { getBackgroundColors } from 'utils/tools'
+import useStrings from 'hooks/lang'
+import { useEffect } from 'react'
 
 // PROPIEDADES DEL SERVIDOR
 interface FormPageProps {
@@ -32,6 +34,8 @@ interface FormPageProps {
 
 // PAGE
 const FormPage: NextPage<FormPageProps> = (props) => {
+	const { setLangCode } = useStrings()
+
 	// COLORES POR DEFECTO
 	const defColors = getBackgroundColors(props.formData?.background ?? '')
 
@@ -40,6 +44,11 @@ const FormPage: NextPage<FormPageProps> = (props) => {
 
 	// TITULO
 	const title = `📝${props.formData?.title || ''} - ${props.company?.name || ''} | Facilito`
+
+	// LEGUAJE
+	useEffect(() => {
+		setLangCode(props.formData?.lang ?? 'es')
+	}, [])
 
 	return (
 		<>
