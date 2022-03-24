@@ -39,7 +39,7 @@ const PermissionsProvider: React.FC = (props) => {
 	// LISTENER DE RUTAS
 	useEffect(() => {
 		lockFunction(router.asPath, async () => router.replace(ROUTES.forms), permissions)
-	}, [permissions, router])
+	}, [permissions])
 
 	return <>{props.children}</>
 }

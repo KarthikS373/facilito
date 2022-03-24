@@ -1,5 +1,6 @@
 // DB
 import { getCollection } from './db'
+import getCallable from './functions'
 
 /**
  * Obtener documento de empresa
@@ -13,6 +14,19 @@ const getBusinessDoc = async (url: string) => {
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, url)
 	return businessDoc
+}
+
+/**
+ * Obtener todas las empresas
+ */
+export const getBusiness = async () => {
+	const { getDocs } = await import('firebase/firestore')
+
+	// COLECCIÓN DE EMPRESA
+	const businessCol = await getCollection('business')
+	const businessReq = await getDocs(businessCol)
+	const businessDocs = businessReq.docs.map((doc) => doc.data()) as Business[] | undefined
+	return businessDocs
 }
 
 /**
@@ -69,6 +83,32 @@ export const replaceBusiness = async (
 	// COLECCIÓN DE EMPRESA
 	const businessDoc = await getBusinessDoc(companyID)
 
-	// LISTAs
+	// LISTA
 	if (business) setDoc(businessDoc, business, { merge: true })
+}
+
+/**
+ * Agregar notificacion de admision
+ * @param  {string} userName
+ * @param  {Business} business
+ */
+export const sendAdmissionRequestCompany = async (userName: string, business: Business) => {
+	const companyAdmission = await getCallable('companyAdmission')
+	return companyAdmission({
+		userName,
+		business,
+	})
+}
+
+/**
+ * Agregar correo de admision
+ * @param  {string} userName
+ * @param  {Business} business
+ */
+export const sendAdmissionRequest = async (userName: string, business: Business) => {
+	const userAdmission = await getCallable('userAdmission')
+	return userAdmission({
+		userName,
+		business,
+	})
 }

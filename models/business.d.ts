@@ -9,6 +9,7 @@ interface Business {
 		| CardPointeData[]
 		| CompanyPermissions
 		| Subscription
+		| CompanyTheme
 
 	// INFORMACIÓN BÁSICA
 	backgroundImage?: string
@@ -46,12 +47,14 @@ interface Business {
 	permissions?: CompanyPermissions
 
 	// TEMA
-	theme?: {
-		primary: string
-		secondary: string
-		muted: string
-		deg: string
-	}
+	theme?: CompanyTheme
+}
+
+interface CompanyTheme {
+	primary: string
+	secondary: string
+	muted: string
+	deg: string
 }
 
 // PERMISOS

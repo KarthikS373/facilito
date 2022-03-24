@@ -1,0 +1,103 @@
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.5s ease-in-out;
+	transition-timing-function: var(--transition);
+	background: linear-gradient(125deg, #1bcbe6, #096de8, var(--secondary));
+	background-size: 400% 400%;
+	-webkit-animation: GradAnim 7s ease infinite;
+	-moz-animation: GradAnim 7s ease infinite;
+	animation: GradAnim 7s ease infinite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0px var(--margin) 50px var(--margin);
+	margin-bottom: -50px;
+
+	.content {
+		position: relative;
+		background-color: #fff;
+		border-radius: calc(var(--radius) + 5px);
+		overflow: hidden;
+		box-shadow: 4px 4px 20px #0000001a;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 900px;
+		transition: transform 0.5s ease;
+		transition-timing-function: var(--transition);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			border-radius: 5px;
+			left: calc(50% - 1px);
+			height: 85%;
+			width: 2px;
+			background: #ddd;
+		}
+	}
+
+	.continue {
+		margin-top: 20px;
+		color: #fff;
+		padding: 10px 15px;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.container {
+		overflow: hidden;
+		align-items: flex-start;
+
+		.content {
+			width: 200%;
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.container {
+		margin-bottom: -79px;
+		padding: 0px var(--margin) 79px var(--margin);
+	}
+}
+
+@-webkit-keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}
+@-moz-keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}
+@keyframes GradAnim {
+	0% {
+		background-position: 0% 68%;
+	}
+	50% {
+		background-position: 100% 33%;
+	}
+	100% {
+		background-position: 0% 68%;
+	}
+}

@@ -1,0 +1,38 @@
+.container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	column-gap: 50px;
+	margin-top: 50px;
+
+	.content {
+		padding: 20px 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	ul {
+		height: 170px;
+
+		li:first-child {
+			font-size: 1.4em;
+		}
+	}
+
+	button {
+		padding: 10px 15px;
+		color: #fff;
+	}
+
+	.header {
+		padding: 20px 30px;
+		border-radius: 10px 10px 0 0;
+
+		h1 {
+			margin: 0;
+		}
+	}
+}
+.plan:nth-child(2) {
+	transform: scale(1.1);
+}

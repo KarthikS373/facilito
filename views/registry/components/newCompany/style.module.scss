@@ -1,0 +1,36 @@
+.newBrand {
+	padding: 30px;
+	color: #333;
+	width: 50%;
+	transition: opacity 0.3s ease;
+
+	h1,
+	p {
+		opacity: 0.8;
+		margin: 0;
+		display: block;
+	}
+
+	p {
+		margin: 5px 0 15px 0;
+	}
+
+	form {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: repeat(4, auto);
+		row-gap: 15px;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.newBrand {
+		padding: var(--margin);
+		padding-bottom: calc(var(--margin) + 10px);
+		width: 100%;
+
+		h1 {
+			font-size: 1.8em;
+		}
+	}
+}

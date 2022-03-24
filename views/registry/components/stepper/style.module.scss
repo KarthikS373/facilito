@@ -1,0 +1,11 @@
+.step {
+	span,
+	text {
+		fill: #fff;
+		color: #fff !important;
+	}
+
+	span.MuiStepLabel-label.Mui-active {
+		font-weight: bold;
+	}
+}

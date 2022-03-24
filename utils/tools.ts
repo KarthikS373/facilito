@@ -553,3 +553,12 @@ export const transformBackground = (background?: string): string => {
 	else if (background?.startsWith('http')) return `url('${background}') no-repeat center/cover`
 	else return 'transparent'
 }
+
+/**
+ * Pasar string a query string
+ * @param {string} url
+ * @returns {string}
+ */
+export const stringToUrl = (url: string): string => {
+	return url.replace(/[^\w\s]/gi, '').replace(/ /g, '_')
+}

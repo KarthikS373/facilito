@@ -1,8 +1,8 @@
 // TOOLS
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 // UTILS
-import { getCompany } from 'utils/business'
+import { getBusiness, getCompany } from 'utils/business'
 import { getProducts } from 'utils/products'
 
 /**
@@ -20,6 +20,27 @@ const useBusiness = (
 	useEffect(() => {
 		if (isAuth && userBusiness) getCompany(userBusiness).then(setBusiness)
 	}, [userBusiness, isAuth, setBusiness])
+}
+
+/**
+ * Hook para lista de negocios
+ * @param  {(business:Business[])=>unknown} cb
+ */
+export const useBusinessList = (cb: (business: Business[]) => unknown) => {
+	// COPIA
+	const listRef: React.MutableRefObject<Business[] | null> = useRef(null)
+
+	// FETCH
+	useEffect(() => {
+		if (listRef.current === null)
+			getBusiness().then((business: Business[] | undefined) => {
+				if (business) {
+					listRef.current = business
+					cb(business)
+				}
+			})
+		else cb(listRef.current)
+	}, [cb])
 }
 
 // EXPORT

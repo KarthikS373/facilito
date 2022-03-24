@@ -9,6 +9,8 @@ import { getUser } from 'utils/user'
 
 // CONTEXTO
 import AuthContext from 'context/auth'
+import { useRouter } from 'next/router'
+import ROUTES from 'router/routes'
 
 // ESTADO
 interface ProviderState {
@@ -29,6 +31,9 @@ const UserProvider: React.FC = (props) => {
 	// CONTEXTO
 	const { user } = useContext(AuthContext)
 
+	// HISTORY
+	const router = useRouter()
+
 	// AUTH
 	useEffect(() => {
 		const getUserData = async () => {
@@ -36,6 +41,9 @@ const UserProvider: React.FC = (props) => {
 				// LEER DE FIRESTORE
 				getUser(user.email).then((userFrb: User | null) => {
 					setUser({ user: userFrb, isAnonymous: user?.isAnonymous || false })
+					if (!userFrb?.business || !userFrb?.business?.length) {
+						router.push(ROUTES.registry)
+					}
 				})
 			} else setUser({ user: null, isAnonymous: user?.isAnonymous || false })
 		}

@@ -1,5 +1,6 @@
 export interface RoutesProps {
 	login: string
+	registry: string
 
 	forms: string
 	newForm: string
@@ -26,6 +27,7 @@ export interface RoutesProps {
 const ROUTES: RoutesProps = {
 	// LOGIN
 	login: '/cuenta',
+	registry: '/registrar',
 
 	// TIENDAS
 	forms: '/tiendas',

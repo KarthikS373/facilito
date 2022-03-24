@@ -41,7 +41,7 @@ function withAuth<T>(Page: NextPage<T>, props?: WithAuthProps): NextPage<T> {
 					})
 				}
 			}
-		}, [user, path, router])
+		}, [user, path])
 
 		// COMPONENTE
 		return <Page {...pageProps} />

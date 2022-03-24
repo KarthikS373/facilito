@@ -37,7 +37,9 @@ const FlagPhoneInput: React.FC<FlagPhoneInputProps> = (props: FlagPhoneInputProp
 
 	// OBTENER CÓDIGO DE PAÍS
 	useEffect(() => {
-		getCountryCode().then(setCountry)
+		getCountryCode()
+			.then(setCountry)
+			.catch((err) => console.log(err))
 	}, [])
 
 	return (

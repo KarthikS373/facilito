@@ -1,4 +1,208 @@
 {
+	"12345678": {
+		"en": "",
+		"es": "$"
+	},
+	"ya_se_envio_tu_solicitud_de_empresa_de_momento_no_podras_acceder_hasta_que_se_conceda_tu_acceso_en_facilito_app": {
+		"en": "",
+		"es": "$"
+	},
+	"se_esta_esta_registrando_tu_empresa_esto_no_suele_tardar_demasiado_por_favor_no_cierres_esta_pestana": {
+		"en": "",
+		"es": "$"
+	},
+	"respuestas_por_email": {
+		"en": "",
+		"es": "$"
+	},
+	"negociable": {
+		"en": "",
+		"es": "$"
+	},
+	"q_negocioable": {
+		"en": "",
+		"es": "$"
+	},
+	"mes_o_ano": {
+		"en": "",
+		"es": "$"
+	},
+	"mes__ano": {
+		"en": "",
+		"es": "$"
+	},
+	"todas_las_funciones": {
+		"en": "",
+		"es": "$"
+	},
+	"espacio_adicional": {
+		"en": "",
+		"es": "$"
+	},
+	"variable": {
+		"en": "",
+		"es": "$"
+	},
+	"precios_ajustables": {
+		"en": "",
+		"es": "$"
+	},
+	"orecios_ajustables": {
+		"en": "",
+		"es": "$"
+	},
+	"seguro_para_precios_ajustables": {
+		"en": "",
+		"es": "$"
+	},
+	"plan_custom": {
+		"en": "",
+		"es": "$"
+	},
+	"recomendado_para_precios_ajustables": {
+		"en": "",
+		"es": "$"
+	},
+	"plan_personalizado": {
+		"en": "",
+		"es": "$"
+	},
+	"order_tracking": {
+		"en": "",
+		"es": "$"
+	},
+	"multi_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"productos_ilimitados": {
+		"en": "",
+		"es": "$"
+	},
+	"el_favorito_de_las_pymes": {
+		"en": "",
+		"es": "$"
+	},
+	"cupones": {
+		"en": "",
+		"es": "$"
+	},
+	"q199__mes": {
+		"en": "",
+		"es": "$"
+	},
+	"plan_pro": {
+		"en": "",
+		"es": "$"
+	},
+	"35_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"q99__mes": {
+		"en": "",
+		"es": "$"
+	},
+	"1_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"ideal_si_estas_empezando": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_plan": {
+		"en": "",
+		"es": "$"
+	},
+	"registrar_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"crear_cuenta": {
+		"en": "",
+		"es": "$"
+	},
+	"seleccionar_categoria": {
+		"en": "",
+		"es": "$"
+	},
+	"mybusiness": {
+		"en": "",
+		"es": "$"
+	},
+	"mi_negocio": {
+		"en": "",
+		"es": "$"
+	},
+	"se_esta_esta_enviando_tu_solicitud_esto_no_suele_tardar_demasiado_por_favor_no_cierres_esta_pestana": {
+		"en": "",
+		"es": "$"
+	},
+	"registrar_nueva_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"con_tus_datos_cuando_acepten_tu_solicitud_podras_continuar": {
+		"en": "",
+		"es": "$"
+	},
+	"y_enviaremos_un_correo_a": {
+		"en": "",
+		"es": "$"
+	},
+	"ahora_presiona_el_boton_de": {
+		"en": "",
+		"es": "$"
+	},
+	"ya_se_envio_tu_solicitud_a_la_empresa_de_momento_no_podras_acceder_hasta_que_se_conceda_tu_acceso_por_el_administrador": {
+		"en": "",
+		"es": "$"
+	},
+	"solicitud_enviada": {
+		"en": "",
+		"es": "$"
+	},
+	"se_esta_esta_enviando_tu_solicitud_esto_no_suele_tardar_demasiado": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_de_la_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"si_ya_perteneces_a_una_empresa_registrada_en_facilito_puedes_buscarla_y_solicitar_tu_admision_al_administrador": {
+		"en": "",
+		"es": "$"
+	},
+	"busca_tu_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"si_eres_nuevo_en_facilito_crea_tu_empresa_es_totalmente_gratis_y_tendras_formularios_ilimitados_solo_necesitamos_la_siguiente_informacion": {
+		"en": "",
+		"es": "$"
+	},
+	"registra_tu_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"nombre_de_tu_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"continuar": {
+		"en": "",
+		"es": "$"
+	},
+	"pertenezco_a_una_empresa": {
+		"en": "",
+		"es": "$"
+	},
+	"bienvenido_alex_santos": {
+		"en": "",
+		"es": "$"
+	},
 	"impuesto": {
 		"en": "Tax",
 		"es": "$"
