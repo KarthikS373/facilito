@@ -3,7 +3,6 @@ import { sendAdmissionRequest, sendAdmissionRequestCompany } from 'utils/busines
 import { stringToUrl } from 'utils/tools'
 import type { User } from '@firebase/auth'
 import React from 'react'
-import CardForm from 'views/form/components/payment/components/card'
 import showCardForm from 'views/settings/components/tabs/components/payments/components/newCard'
 
 /**
