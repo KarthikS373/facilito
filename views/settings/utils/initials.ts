@@ -49,9 +49,9 @@ const defBusiness: Business = {
 	// TEMA
 	theme: {
 		deg: '125deg',
-		primary: '1bcbe6',
-		secondary: '096de8',
-		muted: '096de8',
+		primary: '#1bcbe6',
+		secondary: '#096de8',
+		muted: '#096de8',
 	},
 }
 
