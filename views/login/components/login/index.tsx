@@ -1,5 +1,5 @@
 // REACT
-import React, { ChangeEvent, FormEvent, MouseEvent, useState, useRef, RefObject } from 'react'
+import React, { useState, useRef } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -49,16 +49,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 	const [loginData, setLoginData] = useState<LoginData>({ ...defLoginData })
 
 	// BARRA DE PROGRESO
-	const progressRef: RefObject<HTMLDivElement> = useRef(null)
+	const progressRef: React.RefObject<HTMLDivElement> = useRef(null)
 
 	// ASIGNAR RECORDAR
-	const handleRememberChange = (event: ChangeEvent) => {
-		const inp = event.target as HTMLInputElement
-		setRemember(inp.checked)
-	}
+	const handleRememberChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+		setRemember(event.target.checked)
 
 	// ENVIAR TIENDA
-	const handleSubmit = (event: FormEvent | MouseEvent) => {
+	const handleSubmit = (event: React.FormEvent | React.MouseEvent) => {
 		// INICIAR SESIÓN
 		event.preventDefault()
 		startSigning(event, loginData, progressRef, false, remember)

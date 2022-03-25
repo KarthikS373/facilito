@@ -1,12 +1,13 @@
 const defBusiness: Business = {
 	backgroundImage: '',
 	description: '',
-	background: '',
+	background:
+		'transparent linear-gradient(125deg, #1bcbe6 0%, #096de8 100%) 0% 0% no-repeat padding-box',
 	category: '',
 	lang: 'es',
 	picture: '',
 	phone: '',
-	badge: '',
+	badge: 'GTQ',
 	name: '',
 	url: '',
 	id: '',
@@ -29,8 +30,8 @@ const defBusiness: Business = {
 	paymentAccounts: [],
 	bankAccounts: [],
 	subscription: {
-		plan: '',
-		price: '',
+		plan: 'Plan Básico',
+		price: '99',
 		duration: 0,
 	},
 
@@ -43,6 +44,14 @@ const defBusiness: Business = {
 		tracking: true,
 		forms: true,
 		print: true,
+	},
+
+	// TEMA
+	theme: {
+		deg: '125deg',
+		primary: '1bcbe6',
+		secondary: '096de8',
+		muted: '096de8',
 	},
 }
 

@@ -50,6 +50,17 @@ export const startSigning = async (
 			isNew ? userData.name : undefined,
 			onError,
 			rememberUser
-		).then(() => window.Alert('Bienvenido'))
+		)
+			.then(() => {
+				if (progressRef.current) progressRef.current.style.display = 'none'
+			})
+			.catch(() => {
+				window.Alert({
+					type: 'error',
+					title: 'Ocurrio un error',
+					body: 'Ocurrio un error al iniciar sesión con tu cuenta, verifica que tu correo y contraseña sean correctos.',
+				})
+				if (progressRef.current) progressRef.current.style.display = 'none'
+			})
 	}
 }

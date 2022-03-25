@@ -7,7 +7,7 @@ import ROUTES from 'router/routes'
  * Guardar producto
  * @param  {(products:Record<string,Product>,merge?:boolean,initialSKU?:string,onSuccess?:()=>unknown)=>unknown} setProducts
  * @param  {React.MutableRefObject<Product>} productRef
- * @param  {React.MutableRefObject<(File|null} imagesRef
+ * @param  {React.MutableRefObject<File|null>} imagesRef
  * @returns {Promise<void>}
  */
 const saveProduct = async (
@@ -86,7 +86,7 @@ const saveProduct = async (
 	} else
 		window.Alert({
 			title: 'Ocurrio un error',
-			body: 'Debes agregar un SKUm, Nombre primero para poder guardar este producto.',
+			body: 'Debes agregar un SKU y Nombre primero para poder guardar este producto.',
 			type: 'error',
 		})
 }
