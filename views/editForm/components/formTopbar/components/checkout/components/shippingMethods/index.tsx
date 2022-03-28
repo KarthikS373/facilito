@@ -122,6 +122,7 @@ const showShippingMethods = (
 		hasNextAlert: true,
 		body: $`Configura los métodos de envío y precios correspondientes disponibles para tus clientes.`,
 		onHide: () => showCheckoutAlert($, formData, formsCtx, business, onSave),
+		onConfirm: () => showCheckoutAlert($, formData, formsCtx, business, onSave),
 		type: 'confirm',
 		customElements: (
 			<ShippingMethods

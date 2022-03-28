@@ -137,15 +137,16 @@ const ProductSidebar: React.FC<ProductSidebarProps> = (props: ProductSidebarProp
 
 					{/* MÉTODOS DE PAGO */}
 					<div className={Styles.methods}>
-						{props.formData?.checkout?.shippingPrices?.length !== 0 && (
-							<ShippingMethods
-								shippingPrices={props.formData?.checkout?.shippingPrices}
-								value={props.summaryData.shippingMethodValue}
-								className={Styles.shippingOrPayMethod}
-								setSummaryData={props.setSummaryData}
-								setFieldValue={props.setValue}
-							/>
-						)}
+						{props.formData?.checkout?.shippingPrices &&
+							props.formData?.checkout?.shippingPrices?.length !== 0 && (
+								<ShippingMethods
+									shippingPrices={props.formData?.checkout?.shippingPrices}
+									value={props.summaryData.shippingMethodValue}
+									className={Styles.shippingOrPayMethod}
+									setSummaryData={props.setSummaryData}
+									setFieldValue={props.setValue}
+								/>
+							)}
 						<PayMethods
 							value={props.summaryData.payMethodValue}
 							className={Styles.shippingOrPayMethod}
