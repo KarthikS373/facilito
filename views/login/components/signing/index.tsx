@@ -53,7 +53,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 	// ENVIAR TIENDA
 	const handleSubmit = (event: MouseEvent | FormEvent) => {
 		event.preventDefault()
-		startSigning(event, signingData, progressRef, true, true)
+		startSigning(event, signingData, progressRef, true)
 	}
 
 	// GUARDAR DATOS
@@ -150,7 +150,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 				</form>
 
 				{/* SOCIAL */}
-				<SocialLogin remember={true} />
+				<SocialLogin />
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>

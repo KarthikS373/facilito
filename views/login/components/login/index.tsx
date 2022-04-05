@@ -26,11 +26,9 @@ import Email from '@mui/icons-material/Email'
 import Lock from '@mui/icons-material/Lock'
 
 // MATERIAL
-import FormControlLabel from '@mui/material/FormControlLabel'
 import LinearProgress from '@mui/material/LinearProgress'
 import InputAdornment from '@mui/material/InputAdornment'
 import TextField from '@mui/material/TextField'
-import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 
 // PROPIEDADES
