@@ -139,13 +139,9 @@ export const signingUser = async (
 	const handler = verifyLoginFields(email, pass)
 
 	if (handler.verify) {
-		const {
-			setPersistence,
-			signInWithEmailAndPassword,
-			createUserWithEmailAndPassword,
-			browserLocalPersistence,
-			browserSessionPersistence,
-		} = await import('firebase/auth')
+		const { signInWithEmailAndPassword, createUserWithEmailAndPassword } = await import(
+			'firebase/auth'
+		)
 
 		// AUTH
 		const auth = await getAuth()
