@@ -127,15 +127,13 @@ const updateUserName = async (displayName: string) => {
  * @param  {string} pass
  * @param  {string} name?
  * @param  {(error:string)=>unknown} onError?
- * @param  {boolean} rememberUser?
  * @returns {Promise<void>}
  */
 export const signingUser = async (
 	email: string,
 	pass: string,
 	name?: string,
-	onError?: (error: string) => unknown,
-	rememberUser?: boolean
+	onError?: (error: string) => unknown
 ): Promise<void> => {
 	// VERIFICAR
 	const handler = verifyLoginFields(email, pass)
@@ -151,9 +149,6 @@ export const signingUser = async (
 
 		// AUTH
 		const auth = await getAuth()
-
-		// RECORDAR USUARIO
-		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
 
 		// CREACIÓN/LOGIN
 		if (name)
@@ -189,9 +184,6 @@ export const signingUser = async (
 					)
 				})
 				.catch(authErrorHandler(onError))
-
-		// PERSISTENCIA
-		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	} else {
 		// MOSTRAR ERROR EN VERIFICACIÓN DE CAMPOS
 		if (onError) onError(handler.msg)
@@ -237,21 +229,11 @@ const saveUser = (name?: string) => (credential: UserCredential) => {
 
 /**
  * Iniciar con facebook
- * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
  * @returns {Promise<void>}
  */
-export const facebookSigning = async (
-	rememberUser: boolean,
-	onError?: (error: string) => unknown
-): Promise<void> => {
-	const {
-		signInWithPopup,
-		getAdditionalUserInfo,
-		setPersistence,
-		browserLocalPersistence,
-		browserSessionPersistence,
-	} = await import('firebase/auth')
+export const facebookSigning = async (onError?: (error: string) => unknown): Promise<void> => {
+	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
@@ -259,36 +241,22 @@ export const facebookSigning = async (
 	// INICIAR
 	if (fbProvider) {
 		// RECORDAR USUARIO
-		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
 		await signInWithPopup(auth, fbProvider)
 			.then((res) => {
 				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
 				window.postMessage({ action: 'auth' }, '*')
 			})
 			.catch(authErrorHandler(onError))
-
-		// PERSISTENCIA
-		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	}
 }
 
 /**
  * Iniciar con Google
- * @param  {boolean} rememberUser
  * @param  {(error:string)=>unknown} onError?
  * @returns {Promise<void>}
  */
-export const googleSigning = async (
-	rememberUser: boolean,
-	onError?: (error: string) => unknown
-): Promise<void> => {
-	const {
-		signInWithPopup,
-		getAdditionalUserInfo,
-		setPersistence,
-		browserLocalPersistence,
-		browserSessionPersistence,
-	} = await import('firebase/auth')
+export const googleSigning = async (onError?: (error: string) => unknown): Promise<void> => {
+	const { signInWithPopup, getAdditionalUserInfo } = await import('firebase/auth')
 
 	// AUTH
 	const auth = await getAuth()
@@ -296,7 +264,6 @@ export const googleSigning = async (
 	// INICIAR
 	if (gProvider) {
 		// RECORDAR USUARIO
-		window.localStorage.setItem('remember', rememberUser ? '1' : '0')
 		await signInWithPopup(auth, gProvider)
 			.then((res) => {
 				if (getAdditionalUserInfo(res)?.isNewUser) saveUser()(res)
@@ -305,7 +272,6 @@ export const googleSigning = async (
 			.catch(authErrorHandler(onError))
 
 		// PERSISTENCIA
-		await setPersistence(auth, rememberUser ? browserLocalPersistence : browserSessionPersistence)
 	}
 }
 

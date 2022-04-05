@@ -3,7 +3,7 @@
  */
 export const getPosition: () => Promise<GeolocationPosition> = () => {
 	return new Promise((resolve, reject) => {
-		if ('geolocation' in navigator) {
+		if (process.browser && 'geolocation' in navigator) {
 			navigator.geolocation.getCurrentPosition(resolve, (err) => reject(err), {
 				enableHighAccuracy: true,
 			})

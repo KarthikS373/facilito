@@ -46,13 +46,13 @@ const ShareMenu: React.FC<ShareMenuProps> = (props) => {
 
 	// COPIAR IFRAME
 	const copyIframe = () =>
-		navigator.clipboard
+		navigator?.clipboard
 			.writeText(`<iframe title='facilito_form' src='${`https://${fclt}`}'/>`)
 			.then(() => window.Snack('Código copiado'))
 
 	// COPIAR LINK
 	const copyLink = () =>
-		navigator.clipboard.writeText(`https://${fclt}`).then(() => window.Snack('Link copiado'))
+		navigator?.clipboard.writeText(`https://${fclt}`).then(() => window.Snack('Link copiado'))
 
 	// TEMA
 	const theme = useTheme()

@@ -13,14 +13,12 @@ import { signingUser } from 'utils/auth'
  * @param  {LoginData|SigningData} userData
  * @param  {RefObject<HTMLDivElement>} progressRef
  * @param  {boolean} isNew?
- * @param  {boolean} rememberUser
  */
 export const startSigning = async (
 	ev: FormEvent | MouseEvent,
 	userData: LoginData | SigningData,
 	progressRef: RefObject<HTMLDivElement>,
-	isNew?: boolean,
-	rememberUser?: boolean
+	isNew?: boolean
 ): Promise<void> => {
 	// EVITAR RELOAD
 	ev.preventDefault()
@@ -43,13 +41,12 @@ export const startSigning = async (
 
 		// VALIDAR USUARIO
 		if (progressRef.current) progressRef.current.style.display = 'block'
-		window.Alert('Iniciando sesión...')
+
 		signingUser(
 			isNew ? userData.semail : userData.email,
 			isNew ? userData.spass : userData.pass,
 			isNew ? userData.name : undefined,
-			onError,
-			rememberUser
+			onError
 		)
 			.then(() => {
 				if (progressRef.current) progressRef.current.style.display = 'none'

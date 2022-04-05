@@ -19,7 +19,7 @@ const successAlert = (
 	$: TemplateStrBuilder
 ): void => {
 	const copyUrl = () =>
-		navigator.clipboard.writeText(
+		navigator?.clipboard.writeText(
 			`https://facilito-release.web.app/t/${companyURL}/${formURL}/?index=${index - 1}`
 		)
 

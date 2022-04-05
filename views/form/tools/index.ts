@@ -26,9 +26,11 @@ export const setGeoRefs = async (
 ): Promise<void> => {
 	// CARGAR POSICIÓN
 	getPosition().then(async (position: GeolocationPosition) => {
-		const address: string = (
-			await reverseGeocoding(position.coords.latitude, position.coords.longitude)
-		).address
+		const geocoding = await reverseGeocoding(
+			position.coords.latitude,
+			position.coords.longitude
+		).catch((err) => console.log(err))
+		const address: string = geocoding?.address ?? ''
 
 		// AGREGAR A RESPUESTAS
 		let firstGeo = 0

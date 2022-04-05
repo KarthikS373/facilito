@@ -72,9 +72,9 @@ export const makePaymentWithFormData = async (
 
 	// DATOS (PETICIONES)
 	const now: Date = new Date()
-	const countryCode: string = await getCountryCode()
-	const postalAndCity: string[] = await getPostalAndCity()
-	const ip: string = await getIP()
+	const countryCode: string | void = await getCountryCode().catch((err) => console.log(err))
+	const postalAndCity: string[] | void = await getPostalAndCity().catch((err) => console.log(err))
+	const ip: string | void = await getIP().catch((err) => console.log(err))
 
 	const paymentData: PaymentData = {
 		cliente: {
@@ -82,12 +82,12 @@ export const makePaymentWithFormData = async (
 			firstName: (data.personal_name_0 as string)?.toString().split(' ')[0],
 			lastName: (data.personal_name_0 as string)?.toString().split(' ')[1] || '',
 			street1: (data.personal_address_0 as string) || '',
-			country: countryCode,
-			city: postalAndCity[1],
-			state: countryCode,
-			postalCode: postalAndCity[0],
+			country: countryCode || '',
+			city: postalAndCity ? postalAndCity[1] : '',
+			state: countryCode || '',
+			postalCode: postalAndCity ? postalAndCity[0] : '',
 			email: (data.personal_email_0 as string)?.toString() || '',
-			ipAddress: ip,
+			ipAddress: ip || '',
 			phone:
 				parseInt(
 					data.personal_phone_0

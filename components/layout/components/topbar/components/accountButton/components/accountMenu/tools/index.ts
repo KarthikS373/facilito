@@ -8,7 +8,6 @@ import type { NextRouter } from 'next/router'
 const logoutEvent = async (onClose: EmptyFunction, router: NextRouter): Promise<void> => {
 	// CERRAR SESION
 	window.Snack('Cerrando sesión...')
-	await fetch('/api/logout', { method: 'POST' })
 
 	// REDIRECT
 	await logout()

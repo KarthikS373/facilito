@@ -26,17 +26,7 @@ const AuthProvider: React.FC = ({ children }) => {
 			// CAMBIOS EN TOKEN
 			listener = onIdTokenChanged(auth, async (user) => {
 				// ACTUALIZAR TOKEN
-				setUser(user || null)
-
-				if (user) {
-					const token = await user.getIdToken()
-					const remember: boolean = window.localStorage.getItem('remember') === '1'
-					fetch('/api/signing', {
-						method: 'POST',
-						headers: { token },
-						body: JSON.stringify({ remember }),
-					})
-				}
+				setUser(user ?? null)
 			})
 		}
 

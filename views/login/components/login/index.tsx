@@ -42,24 +42,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
-	// RECORDAR USUARIO
-	const [remember, setRemember] = useState<boolean>(true)
-
 	// DATOS DE LA TIENDA
 	const [loginData, setLoginData] = useState<LoginData>({ ...defLoginData })
 
 	// BARRA DE PROGRESO
 	const progressRef: React.RefObject<HTMLDivElement> = useRef(null)
 
-	// ASIGNAR RECORDAR
-	const handleRememberChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-		setRemember(event.target.checked)
-
 	// ENVIAR TIENDA
 	const handleSubmit = (event: React.FormEvent | React.MouseEvent) => {
 		// INICIAR SESIÓN
 		event.preventDefault()
-		startSigning(event, loginData, progressRef, false, remember)
+		startSigning(event, loginData, progressRef, false)
 	}
 
 	// GUARDAR DATOS
@@ -123,20 +116,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 						}}
 					/>
 
-					{/* REMEMBER */}
-					<FormControlLabel
-						control={
-							<Checkbox
-								color='primary'
-								checked={remember}
-								size='small'
-								onChange={handleRememberChange}
-								name='remember'
-							/>
-						}
-						label={$`Recuérdeme en este dispositivo`}
-					/>
-
 					<ColorButton
 						type='submit'
 						variant='contained'
@@ -151,7 +130,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSigning }) => {
 				</form>
 
 				{/* SOCIAL */}
-				<SocialLogin remember={remember} />
+				<SocialLogin />
 
 				{/* ACCIONES */}
 				<div className={Styles.actions}>

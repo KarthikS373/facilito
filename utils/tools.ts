@@ -479,15 +479,16 @@ export const copyToClipboard = (
 	if (event.preventDefault) event.preventDefault()
 
 	// COPIAR
-	if (navigator.clipboard && navigator.clipboard.writeText)
-		navigator.clipboard.writeText(str || window.location.href).then(() =>
-			window.Alert({
-				title,
-				body: text,
-				type: 'confirm',
-				customElements,
-			})
-		)
+	if (process.browser)
+		if (navigator.clipboard && navigator.clipboard.writeText)
+			navigator.clipboard.writeText(str || window.location.href).then(() =>
+				window.Alert({
+					title,
+					body: text,
+					type: 'confirm',
+					customElements,
+				})
+			)
 }
 
 /**
@@ -517,7 +518,7 @@ export const shareLink = (
 	text: string
 ): void => {
 	// VERIFICAR SI ESTA DISPONIBLE LA API
-	if (navigator.share) {
+	if (process.browser && navigator.share) {
 		// EVITAR LINK
 		ev.preventDefault()
 
