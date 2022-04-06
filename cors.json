@@ -7,7 +7,8 @@
 			"https://facilito-app.web.app/",
 			"https://facilito-release.firebaseapp.com/",
 			"https://facilito-dev.firebaseapp.com/",
-			"https://facilito-app.firebaseapp.com/"
+			"https://facilito-app.firebaseapp.com/",
+			"http://localhost:3000/"
 		],
 		"method": ["GET"],
 		"maxAgeSeconds": 3600
