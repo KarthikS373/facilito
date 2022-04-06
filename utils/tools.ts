@@ -465,7 +465,7 @@ export const getQRCode: (url: string) => Promise<string> = (content: string) =>
 			const QrCodeWithLogo = qrCode.default
 
 			try {
-				const imageURL = await imageToDataURL(`http://${window.location.host}/images/icon_flat.png`)
+				const imageURL = await imageToDataURL(`/images/icon_flat.png`)
 				const qr = await new QrCodeWithLogo({
 					content,
 					width: 500,

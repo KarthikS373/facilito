@@ -1,0 +1,15 @@
+[
+	{
+		"origin": [
+			"https://appfacilito.com",
+			"https://facilito-release.web.app/",
+			"https://facilito-dev.web.app/",
+			"https://facilito-app.web.app/",
+			"https://facilito-release.firebaseapp.com/",
+			"https://facilito-dev.firebaseapp.com/",
+			"https://facilito-app.firebaseapp.com/"
+		],
+		"method": ["GET"],
+		"maxAgeSeconds": 3600
+	}
+]

@@ -22,10 +22,13 @@ class FacilitoDoc extends Document {
 					<meta name='MobileOptimized' content='yes' />
 					<meta name='HandheldFriendly' content='yes' />
 
-					<link rel='mask-icon' href='/images/maskable_icon.png' color='#1AA5BB' />
 					<link rel='icon' type='image/png' href='/favicon.ico' />
-					<link rel='apple-touch-icon' href='/images/icon.png' />
 					<link rel='shortcut icon' href='/favicon.ico' />
+					<link rel='apple-touch-icon' href='/images/apple-touch-icon.png' />
+					<link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+					<link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+					<link rel='icon' type='image/png' sizes='192x192' href='/favicon-192x192.png' />
+					<link rel='icon' type='image/png' sizes='512x512' href='/favicon-512x512.png' />
 
 					<meta property='fb:app_id' content='1335223056864131' />
 					<link rel='manifest' href='/manifest.json' />
