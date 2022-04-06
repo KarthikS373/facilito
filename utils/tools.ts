@@ -159,6 +159,29 @@ export const getDataURL = (
 	}
 }
 
+/**
+ * Image URL to DataURL
+ * @param  {string} url
+ */
+export const imageToDataURL = (url: string): Promise<string> => {
+	return new Promise((resolve) => {
+		const canvas = document.createElement('canvas')
+		const ctx = canvas.getContext('2d')
+
+		var base_image = new Image()
+		base_image.src = url
+		base_image.onload = function () {
+			canvas.width = base_image.width
+			canvas.height = base_image.height
+			if (ctx) {
+				ctx.drawImage(base_image, 0, 0)
+				resolve(canvas.toDataURL('image/png'))
+				canvas.remove()
+			}
+		}
+	})
+}
+
 export const defThemeColors = ['#1AA5BB', '#511F73', '042']
 
 /**
@@ -442,11 +465,12 @@ export const getQRCode: (url: string) => Promise<string> = (content: string) =>
 			const QrCodeWithLogo = qrCode.default
 
 			try {
+				const imageURL = await imageToDataURL(`http://${window.location.host}/images/icon_flat.png`)
 				const qr = await new QrCodeWithLogo({
 					content,
 					width: 500,
 					logo: {
-						src: `http://${window.location.host}/images/icon_flat.png`,
+						src: imageURL ?? '',
 						logoSize: 0.15,
 						borderSize: 0.05,
 					},
