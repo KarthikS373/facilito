@@ -76,6 +76,9 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 	const openCheckoutMenu = () =>
 		showCheckoutAlert($, props.formData, formsCtx, company.business, props.onSave)
 
+	// GUARDAR CAMBIOS
+	const saveOnPreview = () => props.onSave(false)
+
 	return (
 		<>
 			{/* MENU DE OPCIONES */}
@@ -164,6 +167,7 @@ const FormTopbar: React.FC<FormTopbarProps> = (props: FormTopbarProps) => {
 						<Button
 							fullWidth
 							variant='outlined'
+							onClick={saveOnPreview}
 							startIcon={<VisibilityTwoTone />}>{$`Visualizar`}</Button>
 					</a>
 

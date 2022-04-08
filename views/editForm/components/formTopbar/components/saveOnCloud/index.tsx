@@ -24,7 +24,10 @@ const SaveOnCloud: React.FC<SaveProps> = ({ onSave }) => {
 	useIntervalSave(onSave)
 
 	// GUARDAR
-	const saveHandler = () => onSave(false) && window.Snack($`Guardando cambios...`)
+	const saveHandler = () => {
+		onSave(false)
+		window.Snack($`Guardando cambios...`)
+	}
 
 	return (
 		<Button

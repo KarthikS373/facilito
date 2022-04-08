@@ -35,7 +35,7 @@ const Coupon: React.FC = () => {
 	// REGISTRAR
 	useComponentRegister(props.register, `coupons.${props.name}`, props.id, {
 		required: props.required,
-		validate: (value) => typeof value === 'string',
+		validate: props.required ? (value) => typeof value === 'string' : undefined,
 	})
 
 	if (props.switch_1 && props.coupons?.length)

@@ -220,7 +220,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 									<span>{coupon ? coupon.id : $`¿Tienes un cupón?`}</span>
 									{currentCoupon && (
 										<span>
-											- {badge} {couponDiscount[index]?.toFixed(2)}
+											- {badge} {+(couponDiscount[index] ?? 0).toFixed(2)}
 										</span>
 									)}
 								</li>
@@ -235,7 +235,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 								</span>
 								{inputCoupon && (
 									<span>
-										- {badge} {couponDiscount[couponDiscount.length - 1]?.toFixed(2)}
+										- {badge} {+(couponDiscount[couponDiscount.length - 1] ?? 0).toFixed(2)}
 									</span>
 								)}
 							</li>

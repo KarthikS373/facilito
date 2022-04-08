@@ -39,7 +39,7 @@ const TextInput: React.FC<TextComponent> = (eProps: TextComponent) => {
 	// REGISTRAR
 	useComponentRegister(props.register, props.name, props.id, {
 		required: props.required,
-		validate: (value) => typeof value === 'string',
+		validate: props.required ? (value) => typeof value === 'string' : undefined,
 	})
 
 	return (

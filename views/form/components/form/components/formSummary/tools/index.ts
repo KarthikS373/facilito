@@ -51,12 +51,12 @@ export const computeCoupon = (
 
 			.filter((prPrice: (number | string)[]) => prPrice[0] !== -1)
 		// @ts-ignore
-		const productsPrice = productsPriceMatrix.flat() as [number, string][]
+		const productsPrice = productsPriceMatrix.flat().flat() as [number, string][]
 
 		// PRECIO DE CUPÓN
 		const couponDiscount: number[] = []
 
-		// CALCULAR DESCUENTOS
+		// CALCULAR DESCUENTOSs
 		currentCoupon.forEach((coupon: Coupon | null) => {
 			if (coupon) {
 				if (coupon.type === 'discount') {
@@ -141,7 +141,6 @@ export const computeCoupon = (
 				}
 			}
 		})
-
 		// RETORNAR DESCUENTOS
 		return couponDiscount
 	} else return []
