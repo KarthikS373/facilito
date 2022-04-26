@@ -289,7 +289,7 @@ export const getWhatsappAnswers = (
 				const ansText = `${
 					isBankAccountName
 						? firstTransferTitle
-							? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma`
+							? $`Estás serían las siguientes cuentas dónde puede hacer su transferencia, al realizar por favor enviar captura de la misma\n`
 							: ''
 						: ''
 				} *${reqAnswer.answer.quest}*:\n${reqAnswer.answer.answer}${
@@ -337,7 +337,6 @@ export const getEmailAnswers = (
 	)}`
 
 	// STRINGS
-
 	let firstTransferTitle = true
 	const stringAns: string =
 		`<h1>${companyName}</h1><h2>📝 ${$`Tienda`}: ${formTitle}</h2><h3>${ansDate}</h3><hr/>` +
@@ -455,7 +454,7 @@ export const sendForm = async (
 		})
 
 		// AGREGAR DATOS BANCARIOS
-		if (data.payMethod === $`Pago con tarjeta`) {
+		if (data.payMethod === $`Transferencia`) {
 			company?.bankAccounts?.forEach((bankAccount: CompanyBankAccount, index: number) => {
 				// NOMBRE DE CUENTA
 				if (bankAccount?.nameAccount)

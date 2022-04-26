@@ -14,7 +14,7 @@ const onChangeInput = (
 	const { name, value } = ev.target
 	if (businessRef.current) {
 		const accounts = businessRef.current.bankAccounts ?? []
-		accounts[index][name] = value
+		accounts[index] = { ...accounts[index], [name]: value }
 		businessRef.current.bankAccounts = accounts
 	}
 }
