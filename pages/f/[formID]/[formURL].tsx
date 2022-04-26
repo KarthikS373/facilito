@@ -84,8 +84,6 @@ const FormPage: NextPage<FormPageProps> = (props) => {
 
 // PROPIEDADES INICIALES DE SERVIDOR
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	ctx.res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
-
 	// COOKIE Y PARAMS
 	const { formURL, formID } = ctx.query
 
