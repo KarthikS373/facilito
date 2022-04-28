@@ -198,6 +198,15 @@ export const reduceAnswers = (
 				).join('\n\n')
 			} else delete tmpData[key]
 		}
+
+		if (key.startsWith('checkboxes')) {
+			const answer = tmpData[key]?.answer as unknown as string[]
+			if (answer && typeof answer === 'object' && tmpData[key]) {
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				tmpData[key]!.answer = answer.join(', ')
+			}
+		}
+
 		if (!tmpData[key]) delete tmpData[key]
 		if (tmpData[key] && !tmpData[key]?.answer) delete tmpData[key]
 		if (key.startsWith('summary')) delete tmpData[key]

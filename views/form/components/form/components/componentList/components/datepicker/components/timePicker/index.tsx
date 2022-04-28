@@ -54,11 +54,13 @@ const timePicker = (
 			if (currentDate) {
 				if ('setHours' in currentDate) {
 					currentDate.setHours(currentTime)
+					currentDate.setMinutes(0)
 				} else {
 					currentDate.forEach((date: Date | null) => {
 						// CONFIGURAR HORAS
 						if (date) {
 							date.setHours(currentTime)
+							date.setMinutes(0)
 						}
 					})
 				}
