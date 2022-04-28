@@ -26,6 +26,7 @@ import useStrings from 'hooks/lang'
 
 // CONTEXTO
 import BusinessContext from 'context/business'
+import FormsContext from 'context/forms'
 
 // PROPS
 interface HeaderProps {
@@ -39,6 +40,9 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
+
+	// TIENDAS
+	const formsCtx = useContext(FormsContext)
 
 	// FONDO
 	const background = transformBackground(
@@ -89,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 							{businessCtx.business ? (
 								<span>
 									{customDescription ||
-										`${businessCtx.business?.forms?.length || 0} ${$`tienda(s) creadas`}`}
+										`${formsCtx.forms.forms.length ?? 0} ${$`tienda(s) creadas`}`}
 								</span>
 							) : (
 								<Skeleton />

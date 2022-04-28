@@ -42,6 +42,7 @@ const FormsList: React.FC<FormsListProps> = ({ filter }) => {
 	// TIENDAS
 	const formsCtx = useContext(FormsContext)
 
+	// CARGAR FORMULARIOS
 	useFormFilter(filter || 'asc', setForms, formsCtx.forms)
 
 	// BORRAR TIENDA
