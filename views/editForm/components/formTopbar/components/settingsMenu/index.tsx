@@ -51,19 +51,22 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 	const formsCtx = useContext(FormsContext)
 
 	// ESTADO
-	const [formData, setFormData] = useState<SendData>(getDefValues(props.formData))
+	const [formData, setFormData] = useState<SendData>({ ...getDefValues(props.formData) })
 
-	// ERRORES [whatsapp, email, link]
-	const [errs, setErrs] = useState<[boolean, boolean, boolean]>([false, false, false])
+	// URL ERROR
+	const [urlError, setUrlError] = useState<boolean>(false)
 
 	// SHORT
 	const fclt = `fclt.cc/${formData.link}`
 
 	// ACTUALIZAR WHATSAPP , EMAIL
-	const handleData = <T,>(ev: T) => handleInputs(ev, setFormData, setErrs)
+	const handleData =
+		<T,>(field: string) =>
+		(ev: T) =>
+			handleInputs(ev, field, setFormData)
 
 	// VALIDAR URL
-	const validateLink = () => validateFclt(props, formsCtx, formData, setErrs, errs)
+	const validateLink = () => validateFclt(props, formsCtx, formData, setUrlError, urlError)
 
 	// TEMA
 	const theme = useTheme()
@@ -71,10 +74,12 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 	// ACTUALIZAR INPUTS
 	const changeSendMethodsEv =
 		(key: 'whatsapp' | 'email') => (ev: React.ChangeEvent<HTMLInputElement>) =>
-			handleChecks(key, ev, setErrs, setFormData)
+			handleChecks(key, ev, setFormData)
 
 	// HOOKS
 	useDefProps(setFormData, props.formData)
+
+	console.log(formData)
 
 	return (
 		<div className={Styles.container}>
@@ -84,11 +89,10 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 					type='text'
 					name='link'
 					color='primary'
-					error={errs[2]}
 					value={formData.link}
-					onChange={handleData}
+					onChange={handleData('link')}
 					label={$`URL de la tienda`}
-					helperText={errs[2] ? $`Esta url ya está en uso.` : undefined}
+					helperText={urlError ? $`Esta url ya está en uso.` : undefined}
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position='start'>
@@ -126,12 +130,11 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 					/>
 					<PhoneField
 						name='whatsapp'
-						error={errs[0]}
 						variant='outlined'
-						onChange={handleData}
 						placeholder='+50235678555'
 						label={$`Número de WhatsApp`}
-						value={formData.whatsapp.toString() ?? ''}
+						onChange={handleData('whatsapp')}
+						value={formData.whatsapp?.toString() ?? '0'}
 					/>
 				</div>
 				<div>
@@ -155,9 +158,8 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 						name='email'
 						type='email'
 						color='primary'
-						error={errs[1]}
 						variant='outlined'
-						onChange={handleData}
+						onChange={handleData('email')}
 						label={$`Correo electrónico`}
 						placeholder='name@domain.com'
 						value={formData.email ?? ''}

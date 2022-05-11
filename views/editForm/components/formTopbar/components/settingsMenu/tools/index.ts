@@ -1,7 +1,6 @@
-import { FormsContextProps } from 'context/forms'
-import { verifyEmail } from 'utils/auth'
-import { deleteURL, validateURL } from 'utils/urls'
 import { updateFormProp } from 'views/editForm/tools'
+import { deleteURL, validateURL } from 'utils/urls'
+import { FormsContextProps } from 'context/forms'
 
 // PROPIEDADES
 export interface FormTopbarProps {
@@ -34,7 +33,6 @@ export interface SendData extends ConnectionMethods {
 const handleChecks = (
 	key: 'whatsapp' | 'email',
 	ev: React.ChangeEvent<HTMLInputElement>,
-	setErrs: SetState<[boolean, boolean, boolean]>,
 	setFormData: SetState<SendData>
 ): void => {
 	setFormData((formData) => {
@@ -45,23 +43,8 @@ const handleChecks = (
 		let methods = [...(formData?.methods || [])]
 
 		// AGREGAR
-		if (checked) {
-			// WHATSAPP
-			if (key === 'whatsapp') {
-				if (formData.whatsapp && formData.whatsapp?.length >= 6) {
-					setErrs((prevErrs: [boolean, boolean, boolean]) => [false, false, prevErrs[2]])
-					methods[MethodValue[key]] = key
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [true, false, prevErrs[2]])
-			}
-
-			// EMAIL
-			else if (key === 'email') {
-				if (formData.email && verifyEmail(formData.email)) {
-					setErrs((prevErrs: [boolean, boolean, boolean]) => [false, false, prevErrs[2]])
-					methods[MethodValue[key]] = key
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [false, true, prevErrs[2]])
-			}
-		} else methods = methods.filter((name) => name !== key && name !== undefined)
+		if (checked) methods[MethodValue[key]] = key
+		else methods = methods.filter((name) => name !== key && name !== undefined)
 
 		return { ...formData, methods }
 	})
@@ -78,17 +61,20 @@ export const validateFclt = (
 	props: FormTopbarProps,
 	formsCtx: FormsContextProps,
 	formSendData: SendData,
-	setErrs: SetState<[boolean, boolean, boolean]>,
-	errs: [boolean, boolean, boolean]
+	setUrlError: SetState<boolean>,
+	urlError: boolean
 ): void => {
 	// ACTUALIZAR
 	const sendData = (change?: boolean) => {
-		if (errs.every((err) => err === false)) {
+		if (!urlError) {
 			// GUARDAR
 			window.Snack('Guardando ajustes...')
-			const tmpData = { ...formSendData }
+			const tmpData = {
+				...(Object.fromEntries(
+					Object.entries(formSendData).filter(([key]) => key.length > 0)
+				) as SendData),
+			}
 			delete tmpData.link
-
 			updateFormProp('answersConnection', tmpData, formsCtx, props.formData)
 			props.onSave(false)
 			if (change && formSendData.link) props.onChangeURL(formSendData.link)
@@ -106,18 +92,18 @@ export const validateFclt = (
 					// BORRAR URL ANTERIOR
 					deleteURL(props.formData.current.url).then(() => {
 						if (formSendData.link) {
-							setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], false])
+							setUrlError(false)
 							sendData(true)
 						}
 					})
-				} else setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], true])
+				} else setUrlError(true)
 			})
 		}
 	}
 
 	// CERRAR
 	else {
-		setErrs((prevErrs: [boolean, boolean, boolean]) => [prevErrs[0], prevErrs[1], false])
+		setUrlError(false)
 		sendData()
 	}
 }
@@ -130,42 +116,16 @@ export const validateFclt = (
  */
 export const handleInputs = <T extends unknown>(
 	ev: T,
-	setFormData: SetState<SendData>,
-	setErrs: SetState<[boolean, boolean, boolean]>
+	field: string,
+	setFormData: SetState<SendData>
 ): void => {
 	// GLOBAL
-	let name = ''
 	let value: string | number = ''
-	if (typeof ev === 'string') {
-		name = 'whatsapp'
-		value = ev
-	} else {
-		name = (ev as React.ChangeEvent<HTMLInputElement>)?.target.name ?? ''
-		value = (ev as React.ChangeEvent<HTMLInputElement>)?.target.value ?? ''
-	}
-
-	// ERRORES
-	setErrs((errs) => {
-		const tmpErrs = [...errs]
-		if (
-			(value ?? '').toString().length === 0 ||
-			(name === 'whatsapp' && (value ?? '').toString().length < 6) ||
-			(name === 'email' && !verifyEmail(value.toString()))
-		) {
-			if (name === 'whatsapp') tmpErrs[0] = true
-			else if (name === 'email') tmpErrs[1] = true
-			else if (name === 'link') tmpErrs[2] = true
-		} else {
-			if (name === 'whatsapp') tmpErrs[0] = false
-			else if (name === 'email') tmpErrs[1] = false
-			else if (name === 'link') tmpErrs[2] = false
-		}
-
-		return tmpErrs as [boolean, boolean, boolean]
-	})
+	if (field === 'whatsapp') value = ev as string
+	else value = (ev as React.ChangeEvent<HTMLInputElement>)?.target.value ?? ''
 
 	// ACTUALIZAR
-	setFormData((prevData) => ({ ...prevData, [name]: value ?? '' }))
+	setFormData((prevData) => ({ ...prevData, [field]: value ?? '' }))
 }
 
 /**
