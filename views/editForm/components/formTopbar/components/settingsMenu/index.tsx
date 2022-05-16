@@ -79,8 +79,6 @@ const SettingsMenu: React.FC<FormTopbarProps> = (props) => {
 	// HOOKS
 	useDefProps(setFormData, props.formData)
 
-	console.log(formData)
-
 	return (
 		<div className={Styles.container}>
 			<div className={Styles.content}>
