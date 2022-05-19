@@ -40,7 +40,8 @@ export const deleteAccount = (
 ): void => {
 	setAccounts((accounts) => {
 		const tmpAccounts = [...accounts].filter((_a, key: number) => key !== index)
-		if (tmpAccounts.every((account) => account.main === false)) tmpAccounts[0].main = true
+		if (tmpAccounts.every((account) => account.main === false) && tmpAccounts[0])
+			tmpAccounts[0].main = true
 		if (businessRef.current) businessRef.current.paymentAccounts = tmpAccounts
 		return tmpAccounts
 	})
@@ -59,7 +60,7 @@ export const setAccountAsMain = (
 ): void => {
 	setAccounts((accounts) => {
 		const tmpAccounts = [...accounts].map((account) => ({ ...account, main: false }))
-		tmpAccounts[index].main = true
+		if (tmpAccounts[index]) tmpAccounts[index].main = true
 		if (businessRef.current) businessRef.current.paymentAccounts = tmpAccounts
 		return tmpAccounts
 	})

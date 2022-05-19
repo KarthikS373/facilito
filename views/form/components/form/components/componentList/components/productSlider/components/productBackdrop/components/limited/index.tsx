@@ -67,7 +67,7 @@ const ExtraLimited: React.FC<ExtraLimitedProps> = (props: ExtraLimitedProps) => 
 				{props.extra.options.map((exOption: ExtraOptional, optIndex: number) => (
 					<div key={`extra_cant_${optIndex}`}>
 						<p>
-							{exOption.name} {exOption.price > 0 ? `${badge} ${exOption.price}` : `(${$`Gratis`})`}
+							{exOption.name} {exOption.price > 0 ? `${badge} ${exOption.price}` : ''}
 						</p>
 						<Counter
 							max={totalSum === maxSize ? sizes[optIndex] : maxSize || 0}

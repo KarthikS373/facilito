@@ -275,6 +275,7 @@ export const getWhatsappAnswers = (
 	formTitle: string,
 	components: FormComponent[],
 	$: TemplateStrBuilder,
+	index: number,
 	phone?: number
 ): string => {
 	// CREAR TEXTO
@@ -285,10 +286,11 @@ export const getWhatsappAnswers = (
 	const ansDate = `📅 ${$`Enviado el`} ${now.toLocaleDateString('en-GB')}, ${now.toLocaleTimeString(
 		'en-US'
 	)}`
+	const ansIndex = `Orden #${index}`
 
 	let firstTransferTitle = true
 	const stringAns: string =
-		`*${companyName}*\n\n📝 ${$`Tienda`}: ${formTitle}\n${ansDate}\n${'-'.repeat(
+		`*${companyName}*\n\n📝 ${$`Tienda`}: ${formTitle}\n${ansDate}\n${ansIndex}\n${'-'.repeat(
 			ansDate.length + 3
 		)}\n` +
 		orderAnswersData
@@ -334,11 +336,13 @@ export const getEmailAnswers = (
 	companyName: string,
 	formTitle: string,
 	components: FormComponent[],
-	$: TemplateStrBuilder
+	$: TemplateStrBuilder,
+	index: number
 ): string => {
 	// CREAR TEXTO
 	const orderAnswersData: OrderedAnswer[] = orderAnswers(components, data)
 	const now = new Date()
+	const ansIndex = `Orden #${index}`
 
 	// FECHA
 	const ansDate = `📅 ${$`Enviado el`} ${now.toLocaleDateString('en-GB')}, ${now.toLocaleTimeString(
@@ -348,7 +352,7 @@ export const getEmailAnswers = (
 	// STRINGS
 	let firstTransferTitle = true
 	const stringAns: string =
-		`<h1>${companyName}</h1><h2>📝 ${$`Tienda`}: ${formTitle}</h2><h3>${ansDate}</h3><hr/>` +
+		`<h1>${companyName}</h1><h2>📝 ${$`Tienda`}: ${formTitle}</h2><h3>${ansDate}</h3><h3>${ansIndex}</h3><hr/>` +
 		orderAnswersData
 			.map((reqAnswer: OrderedAnswer) => {
 				const isBankAccountName: boolean = reqAnswer.key.startsWith('bank_account_name')
@@ -451,7 +455,7 @@ export const sendForm = async (
 					id === 'total'
 						? $`Total de tu orden`
 						: id === 'payMethod'
-						? $`Pago en efectivo`
+						? $`Método de Pago`
 						: id === 'shippingMethod'
 						? $`Envío`
 						: id === 'coupon'
@@ -641,6 +645,7 @@ export const sendForm = async (
 							formData.title,
 							formData.components,
 							$,
+							index,
 							+formData.answersConnection.whatsapp
 						)
 						openNewWindow(`https://api.whatsapp.com/send?${whatsappText}`)
@@ -661,7 +666,8 @@ export const sendForm = async (
 							company.name,
 							formData.title,
 							formData.components,
-							$
+							$,
+							index
 						)
 						sendMail(emailAnswers, $`Nueva respuesta`, emails).then(successAlert)
 					}

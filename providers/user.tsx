@@ -40,12 +40,14 @@ const UserProvider: React.FC = (props) => {
 			if (user && user.email) {
 				// LEER DE FIRESTORE
 				getUser(user.email).then((userFrb: User | null) => {
-					setUser({ user: userFrb, isAnonymous: user?.isAnonymous || false })
+					setUser({ user: userFrb, isAnonymous: user?.isAnonymous ?? false })
 					if (!userFrb?.business || !userFrb?.business?.length) {
 						router.push(ROUTES.registry)
+					} else {
+						if (router.asPath === ROUTES.registry) router.push(ROUTES.forms)
 					}
 				})
-			} else setUser({ user: null, isAnonymous: user?.isAnonymous || false })
+			} else setUser({ user: null, isAnonymous: user?.isAnonymous ?? false })
 		}
 
 		// PETICIÓN

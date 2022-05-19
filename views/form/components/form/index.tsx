@@ -138,7 +138,7 @@ const HookForm: React.FC<HookFormProps> = (props: HookFormProps) => {
 					disabled={isSubmitting}
 					className={Styles.submit}
 					startIcon={<ReceiptTwoToneIcon />}>
-					<span>{$`Enviar`}</span>
+					<span>{$`Comprar`}</span>
 				</Button>
 			</form>
 		)
