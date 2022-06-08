@@ -31,6 +31,12 @@ function withAuth<T>(Page: NextPage<T>, props?: WithAuthProps): NextPage<T> {
 		// REDIRECT
 		useEffect(() => {
 			if (user !== undefined) {
+				// REDIRECT
+				if (!props?.tryAnonymous && user?.isAnonymous) {
+					router.replace(ROUTES.login)
+					return
+				}
+
 				if (user === null) {
 					// INICIAR ANONIMO
 					if (props?.tryAnonymous) signingAnonymously()
