@@ -1,17 +1,20 @@
 {
-	"projects": {
-		"default": "facilito-app"
-	},
-	"targets": {
-		"facilito-app": {
-			"hosting": {
-				"release": [
-					"facilito-release"
-				],
-				"develop": [
-					"facilito-dev"
-				]
-			}
-		}
-	}
+  "projects": {
+    "default": "facilito-app"
+  },
+  "targets": {
+    "facilito-app": {
+      "hosting": {
+        "release": [
+          "facilito-release"
+        ],
+        "develop": [
+          "facilito-dev"
+        ],
+        "main": [
+          "facilito-app"
+        ]
+      }
+    }
+  }
 }
