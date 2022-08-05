@@ -79,7 +79,7 @@ export const paymentAlert = (
 			customElements: (
 				<CardForm
 					onChange={saveCardData}
-					amount={(data.total as string)?.replace(badge, '').substr(1)}
+					amount={(data.total as string)?.replace(/^\D+/g, '').substr(1)}
 				/>
 			),
 		})

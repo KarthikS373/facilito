@@ -73,7 +73,7 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 	// PRECIO TOTAL DE ENVIO
 	const shippingPrice: number = props.formData?.checkout?.shippingPrices?.length
 		? shippingPriceSelect
-			? +shippingPriceSelect.replace(badge, '')
+			? +shippingPriceSelect.replace(/^\D+/g, '')
 			: 0
 		: 0
 
@@ -101,11 +101,11 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 
 	// STRING DE TOTAL
 	const totalText = `${badge} ${(
-		subTotalPrice -
-		discountTotal +
-		taxesPrice +
-		cardPrice +
-		shippingPrice
+		(Number.isNaN(subTotalPrice) ? 0 : subTotalPrice) -
+		(Number.isNaN(discountTotal) ? 0 : discountTotal) +
+		(Number.isNaN(taxesPrice) ? 0 : taxesPrice) +
+		(Number.isNaN(cardPrice) ? 0 : cardPrice) +
+		(Number.isNaN(shippingPrice) ? 0 : shippingPrice)
 	).toFixed(2)}`
 
 	// ALERTA DE CUPONES

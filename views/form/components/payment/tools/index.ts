@@ -96,7 +96,7 @@ export const makePaymentWithFormData = async (
 					10
 				)?.toString() || '',
 			Total: parseFloat(
-				data.total ? (data.total as string)?.replace(badge, '').substr(1) : '0'
+				data.total ? (data.total as string)?.replace(/^\D+/g, '').substr(1) : '0'
 			).toFixed(2),
 			fecha_transaccion: `${now.getFullYear()}-${(now.getMonth() + 1)
 				.toString()
