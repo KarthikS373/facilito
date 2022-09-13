@@ -183,6 +183,7 @@ export const imageToDataURL = (url: string): Promise<string> => {
 }
 
 export const defThemeColors = ['#1AA5BB', '#511F73', '042']
+export const hexCodeRegex = /^#[0-9A-F]{6}$/i
 
 /**
  * Separar fondo
@@ -228,10 +229,17 @@ export const getVibrant = (background: string): Promise<string[]> =>
 					.getPalette()
 					.then((palette) => {
 						resolve([
-							palette.Vibrant?.hex ?? '#1AA5BB',
-							palette.Muted?.hex ?? '#511F73',
+							hexCodeRegex.test(palette.Vibrant?.hex ?? '')
+								? palette.Vibrant?.hex ?? '#1AA5BB'
+								: '#1AA5BB',
+
+							hexCodeRegex.test(palette.Muted?.hex ?? '')
+								? palette.Muted?.hex ?? '#511F73'
+								: '#511F73',
 							'042',
-							palette.DarkMuted?.hex ?? '#547BAE',
+							hexCodeRegex.test(palette.DarkMuted?.hex ?? '')
+								? palette.DarkMuted?.hex ?? '#547BAE'
+								: '#547BAE',
 						])
 					})
 					.catch((err) => console.log(err))
@@ -249,7 +257,12 @@ export const getBackgroundColors = (background: string): string[] => {
 		const firstColor: string = background.slice(36, 43)
 		const secondColor: string = background.slice(48, 55)
 		const degrees: string = background.slice(28, 31)
-		return [firstColor, secondColor, degrees]
+
+		return [
+			hexCodeRegex.test(firstColor) ? firstColor : defThemeColors[0],
+			hexCodeRegex.test(secondColor) ? secondColor : defThemeColors[1],
+			degrees,
+		]
 	} else {
 		return defThemeColors
 	}
