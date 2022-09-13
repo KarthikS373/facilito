@@ -168,13 +168,13 @@ export const imageToDataURL = (url: string): Promise<string> => {
 		const canvas = document.createElement('canvas')
 		const ctx = canvas.getContext('2d')
 
-		var base_image = new Image()
-		base_image.src = url
-		base_image.onload = function () {
-			canvas.width = base_image.width
-			canvas.height = base_image.height
+		const baseImage = new Image()
+		baseImage.src = url
+		baseImage.onload = function () {
+			canvas.width = baseImage.width
+			canvas.height = baseImage.height
 			if (ctx) {
-				ctx.drawImage(base_image, 0, 0)
+				ctx.drawImage(baseImage, 0, 0)
 				resolve(canvas.toDataURL('image/png'))
 				canvas.remove()
 			}

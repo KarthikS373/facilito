@@ -60,11 +60,17 @@ const publishFormEvent = (
 
 			// VERIFICAR MÉTODOS DE ENVIÓ
 			if (
-				props.formData.current.answersConnection?.whatsapp.toString().length === 0 ||
-				props.formData.current.answersConnection?.email.length === 0
-			)
-				showSettingsMenu(props)
-			else publishMethod()
+				(props?.formData?.current?.answersConnection?.whatsapp.toString().length ?? 0) === 0 &&
+				(props?.formData?.current?.answersConnection?.email.length ?? 0) === 0
+			) {
+				window.Alert({
+					title: '¡Oops olvidaste algo!',
+					body: 'Para poder publicar tu tienda debes configurar al menos tu correo electrónico para el envió de respuestas.',
+					type: 'confirm',
+					hasNextAlert: true,
+					onConfirm: () => showSettingsMenu(props),
+				})
+			} else publishMethod()
 		}
 
 		// MENSAJE DE ALERTA
