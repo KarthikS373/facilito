@@ -35,4 +35,4 @@ jobs:
         with:
           args: deploy --only hosting,functions:nextServer
         env:
-          FIREBASE_TOKEN: 1//05WUSGkn7gXrrCgYIARAAGAUSNwF-L9IrStaOv0hHhEw3pQRW0WZVqTPHDqIAwqMOADQt3qADHes11EBdGAIkQ8NMlAllEMXz7Uo
+          FIREBASE_TOKEN: 1//05VLdLArHCMV6CgYIARAAGAUSNgF-L9Irp8erVGVYbEtH16oJ_Lc9kjV-avdAVrf_W9swOj0MrekcEK4ecExNz6Txia0gPqU4Ag
