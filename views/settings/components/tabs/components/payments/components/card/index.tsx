@@ -41,7 +41,7 @@ const Card: React.FC<CardProps> = ({ card, onDelete, onSetMain }) => {
 					width={45}
 					height={40}
 					alt={paymentCode}
-					src={`https://www.merchantequip.com/image/?logos=${paymentCode}|m&height=64`}
+					src={`https://www.merchantequip.com/image/?logos=${paymentCode}&height=64`}
 				/>
 
 				<div>

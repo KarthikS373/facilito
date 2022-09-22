@@ -3,7 +3,7 @@ module.exports = {
 	images: {
 		domains: [
 			'localhost',
-			'merchantequip.com',
+			'www.merchantequip.com',
 			'googleusercontent.com',
 			'lh3.googleusercontent.com',
 			'lh5.googleusercontent.com',
