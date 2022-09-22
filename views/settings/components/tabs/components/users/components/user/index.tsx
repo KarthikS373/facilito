@@ -32,9 +32,7 @@ const User: React.FC<UserProps> = ({ user, onSelect }) => {
 	return (
 		<div className={Styles.container}>
 			<div className={Styles.image}>
-				{user.picture && (
-					<Image unoptimized src={user.picture} alt={user.name} height={50} width={50} />
-				)}
+				{user.picture && <Image src={user.picture} alt={user.name} height={50} width={50} />}
 			</div>
 			<div className={Styles.info}>
 				<strong>{user.name}</strong>

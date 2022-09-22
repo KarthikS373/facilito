@@ -36,7 +36,6 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 			<span>
 				{product.picture?.[0] && product.picture[0].length > 0 && (
 					<Image
-						unoptimized
 						src={product.picture ? product.picture[0] || '' : ''}
 						alt={product.title}
 						height={48}

@@ -52,7 +52,7 @@ const searchProducts = (
 					freeSolo
 					id='product-search'
 					options={companyProducts || []}
-					getOptionLabel={(option) => (option ? option.title : '')}
+					getOptionLabel={(option) => (option ? (option as Product).title : '')}
 					onChange={saveProduct}
 					noOptionsText='Sin productos'
 					renderInput={(params) => (

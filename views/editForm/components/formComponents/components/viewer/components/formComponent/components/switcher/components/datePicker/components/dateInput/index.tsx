@@ -34,9 +34,9 @@ const TimeInput: React.FC<PickerProps> = (props) => {
 				ampm
 				mask='__:__ _M'
 				showToolbar={false}
-				onChange={sendDateEv(0)}
 				value={selectedDate[0]}
 				label={$`Desde (hh:mm)`}
+				onChange={sendDateEv(0) as (date: unknown | null) => void}
 				renderInput={(props) => <TextField fullWidth {...props} helperText={undefined} />}
 			/>
 			{props.range && (
@@ -46,9 +46,9 @@ const TimeInput: React.FC<PickerProps> = (props) => {
 					ampm
 					mask='__:__ _M'
 					showToolbar={false}
-					onChange={sendDateEv(1)}
 					value={selectedDate[1]}
 					label={$`Hasta (hh:mm)`}
+					onChange={sendDateEv(1) as (date: unknown | null) => void}
 					renderInput={(props) => (
 						<TextField fullWidth {...props} style={{ marginTop: '15px' }} helperText={undefined} />
 					)}

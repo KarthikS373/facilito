@@ -40,7 +40,7 @@ const Gallery: React.FC<GalleryProps> = (props) => {
 					key={image}
 					onClick={onSelect(index)}
 					style={{ '--primary': theme.palette.primary.main } as React.CSSProperties}>
-					<Image src={image} height={70} width={70} alt={`gallery_${index}`} unoptimized />
+					<Image src={image} height={70} width={70} alt={`gallery_${index}`} />
 				</button>
 			))}
 		</div>

@@ -1,3 +1,5 @@
+import type { Country } from 'react-phone-number-input'
+
 /**
  * Obtener posicion
  */
@@ -63,9 +65,9 @@ export const reverseGeocoding = async (
 
 /**
  * Obtener codigo de pais
- * @returns {Promise<string>}
+ * @returns {Promise<Country>}
  */
-export const getCountryCode = async (): Promise<string> => {
+export const getCountryCode = async (): Promise<Country> => {
 	const ip = await fetch('https://ipapi.co/json/')
 	const json = await ip.json()
 

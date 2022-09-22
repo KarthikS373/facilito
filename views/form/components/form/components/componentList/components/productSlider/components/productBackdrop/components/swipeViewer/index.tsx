@@ -46,13 +46,7 @@ const SwipeViewer: React.FC<SwipeViewerProps> = (props: SwipeViewerProps) => {
 				onChangeIndex={changeIndex}>
 				{imageList.map((pic: string, key: number) => (
 					<div key={`picture_${key}`}>
-						<Image
-							src={pic}
-							width={450}
-							unoptimized
-							height={450}
-							alt={props.alts ? props.alts[key] : ''}
-						/>
+						<Image src={pic} width={450} height={450} alt={props.alts ? props.alts[key] : ''} />
 					</div>
 				))}
 			</SwipeableViews>

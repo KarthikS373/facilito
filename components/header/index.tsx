@@ -59,13 +59,7 @@ const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescr
 				<div className={Styles.businessContainer}>
 					<div className={Styles.businessPic}>
 						{businessCtx.business?.picture ? (
-							<Image
-								unoptimized
-								alt='Business'
-								src={businessCtx.business?.picture}
-								height={150}
-								width={150}
-							/>
+							<Image src={businessCtx.business?.picture} alt='Business' height={150} width={150} />
 						) : (
 							<BusinessCenterTwoToneIcon />
 						)}

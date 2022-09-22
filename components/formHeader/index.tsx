@@ -46,7 +46,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 		<div className={Styles.container}>
 			{props.banner.length ? (
 				<div className={Styles.banner}>
-					<Image unoptimized height={100} width={100} alt='Banner' src={props.banner} />
+					<Image layout='fill' height='100%' width='100%' alt='Banner' src={props.banner} />
 				</div>
 			) : (
 				<div className={Styles.defBanner}>
@@ -62,7 +62,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props: FormHeaderProps) => {
 			<div className={Styles.content}>
 				{company?.picture ? (
 					<div className={Styles.pic}>
-						<Image unoptimized src={company?.picture} alt='Company Pic' height={100} width={100} />
+						<Image src={company?.picture} alt='Company Pic' height={100} width={100} />
 					</div>
 				) : (
 					<Business />

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // REACT
 import React, {
 	RefObject,
@@ -104,6 +105,8 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 				</div>
 
 				{/* ICONO DE MOVER */}
+				{/* 
+				// @ts-ignore */}
 				<div {...props.dragProps} className={Styles.dragZone}>
 					<Tooltip title={$`Mover`} placement='right' arrow>
 						<DragIndicator />
@@ -114,7 +117,7 @@ const FormComponent: React.FC<FormContainerProps> = (props) => {
 				<FormContext.Provider
 					value={{
 						...props,
-						required: required,
+						required,
 						preview: !props.active,
 						onWrite: handleSendComponent,
 						onAddValue: handleSendComponent,

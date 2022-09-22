@@ -1,7 +1,8 @@
 // REACT
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, Suspense } from 'react'
 
 // COMPONENTES
+import ProductListSkeleton from './components/productsList/components/skeleton'
 import SideBar from './components/sidebar'
 import Header from 'components/header'
 import Info from './components/info'
@@ -27,7 +28,7 @@ import BusinessContext from 'context/business'
 import ProductsContext from 'context/products'
 
 import dynamic from 'next/dynamic'
-const ProductsList = dynamic(() => import('./components/productsList'))
+const ProductsList = dynamic(() => import('./components/productsList'), { suspense: true })
 
 const Products: React.FC = () => {
 	// STRINGS
@@ -84,12 +85,14 @@ const Products: React.FC = () => {
 			<Info onOpenSideBar={handleSideBar(true)} />
 
 			{/* LISTA DE PRODUCTOS */}
-			<ProductsList
-				filter={filter}
-				products={products}
-				setFilter={changeFilterEv}
-				setProducts={setProducts}
-			/>
+			<Suspense fallback={<ProductListSkeleton />}>
+				<ProductsList
+					filter={filter}
+					products={products}
+					setFilter={changeFilterEv}
+					setProducts={setProducts}
+				/>
+			</Suspense>
 
 			{/* SIDEBAR DE CATEGORÍAS */}
 			<SideBar open={openSideBar} onClose={handleSideBar(false)} />

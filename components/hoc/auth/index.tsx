@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useContext, useEffect } from 'react'
 
 // CONTEXTO
@@ -47,9 +48,10 @@ function withAuth<T>(Page: NextPage<T>, props?: WithAuthProps): NextPage<T> {
 					})
 				}
 			}
-		}, [user, path])
+		}, [user, path, router])
 
 		// COMPONENTE
+		// @ts-ignore
 		return <Page {...pageProps} />
 	}
 

@@ -72,7 +72,7 @@ const SigningForm: React.FC<FormProps> = ({ onLogin }) => {
 			<div className={Styles.content}>
 				{/* TITULO */}
 				<div className={Styles.title}>
-					<Image unoptimized src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
+					<Image src='/assets/brand/logo.png' alt='Logo' height={70} width={128.85} />
 				</div>
 
 				<form className={Styles.form} onSubmit={handleSubmit}>

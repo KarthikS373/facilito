@@ -49,7 +49,6 @@ const SocialLogin: React.FC = () => {
 				}}>
 				<div className={Styles.googleIcon}>
 					<Image
-						unoptimized
 						className={Styles.googleIcon}
 						src='/assets/icons/google.svg'
 						alt='Google Logo'

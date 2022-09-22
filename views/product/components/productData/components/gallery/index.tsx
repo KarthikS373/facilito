@@ -61,7 +61,7 @@ const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 							<IconButton onClick={removeImageEv(picIndex)} size='small'>
 								<Close />
 							</IconButton>
-							<Image height='200' width='200' unoptimized src={image} alt={`gallery_${picIndex}`} />
+							<Image height='200' width='200' src={image} alt={`gallery_${picIndex}`} />
 						</div>
 					) : (
 						<label key={`image_${picIndex}`} htmlFor={`image_${picIndex}`}>

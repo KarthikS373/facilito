@@ -186,7 +186,7 @@ const CouponEditor: React.FC<CouponEditorProps> = ({ onChange, defCoupon }) => {
 							freeSolo
 							id='product-search'
 							options={companyProducts || []}
-							getOptionLabel={(option) => (option ? option.title : '')}
+							getOptionLabel={(option) => (option ? (option as Product).title : '')}
 							onChange={saveCurrentProduct}
 							noOptionsText='Sin productos'
 							renderInput={(params) => (

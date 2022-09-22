@@ -7,10 +7,7 @@ import { useRouter } from 'next/router'
 
 // COMPONENTES
 import Head from 'components/head'
-
-// VIEWS
-import dynamic from 'next/dynamic'
-const NewFormView = dynamic(() => import('views/editForm'), { ssr: false })
+import NewFormView from 'views/editForm'
 
 const EditForm: NextPage = () => {
 	// ROUTER

@@ -86,7 +86,7 @@ const FormSearch: React.FC<FormSearchProps> = (props: FormSearchProps) => {
 				onChange={openBackdropProduct}
 				noOptionsText={$`Sin productos`}
 				key={`autocomplete_${currentKey}`}
-				getOptionLabel={(product) => (product ? product.title : '')}
+				getOptionLabel={(product) => (product ? (product as Product).title : '')}
 				renderInput={(params) => (
 					// INPUT
 					<TextField

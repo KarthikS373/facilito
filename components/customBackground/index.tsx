@@ -136,13 +136,7 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 						<label htmlFor='formBackground'>
 							{images.background.length &&
 							!images.background.startsWith('transparent linear-gradient') ? (
-								<Image
-									unoptimized
-									src={images.background}
-									width={50}
-									height={50}
-									alt='background'
-								/>
+								<Image src={images.background} width={50} height={50} alt='background' />
 							) : (
 								<ImageOutlined />
 							)}
@@ -181,7 +175,7 @@ const CustomBackground: React.FC<CustomBackgroundProps> = ({
 					<div>
 						<label htmlFor='bannerInp'>
 							{images.banner?.length ? (
-								<Image unoptimized src={images.banner} width={50} height={50} alt='banner' />
+								<Image src={images.banner} width={50} height={50} alt='banner' />
 							) : (
 								<ImageOutlined />
 							)}

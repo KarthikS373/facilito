@@ -7,7 +7,7 @@ import Styles from './style.module.scss'
 import 'react-phone-number-input/style.css'
 
 // COMPONENTES
-import PhoneInput from 'react-phone-number-input'
+import PhoneInput, { Country } from 'react-phone-number-input'
 import CustomPhoneNumber from './components/mui'
 
 // MATERIAL
@@ -26,7 +26,7 @@ interface FlagPhoneInputProps
 
 const FlagPhoneInput: React.FC<FlagPhoneInputProps> = (props: FlagPhoneInputProps) => {
 	// ESTADO
-	const [country, setCountry] = useState<string>('US')
+	const [country, setCountry] = useState<Country>('US')
 
 	// PROPIEDADES DEL TEXT FIELD
 	const tmpProps = { ...props }

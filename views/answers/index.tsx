@@ -1,7 +1,8 @@
 // REACT
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, Suspense } from 'react'
 
 // COMPONENTES
+import AnswersListSkeleton from './components/answersList/components/skeleton'
 import Header from 'components/header'
 import Info from './components/info'
 import View from 'components/view'
@@ -22,7 +23,7 @@ import FormsContext from 'context/forms'
 // NEXT
 import dynamic from 'next/dynamic'
 const DownloadAnswers = dynamic(() => import('./components/download'))
-const AnswersList = dynamic(() => import('./components/answersList'))
+const AnswersList = dynamic(() => import('./components/answersList'), { suspense: true })
 
 // PROPS
 interface AnswersProps {
@@ -65,15 +66,17 @@ const Answers: React.FC<AnswersProps> = ({ formID }) => {
 
 			<Info formID={formID} />
 
-			<AnswersList
-				filter={filter}
-				formID={formID}
-				answers={answers}
-				setFilter={changeFilterEv}
-				updateAnswerState={updateAnswerState}
-				tracking={currentForm?.tracking || []}
-				components={currentForm?.components || []}
-			/>
+			<Suspense fallback={<AnswersListSkeleton />}>
+				<AnswersList
+					filter={filter}
+					formID={formID}
+					answers={answers}
+					setFilter={changeFilterEv}
+					updateAnswerState={updateAnswerState}
+					tracking={currentForm?.tracking || []}
+					components={currentForm?.components || []}
+				/>
+			</Suspense>
 		</View>
 	)
 }

@@ -165,7 +165,6 @@ const ProductSlider: React.FC = () => {
 																	)}
 																	{productId && (
 																		<Image
-																			unoptimized
 																			src={currentProduct?.picture[0] ?? '/images/logo.png'}
 																			alt={currentProduct?.picture[0]}
 																			height={150}

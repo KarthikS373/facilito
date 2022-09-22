@@ -72,8 +72,10 @@ const NewFormView: React.FC<FormViewProps> = ({ id }) => {
 		updateUrl(newUrl, formData, business, saveCurrentForm, formsCtx)
 
 	// ABRIR MENU DE PERSONALIZAR
-	const handleCustomizeMenu = (open: boolean) => () =>
-		saveCurrentForm(false) && setOpenCustomized(open)
+	const handleCustomizeMenu = (open: boolean) => () => {
+		saveCurrentForm(false)
+		setOpenCustomized(open)
+	}
 
 	// COLORES
 	usePaletteColors(setDefColors, formData.current.background)

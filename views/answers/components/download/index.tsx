@@ -7,7 +7,7 @@ import { getExcelExportData } from '../../tools'
 
 // XLSX
 import { ExportSheet } from 'react-xlsx-sheet'
-import XLSX from 'xlsx'
+import * as XLSX from 'xlsx'
 
 // ICON
 import GetAppTwoTone from '@mui/icons-material/GetAppTwoTone'
