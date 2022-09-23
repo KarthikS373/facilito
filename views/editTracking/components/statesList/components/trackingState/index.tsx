@@ -19,7 +19,6 @@ import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone'
 import ChatTwoTone from '@mui/icons-material/ChatTwoTone'
 
 // HOOKS
-import useStyles from './hooks'
 import useStrings from 'hooks/lang'
 
 // TOOLS
@@ -52,9 +51,6 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 
 	// NEGOCIO
 	const businessCtx = useContext(BusinessContext)
-
-	// ESTILOS
-	const classes = useStyles()
 
 	// CERRAR MENU
 	const closeColorMenu = () => setColorMenuAnchor(null)
@@ -97,7 +93,16 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 						variant='outlined'
 						onChange={onChange}
 						value={stepState.name}
-						className={classes.root}
+						sx={{
+							'& label.Mui-focused': {
+								color: 'var(--currentColor)',
+							},
+							'& .MuiOutlinedInput-root': {
+								'&.Mui-focused fieldset': {
+									borderColor: 'var(--currentColor)',
+								},
+							},
+						}}
 						placeholder={$`Una palabra`}
 						InputProps={{
 							startAdornment: (
@@ -121,7 +126,16 @@ const TrackingState: React.FC<TrackingState> = ({ step, formID, index, localTrac
 						variant='outlined'
 						onChange={onChange}
 						label={$`Descripcion`}
-						className={classes.root}
+						sx={{
+							'& label.Mui-focused': {
+								color: 'var(--currentColor)',
+							},
+							'& .MuiOutlinedInput-root': {
+								'&.Mui-focused fieldset': {
+									borderColor: 'var(--currentColor)',
+								},
+							},
+						}}
 						value={stepState.description}
 						placeholder={$`Maximo 250 caracteres`}
 						InputProps={{
