@@ -8,7 +8,7 @@ interface InfoProps {
 	title: string
 	description: string
 	icon: JSX.Element
-	children: React.ReactNode
+	children?: React.ReactNode
 }
 const PageInfo: React.FC<InfoProps> = ({ title, description, icon, children }) => {
 	return (

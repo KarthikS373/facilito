@@ -77,7 +77,7 @@ const Scheduler: React.FC<SchedulerProps> = ({ appointments, viewState }) => {
 			}>
 			<Calendar
 				onView={onView}
-				defaultView='week'
+				defaultView='month'
 				endAccessor='end'
 				culture={langCode}
 				view={newViewState}

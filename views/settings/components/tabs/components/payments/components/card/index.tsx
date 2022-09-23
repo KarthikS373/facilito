@@ -41,7 +41,8 @@ const Card: React.FC<CardProps> = ({ card, onDelete, onSetMain }) => {
 					width={45}
 					height={40}
 					alt={paymentCode}
-					src={`https://www.merchantequip.com/image/?logos=${paymentCode}&height=64`}
+					style={{ backgroundColor: theme.palette.background.paper }}
+					src={`https://checkoutshopper-live.adyen.com/checkoutshopper/images/logos/${paymentCode}.svg`}
 				/>
 
 				<div>

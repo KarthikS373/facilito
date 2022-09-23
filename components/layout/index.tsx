@@ -8,7 +8,7 @@ import Styles from './style.module.scss'
 import { useRouter } from 'next/router'
 
 // UTILS
-import evaluateTopbarPath, { evaluateFooterPath } from './tools'
+import evaluateToShowTopbar, { evaluateToHideFooter } from './tools'
 
 // RUTAS
 import ROUTES from 'router/routes'
@@ -37,8 +37,8 @@ const Layout: React.FC<{
 	const path: string = router.asPath
 
 	// MOSTRAR TOPBAR
-	const showTopbar = evaluateTopbarPath(path)
-	const showFooter = evaluateFooterPath(path)
+	const minimizeFooter = evaluateToHideFooter(path)
+	const showTopbar = evaluateToShowTopbar(path)
 
 	// PUBLIC PATH
 	const isPublic = /\/e\/(.+)/.test(path) && path !== ROUTES.edit
@@ -68,7 +68,7 @@ const Layout: React.FC<{
 				{props.children}
 				<Footer
 					hideFooter={!showTopbar}
-					minimize={showFooter}
+					minimize={minimizeFooter}
 					radius={isPublic ? '0 0 var(--radius) var(--radius)' : undefined}
 				/>
 			</main>

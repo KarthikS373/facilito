@@ -30,7 +30,7 @@ const Calendar: React.FC = () => {
 	const businessCtx = useContext(BusinessContext)
 
 	// ESTADO
-	const [viewState, setViewState] = useState<CalendarView>('week')
+	const [viewState, setViewState] = useState<CalendarView>('month')
 	const [appointments, setAppointments] = useState<CustomAppointment[]>([])
 
 	// CAMBIAR VISTA

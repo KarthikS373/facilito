@@ -15,6 +15,7 @@ import Link from 'components/link'
 
 // ICONS
 import ShareLocationTwoToneIcon from '@mui/icons-material/ShareLocationTwoTone'
+import Inventory2TwoToneIcon from '@mui/icons-material/Inventory2TwoTone'
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone'
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
@@ -88,6 +89,22 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 								}}
 								startIcon={<ShoppingCartTwoTone />}>
 								{expanded ? $`Crear productos` : undefined}
+							</ColorButton>
+						</Link>
+					</li>
+					<li>
+						<Link rKey='stock' passHref>
+							<ColorButton
+								fullWidth
+								onClick={onClose}
+								variant='outlined'
+								className={!expanded ? Styles.collapseLink : ''}
+								$style={{
+									borderColor: getActiveRoute(path, 'inventario') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'inventario') ? 'var(--primary)' : undefined,
+								}}
+								startIcon={<Inventory2TwoToneIcon />}>
+								{expanded ? $`Historial de inventario` : undefined}
 							</ColorButton>
 						</Link>
 					</li>

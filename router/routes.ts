@@ -14,6 +14,7 @@ export interface RoutesProps {
 	products: string
 	editProduct: string
 	newProduct: string
+	stock: string
 
 	admission: string
 
@@ -44,6 +45,7 @@ const ROUTES: RoutesProps = {
 	products: '/productos',
 	editProduct: '/p/:productID/editar',
 	newProduct: '/p/crear',
+	stock: '/inventario',
 
 	// CALENDARIO
 	calendar: '/calendario',

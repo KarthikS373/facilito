@@ -4,7 +4,7 @@ module.exports = {
 		unoptimized: true,
 		domains: [
 			'localhost',
-			'www.merchantequip.com',
+			'checkoutshopper-live.adyen.com',
 			'googleusercontent.com',
 			'lh3.googleusercontent.com',
 			'lh5.googleusercontent.com',
