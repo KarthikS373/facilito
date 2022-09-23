@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // PICKERS
-import { TimePickerProps } from '@mui/lab/TimePicker'
+import { TimePickerProps } from '@mui/x-date-pickers/TimePicker'
 
 /**
  * Esta clase describe las propiedades del selector.
@@ -9,7 +9,7 @@ import { TimePickerProps } from '@mui/lab/TimePicker'
  */
 export interface PickerProps
 	extends Omit<
-		TimePickerProps<unknown> & React.RefAttributes<HTMLDivElement>,
+		TimePickerProps<unknown, unknown> & React.RefAttributes<HTMLDivElement>,
 		'value' | 'onChange' | 'renderInput'
 	> {
 	[index: string]: unknown

@@ -8,16 +8,17 @@ import useStrings from 'hooks/lang'
 import Styles from './style.module.scss'
 
 // MATERIAL UI PICKERS
-import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker'
-import { RangeInput } from '@mui/lab/DateRangePicker/RangeTypes'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import DateFnsAdapter from '@mui/lab/AdapterDateFns'
-import DatePicker from '@mui/lab/DatePicker'
+import { DateRangePicker, DateRange } from '@mui/x-date-pickers-pro/DateRangePicker'
+
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+
 import enLocale from 'date-fns/locale/en-US'
 import esLocale from 'date-fns/locale/es'
 
 // TOOLS
-import { onChangePicker, onChangeInterval, disableDates } from './tools'
+import { onChangePicker, onChangeInterval, disableDates, hideLicense } from './tools'
 import { useComponentRegister } from '../../hooks'
 
 // COMPONENTES
@@ -52,21 +53,18 @@ const MUIDatePicker: React.FC = () => {
 	const timePickerComponent = (date: DateRange<Date> | Date | null) =>
 		timePicker(props, date, $`Seleccionar horarios`)
 
+	const openRangePicker = () => hideLicense()
+
 	return (
 		<LocalizationProvider
-			dateAdapter={DateFnsAdapter}
-			locale={langCode === 'es' ? esLocale : enLocale}>
+			dateAdapter={AdapterDateFns}
+			adapterLocale={langCode === 'es' ? esLocale : enLocale}>
 			{!props.switch_1 ? (
 				<DatePicker
 					disablePast
-					showTodayButton
-					todayText={$`Hoy`}
 					showToolbar={false}
 					onChange={onChange}
-					okText={$`Aceptar`}
-					cancelText={$`Cancelar`}
 					value={currentDate[0]}
-					allowSameDateSelection
 					showDaysOutsideCurrentMonth
 					className={Styles.datepicker}
 					onAccept={timePickerComponent}
@@ -79,18 +77,14 @@ const MUIDatePicker: React.FC = () => {
 					<label className={Styles.label}>{props.label + (props.required ? '*' : '')}</label>
 					<DateRangePicker
 						disablePast
-						showTodayButton
-						todayText={$`Hoy`}
 						showToolbar={false}
-						okText={$`Aceptar`}
-						allowSameDateSelection
-						cancelText={$`Cancelar`}
+						onOpen={openRangePicker}
 						showDaysOutsideCurrentMonth
 						className={Styles.datepicker}
 						onChange={onChangeIntervalEv}
 						onAccept={timePickerComponent}
 						shouldDisableDate={disableDatesEv}
-						value={currentDate as RangeInput<Date>}
+						value={currentDate as DateRange<Date>}
 						renderInput={dateInput(false, $, props)}
 					/>
 				</>

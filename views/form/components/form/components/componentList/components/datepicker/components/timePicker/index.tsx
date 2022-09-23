@@ -3,7 +3,7 @@ import React from 'react'
 
 // MATERIAL
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { DateRange } from '@mui/lab/DateRangePicker'
+import { DateRange } from '@mui/x-date-pickers-pro/DateRangePicker'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'

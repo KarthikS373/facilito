@@ -5,8 +5,7 @@ import React from 'react'
 import Styles from './style.module.scss'
 
 // MATERIAL
-import type { MuiTextFieldProps } from '@mui/lab/internal/pickers/PureDateInput'
-import TextField from '@mui/material/TextField'
+import TextField, { TextFieldProps } from '@mui/material/TextField'
 
 // TOOLS
 import { hourToString } from 'utils/tools'
@@ -16,7 +15,7 @@ import { FormContextProps } from '../../../../context'
 const dateInput =
 	(range: boolean, $: TemplateStrBuilder, props: FormContextProps) =>
 	// eslint-disable-next-line react/display-name
-	(startProps: MuiTextFieldProps, endProps?: MuiTextFieldProps): React.ReactElement =>
+	(startProps: TextFieldProps, endProps?: TextFieldProps): React.ReactElement =>
 		range ? (
 			<TextField
 				{...startProps}

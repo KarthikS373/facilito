@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 
 // PICKERS
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import TextField from '@mui/material/TextField'
-import TimePicker from '@mui/lab/TimePicker'
 
 // INTERFACE
 import getPickerProps, { PickerProps, sendDate } from './tools'
@@ -27,8 +27,6 @@ const TimeInput: React.FC<PickerProps> = (props) => {
 
 	return (
 		<>
-			{/* 
-    // @ts-ignore */}
 			<TimePicker
 				{...customProps}
 				ampm
@@ -40,7 +38,6 @@ const TimeInput: React.FC<PickerProps> = (props) => {
 				renderInput={(props) => <TextField fullWidth {...props} helperText={undefined} />}
 			/>
 			{props.range && (
-				// @ts-ignore
 				<TimePicker
 					{...customProps}
 					ampm

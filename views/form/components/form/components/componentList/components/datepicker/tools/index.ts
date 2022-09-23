@@ -1,5 +1,5 @@
 // TIPOS
-import type { DateRange } from '@mui/lab/DateRangePicker'
+import { DateRange } from '@mui/x-date-pickers-pro/DateRangePicker'
 
 /**
  * Cambiar fechas
@@ -56,4 +56,18 @@ export const onChangeInterval = (
 export const disableDates = (day: Date | null, daysOfWeek: boolean[] | undefined): boolean => {
 	if (day && daysOfWeek) return !daysOfWeek[day.getDay()]
 	else return true
+}
+
+export const hideLicense = (): void => {
+	setTimeout(() => {
+		const xpath = "//div[text()='MUI X: Missing license key']"
+		const matchingElement = document.evaluate(
+			xpath,
+			document,
+			null,
+			XPathResult.FIRST_ORDERED_NODE_TYPE,
+			null
+		).singleNodeValue as HTMLDivElement
+		matchingElement.style.display = 'none'
+	}, 10)
 }

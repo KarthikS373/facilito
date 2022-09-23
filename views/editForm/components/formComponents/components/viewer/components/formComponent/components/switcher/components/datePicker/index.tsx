@@ -34,8 +34,8 @@ import getDaysStr, {
 } from './tools'
 
 // MATERIAL UI PICKERS
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import DateFnsAdapter from '@mui/lab/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import esLocale from 'date-fns/locale/es'
 
 const DatePicker: React.FC = () => {
@@ -147,7 +147,7 @@ const DatePicker: React.FC = () => {
 						</FormControl>
 						<div className={Styles.gridInputs}>
 							<h3>{$`Selecciona las horas disponibles:`}</h3>
-							<LocalizationProvider dateAdapter={DateFnsAdapter} locale={esLocale}>
+							<LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={esLocale}>
 								<TimeInput
 									minutesStep={0}
 									fullWidth
