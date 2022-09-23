@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 // SWIPE
-import SwipeableViews from 'react-swipeable-views'
+import SwipeableViews from 'react-swipeable-views-react-18-fix'
 
 // MATERIAL
 import IconButton from '@mui/material/IconButton'

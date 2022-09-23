@@ -8,3 +8,8 @@ interface Window {
 
 type BaseEvent = { target: { name: string; value: string } }
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
+
+declare module 'react-swipeable-views-react-18-fix' {
+	import m from '@types/react-swipeable-views'
+	export default m
+}
