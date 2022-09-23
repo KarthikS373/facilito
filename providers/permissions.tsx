@@ -28,7 +28,9 @@ const lockFunction = (
 		}
 }
 
-const PermissionsProvider: React.FC = (props) => {
+const PermissionsProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// HISTORY
 	const router = useRouter()
 

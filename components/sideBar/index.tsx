@@ -8,6 +8,7 @@ interface SideBarProps {
 	open: boolean
 	width?: number
 	onClose: () => unknown
+	children: React.ReactNode
 }
 const SideBar: React.FC<SideBarProps> = ({ open, width, onClose, children }) => {
 	return (

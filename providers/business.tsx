@@ -12,7 +12,9 @@ import useBusiness from 'hooks/business'
 // UTILS
 import { replaceBusiness } from 'utils/business'
 
-const BusinessProvider: React.FC = (props) => {
+const BusinessProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// ESTADO
 	const [business, setBusiness] = useState<Business | null>(null)
 

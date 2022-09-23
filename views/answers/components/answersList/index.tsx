@@ -93,7 +93,7 @@ const AnswersList: React.FC<AnswersListProps> = ({
 	}
 
 	const row = useCallback(
-		({ index, style }) => {
+		({ index, style }: { index: number; style: React.CSSProperties }) => {
 			const newIndex: number = index - 1
 			const answer: FormAnswerSelf = answers[newIndex]
 			return newIndex === -1 ? (

@@ -11,7 +11,9 @@ import useProducts from 'hooks/products'
 // UTILS
 import { replaceProducts } from 'utils/products'
 
-const ProductsProvider: React.FC = (props) => {
+const ProductsProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// ESTADO
 	const [products, setLocalProducts] = useState<Record<string, Product>>({})
 

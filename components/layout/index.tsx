@@ -23,7 +23,9 @@ import { useTheme } from '@mui/material/styles'
 import dynamic from 'next/dynamic'
 const Topbar = dynamic(() => import('./components/topbar'))
 
-const Layout: React.FC = (props) => {
+const Layout: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// ESTADO
 	const [expanded, setExpanded] = useState<boolean>(true)
 

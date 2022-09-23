@@ -13,6 +13,7 @@ interface PortrayContextProps {
 		mainLang?: string
 		langs?: string[]
 	}
+	children: React.ReactNode
 }
 
 const PortrayProvider: React.FC<PortrayContextProps> = (props) => {

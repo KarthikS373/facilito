@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper'
 
 interface PopperMenuProps extends PopperProps {
 	onClose: EmptyFunction
+	children: React.ReactNode
 }
 const PopperMenuList: React.FC<PopperMenuProps> = (props) => {
 	const handleClose = (event: Event | React.SyntheticEvent) => {

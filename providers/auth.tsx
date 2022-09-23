@@ -8,7 +8,9 @@ import type { User, Unsubscribe } from '@firebase/auth'
 import AuthContext from 'context/auth'
 import { getAuth } from 'utils/auth'
 
-const AuthProvider: React.FC = ({ children }) => {
+const AuthProvider: React.FC<{
+	children: React.ReactNode
+}> = ({ children }) => {
 	// ESTADO DE CONTEXTO
 	const [user, setUser] = useState<User | null | undefined>()
 

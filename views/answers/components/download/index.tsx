@@ -31,6 +31,7 @@ const DownloadAnswers: React.FC<DownloadAnswersProps> = ({ answers, currentForm 
 	const getExcelDataset = () => getExcelExportData(answers, currentForm?.components || [], $)
 
 	return (
+		// @ts-ignore
 		<ExportSheet
 			// @ts-ignore
 			xlsx={XLSX}

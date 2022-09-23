@@ -12,7 +12,9 @@ import useBusinessTheme from './hooks'
 // CONTEXT
 import BusinessContext from 'context/business'
 
-const MuiThemeProvider: React.FC = (props) => {
+const MuiThemeProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 

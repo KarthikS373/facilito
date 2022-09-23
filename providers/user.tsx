@@ -24,7 +24,9 @@ const defState: ProviderState = {
 	isAnonymous: false,
 }
 
-const UserProvider: React.FC = (props) => {
+const UserProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// ESTADO
 	const [userData, setUser] = useState<ProviderState>({ ...defState })
 
@@ -52,7 +54,7 @@ const UserProvider: React.FC = (props) => {
 
 		// PETICIÓN
 		getUserData()
-	}, [user])
+	}, [user, router])
 
 	return (
 		<UserContext.Provider value={{ ...userData, setUser }}>{props.children}</UserContext.Provider>

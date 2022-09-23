@@ -14,6 +14,7 @@ import BusinessContext from 'context/business'
 interface RouterLinkProps extends Omit<LinkProps, 'href'> {
 	id?: string
 	rKey: keyof RoutesProps
+	children: React.ReactNode
 }
 const RouterLink: React.FC<RouterLinkProps> = (props) => {
 	// NEGOCIO

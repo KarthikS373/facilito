@@ -8,6 +8,7 @@ import Styles from './style.module.scss'
 interface TabInfoProps {
 	title: string
 	body: string
+	children?: React.ReactNode
 }
 const TabInfo: React.FC<TabInfoProps> = ({ title, body, children }) => {
 	return (

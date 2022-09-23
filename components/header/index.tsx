@@ -32,6 +32,7 @@ import FormsContext from 'context/forms'
 interface HeaderProps {
 	customDescription?: string
 	customBackground?: string
+	children?: React.ReactNode
 }
 
 const Header: React.FC<HeaderProps> = ({ children, customBackground, customDescription }) => {

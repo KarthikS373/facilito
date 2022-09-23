@@ -8,7 +8,9 @@ import FormsContext from 'context/forms'
 // HOOKS
 import useForms from 'hooks/forms'
 
-const FormsProvider: React.FC = (props) => {
+const FormsProvider: React.FC<{
+	children: React.ReactNode
+}> = (props) => {
 	// ESTADO
 	const [forms, setForms] = useState<FormInterface>({
 		answers: [],
