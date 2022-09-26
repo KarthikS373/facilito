@@ -45,6 +45,7 @@ const handleChecks = (
 		// AGREGAR
 		if (checked) methods[MethodValue[key]] = key
 		else methods = methods.filter((name) => name !== key && name !== undefined)
+		methods = methods.filter(Boolean)
 
 		return { ...formData, methods }
 	})
@@ -114,11 +115,7 @@ export const validateFclt = (
  * @param ev
  * @param setFormData
  */
-export const handleInputs = <T extends unknown>(
-	ev: T,
-	field: string,
-	setFormData: SetState<SendData>
-): void => {
+export const handleInputs = <T>(ev: T, field: string, setFormData: SetState<SendData>): void => {
 	// GLOBAL
 	let value: string | number = ''
 	if (field === 'whatsapp') value = ev as string
