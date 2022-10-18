@@ -29,6 +29,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
+				fullWidth
 				title={$`Configuracion y comportamiento`}
 				body={$`Muestra este producto como destacado, activa su precio promocional y deshabilitar.`}
 			/>
@@ -69,9 +70,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				/>
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
-					<p>
-						{$`Los productos destacados se mostrarán automáticamente si añades un campo de destacado.`}
-					</p>
+					<p>{$`Los productos destacados se mostrarán si añades un campo de destacado.`}</p>
 				</div>
 			</div>
 
@@ -91,7 +90,7 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				/>
 				<div className={Styles.rowInfo}>
 					<InfoTwoTone />
-					<p>{$`Los productos marcados como inactivos no se mostraran en ninguna tienda en donde se haya agregado.`}</p>
+					<p>{$`Los productos marcados como inactivos no se mostraran en ninguna tienda.`}</p>
 				</div>
 			</div>
 		</div>

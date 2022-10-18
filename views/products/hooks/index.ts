@@ -5,11 +5,15 @@ import { useEffect } from 'react'
 import filterProducts from '../tools'
 
 /**
- * Hook de filtros
- * @param  {SetState<Product[]>} setProducts
- * @param  {string} filter
- * @param  {string} changesTrigger
- * @param  {products: {Record<string, Product>} products
+ * "Cuando cambie el filtro, filtre los productos".
+ *
+ * Lo primero que hacemos es verificar si la matriz de productos está vacía. Si es así, lo establecemos
+ * en los valores del objeto de productos. Esto se debe a que la matriz de productos está vacía cuando
+ * la página se carga por primera vez.
+ * @param setProducts - SetState<Product[]>: esta es la función de establecimiento para el estado de
+ * los productos.
+ * @param {string} filter - cadena: la cadena de filtro que estamos usando para filtrar los productos
+ * @param products - Registro<cadena, Producto>
  */
 export const useFilters = (
 	setProducts: SetState<Product[]>,

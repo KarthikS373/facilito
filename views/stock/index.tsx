@@ -1,17 +1,17 @@
 // REACT
-import React, { useContext, useState, Suspense } from 'react'
+import React, { useContext, Suspense, useState } from 'react'
 
 // COMPONENTES
-import ProductListSkeleton from '../products/components/productsList/components/skeleton'
+import StockListItemSkeleton from './components/stockList/components/skeleton'
 import Header from 'components/header'
+import Info from './components/info'
 import View from 'components/view'
-import Info from './info'
 
 // MATERIAL
 import ColorButton from 'components/button'
 
 // ICONS
-import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
+import FileDownloadTwoToneIcon from '@mui/icons-material/FileDownloadTwoTone'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -20,7 +20,10 @@ import useStrings from 'hooks/lang'
 import BusinessContext from 'context/business'
 
 import dynamic from 'next/dynamic'
-const ProductsList = dynamic(() => import('../products/components/productsList'), {
+import useDefaultFilter from 'hooks/filters'
+import { changeFilter } from 'utils/tools'
+
+const StockList = dynamic(() => import('./components/stockList'), {
 	suspense: true,
 })
 
@@ -28,11 +31,17 @@ const Stock: React.FC = () => {
 	// STRINGS
 	const { $ } = useStrings()
 
+	// FILTRO
+	const [filter, setFilter] = useState<string>('naz')
+
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
-	// LISTA DE PRODUCTOS
-	const [products, setProducts] = useState<Product[]>([])
+	// ASIGNAR FILTRO
+	const changeFilterEv = (newFilter: string) => changeFilter('stock-filter', newFilter, setFilter)
+
+	// HOOK DE FILTROS STORAGE
+	useDefaultFilter('stock-filter', 'naz', setFilter)
 
 	return (
 		<View>
@@ -44,7 +53,7 @@ const Stock: React.FC = () => {
 				<ColorButton
 					color='primary'
 					variant='contained'
-					startIcon={<ShoppingCartTwoTone />}
+					startIcon={<FileDownloadTwoToneIcon />}
 					$style={{
 						background: 'var(--primary)',
 						color: '#fff',
@@ -55,13 +64,8 @@ const Stock: React.FC = () => {
 			<Info />
 
 			{/* LISTA DE INVENTARIO */}
-			<Suspense fallback={<ProductListSkeleton />}>
-				<ProductsList
-					filter={'naz'}
-					products={products}
-					setFilter={() => null}
-					setProducts={setProducts}
-				/>
+			<Suspense fallback={<StockListItemSkeleton />}>
+				<StockList filter={filter} setFilter={changeFilterEv} />
 			</Suspense>
 		</View>
 	)

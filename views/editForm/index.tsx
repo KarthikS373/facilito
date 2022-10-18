@@ -11,6 +11,8 @@ import dynamic from 'next/dynamic'
 
 // HOOKS
 import usePaletteColors from 'hooks/theme'
+import { useRouter } from 'next/router'
+import useBlockAlert from './hooks'
 
 // MATERIAL
 import { ThemeProvider } from '@mui/material/styles'
@@ -44,6 +46,9 @@ const NewFormView: React.FC<FormViewProps> = ({ id }) => {
 
 	// FORMULARIOS
 	const formsCtx = useContext(FormsContext)
+
+	// ROUTER
+	const router = useRouter()
 
 	// FORMULARIP ACTUAL
 	const currentForm = getForm(id, formsCtx.forms.forms)
@@ -80,11 +85,15 @@ const NewFormView: React.FC<FormViewProps> = ({ id }) => {
 	// COLORES
 	usePaletteColors(setDefColors, formData.current.background)
 
+	// PANTALLA DE BLOQUEO
+	useBlockAlert(router)
+
 	return (
 		<>
 			<div>
 				<ThemeProvider theme={generateTheme(defColors)}>
 					<AlertProvider />
+
 					<div
 						className={Styles.container}
 						style={

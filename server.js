@@ -16,7 +16,7 @@ const nextjsServer = next({
 const nextjsHandle = nextjsServer.getRequestHandler()
 
 // CLOUD FUNC
-exports.nextServer = https.onRequest(async (req, res) => {
+exports.nextReleaseServer = https.onRequest(async (req, res) => {
 	return nextjsServer
 		.prepare()
 		.then(() => nextjsHandle(req, res))

@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton'
 import Paper from '@mui/material/Paper'
 
 // COMPONENTES
+import Settings from '../tabs/components/settings'
 import ColorButton from 'components/button'
 import Image from 'next/image'
 
@@ -92,6 +93,7 @@ const Gallery: React.FC<GalleryProps> = ({ productRef, imagesRef }) => {
 					)
 				)}
 			</div>
+			<Settings show productRef={productRef} />
 		</Paper>
 	)
 }

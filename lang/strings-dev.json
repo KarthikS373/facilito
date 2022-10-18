@@ -3,6 +3,54 @@
 		"en": "",
 		"es": "$"
 	},
+	"los_productos_destacados_se_mostraran_si_anades_un_campo_de_destacado": {
+		"en": "",
+		"es": "$"
+	},
+	"los_productos_marcados_como_inactivos_no_se_mostraran_en_ninguna_tienda": {
+		"en": "",
+		"es": "$"
+	},
+	"atributos": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_productos": {
+		"en": "",
+		"es": "$"
+	},
+	"cliente": {
+		"en": "",
+		"es": "$"
+	},
+	"salida": {
+		"en": "",
+		"es": "$"
+	},
+	"entrada": {
+		"en": "",
+		"es": "$"
+	},
+	"en_esta_seccion_podras_ver_el_historial_de_inventarios": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_funcion_no_esta_disponible_en_dispositivos_moviles_deseas_regresar_a_la_pantalla_de_inicio": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_funcion_no_esta_disponible_en_dispositivos_moviles_prueba_esta_pagina_en_un_ordenador": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_funcion_no_esta_disponible_en_dispositivos_moviles_prueba_en_un_ordenador_o_acerca_la_pantalla": {
+		"en": "",
+		"es": "$"
+	},
+	"esta_funcion_no_esta_disponible_en_dispositivos_moviles": {
+		"en": "",
+		"es": "$"
+	},
 	"en_esta_seccion_podras_ver_el_historial_de_inventarios_de_tu_negocio": {
 		"en": "",
 		"es": "$"

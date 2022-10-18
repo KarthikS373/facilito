@@ -1,0 +1,10 @@
+.container {
+	.listContainer {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.listContainer::-webkit-scrollbar {
+		display: none;
+	}
+}

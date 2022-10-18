@@ -11,12 +11,11 @@ import Tab from '@mui/material/Tab'
 
 // ICONS
 import ExtensionTwoToneIcon from '@mui/icons-material/ExtensionTwoTone'
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone'
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
 
 // COMPONENTES
-import Settings from './components/settings'
 import General from './components/general'
 import Extras from './components/extras'
 import Stock from './components/stock'
@@ -68,14 +67,13 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ productRef }) => {
 					/>
 					<Tab
 						className={Styles.tab}
-						icon={<SettingsTwoToneIcon />}
-						label={width <= 730 ? undefined : $`Opciones`}
+						icon={<CategoryTwoToneIcon />}
+						label={width <= 730 ? undefined : $`Atributos`}
 					/>
 				</Tabs>
 				<General show={tabIndex === 0} productRef={productRef} />
 				<Stock show={tabIndex === 1} productRef={productRef} />
 				<Extras show={tabIndex === 2} productRef={productRef} />
-				<Settings show={tabIndex === 3} productRef={productRef} />
 			</Paper>
 		</div>
 	)
