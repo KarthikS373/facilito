@@ -9,8 +9,8 @@ import Link from 'components/link'
 import Button from '@mui/material/Button'
 
 // ICONOS
-import InventoryTwoToneIcon from '@mui/icons-material/InventoryTwoTone'
-import AssignmentTwoTone from '@mui/icons-material/AssignmentTwoTone'
+import ReceiptLongTwoToneIcon from '@mui/icons-material/ReceiptLongTwoTone'
+import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
 
 // STRINGS
 import useStrings from 'hooks/lang'
@@ -21,12 +21,12 @@ const Info: React.FC = () => {
 
 	return (
 		<PageInfo
-			icon={<InventoryTwoToneIcon />}
+			icon={<ReceiptLongTwoToneIcon />}
 			title={$`Lista de clientes`}
 			description={$`Base de clientes registrados a traves de las tiendas.`}>
-			<Link rKey='answers'>
-				<Button fullWidth variant='outlined' startIcon={<AssignmentTwoTone />}>
-					{$`Ver respuestas`}
+			<Link rKey='forms'>
+				<Button fullWidth variant='outlined' startIcon={<StorefrontTwoToneIcon />}>
+					{$`Ver tiendas`}
 				</Button>
 			</Link>
 		</PageInfo>
