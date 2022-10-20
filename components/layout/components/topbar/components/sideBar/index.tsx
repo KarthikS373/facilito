@@ -19,6 +19,7 @@ import Inventory2TwoToneIcon from '@mui/icons-material/Inventory2TwoTone'
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 import ArrowForwardTwoTone from '@mui/icons-material/ArrowForwardTwoTone'
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
+import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone'
 import ArrowBackTwoTone from '@mui/icons-material/ArrowBackTwoTone'
 import TodayTwoTone from '@mui/icons-material/TodayTwoTone'
 
@@ -105,6 +106,22 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 								}}
 								startIcon={<Inventory2TwoToneIcon />}>
 								{expanded ? $`Historial de inventario` : undefined}
+							</ColorButton>
+						</Link>
+					</li>
+					<li>
+						<Link rKey='customers' passHref>
+							<ColorButton
+								fullWidth
+								onClick={onClose}
+								variant='outlined'
+								className={!expanded ? Styles.collapseLink : ''}
+								$style={{
+									borderColor: getActiveRoute(path, 'clientes') ? 'var(--primary)' : undefined,
+									color: getActiveRoute(path, 'clientes') ? 'var(--primary)' : undefined,
+								}}
+								startIcon={<PeopleAltTwoToneIcon />}>
+								{expanded ? $`Clientes` : undefined}
 							</ColorButton>
 						</Link>
 					</li>

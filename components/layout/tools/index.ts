@@ -11,6 +11,7 @@ const evaluateToShowTopbar = (path: string): boolean => {
 	else if (/\/f\/.+\/.+$/.test(path)) return false
 	else if (path === '/tiendas') return true
 	else if (/\/f\/(.+)$/.test(path)) return false
+	else if (path === '/clientes') return true
 	// TRACKING
 	else if (path === '/tracking') return true
 	else if (/\/t\/(.+)\/editar/.test(path)) return true

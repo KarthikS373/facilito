@@ -29,10 +29,29 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
-				fullWidth
 				title={$`Configuracion y comportamiento`}
 				body={$`Muestra este producto como destacado, activa su precio promocional y deshabilitar.`}
 			/>
+
+			<div className={Styles.row}>
+				<FormControlLabel
+					control={
+						<Switch
+							name='featured'
+							color='primary'
+							onChange={handleSwitch}
+							defaultChecked={productRef.current.featured}
+						/>
+					}
+					label={$`Configurar como producto variable`}
+				/>
+				<div className={Styles.rowInfo}>
+					<InfoTwoTone />
+					<p>{$`Este producto puede variar en precio y cada variación tiene un stock independiente.`}</p>
+				</div>
+			</div>
+
+			<hr />
 
 			<div className={Styles.row}>
 				<FormControlLabel

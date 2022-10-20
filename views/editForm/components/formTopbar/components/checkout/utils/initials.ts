@@ -1,4 +1,4 @@
-const defaultSettings = {
+const defaultSettings: FormCheckout = {
 	allowSelectCategory: false,
 	showcaseMode: false,
 	showSearch: false,
@@ -8,5 +8,6 @@ const defaultSettings = {
 	cardPercentage: 0,
 	taxesNotIncluded: false,
 	noEmptyCart: true,
+	registerCustomers: false,
 }
 export default defaultSettings

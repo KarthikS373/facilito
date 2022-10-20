@@ -15,7 +15,7 @@ import NaturalDragAnimation from 'components/naturalDnd'
 // PROPIEDADES
 interface ComponentsViewerProps {
 	onChange: (index: number, component: keyof BlockComponent, val: FormInputValue) => unknown
-	onChangePersonalOptions: (options: FormPersonalData) => unknown
+	onChangePersonalOptions?: (key: keyof FormPersonalData, checked: boolean) => unknown
 	onDelete: (index: number) => unknown
 	onCopy: (index: number) => unknown
 	personalOptions: FormPersonalData

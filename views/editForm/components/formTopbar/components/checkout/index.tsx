@@ -41,7 +41,7 @@ const showCheckoutAlert = (
 		(checkoutSettings.shippingPrices = shippingsList)
 
 	// GUARDAR CHECKS
-	const handleCheckoutSettings = (name: string) => (_ev: unknown, checked: boolean) =>
+	const handleCheckoutSettings = (name: keyof FormCheckout) => (_ev: unknown, checked: boolean) =>
 		(checkoutSettings[name] = checked)
 
 	// GUARDAR INPUTS
@@ -66,7 +66,19 @@ const showCheckoutAlert = (
 		body: 'Configura el todo comportamiento del carrito, el checkout (resumen de compra) y productos dentro de la tienda.',
 		type: 'confirm',
 		maxWidth: 520,
+		resetOnHide: true,
 		onConfirm: () => {
+			if (checkoutSettings.registerCustomers)
+				updateFormProp(
+					'includePersonalData',
+					{
+						...formData.current.includePersonalData,
+						email: true,
+					},
+					formsCtx,
+					formData
+				)
+
 			updateFormProp('checkout', checkoutSettings, formsCtx, formData)
 			onSave(false)
 		},
@@ -176,6 +188,16 @@ const showCheckoutAlert = (
 								/>
 							}
 							label={$`Mostrar buscador`}
+						/>
+
+						<FormControlLabel
+							control={
+								<Checkbox
+									onChange={handleCheckoutSettings('registerCustomers')}
+									defaultChecked={checkoutSettings.registerCustomers}
+								/>
+							}
+							label={$`Registrar clientes`}
 						/>
 
 						<FormControlLabel

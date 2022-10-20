@@ -6,6 +6,7 @@ export interface RoutesProps {
 	newForm: string
 	answers: string
 	form: string
+	customers: string
 
 	company: string
 	guest: string
@@ -35,6 +36,7 @@ const ROUTES: RoutesProps = {
 	newForm: '/f/:formID',
 	answers: '/f/:formID/respuestas',
 	form: '/f/:companyURL/:formURL',
+	customers: '/clientes',
 
 	// EMPRESA
 	company: '/company',

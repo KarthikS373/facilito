@@ -34,7 +34,8 @@ const FormComponents: React.FC<FormComponentsProps> = ({ id, formData, onChangeD
 	const formsCtx = useContext(FormsContext)
 
 	// CAMBIAR OPCIONES DE INPUTS CON DATOS PERSONALES
-	const setPersonalInputs = (options: FormPersonalData) => updatePersonalInputs(formData, options)
+	const setPersonalInputs = (key: keyof FormPersonalData, checked: boolean) =>
+		updatePersonalInputs(formData, key, checked, formsCtx)
 
 	// GUARDAR DATOS DE COMPONENTES
 	const saveCompProps = (index: number, component: keyof BlockComponent, val: FormInputValue) =>

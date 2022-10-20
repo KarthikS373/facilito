@@ -45,6 +45,7 @@ interface FormCheckout {
 	shippingPrices?: ShippingPrice[]
 	shippingNotIncluded: boolean
 	allowSelectCategory: boolean
+	registerCustomers: boolean
 	taxesNotIncluded: boolean
 	minimumPurchase: number
 	taxesPercentage: number
@@ -158,7 +159,7 @@ interface OrderedAnswer {
 interface FormContainerProps extends BlockComponent {
 	[index: string]: typeof BlockComponent[keyof BlockComponent]
 	onChange?: (component: keyof BlockComponent, value: FormInputValue) => unknown
-	onChangePersonalOptions?: (options: FormPersonalData) => unknown
+	onChangePersonalOptions?: (key: keyof FormPersonalData, checked: boolean) => unknown
 	personalOptions?: FormPersonalData
 	onDelete?: EmptyFunction
 	onCopy?: EmptyFunction

@@ -3,6 +3,54 @@
 		"en": "",
 		"es": "$"
 	},
+	"telefono": {
+		"en": "",
+		"es": "$"
+	},
+	"correo": {
+		"en": "",
+		"es": "$"
+	},
+	"base_de_clientes_registrados_a_traves_de_las_tiendas": {
+		"en": "",
+		"es": "$"
+	},
+	"ver_respuestas": {
+		"en": "",
+		"es": "$"
+	},
+	"base_de_clientes_registrados_a_traves_de_las_tiendas_de_tu_comercio": {
+		"en": "",
+		"es": "$"
+	},
+	"lista_de_clientes": {
+		"en": "",
+		"es": "$"
+	},
+	"clientess_registrados": {
+		"en": "",
+		"es": "$"
+	},
+	"clientes": {
+		"en": "",
+		"es": "$"
+	},
+	"registrar_clientes": {
+		"en": "",
+		"es": "$"
+	},
+	"este_producto_puede_variar_en_precio_y_cada_variacion_tiene_un_stock_independiente": {
+		"en": "",
+		"es": "$"
+	},
+	"este_producto_puede_variar_en_precios_y_cantidad_en_stock": {
+		"en": "",
+		"es": "$"
+	},
+	"configurar_como_producto_variable": {
+		"en": "",
+		"es": "$"
+	},
 	"los_productos_destacados_se_mostraran_si_anades_un_campo_de_destacado": {
 		"en": "",
 		"es": "$"

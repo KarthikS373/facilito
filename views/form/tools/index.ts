@@ -4,7 +4,13 @@
 /// TOOLS
 import { changeCouponsCount, changeReservations } from 'utils/forms'
 import { dateToString, openNewWindow, parseDate, sendMail } from 'utils/tools'
-import { getPosition, reverseGeocoding } from 'utils/location'
+import {
+	getCountryCode,
+	getIP,
+	getPosition,
+	getPostalAndCity,
+	reverseGeocoding,
+} from 'utils/location'
 import { senPushNotification } from 'utils/functions'
 import { bulkUpdateProducts } from 'utils/products'
 import { orderAnswers, saveFormAnswer } from 'utils/answers'
@@ -13,6 +19,7 @@ import { saveEvents } from 'utils/events'
 // COMPONENTES
 import successAlertComponent from '../components/success/successAlert'
 import paymentAlert from '../components/payment'
+import { saveFormCustomer } from 'utils/customers'
 
 /**
  * Referencias geo
@@ -214,6 +221,7 @@ export const reduceAnswers = (
 		if (key.startsWith('taxesPrice')) delete tmpData[key]
 		if (key.startsWith('cardPrice')) delete tmpData[key]
 		if (key.startsWith('shippingPrice')) delete tmpData[key]
+		if (key.startsWith('saveCustomer')) delete tmpData[key]
 	})
 
 	// RETORNO
@@ -636,6 +644,27 @@ export const sendForm = async (
 							companyID,
 							formData.id
 						)
+
+					// GUARDAR CLIENTES
+					if (formData?.checkout?.registerCustomers && data.saveCustomer) {
+						// OBTENER OTROS DATOS DEL CLIENTE
+						const ip = await getIP()
+						const city = await getPostalAndCity()
+						const country = await getCountryCode()
+
+						await saveFormCustomer(companyID, formData.id, {
+							ip: ip || '',
+							form: formData.id,
+							city: city?.[1] || '',
+							postal: city?.[0] || '',
+							country: country || '',
+							name: filterData.personal_name_0?.answer?.toString() ?? '',
+							email: filterData.personal_email_0?.answer?.toString() ?? '',
+							phone: filterData.personal_phone_0?.answer?.toString() ?? '',
+							address: filterData.personal_address_0?.answer?.toString() ?? '',
+							instructions: filterData.personal_instructions_0?.answer?.toString() ?? '',
+						})
+					}
 
 					// ENVIAR A WHATSAPP
 					if (company && formData?.answersConnection?.methods.includes('whatsapp')) {

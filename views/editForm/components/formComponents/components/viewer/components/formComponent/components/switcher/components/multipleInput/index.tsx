@@ -1,5 +1,5 @@
 // REACT
-import React, { ChangeEvent, useContext, useState } from 'react'
+import React, { ChangeEvent, useContext } from 'react'
 
 // ESTILOS
 import Styles from './style.module.scss'
@@ -14,9 +14,10 @@ import Checkbox from '@mui/material/Checkbox'
 
 // ENV
 import { initialFormData } from 'views/editForm/utils/initials'
-import onChangeOption, { optionsKeys } from './tools'
 import FormContext from '../../../../../../context'
 import useStrings from 'hooks/lang'
+
+export const optionsKeys: (keyof FormPersonalData)[] = ['phone', 'email', 'address', 'instructions']
 
 const MultipleInput: React.FC = () => {
 	// STRINGS
@@ -26,13 +27,12 @@ const MultipleInput: React.FC = () => {
 	const props = useContext(FormContext)
 
 	// ESTADO
-	const [personalOptions, setPersonalOptions] = useState<FormPersonalData>(
-		props.personalOptions ?? initialFormData.includePersonalData
-	)
+	const personalOptions = props.personalOptions ?? initialFormData.includePersonalData
 
 	// OBTENER VALORES
-	const onChangeOptionEv = (key: keyof FormPersonalData) => (ev: ChangeEvent<HTMLInputElement>) =>
-		onChangeOption(key, ev, setPersonalOptions, props.onChangePersonalOptions)
+	const onChangeOptionEv = (key: keyof FormPersonalData) => (ev: ChangeEvent<HTMLInputElement>) => {
+		if (props.onChangePersonalOptions) props.onChangePersonalOptions(key, ev.target.checked)
+	}
 
 	const fields = [$`Número de teléfono`, $`Correo electrónico`, $`Dirección`, $`Observaciones`]
 

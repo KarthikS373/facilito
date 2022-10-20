@@ -23,6 +23,7 @@ import MoneyOff from '@mui/icons-material/MoneyOffTwoTone'
 
 // TOOLS
 import { computeCoupon, getFormCoupons } from './tools'
+import CustomerRegister from './components/register'
 
 // PROPS
 interface FormSummaryProps {
@@ -279,6 +280,9 @@ const FormSummary: React.FC<FormSummaryProps> = (props: FormSummaryProps) => {
 							</p>
 						)}
 					</div>
+
+					{/* REGISTRO */}
+					{formData?.checkout?.registerCustomers && <CustomerRegister setFieldValue={setValue} />}
 
 					{/* PRECIO TOTAL */}
 					<div className={Styles.totalPrice}>
