@@ -39,11 +39,12 @@ const TextInput: React.FC<TextComponentProps> = (eProps) => {
 				onChange={props.onWrite && props.onWrite('label')}
 			/>
 			{props.required && props.preview && <span className={Styles.requiredSpan}>＊</span>}
-			<input
+			<Input
 				required
+				multiline
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
+				className={`${Styles.label} ${Styles.longHelper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}

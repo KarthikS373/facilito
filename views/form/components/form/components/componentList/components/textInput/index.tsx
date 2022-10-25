@@ -48,7 +48,7 @@ const TextInput: React.FC<TextComponent> = (eProps: TextComponent) => {
 			name={`${eProps.name || props.name}_${eProps.id || props.id}`}
 			id={`${eProps.name || props.name}_${eProps.id || props.id}`}
 			inputProps={eProps.isLong ? undefined : { maxLength: 60 }}
-			helperText={props.helper || undefined}
+			helperText={props.helper ? <pre>{props.helper}</pre> : undefined}
 			className={Styles.textField}
 			onFocus={computeLabelFocus}
 			required={props.required}

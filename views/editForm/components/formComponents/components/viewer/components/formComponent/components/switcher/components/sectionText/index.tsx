@@ -39,20 +39,29 @@ const SectionText: React.FC<SectionTextProps> = (eProps: SectionTextProps) => {
 				onChange={props.onWrite && props.onWrite('label')}
 				inputProps={{ 'aria-label': 'Answer' }}
 			/>
-			<input
-				required
-				aria-label='Helper'
-				className={`${Styles.label} ${Styles.helper}`}
-				placeholder={
-					eProps.isAnchor
-						? $`Escribe tu enlace aquí (ej: https://example.com)`
-						: $`Agrega una descripción`
-				}
-				defaultValue={props.href}
-				style={props.isAnchor ? { color: 'var(--blue)' } : undefined}
-				id={`${props.name}_helper_${props.id}`}
-				onChange={props.onWrite && props.onWrite(eProps.isAnchor ? 'href' : 'helper')}
-			/>
+			{eProps.isAnchor ? (
+				<input
+					required
+					aria-label='Helper'
+					defaultValue={props.href}
+					style={{ color: 'var(--blue)' }}
+					id={`${props.name}_helper_${props.id}`}
+					className={`${Styles.label} ${Styles.helper}`}
+					onChange={props.onWrite && props.onWrite('href')}
+					placeholder={$`Escribe tu enlace aquí (ej: https://example.com)`}
+				/>
+			) : (
+				<Input
+					required
+					multiline
+					aria-label='Helper'
+					defaultValue={props.href}
+					placeholder={$`Agrega una descripción`}
+					id={`${props.name}_helper_${props.id}`}
+					className={`${Styles.label} ${Styles.longHelper}`}
+					onChange={props.onWrite && props.onWrite('helper')}
+				/>
+			)}
 		</>
 	)
 }

@@ -134,13 +134,13 @@ const FormMultipleOptions: React.FC<OptionsComponent> = (eProps: OptionsComponen
 						</Select>
 					</>
 				)}
-				<span
+				<pre
 					className={Styles.helperOrError}
 					style={{
 						marginTop: !eProps.InputElement ? '5px' : '0px',
 					}}>
 					{props.error && <InfoOutlined />} {props.helper}
-				</span>
+				</pre>
 			</FormControl>
 		</>
 	)

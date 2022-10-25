@@ -122,9 +122,9 @@ const ProductSlider: React.FC = () => {
 					</div>
 				</div>
 			</Collapse>
-			<span className={Styles.helperOrError}>
+			<pre className={Styles.helperOrError}>
 				{props.error && <InfoOutlined />} {props.helper}
-			</span>
+			</pre>
 			<ProductBackdrop
 				closeBackdropProduct={closeBackdropProduct}
 				showCaseMode={props.showcaseMode}

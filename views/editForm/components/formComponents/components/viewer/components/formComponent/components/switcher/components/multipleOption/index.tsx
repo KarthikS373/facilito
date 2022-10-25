@@ -71,11 +71,12 @@ const FormMultipleOptions: React.FC<MultipleOptionsProps> = (eProps: MultipleOpt
 
 			{props.required && props.preview && <span className={StylesText.requiredSpan}>＊</span>}
 
-			<input
+			<Input
 				required
+				multiline
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${StylesText.label} ${StylesText.helper}`}
+				className={`${StylesText.label} ${StylesText.longHelper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}

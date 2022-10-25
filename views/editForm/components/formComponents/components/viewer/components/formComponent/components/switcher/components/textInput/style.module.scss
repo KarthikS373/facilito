@@ -31,6 +31,24 @@
 	color: #555;
 }
 
+.longHelper {
+	background-color: transparent !important;
+	padding: 10px 20px !important;
+	font-size: 0.9em !important;
+	color: #666 !important;
+	margin-top: -6px;
+	margin-bottom: 5px;
+
+	&::before,
+	&::after {
+		border-bottom: none !important;
+	}
+
+	&:hover::before {
+		border-bottom: none !important;
+	}
+}
+
 .requiredSpan {
 	position: absolute;
 	top: 58px;

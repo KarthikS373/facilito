@@ -108,13 +108,13 @@ const ProductSlider: React.FC = () => {
 				onChange={props.onWrite && props.onWrite('label')}
 			/>
 			{props.required && props.preview && <span className={StylesGlb.requiredSpan}>＊</span>}
-			<input
+			<Input
 				required
+				multiline
 				aria-label='Helper'
-				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}
 				placeholder={$`Agrega un texto de ayuda`}
-				className={`${StylesGlb.label} ${StylesGlb.helper}`}
+				className={`${StylesGlb.label} ${StylesGlb.longHelper}`}
 				onChange={props.onWrite && props.onWrite('helper')}
 			/>
 			<DragDropContext onDragEnd={dndEvent}>

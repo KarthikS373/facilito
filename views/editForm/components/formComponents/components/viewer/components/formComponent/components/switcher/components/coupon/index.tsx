@@ -60,11 +60,12 @@ const Coupon: React.FC = () => {
 				onChange={props.onWrite && props.onWrite('label')}
 			/>
 			{props.required && props.preview && <span className={StylesText.requiredSpan}>＊</span>}
-			<input
+			<Input
+				multiline
 				required
 				onChange={props.onWrite && props.onWrite('helper')}
 				aria-label='Helper'
-				className={`${StylesText.label} ${StylesText.helper}`}
+				className={`${StylesText.label} ${StylesText.longHelper}`}
 				placeholder={$`Agrega un texto de ayuda`}
 				defaultValue={props.helper}
 				id={`${props.name}_helper_${props.id}`}

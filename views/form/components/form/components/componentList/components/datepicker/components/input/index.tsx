@@ -24,13 +24,17 @@ const dateInput =
 				name={props.name + '_' + props.id}
 				id={props.name + '_' + props.id}
 				helperText={
-					props.error
-						? props.time
-							? $`Ingresa una fecha valida entre {{ from }} a {{ to }}`
-									.replace('{{ from }}', hourToString(props.time[0]))
-									.replace('{{ to }}', hourToString(props.time[1]))
-							: props.helper
-						: props.helper || undefined
+					props.error ? (
+						props.time ? (
+							$`Ingresa una fecha valida entre {{ from }} a {{ to }}`
+								.replace('{{ from }}', hourToString(props.time[0]))
+								.replace('{{ to }}', hourToString(props.time[1]))
+						) : (
+							<pre>{props.helper}</pre>
+						)
+					) : (
+						<pre>{props.helper}</pre> || undefined
+					)
 				}
 			/>
 		) : (
@@ -43,13 +47,17 @@ const dateInput =
 					id={props.name + '_' + props.id + '_from'}
 					name={props.name + '_' + props.id + '_from'}
 					helperText={
-						props.error
-							? props.time
-								? $`Ingresa una fecha valida entre {{ from }} a {{ to }}`
-										.replace('{{ from }}', hourToString(props.time[0]))
-										.replace('{{ to }}', hourToString(props.time[1]))
-								: props.helper
-							: props.helper || undefined
+						props.error ? (
+							props.time ? (
+								$`Ingresa una fecha valida entre {{ from }} a {{ to }}`
+									.replace('{{ from }}', hourToString(props.time[0]))
+									.replace('{{ to }}', hourToString(props.time[1]))
+							) : (
+								<pre>{props.helper}</pre>
+							)
+						) : (
+							<pre>{props.helper}</pre> || undefined
+						)
 					}
 				/>
 				<span className={Styles.divisor}>-</span>

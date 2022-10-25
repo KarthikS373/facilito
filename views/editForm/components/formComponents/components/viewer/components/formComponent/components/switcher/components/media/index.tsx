@@ -15,6 +15,7 @@ import Close from '@mui/icons-material/Close'
 
 // MATERIAL
 import IconButton from '@mui/material/IconButton'
+import Input from '@mui/material/Input'
 
 // CONTEXTO
 import FormContext from '../../../../../../context'
@@ -79,9 +80,10 @@ const FormMedia: React.FC<FormMediaProps> = (eProps: FormMediaProps) => {
 				multiple={false}
 				accept={eProps.isVideo ? 'video/mp4,video/x-m4v,video/*' : 'image/*'}
 			/>
-			<input
+			<Input
 				aria-label='Helper'
-				className={`${StylesText.label} ${StylesText.helper}`}
+				multiline
+				className={`${StylesText.label} ${StylesText.longHelper}`}
 				defaultValue={props.alt}
 				placeholder={
 					eProps.isVideo

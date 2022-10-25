@@ -25,7 +25,7 @@ const SectionText: React.FC<SectionTextWriteProps> = ({ isAnchor }: SectionTextW
 		return (
 			<>
 				<h2 className={Styles.title}>{props.label || $`Sin titulo`}</h2>
-				{props.helper && <p>{props.helper}</p>}
+				{props.helper && <pre style={{ fontFamily: 'Montserrat' }}>{props.helper}</pre>}
 			</>
 		)
 	else

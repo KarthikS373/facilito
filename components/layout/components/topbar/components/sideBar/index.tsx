@@ -121,7 +121,7 @@ const SideBar: React.FC<SideBarProps> = ({ open, onClose, setExpanded, expanded 
 									color: getActiveRoute(path, 'clientes') ? 'var(--primary)' : undefined,
 								}}
 								startIcon={<PeopleAltTwoToneIcon />}>
-								{expanded ? $`Clientes` : undefined}
+								{expanded ? $`Clientes registrados` : undefined}
 							</ColorButton>
 						</Link>
 					</li>

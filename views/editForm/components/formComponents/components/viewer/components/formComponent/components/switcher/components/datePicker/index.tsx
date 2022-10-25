@@ -98,10 +98,11 @@ const DatePicker: React.FC = () => {
 				onChange={props.onWrite && props.onWrite('label')}
 				inputProps={{ 'aria-label': 'Answer' }}
 			/>
-			<input
+			<Input
 				required
+				multiline
 				aria-label='Helper'
-				className={`${StylesText.label} ${StylesText.helper}`}
+				className={`${StylesText.label} ${StylesText.longHelper}`}
 				placeholder={
 					props.isAnchor
 						? $`Escribe tu enlace aquí (ej: https://example.com)`

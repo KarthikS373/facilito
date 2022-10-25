@@ -72,9 +72,9 @@ const Coupon: React.FC = () => {
 								</MenuItem>
 							))}
 					</Select>
-					<span className={Styles.helperOrError}>
+					<pre className={Styles.helperOrError}>
 						{props.error && <InfoOutlined />} {props.helper}
-					</span>
+					</pre>
 				</FormControl>
 			</>
 		)
