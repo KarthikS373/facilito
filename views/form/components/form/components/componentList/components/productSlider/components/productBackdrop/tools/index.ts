@@ -11,7 +11,8 @@ const sendProduct = async (
 	setExtrasCounter: SetState<(ExtraOptionalExt[] | undefined)[]>,
 	extrasCounter: (ExtraOptionalExt[] | undefined)[],
 	setProductsCounter: SetState<number>,
-	productsCounter: number
+	productsCounter: number,
+	selectedVariableExtra: number
 ): Promise<void> => {
 	if (props.currentProduct?.product) {
 		// // VALIDAR EXTRAS
@@ -24,9 +25,12 @@ const sendProduct = async (
 		// CREAR PRODUCTO A ENVIAR
 		const extras = extrasCounter.filter(Boolean).flat() as ExtraOptionalExt[]
 		const price: number =
-			(props.currentProduct?.product.isPromo
+			(props.currentProduct?.product?.variable
+				? props.currentProduct?.product?.variableExtras?.[selectedVariableExtra]?.price
+				: props.currentProduct?.product.isPromo
 				? props.currentProduct?.product.promoPrice
-				: props.currentProduct?.product.price) || 0
+				: props.currentProduct?.product.price) ?? 0
+
 		const extrasPrice = extras
 			.map((pExtra) => +pExtra.price)
 			.reduce((fExtra: number, nExtra: number) => fExtra + nExtra, 0)
@@ -34,6 +38,7 @@ const sendProduct = async (
 		// PRODUCTO
 		const cartProduct: ProductSelected = {
 			totalPrice: (+price + +extrasPrice) * productsCounter,
+			selectedVariableExtraIndex: selectedVariableExtra,
 			product: props.currentProduct?.product,
 			count: productsCounter,
 			extras,

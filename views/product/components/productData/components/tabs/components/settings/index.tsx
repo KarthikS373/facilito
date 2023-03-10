@@ -37,10 +37,10 @@ const Settings: React.FC<GeneralProps> = ({ show, productRef }) => {
 				<FormControlLabel
 					control={
 						<Switch
-							name='featured'
+							name='variable'
 							color='primary'
 							onChange={handleSwitch}
-							defaultChecked={productRef.current.featured}
+							defaultChecked={productRef.current.variable}
 						/>
 					}
 					label={$`Configurar como producto variable`}

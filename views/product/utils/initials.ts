@@ -1,5 +1,6 @@
 const defProduct: Product = {
 	stockOption: 'lim',
+	variable: false,
 	description: '',
 	featured: false,
 	isPromo: false,

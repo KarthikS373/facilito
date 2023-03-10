@@ -28,6 +28,7 @@ import FormContext from '../../../../context'
 
 // TOOLS
 import sendProduct, { addExtra, handleProductCounter, onClose } from './tools'
+import VariableExtras from './components/variableExtras'
 
 export interface ProductBackdropProps {
 	onAddProduct: (product: ProductSelected, index: number) => unknown
@@ -51,13 +52,23 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 	// CONTADOR DE PRODUCTOS
 	const [productsCounter, setProductsCounter] = useState<number>(0)
 
+	// SELECCIONAR ATRIBUTO
+	const [selectedVariableExtra, setSelectedVariableExtra] = useState<number>(0)
+
 	// AGREGAR A CONTADOR
 	const handleProductCounterEv = (add: number) => () =>
 		handleProductCounter(add, props, setProductsCounter)
 
 	// ENVIAR PRODUCTO
 	const sendProductEv = () =>
-		sendProduct(props, setExtrasCounter, extrasCounter, setProductsCounter, productsCounter)
+		sendProduct(
+			props,
+			setExtrasCounter,
+			extrasCounter,
+			setProductsCounter,
+			productsCounter,
+			selectedVariableExtra
+		)
 
 	// AGREGAR EXTRA SELECCIÓN UNICA
 	const addExtraEv = (index: number) => (extra: ExtraOptionalExt[] | undefined) =>
@@ -65,6 +76,14 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 
 	// REINICIAR
 	const onCloseEv = () => onClose(setProductsCounter, props.closeBackdropProduct)
+
+	// PRECIO
+	const productPrice =
+		(props.currentProduct?.product?.variable
+			? props.currentProduct?.product?.variableExtras?.[selectedVariableExtra].price
+			: props.currentProduct?.product?.isPromo
+			? props.currentProduct?.product?.promoPrice
+			: props.currentProduct?.product?.price) ?? 0
 
 	return (
 		<Backdrop className={Styles.productBackdrop} open={Boolean(props.currentProduct)}>
@@ -91,9 +110,7 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 							)}
 							<p>
 								<strong>{$`Precio`}: </strong> {badge}
-								{props.currentProduct.product.isPromo
-									? props.currentProduct.product.promoPrice
-									: props.currentProduct.product.price}
+								{productPrice}
 							</p>
 							<p>
 								<strong>{$`SKU`}: </strong> {props.currentProduct.product.sku}
@@ -110,6 +127,8 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 									+
 								</Button>
 							</ButtonGroup>
+
+							{/* EXTRAS */}
 							{props.currentProduct.product.extras &&
 								props.currentProduct.product.extras.map((extra: Extra, key: number) => {
 									if (props.currentProduct) {
@@ -127,6 +146,18 @@ const ProductBackdrop: React.FC<ProductBackdropProps> = (props: ProductBackdropP
 										)
 									} else return null
 								})}
+
+							{/* ATRIBUTOS */}
+							{props.currentProduct.product.variable && (
+								<VariableExtras
+									onChange={setSelectedVariableExtra}
+									selectedVariableExtra={selectedVariableExtra}
+									productName={props.currentProduct.product.title}
+									extras={props.currentProduct.product.variableExtras ?? []}
+								/>
+							)}
+
+							{/* COMPRAR */}
 							{!props.showCaseMode && (
 								<Button
 									color='primary'

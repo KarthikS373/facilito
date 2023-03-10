@@ -16,7 +16,7 @@ const StockListItemSkeleton: React.FC = () => (
 		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
 		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
 		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
-		<Skeleton height={50} width={50} sx={{ minWidth: '50px', transform: 'none' }} />
+		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
 	</Stack>
 )
 

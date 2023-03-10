@@ -26,6 +26,10 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
 
+	// PRECIOS VARIABLES
+	const sortedPrices =
+		product.variableExtras?.map((extra) => extra.price).sort((a, b) => a - b) ?? []
+
 	return (
 		<div
 			className={Styles.row}
@@ -55,13 +59,30 @@ const ProductRow: React.FC<RowProps> = ({ product, style, handleRow }) => {
 				<i>{product.category}</i>
 			</span>
 			<span>
-				<i className={product.promoPrice ? Styles.disabledPrice : ''}>
-					{businessCtx.business?.badge} {product.price}
-				</i>
-				{product.promoPrice && (
-					<i>
-						{businessCtx.business?.badge} {product.promoPrice}
-					</i>
+				{!product.variable && (
+					<>
+						<i className={product.promoPrice ? Styles.disabledPrice : ''}>
+							{businessCtx.business?.badge} {product.price}
+						</i>
+						{product.promoPrice && (
+							<i>
+								{businessCtx.business?.badge} {product.promoPrice}
+							</i>
+						)}
+					</>
+				)}
+
+				{product.variable && (
+					<>
+						<i className={Styles.priceRange}>
+							Desde: {businessCtx.business?.badge}
+							{sortedPrices[0]}
+						</i>
+						<i className={Styles.priceRange}>
+							Hasta: {businessCtx.business?.badge}
+							{sortedPrices[sortedPrices.length - 1]}
+						</i>
+					</>
 				)}
 			</span>
 			<IconButton onClick={handleRow}>

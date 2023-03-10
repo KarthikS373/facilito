@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useContext } from 'react'
 
 // COMPONENTES
 import showProduct from './components/preview'
@@ -13,6 +13,7 @@ import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone'
 import Button from '@mui/material/Button'
 
 // STRINGS
+import BusinessContext from 'context/business'
 import useStrings from 'hooks/lang'
 
 interface InfoProps {
@@ -22,8 +23,11 @@ const Info: React.FC<InfoProps> = ({ product }) => {
 	// STRINGS
 	const { $ } = useStrings()
 
+	// BUSINESS
+	const businessCtx = useContext(BusinessContext)
+
 	// VISUALIZAR PRODUCTO
-	const openPreview = () => showProduct(product)
+	const openPreview = () => showProduct(product, businessCtx.business?.badge)
 
 	return (
 		<PageInfo

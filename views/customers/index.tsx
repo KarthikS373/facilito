@@ -2,8 +2,8 @@
 import React, { useContext, useState, Suspense } from 'react'
 
 // COMPONENTES
-import StockListItemSkeleton from './components/stockList/components/skeleton'
-import StockList from './components/stockList'
+import CustomersListSkeleton from './components/customersList/components/skeleton'
+import CustomersList from './components/customersList'
 import Header from 'components/header'
 import Info from './components/info'
 import View from 'components/view'
@@ -76,8 +76,8 @@ const Customers: React.FC = () => {
 			<Info />
 
 			{/* LISTA DE INVENTARIO */}
-			<Suspense fallback={<StockListItemSkeleton />}>
-				<StockList filter={filter} customers={customers} setFilter={changeFilterEv} />
+			<Suspense fallback={<CustomersListSkeleton />}>
+				<CustomersList filter={filter} customers={customers} setFilter={changeFilterEv} />
 			</Suspense>
 		</View>
 	)

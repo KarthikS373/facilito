@@ -19,6 +19,7 @@ import addExtra, { removeExtra } from './tools'
 import { GeneralProps } from '../../tools'
 import useStrings from 'hooks/lang'
 import useDefExtras from './hooks'
+import VariableExtra from './components/variableExtra'
 
 const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// STRINGS
@@ -27,20 +28,28 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 	// LISTA DE EXTRAS
 	const [extras, setExtras] = useState<ExtendedExtra[]>([])
 
+	// LISTA DE EXTRAS VARIABLES
+	const [variableExtras, setVariableExtras] = useState<EtendedExtraVariable[]>([])
+
 	// AGREGAR EXTRA
-	const addExtraEv = () => addExtra(productRef, setExtras)
+	const addExtraEv = () => addExtra(productRef, setExtras, setVariableExtras)
 
 	// BORRAR EXTRA
-	const deleteExtra = (extIndex: number) => () => removeExtra(extIndex, productRef, setExtras)
+	const deleteExtra = (extIndex: number) => () =>
+		removeExtra(extIndex, productRef, setExtras, setVariableExtras)
 
 	// EXTRAS INICIALES
-	useDefExtras(productRef, setExtras)
+	useDefExtras(productRef, setExtras, setVariableExtras)
 
 	return (
 		<div style={{ display: show ? 'grid' : 'none' }} className={Styles.container}>
 			<TabInfo
 				title={$`Variables dinamicas`}
-				body={$`Cada opción agrega un precio adicional al total con diferentes formas de seleccion.`}>
+				body={
+					productRef.current.variable
+						? $`Cada opción cambia el precio y stock del producto, por ejemplo: Tamaño, Color, Sabor, etc.`
+						: $`Cada opción agrega un precio adicional al total con diferentes formas de seleccion.`
+				}>
 				<ColorButton
 					color='primary'
 					variant='outlined'
@@ -53,15 +62,28 @@ const Extras: React.FC<GeneralProps> = ({ show, productRef }) => {
 			</TabInfo>
 
 			{/* EXTRAS */}
-			{extras.map((extra: ExtendedExtra, index: number) => (
-				<Extra
-					index={index}
-					extra={extra}
-					key={`ext_${extra.id}`}
-					productRef={productRef}
-					deleteExtra={deleteExtra(index)}
-				/>
-			))}
+			{!productRef.current.variable &&
+				extras.map((extra: ExtendedExtra, index: number) => (
+					<Extra
+						index={index}
+						extra={extra}
+						key={`ext_${extra.id}`}
+						productRef={productRef}
+						deleteExtra={deleteExtra(index)}
+					/>
+				))}
+
+			{/* EXTRAS VARIABLES */}
+			{productRef.current.variable &&
+				variableExtras.map((extra: EtendedExtraVariable, index: number) => (
+					<VariableExtra
+						index={index}
+						option={extra}
+						productRef={productRef}
+						key={`vari_ext_${extra.id}`}
+						removeOptional={deleteExtra(index)}
+					/>
+				))}
 		</div>
 	)
 }

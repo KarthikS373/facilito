@@ -7,7 +7,7 @@ import ProductSkeleton from './components/skeleton'
 // ESTILOS
 import Styles from './style.module.scss'
 
-const showProduct = (product: React.MutableRefObject<Product>): void => {
+const showProduct = (product: React.MutableRefObject<Product>, badge?: string): void => {
 	window.Alert({
 		title: 'Visualizar producto',
 		body: 'De esta manera se mostrara el producto en el carousel de productos en todas tus tiendas seleccionadas. El resto de imagenes se mostraran al seleccionarlo.',
@@ -19,8 +19,9 @@ const showProduct = (product: React.MutableRefObject<Product>): void => {
 			<div className={Styles.container}>
 				<ProductSkeleton />
 				<ProductCard
-					index={0}
 					preview
+					index={0}
+					customBadge={badge}
 					productSpace={product.current}
 					openBackdropProduct={() => () => null}
 				/>

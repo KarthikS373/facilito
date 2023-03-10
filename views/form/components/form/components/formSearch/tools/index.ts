@@ -35,7 +35,10 @@ export const sendProduct = (
 	// AGREGAR
 	const sliderProduct: FormProductSliderAnswer = {
 		picture: product.product.picture ? product.product.picture[0] : '',
+		selectedVariableExtraIndex: product.selectedVariableExtraIndex ?? 0,
+		variableExtras: product.product.variableExtras ?? [],
 		stockOption: product.product.stockOption,
+		isVariable: product.product.variable,
 		productCount: product.product.count,
 		category: product.product.category,
 		totalPrice: product.totalPrice,

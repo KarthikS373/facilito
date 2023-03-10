@@ -27,6 +27,7 @@ import FormContext from '../../../../context'
 interface ProductCardProps {
 	openBackdropProduct: (product: CurrentProduct) => EmptyFunction
 	productSpace: Product | null
+	customBadge?: string
 	index: number
 	preview?: boolean
 }
@@ -48,6 +49,10 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 	const unActive: boolean =
 		!props.productSpace?.active ||
 		(props.productSpace?.count === 0 && props.productSpace?.stockOption === 'lim')
+
+	// PRECIOS VARIABLES
+	const sortedPrices =
+		props.productSpace?.variableExtras?.map((extra) => extra.price).sort((a, b) => a - b) ?? []
 
 	return (
 		<div
@@ -105,17 +110,35 @@ const ProductCard: React.FC<ProductCardProps> = (props: ProductCardProps) => {
 								<strong>{props.productSpace.title}</strong>
 							</div>
 							<span>{props.productSpace.description}</span>
-							{props.productSpace.isPromo && props.productSpace.promoPrice ? (
-								<span className={Styles.promoPrice}>
-									{eProps.badge} {props.productSpace.promoPrice}
-									<i>
-										{eProps.badge} {props.productSpace.price}
-									</i>
-								</span>
-							) : (
-								<span className={Styles.promoPrice}>
-									{eProps.badge} {props.productSpace.price}
-								</span>
+
+							{!props.productSpace.variable && (
+								<>
+									{props.productSpace.isPromo && props.productSpace.promoPrice ? (
+										<span className={Styles.promoPrice}>
+											{eProps.badge || props.customBadge}
+											{props.productSpace.promoPrice}
+											<i>
+												{eProps.badge || props.customBadge}
+												{props.productSpace.price}
+											</i>
+										</span>
+									) : (
+										<span className={Styles.promoPrice}>
+											{eProps.badge || props.customBadge}
+											{props.productSpace.price}
+										</span>
+									)}
+								</>
+							)}
+
+							{props.productSpace.variable && (
+								<>
+									<span className={Styles.promoPrice}>
+										{eProps.badge || props.customBadge}
+										{sortedPrices[0]} - {eProps.badge || props.customBadge}
+										{sortedPrices[sortedPrices.length - 1]}
+									</span>
+								</>
 							)}
 						</div>
 						{!eProps.showcaseMode && (

@@ -7,6 +7,7 @@ interface Product {
 		| ProductUnit
 		| ProductStockOption
 		| Extra[]
+		| ExtraVariable[]
 		| undefined
 	sku: string
 	title: string
@@ -20,8 +21,10 @@ interface Product {
 	unitName: string
 	count: number
 	stockOption: ProductStockOption
+	variableExtras?: ExtraVariable[]
 	active: boolean
 	featured: boolean
+	variable: boolean
 	extras?: Extra[]
 }
 
@@ -56,6 +59,14 @@ interface ExtendedOpt extends ExtraOptional {
 	id: number
 }
 
+interface ExtraVariable extends ExtraOptional {
+	count: number
+}
+
+interface EtendedExtraVariable extends ExtraVariable {
+	id: number
+}
+
 interface ExtendedExtra extends Extra {
 	id: number
 }
@@ -66,6 +77,7 @@ interface CurrentProduct {
 }
 
 interface ProductSelected {
+	selectedVariableExtraIndex?: number
 	extras: ExtraOptionalExt[]
 	totalPrice: number
 	product: Product
@@ -92,15 +104,18 @@ interface FormDataCouponsAnswer {
 }
 
 interface FormProductSliderAnswer {
-	count: number
+	selectedVariableExtraIndex: number
+	stockOption: 'lim' | 'ctn' | 'inf'
+	variableExtras: ExtraVariable[]
+	productCount: number
+	isVariable: boolean
 	totalPrice: number
+	category: string
+	picture: string
+	count: number
 	price: number
 	title: string
-	picture: string
 	sku: string
-	stockOption: 'lim' | 'ctn' | 'inf'
-	productCount: number
-	category: string
 }
 
 interface ParsedProduct extends FormProductSliderAnswer {

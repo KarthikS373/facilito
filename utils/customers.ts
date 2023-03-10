@@ -12,17 +12,18 @@ const getCustomerDoc = async (companyID: string, formID: string) => {
 	// LEER
 	const businessCol = await getCollection('business')
 	const businessDoc = doc(businessCol, companyID)
-	const answersCol = collection(businessDoc, 'customers')
-	const formDoc = doc(answersCol, formID)
+	const customersCol = collection(businessDoc, 'customers')
+	const formDoc = doc(customersCol, formID)
 	return formDoc
 }
 
 /**
- * Guardar respuesta
- * @param  {string} companyID
- * @param  {string} id
- * @param  {FormAnswerItemContainer} form
- * @returns {Promise<number>}
+ * Esta función toma una ID de empresa, una ID de cliente y un objeto de datos de cliente, y devuelve
+ * una promesa que se resuelve en la cantidad de veces que el cliente completó el formulario.
+ * @param {string} companyID - cuerda,
+ * @param {string} id - string - El ID del cliente
+ * @param {CustomerPersonalData} customerData - CustomerPersonalData
+ * @returns Número de veces que se ha rellenado el formulario.
  */
 export const saveFormCustomer = async (
 	companyID: string,
@@ -36,8 +37,8 @@ export const saveFormCustomer = async (
 	const formData = (await getDoc(formDoc)).data() as CustomerData
 
 	// VALORES POR DEFECTO
-	const defAnswers: CustomerData = { data: [], dates: [] }
-	const customersData = formData || defAnswers
+	const defCustomer: CustomerData = { data: [], dates: [] }
+	const customersData = formData || defCustomer
 
 	// AGREGAR
 	customersData.dates.push(new Date())
@@ -49,10 +50,12 @@ export const saveFormCustomer = async (
 }
 
 /**
- * Listener de tiendas
- * @param  {string} companyID
- * @param  {(forms:Record<string,FormAnswer>)=>unknown} setAnswers
- * @returns {Promise<Unsubscribe>}
+ * Escucha una colección de documentos, y cuando se agrega, actualiza o elimina un documento, actualiza
+ * una matriz local de objetos.
+ * @param {string} companyID - cuerda
+ * @param setCustomers - (clientes: CustomerSelf[]) => vacío
+ * @returns Una función que devuelve una promesa que se resuelve en una función de cancelación de
+ * suscripción.
  */
 export const customersListener = async (
 	companyID: string,

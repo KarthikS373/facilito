@@ -1,0 +1,38 @@
+.row {
+	height: 68px;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+	display: grid;
+	align-items: center;
+	grid-template-columns: minmax(100px, 1fr) 110px 100px 203px 110px 110px;
+	column-gap: 15px;
+	padding: 10px 0 10px var(--margin);
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	& > span {
+		position: relative;
+		border-right: 2px solid rgba(0, 0, 0, 0.1);
+		opacity: 0.8;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding-right: 15px;
+
+		i {
+			font-style: normal;
+			text-overflow: ellipsis;
+			width: 100%;
+			overflow: hidden;
+			font-style: normal;
+		}
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+}

@@ -10,7 +10,7 @@ import useStrings from 'hooks/lang'
 // ICONS
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone'
 import FormatColorTextTwoTone from '@mui/icons-material/FormatColorTextTwoTone'
-import SettingsTwoTone from '@mui/icons-material/SettingsTwoTone'
+import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone'
 import OutputTwoToneIcon from '@mui/icons-material/OutputTwoTone'
 import EventTwoToneIcon from '@mui/icons-material/EventTwoTone'
 
@@ -38,15 +38,15 @@ const TableHeader: React.FC<TableHeaderProps> = ({ filter, setFilter, style }) =
 				<FormatColorTextTwoTone />
 				{$`Nombre`}
 			</strong>
-			<strong onClick={changeFilter('e')}>
+			<strong onClick={changeFilter('i')}>
 				<OutputTwoToneIcon />
 				{$`Entrada`}
 			</strong>
-			<strong onClick={changeFilter('s')}>
+			<strong onClick={changeFilter('o')}>
 				<OutputTwoToneIcon style={{ transform: 'rotate(180deg)' }} />
 				{$`Salida`}
 			</strong>
-			<strong onClick={changeFilter('f')}>
+			<strong onClick={changeFilter('d')}>
 				<EventTwoToneIcon />
 				{$`Fecha`}
 			</strong>
@@ -54,8 +54,9 @@ const TableHeader: React.FC<TableHeaderProps> = ({ filter, setFilter, style }) =
 				<PersonOutlineTwoToneIcon />
 				{$`Cliente`}
 			</strong>
-			<strong>
-				<SettingsTwoTone style={{ marginLeft: '11px' }} />
+			<strong onClick={changeFilter('s')}>
+				<StorefrontTwoToneIcon />
+				{$`Tienda`}
 			</strong>
 		</div>
 	)

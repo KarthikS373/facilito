@@ -19,9 +19,11 @@ import useStrings from 'hooks/lang'
 // CONTEXTO
 import BusinessContext from 'context/business'
 
-import dynamic from 'next/dynamic'
+import { useFilters, useStockRows } from './hooks'
 import useDefaultFilter from 'hooks/filters'
 import { changeFilter } from 'utils/tools'
+import FormsContext from 'context/forms'
+import dynamic from 'next/dynamic'
 
 const StockList = dynamic(() => import('./components/stockList'), {
 	suspense: true,
@@ -34,14 +36,26 @@ const Stock: React.FC = () => {
 	// FILTRO
 	const [filter, setFilter] = useState<string>('naz')
 
+	// RESPUESTAS
+	const [stockRows, setStockRows] = useState<StockHistorySelf[]>([])
+
 	// BUSINESS
 	const businessCtx = useContext(BusinessContext)
+
+	// TIENDAS
+	const formsCtx = useContext(FormsContext)
 
 	// ASIGNAR FILTRO
 	const changeFilterEv = (newFilter: string) => changeFilter('stock-filter', newFilter, setFilter)
 
+	// FILTRAR
+	useFilters(filter, stockRows, setStockRows)
+
 	// HOOK DE FILTROS STORAGE
 	useDefaultFilter('stock-filter', 'naz', setFilter)
+
+	// CARGAR STOCK
+	useStockRows(formsCtx.forms, setStockRows, businessCtx.business?.id)
 
 	return (
 		<View>
@@ -65,7 +79,7 @@ const Stock: React.FC = () => {
 
 			{/* LISTA DE INVENTARIO */}
 			<Suspense fallback={<StockListItemSkeleton />}>
-				<StockList filter={filter} setFilter={changeFilterEv} />
+				<StockList stockRows={stockRows} filter={filter} setFilter={changeFilterEv} />
 			</Suspense>
 		</View>
 	)

@@ -20,6 +20,7 @@ import { saveEvents } from 'utils/events'
 import successAlertComponent from '../components/success/successAlert'
 import paymentAlert from '../components/payment'
 import { saveFormCustomer } from 'utils/customers'
+import { saveFormStockHistory } from 'utils/stockHistory'
 
 /**
  * Referencias geo
@@ -569,18 +570,58 @@ export const sendForm = async (
 
 					// ACTUALIZAR STOCK
 					if (productIds.length > 0) {
+						// VARIABLES
+						const variableStockReqs: Promise<number>[] = []
+
 						// ACTUALIZAR
 						const stocksReq: Partial<Product>[] = productIds
 							.map((product: ParsedProduct) => {
 								if (product.stockOption === 'ctn') {
-									return {
-										sku: product.sku,
-										count: product.productCount - product.count,
+									if (product.isVariable) {
+										const variableExtras = [...product.variableExtras]
+										const diff =
+											(variableExtras?.[product.selectedVariableExtraIndex]?.count ?? 0) -
+											product.count
+										variableExtras[product.selectedVariableExtraIndex] = {
+											...variableExtras[product.selectedVariableExtraIndex],
+											count: diff,
+										}
+
+										// AGREGAR PETICION DE STOCK PARA VARIABLES
+										variableStockReqs.push(
+											saveFormStockHistory(companyID, formData.id, {
+												product: {
+													name: `${product.title} - ${
+														product.variableExtras?.[product.selectedVariableExtraIndex]?.name
+													}`,
+													sku: product.sku,
+												},
+												inputs: 0,
+												outputs: product.count,
+												customer: {
+													name: filterData.personal_name_0?.answer?.toString() ?? '',
+													email: filterData.personal_email_0?.answer?.toString() ?? '',
+												},
+											})
+										)
+
+										return {
+											sku: product.sku,
+											variableExtras,
+										}
+									} else {
+										return {
+											sku: product.sku,
+											count: product.productCount - product.count,
+										}
 									}
 								} else if (product.stockOption === 'lim') {
 									if (product.productCount >= product.count) {
 										// CALCULAR DIFERENCIA
-										const countDiff: number = product.productCount - product.count
+										const countDiff: number = product.isVariable
+											? (product.variableExtras[product.selectedVariableExtraIndex]?.count ?? 0) -
+											  product.count
+											: product.productCount - product.count
 
 										// AVISO DE STOCK VACIÓ
 										if (countDiff === 0 && company)
@@ -591,15 +632,45 @@ export const sendForm = async (
 													product.title
 												}</strong> - ${
 													product.sku
-												} ${$`se acaba de agotar, agrega mas al inventario o cambia su disponibilidad.`}</p>`,
+												} ${$`se acaba de agotar o una variable esta agotada, agrega mas al inventario o cambia su disponibilidad.`}</p>`,
 												$`Producto agotado`,
 												company.users
-											)
+											).catch((err) => console.log(err))
 
 										// ACTUALIZAR PRODUCTO
-										return {
-											sku: product.sku,
-											count: countDiff,
+										if (product.isVariable) {
+											const variableExtras = [...product.variableExtras]
+											variableExtras[product.selectedVariableExtraIndex] = {
+												...variableExtras[product.selectedVariableExtraIndex],
+												count: countDiff,
+											}
+
+											variableStockReqs.push(
+												saveFormStockHistory(companyID, formData.id, {
+													product: {
+														name: `${product.title} - ${
+															product.variableExtras?.[product.selectedVariableExtraIndex]?.name
+														}`,
+														sku: product.sku,
+													},
+													inputs: 0,
+													outputs: product.count,
+													customer: {
+														name: filterData.personal_name_0?.answer?.toString() ?? '',
+														email: filterData.personal_email_0?.answer?.toString() ?? '',
+													},
+												})
+											)
+
+											return {
+												sku: product.sku,
+												variableExtras,
+											}
+										} else {
+											return {
+												sku: product.sku,
+												count: countDiff,
+											}
 										}
 									} else return false
 								} else return false
@@ -607,7 +678,10 @@ export const sendForm = async (
 							.filter(Boolean) as Partial<Product>[]
 
 						// CAMBIAR PRODUCTOS
-						bulkUpdateProducts(stocksReq, companyID)
+						await bulkUpdateProducts(stocksReq, companyID)
+
+						// ACTUALIZAR STOCK DE VARIABLES
+						await Promise.all(variableStockReqs)
 					}
 
 					// ENVIAR NOTIFICACIÓN PUSH
@@ -621,7 +695,7 @@ export const sendForm = async (
 							form: formData?.url,
 							tokens: company?.tokens || [],
 						}
-						senPushNotification(pushData)
+						await senPushNotification(pushData)
 					}
 
 					// GUARDAR EVENTOS

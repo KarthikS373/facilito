@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack'
 // ESTILOS
 import Styles from './style.module.scss'
 
-const StockListItemSkeleton: React.FC = () => (
+const CustomersListItemSkeleton: React.FC = () => (
 	<Stack direction='row' spacing={1} alignItems='center' sx={{ mb: 1 }}>
 		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
 		<Skeleton height={50} width='50%' sx={{ transform: 'none' }} />
@@ -19,19 +19,19 @@ const StockListItemSkeleton: React.FC = () => (
 	</Stack>
 )
 
-const StockListSkeleton: React.FC = () => {
+const CustomersListSkeleton: React.FC = () => {
 	return (
 		<div className={Styles.container}>
 			<TableContainer
 				component={Paper}
 				sx={{ height: 272, padding: 2, backgroundColor: 'rgb(252, 252, 252)' }}>
 				<Skeleton height={55} width='100%' sx={{ mb: 1, transform: 'none' }} />
-				<StockListItemSkeleton />
-				<StockListItemSkeleton />
-				<StockListItemSkeleton />
+				<CustomersListItemSkeleton />
+				<CustomersListItemSkeleton />
+				<CustomersListItemSkeleton />
 			</TableContainer>
 		</div>
 	)
 }
 
-export default StockListSkeleton
+export default CustomersListSkeleton

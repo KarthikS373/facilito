@@ -9,12 +9,12 @@
 	}
 }
 
-.productSkeleton {
+.stockSkeleton {
 	height: 68px;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	display: grid;
 	align-items: center;
-	grid-template-columns: 63px minmax(200px, 1fr) 80px 120px 120px 63px;
+	grid-template-columns: minmax(100px, 1fr) 110px 100px 203px 110px 110px;
 	column-gap: 15px;
 	padding: 10px 0 10px var(--margin);
 

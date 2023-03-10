@@ -16,13 +16,13 @@ import Paper from '@mui/material/Paper'
 // REACT WINDOW
 import { FixedSizeList as List } from 'react-window'
 
-interface StockListProps {
+interface CustomersListProps {
 	filter: string
 	customers: CustomerSelf[]
 	setFilter: (newFilter: string) => void
 }
 
-const StockList: React.FC<StockListProps> = ({ filter, setFilter, customers }) => {
+const CustomersList: React.FC<CustomersListProps> = ({ filter, setFilter, customers }) => {
 	const row = useCallback(
 		({ index, style }: { index: number; style: React.CSSProperties }) => {
 			const newIndex: number = index - 1
@@ -33,7 +33,7 @@ const StockList: React.FC<StockListProps> = ({ filter, setFilter, customers }) =
 			) : customer ? (
 				<CustomerRow {...customer} style={style} />
 			) : (
-				<div className={Styles.stockSkeleton}>
+				<div className={Styles.customersSkeleton}>
 					<Skeleton />
 					<Skeleton />
 					<Skeleton />
@@ -61,4 +61,4 @@ const StockList: React.FC<StockListProps> = ({ filter, setFilter, customers }) =
 	)
 }
 
-export default StockList
+export default CustomersList
