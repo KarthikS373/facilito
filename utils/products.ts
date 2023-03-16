@@ -164,3 +164,20 @@ export const saveProductImages = async (
 		return urls
 	} else return Array(4).fill('')
 }
+
+export const getProduct = async (
+	sku: string,
+	companyID?: string
+): Promise<any | undefined | null> => {
+	const { doc, getDoc } = await import('firebase/firestore')
+
+	// COLLECTION
+	const col = await getCollection('products')
+
+	if (companyID) {
+		const docRef = doc(col, `${companyID}`)
+
+		return (await getDoc(docRef)).data()?.[sku]
+	}
+	return null
+}

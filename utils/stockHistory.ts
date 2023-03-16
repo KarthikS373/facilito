@@ -88,3 +88,11 @@ export const stockListener = async (
 		setStockHistory(stockRowsArray)
 	})
 }
+
+export const getStockHistory = async (companyID: string, formID: string) => {
+	const { getDoc } = await import('firebase/firestore')
+
+	const docRef = await getStockHistoryDoc(companyID, formID)
+
+	return getDoc(docRef)
+}

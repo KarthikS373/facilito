@@ -8,7 +8,7 @@
 	"main": "server.js",
 	"scripts": {
 		"find:unused": "next-unused",
-		"next-dev": "NODE_OPTIONS='--inspect' next dev",
+		"next-dev": "next dev",
 		"strings": "node langServer.js",
 		"doc": "typedoc",
 		"dev": "npm-run-all --parallel next-dev strings",
